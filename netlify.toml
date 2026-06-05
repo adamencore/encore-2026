@@ -1,0 +1,25 @@
+# ============================================================
+# Netlify configuration — Encore Performing Arts (static site)
+# No build step: these are plain HTML files served as-is.
+# ============================================================
+
+[build]
+  publish = "."
+
+# Clean URLs: Netlify serves /about from about.html automatically,
+# and /summer-of-lion-king-2026 from that file. Home is index.html.
+
+# --- Security headers (applied to every page) ---
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# --- Long cache for static images/fonts (safe: filenames are versioned) ---
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

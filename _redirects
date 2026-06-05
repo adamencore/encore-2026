@@ -1,0 +1,48 @@
+/little-women        /little-women-2026    301
+/littlewomen         /little-women-2026    301
+# ============================================================
+# Encore Performing Arts — 301 redirect map (Netlify)
+# Format:   from-path   to-path   status
+#
+# IMPORTANT: This is a STARTER map. Before launch, complete it from the
+# Google Search Console "all known pages" export so NO old Squarespace
+# URL 404s. Every URL that changes during migration needs a 301 here.
+# ============================================================
+
+# --- Resolved duplicates / renames ---
+/showchoir-24                       /aspire-performing-co              301!
+
+# --- Fix known broken links found in the crawl ---
+/encore-scholarship-application-1   /encore-scholarship-application    301
+/lionkingjr                         /summer-of-lion-king-2026          301
+
+# --- Host + HTTPS ---
+# Set www.encorepa.org as the PRIMARY domain in the Netlify dashboard.
+# Netlify auto-redirects the apex (encorepa.org) to it and forces HTTPS.
+
+# --- TODO: add the rest from the GSC export, one per line, e.g.: ---
+# /old-squarespace-slug             /new-slug                          301
+#
+# Interim: route per-show registration links to the generic forms so no
+# button dead-ends. Replace with real per-show forms when built.
+/summer-of-lion-king-8-13-registration    /audition-registration         302
+/summer-of-lion-king-14-18-registration   /audition-registration         302
+/back-to-the-future-registration          /page-to-stage-registration    302
+/aspire-auditions-registration            /audition-registration         302
+
+# --- INTERIM: not-yet-rebuilt pages routed so links don't 404 during migration ---
+# Point clean routes at the current live Squarespace pages (verify slugs; swap to
+# internal pages as each is built). Using 302 (temporary) on purpose.
+# /donate now served by donate.html (local page) — redirect removed on rebuild
+# /contact now served by contact.html (local page) — redirect removed on rebuild
+# /encore-scholarship-application now served locally — redirect removed on rebuild
+# /sensory-friendly-performances now served locally — redirect removed on rebuild
+/terms-and-conditions            https://www.encorepa.org/terms-and-conditions            302
+/privacy-policy                  https://www.encorepa.org/privacy-policy                  302
+
+# Internal interims -> closest built page
+/back-to-the-future              /page-to-stage           302
+/auditioning                     /audition-registration   302
+/multi-performer-discount            /summer-of-lion-king-2026 302
+/classes                         https://www.encorepa.org/classes          302
+/encore-classes                  https://www.encorepa.org/encore-classes   302

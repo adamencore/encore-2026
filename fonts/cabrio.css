@@ -1,0 +1,16 @@
+/* Cabrio (HvD Trial) — self-hosted. NOTE: trial files cover only A-Z a-z 0-9 , .
+   Replace these woff2 with the licensed full family (same filenames) before production. */
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-Light.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-LightItalic.woff2') format('woff2');font-weight:300;font-style:italic;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-RegularItalic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-MediumItalic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-BoldItalic.woff2') format('woff2');font-weight:700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-ExtraBoldItalic.woff2') format('woff2');font-weight:800;font-style:italic;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-Black.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cabrio';src:url('/fonts/Cabrio-BlackItalic.woff2') format('woff2');font-weight:900;font-style:italic;font-display:swap;}
+@font-face{font-family:'Cabrio Poster';src:url('/fonts/Cabrio-Poster.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cabrio Poster';src:url('/fonts/Cabrio-PosterItalic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;}

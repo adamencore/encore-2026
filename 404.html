@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found | Encore Performing Arts</title>
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/cabrio.css">
+<style>
+  :root{
+    /* ENCORE BRAND PALETTE */
+    --teal:#348193;           /* primary brand teal */
+    --charcoal:#348193;       /* primary (brand teal) */
+    --charcoal-2:#3c8ea1;     /* lighter teal — hovers */
+    --charcoal-soft:#358193;  /* deep teal — secondary text */
+    --cream:#e9e4e0;          /* warm cream — surfaces */
+    --cream-lite:#f6f5f3;     /* lightest — page background */
+    --paper:#fdfcfa;          /* card paper */
+    --accent:#358193;         /* coral accent (proposed — pending exact hex) */
+    --accent-2:#2c6c7d;       /* coral hover */
+    --line:rgba(21,65,76,.16);
+    --muted:#6b7779;          /* muted teal-gray text */
+    --radius:26px;
+    --radius-lg:34px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Cabrio','Familjen Grotesk',sans-serif;background:var(--cream-lite);color:var(--charcoal);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;-webkit-font-smoothing:antialiased;}
+  .brandmark{height:34px;width:auto;color:var(--charcoal);margin-bottom:40px;}
+  .code{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:clamp(64px,14vw,128px);font-weight:500;line-height:1;letter-spacing:-.045em;}
+  h1{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(24px,4vw,34px);margin:14px 0 12px;letter-spacing:-.02em;}
+  h1 em{font-style:italic;}
+  p{color:var(--muted);font-size:16px;line-height:1.6;max-width:440px;margin:0 auto 30px;}
+  .acts{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .btn{font-family:inherit;font-weight:600;border-radius:100px;padding:14px 26px;font-size:15px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:transform .2s,background .2s,color .2s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-dark{background:var(--charcoal);color:var(--cream);}
+  .btn-dark:hover{background:var(--charcoal-2);}
+  .btn-ghost{background:transparent;border:1.5px solid var(--charcoal);color:var(--charcoal);}
+  .btn-ghost:hover{background:var(--charcoal);color:var(--cream);}
+  .links{margin-top:30px;font-size:14px;color:var(--muted);}
+  .links a{color:var(--charcoal);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line);}
+  .links a:hover{border-color:var(--charcoal);}
+  /* ANNOUNCEMENT BAR */
+  .annc{position:sticky;top:0;z-index:170;background:#348193;color:#fff;height:42px;display:flex;align-items:center;font-family:'Cabrio','Familjen Grotesk',sans-serif;}
+  .annc.hide{display:none;}
+  .annc-in{max-width:1320px;margin:0 auto;width:100%;padding:0 44px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .annc-link{color:#fff;font-size:14px;font-weight:600;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none;}
+  .annc-link:hover{text-decoration:underline;text-underline-offset:2px;}
+  .annc-x{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;opacity:.85;padding:2px 6px;}
+  .annc-x:hover{opacity:1;}
+  @media(max-width:560px){.annc-link{font-size:13px;}.annc-in{padding:0 38px;}}
+  /* IMGHOVER v2 — site-wide image settle-on-hover (big to small, matches Shop Programs photos) */
+  .encph-fig,.gal,.prog-photo,.tmember .photo,.post-card .ph,.post-feat,.sh-art,.access-photo,.aud-invite-photo,.intro-split .ph,.ocard .mc-bg,.event .mc-bg,.trip .mc-bg,.event-card,.block,.block-media{overflow:hidden;}
+  .encph-fig img,.gal img,.prog-photo img,.tmember .photo img,.post-card .ph img,.post-feat img,.sh-art img,.access-photo img,.aud-invite-photo img,.intro-split .ph img,.ocard .mc-bg img,.event .mc-bg img,.trip .mc-bg img,.card-img{transition:transform 1.1s ease;}
+  @media (hover:hover) and (prefers-reduced-motion:no-preference){
+    .encph-fig img,.gal img,.prog-photo img,.tmember .photo img,.post-card .ph img,.post-feat img,.sh-art img,.access-photo img,.aud-invite-photo img,.intro-split .ph img,.ocard .mc-bg img,.event .mc-bg img,.trip .mc-bg img,.card-img{transform:scale(1.05);}
+    .encph-fig:hover img,.gal:hover img,.prog-photo:hover img,.tmember .photo:hover img,.post-card:hover .ph img,.post-feat:hover img,.sh-art:hover img,.access-photo:hover img,.aud-invite-photo:hover img,.intro-split .ph:hover img,.ocard:hover .mc-bg img,.event:hover .mc-bg img,.trip:hover .mc-bg img,.event-card:hover .card-img,.block:hover .card-img,.block-media:hover .card-img{transform:scale(1);}
+  }
+</style>
+</head>
+<body>
+<!-- ANNOUNCEMENT BAR -->
+<div class="annc" id="anncBar" role="region" aria-label="Site announcement">
+  <div class="annc-in">
+    <a class="annc-link" href="/little-women-2026">Now casting Little Women &mdash; auditions open &rarr;</a>
+    <button class="annc-x" type="button" aria-label="Dismiss announcement">&times;</button>
+  </div>
+</div>
+<script>(function(){var b=document.getElementById("anncBar"),K="encoreAnnc_v1";if(!b)return;function off(){b.classList.add("hide");document.documentElement.style.setProperty("--annc-h","0px");}try{if(localStorage.getItem(K)==="1")off();}catch(e){}var x=b.querySelector(".annc-x");if(x)x.addEventListener("click",function(){off();try{localStorage.setItem(K,"1")}catch(e){}});})();</script>
+
+  <a href="/" aria-label="Encore Performing Arts — Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 364.601 74.455" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><path d="M362.586,63.803c0,5.315-2.657,7.97-7.97,7.97-5.642,0-8.462-2.656-8.462-7.97s2.82-7.972,8.462-7.972c5.314,0,7.97,2.658,7.97,7.972Zm-10.956-13.779c-1.297-8.63-2.381-15.432-3.244-20.403-.866-4.972-1.569-8.838-2.108-11.6-.542-2.761-.919-4.833-1.136-6.214-.216-1.38-.323-2.797-.323-4.246,0-5.04,3.295-7.561,9.891-7.561s9.891,2.521,9.891,7.561c0,1.449-.108,2.866-.323,4.246-.219,1.381-.624,3.453-1.218,6.214-.594,2.762-1.434,6.628-2.513,11.6-1.082,4.971-2.432,11.773-4.053,20.403h-4.865Z"/><path d="M21.748,52.934c2.901,8.596,14.396,18.849,31.692,3.418,1.035-.932,2.589,.31,1.968,1.449-3.314,6.318-10.874,15.742-26.306,15.742C13.152,73.544,0,61.634,0,46.927c0-14.81,12.946-26.72,28.999-26.616h.311c12.945-.104,23.923,7.871,27.547,18.745,.415,1.346-.31,2.796-1.657,3.211l-33.452,10.667Zm14.5-9.217c.828-.311,1.346-1.242,1.139-2.072-1.761-8.285-5.8-17.295-11.807-16.259-.103,0-.311,.103-.414,.103-7.353,1.865-6.731,16.26-4.868,23.199l15.949-4.971Z"/><path d="M125.058,73.026c-7.664,2.693-25.892,3.625-25.892-16.467v-17.814c0-3.21-1.346-9.217-7.975-9.838-5.282-.414-10.045,5.075-10.045,9.735v24.441c0,.621-.311,6.525,6.11,7.146,.518,.103,1.139,.621,1.139,1.346s-.518,1.346-1.243,1.346h-31.898c-.725,0-1.346-.621-1.346-1.346s.517-1.243,1.242-1.346c3.625-.414,6.007-3.003,6.111-6.939v-29.827s.103-5.489-5.697-5.282c-.931,0-1.657-.621-1.657-1.554,0-.724,.517-1.346,1.242-1.449l25.996-4.039v6.525s4.764-6.628,16.259-6.525c10.668,.207,21.645,6.835,21.645,17.814l-.103,21.437c0,11.289,6.11,12.635,6.11,12.635Z"/><path d="M179.473,54.701c-3.314,6.318-13.038,18.843-28.468,18.843-15.949,0-29.103-11.91-29.103-26.617,0-14.81,12.945-26.72,28.999-26.616h.31c7.25-.104,13.982,2.486,19.056,6.524,7.665,6.318,3.728,12.428-3.935,13.879h-.311c-3.624,.517-7.145-1.658-8.388-5.075-2.176-6.111-5.594-10.979-10.15-10.253-.104,0-.31,0-.414,.103-8.803,2.693-6.11,21.024-3.417,27.445,4.038,9.735,18.319,14.714,33.854,.318,1.036-.932,2.59,.31,1.968,1.449Z"/><path d="M234.997,47.031c0,15.121-13.152,27.341-29.102,27.341s-29.103-12.22-29.103-27.341,12.946-27.341,29-27.341h.31c15.948,0,28.895,12.22,28.895,27.341Zm-19.885,0c0-6.732-1.243-22.371-9.01-22.371h-.414c-7.768,0-9.011,15.638-9.011,22.371s1.243,22.371,9.011,22.371h.414c7.767,0,9.01-15.639,9.01-22.371Z"/><path d="M278.264,39.471c-.31,.104-.724,.104-1.139,.104-4.141,0-7.457-3.314-7.457-7.457,0-1.864,.622-3.521,1.762-4.868-4.869-.207-12.118,7.25-12.118,13.568v22.266c0,.621-.31,6.525,6.11,7.249,.725,0,1.139,.622,1.139,1.243v.103c0,.725-.517,1.243-1.242,1.243h-31.899c-.725,0-1.345-.518-1.345-1.346,0-.621,.517-1.243,1.242-1.243,6.214-.724,6.11-6.524,6.11-6.938v-29.931s.104-5.282-5.696-5.282c-.828,0-1.554-.517-1.657-1.346-.104-.828,.517-1.554,1.242-1.657l25.995-4.039v6.628s5.8-7.871,16.259-6.524c11.703,1.449,11.393,17.606,2.693,18.227Z"/><path d="M305.71,52.934c2.9,8.596,14.396,18.849,31.691,3.418,1.036-.932,2.59,.31,1.969,1.449-3.314,6.318-10.875,15.742-26.306,15.742-15.949,0-29.103-11.91-29.103-26.617,0-14.81,12.946-26.72,29-26.616h.31c12.946-.104,23.924,7.871,27.548,18.745,.414,1.346-.311,2.796-1.657,3.211l-33.452,10.667Zm14.499-9.217c.828-.311,1.347-1.242,1.139-2.072-1.76-8.285-5.8-17.295-11.806-16.259-.104,0-.311,.103-.414,.103-7.353,1.865-6.732,16.26-4.869,23.199l15.949-4.971Z"/></svg></a>
+  <div class="code">404</div>
+  <h1>This page took an <em>intermission</em></h1>
+  <p>We couldn't find the page you were looking for. It may have moved, or the link might be out of date.</p>
+  <div class="acts">
+    <a href="/" class="btn btn-dark">Back to home →</a>
+    <a href="/tickets" class="btn btn-ghost">See what's on</a>
+  </div>
+  <div class="links">
+    Or try: <a href="/about">About</a> · <a href="/electric-theater">Our venue</a> · <a href="/aspire-performing-co">Aspire</a>
+  </div>
+</body>
+</html>
