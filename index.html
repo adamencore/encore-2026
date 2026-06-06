@@ -138,15 +138,10 @@
 
   /* IMAGE LAYERS — photos sit behind existing gradient overlays */
   .card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;border-radius:var(--radius);}
-  .event-card .card-img{z-index:0;}
   .media-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,39,45,.2),rgba(13,39,45,.8));}
   .venue-visual::after,.core-visual::after{z-index:1;}
   .venue-visual .card-img{object-position:center top;}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-  /* event/program posters: finished graphics show full-bleed, no scrim, pill only */
-  .event-card.poster{aspect-ratio:4/3;min-height:0;background:transparent;padding:0;}
-  .event-card.poster .card-img{position:absolute;inset:0;width:100%;height:100%;border-radius:var(--radius);}
-  .event-card.poster .ov{display:none;}
 
   /* NAV — fixed, transparent over hero, solidifies + recolors on scroll */
   nav{position:fixed;top:var(--annc-h,42px);left:0;right:0;z-index:200;color:var(--cream);background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,box-shadow .3s ease,color .3s ease;}
@@ -228,19 +223,6 @@
 
   /* CURRENT EVENTS strip under hero */
   .events{padding:60px 0 30px;}
-  .events-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}.event-card .card-kicker{position:absolute;left:16px;bottom:16px;z-index:2;background:rgba(43,43,46,.62);color:#fff;backdrop-filter:blur(4px);padding:6px 13px;border-radius:100px;font-size:12px;font-weight:600;letter-spacing:.02em;}
-  .event-card{position:relative;border-radius:var(--radius);overflow:hidden;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:#fff;}
-  .event-card .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,39,45,.08),rgba(13,39,45,.82));z-index:1;}
-  .event-card>*{position:relative;z-index:2;}
-  .event-card .tag{position:absolute;top:20px;left:20px;background:rgba(246,245,243,.94);color:var(--charcoal);padding:7px 14px;border-radius:100px;font-size:12px;font-weight:600;z-index:2;}
-  .event-card .tag.live{background:var(--charcoal);color:var(--cream);}
-  .event-card .arrow{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:50%;background:rgba(246,245,243,.2);backdrop-filter:blur(4px);color:#fff;display:grid;place-items:center;z-index:2;transition:background .2s;}
-  .event-card.poster .arrow{background:rgba(13,39,45,.55);color:var(--cream);}
-  .event-card.poster:hover .arrow{background:rgba(13,39,45,.8);}
-  .event-card:hover .arrow{background:rgba(246,245,243,.4);}
-  .event-card .meta{font-size:12.5px;opacity:.85;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;}
-  .event-card .ttl{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:25px;font-weight:600;margin-bottom:5px;line-height:1.1;}
-  .event-card .sub{font-size:13.5px;opacity:.9;line-height:1.5;}
   /* What's-on pills (compact, Variant 1) */
   .pill-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   .evp{position:relative;display:flex;align-items:center;gap:15px;min-height:88px;border-radius:999px;overflow:hidden;padding:12px 14px;color:#fff;isolation:isolate;box-shadow:0 14px 30px -22px rgba(13,39,45,.6);}
@@ -257,9 +239,6 @@
   .evp-go svg{width:18px;height:18px;}
   .evp:hover .evp-go{background:#fff;color:var(--teal);}
   @media(max-width:760px){.pill-grid{grid-template-columns:1fr;}}
-  .ev1{background:linear-gradient(150deg,#245f6c,#123139);}
-  .ev2{background:linear-gradient(150deg,#2c6e7d,#17424c);}
-  .ev3{background:linear-gradient(150deg,#1e525e,#0d272d);}
   .events-foot{display:flex;justify-content:center;margin-top:30px;}
 
   /* SECTION SCAFFOLD */
@@ -388,7 +367,7 @@
   .venue-addr .ad span{color:var(--muted);}
   .venue-actions{display:flex;gap:11px;flex-wrap:wrap;}
   .venue-note{margin-top:16px;font-size:12px;color:var(--muted);opacity:.75;line-height:1.5;max-width:460px;font-style:italic;}
-  @media(max-width:1100px){.events-grid{grid-template-columns:1fr 1fr;}}@media(max-width:980px){
+  @media(max-width:980px){
     .venue-inner{grid-template-columns:1fr;}
     .venue-visual{min-height:280px;}
   }
@@ -398,7 +377,6 @@
   .access-card .icon svg{width:26px;height:26px;}
   .block .ic svg{width:21px;height:21px;}
   .venue-addr .ic svg{width:18px;height:18px;}
-  .event-card .arrow svg{width:18px;height:18px;}
   .foot-social a svg{width:18px;height:18px;}
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
   .reveal.in{opacity:1;transform:none;}
@@ -408,7 +386,6 @@
   @media(max-width:980px){
     .nav-links,.nav-cta{display:none;}
     .nav-toggle{display:flex;}
-    .events-grid{grid-template-columns:1fr;}
     .age-grid{grid-template-columns:1fr;}
     .access-grid{grid-template-columns:1fr;}
     .core-inner{grid-template-columns:1fr;gap:30px;}
