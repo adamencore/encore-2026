@@ -712,15 +712,15 @@
 
   const OFFERINGS = [
     /* Emerging Artist Shows (ages 12–14). Replace with real upcoming productions as they're cast. */
-    {id:"peter-pan-jr", title:"Disney's Peter Pan Jr.", type:"Audition", ages:["Emerging Artists"], status:"Open", when:"Auditions Sep 21–22 · Performances Nov 19–21, 2026", blurb:"Fly away to Neverland in our Emerging Artists production at the Electric Theater. Ages 9–13.", link:"/peter-pan-jr-2026", logo:"", bg:""},
-    {id:"ea-info", title:"Upcoming Emerging Artist Shows", type:"Audition", ages:["Emerging Artists"], status:"Soon", when:"Casting announced seasonally", blurb:"Full productions for ages 12 to 14. See what's currently casting, or reach out to join the interest list.", link:"/auditions", logo:"", bg:""}
+    {id:"peter-pan-jr", title:"Disney's Peter Pan Jr.", type:"Audition", ages:["Emerging Artists"], status:"Open", when:"Auditions Sep 21–22 · Performances Nov 19–21, 2026", blurb:"Fly away to Neverland in our Emerging Artists production at the Electric Theater. Ages 9–13.", link:"/peter-pan-jr-2026", logo:"", bg:"peter-pan-jr/card.webp"},
+    {id:"ea-info", title:"Upcoming Emerging Artist Shows", type:"Audition", ages:["Emerging Artists"], status:"Soon", when:"Casting announced seasonally", blurb:"Full productions for ages 12 to 14. See what's currently casting, or reach out to join the interest list.", link:"/auditions", logo:"", bg:"/img/encore-ensemble.jpg"}
   ];
 
   const CTA = {audition:"Register to audition", class:"Browse classes", event:"See the event", workshop:"Register"};
   function card(o,i){
     const grad="og"+((i%5)+1), dtype=o.type.toLowerCase();
-    const bg = o.bg ? `<picture class="mc-bg"><img src="/img/shows/${o.bg}" alt="" loading="lazy" onerror="this.remove()"></picture>` : `<picture class="mc-bg"></picture>`;
-    const logo = o.logo ? `<img class="mc-logo" src="/img/shows/${o.logo}" alt="${o.title} logo" loading="lazy" onerror="this.remove()">` : "";
+    const bg = o.bg ? `<picture class="mc-bg"><img src="${o.bg.charAt(0)==='/'?o.bg:'/img/shows/'+o.bg}" alt="" loading="lazy" onerror="this.remove()"></picture>` : `<picture class="mc-bg"></picture>`;
+    const logo = o.logo ? `<img class="mc-logo" src="${o.logo.charAt(0)==='/'?o.logo:'/img/shows/'+o.logo}" alt="${o.title} logo" loading="lazy" onerror="this.remove()">` : "";
     return `<a href="${o.link}" class="ocard ${grad}" data-type="${dtype}">${bg}<span class="mc-scrim" aria-hidden="true"></span>${logo}<span class="otype">${o.type}</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span><div class="mc-body"><div class="when">${o.when}</div><h3>${o.title}</h3><div class="desc">${o.blurb}</div><span class="go">${CTA[dtype]||"Learn more"} →</span></div></a>`;
   }
   const grid=document.getElementById("offgrid"), empty=document.getElementById("emptyMsg");

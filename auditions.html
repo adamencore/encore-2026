@@ -402,14 +402,19 @@
 .aud-prose p{color:var(--charcoal-soft);font-size:1.06rem;line-height:1.7;margin:0 0 16px;}
 
 .aud-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.aud-card{position:relative;display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:transform .25s,box-shadow .25s;}
+.aud-card{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:300px;overflow:hidden;border-radius:var(--radius);padding:26px;color:#fff;transition:transform .25s,box-shadow .25s;}
 .aud-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(13,39,45,.45);}
+.aud-card .ac-bg{position:absolute;inset:0;z-index:0;}
+.aud-card .ac-bg img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s ease;}
+.aud-card:hover .ac-bg img{transform:scale(1.04);}
+.aud-card .ac-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,39,45,.32),rgba(13,39,45,.56) 48%,rgba(13,39,45,.9));}
+.aud-card>:not(.ac-bg):not(.ac-scrim){position:relative;z-index:2;}
 .aud-tag{align-self:flex-start;background:var(--teal);color:#fff;font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;margin-bottom:16px;}
 .aud-tag.alt{background:var(--accent);}
-.aud-card .meta{font-size:.85rem;color:var(--muted);font-weight:600;letter-spacing:.02em;}
-.aud-card h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;font-size:1.5rem;line-height:1.05;letter-spacing:-.01em;margin:5px 0 10px;color:var(--charcoal);}
-.aud-card p{color:var(--charcoal-soft);font-size:.98rem;line-height:1.55;margin:0 0 18px;flex:1;}
-.aud-card .go{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;color:var(--teal);font-size:.95rem;letter-spacing:.02em;}
+.aud-card .meta{font-size:.85rem;color:rgba(255,255,255,.82);font-weight:600;letter-spacing:.02em;}
+.aud-card h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;font-size:1.5rem;line-height:1.05;letter-spacing:-.01em;margin:5px 0 10px;color:#fff;}
+.aud-card p{color:rgba(255,255,255,.9);font-size:.98rem;line-height:1.55;margin:0 0 18px;flex:1;}
+.aud-card .go{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;color:#fff;font-size:.95rem;letter-spacing:.02em;}
 .aud-card:hover .go{text-decoration:underline;}
 .aud-note{margin-top:22px;color:var(--muted);font-size:.98rem;line-height:1.6;max-width:680px;}
 .aud-note a{color:var(--teal);font-weight:600;}
@@ -567,35 +572,35 @@
       <p class="lead">Open auditions and rolling enrollment, updated each season.</p>
     </div>
     <div class="aud-cards">
-      <article class="aud-card">
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/little-women.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
         <span class="aud-tag">Now casting</span>
         <div class="meta">Signature Series · Ages 13–18</div>
         <h3>Little Women: The Musical</h3>
         <p>An artist-driven Signature Series production of the beloved March sisters' story. Auditions July 18 at the Electric Theater; performances September 5–12.</p>
         <a class="go" href="/little-women-2026">Audition info →</a>
       </article>
-      <article class="aud-card">
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/peter-pan-jr/card.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
         <span class="aud-tag">Now casting</span>
         <div class="meta">Emerging Artists · Ages 9–13</div>
         <h3>Disney's Peter Pan Jr.</h3>
-        <p>Fly away to Neverland in our Junior Shows production. Vocal auditions September 21, dance call September 22; performances November 19–21 at the Electric Theater.</p>
+        <p>Fly away to Neverland in our Emerging Artists production. Vocal auditions September 21, dance call September 22; performances November 19–21 at the Electric Theater.</p>
         <a class="go" href="/peter-pan-jr-2026">Audition info →</a>
       </article>
-      <article class="aud-card">
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/lion-king.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
         <span class="aud-tag">Auditions open</span>
         <div class="meta">Summer 2026 · Ages 8–18</div>
         <h3>Disney's The Lion King</h3>
         <p>Our big summer production. All experience levels welcome, with performances on the Electric Theater stage in late July.</p>
         <a class="go" href="/summer-of-lion-king-2026">Audition info →</a>
       </article>
-      <article class="aud-card">
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/aspire.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
         <span class="aud-tag">By audition</span>
         <div class="meta">Year-round · Ages 8–senior</div>
         <h3>Aspire Performing Co.</h3>
         <p>Our audition-based show choir for singers and dancers who want to perform and grow across the whole year.</p>
         <a class="go" href="/aspire-performing-co">About Aspire →</a>
       </article>
-      <article class="aud-card">
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/back-to-the-future.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
         <span class="aud-tag alt">Get involved</span>
         <div class="meta">Seasonal events</div>
         <h3>Page to Stage</h3>

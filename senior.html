@@ -723,14 +723,14 @@
   const OFFERINGS = [
     /* Signature Shows (ages 13–18). Replace/add real productions as they're cast. */
     {id:"little-women", title:"Little Women: The Musical", type:"Audition", ages:["Signature Shows"], status:"Open", when:"Auditions July 18, 2026", blurb:"Our Signature production for ages 13 to 18. Vocal auditions July 18, callbacks July 20.", link:"/little-women-2026", logo:"", bg:"little-women.webp"},
-    {id:"sig-info", title:"More Signature Shows", type:"Audition", ages:["Signature Shows"], status:"Soon", when:"Announced each season", blurb:"Flagship productions for ages 13 to 18. Reach out to join the interest list and hear about the next season.", link:"/auditions", logo:"", bg:""}
+    {id:"sig-info", title:"More Signature Shows", type:"Audition", ages:["Signature Shows"], status:"Soon", when:"Announced each season", blurb:"Flagship productions for ages 13 to 18. Reach out to join the interest list and hear about the next season.", link:"/auditions", logo:"", bg:"/img/encore-ensemble.jpg"}
   ];
 
   const CTA = {audition:"Register to audition", class:"Browse classes", event:"See the event", workshop:"Register"};
   function card(o,i){
     const grad="og"+((i%5)+1), dtype=o.type.toLowerCase();
-    const bg = o.bg ? `<picture class="mc-bg"><img src="/img/shows/${o.bg}" alt="" loading="lazy" onerror="this.remove()"></picture>` : `<picture class="mc-bg"></picture>`;
-    const logo = o.logo ? `<img class="mc-logo" src="/img/shows/${o.logo}" alt="${o.title} logo" loading="lazy" onerror="this.remove()">` : "";
+    const bg = o.bg ? `<picture class="mc-bg"><img src="${o.bg.charAt(0)==='/'?o.bg:'/img/shows/'+o.bg}" alt="" loading="lazy" onerror="this.remove()"></picture>` : `<picture class="mc-bg"></picture>`;
+    const logo = o.logo ? `<img class="mc-logo" src="${o.logo.charAt(0)==='/'?o.logo:'/img/shows/'+o.logo}" alt="${o.title} logo" loading="lazy" onerror="this.remove()">` : "";
     return `<a href="${o.link}" class="ocard ${grad}" data-type="${dtype}">${bg}<span class="mc-scrim" aria-hidden="true"></span>${logo}<span class="otype">${o.type}</span><span class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span><div class="mc-body"><div class="when">${o.when}</div><h3>${o.title}</h3><div class="desc">${o.blurb}</div><span class="go">${CTA[dtype]||"Learn more"} →</span></div></a>`;
   }
   const grid=document.getElementById("offgrid"), empty=document.getElementById("emptyMsg");
