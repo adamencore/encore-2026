@@ -712,11 +712,13 @@
   const TIER = "Camps";
 
   const OFFERINGS = [
-    /* Camps offerings (ages 6–9). Replace with real upcoming camps as they're scheduled. */
-    {id:"camps-info", title:"Upcoming Camps", type:"Camp", ages:["Camps"], status:"Soon", when:"New camps announced seasonally", blurb:"Week-long camp intensives for ages 6–9. Contact us to hear about the next camp and join the interest list.", link:"/contact", logo:"", bg:"/img/camps/camps-hero-1.webp"}
+    /* Camps offerings. Replace with real upcoming camps as they're scheduled. */
+    {id:"lion-king-kids-camp-2026", title:"Lion King Kids Camp", type:"Camp", ages:["Camps"], status:"Open", when:"July 6–14, 2026", blurb:"A one-week summer camp for ages 7–11, ending in a performance on the Electric Theater stage. Placement auditions July 6; performance July 14.", link:"/lion-king-kids-camp-2026", logo:"", bg:"/img/shows/lion-king.webp"},
+    {id:"november-camp-2026", title:"November Camp", type:"Camp", ages:["Camps"], status:"Open", when:"Oct 31 – Nov 7, 2026", blurb:"A one-week camp for ages 7–11 at the Electric Theater, building to a live performance. Placement auditions October 31; performance November 7.", link:"/november-camp-2026", logo:"", bg:"/img/camps/camps-hero-1.webp"},
+    {id:"camps-info", title:"More Camps Coming", type:"Camp", ages:["Camps"], status:"Soon", when:"New camps announced seasonally", blurb:"We add camp intensives throughout the year. Contact us to hear about the next one and join the interest list.", link:"/contact", logo:"", bg:"/img/camps/camp-workshop.webp"}
   ];
 
-  const CTA = {audition:"Register to audition", class:"Browse classes", event:"See the event", workshop:"Register"};
+  const CTA = {audition:"Register to audition", class:"Browse classes", event:"See the event", workshop:"Register", camp:"Camp info"};
   function card(o,i){
     const grad="og"+((i%5)+1), dtype=o.type.toLowerCase();
     const bg = o.bg ? `<picture class="mc-bg"><img src="${o.bg.charAt(0)==='/'?o.bg:'/img/shows/'+o.bg}" alt="" loading="lazy" onerror="this.remove()"></picture>` : `<picture class="mc-bg"></picture>`;

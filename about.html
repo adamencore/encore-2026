@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!-- ============================================================
      ABOUT ENCORE — /about  (confirm slug against the live URL inventory)
-     Team headshots are color photos at /img/team/<name>.{webp,jpg};
-     members without a photo yet fall back to a monogram tile.
+     Team headshots use monogram placeholders; production swaps in B&W
+     headshots at /img/team/<name>.jpg (grayscale styling is built in).
      NOTE: founding year shown as 2022 per provided copy, but the rest of
      the site uses 2021 — reconcile before launch. foundingDate is
      intentionally omitted from this page's schema until confirmed.
@@ -223,8 +223,8 @@
   /* TEAM */
   .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
   .tmember{text-align:center;}
-  .tmember .photo{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:1/1;background:linear-gradient(155deg,#276a79,#123139);display:grid;place-items:center;margin-bottom:16px;}
-  .tmember .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .tmember .photo{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(155deg,#276a79,#123139);display:grid;place-items:center;margin-bottom:16px;}
+  .tmember .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1);}
   .tmember .photo .mono{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:42px;color:rgba(233,228,224,.9);}
   .tmember .nm{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:20px;font-weight:600;color:var(--charcoal);line-height:1.15;}
   .tmember .role{font-size:13.5px;color:var(--muted);margin-top:5px;line-height:1.4;}
@@ -513,16 +513,15 @@
         <p class="lead">The staff who lead programs, productions, and the day-to-day of Encore.</p>
       </div>
       <div class="team-grid reveal">
-        <!-- Members with a photo use <picture>; the rest keep a .mono monogram tile. Photos display in color. -->
-        <div class="tmember"><div class="photo"><picture><source type="image/webp" srcset="/img/team/adam-record.webp"><img src="/img/team/adam-record.jpg" alt="Headshot of Adam Record" width="800" height="800" loading="lazy"></picture></div><div class="nm">Adam Record</div><div class="role">Co-Founder &amp; Executive Director</div></div>
-        <div class="tmember"><div class="photo"><picture><source type="image/webp" srcset="/img/team/rhett-guter.webp"><img src="/img/team/rhett-guter.jpg" alt="Headshot of Rhett Guter" width="800" height="800" loading="lazy"></picture></div><div class="nm">Rhett Guter</div><div class="role">Artistic Director</div></div>
-        <div class="tmember"><div class="photo"><picture><source type="image/webp" srcset="/img/team/kelby-tyrrell.webp"><img src="/img/team/kelby-tyrrell.jpg" alt="Headshot of Kelby Tyrrell" width="800" height="800" loading="lazy"></picture></div><div class="nm">Kelby Tyrrell</div><div class="role">Aspire Performing Co. Director</div></div>
-        <div class="tmember"><div class="photo"><picture><source type="image/webp" srcset="/img/team/randy-sly.webp"><img src="/img/team/randy-sly.jpg" alt="Headshot of Randy Sly" width="800" height="800" loading="lazy"></picture></div><div class="nm">Randy Sly</div><div class="role">Director of Education</div></div>
-        <div class="tmember"><div class="photo"><picture><source type="image/webp" srcset="/img/team/leslie-scott.webp"><img src="/img/team/leslie-scott.jpg" alt="Headshot of Leslie Scott" width="800" height="800" loading="lazy"></picture></div><div class="nm">Leslie Scott</div><div class="role">Music Director</div></div>
+        <!-- Swap each .mono for: <img src="/img/team/<name>.jpg" alt="Headshot of <Name>"> (grayscale styling is applied automatically) -->
+        <div class="tmember"><div class="photo"><span class="mono" aria-hidden="true">AR</span></div><div class="nm">Adam Record</div><div class="role">Co-Founder &amp; Executive Director</div></div>
+        <div class="tmember"><div class="photo"><span class="mono" aria-hidden="true">RG</span></div><div class="nm">Rhett Guter</div><div class="role">Artistic Director</div></div>
+        <div class="tmember"><div class="photo"><span class="mono" aria-hidden="true">KT</span></div><div class="nm">Kelby Tyrrell</div><div class="role">Aspire Performing Co. Director</div></div>
+        <div class="tmember"><div class="photo"><span class="mono" aria-hidden="true">RS</span></div><div class="nm">Randy Sly</div><div class="role">Director of Education</div></div>
         <div class="tmember"><div class="photo"><span class="mono" aria-hidden="true">AC</span></div><div class="nm">Amy Childress</div><div class="role">Director of Development &amp; Box Office Manager</div></div>
-        <div class="tmember"><div class="photo"><picture><source type="image/webp" srcset="/img/team/kristen-stocks.webp"><img src="/img/team/kristen-stocks.jpg" alt="Headshot of Kristen Stocks" width="800" height="800" loading="lazy"></picture></div><div class="nm">Kristen Stocks</div><div class="role">Sr. Production Manager</div></div>
-        <div class="tmember"><div class="photo"><picture><source type="image/webp" srcset="/img/team/brittney-nelson.webp"><img src="/img/team/brittney-nelson.jpg" alt="Headshot of Brittney Nelson" width="800" height="800" loading="lazy"></picture></div><div class="nm">Brittney Nelson</div><div class="role">Events Coordinator</div></div>
-        <div class="tmember"><div class="photo"><picture><source type="image/webp" srcset="/img/team/shannon-martin.webp"><img src="/img/team/shannon-martin.jpg" alt="Headshot of Shannon Martin" width="800" height="800" loading="lazy"></picture></div><div class="nm">Shannon Martin</div><div class="role">Sr. Stage Manager</div></div><div class="tmember"><div class="photo"><picture><source type="image/webp" srcset="/img/team/rebekah-hackett.webp"><img src="/img/team/rebekah-hackett.jpg" alt="Headshot of Rebekah Hackett" width="800" height="800" loading="lazy"></picture></div><div class="nm">Rebekah Hackett</div><div class="role">Volunteer &amp; Scholarship Coordinator</div></div><div class="tmember"><div class="photo"><picture><source type="image/webp" srcset="/img/team/alyssa-popkes.webp"><img src="/img/team/alyssa-popkes.jpg" alt="Headshot of Alyssa Popkes" width="800" height="800" loading="lazy"></picture></div><div class="nm">Alyssa Popkes</div><div class="role">Director of Culture &amp; Belonging</div></div>
+        <div class="tmember"><div class="photo"><span class="mono" aria-hidden="true">KS</span></div><div class="nm">Kristen Stocks</div><div class="role">Sr. Production Manager</div></div>
+        <div class="tmember"><div class="photo"><span class="mono" aria-hidden="true">BN</span></div><div class="nm">Brittney Nelson</div><div class="role">Events Coordinator</div></div>
+        <div class="tmember"><div class="photo"><span class="mono" aria-hidden="true">SM</span></div><div class="nm">Shannon Martin</div><div class="role">Sr. Stage Manager</div></div><div class="tmember"><div class="photo"><span class="mono" aria-hidden="true">RH</span></div><div class="nm">Rebecca Hackett</div><div class="role">Volunteer &amp; Scholarship Coordinator</div></div><div class="tmember"><div class="photo"><span class="mono" aria-hidden="true">AP</span></div><div class="nm">Alissa Popkus</div><div class="role">Director of Culture &amp; Belonging</div></div>
       </div>
     </div>
   </section>

@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <!-- ============================================================
-     SHOW / AUDITION PAGE — v2 template, sample = Peter Pan Jr. 2026
-     A different layout from the Lion King page: two-column hero with
-     a poster panel, at-a-glance stat bar, horizontal production
-     timeline, creative-team cards, performance-schedule grid, and
-     audition + registration modules. Carries TheaterEvent schema
-     (with per-performance subEvents) for the Google events carousel.
-     >>> Per-show items to swap when reusing this template:
-       [POSTER]  show art at /img/shows/<slug>.jpg
-       [REGISTER] registration link (currently /audition-registration)
-       [DISCOUNTS] point to a real discounts page/policy when one exists
-       Audition form / folder / song form / Calendly links are the real
-       Peter Pan Jr. links from the launch sheet.
+     SHOW / AUDITION PAGE — v2 template
+     Two-column hero with poster panel, at-a-glance stat bar,
+     production timeline, creative-team cards, performance grid,
+     and audition + registration modules. Carries TheaterEvent
+     schema (with per-performance subEvents) for the Google
+     events carousel. Generated from the 2026 schedule.
      ============================================================ -->
 <html lang="en">
 <head>
@@ -19,12 +13,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ========== CORE META ========== -->
-<title>Peter Pan Jr. (2026) — Auditions &amp; Performances | Encore Performing Arts</title>
-<meta name="description" content="Audition for Encore Performing Arts' production of Disney's Peter Pan Jr., ages 9–13, in St. George, Utah. Auditions September 21–22, 2026 at the Electric Theater; performances November 19–21, 2026. Register today.">
-<link rel="canonical" href="https://www.encorepa.org/peter-pan-jr-2026">
+<title>A Christmas Carol (2026) — Auditions &amp; Performances | Encore Performing Arts</title>
+<meta name="description" content="Audition for Encore Performing Arts' A Christmas Carol — A New Musical, ages 13–18, featuring Corbin Allred as Ebenezer Scrooge, in St. George, Utah. Auditions September 28–29, 2026 at the Electric Theater; performances November 30 – December 19, 2026. Register today.">
+<link rel="canonical" href="https://www.encorepa.org/a-christmas-carol-2026">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="Encore Performing Arts">
-<meta name="theme-color" content="#36575c">
+<meta name="theme-color" content="#8a3f2a">
 
 <meta name="geo.region" content="US-UT">
 <meta name="geo.placename" content="St. George, Utah">
@@ -34,20 +28,20 @@
 <!-- ========== OPEN GRAPH ========== -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Encore Performing Arts">
-<meta property="og:url" content="https://www.encorepa.org/peter-pan-jr-2026">
-<meta property="og:title" content="Peter Pan Jr. (2026) — Auditions &amp; Performances | Encore">
-<meta property="og:description" content="Ages 9–13 — audition for Encore's Disney's Peter Pan Jr. Auditions September 21–22, 2026 at the Electric Theater in St. George, Utah; performances November 19–21.">
-<meta property="og:image" content="https://www.encorepa.org/img/shows/peter-pan-jr/og.jpg">
+<meta property="og:url" content="https://www.encorepa.org/a-christmas-carol-2026">
+<meta property="og:title" content="A Christmas Carol (2026) — Auditions &amp; Performances | Encore">
+<meta property="og:description" content="Ages 13–18 — audition for Encore's A Christmas Carol, featuring Corbin Allred as Scrooge. Auditions September 28–29, 2026 at the Electric Theater in St. George, Utah; performances November 30 – December 19.">
+<meta property="og:image" content="https://www.encorepa.org/img/shows/a-christmas-carol-og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Encore Performing Arts presents Peter Pan Jr., 2026, at the Electric Theater in St. George, Utah">
+<meta property="og:image:alt" content="Encore Performing Arts presents A Christmas Carol — A New Musical, 2026, at the Electric Theater in St. George, Utah">
 <meta property="og:locale" content="en_US">
 
 <!-- ========== TWITTER ========== -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Peter Pan Jr. (2026) — Auditions &amp; Performances | Encore">
-<meta name="twitter:description" content="Ages 9–13 — audition for Encore's Peter Pan Jr. Performances November 19–21, 2026 in St. George, Utah.">
-<meta name="twitter:image" content="https://www.encorepa.org/img/shows/peter-pan-jr/og.jpg">
+<meta name="twitter:title" content="A Christmas Carol (2026) — Auditions &amp; Performances | Encore">
+<meta name="twitter:description" content="Ages 13–18 — audition for Encore's A Christmas Carol. Performances November 30 – December 19, 2026 in St. George, Utah.">
+<meta name="twitter:image" content="https://www.encorepa.org/img/shows/a-christmas-carol-og.jpg">
 
 <!-- ========== STRUCTURED DATA ========== -->
 <script type="application/ld+json">
@@ -56,22 +50,22 @@
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://www.encorepa.org/peter-pan-jr-2026#webpage",
-      "url": "https://www.encorepa.org/peter-pan-jr-2026",
-      "name": "Peter Pan Jr. (2026) — Auditions & Performances",
+      "@id": "https://www.encorepa.org/a-christmas-carol-2026#webpage",
+      "url": "https://www.encorepa.org/a-christmas-carol-2026",
+      "name": "A Christmas Carol (2026) — Auditions & Performances",
       "isPartOf": { "@id": "https://www.encorepa.org/#website" },
-      "about": { "@id": "https://www.encorepa.org/peter-pan-jr-2026#event" },
+      "about": { "@id": "https://www.encorepa.org/a-christmas-carol-2026#event" },
       "inLanguage": "en-US"
     },
     {
       "@type": "TheaterEvent",
-      "@id": "https://www.encorepa.org/peter-pan-jr-2026#event",
-      "name": "Peter Pan Jr.",
-      "description": "Encore Performing Arts presents Disney's Peter Pan Jr. — a youth production for performers ages 9–13, staged at the historic Electric Theater in St. George, Utah.",
-      "url": "https://www.encorepa.org/peter-pan-jr-2026",
-      "image": "https://www.encorepa.org/img/shows/peter-pan-jr/og.jpg",
-      "startDate": "2026-11-19T19:30:00-07:00",
-      "endDate": "2026-11-21T19:30:00-07:00",
+      "@id": "https://www.encorepa.org/a-christmas-carol-2026#event",
+      "name": "A Christmas Carol",
+      "description": "Encore Performing Arts presents A Christmas Carol — A New Musical, featuring Corbin Allred as Ebenezer Scrooge, for performers ages 13–18, staged at the historic Electric Theater in St. George, Utah.",
+      "url": "https://www.encorepa.org/a-christmas-carol-2026",
+      "image": "https://www.encorepa.org/img/shows/a-christmas-carol-og.jpg",
+      "startDate": "2026-11-30T19:30:00-07:00",
+      "endDate": "2026-12-19T19:30:00-07:00",
       "eventStatus": "https://schema.org/EventScheduled",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "location": { "@id": "https://www.encorepa.org/#venue" },
@@ -81,13 +75,13 @@
         "@type": "Offer",
         "url": "https://www.encorepa.org/tickets",
         "availability": "https://schema.org/InStock",
-        "validFrom": "2026-10-01T09:00:00-06:00"
+        "validFrom": "2026-11-01T09:00:00-07:00"
       },
       "subEvent": [
-        { "@type": "TheaterEvent", "name": "Peter Pan Jr.", "startDate": "2026-11-19T19:30:00-07:00", "location": { "@id": "https://www.encorepa.org/#venue" }, "performer": { "@id": "https://www.encorepa.org/#organization" } },
-        { "@type": "TheaterEvent", "name": "Peter Pan Jr.", "startDate": "2026-11-20T19:30:00-07:00", "location": { "@id": "https://www.encorepa.org/#venue" }, "performer": { "@id": "https://www.encorepa.org/#organization" } },
-        { "@type": "TheaterEvent", "name": "Peter Pan Jr.", "startDate": "2026-11-21T17:00:00-07:00", "location": { "@id": "https://www.encorepa.org/#venue" }, "performer": { "@id": "https://www.encorepa.org/#organization" } },
-        { "@type": "TheaterEvent", "name": "Peter Pan Jr.", "startDate": "2026-11-21T19:30:00-07:00", "location": { "@id": "https://www.encorepa.org/#venue" }, "performer": { "@id": "https://www.encorepa.org/#organization" } }
+        { "@type": "TheaterEvent", "name": "A Christmas Carol", "startDate": "2026-11-30T19:30:00-07:00", "location": { "@id": "https://www.encorepa.org/#venue" }, "performer": { "@id": "https://www.encorepa.org/#organization" } },
+        { "@type": "TheaterEvent", "name": "A Christmas Carol — Sensory-Friendly Performance", "startDate": "2026-12-01T17:00:00-07:00", "location": { "@id": "https://www.encorepa.org/#venue" }, "performer": { "@id": "https://www.encorepa.org/#organization" } },
+        { "@type": "TheaterEvent", "name": "A Christmas Carol — ASL-Interpreted Performance", "startDate": "2026-12-12T14:00:00-07:00", "location": { "@id": "https://www.encorepa.org/#venue" }, "performer": { "@id": "https://www.encorepa.org/#organization" } },
+        { "@type": "TheaterEvent", "name": "A Christmas Carol", "startDate": "2026-12-19T19:30:00-07:00", "location": { "@id": "https://www.encorepa.org/#venue" }, "performer": { "@id": "https://www.encorepa.org/#organization" } }
       ]
     },
     {
@@ -130,24 +124,23 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encorepa.org/" },
-        { "@type": "ListItem", "position": 2, "name": "Peter Pan Jr. (2026)", "item": "https://www.encorepa.org/peter-pan-jr-2026" }
+        { "@type": "ListItem", "position": 2, "name": "A Christmas Carol (2026)", "item": "https://www.encorepa.org/a-christmas-carol-2026" }
       ]
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Who can audition for Peter Pan Jr.?", "acceptedAnswer": { "@type": "Answer", "text": "Young performers ages 9–13 are invited to audition. Whether you are experienced or new to the stage, you are welcome." } },
-        { "@type": "Question", "name": "When and where are auditions?", "acceptedAnswer": { "@type": "Answer", "text": "Vocal auditions are September 21, 2026 from 6–9pm at the Electric Theater. The dance call and callbacks are September 22, 2026 from 6–9pm. Callbacks are by invitation only." } },
-        { "@type": "Question", "name": "What should I prepare for the audition?", "acceptedAnswer": { "@type": "Answer", "text": "Prepare 16 bars of a song that best shows off your voice, a physical copy of your headshot and resume, comfortable clothes to move in, and a complete list of conflicts for the production dates." } },
-        { "@type": "Question", "name": "Can I audition virtually?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A virtual audition option is available — complete the virtual audition form and submit your video to the matching folder. Contact us for the links." } },
-        { "@type": "Question", "name": "What is the participation fee?", "acceptedAnswer": { "@type": "Answer", "text": "The participation fee for Peter Pan Jr. is $295. Discounts are available — contact us for details." } },
-        { "@type": "Question", "name": "When are performances?", "acceptedAnswer": { "@type": "Answer", "text": "Performances run November 19–21, 2026 at the Electric Theater in St. George, Utah, with shows at 5:00pm and 7:30pm." } }
+        { "@type": "Question", "name": "Who can audition for A Christmas Carol?", "acceptedAnswer": { "@type": "Answer", "text": "Young performers ages 13–18 are invited to audition, performing alongside professional actor Corbin Allred as Ebenezer Scrooge. Whether you are experienced or new to the stage, you are welcome." } },
+        { "@type": "Question", "name": "When and where are auditions?", "acceptedAnswer": { "@type": "Answer", "text": "Vocal auditions are September 28, 2026 from 6–9pm at the Electric Theater. The dance call and callbacks are September 29, 2026 from 6–9pm. Callbacks are by invitation only." } },
+        { "@type": "Question", "name": "What should I prepare for the audition?", "acceptedAnswer": { "@type": "Answer", "text": "Prepare 16–32 bars of a song that best shows off your voice, a printed headshot and resume, clothes and shoes you can move in, and a complete list of conflicts for the production dates." } },
+        { "@type": "Question", "name": "Can I audition virtually?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A virtual audition option is available — complete the virtual audition form and submit your video to the matching folder. The links are on this page in the Auditions section." } },
+        { "@type": "Question", "name": "What is the participation fee?", "acceptedAnswer": { "@type": "Answer", "text": "The participation fee for A Christmas Carol is $395. Discounts are available — contact us for details." } },
+        { "@type": "Question", "name": "When are performances?", "acceptedAnswer": { "@type": "Answer", "text": "Performances run November 30 – December 19, 2026 at the Electric Theater in St. George, with a sensory-friendly performance on December 1 and an ASL-interpreted performance on December 12." } }
       ]
     }
   ]
 }
 </script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
@@ -161,10 +154,10 @@
     --radius:26px;--radius-lg:34px;
 
     /* ===== PER-SHOW THEME — edit ONLY these four to rebrand the page ===== */
-    --show-bright:#4f8278;
-    --show-mid:#36575c;
-    --show-deep:#1f3a3e;
-    --show-tint:#cfe1dd;
+    --show-bright:#c8893f;
+    --show-mid:#8a3f2a;
+    --show-deep:#3c1c12;
+    --show-tint:#f0dcc2;
 
     /* Dominant + supporting tones derive from the show palette (leave as-is).
        The page's text, headings, buttons, icons and dark bands all read from
@@ -462,6 +455,7 @@
     .encph-fig:hover img,.gal:hover img,.prog-photo:hover img,.tmember .photo:hover img,.post-card:hover .ph img,.post-feat:hover img,.sh-art:hover img,.access-photo:hover img,.aud-invite-photo:hover img,.intro-split .ph:hover img,.ocard:hover .mc-bg img,.event:hover .mc-bg img,.trip:hover .mc-bg img,.event-card:hover .card-img,.block:hover .card-img,.block-media:hover .card-img{transform:scale(1);}
   }
 </style>
+<style>.sh-art{background:#0c0a09}.sh-art img{object-fit:contain;padding:6px}</style>
 </head>
 <body>
 <!-- ANNOUNCEMENT BAR -->
@@ -505,7 +499,7 @@
   <div class="wrap">
     <ol>
       <li><a href="/">Home</a></li>
-      <li aria-current="page">Peter Pan Jr. (2026)</li>
+      <li aria-current="page">A Christmas Carol (2026)</li>
     </ol>
   </div>
 </nav>
@@ -517,28 +511,26 @@
     <div class="wrap">
       <div class="sh-grid reveal">
         <div class="sh-text">
-          <span class="sh-badge"><span class="dot"></span>Now Casting · Ages 9–13</span>
+          <span class="sh-badge"><span class="dot"></span>Now Casting · Ages 13–18</span>
           <span class="eyebrow">Encore Performing Arts presents</span>
-          <h1><em>Peter Pan Jr.</em></h1>
-          <p class="tagline">Fly away to Neverland with Peter Pan, Wendy, Tinker Bell, Captain Hook, and the Lost Boys. Audition to sing, dance, act, and bring this classic adventure of imagination and friendship to life on stage.</p>
+          <h1><em>A Christmas Carol</em></h1>
+          <p class="tagline">A new musical adaptation of Dickens' timeless story, featuring Corbin Allred as Ebenezer Scrooge. Audition to sing, dance, and act alongside a professional lead in Encore's holiday production.</p>
           <div class="sh-actions">
-            <a href="/audition-registration?production=Peter%20Pan%20Jr." class="btn btn-accent">Register to audition →</a>
+            <a href="/audition-registration?production=A%20Christmas%20Carol" class="btn btn-accent">Register to audition →</a>
             <a href="#auditions" class="btn btn-light">Audition details</a>
           </div>
         </div>
-        <!-- [POSTER] Per-show brand art. Swap src + alt per production. -->
         <div class="sh-art">
-          <img src="/img/shows/peter-pan-jr/band.jpg" alt="Disney's Peter Pan Jr. — an Encore Performing Arts production, performances November 19–21, 2026 at the Electric Theater in St. George, Utah" width="1200" height="900">
-          <div class="cap"><span class="dot" aria-hidden="true"></span>November 19–21, 2026 · Electric Theater</div>
+          <img src="/img/shows/a-christmas-carol.webp" alt="A Christmas Carol — A New Musical, an Encore Performing Arts production featuring Corbin Allred as Ebenezer Scrooge, performances November 30 – December 19, 2026 at the Electric Theater in St. George, Utah" width="1200" height="900">
         </div>
       </div>
 
       <!-- STAT BAR -->
       <div class="statbar reveal">
-        <div class="stat"><div class="k">Ages</div><div class="v">9–13</div></div>
-        <div class="stat"><div class="k">Auditions</div><div class="v">Sep 21–22<small>2026 · Electric Theater</small></div></div>
-        <div class="stat"><div class="k">Performances</div><div class="v">Nov 19–21<small>2026</small></div></div>
-        <div class="stat"><div class="k">Participation fee</div><div class="v">$295</div></div>
+        <div class="stat"><div class="k">Ages</div><div class="v">13–18</div></div>
+        <div class="stat"><div class="k">Auditions</div><div class="v">Sep 28–29<small>2026 · Electric Theater</small></div></div>
+        <div class="stat"><div class="k">Performances</div><div class="v">Nov 30 – Dec 19<small>2026</small></div></div>
+        <div class="stat"><div class="k">Participation fee</div><div class="v">$395</div></div>
       </div>
     </div>
   </header>
@@ -549,12 +541,12 @@
       <div class="sec-head reveal" style="margin-bottom:28px;">
         <div>
           <span class="pill" style="margin-bottom:16px;"><span class="dot"></span>About the Production</span>
-          <h2 id="about-h">Step into the <em>story</em></h2>
+          <h2 id="about-h">A holiday classic, <em>reimagined</em></h2>
         </div>
       </div>
       <div class="about-show reveal">
-        <p class="big">Encore Performing Arts invites Young Artists ages 9–13 to audition for our production of Disney's <em>Peter Pan Jr.</em> Fly away to Neverland with Peter Pan, Wendy, Tinker Bell, Captain Hook, and the Lost Boys in a classic adventure filled with imagination, friendship, and fun.</p>
-        <p class="more">We're looking for Young Artists who are excited to sing, dance, act, and bring this beloved story to life on stage. Whether you're a seasoned performer or stepping into the spotlight for the very first time, this is a joyful chance to grow your skills, make new friends, and begin our journey to Neverland together.</p>
+        <p class="big">Encore Performing Arts invites Young Artists ages 13–18 to audition for A Christmas Carol — A New Musical, featuring Corbin Allred as Ebenezer Scrooge. Step into Dickens' beloved story of redemption and bring the ghosts, the streets of London, and one unforgettable Christmas Eve to life on stage.</p>
+        <p class="more">This is a Show with a Pro — Young Artists rehearse and perform alongside a professional lead, learning what it takes to carry a full holiday production. Whether you're a seasoned performer or stepping into the spotlight for the first time, it's a chance to grow your craft and be part of a new musical that becomes a St. George holiday tradition.</p>
       </div>
     </div>
   </section>
@@ -568,13 +560,13 @@
             <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>The Journey</span>
             <h2 id="timeline-h">From audition to <em>opening night</em></h2>
           </div>
-          <p class="lead">Here's the path from your first audition through the final bow.</p>
+          <p class="lead">Here's the path from your first audition through the final curtain of the run.</p>
         </div>
         <div class="timeline">
-          <div class="tl-step key"><div class="tl-dot"></div><div class="tl-when">Sep 21</div><div class="tl-what">Vocal auditions, 6–9pm at the Electric Theater</div></div>
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-when">Sep 22</div><div class="tl-what">Dance call &amp; callbacks, 6–9pm</div></div>
-          <div class="tl-step"><div class="tl-dot"></div><div class="tl-when">Oct 5 – Nov 21</div><div class="tl-what">Rehearsals at the Electric Theater</div></div>
-          <div class="tl-step key"><div class="tl-dot"></div><div class="tl-when">Nov 19–21</div><div class="tl-what">Performances at the Electric Theater</div></div>
+          <div class="tl-step key"><div class="tl-dot"></div><div class="tl-when">Sep 28</div><div class="tl-what">Vocal auditions, 6–9pm at the Electric Theater</div></div>
+          <div class="tl-step"><div class="tl-dot"></div><div class="tl-when">Sep 29</div><div class="tl-what">Dance call &amp; callbacks, 6–9pm</div></div>
+          <div class="tl-step"><div class="tl-dot"></div><div class="tl-when">Oct 5 – Nov 28</div><div class="tl-what">Rehearsals at St. George Academy</div></div>
+          <div class="tl-step key"><div class="tl-dot"></div><div class="tl-when">Nov 30 – Dec 19</div><div class="tl-what">Performances at the Electric Theater</div></div>
         </div>
       </div>
     </div>
@@ -594,24 +586,27 @@
         <div class="aud">
           <div class="ic" aria-hidden="true">♪</div>
           <h3>Vocal audition</h3>
-          <p><strong>September 21, 2026 · 6–9pm</strong><br>Electric Theater, St. George</p>
-          <a href="/audition-registration?production=Peter%20Pan%20Jr." class="lnk">Sign up to audition →</a>
+          <p><strong>September 28, 2026 · 6–9pm</strong><br>Electric Theater, St. George</p>
+          <a href="https://calendly.com/production-encorepa/a-christmas-carol-a-new-musical-1" class="lnk" rel="noopener" target="_blank">Pick a time slot →</a>
         </div>
         <div class="aud">
           <div class="ic" aria-hidden="true">✦</div>
           <h3>Dance call &amp; callbacks</h3>
-          <p><strong>September 22, 2026 · 6–9pm</strong><br>Electric Theater. Callbacks are by invitation only.</p>
+          <p><strong>September 29, 2026 · 6–9pm</strong><br>Electric Theater. Callbacks are by invitation only.</p>
         </div>
         <div class="aud feature">
           <div class="ic" aria-hidden="true">▶</div>
           <h3>Audition virtually</h3>
-          <p>Can't make it in person? A virtual audition option is available — complete the virtual audition form, then submit your video to the matching folder.</p>
-          <a href="/contact" class="lnk">Request virtual audition links →</a>
+          <p>Can't make it in person? Complete the virtual audition form, then submit your video to the matching folder.</p>
+          <a href="https://forms.gle/7ZCUn5vv7mXwW6VdA" class="lnk" rel="noopener" target="_blank">Virtual audition form →</a><br>
+          <a href="https://drive.google.com/drive/folders/1alVevxdGkm5EurKSTCIVpHCglvflUDLh?usp=sharing" class="lnk" rel="noopener" target="_blank">Vocal upload folder →</a><br>
+          <a href="https://drive.google.com/drive/folders/1sE_UVKhnj1XB28LqDHfPYPPRZLuhtHId" class="lnk" rel="noopener" target="_blank">Choreography video →</a><br>
+          <a href="https://drive.google.com/drive/folders/1hQRYSkHbt_m8ipr05hoKv03dtAP9nP0S" class="lnk" rel="noopener" target="_blank">Dance upload folder →</a><br>
         </div>
       </div>
       <div class="aud-cta reveal">
-        <a href="/audition-registration?production=Peter%20Pan%20Jr." class="btn btn-dark">Register to audition →</a>
-        <span class="note"><strong>Prepare:</strong> 16 bars of a song that best shows off your voice, a physical copy of your headshot and resume, comfortable clothes to move in, and a complete list of conflicts for the production dates.</span>
+        <a href="/audition-registration?production=A%20Christmas%20Carol" class="btn btn-dark">Register to audition →</a>
+        <span class="note"><strong>Prepare:</strong> 16–32 bars of a song that best shows off your voice, a printed headshot and resume, clothes and shoes you can move in, and a complete list of conflicts for October 5 – December 19, 2026.</span>
       </div>
     </div>
   </section>
@@ -624,12 +619,12 @@
           <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Creative Team</span>
           <h2 id="team-h">Who you'll <em>work with</em></h2>
         </div>
-        <p class="lead">Our creative team will be announced soon — an experienced group guiding every Young Artist through the production.</p>
+        <p class="lead">An experienced creative team guides every Young Artist — alongside professional actor Corbin Allred in the role of Ebenezer Scrooge.</p>
       </div>
       <div class="team-grid reveal">
-        <div class="member"><div class="mono" aria-hidden="true">★</div><div class="nm">To be announced</div><div class="role">Director</div></div>
+        <div class="member"><div class="mono" aria-hidden="true">AR</div><div class="nm">Adam Record</div><div class="role">Director</div></div>
         <div class="member"><div class="mono" aria-hidden="true">★</div><div class="nm">To be announced</div><div class="role">Choreographer</div></div>
-        <div class="member"><div class="mono" aria-hidden="true">★</div><div class="nm">To be announced</div><div class="role">Music Director</div></div>
+        <div class="member"><div class="mono" aria-hidden="true">LS</div><div class="nm">Leslie Scott</div><div class="role">Music Director</div></div>
         <div class="member"><div class="mono" aria-hidden="true">★</div><div class="nm">To be announced</div><div class="role">Stage Manager</div></div>
       </div>
     </div>
@@ -649,19 +644,20 @@
         <div class="rehearse">
           <h3>Rehearsals</h3>
           <div class="row"><div class="k">Dates</div><div class="vv">October 5 – November 21, 2026</div></div>
-          <div class="row"><div class="k">Times</div><div class="vv">Mon–Thu 6:30–9:00pm<br>Saturday 10am–1pm</div></div>
-          <div class="row"><div class="k">Tech week</div><div class="vv">To be announced</div></div>
-          <div class="row"><div class="k">Location</div><div class="vv">The Electric Theater</div></div>
+          <div class="row"><div class="k">Times</div><div class="vv">Mon–Thu 6:30–9:30pm<br>Saturday 9am–1pm</div></div>
+          <div class="row"><div class="k">Tech week</div><div class="vv">November 23–25 &amp; 27–28</div></div>
+          <div class="row"><div class="k">Location</div><div class="vv">St. George Academy</div></div>
         </div>
         <div class="perf">
           <h3>Performances</h3>
-          <div class="sub">November 19–21, 2026 · The Electric Theater, St. George</div>
+          <div class="sub">November 30 – December 19, 2026 · The Electric Theater, St. George</div>
           <div class="perf-grid">
-            <div class="pf"><div class="d">Thu Nov 19</div><div class="t">7:30pm</div></div>
-            <div class="pf"><div class="d">Fri Nov 20</div><div class="t">7:30pm</div></div>
-            <div class="pf"><div class="d">Sat Nov 21</div><div class="t">5:00pm</div></div>
-            <div class="pf"><div class="d">Sat Nov 21</div><div class="t">7:30pm</div></div>
+            <div class="pf"><div class="d">Evenings</div><div class="t">7:30pm</div></div>
+            <div class="pf"><div class="d">Matinees</div><div class="t">2:00pm</div></div>
+            <div class="pf"><div class="d">Sensory · Dec 1</div><div class="t">5:00pm</div></div>
+            <div class="pf"><div class="d">ASL · Dec 12</div><div class="t">2:00pm</div></div>
           </div>
+          <p style="margin-top:14px;font-size:13.5px;color:var(--muted);">Tickets $22 / $18 / $15 / $10. Full performance calendar posted soon.</p>
           <div class="perf-cta"><a href="/tickets" class="btn btn-dark">Get tickets →</a></div>
         </div>
       </div>
@@ -680,9 +676,8 @@
       </div>
       <div class="reg-grid reveal">
         <div class="fee-card">
-          <div class="amt">$295</div>
+          <div class="amt">$395</div>
           <div class="lab">Participation fee</div>
-          <!-- [DISCOUNTS] Link to a real discounts page/policy when one exists. -->
           <div class="disc">Discounts are available — <a href="/contact">contact us</a> for details before you register.</div>
         </div>
         <div class="checklist">
@@ -700,8 +695,7 @@
             <li>Headshot</li>
             <li>Resume</li>
           </ul>
-          <!-- [REGISTER] Point to the show's registration form/page. -->
-          <div class="reg-cta"><a href="/audition-registration?production=Peter%20Pan%20Jr." class="btn btn-accent">Register to audition →</a></div>
+          <div class="reg-cta"><a href="/audition-registration?production=A%20Christmas%20Carol" class="btn btn-accent">Register to audition →</a></div>
         </div>
       </div>
     </div>
@@ -718,28 +712,28 @@
         </div>
         <div class="faq-list">
           <details class="faq" open>
-            <summary>Who can audition for Peter Pan Jr.?</summary>
-            <div class="ans">Young performers ages 9–13 are invited to audition. Whether you're experienced or new to the stage, you're welcome.</div>
+            <summary>Who can audition for A Christmas Carol?</summary>
+            <div class="ans">Young performers ages 13–18 are invited to audition, performing alongside professional actor Corbin Allred as Ebenezer Scrooge. Whether you're experienced or new to the stage, you're welcome.</div>
           </details>
           <details class="faq">
             <summary>When and where are auditions?</summary>
-            <div class="ans">Vocal auditions are September 21, 2026 from 6–9pm at the Electric Theater. The dance call and callbacks are September 22, 2026 from 6–9pm. Callbacks are by invitation only.</div>
+            <div class="ans">Vocal auditions are September 28, 2026 from 6–9pm at the Electric Theater. The dance call and callbacks are September 29, 2026 from 6–9pm. Callbacks are by invitation only.</div>
           </details>
           <details class="faq">
             <summary>What should I prepare for the audition?</summary>
-            <div class="ans">Prepare 16 bars of a song that best shows off your voice, a physical copy of your headshot and resume, comfortable clothes to move in, and a complete list of conflicts for the production dates.</div>
+            <div class="ans">Prepare 16–32 bars of a song that best shows off your voice, a printed headshot and resume, clothes and shoes you can move in, and a complete list of conflicts for the production dates.</div>
           </details>
           <details class="faq">
             <summary>Can I audition virtually?</summary>
-            <div class="ans">Yes. A virtual audition option is available — complete the virtual audition form and submit your video to the matching folder. <a href="/contact">Contact us</a> for the links.</div>
+            <div class="ans">Yes. A virtual audition option is available — complete the virtual audition form and submit your video to the matching folder. The links are in the <a href="#auditions">Auditions section</a> above.</div>
           </details>
           <details class="faq">
             <summary>What is the participation fee?</summary>
-            <div class="ans">The participation fee for Peter Pan Jr. is $295. Discounts are available — <a href="/contact">contact us</a> for details.</div>
+            <div class="ans">The participation fee for A Christmas Carol is $395. Discounts are available — <a href="/contact">contact us</a> for details.</div>
           </details>
           <details class="faq">
             <summary>When are performances?</summary>
-            <div class="ans">Performances run November 19–21, 2026 at the Electric Theater in St. George, with shows at 5:00pm and 7:30pm. <a href="/tickets">Tickets are here.</a></div>
+            <div class="ans">Performances run November 30 – December 19, 2026 at the Electric Theater in St. George, with a sensory-friendly performance on December 1 and an ASL-interpreted performance on December 12. <a href="/tickets">Tickets are here.</a></div>
           </details>
         </div>
       </div>
@@ -750,15 +744,14 @@
   <section style="padding-top:0;">
     <div class="wrap">
       <div class="cta reveal">
-        <!-- [CTA-IMAGE] decorative backdrop; swap per show. Show-color scrim keeps the headline legible. -->
         <img class="cta-bg" src="/img/encore-ensemble.jpg" alt="" loading="lazy">
         <div class="cta-inner">
           <div>
-            <h2>Fly away to <em>Neverland</em></h2>
-            <p>Register today and help bring Peter Pan Jr. to life on the Electric Theater stage. We can't wait to see you at auditions.</p>
+            <h2>Make the holidays <em>unforgettable</em></h2>
+            <p>Register today and help bring A Christmas Carol to life on the Electric Theater stage. We can't wait to see you at auditions.</p>
           </div>
           <div style="display:flex;gap:11px;flex-wrap:wrap;">
-            <a href="/audition-registration?production=Peter%20Pan%20Jr." class="btn btn-white">Register to audition →</a>
+            <a href="/audition-registration?production=A%20Christmas%20Carol" class="btn btn-white">Register to audition →</a>
             <a href="/contact" class="btn btn-white" style="background:transparent;border:1.5px solid rgba(255,255,255,.6);color:#fff;">Ask a question</a>
           </div>
         </div>
