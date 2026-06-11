@@ -6,6 +6,9 @@
 /little-mermaid-camp  /little-mermaid-camp-2026  301
 /littlemermaid-camp   /little-mermaid-camp-2026  301
 /november-camp       /november-camp-2026       301
+# --- Retired (performed) shows -> program page ---
+/matilda-jr-2026         /junior   301
+/shows/matilda-jr-2026   /junior   301
 # ============================================================
 # Encore Performing Arts — 301 redirect map (Netlify)
 # Format:   from-path   to-path   status

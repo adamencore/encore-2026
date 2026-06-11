@@ -101,11 +101,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.encorepa.org/matilda-jr-2026</loc>
-    <lastmod>2026-05-30</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://www.encorepa.org/a-christmas-carol-2026</loc>
     <lastmod>2026-06-09</lastmod>
     <priority>0.8</priority>
@@ -124,11 +119,6 @@
     <loc>https://www.encorepa.org/november-camp-2026</loc>
     <lastmod>2026-06-09</lastmod>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.encorepa.org/shows/matilda-jr-2026</loc>
-    <lastmod>2026-05-30</lastmod>
-    <priority>0.8</priority>
   </url>
   <url><loc>https://www.encorepa.org/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.encorepa.org/blog/illuminate-takes-the-stage-at-disney-california-adventure</loc><lastmod>2026-06-01</lastmod><priority>0.5</priority></url>

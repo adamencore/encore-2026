@@ -433,6 +433,26 @@
     </div>
   </section>
 
+  <!-- OFFERINGS HUB -->
+  <section id="offerings" aria-labelledby="off-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Signature Shows at Encore</span>
+          <h2 id="off-h">Upcoming <em>productions</em></h2>
+        </div>
+        <p class="lead">Flagship productions for ages 13–18. See what's currently casting, or reach out to join the interest list.</p>
+      </div>
+
+      <!-- filters hidden: single category on Camps -->
+
+      <div class="grid reveal" id="offgrid">
+        <!-- Cards are rendered by JS from the OFFERINGS catalog below -->
+        <p class="empty" id="emptyMsg">Nothing open in that category right now — check back soon, or <a href="/#events" style="color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);">see everything that's on</a>.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- KEY FEATURES -->
   <section aria-labelledby="feat-h">
     <div class="wrap">
@@ -489,27 +509,6 @@
       <p class="camp-band-quote">"Professional-level commitment, with the support that lets a Young Artist take real creative risks."</p>
     </div>
   </section>
-
-  <!-- OFFERINGS HUB -->
-  <section id="offerings" aria-labelledby="off-h">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div>
-          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Signature Shows at Encore</span>
-          <h2 id="off-h">Upcoming <em>productions</em></h2>
-        </div>
-        <p class="lead">Flagship productions for ages 13–18. See what's currently casting, or reach out to join the interest list.</p>
-      </div>
-
-      <!-- filters hidden: single category on Camps -->
-
-      <div class="grid reveal" id="offgrid">
-        <!-- Cards are rendered by JS from the OFFERINGS catalog below -->
-        <p class="empty" id="emptyMsg">Nothing open in that category right now — check back soon, or <a href="/#events" style="color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);">see everything that's on</a>.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- PROGRESSION / OTHER TIERS -->
   <section aria-labelledby="tiers-h">
     <div class="wrap">
@@ -721,9 +720,9 @@
   const TIER = "Signature Shows";
 
   const OFFERINGS = [
-    /* Signature Shows (ages 13–18). Replace/add real productions as they're cast. */
-    {id:"little-women", title:"Little Women: The Musical", type:"Audition", ages:["Signature Shows"], status:"Open", when:"Auditions July 18, 2026", blurb:"Our Signature production for ages 13 to 18. Vocal auditions July 18, callbacks July 20.", link:"/little-women-2026", logo:"", bg:"little-women.webp"},
-    {id:"sig-info", title:"More Signature Shows", type:"Audition", ages:["Signature Shows"], status:"Soon", when:"Announced each season", blurb:"Flagship productions for ages 13 to 18. Reach out to join the interest list and hear about the next season.", link:"/auditions", logo:"", bg:"/img/encore-ensemble.jpg"}
+    {id:"little-women", title:"Little Women: The Musical", type:"Audition", ages:["Signature Shows"], status:"Open", when:"Auditions July 18, 2026", blurb:"An artist-driven Signature Series production of the beloved March sisters' story. Ages 13–18.", link:"/little-women-2026", logo:"", bg:"little-women.webp"},
+    {id:"a-christmas-carol", title:"A Christmas Carol", type:"Audition", ages:["Signature Shows"], status:"Open", when:"Auditions Sep 28–29, 2026", blurb:"A new musical adaptation featuring Corbin Allred as Scrooge. Performances Nov 30 – Dec 19. Ages 13–18.", link:"/a-christmas-carol-2026", logo:"", bg:"a-christmas-carol.webp"},
+    {id:"aspire", title:"Aspire Performing Co.", type:"Audition", ages:["Junior","Emerging Artists","Signature Shows","Aspire"], status:"Open", when:"Year-round · auditions twice a year", blurb:"Our audition-based show choir for singers and dancers ages 8–senior who perform and grow across the whole year.", link:"/aspire-performing-co", logo:"", bg:"aspire.webp"}
   ];
 
   const CTA = {audition:"Register to audition", class:"Browse classes", event:"See the event", workshop:"Register"};

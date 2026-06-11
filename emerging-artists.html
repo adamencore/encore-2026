@@ -433,6 +433,26 @@
     </div>
   </section>
 
+  <!-- OFFERINGS HUB -->
+  <section id="offerings" aria-labelledby="off-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Emerging Artists at Encore</span>
+          <h2 id="off-h">Upcoming <em>productions</em></h2>
+        </div>
+        <p class="lead">Full productions for ages 12–14. Casting is announced each season — see what's currently open, or reach out to join the interest list.</p>
+      </div>
+
+      <!-- filters hidden: single category on Camps -->
+
+      <div class="grid reveal" id="offgrid">
+        <!-- Cards are rendered by JS from the OFFERINGS catalog below -->
+        <p class="empty" id="emptyMsg">Nothing open in that category right now — check back soon, or <a href="/#events" style="color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);">see everything that's on</a>.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- KEY FEATURES -->
   <section aria-labelledby="feat-h">
     <div class="wrap">
@@ -479,27 +499,6 @@
       <p class="camp-band-quote">"This is the tier where a Young Artist stops trying it out and starts owning the stage."</p>
     </div>
   </section>
-
-  <!-- OFFERINGS HUB -->
-  <section id="offerings" aria-labelledby="off-h">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div>
-          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Emerging Artists at Encore</span>
-          <h2 id="off-h">Upcoming <em>productions</em></h2>
-        </div>
-        <p class="lead">Full productions for ages 12–14. Casting is announced each season — see what's currently open, or reach out to join the interest list.</p>
-      </div>
-
-      <!-- filters hidden: single category on Camps -->
-
-      <div class="grid reveal" id="offgrid">
-        <!-- Cards are rendered by JS from the OFFERINGS catalog below -->
-        <p class="empty" id="emptyMsg">Nothing open in that category right now — check back soon, or <a href="/#events" style="color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);">see everything that's on</a>.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- PROGRESSION / OTHER TIERS -->
   <section aria-labelledby="tiers-h">
     <div class="wrap">
@@ -711,9 +710,8 @@
   const TIER = "Emerging Artists";
 
   const OFFERINGS = [
-    /* Emerging Artist Shows (ages 12–14). Replace with real upcoming productions as they're cast. */
-    {id:"peter-pan-jr", title:"Disney's Peter Pan Jr.", type:"Audition", ages:["Emerging Artists"], status:"Open", when:"Auditions Sep 21–22 · Performances Nov 19–21, 2026", blurb:"Fly away to Neverland in our Emerging Artists production at the Electric Theater. Ages 9–13.", link:"/peter-pan-jr-2026", logo:"", bg:"peter-pan-jr/card.webp"},
-    {id:"ea-info", title:"Upcoming Emerging Artist Shows", type:"Audition", ages:["Emerging Artists"], status:"Soon", when:"Casting announced seasonally", blurb:"Full productions for ages 12 to 14. See what's currently casting, or reach out to join the interest list.", link:"/auditions", logo:"", bg:"/img/encore-ensemble.jpg"}
+    {id:"peter-pan-jr", title:"Disney's Peter Pan Jr.", type:"Audition", ages:["Junior","Emerging Artists"], status:"Open", when:"Auditions Sep 21–22 · Performances Nov 19–21, 2026", blurb:"Fly away to Neverland in our Emerging Artists production. Open to Young Artists ages 9–13.", link:"/peter-pan-jr-2026", logo:"", bg:"peter-pan-jr/card.webp"},
+    {id:"aspire", title:"Aspire Performing Co.", type:"Audition", ages:["Junior","Emerging Artists","Signature Shows","Aspire"], status:"Open", when:"Year-round · auditions twice a year", blurb:"Our audition-based show choir for singers and dancers ages 8–senior who perform and grow across the whole year.", link:"/aspire-performing-co", logo:"", bg:"aspire.webp"}
   ];
 
   const CTA = {audition:"Register to audition", class:"Browse classes", event:"See the event", workshop:"Register"};
