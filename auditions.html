@@ -401,20 +401,20 @@
 .aud-prose{max-width:680px;margin-top:22px;}
 .aud-prose p{color:var(--charcoal-soft);font-size:1.06rem;line-height:1.7;margin:0 0 16px;}
 
-.aud-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.aud-card{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:300px;overflow:hidden;border-radius:var(--radius);padding:26px;color:#fff;transition:transform .25s,box-shadow .25s;}
-.aud-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px -30px rgba(13,39,45,.45);}
-.aud-card .ac-bg{position:absolute;inset:0;z-index:0;}
-.aud-card .ac-bg img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s ease;}
-.aud-card:hover .ac-bg img{transform:scale(1.04);}
-.aud-card .ac-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,39,45,.32),rgba(13,39,45,.56) 48%,rgba(13,39,45,.9));}
-.aud-card>:not(.ac-bg):not(.ac-scrim):not(.aud-tag){position:relative;z-index:2;}
-.aud-tag{position:absolute;top:20px;left:20px;z-index:3;background:var(--teal);color:#fff;font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;}
-.aud-tag.alt{background:var(--accent);}
-.aud-card .meta{font-size:.85rem;color:rgba(255,255,255,.82);font-weight:600;letter-spacing:.02em;}
-.aud-card h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;font-size:1.5rem;line-height:1.05;letter-spacing:-.01em;margin:5px 0 10px;color:#fff;}
-.aud-card .go{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;color:#fff;font-size:.95rem;letter-spacing:.02em;}
-.aud-card:hover .go{text-decoration:underline;}
+.aud-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+/* ===== Unified show / event card (artwork on top, artwork-tinted footer) ===== */
+.scard{--scard-bg:#15414c;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:var(--scard-bg);text-decoration:none;box-shadow:0 12px 32px -20px rgba(13,39,45,.55);transition:transform .25s,box-shadow .25s;}
+.scard:hover{transform:translateY(-4px);box-shadow:0 28px 54px -28px rgba(13,39,45,.5);}
+.scard-media{position:relative;aspect-ratio:16/10;background:var(--scard-bg);overflow:hidden;}
+.scard-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s ease;}
+.scard:hover .scard-media img{transform:scale(1.04);}
+.scard-badge{position:absolute;top:16px;left:16px;background:#fff;color:#1b2b2f;font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;border-radius:100px;box-shadow:0 4px 14px -5px rgba(0,0,0,.3);}
+.scard-arrow{position:absolute;top:14px;right:14px;width:46px;height:46px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#1b2b2f;box-shadow:0 4px 14px -5px rgba(0,0,0,.3);transition:transform .25s;}
+.scard:hover .scard-arrow{transform:translate(2px,-2px);}
+.scard-foot{background:var(--scard-bg);color:#fff;padding:18px 20px 20px;transition:background-color .4s ease;}
+.scard-when{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.86);}
+.scard-title{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;font-size:1.42rem;line-height:1.07;letter-spacing:-.01em;margin:7px 0 9px;color:#fff;}
+.scard-meta{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.86);}
 .aud-note{margin-top:22px;color:var(--muted);font-size:.98rem;line-height:1.6;max-width:680px;}
 .aud-note a{color:var(--teal);font-weight:600;}
 
@@ -571,48 +571,90 @@
       <p class="lead">Open auditions and rolling enrollment, updated each season.</p>
     </div>
     <div class="aud-cards">
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/lion-king-kids-camp-card.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Audition now</span>
-        <div class="meta">Camp · Ages 7–11 · Auditions July 6</div>
-        <h3>Lion King Kids Camp</h3>
-        <a class="go" href="/lion-king-kids-camp-2026">Camp info →</a>
-      </article>
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/little-women.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Audition now</span>
-        <div class="meta">Signature Series · Ages 13–18 · Auditions July 18</div>
-        <h3>Little Women: The Musical</h3>
-        <a class="go" href="/little-women-2026">Audition info →</a>
-      </article>
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/little-mermaid-camp-card.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Audition now</span>
-        <div class="meta">Camp · Ages 7–11 · Auditions August 14</div>
-        <h3>Little Mermaid Jr. Camp</h3>
-        <a class="go" href="/little-mermaid-camp-2026">Camp info →</a>
-      </article>
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/peter-pan-jr/card.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Audition now</span>
-        <div class="meta">Emerging Artists · Ages 9–13 · Auditions September 21</div>
-        <h3>Disney's Peter Pan Jr.</h3>
-        <a class="go" href="/peter-pan-jr-2026">Audition info →</a>
-      </article>
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/a-christmas-carol.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Audition now</span>
-        <div class="meta">Signature Series · Ages 13–18 · Auditions September 28</div>
-        <h3>A Christmas Carol</h3>
-        <a class="go" href="/a-christmas-carol-2026">Audition info →</a>
-      </article>
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/aspire.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Audition now</span>
-        <div class="meta">Year-round · Ages 8–senior · Rolling auditions</div>
-        <h3>Aspire Performing Co.</h3>
-        <a class="go" href="/aspire-performing-co">About Aspire →</a>
-      </article>
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/lion-king.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Currently rehearsing</span>
-        <div class="meta">Summer 2026 · Ages 8–18 · Performs late July</div>
-        <h3>Disney's The Lion King</h3>
-        <a class="go" href="/summer-of-lion-king-2026">Show info →</a>
-      </article>
+      <a class="scard" href="/lion-king-kids-camp-2026">
+        <div class="scard-media">
+          <img src="/img/shows/lion-king-kids-camp-card.webp" alt="Lion King Kids Camp" loading="lazy">
+          <span class="scard-badge">Audition</span>
+          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <div class="scard-foot">
+          <div class="scard-when">Auditions July 6</div>
+          <h3 class="scard-title">Lion King Kids Camp</h3>
+          <div class="scard-meta">Camp · Ages 7–11</div>
+        </div>
+      </a>
+      <a class="scard" href="/little-women-2026">
+        <div class="scard-media">
+          <img src="/img/shows/little-women.webp" alt="Little Women: The Musical" loading="lazy">
+          <span class="scard-badge">Audition</span>
+          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <div class="scard-foot">
+          <div class="scard-when">Auditions July 18</div>
+          <h3 class="scard-title">Little Women: The Musical</h3>
+          <div class="scard-meta">Signature Series · Ages 13–18</div>
+        </div>
+      </a>
+      <a class="scard" href="/little-mermaid-camp-2026">
+        <div class="scard-media">
+          <img src="/img/shows/little-mermaid-camp-card.webp" alt="Little Mermaid Jr. Camp" loading="lazy">
+          <span class="scard-badge">Audition</span>
+          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <div class="scard-foot">
+          <div class="scard-when">Auditions August 14</div>
+          <h3 class="scard-title">Little Mermaid Jr. Camp</h3>
+          <div class="scard-meta">Camp · Ages 7–11</div>
+        </div>
+      </a>
+      <a class="scard" href="/peter-pan-jr-2026">
+        <div class="scard-media">
+          <img src="/img/shows/peter-pan-jr/card.webp" alt="Disney's Peter Pan Jr." loading="lazy">
+          <span class="scard-badge">Audition</span>
+          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <div class="scard-foot">
+          <div class="scard-when">Auditions September 21</div>
+          <h3 class="scard-title">Disney's Peter Pan Jr.</h3>
+          <div class="scard-meta">Emerging Artists · Ages 9–13</div>
+        </div>
+      </a>
+      <a class="scard" href="/a-christmas-carol-2026">
+        <div class="scard-media">
+          <img src="/img/shows/a-christmas-carol.webp" alt="A Christmas Carol" loading="lazy">
+          <span class="scard-badge">Audition</span>
+          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <div class="scard-foot">
+          <div class="scard-when">Auditions September 28</div>
+          <h3 class="scard-title">A Christmas Carol</h3>
+          <div class="scard-meta">Signature Series · Ages 13–18</div>
+        </div>
+      </a>
+      <a class="scard" href="/aspire-performing-co">
+        <div class="scard-media">
+          <img src="/img/shows/aspire.webp" alt="Aspire Performing Co." loading="lazy">
+          <span class="scard-badge">Audition</span>
+          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <div class="scard-foot">
+          <div class="scard-when">Rolling auditions</div>
+          <h3 class="scard-title">Aspire Performing Co.</h3>
+          <div class="scard-meta">Year-round · Ages 8–senior</div>
+        </div>
+      </a>
+      <a class="scard" href="/summer-of-lion-king-2026">
+        <div class="scard-media">
+          <img src="/img/shows/lion-king.webp" alt="Disney's The Lion King" loading="lazy">
+          <span class="scard-badge">Rehearsing</span>
+          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <div class="scard-foot">
+          <div class="scard-when">Performs late July</div>
+          <h3 class="scard-title">Disney's The Lion King</h3>
+          <div class="scard-meta">Summer 2026 · Ages 8–18</div>
+        </div>
+      </a>
     </div>
     <p class="aud-note">Listings change through the year. Don't see your show yet? Sign up for the newsletter on our <a href="/">home page</a> and we'll let you know the moment auditions open.</p>
   </div>
@@ -865,5 +907,30 @@
   });
 })();
 </script>
-<script>function encPlayVideo(b){var f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/mX09X5Aq568?autoplay=1";f.title="Auditioning at Encore Performing Arts";f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";f.allowFullscreen=true;f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");b.replaceWith(f);}</script></body>
+<script>function encPlayVideo(b){var f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/mX09X5Aq568?autoplay=1";f.title="Auditioning at Encore Performing Arts";f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";f.allowFullscreen=true;f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");b.replaceWith(f);}</script><script>
+/* Tint each show card's footer from its artwork's average color, deepened until white text reads. */
+(function(){
+  function lum(r,g,b){var a=[r,g,b].map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);});return .2126*a[0]+.7152*a[1]+.0722*a[2];}
+  function wc(r,g,b){return 1.05/(lum(r,g,b)+0.05);}
+  function deepen(r,g,b){var k=0;while(wc(r,g,b)<5&&k<40){r*=0.93;g*=0.93;b*=0.93;k++;}return [Math.round(r),Math.round(g),Math.round(b)];}
+  function avg(img){
+    var c=document.createElement('canvas'),w=24,h=24;c.width=w;c.height=h;
+    var x=c.getContext('2d');try{x.drawImage(img,0,0,w,h);var d=x.getImageData(0,0,w,h).data;}catch(e){return null;}
+    var r=0,g=0,b=0,n=0;
+    for(var i=0;i<d.length;i+=4){
+      if(d[i+3]<128)continue;
+      if(d[i]>235&&d[i+1]>235&&d[i+2]>235)continue; /* skip near-white logo text */
+      r+=d[i];g+=d[i+1];b+=d[i+2];n++;
+    }
+    if(!n)return null;return [r/n,g/n,b/n];
+  }
+  function paint(card){
+    var img=card.querySelector('.scard-media img');if(!img)return;
+    function go(){var a=avg(img);if(!a)return;var d=deepen(a[0],a[1],a[2]);card.style.setProperty('--scard-bg','rgb('+d[0]+','+d[1]+','+d[2]+')');}
+    if(img.complete&&img.naturalWidth)go();else img.addEventListener('load',go);
+  }
+  document.querySelectorAll('.scard').forEach(paint);
+})();
+</script>
+</body>
 </html>
