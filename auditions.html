@@ -408,12 +408,11 @@
 .aud-card .ac-bg img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s ease;}
 .aud-card:hover .ac-bg img{transform:scale(1.04);}
 .aud-card .ac-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(13,39,45,.32),rgba(13,39,45,.56) 48%,rgba(13,39,45,.9));}
-.aud-card>:not(.ac-bg):not(.ac-scrim){position:relative;z-index:2;}
-.aud-tag{align-self:flex-start;background:var(--teal);color:#fff;font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;margin-bottom:16px;}
+.aud-card>:not(.ac-bg):not(.ac-scrim):not(.aud-tag){position:relative;z-index:2;}
+.aud-tag{position:absolute;top:20px;left:20px;z-index:3;background:var(--teal);color:#fff;font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;}
 .aud-tag.alt{background:var(--accent);}
 .aud-card .meta{font-size:.85rem;color:rgba(255,255,255,.82);font-weight:600;letter-spacing:.02em;}
 .aud-card h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;font-size:1.5rem;line-height:1.05;letter-spacing:-.01em;margin:5px 0 10px;color:#fff;}
-.aud-card p{color:rgba(255,255,255,.9);font-size:.98rem;line-height:1.55;margin:0 0 18px;flex:1;}
 .aud-card .go{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;color:#fff;font-size:.95rem;letter-spacing:.02em;}
 .aud-card:hover .go{text-decoration:underline;}
 .aud-note{margin-top:22px;color:var(--muted);font-size:.98rem;line-height:1.6;max-width:680px;}
@@ -572,47 +571,47 @@
       <p class="lead">Open auditions and rolling enrollment, updated each season.</p>
     </div>
     <div class="aud-cards">
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/little-women.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Now casting</span>
-        <div class="meta">Signature Series · Ages 13–18</div>
-        <h3>Little Women: The Musical</h3>
-        <p>An artist-driven Signature Series production of the beloved March sisters' story. Auditions July 18 at the Electric Theater; performances September 5–12.</p>
-        <a class="go" href="/little-women-2026">Audition info →</a>
-      </article>
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/peter-pan-jr/card.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Now casting</span>
-        <div class="meta">Emerging Artists · Ages 9–13</div>
-        <h3>Disney's Peter Pan Jr.</h3>
-        <p>Fly away to Neverland in our Emerging Artists production. Vocal auditions September 21, dance call September 22; performances November 19–21 at the Electric Theater.</p>
-        <a class="go" href="/peter-pan-jr-2026">Audition info →</a>
-      </article>
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/lion-king.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">In rehearsal</span>
-        <div class="meta">Summer 2026 · Ages 8–18</div>
-        <h3>Disney's The Lion King</h3>
-        <p>Our big summer production, now in rehearsal. Performances arrive on the Electric Theater stage in late July.</p>
-        <a class="go" href="/summer-of-lion-king-2026">Show info →</a>
-      </article>
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/a-christmas-carol.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Auditions this fall</span>
-        <div class="meta">Show with a Pro · Ages 13–18</div>
-        <h3>A Christmas Carol</h3>
-        <p>A new musical adaptation, featuring Corbin Allred as Scrooge. Auditions September 28–29 at the Electric Theater; performances November 30–December 19.</p>
-        <a class="go" href="/a-christmas-carol-2026">Audition info →</a>
-      </article>
-      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/lion-king.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">Registration open</span>
-        <div class="meta">Camp · Ages 7–11</div>
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/lion-king-kids-camp-card.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
+        <span class="aud-tag">Audition now</span>
+        <div class="meta">Camp · Ages 7–11 · Auditions July 6</div>
         <h3>Lion King Kids Camp</h3>
-        <p>A one-week summer camp ending in a performance on the Electric Theater stage. Placement auditions July 6; performance July 14.</p>
         <a class="go" href="/lion-king-kids-camp-2026">Camp info →</a>
       </article>
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/little-women.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
+        <span class="aud-tag">Audition now</span>
+        <div class="meta">Signature Series · Ages 13–18 · Auditions July 18</div>
+        <h3>Little Women: The Musical</h3>
+        <a class="go" href="/little-women-2026">Audition info →</a>
+      </article>
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/little-mermaid-camp-card.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
+        <span class="aud-tag">Audition now</span>
+        <div class="meta">Camp · Ages 7–11 · Auditions August 14</div>
+        <h3>Little Mermaid Jr. Camp</h3>
+        <a class="go" href="/little-mermaid-camp-2026">Camp info →</a>
+      </article>
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/peter-pan-jr/card.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
+        <span class="aud-tag">Audition now</span>
+        <div class="meta">Emerging Artists · Ages 9–13 · Auditions September 21</div>
+        <h3>Disney's Peter Pan Jr.</h3>
+        <a class="go" href="/peter-pan-jr-2026">Audition info →</a>
+      </article>
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/a-christmas-carol.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
+        <span class="aud-tag">Audition now</span>
+        <div class="meta">Signature Series · Ages 13–18 · Auditions September 28</div>
+        <h3>A Christmas Carol</h3>
+        <a class="go" href="/a-christmas-carol-2026">Audition info →</a>
+      </article>
       <article class="aud-card"><span class="ac-bg"><img src="/img/shows/aspire.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
-        <span class="aud-tag">By audition</span>
-        <div class="meta">Year-round · Ages 8–senior</div>
+        <span class="aud-tag">Audition now</span>
+        <div class="meta">Year-round · Ages 8–senior · Rolling auditions</div>
         <h3>Aspire Performing Co.</h3>
-        <p>Our audition-based show choir for singers and dancers who want to perform and grow across the whole year.</p>
         <a class="go" href="/aspire-performing-co">About Aspire →</a>
+      </article>
+      <article class="aud-card"><span class="ac-bg"><img src="/img/shows/lion-king.webp" alt="" loading="lazy"></span><span class="ac-scrim"></span>
+        <span class="aud-tag">Currently rehearsing</span>
+        <div class="meta">Summer 2026 · Ages 8–18 · Performs late July</div>
+        <h3>Disney's The Lion King</h3>
+        <a class="go" href="/summer-of-lion-king-2026">Show info →</a>
       </article>
     </div>
     <p class="aud-note">Listings change through the year. Don't see your show yet? Sign up for the newsletter on our <a href="/">home page</a> and we'll let you know the moment auditions open.</p>
