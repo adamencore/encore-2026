@@ -43,10 +43,10 @@
 
   /* NAV */
   nav.site{position:sticky;top:var(--annc-h,42px);z-index:100;background:rgba(246,245,243,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:78px;}
+  .nav-inner{display:flex;align-items:center;height:78px;}
   .logo{display:flex;align-items:center;gap:11px;color:var(--charcoal);}
   .brandmark{height:30px;width:auto;display:block;}
-  .nav-links{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;}
+  .nav-links{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;margin-left:auto;margin-right:30px;}
   .nav-links a{color:var(--charcoal);opacity:.82;transition:opacity .2s;}
   .nav-links a:hover{opacity:1;}
   .nav-cta{display:flex;gap:11px;align-items:center;}
@@ -244,7 +244,7 @@
   /* HAMBURGER + MOBILE MENU (site-wide) */
   nav.site{color:var(--charcoal);}
   .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:6px;width:46px;height:46px;border:none;background:transparent;cursor:pointer;padding:0;color:inherit;z-index:2;}
-  .nav-toggle span{display:block;height:2px;width:26px;background:currentColor;border-radius:2px;transition:transform .3s,opacity .2s;margin:0 auto;}
+  .nav-toggle span{display:block;height:2px;width:26px;background:var(--teal);border-radius:2px;transition:transform .3s,opacity .2s;margin:0 auto;}
   body.menu-open .nav-toggle span:nth-child(1){transform:translateY(8px) rotate(45deg);}
   body.menu-open .nav-toggle span:nth-child(2){opacity:0;}
   body.menu-open .nav-toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
@@ -403,7 +403,7 @@
       </div>
       <div class="foot-col">
         <h5>Explore</h5>
-        <a href="/#events">What's On</a>
+        <a href="/tickets">What's On</a>
         <a href="/programs">Programs by Age</a>
         <a href="/sensory-friendly-performances">Sensory-Friendly</a><a href="/asl-interpreted-performances">ASL Interpreted</a>
         <a href="/page-to-stage">Page to Stage</a>

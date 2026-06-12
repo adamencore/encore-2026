@@ -145,10 +145,10 @@
 
   /* NAV */
   nav.site{position:sticky;top:var(--annc-h,42px);z-index:100;background:rgba(246,245,243,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:78px;}
+  .nav-inner{display:flex;align-items:center;height:78px;}
   .logo{display:flex;align-items:center;gap:11px;color:var(--charcoal);}
   .brandmark{height:30px;width:auto;display:block;}
-  .nav-links{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;}
+  .nav-links{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;margin-left:auto;margin-right:30px;}
   .nav-links a{color:var(--charcoal);opacity:.82;transition:opacity .2s;}
   .nav-links a:hover{opacity:1;}
   .nav-cta{display:flex;gap:11px;align-items:center;}
@@ -274,7 +274,7 @@
   /* HAMBURGER + MOBILE MENU (site-wide) */
   nav.site{color:var(--charcoal);}
   .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:6px;width:46px;height:46px;border:none;background:transparent;cursor:pointer;padding:0;color:inherit;z-index:2;}
-  .nav-toggle span{display:block;height:2px;width:26px;background:currentColor;border-radius:2px;transition:transform .3s,opacity .2s;margin:0 auto;}
+  .nav-toggle span{display:block;height:2px;width:26px;background:var(--teal);border-radius:2px;transition:transform .3s,opacity .2s;margin:0 auto;}
   body.menu-open .nav-toggle span:nth-child(1){transform:translateY(8px) rotate(45deg);}
   body.menu-open .nav-toggle span:nth-child(2){opacity:0;}
   body.menu-open .nav-toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
@@ -367,6 +367,7 @@
     <a href="/contact">Contact<span class="ar" aria-hidden="true">→</span></a>
     <div class="mm-cta"><a href="/tickets" class="btn btn-light">Get Tickets →</a><a href="/donate" class="btn btn-light" style="margin-top:11px;">Donate</a></div>
     <div class="mm-foot">The Historic Electric Theater · St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></div>
+    <figure class="mm-photo" style="margin-top:30px;border-radius:16px;overflow:hidden;line-height:0;box-shadow:0 18px 40px -24px rgba(0,0,0,.6);"><picture><source type="image/webp" srcset="/img/electric-theater/facade-dusk.webp"><img src="/img/electric-theater/facade-dusk.jpg" alt="The historic Electric Theater in St. George, Utah at dusk" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></picture></figure>
   </nav>
 </div>
 
@@ -419,98 +420,9 @@
           <div class="form-eyebrow">Scholarship Request</div>
           <h2 id="form-h">Application form</h2>
 
-          <!-- Netlify Forms: detected on deploy via data-netlify + hidden form-name.
-               Submissions -> Netlify dashboard -> Forms. No payment data collected. -->
-          <form name="scholarship-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/encore-scholarship-application?submitted=1" class="sform" id="scholarshipForm">
-            <input type="hidden" name="form-name" value="scholarship-application">
-            <p class="hp" aria-hidden="true"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-
-            <fieldset>
-              <legend class="lbl">Student's Name <span class="req">*</span></legend>
-              <div class="grid-2">
-                <div>
-                  <label class="lbl" for="student_first">First name <span class="req">*</span></label>
-                  <input id="student_first" name="student_first_name" type="text" placeholder="John" autocomplete="off" required>
-                </div>
-                <div>
-                  <label class="lbl" for="student_last">Last name <span class="req">*</span></label>
-                  <input id="student_last" name="student_last_name" type="text" placeholder="Doe" autocomplete="off" required>
-                </div>
-              </div>
-            </fieldset>
-
-            <div class="field">
-              <label class="lbl" for="student_age">Student Age <span class="req">*</span></label>
-              <input id="student_age" name="student_age" type="number" min="1" max="120" inputmode="numeric" required>
-            </div>
-
-            <div class="field">
-              <label class="lbl" for="guardian_name">Parent / Guardian Name <span class="req">*</span></label>
-              <input id="guardian_name" name="parent_guardian_name" type="text" autocomplete="name" required>
-            </div>
-
-            <div class="grid-2">
-              <div class="field">
-                <label class="lbl" for="guardian_email">Parent / Guardian's Email <span class="req">*</span></label>
-                <input id="guardian_email" name="parent_guardian_email" type="email" placeholder="example@domain.com" autocomplete="email" required>
-              </div>
-              <div class="field">
-                <label class="lbl" for="guardian_phone">Parent / Guardian's Phone <span class="req">*</span></label>
-                <input id="guardian_phone" name="parent_guardian_phone" type="tel" placeholder="(000) 000-0000" autocomplete="tel" required>
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="lbl" for="zip">Home Address Zip Code <span class="req">*</span></label>
-              <input id="zip" name="home_zip_code" type="text" inputmode="numeric" autocomplete="postal-code" required>
-            </div>
-
-            <div class="field">
-              <label class="lbl" for="trade_hours">Would you be able to trade hours as part of the scholarship? <span class="req">*</span></label>
-              <input id="trade_hours" name="trade_hours" type="text" required>
-            </div>
-
-            <fieldset>
-              <div class="group-q">Are you able to pay for even part of the tuition? <span class="req">*</span></div>
-              <div class="choices">
-                <label class="choice"><input type="radio" name="can_pay_part" value="Yes" required> Yes</label>
-                <label class="choice"><input type="radio" name="can_pay_part" value="No"> No</label>
-              </div>
-            </fieldset>
-
-            <fieldset>
-              <div class="group-q">For a partial scholarship, what are you able to pay? <span class="req">*</span></div>
-              <div class="choices">
-                <label class="choice"><input type="radio" name="partial_amount" value="10% of the tuition" required> 10% of the tuition</label>
-                <label class="choice"><input type="radio" name="partial_amount" value="25% of the tuition"> 25% of the tuition</label>
-                <label class="choice"><input type="radio" name="partial_amount" value="50% of the tuition"> 50% of the tuition</label>
-                <label class="choice"><input type="radio" name="partial_amount" value="Unable to pay any tuition — requesting a full scholarship"> I am unable to pay for any of the tuition at this time and would like to request a full scholarship</label>
-              </div>
-            </fieldset>
-
-            <div class="field">
-              <label class="lbl" for="programs">Which show(s) or program(s) are you requesting a scholarship for? <span class="req">*</span></label>
-              <input id="programs" name="programs_requested" type="text" required>
-            </div>
-
-            <div class="field">
-              <label class="lbl" for="reason">Reason for Need <span class="req">*</span></label>
-              <textarea id="reason" name="reason_for_need" required></textarea>
-            </div>
-
-            <div class="submit-row">
-              <button type="submit" class="btn btn-dark">Submit application →</button>
-              <p class="form-fineprint">Required fields are marked <span class="req">*</span>. We'll review your application and be in touch soon. Your information is kept private and used only to review your request.</p>
-              <p class="form-error" id="formError">Something went wrong submitting your application. Please email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> and we'll help.</p>
-            </div>
-          </form>
-
-          <div class="form-success" id="formSuccess">
-            <div class="check" aria-hidden="true">✓</div>
-            <h2>Application received</h2>
-            <p>Thank you for applying for an Encore scholarship. We've received your request and will be in touch soon at the email you provided.</p>
-            <a href="/" class="btn btn-ghost">Back to home →</a>
-          </div>
+          <!-- Elfsight Form Builder | Encore Scholarship Application -->
+          <script src="https://elfsightcdn.com/platform.js" async></script>
+          <div class="elfsight-app-fd3f7248-9c75-4b1f-af07-489e3a10839b" data-elfsight-app-lazy></div>
         </div>
       </div>
     </div>
@@ -552,7 +464,7 @@
       </div>
       <div class="foot-col">
         <h5>Explore</h5>
-        <a href="/#events">What's On</a>
+        <a href="/tickets">What's On</a>
         <a href="/programs">Programs by Age</a>
         <a href="/sensory-friendly-performances">Sensory-Friendly</a><a href="/asl-interpreted-performances">ASL Interpreted</a>
         <a href="/page-to-stage">Page to Stage</a>
@@ -630,25 +542,6 @@
   t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
-})();
-</script>
-<script>
-(function(){
-  var f=document.getElementById('scholarshipForm'),
-      ok=document.getElementById('formSuccess'),
-      err=document.getElementById('formError');
-  if(location.search.indexOf('submitted=1')>-1 && f && ok){f.style.display='none';ok.classList.add('show');}
-  if(!f)return;
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    if(err)err.style.display='none';
-    var btn=f.querySelector('button[type=submit]');
-    var body=new URLSearchParams(new FormData(f)).toString();
-    btn.disabled=true;btn.textContent='Submitting…';
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
-      .then(function(r){if(!r.ok)throw new Error();f.style.display='none';if(ok)ok.classList.add('show');window.scrollTo({top:f.getBoundingClientRect().top+window.scrollY-120,behavior:'smooth'});})
-      .catch(function(){btn.disabled=false;btn.textContent='Submit application →';if(err)err.style.display='block';});
-  });
 })();
 </script>
 </body>
