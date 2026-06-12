@@ -197,7 +197,7 @@
   .mobile-menu .mm-foot a{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:14px;border:none;padding:0;display:inline;color:#cfc6b4;}
 
   /* HERO — full-bleed, edge to edge, under the fixed nav */
-  .hero{position:relative;min-height:92vh;min-height:92svh;overflow:hidden;display:flex;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);}
+  .hero{position:relative;min-height:92vh;min-height:92svh;overflow:hidden;display:flex;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);border-radius:0 0 var(--radius-lg) var(--radius-lg);}
   .hero-inner{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:120px 28px 56px;display:flex;flex-direction:column;justify-content:center;gap:40px;}
   .hero::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
   /* HERO slideshow — stacked crossfading frames; frame 1 is the inlined LCP image */
@@ -256,7 +256,7 @@
   /* SECTION SCAFFOLD */
   .pill{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);color:var(--charcoal);padding:9px 18px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.04em;}
   .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--charcoal);}
-  section{padding:90px 0;}
+  section{padding:clamp(90px,9vw,128px) 0;}
   .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:46px;flex-wrap:wrap;}
   .sec-head h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(30px,4vw,50px);line-height:1.05;letter-spacing:-.035em;color:var(--charcoal);max-width:580px;}
   .sec-head h2 em{font-style:italic;}
@@ -292,12 +292,14 @@
   .access-card .lnk:hover{gap:13px;}
 
   /* TIER 4 part A: NEWSLETTER */
-  .news{background:linear-gradient(150deg,#1d4f5a,#123139);border-radius:var(--radius-lg);padding:60px 56px;color:var(--cream);position:relative;overflow:hidden;}
-  .news::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
+  /* Full-width newsletter banner. Add a photo by setting --news-img on the .news-banner element, e.g. style="--news-img:url(/img/your-image.jpg)". */
+  .news-banner{position:relative;padding:clamp(56px,7vw,92px) 0;color:var(--cream);overflow:hidden;background:linear-gradient(150deg,#1d4f5a,#123139);}
+  .news-banner .news-bg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(150deg,rgba(18,49,57,.60),rgba(18,49,57,.82)),var(--news-img,none);background-size:cover;background-position:center;background-repeat:no-repeat;}
+  .news-banner .wrap{position:relative;z-index:2;}
   .news-inner{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;}
-  .news h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3.6vw,44px);line-height:1.06;letter-spacing:-.035em;max-width:460px;}
-  .news h2 em{font-style:italic;color:#cfc6b4;}
-  .news p{color:rgba(233,228,224,.78);margin-top:14px;font-size:16px;max-width:420px;}
+  .news-banner h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3.6vw,44px);line-height:1.06;letter-spacing:-.035em;max-width:460px;}
+  .news-banner h2 em{font-style:italic;color:#cfc6b4;}
+  .news-banner p{color:rgba(233,228,224,.78);margin-top:14px;font-size:16px;max-width:420px;}
   .news-form{display:flex;flex-direction:column;gap:12px;min-width:330px;}
   .news-form .field{display:flex;background:rgba(233,228,224,.1);border:1px solid rgba(233,228,224,.25);border-radius:100px;padding:6px 6px 6px 22px;align-items:center;}
   .news-form input{flex:1;background:transparent;border:none;outline:none;color:var(--cream);font-family:inherit;font-size:15px;}
@@ -446,13 +448,13 @@
 
   /* ===== SHOP PROGRAMS (spotlight crossfade) — replaces old Programs by Age ===== */
   .shopprog{--ink:#123139;padding:96px 0;}
-  .shopprog .sp-head{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end;margin-bottom:54px;}
+  .shopprog .sp-head{display:grid;grid-template-columns:1fr;gap:24px;align-items:start;margin-bottom:48px;}
   .shopprog .sp-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:22px;}
   .shopprog .sp-eyebrow::before{content:'';width:28px;height:2px;background:var(--teal);}
   .shopprog .sp-head h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(34px,5vw,62px);line-height:1.0;letter-spacing:-.035em;color:var(--ink);}
   .shopprog .sp-head h2 em{font-style:italic;}
   .shopprog .sp-right{display:flex;flex-direction:column;align-items:flex-start;gap:24px;}
-  .shopprog .sp-lead{color:var(--muted);font-size:16.5px;line-height:1.6;max-width:420px;}
+  .shopprog .sp-lead{color:var(--muted);font-size:16.5px;line-height:1.6;max-width:560px;margin-top:22px;}
   .shopprog .sp-schedule{align-self:flex-end;display:inline-flex;align-items:center;gap:10px;background:var(--charcoal);color:var(--cream);padding:14px 26px;border-radius:100px;font-weight:600;font-size:15px;transition:transform .2s,background .2s;}
   .shopprog .sp-schedule:hover{background:var(--charcoal-2);transform:translateY(-2px);}
   .shopprog .sp-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start;}
@@ -623,9 +625,7 @@
       <h1>We teach life skills through <em>stage skills</em>.</h1>
       <p>Professional musical theater training for Young Artists — where confidence is rehearsed and every performer finds their stage.</p>
       <div class="hero-actions">
-        <a href="/tickets" class="btn btn-light">Buy Tickets →</a>
-        <a href="/auditions" class="btn btn-ghost">Audition</a>
-        <a href="/donate" class="btn btn-ghost">Support Us</a>
+        <a href="/auditions" class="btn btn-light">Audition →</a>
         </div>
       </div>
   </div>
@@ -654,10 +654,7 @@
       <div>
         <span class="sp-eyebrow">Shop Programs</span>
         <h2 id="shopprog-h">Find the right stage<br>for your <em>young artist</em>.</h2>
-      </div>
-      <div class="sp-right">
         <p class="sp-lead">Six ways to grow &mdash; from a first playful class to a full mainstage role. Every one is taught by working theater professionals.</p>
-        <a href="#events" class="sp-schedule">See full schedule &rarr;</a>
       </div>
     </div>
     <div class="sp-grid">
@@ -759,22 +756,6 @@
   </div>
 </section>
 
-<!-- CASE FOR THE ARTS -->
-<section class="casearts reveal" aria-labelledby="casearts-h">
-  <div class="wrap">
-    <span class="ca-kicker">The case for the arts</span>
-    <h2 id="casearts-h">The arts aren't extra. They're <em>essential.</em></h2>
-    <p class="ca-lead">Decades of research say what every Encore parent already feels: Young Artists who do theater grow in ways that reach far past the stage.</p>
-    <div class="ca-band">
-      <div class="ca-stat"><div class="ca-top"><svg class="ca-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg><span class="ca-n">4&times;</span></div><p class="ca-d">more likely to be recognized for academic achievement</p></div>
-      <div class="ca-stat"><div class="ca-top"><svg class="ca-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="ca-n">2&times;</span></div><p class="ca-d">more likely to volunteer and stay civically engaged</p></div>
-      <div class="ca-stat"><div class="ca-top"><svg class="ca-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 4.5A2.5 2.5 0 0 0 7 7a2.5 2.5 0 0 0-1 4.8A2.5 2.5 0 0 0 7 16.5a2.5 2.5 0 0 0 2.5 2.5Z"/><path d="M14.5 4.5A2.5 2.5 0 0 1 17 7a2.5 2.5 0 0 1 1 4.8 2.5 2.5 0 0 1-1 4.7 2.5 2.5 0 0 1-2.5 2.5Z"/><path d="M9.5 4.5v15M14.5 4.5v15"/></svg><span class="ca-n">+13%</span></div><p class="ca-d">higher growth in empathy and emotional skills</p></div>
-      <div class="ca-stat"><div class="ca-top"><svg class="ca-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V10M9.5 21V10M14.5 21V10M19 21V10"/><path d="M3 10 12 4l9 6Z"/></svg><span class="ca-n">&lt;2%</span></div><p class="ca-d">of school budgets go to the arts &mdash; community programs fill the gap</p></div>
-    </div>
-    <p class="ca-note">Placeholder figures &mdash; real, cited statistics to be sourced before launch.</p>
-  </div>
-</section>
-
 <!-- TIER 3: ACCESSIBILITY -->
 <section id="access">
   <div class="wrap">
@@ -799,6 +780,22 @@
         <a href="/asl-interpreted-performances" class="lnk">Learn about ASL performances →</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CASE FOR THE ARTS -->
+<section class="casearts reveal" aria-labelledby="casearts-h">
+  <div class="wrap">
+    <span class="ca-kicker">The case for the arts</span>
+    <h2 id="casearts-h">The arts aren't extra. They're <em>essential.</em></h2>
+    <p class="ca-lead">Decades of research say what every Encore parent already feels: Young Artists who do theater grow in ways that reach far past the stage.</p>
+    <div class="ca-band">
+      <div class="ca-stat"><div class="ca-top"><svg class="ca-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg><span class="ca-n">4&times;</span></div><p class="ca-d">more likely to be recognized for academic achievement</p></div>
+      <div class="ca-stat"><div class="ca-top"><svg class="ca-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="ca-n">2&times;</span></div><p class="ca-d">more likely to volunteer and stay civically engaged</p></div>
+      <div class="ca-stat"><div class="ca-top"><svg class="ca-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 4.5A2.5 2.5 0 0 0 7 7a2.5 2.5 0 0 0-1 4.8A2.5 2.5 0 0 0 7 16.5a2.5 2.5 0 0 0 2.5 2.5Z"/><path d="M14.5 4.5A2.5 2.5 0 0 1 17 7a2.5 2.5 0 0 1 1 4.8 2.5 2.5 0 0 1-1 4.7 2.5 2.5 0 0 1-2.5 2.5Z"/><path d="M9.5 4.5v15M14.5 4.5v15"/></svg><span class="ca-n">+13%</span></div><p class="ca-d">higher growth in empathy and emotional skills</p></div>
+      <div class="ca-stat"><div class="ca-top"><svg class="ca-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V10M9.5 21V10M14.5 21V10M19 21V10"/><path d="M3 10 12 4l9 6Z"/></svg><span class="ca-n">&lt;2%</span></div><p class="ca-d">of school budgets go to the arts &mdash; community programs fill the gap</p></div>
+    </div>
+    <p class="ca-note">Placeholder figures &mdash; real, cited statistics to be sourced before launch.</p>
   </div>
 </section>
 
@@ -848,22 +845,21 @@
   </div>
 </section>
 
-<!-- TIER 4a: NEWSLETTER -->
-<section style="padding-top:0;">
+<!-- TIER 4a: NEWSLETTER (full-width banner) -->
+<section class="news-banner" id="newsletter" aria-labelledby="news-h"><!-- add a photo: style="--news-img:url('/img/your-image.jpg')" -->
+  <div class="news-bg" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="news reveal" id="newsletter">
-      <div class="news-inner">
-        <div>
-          <h2>Never miss an <em>audition or show</em></h2>
-          <p>Sign up to get auditions, performance dates, and Encore news delivered straight to your inbox.</p>
+    <div class="news-inner reveal">
+      <div>
+        <h2 id="news-h">Never miss an <em>audition or show</em></h2>
+        <p>Sign up to get auditions, performance dates, and Encore news delivered straight to your inbox.</p>
+      </div>
+      <div class="news-form">
+        <div class="field">
+          <input type="email" placeholder="Your email address">
+          <button class="btn btn-light">Sign Up</button>
         </div>
-        <div class="news-form">
-          <div class="field">
-            <input type="email" placeholder="Your email address">
-            <button class="btn btn-light">Sign Up</button>
-          </div>
-          <small>Serving Southern Utah's young performers since 2021.</small>
-        </div>
+        <small>Serving Southern Utah's young performers since 2021.</small>
       </div>
     </div>
   </div>

@@ -178,7 +178,7 @@
   .hbadge .em{font-style:italic;font-family:'Cabrio','Familjen Grotesk',sans-serif;}
 
   /* SECTION SCAFFOLD */
-  section{padding:78px 0;}
+  section{padding:clamp(86px,8.5vw,116px) 0;}
   .pill{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);color:var(--charcoal);padding:9px 18px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.04em;}
   .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--charcoal);}
   .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:40px;flex-wrap:wrap;}
@@ -259,6 +259,8 @@
   .faq[open] summary::after{transform:rotate(45deg);}
   .faq .ans{padding:0 24px 24px;color:var(--charcoal-soft);font-size:15px;line-height:1.65;}
   .faq .ans a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
+  .faq-more{margin-top:26px;color:var(--muted);font-size:15.5px;line-height:1.6;}
+  .faq-more a{color:var(--teal);font-weight:600;}
 
   /* SECTION 6 — MISSION + PROGRAM */
   .mission-feature{background:var(--cream);border-radius:var(--radius-lg);padding:56px 48px;text-align:center;}
@@ -764,7 +766,6 @@
         <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>FAQ</span>
         <h2 id="faq-h">Audition <em>questions</em></h2>
       </div>
-      <p class="lead">Still wondering about something? Call us at <a href="tel:+14354140049" style="color:var(--teal);font-weight:600;">(435) 414-0049</a>.</p>
     </div>
     <div class="faq-list">
       <details class="faq" open><summary>Do I need experience to audition?</summary><div class="ans">No. Encore casts first-time performers in every production, and auditions are designed to be welcoming for all experience levels.</div></details>
@@ -774,6 +775,7 @@
       <details class="faq"><summary>When and where are auditions held?</summary><div class="ans">Auditions are held at the Electric Theater in downtown St. George ahead of each production. Dates are listed on each show page and announced by email.</div></details>
       <details class="faq"><summary>How do I sign up?</summary><div class="ans">Each show page has a registration link with available time slots. If you have questions, call Encore at (435) 414-0049.</div></details>
     </div>
+    <p class="faq-more">Still wondering about something? Call us at <a href="tel:+14354140049">(435) 414-0049</a>.</p>
   </div>
 </section>
 
@@ -931,6 +933,24 @@
     if(img.complete&&img.naturalWidth)go();else img.addEventListener('load',go);
   }
   document.querySelectorAll('.scard').forEach(paint);
+})();
+</script>
+<script>
+(function(){
+  var grid=document.querySelector('#casting .aud-cards'); if(!grid)return;
+  var M={january:0,february:1,march:2,april:3,may:4,june:5,july:6,august:7,september:8,october:9,november:10,december:11};
+  var now=new Date(); now.setHours(0,0,0,0);
+  function key(card){
+    var t=((card.querySelector('.scard-when')||{}).textContent||'').toLowerCase();
+    var m=t.match(/(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2})/);
+    if(m){var d=new Date(now.getFullYear(),M[m[1]],parseInt(m[2],10)); if(d<now)d=new Date(now.getFullYear()+1,M[m[1]],parseInt(m[2],10)); return d.getTime();}
+    if(/rolling/.test(t))return 8.64e15-1e3;
+    return 8.64e15;
+  }
+  Array.prototype.slice.call(grid.querySelectorAll('.scard'))
+    .map(function(el){return{el:el,k:key(el)};})
+    .sort(function(a,b){return a.k-b.k;})
+    .forEach(function(o){grid.appendChild(o.el);});
 })();
 </script>
 </body>
