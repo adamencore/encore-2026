@@ -55,3 +55,7 @@
 /multi-performer-discount            /summer-of-lion-king-2026 302
 /classes                         https://www.encorepa.org/classes          302
 /encore-classes                  https://www.encorepa.org/encore-classes   302
+
+# Legal short aliases
+/terms      /terms-and-conditions   301
+/privacy    /privacy-policy          301
