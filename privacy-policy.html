@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <!-- ============================================================
-     DONATE — /donate  (replaces the Squarespace donate page)
-     The give module is a graphical amount/frequency selector that
-     hands off to a SECURE EXTERNAL PROCESSOR. No card data is ever
-     entered on this page.
-     >>> ADAM, set this up:
-       - [DONATE-URL] in the page script: replace DONATE_BASE with your
-         processor's link (Donorbox / Givebutter / Stripe Payment Link).
-         It currently defaults to the live encorepa.org/donate so the
-         button works today. If your processor reads amount/frequency
-         from the query string, map the param names there.
-       - [EMBED] Optional: if you'd rather embed a donation widget
-         instead of linking out, drop the iframe into the marked slot
-         and hide the .give-card.
-       - [EIN] Add your EIN / receipt language in the tax-deductible note.
+     CONTACT — /contact  (replaces the Squarespace /contact page)
+     Form uses NETLIFY FORMS (native; no backend/build step).
+     On deploy, Netlify auto-detects the static form by its
+     data-netlify attribute + hidden form-name field. Submissions
+     appear in Netlify dashboard → Forms; configure email/Slack
+     notifications there. Map block uses a placeholder; production
+     swaps in a static map image at /img/contact-map.* (pattern
+     shown inline). Encore is a TENANT at the Electric Theater —
+     the venue/City phone is for non-Encore venue inquiries only.
      ============================================================ -->
 <html lang="en">
 <head>
@@ -21,9 +16,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ========== CORE META ========== -->
-<title>Donate to Encore Performing Arts | Support Youth Theater in St. George</title>
-<meta name="description" content="Support Encore Performing Arts, a 501(c)(3) youth musical theater nonprofit in St. George, Utah. Your tax-deductible gift funds scholarships, productions, and free sensory-friendly performances for young artists.">
-<link rel="canonical" href="https://www.encorepa.org/donate">
+<title>Privacy Policy | Encore Performing Arts</title>
+<meta name="description" content="Explore Encore Performing Arts' privacy policy to understand how we protect your personal data and ensure your privacy when engaging with our programs and website.">
+<link rel="canonical" href="https://www.encorepa.org/privacy-policy">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="Encore Performing Arts">
 <meta name="theme-color" content="#348193">
@@ -36,132 +31,56 @@
 <!-- ========== OPEN GRAPH ========== -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Encore Performing Arts">
-<meta property="og:url" content="https://www.encorepa.org/donate">
-<meta property="og:title" content="Donate to Encore Performing Arts | Support Youth Theater">
-<meta property="og:description" content="Your tax-deductible gift to Encore — a 501(c)(3) youth musical theater in St. George, Utah — funds scholarships, productions, and free sensory-friendly performances.">
-<meta property="og:image" content="https://www.encorepa.org/donate-og.jpg">
+<meta property="og:url" content="https://www.encorepa.org/privacy-policy">
+<meta property="og:title" content="Privacy Policy | Encore Performing Arts">
+<meta property="og:description" content="Explore Encore Performing Arts' privacy policy to understand how we protect your personal data and ensure your privacy when engaging with our programs and website.">
+<meta property="og:image" content="https://www.encorepa.org/img/electric-theater-exterior.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Young performers on stage at Encore Performing Arts in St. George, Utah">
+<meta property="og:image:alt" content="The historic Electric Theater in downtown St. George, Utah, home of Encore Performing Arts">
 <meta property="og:locale" content="en_US">
 
 <!-- ========== TWITTER ========== -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Donate to Encore Performing Arts">
-<meta name="twitter:description" content="Your tax-deductible gift funds scholarships, productions, and free sensory-friendly performances for young artists in St. George, Utah.">
-<meta name="twitter:image" content="https://www.encorepa.org/donate-og.jpg">
+<meta name="twitter:title" content="Privacy Policy | Encore Performing Arts">
+<meta name="twitter:description" content="Explore Encore Performing Arts' privacy policy to understand how we protect your personal data and ensure your privacy when engaging with our programs and website.">
+<meta name="twitter:image" content="https://www.encorepa.org/img/electric-theater-exterior.jpg">
 
 <!-- ========== STRUCTURED DATA ========== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://www.encorepa.org/donate#webpage",
-      "url": "https://www.encorepa.org/donate",
-      "name": "Donate to Encore Performing Arts",
-      "description": "Make a tax-deductible gift to Encore Performing Arts, a 501(c)(3) youth musical theater nonprofit in St. George, Utah.",
-      "about": { "@id": "https://www.encorepa.org/#organization" },
-      "isPartOf": { "@id": "https://www.encorepa.org/#website" },
-      "inLanguage": "en-US"
-    },
-    {
-      "@type": ["NGO", "PerformingGroup"],
-      "@id": "https://www.encorepa.org/#organization",
-      "name": "Encore Performing Arts",
-      "alternateName": "Encore",
-      "url": "https://www.encorepa.org",
-      "logo": "https://www.encorepa.org/logo.png",
-      "email": "hello@encorepa.org",
-      "telephone": "+1-435-414-0049",
-      "nonprofitStatus": "Nonprofit501c3",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "68 E Tabernacle Street",
-        "addressLocality": "St. George",
-        "addressRegion": "UT",
-        "postalCode": "84770",
-        "addressCountry": "US"
+  "@type": "WebPage",
+  "name": "Privacy Policy | Encore Performing Arts",
+  "url": "https://www.encorepa.org/privacy-policy",
+  "description": "Explore Encore Performing Arts' privacy policy to understand how we protect your personal data and ensure your privacy when engaging with our programs and website.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Encore Performing Arts",
+    "url": "https://www.encorepa.org/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Encore Performing Arts",
+    "url": "https://www.encorepa.org/"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.encorepa.org/"
       },
-      "sameAs": [
-        "https://www.instagram.com/encorestg",
-        "https://www.facebook.com/encorestg",
-        "https://www.youtube.com/channel/UCBqCS2LKe-5UHp7osQFA-fg"
-      ],
-      "potentialAction": {
-        "@type": "DonateAction",
-        "target": "https://www.encorepa.org/donate",
-        "recipient": { "@id": "https://www.encorepa.org/#organization" }
-      },
-      "location": { "@id": "https://www.encorepa.org/#venue" }
-    },
-    {
-      "@type": "PerformingArtsTheater",
-      "@id": "https://www.encorepa.org/#venue",
-      "name": "The Electric Theater",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "68 E Tabernacle Street",
-        "addressLocality": "St. George",
-        "addressRegion": "UT",
-        "postalCode": "84770",
-        "addressCountry": "US"
-      },
-      "geo": { "@type": "GeoCoordinates", "latitude": 37.107700, "longitude": -113.583240 }
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://www.encorepa.org/#website",
-      "url": "https://www.encorepa.org",
-      "name": "Encore Performing Arts",
-      "publisher": { "@id": "https://www.encorepa.org/#organization" }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encorepa.org/" },
-        { "@type": "ListItem", "position": 2, "name": "Donate", "item": "https://www.encorepa.org/donate" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is my donation tax-deductible?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Encore Performing Arts is a registered 501(c)(3) nonprofit, so your gift is tax-deductible to the fullest extent allowed by law. You will receive a receipt for your records."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where does my donation go?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Gifts directly fund scholarships, productions, arts education and mentorship, and free, accessible programming such as our sensory-friendly performances — giving young artists in southern Utah a place to grow and shine on stage."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I give monthly instead of once?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. You can make a one-time gift or give monthly. Our monthly giving program, The Core, starts at $25 a month and provides steady support that helps us plan ahead."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can my company sponsor Encore or give in-kind?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Absolutely. We welcome corporate sponsorships and in-kind donations of goods, services, and volunteer time. Contact us at hello@encorepa.org or (435) 414-0049 to discuss the options."
-          }
-        }
-      ]
-    }
-  ]
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Privacy Policy",
+        "item": "https://www.encorepa.org/privacy-policy"
+      }
+    ]
+  }
 }
 </script>
 
@@ -172,6 +91,7 @@
 
 <style>
   :root{
+    /* ENCORE BRAND PALETTE */
     --teal:#348193;
     --charcoal:#348193;
     --charcoal-2:#3c8ea1;
@@ -202,6 +122,7 @@
   .nav-links{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;margin-left:auto;margin-right:30px;}
   .nav-links a{color:var(--charcoal);opacity:.82;transition:opacity .2s;}
   .nav-links a:hover{opacity:1;}
+  .nav-links a[aria-current="page"]{opacity:1;font-weight:600;}
   .nav-cta{display:flex;gap:11px;align-items:center;}
   .btn{border:none;cursor:pointer;font-family:inherit;font-weight:600;border-radius:100px;padding:13px 24px;font-size:14.5px;transition:transform .2s,background .2s,color .2s;display:inline-flex;align-items:center;gap:9px;}
   .btn:hover{transform:translateY(-2px);}
@@ -210,8 +131,6 @@
   .btn-ghost{background:transparent;border:1.5px solid var(--charcoal);color:var(--charcoal);}
   .btn-ghost:hover{background:var(--charcoal);color:var(--cream);}
   .btn-light{background:var(--cream);color:var(--charcoal);}
-  .nav-cta .btn-give{background:var(--accent);color:#fff;}
-  .nav-cta .btn-give:hover{background:var(--accent-2);}
 
   /* BREADCRUMB */
   .crumbs{padding:18px 0 0;}
@@ -221,100 +140,78 @@
   .crumbs a:hover{color:var(--charcoal);}
   .crumbs [aria-current="page"]{color:var(--charcoal);font-weight:600;}
 
-  /* HERO + GIVE */
+  /* HERO */
   .hero{padding:14px 0 0;}
-  .give-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);box-shadow:0 40px 80px -40px rgba(13,39,45,.5);display:grid;grid-template-columns:1.05fr .95fr;}
-  .give-wrap::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
-  .give-intro{position:relative;z-index:2;padding:52px 44px;color:var(--cream);display:flex;flex-direction:column;justify-content:center;}
-  .give-intro .eyebrow{color:rgba(233,228,224,.75);font-weight:600;letter-spacing:.04em;font-size:14px;margin-bottom:14px;}
-  .give-intro h1{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.04;letter-spacing:-.035em;}
-  .give-intro h1 em{font-style:italic;color:#cfc6b4;}
-  .give-intro p{color:rgba(233,228,224,.82);margin-top:18px;font-size:16.5px;line-height:1.6;max-width:440px;}
-  .give-trust{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;}
-  .give-trust span{display:inline-flex;align-items:center;gap:8px;background:rgba(233,228,224,.12);border:1px solid rgba(233,228,224,.25);color:var(--cream);padding:9px 15px;border-radius:100px;font-size:13px;font-weight:600;}
-
-  .give-card{position:relative;z-index:2;margin:18px;border-radius:28px;background:var(--paper);padding:34px;box-shadow:0 30px 60px -30px rgba(13,39,45,.5);align-self:center;}
-  .give-card h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:24px;font-weight:600;color:var(--charcoal);margin-bottom:18px;}
-  .freq{display:flex;background:var(--cream-lite);border:1px solid var(--line);border-radius:100px;padding:5px;margin-bottom:22px;}
-  .freq button{flex:1;border:none;background:transparent;font-family:inherit;font-size:14.5px;font-weight:600;color:var(--muted);padding:11px;border-radius:100px;cursor:pointer;transition:background .2s,color .2s;}
-  .freq button[aria-pressed="true"]{background:var(--charcoal);color:var(--cream);}
-  .amount-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-  .amt{border:1.5px solid var(--line);background:var(--cream-lite);font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:21px;font-weight:600;color:var(--charcoal);padding:16px 0;border-radius:16px;cursor:pointer;transition:border-color .2s,background .2s,color .2s,transform .15s;}
-  .amt:hover{transform:translateY(-2px);}
-  .amt[aria-pressed="true"]{background:var(--charcoal);color:var(--cream);border-color:var(--charcoal);}
-  .amt.other{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:15px;font-weight:600;}
-  .custom-wrap{margin-top:12px;display:none;}
-  .custom-wrap.show{display:block;}
-  .custom-field{display:flex;align-items:center;gap:8px;border:1.5px solid var(--charcoal);background:#fff;border-radius:16px;padding:12px 16px;}
-  .custom-field .cur{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:20px;font-weight:600;color:var(--charcoal);}
-  .custom-field input{flex:1;border:none;outline:none;font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:20px;font-weight:600;color:var(--charcoal);background:transparent;width:100%;}
-  .give-go{margin-top:20px;width:100%;justify-content:center;background:var(--accent);color:#fff;font-size:16px;padding:16px;}
-  .give-go:hover{background:var(--accent-2);}
-  .give-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:14px;text-align:center;}
-  .give-note a{color:var(--charcoal);font-weight:600;}
+  .hero-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;min-height:300px;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);padding:44px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 40px 80px -40px rgba(13,39,45,.5);}
+  .hero-card::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
+  .hero-inner{position:relative;z-index:2;}
+  .hero-eyebrow{display:inline-block;color:rgba(233,228,224,.75);font-weight:600;letter-spacing:.04em;font-size:14px;margin-bottom:14px;}
+  .hero h1{font-family:'Cabrio','Familjen Grotesk',sans-serif;color:var(--cream);font-weight:500;font-size:clamp(38px,5.6vw,64px);line-height:1.03;letter-spacing:-.035em;max-width:760px;}
+  .hero h1 em{font-style:italic;color:#cfc6b4;}
+  .hero p{color:rgba(233,228,224,.82);max-width:560px;margin:18px 0 0;font-size:16.5px;line-height:1.6;}
 
   /* SECTION SCAFFOLD */
-  section{padding:78px 0;}
+  section{padding:70px 0;}
   .pill{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);color:var(--charcoal);padding:9px 18px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.04em;}
   .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--charcoal);}
-  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:40px;flex-wrap:wrap;}
-  .sec-head h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3.6vw,46px);line-height:1.05;letter-spacing:-.035em;color:var(--charcoal);max-width:600px;}
-  .sec-head h2 em{font-style:italic;}
-  .sec-head .lead{max-width:380px;color:var(--muted);font-size:15.5px;line-height:1.6;}
 
-  /* IMPACT */
-  .impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-  .impact{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;}
-  .impact .ic{width:50px;height:50px;border-radius:50%;background:var(--cream);color:var(--charcoal);display:grid;place-items:center;font-size:21px;margin-bottom:18px;}
-  .impact h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:21px;font-weight:600;color:var(--charcoal);margin-bottom:8px;line-height:1.15;}
-  .impact p{color:var(--muted);font-size:14.5px;line-height:1.6;}
+  /* CONTACT GRID */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:24px;align-items:start;}
 
-  /* THE CORE BAND */
-  .core-band{background:var(--charcoal);border-radius:var(--radius-lg);padding:54px 48px;color:var(--cream);position:relative;overflow:hidden;}
-  .core-band::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
-  .core-inner{position:relative;z-index:2;display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;}
-  .core-amt{text-align:center;background:rgba(233,228,224,.1);border:1px solid rgba(233,228,224,.2);border-radius:22px;padding:22px 26px;}
-  .core-amt .n{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:48px;font-weight:600;line-height:1;}
-  .core-amt .n span{font-size:17px;font-family:'Cabrio','Familjen Grotesk';opacity:.75;}
-  .core-amt .l{font-size:12.5px;color:rgba(233,228,224,.7);margin-top:6px;}
-  .core-copy h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(26px,3.2vw,38px);line-height:1.08;letter-spacing:-.035em;}
-  .core-copy h2 em{font-style:italic;color:#cfc6b4;}
-  .core-copy p{color:rgba(233,228,224,.8);margin-top:12px;font-size:15.5px;line-height:1.6;max-width:520px;}
-  .core-band .btn-light{background:var(--cream);color:var(--charcoal);white-space:nowrap;}
+  /* INFO COLUMN */
+  .info-head h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3.4vw,40px);line-height:1.06;letter-spacing:-.035em;color:var(--charcoal);}
+  .info-head h2 em{font-style:italic;}
+  .info-head p{color:var(--muted);font-size:15.5px;line-height:1.6;margin:14px 0 26px;max-width:440px;}
+  .info-list{display:flex;flex-direction:column;gap:12px;}
+  .info-row{display:flex;gap:16px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px 22px;}
+  .info-row .ic{flex:none;width:44px;height:44px;border-radius:50%;background:var(--cream);border:1px solid var(--line);display:grid;place-items:center;font-size:17px;color:var(--charcoal);}
+  .info-row h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--charcoal);margin-bottom:4px;}
+  .info-row p,.info-row address{color:var(--muted);font-size:14.5px;line-height:1.55;font-style:normal;}
+  .info-row a{color:var(--charcoal);font-weight:600;}
+  .info-row a:hover{color:var(--charcoal-2);}
+  .info-social{display:flex;gap:10px;margin-top:4px;}
+  .info-social a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:12.5px;font-weight:600;color:var(--charcoal);background:var(--cream-lite);transition:background .2s,color .2s;}
+  .info-social a:hover{background:var(--charcoal);color:var(--cream);}.info-social a svg{width:18px;height:18px;}
 
-  /* OTHER WAYS */
-  .ways-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .way{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:34px;display:flex;flex-direction:column;}
-  .way .ic{width:52px;height:52px;border-radius:50%;background:var(--charcoal);color:var(--cream);display:grid;place-items:center;font-size:22px;margin-bottom:20px;}
-  .way h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:23px;font-weight:600;color:var(--charcoal);margin-bottom:10px;line-height:1.12;}
-  .way p{color:var(--muted);font-size:14.5px;line-height:1.6;margin-bottom:20px;flex:1;}
-  .way .lnk{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--charcoal);font-size:14.5px;border-bottom:1px solid var(--charcoal);align-self:flex-start;}
-  .way .lnk:hover{color:var(--charcoal-2);border-color:var(--charcoal-2);}
+  /* FORM */
+  .form-wrap{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:40px;}
+  .form-wrap .form-eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  .form-wrap h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(24px,2.8vw,32px);color:var(--charcoal);line-height:1.1;margin:8px 0 24px;letter-spacing:-.02em;}
+  .cform .field{margin-bottom:18px;}
+  .cform label{display:block;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--charcoal-soft);margin-bottom:8px;}
+  .cform input,.cform textarea{width:100%;font-family:inherit;font-size:15.5px;color:var(--charcoal);background:var(--cream-lite);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;transition:border-color .2s,box-shadow .2s,background .2s;}
+  .cform textarea{resize:vertical;min-height:140px;line-height:1.55;}
+  .cform input::placeholder,.cform textarea::placeholder{color:#9aa6a8;}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--charcoal);background:#fff;box-shadow:0 0 0 4px rgba(52,129,147,.12);}
+  .cform .hp{position:absolute;left:-9999px;}
+  .cform button{margin-top:6px;width:100%;justify-content:center;}
+  .cform button[disabled]{opacity:.6;cursor:default;transform:none;}
+  .form-fineprint{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:16px;}
+  .form-error{display:none;margin-top:16px;background:rgba(53,129,147,.1);border:1px solid rgba(53,129,147,.4);color:#a24a35;border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.5;}
+  .form-error a{color:#a24a35;font-weight:600;border-bottom:1px solid #a24a35;}
+  .form-success{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:8px 0;}
+  .form-success .check{width:56px;height:56px;border-radius:50%;background:var(--charcoal);color:var(--cream);display:grid;place-items:center;font-size:26px;}
+  .form-success h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:600;font-size:28px;color:var(--charcoal);margin:0;}
+  .form-success p{color:var(--muted);font-size:15px;line-height:1.6;}
 
-  /* FAQ */
-  .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:flex-start;}
-  .faq-side h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3.4vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--charcoal);}
-  .faq-side h2 em{font-style:italic;}
-  .faq-side p{color:var(--muted);margin:18px 0 0;font-size:15.5px;line-height:1.6;}
-  .faq-side p a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
-  .faq-list{display:flex;flex-direction:column;gap:10px;}
-  .faq{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;}
-  .faq summary{cursor:pointer;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:18px;font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--charcoal);list-style:none;}
-  .faq summary::-webkit-details-marker{display:none;}
-  .faq summary::after{content:'+';font-size:24px;font-weight:400;color:var(--muted);transition:transform .25s;flex:none;}
-  .faq[open] summary::after{transform:rotate(45deg);}
-  .faq .ans{padding:0 24px 24px;color:var(--charcoal-soft);font-size:15px;line-height:1.65;}
-  .faq .ans a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
+  /* MAP */
+  .map-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;min-height:380px;background:linear-gradient(155deg,#276a79,#123139);display:flex;align-items:flex-end;padding:28px;}
+  .map-wrap::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
+  .map-wrap .map-embed{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1;}.map-wrap .pin{position:relative;z-index:2;background:rgba(253,252,250,.96);color:var(--charcoal);border-radius:18px;padding:20px 22px;max-width:360px;}
+  .map-wrap .pin .nm{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:21px;font-weight:600;}
+  .map-wrap .pin address{font-style:normal;color:var(--muted);font-size:14px;margin-top:4px;line-height:1.4;}
+  .map-wrap .pin .map-link{display:inline-flex;align-items:center;gap:7px;margin-top:14px;background:var(--charcoal);color:var(--cream);padding:10px 16px;border-radius:100px;font-size:13px;font-weight:600;}
+  .map-link:hover{background:var(--charcoal-2);}
+  .tenant-note{margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.55;max-width:760px;font-style:italic;}
 
-  /* CTA */
-  .cta{background:linear-gradient(150deg,#1d4f5a,#123139);border-radius:var(--radius-lg);padding:54px 48px;color:var(--cream);position:relative;overflow:hidden;}
-  .cta::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
-  .cta-inner{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;}
-  .cta h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.08;letter-spacing:-.035em;max-width:500px;}
-  .cta h2 em{font-style:italic;color:#cfc6b4;}
-  .cta p{color:rgba(233,228,224,.78);margin-top:12px;font-size:15.5px;max-width:440px;}
-  .cta .btn-outline{background:transparent;border:1.5px solid rgba(233,228,224,.5);color:var(--cream);}
-  .cta .btn-outline:hover{background:var(--cream);color:var(--charcoal);border-color:var(--cream);}
+  /* HELP ROW */
+  .help{background:var(--charcoal);border-radius:var(--radius-lg);padding:40px 44px;color:var(--cream);display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;}
+  .help h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(22px,2.6vw,30px);line-height:1.1;letter-spacing:-.02em;max-width:520px;}
+  .help h2 em{font-style:italic;color:#cfc6b4;}
+  .help .help-actions{display:flex;gap:11px;flex-wrap:wrap;}
+  .help .btn-light{background:var(--cream);color:var(--charcoal);}
+  .help .btn-outline{background:transparent;border:1.5px solid rgba(233,228,224,.5);color:var(--cream);}
+  .help .btn-outline:hover{background:var(--cream);color:var(--charcoal);border-color:var(--cream);}
 
   /* FOOTER */
   footer{background:var(--charcoal);color:var(--cream);padding:74px 0 36px;margin-top:60px;}
@@ -339,22 +236,15 @@
   @media(max-width:980px){
     .nav-links,.nav-cta{display:none;}
     .nav-toggle{display:flex !important;}
-    .give-wrap{grid-template-columns:1fr;}
-    .give-intro{padding:40px 30px 8px;}
-    .give-card{margin:18px 18px 22px;}
-    .impact-grid{grid-template-columns:1fr 1fr;}
-    .core-inner{grid-template-columns:1fr;gap:22px;text-align:center;}
-    .core-amt{justify-self:center;}
-    .ways-grid{grid-template-columns:1fr;}
-    .faq-grid{grid-template-columns:1fr;gap:28px;}
+    .contact-grid{grid-template-columns:1fr;gap:18px;}
     .foot-top{grid-template-columns:1fr 1fr;}
-    .core-band{padding:40px 28px;}
   }
   @media(max-width:560px){
     .wrap{padding:0 18px;}
     .foot-top{grid-template-columns:1fr;}
-    .impact-grid{grid-template-columns:1fr;}
-    .cta{padding:34px 26px;}
+    .hero-card{padding:28px;min-height:240px;}
+    .form-wrap{padding:28px 22px;}
+    .help{padding:30px 24px;}
   }
 
   /* HAMBURGER + MOBILE MENU (site-wide) */
@@ -445,6 +335,18 @@
     .encph-fig img,.gal img,.prog-photo img,.tmember .photo img,.post-card .ph img,.post-feat img,.sh-art img,.access-photo img,.aud-invite-photo img,.intro-split .ph img,.ocard .mc-bg img,.event .mc-bg img,.trip .mc-bg img,.card-img{transform:scale(1.05);}
     .encph-fig:hover img,.gal:hover img,.prog-photo:hover img,.tmember .photo:hover img,.post-card:hover .ph img,.post-feat:hover img,.sh-art:hover img,.access-photo:hover img,.aud-invite-photo:hover img,.intro-split .ph:hover img,.ocard:hover .mc-bg img,.event:hover .mc-bg img,.trip:hover .mc-bg img,.event-card:hover .card-img,.block:hover .card-img,.block-media:hover .card-img{transform:scale(1);}
   }
+
+  /* ===== Legal pages (Terms / Privacy) ===== */
+  .legal-sec{padding:6px 0 86px;}
+  .legal{max-width:820px;}
+  .legal .eff{font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 28px;}
+  .legal h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:clamp(19px,2.3vw,25px);font-weight:600;color:#22454d;margin:38px 0 12px;letter-spacing:-.01em;}
+  .legal p{font-size:16px;line-height:1.72;color:#22454d;margin:0 0 16px;}
+  .legal ul{margin:0 0 18px;padding-left:22px;}
+  .legal li{font-size:16px;line-height:1.7;color:#22454d;margin:0 0 9px;}
+  .legal a{color:var(--teal);text-decoration:underline;text-underline-offset:2px;}
+  .legal strong{color:#1b3940;font-weight:700;}
+  .legal address{font-style:normal;line-height:1.8;font-size:16px;color:#22454d;margin-top:4px;}
 </style>
 </head>
 <body>
@@ -469,7 +371,7 @@
     </div>
     <div class="nav-cta">
       <a href="/tickets" class="btn btn-dark">Get Tickets →</a>
-      <a href="/donate" class="btn btn-give" aria-current="page">Donate</a>
+      <a href="/donate" class="btn btn-ghost">Donate</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
   </div>
@@ -490,205 +392,61 @@
   <div class="wrap">
     <ol>
       <li><a href="/">Home</a></li>
-      <li aria-current="page">Donate</li>
+      <li aria-current="page">Privacy Policy</li>
     </ol>
   </div>
 </nav>
 
 <main>
-
-  <!-- ===== HERO + GIVE MODULE ===== -->
   <header class="hero">
     <div class="wrap">
-      <div class="give-wrap reveal">
-        <div class="give-intro">
-          <span class="eyebrow">Support Encore · 501(c)(3) Nonprofit</span>
-          <h1>Put a young artist <em>on stage</em></h1>
-          <p>Encore is a nonprofit youth theater. Your gift funds scholarships, productions, and free, accessible programming for hundreds of young performers in southern Utah.</p>
-          <div class="give-trust">
-            <span>Tax-deductible</span>
-            <span>Secure checkout</span>
-            <span>Every gift counts</span>
-          </div>
-        </div>
-
-        <!-- GIVE CARD — selection only; checkout happens on the secure processor.
-             [EMBED] To embed a donation widget instead, replace this .give-card
-             with your provider's <iframe> and delete the page's donate script. -->
-        <div class="give-card">
-          <h2>Make a gift</h2>
-          <div class="freq" role="group" aria-label="Giving frequency">
-            <button type="button" data-freq="once" aria-pressed="true">One-time</button>
-            <button type="button" data-freq="monthly" aria-pressed="false">Monthly</button>
-          </div>
-          <div class="amount-grid" role="group" aria-label="Donation amount">
-            <button type="button" class="amt" data-amt="25">$25</button>
-            <button type="button" class="amt" data-amt="50">$50</button>
-            <button type="button" class="amt" data-amt="100" aria-pressed="true">$100</button>
-            <button type="button" class="amt" data-amt="250">$250</button>
-            <button type="button" class="amt" data-amt="500">$500</button>
-            <button type="button" class="amt other" data-amt="other">Other</button>
-          </div>
-          <div class="custom-wrap" id="customWrap">
-            <div class="custom-field">
-              <span class="cur" aria-hidden="true">$</span>
-              <label for="customAmt" class="sr-only" style="position:absolute;left:-9999px;">Custom amount</label>
-              <input id="customAmt" type="number" min="1" step="1" inputmode="numeric" placeholder="Enter an amount">
-            </div>
-          </div>
-          <a href="https://www.encorepa.org/donate" class="btn give-go" id="giveGo" rel="noopener">Donate $100 →</a>
-          <p class="give-note">You'll complete your gift on our secure donation page. Encore is a 501(c)(3); donations are tax-deductible. <a href="#faq">Questions?</a></p>
+      <div class="hero-card reveal">
+        <div class="hero-inner">
+          <span class="hero-eyebrow">Legal · Encore Performing Arts</span>
+          <h1>Privacy <em>Policy</em></h1>
+          <p>How Encore collects, uses, and protects your personal information.</p>
         </div>
       </div>
     </div>
   </header>
-
-  <!-- ===== WHERE YOUR GIFT GOES ===== -->
-  <section aria-labelledby="impact-h">
+  <section class="legal-sec">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <div>
-          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Your Impact</span>
-          <h2 id="impact-h">Where your gift <em>goes</em></h2>
-        </div>
-        <p class="lead">Every dollar stays close to the stage — supporting the young artists we serve.</p>
-      </div>
-      <div class="impact-grid reveal">
-        <div class="impact">
-          <div class="ic" aria-hidden="true">★</div>
-          <h3>Scholarships</h3>
-          <p>Tuition assistance so cost is never the reason a young performer can't take part.</p>
-        </div>
-        <div class="impact">
-          <div class="ic" aria-hidden="true">▦</div>
-          <h3>Productions</h3>
-          <p>Sets, costumes, scripts, and the stage time that brings a show to life.</p>
-        </div>
-        <div class="impact">
-          <div class="ic" aria-hidden="true">♡</div>
-          <h3>Accessibility</h3>
-          <p>Free sensory-friendly performances and inclusive programming for every audience.</p>
-        </div>
-        <div class="impact">
-          <div class="ic" aria-hidden="true">✎</div>
-          <h3>Mentorship</h3>
-          <p>Classes, coaching, and the life skills young artists carry far beyond the theater.</p>
-        </div>
+      <div class="legal reveal">
+        <p class="eff">Effective Date: March 21, 2025</p>
+        <p>Encore Performing Arts (&ldquo;Encore,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information when you visit our website <strong>www.encorepa.org</strong>, register for programs or events, sign up for communications, or participate in our SMS/text messaging service.</p>
+        <h2>Information We Collect</h2>
+        <p>We may collect the following information when you interact with Encore Performing Arts:</p>
+        <ul><li><strong>Personal Information:</strong> Name, email address, phone number, mailing address, age, emergency contact information, and other information voluntarily provided when registering for programs, purchasing tickets, or signing up for our communications.</li><li><strong>Payment Information:</strong> If you make a payment or donation, we may collect payment details. All payments are processed securely.</li><li><strong>Device and Usage Information:</strong> IP address, browser type, device identifiers, and pages visited on our website, collected automatically through cookies or similar technologies.</li><li><strong>SMS Consent:</strong> When you opt-in to receive text messages from us, we collect your mobile phone number and your consent to receive messages.</li></ul>
+        <h2>How We Use Your Information</h2>
+        <p>Encore Performing Arts uses your information to:</p>
+        <ul><li>Process registrations, ticket purchases, and donations</li><li>Communicate with you about programs, performances, events, and fundraising opportunities</li><li>Send marketing, updates, and SMS/text messages with your consent</li><li>Respond to inquiries or customer service requests</li><li>Improve our website, services, and user experience</li></ul>
+        <h2>Text Messaging (SMS) Policy</h2>
+        <p>By providing your mobile phone number and opting in, you consent to receive text messages from Encore Performing Arts related to program updates, events, ticketing, and promotional offers.</p>
+        <ul><li>Message frequency may vary.</li><li>Message and data rates may apply based on your mobile carrier plan.</li><li>You can opt out of receiving SMS messages at any time by replying <strong>STOP</strong> to any message. You may also contact us at <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> to be removed from our text message list.</li></ul>
+        <p>We do not share your phone number with third parties for marketing purposes.</p>
+        <h2>How We Share Your Information</h2>
+        <p>Encore Performing Arts does not sell or rent your personal information. We may share information only with:</p>
+        <ul><li>Trusted service providers who assist with operations (payment processing, email/SMS delivery, website hosting), bound by confidentiality agreements</li><li>Government or law enforcement agencies if required by law</li></ul>
+        <h2>Your Privacy Rights and Choices</h2>
+        <p>You have the right to:</p>
+        <ul><li>Update or correct your personal information</li><li>Opt out of marketing emails by using the &ldquo;unsubscribe&rdquo; link</li><li>Opt out of SMS communications by replying <strong>STOP</strong></li><li>Request deletion of your personal information (subject to legal obligations)</li></ul>
+        <p>To exercise these rights, contact us at <a href="mailto:hello@encorepa.org">hello@encorepa.org</a>.</p>
+        <h2>Data Security</h2>
+        <p>We implement security measures to protect your personal information. However, no method of transmission or storage is 100% secure. You share information with us at your own risk.</p>
+        <h2>Children&rsquo;s Privacy</h2>
+        <p>We do not knowingly collect personal information from children under the age of 13 without parental consent. If you believe we have inadvertently collected information from a child, please contact us to remove it.</p>
+        <h2>Links to Third-Party Websites</h2>
+        <p>Our website may contain links to external sites. Encore is not responsible for the privacy practices or content of third-party websites.</p>
+        <h2>Changes to This Privacy Policy</h2>
+        <p>Encore Performing Arts may update this policy from time to time. Any changes will be posted on this page with the updated effective date.</p>
+        <h2>Contact Us</h2>
+        <p>For questions about this Privacy Policy or your information, please contact us:</p>
+        <address><strong>Encore Performing Arts</strong><br>950 E Sea Biscuit Way<br>Washington, UT 84780<br><a href="mailto:hello@encorepa.org">hello@encorepa.org</a><br><a href="tel:+14354140049">435-414-0049</a></address>
       </div>
     </div>
   </section>
-
-  <!-- ===== THE CORE ===== -->
-  <section style="padding-top:0;" aria-labelledby="core-h">
-    <div class="wrap">
-      <div class="core-band reveal">
-        <div class="core-inner">
-          <div class="core-amt">
-            <div class="n">$25<span>/mo</span></div>
-            <div class="l">to start</div>
-          </div>
-          <div class="core-copy">
-            <h2 id="core-h">Give monthly with <em>The Core</em></h2>
-            <p>Steady, monthly support is what lets us plan ahead and say yes to more young artists. Join The Core from $25 a month and become part of the community behind every Encore production.</p>
-          </div>
-          <a href="/core-community" class="btn btn-light">Join The Core →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== OTHER WAYS TO GIVE ===== -->
-  <section style="padding-top:0;" aria-labelledby="ways-h">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div>
-          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>More Ways to Give</span>
-          <h2 id="ways-h">Other ways to <em>support us</em></h2>
-        </div>
-        <p class="lead">Giving isn't only about a one-time gift — there are lots of ways to help.</p>
-      </div>
-      <div class="ways-grid reveal">
-        <div class="way">
-          <div class="ic" aria-hidden="true">↻</div>
-          <h3>Monthly giving</h3>
-          <p>Join The Core and provide dependable, year-round support that helps us plan with confidence.</p>
-          <a href="/core-community" class="lnk">Join The Core →</a>
-        </div>
-        <div class="way">
-          <div class="ic" aria-hidden="true">◆</div>
-          <h3>Corporate sponsorship</h3>
-          <p>Partner with Encore to support a season or a specific production, and reach families across southern Utah.</p>
-          <a href="/contact" class="lnk">Start a conversation →</a>
-        </div>
-        <div class="way">
-          <div class="ic" aria-hidden="true">✚</div>
-          <h3>In-kind &amp; volunteer</h3>
-          <p>Donate goods, services, or your time backstage and behind the scenes. We'd love your help.</p>
-          <a href="/contact" class="lnk">Tell us how you'd help →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FAQ ===== -->
-  <section style="padding-top:0;" id="faq" aria-labelledby="faq-h">
-    <div class="wrap">
-      <div class="faq-grid reveal">
-        <div class="faq-side">
-          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>FAQ</span>
-          <h2 id="faq-h">Giving <em>questions</em></h2>
-          <p>Need a hand or want to give another way? Call <a href="tel:+14354140049">(435) 414-0049</a> or <a href="/contact">send a note</a>.</p>
-        </div>
-        <div class="faq-list">
-          <details class="faq" open>
-            <summary>Is my donation tax-deductible?</summary>
-            <!-- [EIN] Add your EIN and any specific receipt language here if you'd like. -->
-            <div class="ans">Yes. Encore Performing Arts is a registered 501(c)(3) nonprofit, so your gift is tax-deductible to the fullest extent allowed by law. You'll receive a receipt for your records.</div>
-          </details>
-          <details class="faq">
-            <summary>Where does my donation go?</summary>
-            <div class="ans">Gifts directly fund scholarships, productions, arts education and mentorship, and free, accessible programming such as our <a href="/sensory-friendly-performances">sensory-friendly performances</a> — giving young artists in southern Utah a place to grow and shine on stage.</div>
-          </details>
-          <details class="faq">
-            <summary>Can I give monthly instead of once?</summary>
-            <div class="ans">Yes. You can make a one-time gift or give monthly. Our monthly program, <a href="/core-community">The Core</a>, starts at $25 a month and provides steady support that helps us plan ahead.</div>
-          </details>
-          <details class="faq">
-            <summary>Can my company sponsor Encore or give in-kind?</summary>
-            <div class="ans">Absolutely. We welcome corporate sponsorships and in-kind donations of goods, services, and volunteer time. <a href="/contact">Contact us</a> or call (435) 414-0049 to discuss the options.</div>
-          </details>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA ===== -->
-  <section style="padding-top:0;">
-    <div class="wrap">
-      <div class="cta reveal">
-        <div class="cta-inner">
-          <div>
-            <h2>Thank you for believing in <em>young artists</em></h2>
-            <p>Your generosity keeps the curtain rising in St. George. We're grateful for every gift.</p>
-          </div>
-          <div style="display:flex;gap:11px;flex-wrap:wrap;">
-            <a href="#top" class="btn btn-light" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Make a gift →</a>
-            <a href="/contact" class="btn btn-outline">Contact Us</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </main>
 
-<!-- ========== FOOTER ========== -->
-
-<!-- [PHOTOS] band -->
-<section class="encph-band" aria-label="Your gift puts Young Artists on stage"><img src="/img/gallery/ensemble-onstage-band.jpg" alt="Encore's full company performing on stage with a live on-stage band"><div class="encph-bandinner"><div class="wrapx"><span>Support Encore</span><h2>Your gift puts Young Artists on stage</h2><p>Encore is a 501c3 nonprofit. Donations fund scholarships, costumes, sets, and the stage itself.</p></div></div></section>
-
-<!-- [PHOTOS] gallery -->
-<section class="encph" aria-label="What your gift builds"><div class="wrap"><div class="encph-head"><span class="encph-kicker">Your impact</span><h2>What your gift builds</h2><p>Every contribution helps a young performer step into the spotlight.</p></div><div class="encph-grid c2"><figure class="encph-fig"><picture><source type="image/webp" srcset="/img/gallery/a-christmas-carol-ensemble.webp"><img src="/img/gallery/a-christmas-carol-ensemble.jpg" alt="The ensemble of Encore's A Christmas Carol" loading="lazy" decoding="async"></picture><figcaption class="encph-cap">The ensemble</figcaption></figure><figure class="encph-fig por"><picture><source type="image/webp" srcset="/img/gallery/soloist-spotlight.webp"><img src="/img/gallery/soloist-spotlight.jpg" alt="A young Encore performer singing in the spotlight" loading="lazy" decoding="async"></picture><figcaption class="encph-cap">In the spotlight</figcaption></figure><figure class="encph-fig por"><picture><source type="image/webp" srcset="/img/gallery/peter-pan-neverland.webp"><img src="/img/gallery/peter-pan-neverland.jpg" alt="A young performer as a Lost Boy in Encore's Peter Pan, pointing across Neverland" loading="lazy" decoding="async"></picture><figcaption class="encph-cap">In Neverland</figcaption></figure><figure class="encph-fig"><picture><source type="image/webp" srcset="/img/gallery/hadestown-company.webp"><img src="/img/gallery/hadestown-company.jpg" alt="The full company in Encore's production of Hadestown" loading="lazy" decoding="async"></picture><figcaption class="encph-cap">Full company</figcaption></figure></div></div></section>
 <footer>
   <div class="wrap">
     <div class="foot-top">
@@ -782,54 +540,6 @@
   t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
-})();
-</script>
-<script>
-(function(){
-  // [DONATE-URL] Replace with your processor's donation link (Donorbox / Givebutter /
-  // Stripe Payment Link). Defaults to the live donate page so the button works today.
-  // If your processor accepts amount/frequency via query string, rename the params below.
-  var DONATE_BASE = 'https://www.encorepa.org/donate';
-
-  var freqBtns=document.querySelectorAll('.freq button');
-  var amtBtns=document.querySelectorAll('.amt');
-  var customWrap=document.getElementById('customWrap');
-  var customAmt=document.getElementById('customAmt');
-  var go=document.getElementById('giveGo');
-  var state={freq:'once',amt:'100'};
-
-  function fmt(v){return v?('$'+v):'';}
-  function update(){
-    var amount = state.amt==='other' ? (customAmt.value||'') : state.amt;
-    var label = amount ? ('Donate '+fmt(amount)+(state.freq==='monthly'?'/mo':'')+' →') : 'Donate →';
-    go.textContent=label;
-    var url=DONATE_BASE;
-    if(amount){
-      var sep = url.indexOf('?')>-1 ? '&' : '?';
-      url += sep+'amount='+encodeURIComponent(amount)+'&frequency='+encodeURIComponent(state.freq);
-    }
-    go.setAttribute('href',url);
-  }
-  freqBtns.forEach(function(b){
-    b.addEventListener('click',function(){
-      freqBtns.forEach(function(x){x.setAttribute('aria-pressed','false');});
-      b.setAttribute('aria-pressed','true');
-      state.freq=b.getAttribute('data-freq');
-      update();
-    });
-  });
-  amtBtns.forEach(function(b){
-    b.addEventListener('click',function(){
-      amtBtns.forEach(function(x){x.setAttribute('aria-pressed','false');});
-      b.setAttribute('aria-pressed','true');
-      state.amt=b.getAttribute('data-amt');
-      if(state.amt==='other'){customWrap.classList.add('show');customAmt.focus();}
-      else{customWrap.classList.remove('show');}
-      update();
-    });
-  });
-  if(customAmt){customAmt.addEventListener('input',update);}
-  update();
 })();
 </script>
 </body>
