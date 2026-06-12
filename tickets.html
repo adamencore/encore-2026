@@ -495,7 +495,7 @@
     </div>
   </section>
 
-  <!-- ========== TICKET CHANGE FORM ========== -->
+  <!-- ========== TICKET ALTERATION (Elfsight) ========== -->
   <section style="padding-top:0;" aria-labelledby="change-h">
     <div class="wrap">
       <div class="sec-head reveal">
@@ -506,68 +506,9 @@
         <p class="lead">Need to switch dates or change your tickets? Fill this out and we'll be in touch shortly.</p>
       </div>
 
-      <form class="form-wrap reveal" id="ticketForm" novalidate>
-        <input type="hidden" name="form_type" value="Ticket Change Request">
-        <div class="hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
-
-        <div class="grid2">
-          <div class="field">
-            <label for="name">Your name <span class="req">*</span></label>
-            <input id="name" name="name" type="text" required autocomplete="name">
-            <div class="errmsg">Please enter your name.</div>
-          </div>
-          <div class="field">
-            <label for="phone">Phone <span class="req">*</span></label>
-            <input id="phone" name="phone" type="tel" required autocomplete="tel">
-            <div class="errmsg">Please enter a phone number.</div>
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="email">Email <span class="req">*</span></label>
-          <input id="email" name="email" type="email" required autocomplete="email">
-          <div class="errmsg">Please enter a valid email.</div>
-        </div>
-
-        <div class="field">
-          <label for="performance">Which performance? <span class="req">*</span></label>
-          <div class="help">Show name and the date you currently have tickets for, if you know it.</div>
-          <input id="performance" name="performance" type="text" required placeholder="e.g. The Lion King — Fri, Jul 31">
-          <div class="errmsg">Please tell us which performance.</div>
-        </div>
-
-        <div class="field">
-          <label for="request_type">What do you need? <span class="req">*</span></label>
-          <select id="request_type" name="request_type" required>
-            <option value="" selected disabled>Select one…</option>
-            <option>Switch performance dates</option>
-            <option>Change number of tickets</option>
-            <option>Refund or exchange question</option>
-            <option>Accessibility / seating request</option>
-            <option>Something else</option>
-          </select>
-          <div class="errmsg">Please choose an option.</div>
-        </div>
-
-        <div class="field">
-          <label for="details">Details</label>
-          <textarea id="details" name="details" placeholder="Tell us what you'd like to change."></textarea>
-        </div>
-
-        <div class="actions">
-          <button type="submit" class="btn" id="submitBtn">Send request →</button>
-          <p class="formnote">We'll reply by email or phone. For anything urgent, call <a href="tel:+14354140049" style="color:var(--charcoal);font-weight:600;">(435) 414-0049</a>.</p>
-        </div>
-      </form>
-
-      <div class="status" id="okPanel" role="status">
-        <h2>Request received</h2>
-        <p>Thanks — we've got your request and our box office will be in touch shortly. For anything urgent, call <a href="tel:+14354140049">(435) 414-0049</a>.</p>
-      </div>
-      <div class="status bad" id="badPanel" role="alert" style="display:none;">
-        <h2>That didn't go through</h2>
-        <p>Something went wrong sending your request. Please try again, or call us at (435) 414-0049 and we'll help right away.</p>
-      </div>
+      <!-- Elfsight Form Builder | Ticket Alteration Request -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-f44dad87-c7ce-4b2e-85c2-23e70fa9f3e4" data-elfsight-app-lazy></div>
     </div>
   </section>
 
@@ -767,48 +708,6 @@
       +'</div>'
       +foot
       +'</div></article>');
-  });
-
-  /* ============================================================
-     TICKET CHANGE FORM — posts to the same Apps Script endpoint as
-     the registration forms (routes by form_type "Ticket Change Request").
-     GO LIVE: paste your deployed Web App URL into ENDPOINT.
-     ============================================================ */
-  const ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
-  const form=document.getElementById('ticketForm');
-  const submitBtn=document.getElementById('submitBtn');
-
-  function validate(){
-    let ok=true,firstBad=null;
-    form.querySelectorAll('[required]').forEach(el=>{
-      const field=el.closest('.field'); let bad;
-      if(el.type==='email') bad=!el.value||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value);
-      else bad=!el.value||!el.value.trim();
-      field.classList.toggle('show-err',bad); el.classList.toggle('invalid',bad);
-      if(bad){ok=false;firstBad=firstBad||field;}
-    });
-    if(firstBad) firstBad.scrollIntoView({behavior:'smooth',block:'center'});
-    return ok;
-  }
-  form.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    if(!validate()) return;
-    submitBtn.disabled=true; submitBtn.textContent='Sending…';
-    try{
-      const data={};
-      new FormData(form).forEach((v,k)=>{ data[k]=v; });
-      if(ENDPOINT.startsWith('PASTE')) throw new Error('Endpoint not configured yet.');
-      await fetch(ENDPOINT,{method:'POST',mode:'no-cors',
-        headers:{'Content-Type':'text/plain;charset=utf-8'},
-        body:JSON.stringify(data)});
-      form.style.display='none';
-      document.getElementById('okPanel').classList.add('ok');
-      document.getElementById('okPanel').scrollIntoView({behavior:'smooth'});
-    }catch(err){
-      submitBtn.disabled=false; submitBtn.textContent='Send request →';
-      const bad=document.getElementById('badPanel'); bad.style.display='block';
-      bad.scrollIntoView({behavior:'smooth'});
-    }
   });
 
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
