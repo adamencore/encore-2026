@@ -183,12 +183,19 @@
   img{display:block;max-width:100%;}
 
   /* NAV */
-  nav.site{position:sticky;top:var(--annc-h,42px);z-index:100;background:rgba(246,245,243,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  nav.site{position:fixed;top:var(--annc-h,42px);left:0;right:0;z-index:200;color:var(--cream);background:transparent;border-bottom:1px solid transparent;transition:background .3s ease,border-color .3s ease,box-shadow .3s ease,color .3s ease;}
+  nav.site.scrolled{color:var(--charcoal);background:rgba(246,245,243,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 8px 30px -22px rgba(13,39,45,.5);}
+  nav.site .nav-cta .btn-dark{background:var(--cream);color:var(--teal);}
+  nav.site.scrolled .nav-cta .btn-dark{background:var(--charcoal);color:var(--cream);}
+  nav.site .nav-cta .btn-ghost{border-color:var(--cream);color:var(--cream);}
+  nav.site .nav-cta .btn-ghost:hover{background:var(--cream);color:var(--charcoal);}
+  nav.site.scrolled .nav-cta .btn-ghost{border-color:var(--charcoal);color:var(--charcoal);}
+  nav.site.scrolled .nav-cta .btn-ghost:hover{background:var(--charcoal);color:var(--cream);}
   .nav-inner{display:flex;align-items:center;height:78px;}
-  .logo{display:flex;align-items:center;gap:11px;font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:600;font-size:25px;letter-spacing:-.035em;color:var(--charcoal);}
+  .logo{display:flex;align-items:center;gap:11px;font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:600;font-size:25px;letter-spacing:-.035em;color:inherit;}
   .logo .mark{width:38px;height:38px;border-radius:50%;background:var(--charcoal);color:var(--cream);display:grid;place-items:center;font-size:20px;font-style:italic;}
   .nav-links{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;margin-left:auto;margin-right:30px;}
-  .nav-links a{color:var(--charcoal);opacity:.82;transition:opacity .2s;}
+  .nav-links a{color:inherit;opacity:.86;transition:opacity .2s;}
   .nav-links a:hover{opacity:1;}
   .nav-cta{display:flex;gap:11px;align-items:center;}
   .btn{border:none;cursor:pointer;font-family:inherit;font-weight:600;border-radius:100px;padding:13px 24px;font-size:14.5px;transition:transform .2s,background .2s,color .2s;display:inline-flex;align-items:center;gap:9px;}
@@ -200,16 +207,24 @@
   .btn-light{background:var(--cream);color:var(--charcoal);}
 
   /* BREADCRUMB */
-  .crumbs{padding:18px 0 0;}
-  .crumbs ol{list-style:none;display:flex;gap:8px;font-size:13px;color:var(--muted);align-items:center;flex-wrap:wrap;}
+  .hero .crumbs{position:absolute;top:calc(78px + 16px);left:0;right:0;z-index:3;padding:0;}
+  .crumbs ol{list-style:none;display:flex;gap:8px;font-size:13px;color:rgba(238,229,222,.85);align-items:center;flex-wrap:wrap;}
   .crumbs li{display:inline-flex;align-items:center;gap:8px;}
-  .crumbs li+li::before{content:'›';color:var(--muted);opacity:.6;}
-  .crumbs a{color:var(--muted);transition:color .2s;}
-  .crumbs a:hover{color:var(--charcoal);}
-  .crumbs [aria-current="page"]{color:var(--charcoal);font-weight:600;}
+  .crumbs li+li::before{content:'›';color:rgba(238,229,222,.85);opacity:.6;}
+  .crumbs a{color:rgba(238,229,222,.85);transition:color .2s;}
+  .crumbs a:hover{color:var(--cream);}
+  .crumbs [aria-current="page"]{color:var(--cream);font-weight:600;}
+  @media(max-width:560px){ .hero .crumbs{display:none;} }
 
   /* HERO */
   .hero{padding:14px 0 0;}
+  /* FULL-WIDTH HERO BANNER */
+  .hero{position:relative;min-height:80vh;min-height:80svh;overflow:hidden;display:flex;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);border-radius:0 0 var(--radius-lg) var(--radius-lg);}
+  .hero .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;}
+  .hero .hero-scrim{position:absolute;inset:0;z-index:0;background:linear-gradient(115deg,rgba(13,39,45,.92),rgba(13,39,45,.6) 58%,rgba(13,39,45,.42)),linear-gradient(0deg,rgba(13,39,45,.7),rgba(13,39,45,0) 50%);}
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:120px 28px 56px;display:flex;flex-direction:column;justify-content:flex-end;gap:0;}
+  .hero-top{margin-bottom:16px;}
+  .hero-top,.hero-bottom{position:relative;z-index:2;}
   .hero-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;min-height:520px;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);padding:40px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 40px 80px -40px rgba(13,39,45,.5);}
   .hero-card::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
   .hero-top,.hero-bottom{position:relative;z-index:2;}
@@ -356,15 +371,16 @@
     .wrap{padding:0 18px;}
     .foot-top{grid-template-columns:1fr;}
     .hero-card{padding:26px;min-height:480px;}
+    .hero-inner{padding:104px 18px 44px;}
+    .hero{min-height:74vh;min-height:74svh;}
     .cta{padding:34px 24px;}
   }
   .brandmark{height:30px;width:auto;display:block}
   .logo .mark{display:none}
 
   /* HAMBURGER + MOBILE MENU (site-wide) */
-  nav.site{color:var(--charcoal);}
   .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:6px;width:46px;height:46px;border:none;background:transparent;cursor:pointer;padding:0;color:inherit;z-index:2;}
-  .nav-toggle span{display:block;height:2px;width:26px;background:var(--teal);border-radius:2px;transition:transform .3s,opacity .2s;margin:0 auto;}
+  .nav-toggle span{display:block;height:2px;width:26px;background:currentColor;border-radius:2px;transition:transform .3s,opacity .2s;margin:0 auto;}
   body.menu-open .nav-toggle span:nth-child(1){transform:translateY(8px) rotate(45deg);}
   body.menu-open .nav-toggle span:nth-child(2){opacity:0;}
   body.menu-open .nav-toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
@@ -515,32 +531,31 @@
 </div>
 
 <!-- ========== BREADCRUMB ========== -->
-<nav class="crumbs" aria-label="Breadcrumb">
-  <div class="wrap">
-    <ol>
-      <li><a href="/">Home</a></li>
-      <li aria-current="page">Page to Stage</li>
-    </ol>
-  </div>
-</nav>
-
 <article>
 
   <!-- ========== HERO ========== -->
   <header class="hero">
-    <div class="wrap">
-      <div class="hero-card reveal"><img src="/img/shows/back-to-the-future.webp" alt="Encore's Page to Stage event — Back to the Future" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;"><div aria-hidden="true" style="position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(13,39,45,.94),rgba(13,39,45,.6) 52%,rgba(13,39,45,.32));"></div>
-        <div class="hero-top">
-          <span class="hero-badge"><span class="dot"></span>Flagship Education Program</span>
-        </div>
-        <div class="hero-bottom">
-          <span class="hero-eyebrow">Workshops + Live Theater · Southern Utah</span>
-          <h1>Page to <em>Stage</em></h1>
-          <p class="sub">Educational workshops paired with group trips to professional productions — for students and community members who want to see, study, and understand how a story travels from the page to the stage.</p>
-          <div class="hero-actions">
-            <a href="#next" class="btn btn-light">See the next trip →</a>
-            <a href="#how" class="btn btn-ghost" style="border-color:rgba(233,228,224,.4);color:var(--cream);">How it works</a>
-          </div>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <div class="wrap">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Page to Stage</li>
+        </ol>
+      </div>
+    </nav>
+    <img class="hero-bg" src="/img/page-to-stage/hero.webp" alt="Encore Young Artists at a Page to Stage live-theater experience" fetchpriority="high">
+    <span class="hero-scrim" aria-hidden="true"></span>
+    <div class="hero-inner reveal">
+      <div class="hero-top">
+        <span class="hero-badge"><span class="dot"></span>Flagship Education Program</span>
+      </div>
+      <div class="hero-bottom">
+        <span class="hero-eyebrow">Workshops + Live Theater · Southern Utah</span>
+        <h1>Page to <em>Stage</em></h1>
+        <p class="sub">Educational workshops paired with group trips to professional productions — for students and community members who want to see, study, and understand how a story travels from the page to the stage.</p>
+        <div class="hero-actions">
+          <a href="#next" class="btn btn-light">See the next trip →</a>
+          <a href="#how" class="btn btn-ghost" style="border-color:rgba(233,228,224,.4);color:var(--cream);">How it works</a>
         </div>
       </div>
     </div>
@@ -1004,6 +1019,18 @@
   t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
+})();
+</script>
+<script>
+(function(){
+  var navEl=document.querySelector('nav.site'), heroEl=document.querySelector('header.hero');
+  if(!navEl) return;
+  if(heroEl){
+    var onScroll=function(){var trigger=heroEl.offsetHeight-90; navEl.classList.toggle('scrolled', window.scrollY>trigger);};
+    onScroll();
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll,{passive:true});
+  } else { navEl.classList.add('scrolled'); }
 })();
 </script>
 </body>
