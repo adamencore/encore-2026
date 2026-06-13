@@ -1,515 +1,665 @@
 {
- "generated": "2026-06-13",
- "source": "2026 Show Line-Up (Google Sheet)",
- "shows": {
-  "lion-king-jr": {
-   "name": "Lion King Jr.",
-   "program": "Signature Series",
-   "color": "#d98a1e",
-   "thumb": "/img/shows/lion-king.webp"
+  "generated": "2026-06-13",
+  "source": "2026 Show Line-Up (Google Sheet)",
+  "shows": {
+    "lion-king-jr": {
+      "name": "Lion King Jr.",
+      "program": "Signature Series",
+      "color": "#d98a1e",
+      "thumb": "/img/shows/lion-king.webp"
+    },
+    "frozen-camp": {
+      "name": "Frozen Camp",
+      "program": "Camp",
+      "color": "#4a90c2",
+      "thumb": null
+    },
+    "lion-king-kids-camp": {
+      "name": "Lion King Kids Camp",
+      "program": "Camp",
+      "color": "#b5611f",
+      "thumb": "/img/shows/lion-king-kids-camp-card.webp"
+    },
+    "aspire-villains": {
+      "name": "Aspire — Villains Night",
+      "program": "Aspire",
+      "color": "#6a4c93",
+      "thumb": "/img/shows/villains-night.webp"
+    },
+    "little-women": {
+      "name": "Little Women",
+      "program": "Signature Series",
+      "color": "#a46d26",
+      "thumb": "/img/shows/little-women.webp"
+    },
+    "peter-pan-jr": {
+      "name": "Peter Pan Jr.",
+      "program": "Emerging Artists",
+      "color": "#36575c",
+      "thumb": "/img/shows/peter-pan-jr/card.webp"
+    },
+    "christmas-carol": {
+      "name": "A Christmas Carol",
+      "program": "Show with a Pro",
+      "color": "#8a3f2a",
+      "thumb": "/img/shows/a-christmas-carol-card.webp"
+    },
+    "november-camp": {
+      "name": "November Camp",
+      "program": "Camp",
+      "color": "#348193",
+      "thumb": "/img/shows/november-camp-og.jpg"
+    },
+    "page-to-stage": {
+      "name": "Page to Stage",
+      "program": "Page to Stage",
+      "color": "#2f5d6b",
+      "thumb": null
+    }
   },
-  "frozen-camp": {
-   "name": "Frozen Camp",
-   "program": "Camp",
-   "color": "#4a90c2",
-   "thumb": null
-  },
-  "lion-king-kids-camp": {
-   "name": "Lion King Kids Camp",
-   "program": "Camp",
-   "color": "#b5611f",
-   "thumb": "/img/shows/lion-king-kids-camp-card.webp"
-  },
-  "aspire-villains": {
-   "name": "Aspire — Villains Night",
-   "program": "Aspire",
-   "color": "#6a4c93",
-   "thumb": "/img/shows/villains-night.webp"
-  },
-  "little-women": {
-   "name": "Little Women",
-   "program": "Signature Series",
-   "color": "#a46d26",
-   "thumb": "/img/shows/little-women.webp"
-  },
-  "peter-pan-jr": {
-   "name": "Peter Pan Jr.",
-   "program": "Emerging Artists",
-   "color": "#36575c",
-   "thumb": "/img/shows/peter-pan-jr/card.webp"
-  },
-  "christmas-carol": {
-   "name": "A Christmas Carol",
-   "program": "Show with a Pro",
-   "color": "#8a3f2a",
-   "thumb": "/img/shows/a-christmas-carol-card.webp"
-  },
-  "november-camp": {
-   "name": "November Camp",
-   "program": "Camp",
-   "color": "#348193",
-   "thumb": "/img/shows/november-camp-og.jpg"
-  }
- },
- "events": [
-  {
-   "show": "lion-king-jr",
-   "type": "Audition",
-   "title": "Vocal auditions",
-   "start": "2026-05-15",
-   "end": null,
-   "time": "5:30–9:30pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Audition",
-   "title": "Dance call",
-   "start": "2026-05-16",
-   "end": null,
-   "time": "10am–12pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Audition",
-   "title": "Callbacks",
-   "start": "2026-05-16",
-   "end": null,
-   "time": "12–2pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Parent meeting",
-   "title": "Parent meeting",
-   "start": "2026-06-01",
-   "end": null,
-   "time": "10:00am",
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Rehearsal",
-   "title": "Rehearsals",
-   "start": "2026-06-01",
-   "end": "2026-07-10",
-   "time": "Mon–Fri 10am–1pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Rehearsal",
-   "title": "Tech week",
-   "start": "2026-07-13",
-   "end": "2026-07-17",
-   "time": null,
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Performance",
-   "title": "Performance",
-   "start": "2026-07-18",
-   "end": null,
-   "time": "5pm & 7pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Performance",
-   "title": "Performance",
-   "start": "2026-07-22",
-   "end": null,
-   "time": "5pm & 7pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Performance",
-   "title": "Performance",
-   "start": "2026-07-24",
-   "end": null,
-   "time": "5pm & 7pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Performance",
-   "title": "Performance",
-   "start": "2026-07-25",
-   "end": null,
-   "time": "5pm & 7pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Performance",
-   "title": "Performance (Sensory 5pm)",
-   "start": "2026-07-20",
-   "end": null,
-   "time": "5pm & 7pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-jr",
-   "type": "Performance",
-   "title": "Performance (ASL 5pm)",
-   "start": "2026-07-23",
-   "end": null,
-   "time": "5pm & 7pm",
-   "note": null
-  },
-  {
-   "show": "frozen-camp",
-   "type": "Audition",
-   "title": "Auditions",
-   "start": "2026-06-05",
-   "end": null,
-   "time": "3–5pm",
-   "note": null
-  },
-  {
-   "show": "frozen-camp",
-   "type": "Rehearsal",
-   "title": "Rehearsals",
-   "start": "2026-06-06",
-   "end": "2026-06-11",
-   "time": null,
-   "note": null
-  },
-  {
-   "show": "frozen-camp",
-   "type": "Rehearsal",
-   "title": "Tech",
-   "start": "2026-06-12",
-   "end": null,
-   "time": "11am–3pm",
-   "note": null
-  },
-  {
-   "show": "frozen-camp",
-   "type": "Performance",
-   "title": "Performance",
-   "start": "2026-06-12",
-   "end": null,
-   "time": "7:00pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-kids-camp",
-   "type": "Audition",
-   "title": "Auditions",
-   "start": "2026-07-06",
-   "end": null,
-   "time": "3–5pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-kids-camp",
-   "type": "Parent meeting",
-   "title": "Parent meeting",
-   "start": "2026-07-07",
-   "end": null,
-   "time": "1:30pm",
-   "note": null
-  },
-  {
-   "show": "lion-king-kids-camp",
-   "type": "Rehearsal",
-   "title": "Rehearsals",
-   "start": "2026-07-07",
-   "end": "2026-07-14",
-   "time": null,
-   "note": null
-  },
-  {
-   "show": "lion-king-kids-camp",
-   "type": "Performance",
-   "title": "Performance",
-   "start": "2026-07-14",
-   "end": null,
-   "time": "7:00pm",
-   "note": null
-  },
-  {
-   "show": "aspire-villains",
-   "type": "Audition",
-   "title": "Vocal auditions",
-   "start": "2026-06-29",
-   "end": null,
-   "time": "4–8pm",
-   "note": null
-  },
-  {
-   "show": "aspire-villains",
-   "type": "Audition",
-   "title": "Dance call",
-   "start": "2026-07-01",
-   "end": null,
-   "time": "4–7pm by age",
-   "note": null
-  },
-  {
-   "show": "aspire-villains",
-   "type": "Rehearsal",
-   "title": "Rehearsals",
-   "start": "2026-08-13",
-   "end": "2026-10-22",
-   "time": "Thursdays 4–6pm",
-   "note": null
-  },
-  {
-   "show": "aspire-villains",
-   "type": "Rehearsal",
-   "title": "Tech week",
-   "start": "2026-10-26",
-   "end": "2026-10-28",
-   "time": null,
-   "note": null
-  },
-  {
-   "show": "aspire-villains",
-   "type": "Performance",
-   "title": "Performance (Sensory)",
-   "start": "2026-10-28",
-   "end": null,
-   "time": null,
-   "note": null
-  },
-  {
-   "show": "aspire-villains",
-   "type": "Performance",
-   "title": "Performance",
-   "start": "2026-10-29",
-   "end": null,
-   "time": "5pm & 7:30pm",
-   "note": null
-  },
-  {
-   "show": "aspire-villains",
-   "type": "Performance",
-   "title": "Performance",
-   "start": "2026-10-30",
-   "end": null,
-   "time": "5pm & 7:30pm",
-   "note": null
-  },
-  {
-   "show": "little-women",
-   "type": "Audition",
-   "title": "Vocal auditions",
-   "start": "2026-07-18",
-   "end": null,
-   "time": "10am–1pm",
-   "note": null
-  },
-  {
-   "show": "little-women",
-   "type": "Audition",
-   "title": "Callbacks",
-   "start": "2026-07-20",
-   "end": null,
-   "time": "10am–12pm",
-   "note": null
-  },
-  {
-   "show": "little-women",
-   "type": "Parent meeting",
-   "title": "Parent launch",
-   "start": "2026-08-01",
-   "end": null,
-   "time": "9:30am",
-   "note": null
-  },
-  {
-   "show": "little-women",
-   "type": "Rehearsal",
-   "title": "Rehearsals",
-   "start": "2026-08-01",
-   "end": "2026-09-04",
-   "time": "Mon–Thurs 6:30–9:30pm, Sat 9am–1pm",
-   "note": null
-  },
-  {
-   "show": "little-women",
-   "type": "Rehearsal",
-   "title": "Tech week",
-   "start": "2026-08-29",
-   "end": "2026-09-04",
-   "time": null,
-   "note": null
-  },
-  {
-   "show": "little-women",
-   "type": "Performance",
-   "title": "Performances",
-   "start": "2026-09-05",
-   "end": "2026-09-12",
-   "time": "7:30pm",
-   "note": null
-  },
-  {
-   "show": "peter-pan-jr",
-   "type": "Audition",
-   "title": "Vocal auditions",
-   "start": "2026-09-21",
-   "end": null,
-   "time": "5:30–9:30pm",
-   "note": null
-  },
-  {
-   "show": "peter-pan-jr",
-   "type": "Audition",
-   "title": "Dance call & callbacks",
-   "start": "2026-09-22",
-   "end": null,
-   "time": "5–9pm",
-   "note": null
-  },
-  {
-   "show": "peter-pan-jr",
-   "type": "Parent meeting",
-   "title": "Parent meeting",
-   "start": "2026-10-03",
-   "end": null,
-   "time": "9:30am",
-   "note": null
-  },
-  {
-   "show": "peter-pan-jr",
-   "type": "Rehearsal",
-   "title": "Rehearsals",
-   "start": "2026-10-05",
-   "end": "2026-11-14",
-   "time": "Mon–Thurs 6:30–9pm, Sat 10am–1pm",
-   "note": null
-  },
-  {
-   "show": "peter-pan-jr",
-   "type": "Rehearsal",
-   "title": "Tech week",
-   "start": "2026-11-14",
-   "end": "2026-11-18",
-   "time": null,
-   "note": null
-  },
-  {
-   "show": "peter-pan-jr",
-   "type": "Performance",
-   "title": "Performance (Sensory 5pm)",
-   "start": "2026-11-19",
-   "end": null,
-   "time": "5pm & 7:30pm",
-   "note": null
-  },
-  {
-   "show": "peter-pan-jr",
-   "type": "Performance",
-   "title": "Performance",
-   "start": "2026-11-20",
-   "end": null,
-   "time": "5pm & 7:30pm",
-   "note": null
-  },
-  {
-   "show": "peter-pan-jr",
-   "type": "Performance",
-   "title": "Performance (ASL 2pm)",
-   "start": "2026-11-21",
-   "end": null,
-   "time": "5pm & 7:30pm",
-   "note": null
-  },
-  {
-   "show": "christmas-carol",
-   "type": "Audition",
-   "title": "Vocal auditions",
-   "start": "2026-09-28",
-   "end": null,
-   "time": "6–9pm",
-   "note": null
-  },
-  {
-   "show": "christmas-carol",
-   "type": "Audition",
-   "title": "Dance call & callbacks",
-   "start": "2026-09-29",
-   "end": null,
-   "time": "6–9pm",
-   "note": null
-  },
-  {
-   "show": "christmas-carol",
-   "type": "Parent meeting",
-   "title": "Parent meeting",
-   "start": "2026-10-05",
-   "end": null,
-   "time": "5:30pm",
-   "note": null
-  },
-  {
-   "show": "christmas-carol",
-   "type": "Rehearsal",
-   "title": "Rehearsals",
-   "start": "2026-10-05",
-   "end": "2026-11-21",
-   "time": "Mon–Thurs + Sat",
-   "note": null
-  },
-  {
-   "show": "christmas-carol",
-   "type": "Rehearsal",
-   "title": "Tech week",
-   "start": "2026-11-23",
-   "end": "2026-11-28",
-   "time": null,
-   "note": null
-  },
-  {
-   "show": "christmas-carol",
-   "type": "Performance",
-   "title": "Performances",
-   "start": "2026-11-30",
-   "end": "2026-12-19",
-   "time": "7:30pm (2pm matinees)",
-   "note": null
-  },
-  {
-   "show": "november-camp",
-   "type": "Audition",
-   "title": "Auditions",
-   "start": "2026-10-31",
-   "end": null,
-   "time": "10am–12pm",
-   "note": null
-  },
-  {
-   "show": "november-camp",
-   "type": "Rehearsal",
-   "title": "Rehearsals",
-   "start": "2026-11-02",
-   "end": "2026-11-06",
-   "time": null,
-   "note": null
-  },
-  {
-   "show": "november-camp",
-   "type": "Rehearsal",
-   "title": "Tech",
-   "start": "2026-11-06",
-   "end": "2026-11-07",
-   "time": null,
-   "note": null
-  },
-  {
-   "show": "november-camp",
-   "type": "Performance",
-   "title": "Performance",
-   "start": "2026-11-07",
-   "end": null,
-   "time": "7:00pm",
-   "note": null
-  }
- ]
+  "events": [
+    {
+      "show": "page-to-stage",
+      "type": "Workshop",
+      "title": "Pippin — workshop",
+      "start": "2026-01-21",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage workshop · Southern Utah University · Cedar City"
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Page to Stage",
+      "title": "Pippin — live show",
+      "start": "2026-01-24",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage trip to see Pippin · Southern Utah University · Cedar City"
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Workshop",
+      "title": "Hadestown — workshop",
+      "start": "2026-03-25",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage workshop · Eccles Theater · Salt Lake City"
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Page to Stage",
+      "title": "Hadestown — live show",
+      "start": "2026-03-28",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage trip to see Hadestown · Eccles Theater · Salt Lake City"
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Workshop",
+      "title": "Come From Away — workshop",
+      "start": "2026-04-22",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage workshop · Pioneer Theatre Company · Salt Lake City"
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Page to Stage",
+      "title": "Come From Away — live show",
+      "start": "2026-04-25",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage trip to see Come From Away · Pioneer Theatre Company · Salt Lake City"
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Audition",
+      "title": "Vocal auditions",
+      "start": "2026-05-15",
+      "end": null,
+      "time": "5:30–9:30pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Audition",
+      "title": "Dance call",
+      "start": "2026-05-16",
+      "end": null,
+      "time": "10am–12pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Audition",
+      "title": "Callbacks",
+      "start": "2026-05-16",
+      "end": null,
+      "time": "12–2pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Parent meeting",
+      "title": "Parent meeting",
+      "start": "2026-06-01",
+      "end": null,
+      "time": "10:00am",
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-06-01",
+      "end": "2026-07-10",
+      "time": "Mon–Fri 10am–1pm",
+      "note": null
+    },
+    {
+      "show": "frozen-camp",
+      "type": "Audition",
+      "title": "Auditions",
+      "start": "2026-06-05",
+      "end": null,
+      "time": "3–5pm",
+      "note": null
+    },
+    {
+      "show": "frozen-camp",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-06-06",
+      "end": "2026-06-11",
+      "time": null,
+      "note": null
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Workshop",
+      "title": "Back to the Future — workshop",
+      "start": "2026-06-10",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage workshop · Eccles Theater · Salt Lake City"
+    },
+    {
+      "show": "frozen-camp",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-06-12",
+      "end": null,
+      "time": "7:00pm",
+      "note": null
+    },
+    {
+      "show": "frozen-camp",
+      "type": "Rehearsal",
+      "title": "Tech",
+      "start": "2026-06-12",
+      "end": null,
+      "time": "11am–3pm",
+      "note": null
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Page to Stage",
+      "title": "Back to the Future — live show",
+      "start": "2026-06-13",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage trip to see Back to the Future · Eccles Theater · Salt Lake City"
+    },
+    {
+      "show": "aspire-villains",
+      "type": "Audition",
+      "title": "Vocal auditions",
+      "start": "2026-06-29",
+      "end": null,
+      "time": "4–8pm",
+      "note": null
+    },
+    {
+      "show": "aspire-villains",
+      "type": "Audition",
+      "title": "Dance call",
+      "start": "2026-07-01",
+      "end": null,
+      "time": "4–7pm by age",
+      "note": null
+    },
+    {
+      "show": "lion-king-kids-camp",
+      "type": "Audition",
+      "title": "Auditions",
+      "start": "2026-07-06",
+      "end": null,
+      "time": "3–5pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-kids-camp",
+      "type": "Parent meeting",
+      "title": "Parent meeting",
+      "start": "2026-07-07",
+      "end": null,
+      "time": "1:30pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-kids-camp",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-07-07",
+      "end": "2026-07-14",
+      "time": null,
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Rehearsal",
+      "title": "Tech week",
+      "start": "2026-07-13",
+      "end": "2026-07-17",
+      "time": null,
+      "note": null
+    },
+    {
+      "show": "lion-king-kids-camp",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-07-14",
+      "end": null,
+      "time": "7:00pm",
+      "note": null
+    },
+    {
+      "show": "little-women",
+      "type": "Audition",
+      "title": "Vocal auditions",
+      "start": "2026-07-18",
+      "end": null,
+      "time": "10am–1pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-07-18",
+      "end": null,
+      "time": "5pm & 7pm",
+      "note": null
+    },
+    {
+      "show": "little-women",
+      "type": "Audition",
+      "title": "Callbacks",
+      "start": "2026-07-20",
+      "end": null,
+      "time": "10am–12pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Performance",
+      "title": "Performance (Sensory 5pm)",
+      "start": "2026-07-20",
+      "end": null,
+      "time": "5pm & 7pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-07-22",
+      "end": null,
+      "time": "5pm & 7pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Performance",
+      "title": "Performance (ASL 5pm)",
+      "start": "2026-07-23",
+      "end": null,
+      "time": "5pm & 7pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-07-24",
+      "end": null,
+      "time": "5pm & 7pm",
+      "note": null
+    },
+    {
+      "show": "lion-king-jr",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-07-25",
+      "end": null,
+      "time": "5pm & 7pm",
+      "note": null
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Workshop",
+      "title": "Les Misérables — workshop",
+      "start": "2026-07-28",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage workshop · Tuacahn Amphitheatre · Ivins"
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Page to Stage",
+      "title": "Les Misérables — live show",
+      "start": "2026-07-29",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage trip to see Les Misérables · Tuacahn Amphitheatre · Ivins"
+    },
+    {
+      "show": "little-women",
+      "type": "Parent meeting",
+      "title": "Parent launch",
+      "start": "2026-08-01",
+      "end": null,
+      "time": "9:30am",
+      "note": null
+    },
+    {
+      "show": "little-women",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-08-01",
+      "end": "2026-09-04",
+      "time": "Mon–Thurs 6:30–9:30pm, Sat 9am–1pm",
+      "note": null
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Page to Stage",
+      "title": "Shakespearience — live show",
+      "start": "2026-08-07",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage trip to see Shakespearience · Utah Shakespeare Festival · Cedar City"
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Workshop",
+      "title": "Shakespearience — workshop",
+      "start": "2026-08-07",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage workshop · Utah Shakespeare Festival · Cedar City"
+    },
+    {
+      "show": "aspire-villains",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-08-13",
+      "end": "2026-10-22",
+      "time": "Thursdays 4–6pm",
+      "note": null
+    },
+    {
+      "show": "little-women",
+      "type": "Rehearsal",
+      "title": "Tech week",
+      "start": "2026-08-29",
+      "end": "2026-09-04",
+      "time": null,
+      "note": null
+    },
+    {
+      "show": "little-women",
+      "type": "Performance",
+      "title": "Performances",
+      "start": "2026-09-05",
+      "end": "2026-09-12",
+      "time": "7:30pm",
+      "note": null
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Workshop",
+      "title": "Our Town — workshop",
+      "start": "2026-09-16",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage workshop · Hale Center Theater"
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Page to Stage",
+      "title": "Our Town — live show",
+      "start": "2026-09-19",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage trip to see Our Town · Hale Center Theater"
+    },
+    {
+      "show": "peter-pan-jr",
+      "type": "Audition",
+      "title": "Vocal auditions",
+      "start": "2026-09-21",
+      "end": null,
+      "time": "5:30–9:30pm",
+      "note": null
+    },
+    {
+      "show": "peter-pan-jr",
+      "type": "Audition",
+      "title": "Dance call & callbacks",
+      "start": "2026-09-22",
+      "end": null,
+      "time": "5–9pm",
+      "note": null
+    },
+    {
+      "show": "christmas-carol",
+      "type": "Audition",
+      "title": "Vocal auditions",
+      "start": "2026-09-28",
+      "end": null,
+      "time": "6–9pm",
+      "note": null
+    },
+    {
+      "show": "christmas-carol",
+      "type": "Audition",
+      "title": "Dance call & callbacks",
+      "start": "2026-09-29",
+      "end": null,
+      "time": "6–9pm",
+      "note": null
+    },
+    {
+      "show": "peter-pan-jr",
+      "type": "Parent meeting",
+      "title": "Parent meeting",
+      "start": "2026-10-03",
+      "end": null,
+      "time": "9:30am",
+      "note": null
+    },
+    {
+      "show": "christmas-carol",
+      "type": "Parent meeting",
+      "title": "Parent meeting",
+      "start": "2026-10-05",
+      "end": null,
+      "time": "5:30pm",
+      "note": null
+    },
+    {
+      "show": "peter-pan-jr",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-10-05",
+      "end": "2026-11-14",
+      "time": "Mon–Thurs 6:30–9pm, Sat 10am–1pm",
+      "note": null
+    },
+    {
+      "show": "christmas-carol",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-10-05",
+      "end": "2026-11-21",
+      "time": "Mon–Thurs + Sat",
+      "note": null
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Workshop",
+      "title": "The Phantom of the Opera — workshop",
+      "start": "2026-10-21",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage workshop · The Smith Center · Las Vegas"
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Page to Stage",
+      "title": "The Phantom of the Opera — live show",
+      "start": "2026-10-24",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage trip to see The Phantom of the Opera · The Smith Center · Las Vegas"
+    },
+    {
+      "show": "aspire-villains",
+      "type": "Rehearsal",
+      "title": "Tech week",
+      "start": "2026-10-26",
+      "end": "2026-10-28",
+      "time": null,
+      "note": null
+    },
+    {
+      "show": "aspire-villains",
+      "type": "Performance",
+      "title": "Performance (Sensory)",
+      "start": "2026-10-28",
+      "end": null,
+      "time": null,
+      "note": null
+    },
+    {
+      "show": "aspire-villains",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-10-29",
+      "end": null,
+      "time": "5pm & 7:30pm",
+      "note": null
+    },
+    {
+      "show": "aspire-villains",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-10-30",
+      "end": null,
+      "time": "5pm & 7:30pm",
+      "note": null
+    },
+    {
+      "show": "november-camp",
+      "type": "Audition",
+      "title": "Auditions",
+      "start": "2026-10-31",
+      "end": null,
+      "time": "10am–12pm",
+      "note": null
+    },
+    {
+      "show": "november-camp",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-11-02",
+      "end": "2026-11-06",
+      "time": null,
+      "note": null
+    },
+    {
+      "show": "november-camp",
+      "type": "Rehearsal",
+      "title": "Tech",
+      "start": "2026-11-06",
+      "end": "2026-11-07",
+      "time": null,
+      "note": null
+    },
+    {
+      "show": "november-camp",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-11-07",
+      "end": null,
+      "time": "7:00pm",
+      "note": null
+    },
+    {
+      "show": "peter-pan-jr",
+      "type": "Rehearsal",
+      "title": "Tech week",
+      "start": "2026-11-14",
+      "end": "2026-11-18",
+      "time": null,
+      "note": null
+    },
+    {
+      "show": "peter-pan-jr",
+      "type": "Performance",
+      "title": "Performance (Sensory 5pm)",
+      "start": "2026-11-19",
+      "end": null,
+      "time": "5pm & 7:30pm",
+      "note": null
+    },
+    {
+      "show": "peter-pan-jr",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-11-20",
+      "end": null,
+      "time": "5pm & 7:30pm",
+      "note": null
+    },
+    {
+      "show": "peter-pan-jr",
+      "type": "Performance",
+      "title": "Performance (ASL 2pm)",
+      "start": "2026-11-21",
+      "end": null,
+      "time": "5pm & 7:30pm",
+      "note": null
+    },
+    {
+      "show": "christmas-carol",
+      "type": "Rehearsal",
+      "title": "Tech week",
+      "start": "2026-11-23",
+      "end": "2026-11-28",
+      "time": null,
+      "note": null
+    },
+    {
+      "show": "christmas-carol",
+      "type": "Performance",
+      "title": "Performances",
+      "start": "2026-11-30",
+      "end": "2026-12-19",
+      "time": "7:30pm (2pm matinees)",
+      "note": null
+    }
+  ]
 }
