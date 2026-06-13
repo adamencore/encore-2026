@@ -466,6 +466,11 @@
   .scard-when{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.86);}
   .scard-title{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;font-style:italic;font-size:1.42rem;line-height:1.07;letter-spacing:-.01em;margin:7px 0 9px;color:#fff;}
   .scard-meta{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.86);}
+  .pts-past-head{margin-top:72px;}
+  .scard.is-past{opacity:.88;}
+  .scard.is-past .scard-media{filter:saturate(.5) brightness(.9);}
+  .scard.is-past:hover{opacity:1;}
+  .scard.is-past:hover .scard-media{filter:none;}
   @media(max-width:900px){.pts-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:560px){.pts-grid{grid-template-columns:1fr;}}
 
@@ -560,45 +565,9 @@
           <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>2026 Season</span>
           <h2 id="next-h">Upcoming <em>opportunities</em></h2>
         </div>
-        <p class="lead">A full season of workshops paired with live professional theater. Seating on each trip is limited and tends to go quickly — reserve early.</p>
+        <p class="lead">A full season of workshops paired with live professional theater, in date order. Seating on each trip is limited and tends to go quickly — reserve early.</p>
       </div>
       <div class="pts-grid reveal">
-      <a class="scard" href="/page-to-stage/pippin" style="--scard-bg:#9c6b1f;" aria-label="Pippin — Southern Utah University · Cedar City">
-        <div class="scard-media" style="background:linear-gradient(150deg,#e0a32e,#9c6b1f 60%,#33240f);">
-          <span class="scard-mono" aria-hidden="true">P</span>
-          <span class="scard-badge">Outreach</span>
-          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
-        </div>
-        <div class="scard-foot">
-          <div class="scard-when">Jan 24, 2026</div>
-          <h3 class="scard-title">Pippin</h3>
-          <div class="scard-meta">Southern Utah University · Cedar City</div>
-        </div>
-      </a>
-      <a class="scard" href="/page-to-stage/hadestown" style="--scard-bg:#7e3f1c;" aria-label="Hadestown — Eccles Theater · Salt Lake City">
-        <div class="scard-media" style="background:linear-gradient(150deg,#c2702e,#7e3f1c 60%,#2c1610);">
-          <span class="scard-mono" aria-hidden="true">H</span>
-          <span class="scard-badge">Live Show</span>
-          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
-        </div>
-        <div class="scard-foot">
-          <div class="scard-when">Mar 28, 2026</div>
-          <h3 class="scard-title">Hadestown</h3>
-          <div class="scard-meta">Eccles Theater · Salt Lake City</div>
-        </div>
-      </a>
-      <a class="scard" href="/page-to-stage/come-from-away" style="--scard-bg:#235b74;" aria-label="Come From Away — Pioneer Theatre Company · Salt Lake City">
-        <div class="scard-media" style="background:linear-gradient(150deg,#3f86a8,#235b74 60%,#10303f);">
-          <span class="scard-mono" aria-hidden="true">C</span>
-          <span class="scard-badge">Live Show</span>
-          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
-        </div>
-        <div class="scard-foot">
-          <div class="scard-when">Apr 25, 2026</div>
-          <h3 class="scard-title">Come From Away</h3>
-          <div class="scard-meta">Pioneer Theatre Company · Salt Lake City</div>
-        </div>
-      </a>
       <a class="scard" href="/page-to-stage/back-to-the-future" style="--scard-bg:#1f6f8f;" aria-label="Back to the Future — Eccles Theater · Salt Lake City">
         <div class="scard-media">
           <img src="/img/shows/back-to-the-future.webp" alt="" loading="lazy">
@@ -685,6 +654,56 @@
       </a>
       </div>
       <p class="aud-note" style="margin-top:24px;">Dates, venues, and fees for the 2026 season are being finalized — a few are still marked proposed or to be announced. <a href="/page-to-stage-registration">Reserve your interest</a> and we'll confirm details as they lock in.</p>
+    </div>
+  </section>
+
+  <section id="past" aria-labelledby="past-h">
+    <div class="wrap">
+      <div class="sec-head reveal pts-past-head">
+        <div>
+          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Archive</span>
+          <h2 id="past-h">Past Page to Stage <em>events</em></h2>
+        </div>
+        <p class="lead">Workshops and live-theater trips that have already wrapped this season.</p>
+      </div>
+      <div class="pts-grid reveal">
+      <a class="scard is-past" href="/page-to-stage/come-from-away" style="--scard-bg:#235b74;" aria-label="Come From Away — Pioneer Theatre Company · Salt Lake City">
+        <div class="scard-media" style="background:linear-gradient(150deg,#3f86a8,#235b74 60%,#10303f);">
+          <span class="scard-mono" aria-hidden="true">C</span>
+          <span class="scard-badge">Live Show</span>
+          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <div class="scard-foot">
+          <div class="scard-when">Apr 25, 2026</div>
+          <h3 class="scard-title">Come From Away</h3>
+          <div class="scard-meta">Pioneer Theatre Company · Salt Lake City</div>
+        </div>
+      </a>
+      <a class="scard is-past" href="/page-to-stage/hadestown" style="--scard-bg:#7e3f1c;" aria-label="Hadestown — Eccles Theater · Salt Lake City">
+        <div class="scard-media" style="background:linear-gradient(150deg,#c2702e,#7e3f1c 60%,#2c1610);">
+          <span class="scard-mono" aria-hidden="true">H</span>
+          <span class="scard-badge">Live Show</span>
+          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <div class="scard-foot">
+          <div class="scard-when">Mar 28, 2026</div>
+          <h3 class="scard-title">Hadestown</h3>
+          <div class="scard-meta">Eccles Theater · Salt Lake City</div>
+        </div>
+      </a>
+      <a class="scard is-past" href="/page-to-stage/pippin" style="--scard-bg:#9c6b1f;" aria-label="Pippin — Southern Utah University · Cedar City">
+        <div class="scard-media" style="background:linear-gradient(150deg,#e0a32e,#9c6b1f 60%,#33240f);">
+          <span class="scard-mono" aria-hidden="true">P</span>
+          <span class="scard-badge">Outreach</span>
+          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+        </div>
+        <div class="scard-foot">
+          <div class="scard-when">Jan 24, 2026</div>
+          <h3 class="scard-title">Pippin</h3>
+          <div class="scard-meta">Southern Utah University · Cedar City</div>
+        </div>
+      </a>
+      </div>
     </div>
   </section>
 
