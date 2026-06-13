@@ -153,7 +153,7 @@
   :root{
     /* Encore global surfaces + universal accent — unchanged across all shows */
     --cream:#e9e4e0;--cream-lite:#f6f5f3;--paper:#fdfcfa;
-    --accent:#358193;--accent-2:#2c6c7d;
+    --accent:var(--show-mid);--accent-2:var(--show-deep);
     --radius:26px;--radius-lg:34px;
 
     /* ===== PER-SHOW THEME — edit ONLY these four to rebrand the page ===== */
@@ -261,7 +261,7 @@
   .tl-step:first-child::before{left:50%;}
   .tl-step:last-child::before{right:50%;}
   .tl-dot{position:relative;z-index:2;width:20px;height:20px;border-radius:50%;background:var(--cream);border:4px solid var(--charcoal);margin-bottom:18px;}
-  .tl-step.key .tl-dot{background:var(--accent);}
+  .tl-step.key .tl-dot{background:var(--show-bright);}
   .tl-when{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:18px;font-weight:600;line-height:1.1;}
   .tl-what{font-size:13.5px;color:rgba(233,228,224,.78);margin-top:6px;line-height:1.45;}
 
