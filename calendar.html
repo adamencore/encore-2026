@@ -418,9 +418,9 @@
   .cd-num{font-size:13px;color:var(--muted);font-weight:600;text-align:right;height:18px;}
   .cd.today .cd-num{background:var(--teal);color:#fff;border-radius:999px;width:23px;height:23px;display:flex;align-items:center;justify-content:center;margin-left:auto;}
   .cd-evs{margin-top:calc(5px + var(--lanes,0)*23px);display:flex;flex-direction:column;gap:3px;}
-  .ev1{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--charcoal);line-height:1.25;outline-offset:2px;}
-  .ev1 .dot{width:8px;height:8px;border-radius:999px;flex:none;}
-  .ev1 .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .ev1{display:flex;align-items:flex-start;gap:6px;font-size:12px;color:var(--charcoal);line-height:1.28;outline-offset:2px;}
+  .ev1 .dot{width:8px;height:8px;border-radius:999px;flex:none;margin-top:4px;}
+  .ev1 .t{white-space:normal;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;}
   .ev-more{font-size:11px;color:var(--muted);font-weight:600;padding-left:2px;}
   .cw-bands{position:absolute;left:0;right:0;top:26px;display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:20px;row-gap:3px;padding:0 3px;pointer-events:none;}
   .band{pointer-events:auto;color:#fff;font-size:11.5px;font-weight:600;padding:0 8px;border-radius:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:20px;line-height:20px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05);outline-offset:2px;}
@@ -703,7 +703,7 @@
         var sing=V.filter(function(e){return !multi(e)&&e.start===ymd(dd);});
         var evs='';
         sing.slice(0,3).forEach(function(e){var c=SHOWS[e.show].color;
-          evs+='<div class="ev1" tabindex="0" '+da(e)+'><span class="dot" style="background:'+c+'"></span><span class="t">'+(e.time?'<b>'+esc(e.time.split(' ')[0])+'</b> ':'')+esc(e.title)+'</span></div>';});
+          evs+='<div class="ev1" tabindex="0" '+da(e)+'><span class="dot" style="background:'+c+'"></span><span class="t">'+(e.time?'<b>'+esc(e.time)+'</b> ':'')+esc(e.title)+'</span></div>';});
         if(sing.length>3) evs+='<div class="ev-more">+'+(sing.length-3)+' more</div>';
         cells+='<div class="cd'+(inM?'':' out')+(isT?' today':'')+'"><div class="cd-num">'+dd.getDate()+'</div><div class="cd-evs">'+evs+'</div></div>';
       });
