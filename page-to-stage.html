@@ -679,58 +679,6 @@
     </div>
   </section>
 
-  <section id="past" aria-labelledby="past-h">
-    <div class="wrap">
-      <div class="sec-head reveal pts-past-head">
-        <div>
-          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Archive</span>
-          <h2 id="past-h">Past Page to Stage <em>events</em></h2>
-        </div>
-        <p class="lead">Workshops and live-theater trips that have already wrapped this season.</p>
-      </div>
-      <div class="pts-grid reveal">
-      <a class="scard is-past" href="/page-to-stage/come-from-away" style="--scard-bg:#235b74;" aria-label="Come From Away — Pioneer Theatre Company · Salt Lake City">
-        <div class="scard-media" style="background:linear-gradient(150deg,#3f86a8,#235b74 60%,#10303f);">
-          <img class="scard-photo" src="/img/page-to-stage/come-from-away.webp" alt="" loading="lazy" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.src.replace(/\.webp$/,'.jpg');}">
-          <span class="scard-mono" aria-hidden="true">C</span>
-          <span class="scard-badge">Live Show</span>
-          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
-        </div>
-        <div class="scard-foot">
-          <div class="scard-when">Apr 25, 2026</div>
-          <h3 class="scard-title">Come From Away</h3>
-          <div class="scard-meta">Pioneer Theatre Company · Salt Lake City</div>
-        </div>
-      </a>
-      <a class="scard is-past" href="/page-to-stage/hadestown" style="--scard-bg:#7e3f1c;" aria-label="Hadestown — Eccles Theater · Salt Lake City">
-        <div class="scard-media" style="background:linear-gradient(150deg,#c2702e,#7e3f1c 60%,#2c1610);">
-          <img class="scard-photo" src="/img/page-to-stage/hadestown.webp" alt="" loading="lazy" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.src.replace(/\.webp$/,'.jpg');}">
-          <span class="scard-mono" aria-hidden="true">H</span>
-          <span class="scard-badge">Live Show</span>
-          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
-        </div>
-        <div class="scard-foot">
-          <div class="scard-when">Mar 28, 2026</div>
-          <h3 class="scard-title">Hadestown</h3>
-          <div class="scard-meta">Eccles Theater · Salt Lake City</div>
-        </div>
-      </a>
-      <a class="scard is-past" href="/page-to-stage/pippin" style="--scard-bg:#9c6b1f;" aria-label="Pippin — Southern Utah University · Cedar City">
-        <div class="scard-media" style="background:linear-gradient(150deg,#e0a32e,#9c6b1f 60%,#33240f);">
-          <img class="scard-photo" src="/img/page-to-stage/pippin.webp" alt="" loading="lazy" onerror="if(this.dataset.fb){this.remove();}else{this.dataset.fb=1;this.src=this.src.replace(/\.webp$/,'.jpg');}">
-          <span class="scard-mono" aria-hidden="true">P</span>
-          <span class="scard-badge">Outreach</span>
-          <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
-        </div>
-        <div class="scard-foot">
-          <div class="scard-when">Jan 24, 2026</div>
-          <h3 class="scard-title">Pippin</h3>
-          <div class="scard-meta">Southern Utah University · Cedar City</div>
-        </div>
-      </a>
-      </div>
-    </div>
-  </section>
 
   <!-- ========== HOW REGISTRATION WORKS (reusable register-then-pay pattern) ========== -->
   <section id="how" aria-labelledby="how-h">
@@ -1029,6 +977,48 @@
   t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
+})();
+</script>
+<script>
+/* Tint each card footer (--scard-bg) to match its own artwork. Same-origin images only.
+   Falls back silently to the hard-coded theme color if no photo or sampling fails. */
+(function(){
+  function relLum(r,g,b){function ch(c){c/=255;return c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4);}return 0.2126*ch(r)+0.7152*ch(g)+0.0722*ch(b);}
+  function deepen(r,g,b){
+    var mean=(r+g+b)/3;                       // boost saturation so the hue reads
+    r=mean+(r-mean)*1.5; g=mean+(g-mean)*1.5; b=mean+(b-mean)*1.5;
+    r=Math.max(0,Math.min(255,r)); g=Math.max(0,Math.min(255,g)); b=Math.max(0,Math.min(255,b));
+    var guard=0;                              // darken until white text is legible
+    while(relLum(r,g,b)>0.16 && guard<80){ r*=0.92; g*=0.92; b*=0.92; guard++; }
+    return 'rgb('+Math.round(r)+','+Math.round(g)+','+Math.round(b)+')';
+  }
+  function sample(img){
+    try{
+      var c=document.createElement('canvas'); c.width=20; c.height=12;
+      var x=c.getContext('2d'); x.drawImage(img,0,0,20,12);
+      var d=x.getImageData(0,0,20,12).data;
+      var rs=0,gs=0,bs=0,w=0,ar=0,ag=0,ab=0,n=0;
+      for(var i=0;i<d.length;i+=4){
+        var r=d[i],g=d[i+1],b=d[i+2],a=d[i+3]; if(a<200)continue;
+        ar+=r; ag+=g; ab+=b; n++;
+        var mx=Math.max(r,g,b),mn=Math.min(r,g,b),sat=mx?(mx-mn)/mx:0, ww=sat*sat+0.04;
+        rs+=r*ww; gs+=g*ww; bs+=b*ww; w+=ww;
+      }
+      if(!n)return null;
+      return w>0?[rs/w,gs/w,bs/w]:[ar/n,ag/n,ab/n];
+    }catch(e){ return null; }
+  }
+  function tint(img){
+    var rgb=sample(img); if(!rgb)return;
+    var card=img.closest('.scard'); if(card) card.style.setProperty('--scard-bg', deepen(rgb[0],rgb[1],rgb[2]));
+  }
+  function init(){
+    Array.prototype.forEach.call(document.querySelectorAll('.scard-photo'),function(img){
+      if(img.complete && img.naturalWidth) tint(img);
+      else img.addEventListener('load',function(){ tint(img); });
+    });
+  }
+  if(document.readyState!=='loading') init(); else document.addEventListener('DOMContentLoaded',init);
 })();
 </script>
 <script>
