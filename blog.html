@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Blog | Encore Performing Arts</title>
+<meta name="description" content="News and stories from Encore Performing Arts — camps, productions, auditions, and life at the Electric Theater in St. George, Utah.">
+<link rel="canonical" href="https://www.encorepa.org/blog">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#348193">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Encore Performing Arts">
+<meta property="og:url" content="https://www.encorepa.org/blog"><meta property="og:title" content="The Encore Blog">
+<meta property="og:description" content="Stories from Encore Performing Arts.">
+<meta property="og:image" content="https://www.encorepa.org/img/blog/matilda-camp/og.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"The Encore Blog","url":"https://www.encorepa.org/blog","publisher":{"@type":"Organization","name":"Encore Performing Arts"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/cabrio.css">
+<style>
+  :root{
+    --teal:#348193;
+    --charcoal:#348193;
+    --charcoal-2:#3c8ea1;
+    --charcoal-soft:#358193;
+    --cream:#e9e4e0;
+    --cream-lite:#f6f5f3;
+    --paper:#fdfcfa;
+    --accent:#358193;
+    --accent-2:#2c6c7d;
+    --line:rgba(21,65,76,.16);
+    --muted:#6b7779;
+    --radius:26px;
+    --radius-lg:34px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Cabrio','Familjen Grotesk',sans-serif;background:var(--cream-lite);color:var(--charcoal);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  ::selection{background:var(--charcoal);color:var(--cream);}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+
+  /* NAV */
+  nav.site{position:sticky;top:var(--annc-h,42px);z-index:100;background:rgba(246,245,243,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;height:78px;}
+  .logo{display:flex;align-items:center;gap:11px;color:var(--charcoal);}
+  .brandmark{height:30px;width:auto;display:block;}
+  .nav-links{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;margin-left:auto;margin-right:30px;}
+  .nav-links a{color:var(--charcoal);opacity:.82;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{display:flex;gap:11px;align-items:center;}
+  .btn{border:none;cursor:pointer;font-family:inherit;font-weight:600;border-radius:100px;padding:13px 24px;font-size:14.5px;transition:transform .2s,background .2s,color .2s;display:inline-flex;align-items:center;gap:9px;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-dark{background:var(--charcoal);color:var(--cream);}
+  .btn-dark:hover{background:var(--charcoal-2);}
+  .btn-ghost{background:transparent;border:1.5px solid var(--charcoal);color:var(--charcoal);}
+  .btn-ghost:hover{background:var(--charcoal);color:var(--cream);}
+  .btn-light{background:var(--cream);color:var(--charcoal);}
+
+  /* BREADCRUMB */
+  .crumbs{padding:18px 0 0;}
+  .crumbs ol{list-style:none;display:flex;gap:8px;font-size:13px;color:var(--muted);align-items:center;flex-wrap:wrap;}
+  .crumbs li{display:inline-flex;align-items:center;gap:8px;}
+  .crumbs li+li::before{content:'›';color:var(--muted);opacity:.6;}
+  .crumbs a:hover{color:var(--charcoal);}
+  .crumbs [aria-current="page"]{color:var(--charcoal);font-weight:600;}
+
+  /* HERO */
+  .hero{padding:14px 0 0;}
+  .hero-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;min-height:420px;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);padding:48px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 40px 80px -40px rgba(13,39,45,.5);}
+  .hero-card::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
+  .hero-inner{position:relative;z-index:2;}
+  .hero-eyebrow{display:inline-block;color:rgba(233,228,224,.75);font-weight:600;letter-spacing:.04em;font-size:14px;margin-bottom:14px;}
+  .hero h1{font-family:'Cabrio','Familjen Grotesk',sans-serif;color:var(--cream);font-weight:500;font-size:clamp(36px,5.4vw,62px);line-height:1.04;letter-spacing:-.035em;max-width:820px;}
+  .hero h1 em{font-style:italic;color:#cfc6b4;}
+  .hero p{color:rgba(233,228,224,.82);max-width:620px;margin:20px 0 24px;font-size:16.5px;line-height:1.6;}
+  .hero-badges{display:flex;gap:12px;flex-wrap:wrap;}
+  .hbadge{display:inline-flex;align-items:center;gap:10px;background:rgba(233,228,224,.12);border:1px solid rgba(233,228,224,.28);color:var(--cream);padding:11px 18px;border-radius:100px;font-size:14px;font-weight:600;backdrop-filter:blur(6px);}
+  .hbadge .em{font-style:italic;font-family:'Cabrio','Familjen Grotesk',sans-serif;}
+
+  /* SECTION SCAFFOLD */
+  section{padding:78px 0;}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);color:var(--charcoal);padding:9px 18px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.04em;}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--charcoal);}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:40px;flex-wrap:wrap;}
+  .sec-head h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3.6vw,46px);line-height:1.05;letter-spacing:-.035em;color:var(--charcoal);max-width:600px;}
+  .sec-head h2 em{font-style:italic;}
+  .sec-head .lead{max-width:380px;color:var(--muted);font-size:15.5px;line-height:1.6;}
+
+  /* SECTION 1 — DEFINITION */
+  .define{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;}
+  .define .statement{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:400;font-size:clamp(22px,2.5vw,29px);line-height:1.4;color:var(--charcoal);letter-spacing:-.02em;}
+  .define .statement em{font-style:italic;}
+  .callouts{display:flex;flex-direction:column;gap:14px;}
+  .callout{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:24px 26px;display:flex;gap:16px;align-items:flex-start;}
+  .callout.free{background:linear-gradient(150deg,#1d4f5a,#123139);border-color:transparent;color:var(--cream);}
+  .callout .ic{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:20px;background:var(--cream);color:var(--charcoal);}
+  .callout.free .ic{background:rgba(233,228,224,.16);color:var(--cream);}
+  .callout h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:21px;font-weight:600;margin-bottom:5px;line-height:1.15;}
+  .callout p{font-size:14.5px;line-height:1.55;color:var(--muted);}
+  .callout.free p{color:rgba(233,228,224,.85);}
+
+  /* VIDEO EMBED (sec 2 + 7) */
+  .video-embed{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:16/9;background:linear-gradient(155deg,#1d4f5a,#0d272d);display:grid;place-items:center;box-shadow:0 30px 70px -42px rgba(13,39,45,.55);}
+  .video-embed::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
+  .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:3;}
+  .video-embed .play{position:relative;z-index:2;width:88px;height:88px;border-radius:50%;background:rgba(246,245,243,.95);color:var(--teal);display:grid;place-items:center;font-size:30px;padding-left:6px;box-shadow:0 16px 40px -16px rgba(0,0,0,.5);}
+  .video-embed .vlabel{position:absolute;z-index:2;left:26px;bottom:24px;color:var(--cream);font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:18px;font-weight:600;text-shadow:0 2px 12px rgba(0,0,0,.4);}
+  .video-note{margin-top:14px;font-size:13px;color:var(--muted);font-style:italic;}
+
+  /* SECTION 3 — UPCOMING */
+  .shows{display:flex;flex-direction:column;gap:14px;}
+  .show-row{display:grid;grid-template-columns:auto 1fr auto;gap:26px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px 28px;transition:transform .2s,box-shadow .2s;}
+  .show-row:hover{transform:translateY(-3px);box-shadow:0 22px 50px -34px rgba(13,39,45,.45);}
+  .show-date{text-align:center;background:var(--cream);border-radius:18px;padding:14px 18px;min-width:96px;}
+  .show-date .mo{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--charcoal-soft);font-weight:700;}
+  .show-date .dy{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:34px;font-weight:600;color:var(--charcoal);line-height:1;}
+  .show-date .yr{font-size:12px;color:var(--muted);margin-top:2px;}
+  .show-main h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:24px;font-weight:600;color:var(--charcoal);line-height:1.1;}
+  .show-main .meta{color:var(--muted);font-size:14.5px;margin-top:6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .show-main .chip{display:inline-flex;align-items:center;gap:6px;background:var(--cream-lite);border:1px solid var(--line);border-radius:100px;padding:4px 12px;font-size:12.5px;font-weight:600;color:var(--charcoal-soft);}
+  .show-row .btn{white-space:nowrap;}
+  .shows-empty{background:var(--paper);border:1px dashed var(--line);border-radius:var(--radius);padding:34px;text-align:center;color:var(--muted);font-size:15px;}
+  .shows-empty a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
+
+  /* SECTION 4 — EMAIL LIST */
+  .signup-band{background:var(--charcoal);border-radius:var(--radius-lg);padding:56px 48px;color:var(--cream);position:relative;overflow:hidden;}
+  .signup-band::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
+  .signup-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;}
+  .signup-inner h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(26px,3.2vw,40px);line-height:1.08;letter-spacing:-.035em;}
+  .signup-inner h2 em{font-style:italic;color:#cfc6b4;}
+  .signup-inner .lead{color:rgba(233,228,224,.8);margin-top:14px;font-size:15.5px;line-height:1.6;max-width:420px;}
+  .signup .row{display:flex;gap:12px;flex-wrap:wrap;}
+  .signup .field{flex:1;min-width:170px;}
+  .signup label{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:rgba(233,228,224,.7);margin-bottom:7px;}
+  .signup input{width:100%;font-family:inherit;font-size:15.5px;color:var(--cream);background:rgba(233,228,224,.1);border:1.5px solid rgba(233,228,224,.28);border-radius:14px;padding:13px 15px;transition:border-color .2s,background .2s;}
+  .signup input::placeholder{color:rgba(233,228,224,.5);}
+  .signup input:focus{outline:none;border-color:var(--cream);background:rgba(233,228,224,.16);}
+  .signup .hp{position:absolute;left:-9999px;}
+  .signup button{margin-top:16px;}
+  .signup .fineprint{font-size:12.5px;color:rgba(233,228,224,.6);margin-top:14px;line-height:1.5;}
+  .signup-success{display:none;}
+  .signup-success.show{display:flex;align-items:center;gap:14px;}
+  .signup-success .check{width:48px;height:48px;border-radius:50%;background:var(--cream);color:var(--charcoal);display:grid;place-items:center;font-size:22px;flex:none;}
+  .signup-success p{color:rgba(233,228,224,.9);font-size:15.5px;line-height:1.5;}
+  .signup-error{display:none;margin-top:14px;font-size:13.5px;color:#ffd9cd;}
+  .signup-error a{color:#ffd9cd;border-bottom:1px solid #ffd9cd;font-weight:600;}
+
+  /* FAQ */
+  .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:flex-start;}
+  .faq-side h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(28px,3.4vw,42px);line-height:1.05;letter-spacing:-.035em;color:var(--charcoal);}
+  .faq-side h2 em{font-style:italic;}
+  .faq-side p{color:var(--muted);margin:18px 0 0;font-size:15.5px;line-height:1.6;}
+  .faq-side p a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
+  .faq-list{display:flex;flex-direction:column;gap:10px;}
+  .faq{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;}
+  .faq summary{cursor:pointer;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;gap:18px;font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:18px;font-weight:600;color:var(--charcoal);list-style:none;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary::after{content:'+';font-size:24px;font-weight:400;color:var(--muted);transition:transform .25s;flex:none;}
+  .faq[open] summary::after{transform:rotate(45deg);}
+  .faq .ans{padding:0 24px 24px;color:var(--charcoal-soft);font-size:15px;line-height:1.65;}
+  .faq .ans a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
+
+  /* SECTION 6 — MISSION + PROGRAM */
+  .mission-feature{background:var(--cream);border-radius:var(--radius-lg);padding:56px 48px;text-align:center;}
+  .mission-feature .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  .mission-feature p{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:400;font-size:clamp(23px,2.9vw,34px);line-height:1.3;color:var(--charcoal);margin:16px auto 0;letter-spacing:-.02em;max-width:880px;}
+  .mission-feature p em{font-style:italic;}
+  .prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;}
+  .prog{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:40px;}
+  .prog .num{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:15px;font-weight:600;color:var(--accent);letter-spacing:.06em;}
+  .prog h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:25px;font-weight:600;color:var(--charcoal);margin:8px 0 14px;line-height:1.12;}
+  .prog p{color:var(--charcoal-soft);font-size:15px;line-height:1.7;}
+  .prog p+p{margin-top:14px;}
+  .prog .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+  .prog .tag{background:var(--cream-lite);border:1px solid var(--line);border-radius:100px;padding:5px 13px;font-size:12.5px;font-weight:600;color:var(--charcoal-soft);}
+
+  /* SECTION 8 — GALLERY */
+  .gallery-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:240px 240px;gap:14px;}
+  .gal{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(150deg,#2f7585,#15414c);}
+  .gal::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
+  .gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
+  .gal.big{grid-row:1 / span 2;background:linear-gradient(155deg,#1d4f5a,#0d272d);}
+  .gal.g2{background:linear-gradient(150deg,#357c8d,#1c4956);}
+  .gal.g3{background:linear-gradient(150deg,#2a6b7a,#123139);}
+  .gal.g4{background:linear-gradient(150deg,#3c8ea1,#1d4f5a);}
+  .gal.g5{background:linear-gradient(150deg,#2f7585,#15414c);}
+  .gal figcaption{position:absolute;left:14px;bottom:14px;z-index:2;background:rgba(246,245,243,.94);color:var(--charcoal);padding:5px 12px;border-radius:100px;font-size:11.5px;font-weight:600;}
+
+  /* CTA */
+  .cta{background:linear-gradient(150deg,#1d4f5a,#123139);border-radius:var(--radius-lg);padding:54px 48px;color:var(--cream);position:relative;overflow:hidden;}
+  .cta::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
+  .cta-inner{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;}
+  .cta h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);line-height:1.08;letter-spacing:-.035em;max-width:500px;}
+  .cta h2 em{font-style:italic;color:#cfc6b4;}
+  .cta p{color:rgba(233,228,224,.78);margin-top:12px;font-size:15.5px;max-width:440px;}
+  .cta .btn-outline{background:transparent;border:1.5px solid rgba(233,228,224,.5);color:var(--cream);}
+  .cta .btn-outline:hover{background:var(--cream);color:var(--charcoal);border-color:var(--cream);}
+
+  /* FOOTER */
+  footer{background:var(--charcoal);color:var(--cream);padding:74px 0 36px;margin-top:60px;}
+  .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:36px;padding-bottom:44px;border-bottom:1px solid rgba(233,228,224,.14);}
+  .foot-brand .logo{color:var(--cream);}
+  .foot-tag{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:23px;line-height:1.3;margin:22px 0 16px;max-width:340px;font-weight:400;}
+  .foot-tag .hl{font-style:italic;color:#cfc6b4;}
+  .foot-loc{color:rgba(233,228,224,.6);font-size:14px;line-height:1.65;}
+  .foot-loc strong{color:var(--cream);font-weight:600;display:block;margin-bottom:4px;}
+  .foot-col h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,228,224,.5);margin-bottom:16px;}
+  .foot-col a{display:block;color:rgba(233,228,224,.85);font-size:14.5px;margin-bottom:10px;}
+  .foot-col a:hover{color:#fff;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;gap:20px;flex-wrap:wrap;}
+  .foot-bottom p{color:rgba(233,228,224,.5);font-size:13.5px;}
+  .foot-social{display:flex;gap:11px;}
+  .foot-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(233,228,224,.2);display:grid;place-items:center;font-size:12.5px;color:var(--cream);}
+  .foot-social a:hover{background:var(--cream);color:var(--charcoal);}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(max-width:980px){
+    .nav-links,.nav-cta{display:none;}
+    .nav-toggle{display:flex !important;}
+    .define{grid-template-columns:1fr;gap:30px;}
+    .signup-inner{grid-template-columns:1fr;gap:26px;}
+    .prog-grid{grid-template-columns:1fr;}
+    .faq-grid{grid-template-columns:1fr;gap:28px;}
+    .show-row{grid-template-columns:auto 1fr;gap:18px;}
+    .show-row .btn{grid-column:1 / -1;justify-content:center;}
+    .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+    .gal.big{grid-row:auto;}
+    .foot-top{grid-template-columns:1fr 1fr;}
+    .mission-feature,.signup-band{padding:40px 28px;}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px;}
+    .foot-top{grid-template-columns:1fr;}
+    .hero-card{padding:28px;min-height:380px;}
+    .cta{padding:34px 26px;}
+    .gallery-grid{grid-template-columns:1fr;}
+    .show-date{min-width:80px;}
+  }
+
+  /* HAMBURGER + MOBILE MENU (site-wide) */
+  nav.site{color:var(--charcoal);}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:6px;width:46px;height:46px;border:none;background:transparent;cursor:pointer;padding:0;color:inherit;z-index:2;}
+  .nav-toggle span{display:block;height:2px;width:26px;background:var(--teal);border-radius:2px;transition:transform .3s,opacity .2s;margin:0 auto;}
+  body.menu-open .nav-toggle span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  body.menu-open .nav-toggle span:nth-child(2){opacity:0;}
+  body.menu-open .nav-toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+  body.menu-open{overflow:hidden;}
+  body.menu-open nav.site{background:transparent !important;border-color:transparent !important;box-shadow:none !important;color:var(--cream);}
+  .mobile-menu{position:fixed;inset:0;z-index:180;background:linear-gradient(165deg,#1d4f5a,#15414c 55%,#0d272d);color:var(--cream);padding:104px 32px 40px;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .32s,transform .32s,visibility .32s;overflow-y:auto;}
+  .mobile-menu>nav{position:static;display:flex;flex-direction:column;}
+  body.menu-open .mobile-menu{opacity:1;visibility:visible;transform:none;}
+  .mobile-menu a{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:clamp(30px,7.5vw,46px);font-weight:500;letter-spacing:-.035em;color:var(--cream);padding:16px 0;border-bottom:1px solid rgba(233,228,224,.16);display:flex;justify-content:space-between;align-items:center;line-height:1;}
+  .mobile-menu a .ar{font-size:24px;opacity:.6;}
+  .mobile-menu .mm-cta{margin-top:30px;border:none;}
+  .mobile-menu .mm-cta a{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:17px;font-weight:600;color:var(--teal);border:none;padding:16px 28px;justify-content:center;}
+  .mobile-menu .mm-foot{margin-top:30px;font-size:14px;color:rgba(233,228,224,.7);line-height:1.6;}
+  .mobile-menu .mm-foot a{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:14px;border:none;padding:0;display:inline;color:#cfc6b4;}
+  .ic svg,.icon svg{display:block;}
+
+  /* === OFFICIAL FOOTER (standardized site-wide) === */
+  footer{background:var(--charcoal);color:var(--cream);padding:80px 0 40px;}
+  .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:40px;padding-bottom:46px;border-bottom:1px solid rgba(233,228,224,.14);}
+  .foot-brand .logo{color:var(--cream);}
+  .foot-brand .logo .mark{background:var(--cream);color:var(--charcoal);}
+  .foot-tag{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:25px;line-height:1.3;margin:24px 0 18px;max-width:340px;font-weight:400;}
+  .foot-tag .hl{font-style:italic;color:#cfc6b4;}
+  .foot-loc{color:rgba(233,228,224,.6);font-size:14px;line-height:1.6;}
+  .foot-loc strong{color:var(--cream);font-weight:600;display:block;margin-bottom:4px;}
+  .foot-col h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,228,224,.5);margin-bottom:18px;}
+  .foot-col a{display:block;color:rgba(233,228,224,.85);font-size:14.5px;margin-bottom:11px;transition:color .2s;}
+  .foot-col a:hover{color:#fff;}
+  .foot-aspire{background:rgba(233,228,224,.08);border:1px solid rgba(233,228,224,.16);border-radius:18px;padding:20px;margin-top:6px;}
+  .foot-aspire .t{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:19px;font-weight:600;margin-bottom:6px;}
+  .foot-aspire p{font-size:13px;color:rgba(233,228,224,.7);line-height:1.5;margin-bottom:12px;}
+  .foot-aspire a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;background:var(--cream);color:var(--charcoal);padding:9px 16px;border-radius:100px;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:30px;gap:20px;flex-wrap:wrap;}
+  .foot-bottom p{color:rgba(233,228,224,.5);font-size:13.5px;}
+  .foot-social{display:flex;gap:12px;}
+  .foot-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(233,228,224,.2);display:grid;place-items:center;font-size:13px;color:var(--cream);transition:all .2s;}
+  .foot-social a:hover{background:var(--cream);color:var(--charcoal);border-color:var(--cream);}
+  .foot-social a svg{width:18px;height:18px;}
+  @media(max-width:980px){.foot-top{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.foot-top{grid-template-columns:1fr;}}
+  /* ANNOUNCEMENT BAR */
+  .annc{position:sticky;top:0;z-index:170;background:#348193;color:#fff;height:42px;display:flex;align-items:center;font-family:'Cabrio','Familjen Grotesk',sans-serif;}
+  .annc.hide{display:none;}
+  .annc-in{max-width:1320px;margin:0 auto;width:100%;padding:0 44px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .annc-link{color:#fff;font-size:14px;font-weight:600;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none;}
+  .annc-link:hover{text-decoration:underline;text-underline-offset:2px;}
+  .annc-x{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;opacity:.85;padding:2px 6px;}
+  .annc-x:hover{opacity:1;}
+  @media(max-width:560px){.annc-link{font-size:13px;}.annc-in{padding:0 38px;}}
+  /* IMGHOVER v2 — site-wide image settle-on-hover (big to small, matches Shop Programs photos) */
+  .encph-fig,.gal,.prog-photo,.tmember .photo,.post-card .ph,.post-feat,.sh-art,.access-photo,.aud-invite-photo,.intro-split .ph,.ocard .mc-bg,.event .mc-bg,.trip .mc-bg,.event-card,.block,.block-media{overflow:hidden;}
+  .encph-fig img,.gal img,.prog-photo img,.tmember .photo img,.post-card .ph img,.post-feat img,.sh-art img,.access-photo img,.aud-invite-photo img,.intro-split .ph img,.ocard .mc-bg img,.event .mc-bg img,.trip .mc-bg img,.card-img{transition:transform 1.1s ease;}
+  @media (hover:hover) and (prefers-reduced-motion:no-preference){
+    .encph-fig img,.gal img,.prog-photo img,.tmember .photo img,.post-card .ph img,.post-feat img,.sh-art img,.access-photo img,.aud-invite-photo img,.intro-split .ph img,.ocard .mc-bg img,.event .mc-bg img,.trip .mc-bg img,.card-img{transform:scale(1.05);}
+    .encph-fig:hover img,.gal:hover img,.prog-photo:hover img,.tmember .photo:hover img,.post-card:hover .ph img,.post-feat:hover img,.sh-art:hover img,.access-photo:hover img,.aud-invite-photo:hover img,.intro-split .ph:hover img,.ocard:hover .mc-bg img,.event:hover .mc-bg img,.trip:hover .mc-bg img,.event-card:hover .card-img,.block:hover .card-img,.block-media:hover .card-img{transform:scale(1);}
+  }
+  .nav-toggle{margin-left:auto;}
+</style>
+<style>
+/* BLOG */
+.blog-hero{padding:42px 0 8px;}
+.blog-hero .pill{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);color:var(--charcoal);padding:9px 18px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.04em;margin-bottom:18px;}
+.blog-hero .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--charcoal);}
+.blog-hero h1{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.03;letter-spacing:-.02em;color:var(--charcoal);}
+.blog-hero p{color:var(--muted);font-size:17px;line-height:1.6;max-width:560px;margin-top:14px;}
+.blog-filters{display:flex;flex-wrap:wrap;gap:9px;margin:26px 0 36px;}
+.blog-filters button{font-family:inherit;font-size:14px;font-weight:600;color:var(--charcoal-soft);background:var(--paper);border:1px solid var(--line);padding:9px 17px;border-radius:100px;cursor:pointer;transition:all .2s;}
+.blog-filters button:hover{transform:translateY(-1px);}
+.blog-filters button[aria-pressed="true"]{background:var(--charcoal);color:var(--cream);border-color:var(--charcoal);}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding-bottom:30px;}
+.post-card{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .25s,box-shadow .25s;}
+.post-card:hover{transform:translateY(-5px);box-shadow:0 30px 60px -40px rgba(21,65,76,.4);}
+.post-card .ph{aspect-ratio:16/10;position:relative;overflow:hidden;background:linear-gradient(150deg,var(--charcoal-2),var(--charcoal-soft));}
+.post-card .ph img{width:100%;height:100%;object-fit:cover;display:block;}
+.post-card .ph .catt{position:absolute;top:14px;left:14px;background:rgba(253,252,250,.94);color:var(--charcoal);font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:6px 12px;border-radius:100px;}
+.post-card .body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1;}
+.post-card .meta{font-size:12.5px;color:var(--muted);letter-spacing:.03em;margin-bottom:9px;}
+.post-card h2{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:21px;font-weight:600;line-height:1.18;color:var(--charcoal);margin-bottom:10px;}
+.post-card p{font-size:14px;color:var(--charcoal-soft);line-height:1.55;flex:1;}
+.post-card .more{margin-top:16px;font-weight:600;font-size:14px;color:var(--accent);display:inline-flex;align-items:center;gap:7px;}
+.post-card:hover .more{gap:12px;}
+.post-card a.cardlink{position:absolute;inset:0;z-index:3;}
+.pc-wrap{position:relative;}
+/* POST PAGE */
+.post-wrap{max-width:760px;margin:0 auto;padding:0 28px;}
+.post-head{padding:40px 0 0;}
+.post-head .crumbs{font-size:13px;color:var(--muted);margin-bottom:22px;}
+.post-head .crumbs a{color:var(--muted);}.post-head .crumbs a:hover{color:var(--charcoal);}
+.post-head .catt{display:inline-block;background:var(--cream);border:1px solid var(--line);color:var(--charcoal);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:6px 13px;border-radius:100px;margin-bottom:18px;}
+.post-head h1{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:600;font-size:clamp(30px,4.6vw,50px);line-height:1.06;letter-spacing:-.02em;color:var(--charcoal);}
+.post-head .byline{color:var(--muted);font-size:14.5px;margin-top:16px;}
+.post-feat{margin:30px auto 0;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9;background:linear-gradient(150deg,var(--charcoal-2),var(--charcoal-soft));}
+.post-feat img{width:100%;height:100%;object-fit:cover;display:block;}
+.post-feat .phn{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.8);font-size:14px;font-weight:600;text-align:center;padding:24px;}
+.post-body{padding:14px 0 10px;}
+.post-body p{font-size:17.5px;line-height:1.75;color:var(--charcoal-soft);margin:22px 0;}
+.post-body p:first-child{margin-top:30px;}
+.post-note{background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:20px 22px;color:var(--charcoal-soft);font-size:14.5px;line-height:1.6;margin:30px 0;}
+.post-foot{border-top:1px solid var(--line);margin-top:40px;padding:28px 0 10px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;}
+.post-foot a{font-weight:600;color:var(--accent);}
+.post-back{margin:20px 0 0;}
+@media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:620px){.blog-grid{grid-template-columns:1fr;}}
+</style>
+<style>
+.blog-hero{max-width:1120px;margin:0 auto;padding:48px 28px 6px;}
+.blog-hero .eyebrow{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:700;color:var(--accent);font-size:14px;letter-spacing:.02em;}
+.blog-hero h1{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.04;letter-spacing:-.02em;color:var(--charcoal);margin:12px 0 0;}
+.blog-hero p{color:var(--muted);font-size:17px;line-height:1.6;max-width:560px;margin:16px 0 0;}
+.post-grid{max-width:1120px;margin:34px auto 72px;padding:0 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.post-card{position:relative;}
+.post-card .ph img{transition:transform 1.1s ease;}
+@media(max-width:900px){.post-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.post-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+
+<nav class="crumbs" aria-label="Breadcrumb"><div class="wrap"><ol><li><a href="/">Home</a></li><li aria-current="page">Blog</li></ol></div></nav>
+<main>
+<header class="blog-hero reveal"><div class="eyebrow">The Encore Blog</div><h1>Stories from Encore</h1><p>Behind the scenes of our camps, productions, and auditions — and the Young Artists who make it all happen.</p></header>
+<div class="post-grid"><article class="post-card reveal"><div class="ph"><img src="/img/blog/a-magical-week-our-frozen-jr-camp.jpg" alt="A Magical Week: Our Frozen Jr. Musical Theater Camp" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Education</span></div><div class="body"><div class="meta">June 15, 2026</div><h2>A Magical Week: Our Frozen Jr. Musical Theater Camp</h2><p>We closed the curtain on our Frozen Jr. Musical Theater Camp — a week of music, character, and community, ending on the Electric Theater stage.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/a-magical-week-our-frozen-jr-camp" aria-label="A Magical Week: Our Frozen Jr. Musical Theater Camp"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/illuminate-takes-the-stage-at-disney-california-adventure.jpg" alt="Illuminate Takes the Stage at Disney California Adventure" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Aspire</span></div><div class="body"><div class="meta">June 1, 2026</div><h2>Illuminate Takes the Stage at Disney California Adventure</h2><p>Encore’s Illuminate touring ensemble performed at Disney California Adventure — a milestone trip for our Aspire performers.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/illuminate-takes-the-stage-at-disney-california-adventure" aria-label="Illuminate Takes the Stage at Disney California Adventure"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/matilda-camp/dance-group.jpg" alt="Matilda Jr. Musical Theater Camp Kicks Off with Energy and Excitement" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Education</span></div><div class="body"><div class="meta">April 24, 2026</div><h2>Matilda Jr. Musical Theater Camp Kicks Off with Energy and Excitement</h2><p>Encore&#x27;s Matilda Jr. Musical Theater Camp gives Young Artists ages 8–11 their first taste of theater — opening week, new friendships, and the April…</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/matilda-jr-musical-theater-camp-kicks-off-with-energy-and-excitement" aria-label="Matilda Jr. Musical Theater Camp Kicks Off with Energy and Excitement"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/aspires-spring-2026-bright-lights-of-broadway-a-spectacular-semester.jpg" alt="Aspire’s Spring 2026 Bright Lights of Broadway — A Spectacular Semester" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Aspire</span></div><div class="body"><div class="meta">April 24, 2026</div><h2>Aspire’s Spring 2026 Bright Lights of Broadway — A Spectacular Semester</h2><p>Aspire Performing Co. closed out a spectacular spring semester with a Bright Lights of Broadway showcase.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/aspires-spring-2026-bright-lights-of-broadway-a-spectacular-semester" aria-label="Aspire’s Spring 2026 Bright Lights of Broadway — A Spectacular Semester"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/launch-day-matilda-jr-begins.jpg" alt="Launch Day: Matilda Jr. Begins" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Productions</span></div><div class="body"><div class="meta">April 6, 2026</div><h2>Launch Day: Matilda Jr. Begins</h2><p>There is something electric about the first day of a new production. On Launch Day, our cast, families, and creative team came together to celebrat…</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/launch-day-matilda-jr-begins" aria-label="Launch Day: Matilda Jr. Begins"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/93rlkkck5v3vffry160dzopvsu5okq.jpg" alt="Hadestown Page to Stage: From Our Stage to Broadway’s Best" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Page to Stage</span></div><div class="body"><div class="meta">March 30, 2026</div><h2>Hadestown Page to Stage: From Our Stage to Broadway’s Best</h2><p>Our Page to Stage students went from performing Hadestown on our own stage to experiencing Broadway’s best.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/93rlkkck5v3vffry160dzopvsu5okq" aria-label="Hadestown Page to Stage: From Our Stage to Broadway’s Best"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/journey-to-oz-a-magical-camp-experience.jpg" alt="Journey to Oz: A Magical Camp Experience" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Education</span></div><div class="body"><div class="meta">March 24, 2026</div><h2>Journey to Oz: A Magical Camp Experience</h2><p>A magical camp experience down the yellow brick road with our youngest performers.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/journey-to-oz-a-magical-camp-experience" aria-label="Journey to Oz: A Magical Camp Experience"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/anastasia-journey-complete.jpg" alt="Anastasia: A Journey Complete" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Productions</span></div><div class="body"><div class="meta">March 24, 2026</div><h2>Anastasia: A Journey Complete</h2><p>Our production of Anastasia came to a triumphant close on the Electric Theater stage.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/anastasia-journey-complete" aria-label="Anastasia: A Journey Complete"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/page-to-stage-pippin-at-shakespeare-festival.jpg" alt="Page to Stage: Pippin at Shakespeare Festival" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Page to Stage</span></div><div class="body"><div class="meta">February 2, 2026</div><h2>Page to Stage: Pippin at Shakespeare Festival</h2><p>Page to Stage students attended Pippin at the Utah Shakespeare Festival for a day of professional theatre.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/page-to-stage-pippin-at-shakespeare-festival" aria-label="Page to Stage: Pippin at Shakespeare Festival"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/a-night-to-remember-our-largest-sensory-friendly-performance-yet.jpg" alt="A Night to Remember: Our Largest Sensory-Friendly Performance Yet" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Accessibility</span></div><div class="body"><div class="meta">January 31, 2026</div><h2>A Night to Remember: Our Largest Sensory-Friendly Performance Yet</h2><p>Over 120 community members filled the Electric Theater for Encore’s largest sensory-friendly performance — a free, inclusive showing of Shrek the M…</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/a-night-to-remember-our-largest-sensory-friendly-performance-yet" aria-label="A Night to Remember: Our Largest Sensory-Friendly Performance Yet"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/creating-space-for-every-voice-inside-our-shrek-the-musical-kids-production.jpg" alt="Creating Space for Every Voice: Inside Our Shrek the Musical Kids Production" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Productions</span></div><div class="body"><div class="meta">January 24, 2026</div><h2>Creating Space for Every Voice: Inside Our Shrek the Musical Kids Production</h2><p>When we announced auditions for Shrek the Musical Kids, we knew we had something special brewing. What we didn’t expect was the overwhelming respon…</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/creating-space-for-every-voice-inside-our-shrek-the-musical-kids-production" aria-label="Creating Space for Every Voice: Inside Our Shrek the Musical Kids Production"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/anastasia-off-to-a-great-start.jpg" alt="Anastasia: Off to a Great Start" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Productions</span></div><div class="body"><div class="meta">January 15, 2026</div><h2>Anastasia: Off to a Great Start</h2><p>Encore is off to a great start with Anastasia! This sweeping musical adventure has assembled a great cast and an amazing team of leaders ready to b…</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/anastasia-off-to-a-great-start" aria-label="Anastasia: Off to a Great Start"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/encore-performing-arts-2025-year-in-review.jpg" alt="Encore Performing Arts | 2025 Year in Review" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">News</span></div><div class="body"><div class="meta">December 31, 2025</div><h2>Encore Performing Arts | 2025 Year in Review</h2><p>2025 was a remarkable year at Encore — from classic productions like Alice in Wonderland and Les Misérables Teen Edition to professional experience…</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/encore-performing-arts-2025-year-in-review" aria-label="Encore Performing Arts | 2025 Year in Review"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/a-christmas-carol-2025-wrap-cast-party.jpg" alt="A Christmas Carol 2025 Wrap Cast Party" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Productions</span></div><div class="body"><div class="meta">December 23, 2025</div><h2>A Christmas Carol 2025 Wrap Cast Party</h2><p>One of Encore’s favorite traditions is celebrating each production with a cast party. After A Christmas Carol, the cast and creative team gathered…</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/a-christmas-carol-2025-wrap-cast-party" aria-label="A Christmas Carol 2025 Wrap Cast Party"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/a-meaningful-understudy-night-at-encore.jpg" alt="A Meaningful Understudy Night at Encore" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Productions</span></div><div class="body"><div class="meta">December 19, 2025</div><h2>A Meaningful Understudy Night at Encore</h2><p>Understudy Night gives our hardworking understudies their moment in the spotlight — a meaningful Encore tradition.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/a-meaningful-understudy-night-at-encore" aria-label="A Meaningful Understudy Night at Encore"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/page-to-stage-noises-off-at-pioneer-theatre-company.jpg" alt="Page to Stage: Noises Off at Pioneer Theatre Company" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Page to Stage</span></div><div class="body"><div class="meta">December 19, 2025</div><h2>Page to Stage: Noises Off at Pioneer Theatre Company</h2><p>Page to Stage students traveled to Pioneer Theatre Company to experience the farce Noises Off performed by professionals.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/page-to-stage-noises-off-at-pioneer-theatre-company" aria-label="Page to Stage: Noises Off at Pioneer Theatre Company"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/chitty-chitty-bang-bang-jr-was-a-hit.jpg" alt="Chitty Chitty Bang Bang Jr. Was a Hit!" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Productions</span></div><div class="body"><div class="meta">December 4, 2025</div><h2>Chitty Chitty Bang Bang Jr. Was a Hit!</h2><p>Encore’s Chitty Chitty Bang Bang Jr. took flight, thrilling audiences with lively performances, imaginative choreography, and heartfelt storytellin…</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/chitty-chitty-bang-bang-jr-was-a-hit" aria-label="Chitty Chitty Bang Bang Jr. Was a Hit!"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/page-to-stage-the-lion-kingnbspat-the-smith-center.jpg" alt="Page to Stage: The Lion King at The Smith Center" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Page to Stage</span></div><div class="body"><div class="meta">December 4, 2025</div><h2>Page to Stage: The Lion King at The Smith Center</h2><p>Encore’s Page to Stage students traveled to Las Vegas to see The Lion King at The Smith Center — a day filled with music, movement, and unforgettab…</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/page-to-stage-the-lion-kingnbspat-the-smith-center" aria-label="Page to Stage: The Lion King at The Smith Center"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/opening-the-story-table-work-for-a-christmas-carol-a-new-musical.jpg" alt="Opening the Story: Table Work for A Christmas Carol — A New Musical" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Productions</span></div><div class="body"><div class="meta">October 18, 2025</div><h2>Opening the Story: Table Work for A Christmas Carol — A New Musical</h2><p>Before staging begins, the cast gathers around the table to dig into the script. Here’s a look at table work for A Christmas Carol — A New Musical.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/opening-the-story-table-work-for-a-christmas-carol-a-new-musical" aria-label="Opening the Story: Table Work for A Christmas Carol — A New Musical"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/spotlight-on-aspire-performing-cos-touring-ensemble.jpg" alt="Spotlight on Aspire Performing Co.’s Touring Ensemble" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Aspire</span></div><div class="body"><div class="meta">October 11, 2025</div><h2>Spotlight on Aspire Performing Co.’s Touring Ensemble</h2><p>A spotlight on Illuminate, Aspire Performing Co.’s audition-based touring ensemble.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/spotlight-on-aspire-performing-cos-touring-ensemble" aria-label="Spotlight on Aspire Performing Co.’s Touring Ensemble"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/kicking-off-chitty-chitty-bang-bang.jpg" alt="Kicking Off Chitty Chitty Bang Bang" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Productions</span></div><div class="body"><div class="meta">October 8, 2025</div><h2>Kicking Off Chitty Chitty Bang Bang</h2><p>The cast of Chitty Chitty Bang Bang Jr. gathered for their first rehearsal to kick off the production.</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/kicking-off-chitty-chitty-bang-bang" aria-label="Kicking Off Chitty Chitty Bang Bang"></a></article>
+  <article class="post-card reveal"><div class="ph"><img src="/img/blog/the-historic-electric-theater-in-st-george-utah.jpg" alt="The Historic Electric Theater in St. George, Utah" loading="lazy" onerror="this.style.display=&quot;none&quot;"><span class="catt">Our Home</span></div><div class="body"><div class="meta">June 27, 2024</div><h2>The Historic Electric Theater in St. George, Utah</h2><p>The story of the 1911 Electric Theater — southern Utah’s first motion picture house, the first air-conditioned building in St. George, and Encore’s…</p><span class="more">Read more →</span></div><a class="cardlink" href="/blog/the-historic-electric-theater-in-st-george-utah" aria-label="The Historic Electric Theater in St. George, Utah"></a></article>
+</div>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="/" class="logo" aria-label="Encore Performing Arts — Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 364.601 74.455" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><path d="M362.586,63.803c0,5.315-2.657,7.97-7.97,7.97-5.642,0-8.462-2.656-8.462-7.97s2.82-7.972,8.462-7.972c5.314,0,7.97,2.658,7.97,7.972Zm-10.956-13.779c-1.297-8.63-2.381-15.432-3.244-20.403-.866-4.972-1.569-8.838-2.108-11.6-.542-2.761-.919-4.833-1.136-6.214-.216-1.38-.323-2.797-.323-4.246,0-5.04,3.295-7.561,9.891-7.561s9.891,2.521,9.891,7.561c0,1.449-.108,2.866-.323,4.246-.219,1.381-.624,3.453-1.218,6.214-.594,2.762-1.434,6.628-2.513,11.6-1.082,4.971-2.432,11.773-4.053,20.403h-4.865Z"/><path d="M21.748,52.934c2.901,8.596,14.396,18.849,31.692,3.418,1.035-.932,2.589,.31,1.968,1.449-3.314,6.318-10.874,15.742-26.306,15.742C13.152,73.544,0,61.634,0,46.927c0-14.81,12.946-26.72,28.999-26.616h.311c12.945-.104,23.923,7.871,27.547,18.745,.415,1.346-.31,2.796-1.657,3.211l-33.452,10.667Zm14.5-9.217c.828-.311,1.346-1.242,1.139-2.072-1.761-8.285-5.8-17.295-11.807-16.259-.103,0-.311,.103-.414,.103-7.353,1.865-6.731,16.26-4.868,23.199l15.949-4.971Z"/><path d="M125.058,73.026c-7.664,2.693-25.892,3.625-25.892-16.467v-17.814c0-3.21-1.346-9.217-7.975-9.838-5.282-.414-10.045,5.075-10.045,9.735v24.441c0,.621-.311,6.525,6.11,7.146,.518,.103,1.139,.621,1.139,1.346s-.518,1.346-1.243,1.346h-31.898c-.725,0-1.346-.621-1.346-1.346s.517-1.243,1.242-1.346c3.625-.414,6.007-3.003,6.111-6.939v-29.827s.103-5.489-5.697-5.282c-.931,0-1.657-.621-1.657-1.554,0-.724,.517-1.346,1.242-1.449l25.996-4.039v6.525s4.764-6.628,16.259-6.525c10.668,.207,21.645,6.835,21.645,17.814l-.103,21.437c0,11.289,6.11,12.635,6.11,12.635Z"/><path d="M179.473,54.701c-3.314,6.318-13.038,18.843-28.468,18.843-15.949,0-29.103-11.91-29.103-26.617,0-14.81,12.945-26.72,28.999-26.616h.31c7.25-.104,13.982,2.486,19.056,6.524,7.665,6.318,3.728,12.428-3.935,13.879h-.311c-3.624,.517-7.145-1.658-8.388-5.075-2.176-6.111-5.594-10.979-10.15-10.253-.104,0-.31,0-.414,.103-8.803,2.693-6.11,21.024-3.417,27.445,4.038,9.735,18.319,14.714,33.854,.318,1.036-.932,2.59,.31,1.968,1.449Z"/><path d="M234.997,47.031c0,15.121-13.152,27.341-29.102,27.341s-29.103-12.22-29.103-27.341,12.946-27.341,29-27.341h.31c15.948,0,28.895,12.22,28.895,27.341Zm-19.885,0c0-6.732-1.243-22.371-9.01-22.371h-.414c-7.768,0-9.011,15.638-9.011,22.371s1.243,22.371,9.011,22.371h.414c7.767,0,9.01-15.639,9.01-22.371Z"/><path d="M278.264,39.471c-.31,.104-.724,.104-1.139,.104-4.141,0-7.457-3.314-7.457-7.457,0-1.864,.622-3.521,1.762-4.868-4.869-.207-12.118,7.25-12.118,13.568v22.266c0,.621-.31,6.525,6.11,7.249,.725,0,1.139,.622,1.139,1.243v.103c0,.725-.517,1.243-1.242,1.243h-31.899c-.725,0-1.345-.518-1.345-1.346,0-.621,.517-1.243,1.242-1.243,6.214-.724,6.11-6.524,6.11-6.938v-29.931s.104-5.282-5.696-5.282c-.828,0-1.554-.517-1.657-1.346-.104-.828,.517-1.554,1.242-1.657l25.995-4.039v6.628s5.8-7.871,16.259-6.524c11.703,1.449,11.393,17.606,2.693,18.227Z"/><path d="M305.71,52.934c2.9,8.596,14.396,18.849,31.691,3.418,1.036-.932,2.59,.31,1.969,1.449-3.314,6.318-10.875,15.742-26.306,15.742-15.949,0-29.103-11.91-29.103-26.617,0-14.81,12.946-26.72,29-26.616h.31c12.946-.104,23.924,7.871,27.548,18.745,.414,1.346-.311,2.796-1.657,3.211l-33.452,10.667Zm14.499-9.217c.828-.311,1.347-1.242,1.139-2.072-1.76-8.285-5.8-17.295-11.806-16.259-.104,0-.311,.103-.414,.103-7.353,1.865-6.732,16.26-4.869,23.199l15.949-4.971Z"/></svg></a>
+        <div class="foot-tag">Inspiring discovery & <span class="hl">imagination</span> through exploration and play.</div>
+        <div class="foot-loc">
+          <strong>Visit us</strong>
+          The Historic Electric Theater<br>
+          68 E Tabernacle St · St. George, UT<br>
+          <a href="tel:+14354140049" style="color:#cfc6b4;">(435) 414-0049</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="/calendar">What's On</a>
+        <a href="/programs">Programs by Age</a>
+        <a href="/sensory-friendly-performances">Sensory-Friendly</a><a href="/asl-interpreted-performances">ASL Interpreted</a>
+        <a href="/page-to-stage">Page to Stage</a>
+        <a href="/past-shows">Past Shows</a>
+        <a href="/blog">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h5>Support</h5>
+        <a href="/donate">Donate</a>
+        <a href="/core-community">Join The Core</a>
+        <a href="/encore-scholarship-application">Apply for a Scholarship</a>
+        <a href="/contact">Contact Us</a>
+        
+      </div>
+      <div class="foot-col">
+        <h5>Aspire Performing Co.</h5>
+        <div class="foot-aspire"><a href="/aspire-performing-co" aria-label="Aspire Performing Co." style="background:none;border:0;padding:0;border-radius:0;display:inline-block;line-height:0;width:auto;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 356.988 357.54" fill="currentColor" aria-hidden="true" focusable="false" style="width:44px;height:44px;color:var(--cream);display:block;margin-bottom:12px;">
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <path d="m81.065,60.234l-.877-5.955c-2.204-15.549-10.742-14.934-11.744-15.527l22.177-14.96c.175,1.151-3.638,8.868,9.953,16.736l5.193,3.044c13.591,7.868,20.934,8.058,21.661,8.837l-16.025,10.809c-.143-.905,2.119-5.772-3.902-11.331-7.341,3.082-13.769,7.418-19.361,12.993,2.853,7.696,8.289,7.436,9.075,7.908l-16.07,10.84c-.451-.966,2.123-7.846-.081-23.395Zm22.781-11.092c-.894-.533-1.865-1.081-2.912-1.643l-16.005-8.177,1.588,17.902c.129,1.182.274,2.287.402,3.27,5.028-4.728,10.629-8.507,16.927-11.352Z" fill="currentColor"/>
+        <path d="m127.479,50.522l-4.7-14.82c4.357,3.909,9.745,8.083,22.024,5.133,9.101-2.186,14.851-8.125,13.985-11.733-2.613-10.878-33.978,15.055-38.623-4.279-2.07-8.616,5.479-17.265,17.65-20.189,6.247-1.501,13.959-1.644,18.072-.411l3.157,13.14c-3.71-2.64-10.455-5.349-18.964-3.305-9.37,2.251-15.662,7.123-14.549,11.755,2.471,10.286,33.913-15.324,38.506,3.794,2.147,8.94-5.121,17.806-16.969,20.652-8.778,2.109-16.529,2.091-19.588.263Z" fill="currentColor"/>
+        <path d="m177.906,23.205l.09-1.104c1.275-15.622-5.008-21.025-5.254-22.1l25.227,2.058c9.439.77,16.047,7.644,15.362,16.035-.712,8.722-7.696,15.32-16.529,14.6-9.826-.802-13.187-5.91-13.857-9.966l-.072.883c-1.274,15.622,8.376,21.3,8.787,22.389l-22.522-1.838c.417-1.022,7.493-5.335,8.767-20.957Zm18.769,1.531c7.783.635,12.347-1.493,12.707-5.909.361-4.416-3.963-7.269-12.133-7.936l-13.248-1.081-.585,7.176c-.307,5.81,5.421,7.111,13.26,7.75Z" fill="currentColor"/>
+        <path d="m225.483,31.03l.353-1.05c5.002-14.854-1.053-22.035-1.085-23.156l20.68,6.964c-.703.874-9.869,2.93-14.871,17.783l-.354,1.05c-5.002,14.854,1.053,22.035,1.085,23.156l-20.68-6.964c.703-.873,9.869-2.929,14.872-17.783Z" fill="currentColor"/>
+        <path d="m250.465,40.711l.606-.927c8.574-13.121,5.63-20.867,5.928-21.93l22.579,14.755c7.836,5.12,9.79,13.874,5.215,20.875-4.757,7.279-11.743,9.263-21.433,2.931-6.815-4.454-8.136-9.419-8.345-12.136-1.163,3.805-1.241,15.465,8.078,21.555,5.239,3.424,10.375.627,14.759-2.133l-9.484,14.512c-16.181-10.574-17.921-26.135-14.366-33.802-7.642,12.605-2.166,21.741-2.325,22.895l-18.917-12.362c.854-.699,9.13-1.113,17.705-14.234Zm16.893,9.584c8.299,5.423,10.929,4.032,12.959.926,1.818-2.782,1.182-6.77-5.587-11.193l-12.518-8.181-2.848,4.358c-2.909,4.451-.212,8.728,7.994,14.09Z" fill="currentColor"/>
+        <path d="m291.065,71.455l.87-.685c12.315-9.696,11.998-17.977,12.619-18.889l22.853,29.024-9.535,11.526c-.598-.939.805-10.079-8.892-22.394l-3.084-3.916-9.747,7.675.239.305c6.784,8.616,13.129,7.99,13.792,8.384l-12.01,9.457c-.228-.737,1.869-6.758-4.916-15.374l-.239-.304-9.747,7.675,4.454,5.657c9.696,12.315,18.911,13.095,19.683,13.897l-13.441,6.565-24.224-30.764c1.033-.39,9.008,1.86,21.322-7.836Z" fill="currentColor"/>
+        <path d="m326.759,132.578l1.083-.233c15.324-3.297,18.679-10.875,19.639-11.421l5.325,24.746c1.993,9.259-2.677,17.573-10.908,19.344-8.555,1.841-16.892-2.937-18.757-11.601-2.074-9.639,1.845-14.334,5.534-16.148l-.867.186c-15.324,3.298-17.969,14.178-18.892,14.887l-4.754-22.093c1.098.103,7.274,5.63,22.598,2.333Zm3.962,18.411c1.643,7.635,5,11.388,9.332,10.456,4.332-.932,5.813-5.897,4.089-13.911l-2.796-12.996-7.039,1.515c-5.651,1.386-5.24,7.246-3.585,14.936Z" fill="currentColor"/>
+        <path d="m333.684,179.854l1.102.113c15.592,1.595,21.122-4.575,22.203-4.798l-3.76,36.748-14.866,1.652c.223-1.091,7.587-6.683,9.182-22.275l.507-4.958-12.341-1.263-.039.386c-1.116,10.909,3.878,14.871,4.081,15.616l-15.206-1.556c.349-.688,6.042-3.557,7.158-14.466l.039-.386-12.341-1.263-.732,7.162c-1.596,15.591,4.483,22.56,4.481,23.673l-14.223-4.629,3.985-38.951c1.013.438,5.179,7.6,20.77,9.195Z" fill="currentColor"/>
+        <path d="m325.22,229.146l1.007.462c14.246,6.539,21.471,2.481,22.566,2.618l-11.252,24.515c-3.905,8.507-12.274,11.735-19.875,8.246-7.903-3.628-10.899-10.244-6.07-20.764,3.397-7.4,8.112-9.44,10.768-10.049-3.936-.587-15.479,1.061-20.124,11.179-2.611,5.688.915,10.354,4.293,14.281l-15.756-7.232c8.064-17.568,23.197-21.592,31.306-19.21-13.598-5.693-21.823,1.075-22.987,1.088l9.427-20.538c.818.741,2.452,8.865,16.697,15.404Zm-6.979,18.127c-4.136,9.01-2.371,11.405,1.002,12.953,3.02,1.386,6.87.167,10.244-7.182l6.238-13.591-4.731-2.172c-4.833-2.218-8.663,1.082-12.753,9.992Z" fill="currentColor"/>
+        <path d="m300.758,273.721l.811.754c11.482,10.668,19.614,9.076,20.612,9.549l-26.652,28.686-6.811-4.06-6.052-3.657c.797-.696,10.045-.722,20.713-12.205l4.901-5.275-11.482-10.668c-9.398,10.848-7.983,18.438-8.419,19.394l-13.227-12.289c.922-.504,8.595.35,18.724-9.819-9.115-8.091-18.586-3.51-19.535-3.71l15.381-16.554c.544.96-.447,9.186,11.036,19.855Z" fill="currentColor"/>
+        <path d="m273.059,303.287c6.486,11.793,2.803,25.323-8.553,31.569-11.356,6.246-24.756,2.111-31.242-9.682-6.486-11.793-2.803-25.323,8.553-31.569,11.356-6.246,24.756-2.111,31.242,9.682Zm-26.036-.218c-9.997,5.499-13.502,12.23-9.391,19.704,4.111,7.474,11.672,8.119,21.669,2.62,9.997-5.499,13.502-12.23,9.39-19.704-4.111-7.474-11.672-8.119-21.669-2.62Z" fill="currentColor"/>
+        <path d="m219.396,328.072l.186,1.092c2.641,15.449,10.068,19.124,10.573,20.105l-26.585,4.545c-9.226,1.577-16.613-3.509-18.022-11.752-1.466-8.571,2.306-14.778,13.715-16.728,8.024-1.372,12.37,1.369,14.372,3.218-1.735-3.58-9.611-12.179-20.583-10.303-6.169,1.054-8.03,6.598-9.366,11.602l-2.921-17.087c19.052-3.257,30.913,6.964,33.523,15.002-2.974-14.437-13.202-17.408-13.87-18.361l22.273-3.808c-.15,1.093-5.935,7.026-3.294,22.475Zm-18.901,4.467c-9.772,1.67-10.752,4.479-10.127,8.136.56,3.275,3.739,5.766,11.709,4.403l14.739-2.52-.877-5.131c-.896-5.241-5.782-6.541-15.444-4.889Z" fill="currentColor"/>
+        <path d="m168.048,333.882l-.222,1.085c-3.139,15.357,2.451,21.475,2.565,22.573l-20.241-4.138c.699-.931,7.78-3.215,1.008-17.376l-3.725-7.772-6.477,5.686c-11.787,10.367-6.224,15.235-5.946,16.366l-19.645-4.016c.537-.965,8.079-4.398,11.219-19.755l.222-1.085c3.14-15.357-2.45-21.475-2.565-22.573l22.087,4.515c-.699.931-11.498,3.699-14.637,19.056l-2.497,12.21,2.967-2.899c11.17-10.945,8.637-15.421,8.522-16.519l17.04,3.484c-.536.965-4.677,4.075,1.105,18.656l1.731,4.255,2.607-12.753c3.139-15.357-5.761-22.152-6.038-23.283l22.14,4.526c-.536.965-8.078,4.398-11.218,19.755Z" fill="currentColor"/>
+        <path d="m106.783,315.192l-.531.972c-7.508,13.76-2.793,21.885-2.956,22.995l-19.156-10.453c.844-.738,10.229-1.17,17.737-14.929l.531-.972c7.508-13.76,2.793-21.885,2.956-22.995l19.156,10.453c-.844.738-10.229,1.17-17.737,14.929Z" fill="currentColor"/>
+        <path d="m83.732,301.363l-.764.803c-10.798,11.36-9.298,19.509-9.782,20.501l-12.685-12.057c.966-.534,5.81-1.049,7.727-16.571l2.243-18.116-7.173,7.547c-10.798,11.361-6.89,21.799-7.253,22.905l-16.338-15.529c.966-.534,9.181.551,19.979-10.81l.764-.803c10.798-11.361,9.298-19.51,9.782-20.501l12.685,12.057c-.966.534-5.81,1.049-7.727,16.571l-2.243,18.116,7.173-7.547c10.798-11.361,6.849-21.837,7.213-22.943l16.378,15.567c-.966.534-9.181-.55-19.979,10.81Z" fill="currentColor"/>
+        <path d="m48.714,221.848s6.547,4.149,11.618,14.246c7.408,14.749,2.179,26.796-9.848,32.837s-25.111,2.448-32.221-11.707c-2.361-4.702-5.349-13.241-5.257-16.635l13.858-6.96c-1.75,4.907-2.949,12.637,1.053,20.606,5.394,10.74,14.192,13.325,20.23,10.292,6.236-3.132,9.987-10.594,3.996-22.522-3.853-7.671-11.023-14.049-16.245-11.983l.97,1.93c5.519,11.235,10.303,13.233,10.775,13.925l-10.443,5.245c-.274-.916,1.325-6.616-5.063-19.211l-.696-1.386,17.273-8.676Z" fill="currentColor"/>
+        <path d="m23.092,199.067C9.635,198.849-.252,186.834.005,170.995c.086-5.261,1.349-11.445,3.004-14.41l14.399.234c-3.825,3.539-7.315,10.407-7.451,18.769-.17,10.467,5.518,18.37,13.216,18.495s13.64-7.589,13.81-18.057c.125-7.753-3.639-14.739-7.946-19.019l15.507.252c1.558,3.017,2.62,9.238,2.535,14.5-.257,15.839-10.529,27.527-23.987,27.309Z" fill="currentColor"/>
+        <path d="m25.162,145.811c-12.623-4.666-18.698-17.304-14.204-29.46,4.494-12.155,17.328-17.803,29.951-13.137,12.623,4.667,18.698,17.304,14.204,29.46-4.494,12.156-17.328,17.803-29.951,13.137Zm19.821-16.881c3.956-10.701,2.197-18.083-5.803-21.04-8-2.957-14.137,1.505-18.093,12.206-3.956,10.701-2.197,18.083,5.802,21.04,8,2.958,14.137-1.505,18.093-12.206Z" fill="currentColor"/>
+        <path d="m60.581,109.819c-2.182-1.419-2.207-4.937-.093-8.187s5.309-4.607,7.492-3.188c2.182,1.419,2.283,4.921.169,8.171-2.114,3.25-5.386,4.623-7.568,3.204Z" fill="currentColor"/>
+      </g>
+      <g>
+        <path d="m157.154,128.918c-1.387,0-2.473,1.14-2.471,2.527,0,.009,0,.017,0,.026,0,11.632-9.463,21.095-21.095,21.095s-21.095-9.463-21.095-21.095c0-.009,0-.017,0-.026.002-1.387-1.085-2.527-2.471-2.527h-2.55c-1.342,0-2.467,1.069-2.475,2.411,0,.047,0,.095,0,.142,0,15.791,12.801,28.591,28.591,28.591s28.591-12.801,28.591-28.591c0-.047,0-.095,0-.142-.008-1.342-1.133-2.411-2.475-2.411h-2.55Z" fill="currentColor"/>
+        <path d="m247.012,128.918c-1.387,0-2.473,1.14-2.471,2.527,0,.009,0,.017,0,.026,0,11.632-9.463,21.095-21.095,21.095s-21.095-9.463-21.095-21.095c0-.009,0-.017,0-.026.002-1.387-1.085-2.527-2.471-2.527h-2.549c-1.342,0-2.467,1.069-2.475,2.411,0,.047,0,.095,0,.142,0,15.791,12.801,28.591,28.591,28.591s28.591-12.801,28.591-28.591c0-.047,0-.095,0-.142-.008-1.342-1.133-2.411-2.475-2.411h-2.549Z" fill="currentColor"/>
+        <path d="m233.467,179.719c-2.084,0-3.734,1.706-3.732,3.79,0,.013,0,.026,0,.039,0,28.805-23.434,52.239-52.239,52.239s-52.239-23.434-52.239-52.239c0-.013,0-.026,0-.039.002-2.084-1.648-3.79-3.732-3.79h-.015c-2.05,0-3.743,1.647-3.749,3.697,0,.044,0,.088,0,.132,0,32.991,26.744,59.735,59.735,59.735s59.735-26.744,59.735-59.735c0-.044,0-.088,0-.132-.006-2.05-1.699-3.697-3.749-3.697h-.015Z" fill="currentColor"/>
+      </g>
+    </g>
+  </g>
+</svg></a>
+          <div class="t">Our Show Choir</div>
+          <p>Audition-based song & dance for ages 8 through high school senior.</p>
+          <a href="/aspire-performing-co">Visit Aspire →</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Encore Performing Arts · A 501(c)(3) nonprofit · <a href="/terms-and-conditions" style="color:#cfc6b4;text-decoration:underline;text-underline-offset:2px;font-weight:600;">Terms</a> · <a href="/privacy-policy" style="color:#cfc6b4;text-decoration:underline;text-underline-offset:2px;font-weight:600;">Privacy Policy</a></p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/encorestg" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+        <a href="https://www.facebook.com/encorestg" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCBqCS2LKe-5UHp7osQFA-fg" rel="noopener" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*0.07+'s';io.observe(el);});
+</script>
+<script>
+(function(){
+  var t=document.getElementById('navToggle'),m=document.getElementById('mobileMenu');
+  if(!t||!m)return;
+  function s(o){document.body.classList.toggle('menu-open',o);t.setAttribute('aria-expanded',o);t.setAttribute('aria-label',o?'Close menu':'Open menu');}
+  t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
+})();
+</script>
+</body></html>
