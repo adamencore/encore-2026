@@ -46,15 +46,13 @@
 # /contact now served by contact.html (local page) — redirect removed on rebuild
 # /encore-scholarship-application now served locally — redirect removed on rebuild
 # /sensory-friendly-performances now served locally — redirect removed on rebuild
-/terms-and-conditions            https://www.encorepa.org/terms-and-conditions            302
-/privacy-policy                  https://www.encorepa.org/privacy-policy                  302
 
 # Internal interims -> closest built page
 /back-to-the-future              /page-to-stage/back-to-the-future   302
 /auditioning                     /audition-registration   302
 /multi-performer-discount            /summer-of-lion-king-2026 302
-/classes                         https://www.encorepa.org/classes          302
-/encore-classes                  https://www.encorepa.org/encore-classes   302
+/classes                         /programs                                 302
+/encore-classes                  /programs                                 302
 
 # Legal short aliases
 /terms      /terms-and-conditions   301
