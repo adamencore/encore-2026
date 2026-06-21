@@ -84,7 +84,7 @@
   :root{
     /* ENCORE BRAND PALETTE */
     --teal:#348193;           /* primary brand teal */
-    --charcoal:#123139;       /* primary (brand teal) */
+    --charcoal:#348193;       /* primary (brand teal) */
     --charcoal-2:#3c8ea1;     /* lighter teal — hovers */
     --charcoal-soft:#358193;  /* deep teal — secondary text */
     --cream:#e9e4e0;          /* warm cream — surfaces */
@@ -343,7 +343,7 @@
   /* KEY FEATURES */
   .feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
   .feat-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;}
-  .feat-card .ic{width:48px;height:48px;border-radius:50%;background:var(--cream);border:1px solid var(--line);display:grid;place-items:center;font-size:21px;color:var(--charcoal);margin-bottom:16px;}
+  .feat-card .ic{width:48px;height:48px;border-radius:50%;background:var(--cream);border:1px solid var(--line);display:grid;place-items:center;font-size:21px;color:var(--charcoal);margin-bottom:16px;}.ic.ic-img{width:64px;height:64px;background:none;border:0;border-radius:0;}.ic.ic-img img{width:100%;height:100%;object-fit:contain;}
   .feat-card h3{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:20px;font-weight:600;color:var(--charcoal);margin-bottom:8px;letter-spacing:-.01em;}
   .feat-card p{color:var(--charcoal-soft);font-size:15px;line-height:1.6;}
   /* FAQ */
@@ -372,7 +372,6 @@
   .camp-frame img{width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;}
   @media(max-width:760px){.camp-frame{aspect-ratio:4/3;}}
   .nav-toggle{margin-left:auto;}
-h2 em{color:var(--teal)}
 </style>
 </head>
 <body>
@@ -484,22 +483,22 @@ h2 em{color:var(--teal)}
       </div>
       <div class="feat-grid reveal">
         <div class="feat-card">
-          <div class="ic" aria-hidden="true">◷</div>
+          <div class="ic ic-img" aria-hidden="true"><img src="/img/icons/icon-clock.png" alt="" width="64" height="64" loading="lazy"></div>
           <h3>Full production values</h3>
           <p>Complete, story-driven musicals with real sets, costumes, lighting, and sound — running for roughly a dozen performances per production.</p>
         </div>
         <div class="feat-card">
-          <div class="ic" aria-hidden="true">★</div>
+          <div class="ic ic-img" aria-hidden="true"><img src="/img/icons/icon-star.png" alt="" width="64" height="64" loading="lazy"></div>
           <h3>Professional-level training</h3>
           <p>Industry-standard rehearsal practices and expectations, paired with the educational support that lets Young Artists take real creative risks.</p>
         </div>
         <div class="feat-card">
-          <div class="ic" aria-hidden="true">✦</div>
+          <div class="ic ic-img" aria-hidden="true"><img src="/img/icons/icon-diamond.png" alt="" width="64" height="64" loading="lazy"></div>
           <h3>Mentorship and a safe space</h3>
           <p>Staff- and faculty-led mentorship throughout the process, so Young Artists can discover, develop, and grow their unique voice.</p>
         </div>
         <div class="feat-card">
-          <div class="ic" aria-hidden="true">♥</div>
+          <div class="ic ic-img" aria-hidden="true"><img src="/img/icons/icon-heart.png" alt="" width="64" height="64" loading="lazy"></div>
           <h3>Advanced craft</h3>
           <p>Deep character development and storytelling immersion — building advanced confidence and collaborative leadership on stage and off.</p>
         </div>
