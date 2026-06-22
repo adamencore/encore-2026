@@ -12,6 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/fonts/cabrio.css">
+<link rel="stylesheet" href="/fonts/mikado.css">
 <style>
   :root{
     /* ENCORE BRAND PALETTE */
@@ -30,10 +31,10 @@
     --radius-lg:34px;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Cabrio','Familjen Grotesk',sans-serif;background:var(--cream-lite);color:var(--charcoal);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;-webkit-font-smoothing:antialiased;}
+  body{font-family:var(--font-display);background:var(--cream-lite);color:var(--charcoal);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 24px;-webkit-font-smoothing:antialiased;}
   .brandmark{height:34px;width:auto;color:var(--charcoal);margin-bottom:40px;}
-  .code{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-size:clamp(64px,14vw,128px);font-weight:500;line-height:1;letter-spacing:-.045em;}
-  h1{font-family:'Cabrio','Familjen Grotesk',sans-serif;font-weight:500;font-size:clamp(24px,4vw,34px);margin:14px 0 12px;letter-spacing:-.02em;}
+  .code{font-family:var(--font-display);font-size:clamp(64px,14vw,128px);font-weight:500;line-height:1;letter-spacing:-.045em;}
+  h1{font-family:var(--font-display);font-weight:500;font-size:clamp(24px,4vw,34px);margin:14px 0 12px;letter-spacing:-.02em;}
   h1 em{font-style:italic;}
   p{color:var(--muted);font-size:16px;line-height:1.6;max-width:440px;margin:0 auto 30px;}
   .acts{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
@@ -47,7 +48,7 @@
   .links a{color:var(--charcoal);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line);}
   .links a:hover{border-color:var(--charcoal);}
   /* ANNOUNCEMENT BAR */
-  .annc{position:sticky;top:0;z-index:170;background:#348193;color:#fff;height:42px;display:flex;align-items:center;font-family:'Cabrio','Familjen Grotesk',sans-serif;}
+  .annc{position:sticky;top:0;z-index:170;background:#348193;color:#fff;height:42px;display:flex;align-items:center;font-family:var(--font-display);}
   .annc.hide{display:none;}
   .annc-in{max-width:1320px;margin:0 auto;width:100%;padding:0 44px;display:flex;align-items:center;justify-content:center;position:relative;}
   .annc-link{color:#fff;font-size:14px;font-weight:600;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-decoration:none;}

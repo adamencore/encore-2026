@@ -1,0 +1,39 @@
+/* ============================================================================
+   Mikado (HvD) — self-hosted, full glyph set (473 glyphs).
+   Replaces the Cabrio (display) + Familjen Grotesk (body) pairing site-wide.
+
+   HOW THE SWAP WORKS
+   ------------------
+   Every page routes its font-family through two variables defined in :root
+   below. To switch the whole site's typeface, change ONLY these two lines.
+
+   TO REVERT to the old Cabrio/Familjen setup, comment out the Mikado :root
+   block and uncomment the "REVERT" block beneath it. (cabrio.css and the
+   Google Fonts <link> are intentionally left in place so revert is instant.)
+
+   LICENSE: .otf source is desktop-licensed. Serving via @font-face on the
+   public production site requires HvD's WEBFONT license — confirm before
+   launch / public cutover.
+   ============================================================================ */
+
+@font-face{font-family:'Mikado';src:url('/fonts/Mikado-Regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Mikado';src:url('/fonts/Mikado-Italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'Mikado';src:url('/fonts/Mikado-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Mikado';src:url('/fonts/Mikado-MediumItalic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:swap;}
+@font-face{font-family:'Mikado';src:url('/fonts/Mikado-Bold.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Mikado';src:url('/fonts/Mikado-BoldItalic.woff2') format('woff2');font-weight:700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Mikado';src:url('/fonts/Mikado-Black.woff2') format('woff2');font-weight:900;font-style:normal;font-display:swap;}
+@font-face{font-family:'Mikado';src:url('/fonts/Mikado-BlackItalic.woff2') format('woff2');font-weight:900;font-style:italic;font-display:swap;}
+
+/* ===== ACTIVE: Mikado everywhere ===== */
+:root{
+  --font-display:'Mikado', system-ui, sans-serif;
+  --font-body:'Mikado', system-ui, sans-serif;
+}
+
+/* ===== REVERT: uncomment to restore Cabrio (display) + Familjen (body) =====
+:root{
+  --font-display:'Cabrio','Familjen Grotesk',sans-serif;
+  --font-body:'Familjen Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*/

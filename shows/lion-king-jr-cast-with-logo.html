@@ -7,6 +7,7 @@
 <meta name="description" content="Meet the Young Artists of Encore Performing Arts' production of Disney's The Lion King JR., performed by two casts — Pridelands and Grasslands — at the historic Electric Theater in St. George, Utah.">
 <!-- On the live site this inherits Cabrio from /fonts/cabrio.css; standalone fallback below -->
 <link rel="stylesheet" href="/fonts/cabrio.css">
+<link rel="stylesheet" href="/fonts/mikado.css">
 <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -16,9 +17,9 @@
 }
 *{box-sizing:border-box;}
 body{margin:0;background:var(--cream);color:var(--ink);
-  font-family:"Familjen Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-family:var(--font-body);
   line-height:1.5;-webkit-font-smoothing:antialiased;}
-.display{font-family:"Cabrio","Familjen Grotesk",Georgia,serif;}
+.display{font-family:var(--font-display);}
 .wrap{max-width:1040px;margin:0 auto;padding:0 22px;}
 
 .cast-hero{text-align:center;padding:62px 22px 26px;}
@@ -26,7 +27,7 @@ body{margin:0;background:var(--cream);color:var(--ink);
   font-size:.72rem;color:var(--teal);border:1px solid var(--teal);border-radius:999px;
   padding:6px 14px;margin-bottom:22px;}
 .show-logo{display:block;width:min(520px,82%);height:auto;margin:0 auto 8px;}
-.show-jr{font-family:"Cabrio","Familjen Grotesk",Georgia,serif;letter-spacing:.32em;
+.show-jr{font-family:var(--font-display);letter-spacing:.32em;
   text-transform:uppercase;font-size:1.05rem;color:var(--teal);margin:0 0 14px;}
 .cast-hero p{max-width:640px;margin:0 auto;font-size:1.05rem;color:#37535c;}
 .legend{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:24px 0 4px;}
@@ -37,19 +38,19 @@ body{margin:0;background:var(--cream);color:var(--ink);
 .dot.grass{background:var(--gold);}
 
 section{padding:24px 0;}
-h2.sec{font-family:"Cabrio","Familjen Grotesk",Georgia,serif;font-size:1.7rem;
+h2.sec{font-family:var(--font-display);font-size:1.7rem;
   text-align:center;margin:8px 0 18px;color:var(--ink);}
 .col-head{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:12px;padding:0 18px 6px;
   font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#6b7c80;font-weight:700;}
 .principals{display:grid;gap:9px;}
 .role-row{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:12px;align-items:center;
   background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:13px 18px;}
-.role-row .role{font-family:"Cabrio","Familjen Grotesk",Georgia,serif;font-size:1.16rem;color:var(--teal);}
+.role-row .role{font-family:var(--font-display);font-size:1.16rem;color:var(--teal);}
 .role-row .name{font-weight:500;}
 
 .ensemble{background:var(--cream-2);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px 26px;}
 .ens-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;}
-.ens-col h3{font-family:"Cabrio","Familjen Grotesk",Georgia,serif;font-size:1.25rem;margin:0 0 14px;
+.ens-col h3{font-family:var(--font-display);font-size:1.25rem;margin:0 0 14px;
   display:flex;align-items:center;gap:9px;color:var(--ink);}
 .ens-col ul{list-style:none;margin:0;padding:0;columns:2;column-gap:24px;}
 .ens-col li{padding:3px 0;font-weight:500;break-inside:avoid;}
