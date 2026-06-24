@@ -142,8 +142,8 @@
     --cream:#e9e4e0;          /* warm cream — surfaces */
     --cream-lite:#f6f5f3;     /* lightest — page background */
     --paper:#fdfcfa;          /* card paper */
-    --accent:#7e2a1c;         /* coral accent (proposed — pending exact hex) */
-    --accent-2:#2e0f0a;       /* coral hover */
+    --accent:#f0ae21;         /* gold accent (proposed — pending exact hex) */
+    --accent-2:#caa11c;       /* gold hover */
     --line:rgba(21,65,76,.16);
     --muted:#6b7779;          /* muted teal-gray text */
     --radius:26px;
@@ -172,7 +172,7 @@
   .btn-dark:hover{background:var(--charcoal-2);}
   .btn-ghost{background:transparent;border:1.5px solid var(--charcoal);color:var(--charcoal);}
   .btn-ghost:hover{background:var(--charcoal);color:var(--cream);}
-  .btn-light{background:var(--cream);color:#2e0f0a;}
+  .btn-light{background:#f0ae21;color:#2a1d04;}.btn-light:hover{background:#ffc23a;}
 
   /* BREADCRUMB */
   .crumbs{padding:18px 0 0;}
@@ -190,17 +190,17 @@
   .hero-top,.hero-bottom{position:relative;z-index:2;}
   .hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;}
   .hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(233,228,224,.12);border:1px solid rgba(233,228,224,.25);color:var(--cream);padding:9px 16px;border-radius:100px;font-size:13px;font-weight:500;backdrop-filter:blur(6px);}
-  .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--cream);box-shadow:0 0 0 4px rgba(233,228,224,.25);}
-  .hero-eyebrow{display:inline-block;color:rgba(233,228,224,.75);font-weight:600;letter-spacing:.04em;font-size:15px;margin-bottom:14px;}
+  .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#f0ae21;box-shadow:0 0 0 4px rgba(240,174,33,.28);}
+  .hero-eyebrow{display:inline-block;color:#f0ae21;font-weight:600;letter-spacing:.04em;font-size:15px;margin-bottom:14px;}
   .hero h1{font-family:var(--font-display);color:var(--cream);font-weight:500;font-size:clamp(40px,6.4vw,82px);line-height:1;letter-spacing:-.04em;}
-  .hero h1 em{font-style:italic;color:#cfc6b4;}
+  .hero h1 em{font-style:italic;color:#f0ae21;text-shadow:0 2px 18px rgba(0,0,0,.55);}
   .hero-bottom .sub{color:rgba(233,228,224,.82);max-width:580px;margin:22px 0 26px;font-size:17px;line-height:1.6;}
   .hero-actions{display:flex;gap:13px;flex-wrap:wrap;align-items:center;}
 
   /* SECTION SCAFFOLD */
   section{padding:74px 0;}
   .pill{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);color:var(--charcoal);padding:9px 18px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.04em;}
-  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--charcoal);}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:#f0ae21;}
   .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:38px;flex-wrap:wrap;}
   .sec-head h2{font-family:var(--font-display);font-weight:500;font-size:clamp(28px,3.6vw,46px);line-height:1.05;letter-spacing:-.035em;color:var(--charcoal);max-width:600px;}
   .sec-head h2 em{font-style:italic;}
@@ -219,7 +219,7 @@
   .event .mc-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(150deg,rgba(13,39,45,.80),rgba(13,39,45,.93));}
   .event>div{position:relative;z-index:2;}
   .event .ev-logo{max-height:62px;max-width:78%;width:auto;height:auto;margin-bottom:16px;filter:drop-shadow(0 2px 10px rgba(0,0,0,.4));}
-  .event .tag{display:inline-flex;align-items:center;gap:8px;background:rgba(233,228,224,.12);border:1px solid rgba(233,228,224,.25);color:var(--cream);padding:7px 14px;border-radius:100px;font-size:12.5px;font-weight:600;margin-bottom:16px;}
+  .event .tag{display:inline-flex;align-items:center;gap:8px;background:rgba(240,174,33,.14);border:1px solid rgba(240,174,33,.42);color:#f0ae21;padding:7px 14px;border-radius:100px;font-size:12.5px;font-weight:600;margin-bottom:16px;}
   .event h3{font-family:var(--font-display);font-size:clamp(28px,3.4vw,40px);font-weight:600;line-height:1.05;}
   .event h3 em{font-style:italic;color:#cfc6b4;}
   .event .desc{color:rgba(233,228,224,.8);font-size:15.5px;line-height:1.6;margin:14px 0 22px;}
@@ -293,7 +293,7 @@
   .cta::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
   .cta-inner{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap;}
   .cta h2{font-family:var(--font-display);font-weight:500;font-size:clamp(28px,3.6vw,40px);line-height:1.06;letter-spacing:-.035em;max-width:520px;}
-  .cta h2 em{font-style:italic;color:#cfc6b4;}
+  .cta h2 em{font-style:italic;color:#f0ae21;}
   .cta p{color:rgba(233,228,224,.78);margin-top:12px;font-size:15.5px;max-width:440px;}
 
   /* FOOTER */
@@ -505,7 +505,7 @@ h2 em{color:var(--teal)}
   <!-- ========== HERO ========== -->
   <header class="hero">
     <div class="wrap">
-      <div class="hero-card reveal" style="background:linear-gradient(160deg,#b8462f,#7e2a1c 58%,#2e0f0a);min-height:460px;">
+      <div class="hero-card reveal" style="background:linear-gradient(180deg,rgba(8,7,4,.45) 0%,rgba(8,7,4,.32) 40%,rgba(8,7,4,.82) 100%),url('/img/page-to-stage/les-mis-hero.webp') 50% 38%/cover;min-height:460px;">
         <div class="hero-top">
           <span class="hero-badge"><span class="dot"></span>Page to Stage · Live Show</span>
         </div>
@@ -532,10 +532,10 @@ h2 em{color:var(--teal)}
         </div>
         <p class="lead">Every Page to Stage trip pairs a hands-on Encore workshop with a group visit to the professional production, so our Young Artists arrive ready to watch like makers — not just spectators.</p>
       </div>
-      <div class="event reveal" style="background:linear-gradient(150deg,#7e2a1c,#2e0f0a);">
+      <div class="event reveal" style="background:linear-gradient(150deg,#21180c,#0c0a06);">
         <div>
           <span class="tag">Live Show</span>
-          <h3 style="font-style:italic;">Les Misérables</h3>
+          <h3 style="font-style:italic;color:#f0ae21;">Les Misérables</h3>
           <p class="desc">Look at how an epic novel becomes a sung-through score, then watch it open up under the desert sky at Tuacahn — with a familiar face on stage.</p>
           <div class="facts">
             <div class="fact"><div class="k">Workshop</div><div class="v">July 28, 2026</div></div>
@@ -589,7 +589,7 @@ h2 em{color:var(--teal)}
   <!-- ========== CTA ========== -->
   <section>
     <div class="wrap">
-      <div class="cta reveal" style="background:linear-gradient(150deg,#7e2a1c,#2e0f0a);">
+      <div class="cta reveal" style="background:linear-gradient(150deg,#21180c,#0c0a06);">
         <div class="cta-inner">
           <div>
             <h2>Explore the rest of the <em>season</em></h2>
