@@ -9,24 +9,23 @@
 
 <!--
   ============================================================
-  PAGE TO STAGE — EVENT REGISTRATION FORM  (reusable template)
+  PAGE TO STAGE — REGISTRATION  (single generic page)
   ------------------------------------------------------------
-  Variant of the audition form for register-then-pay EVENTS:
-  no headshot/resume/t-shirt; adds a notes field and a carpool
-  "driver" question. Posts to the SAME Apps Script backend as the
-  audition form — the script routes "Page to Stage Registration"
-  to its own tab in the same Google Sheet.
+  One registration page for ALL Page to Stage events. The form is
+  an embedded Elfsight Form whose own dropdown lets the registrant
+  choose which event they're signing up for. Every Page to Stage
+  detail page's "Register / Reserve" buttons link here:
+  /page-to-stage-registration
 
-  TO REUSE FOR ANOTHER EVENT: change <title>, the heading, and the
-  hidden "production" value. Everything else stays the same.
-
-  GO LIVE: paste your deployed Apps Script Web App URL into ENDPOINT.
+  LIVE: embedded Elfsight "Page to Stage Field Trip Form"
+  (app id 7fea52ee-d466-4fdd-93a9-47e680d0b3d8). To change the form,
+  swap the app id on the elfsight-app div in the body.
   ============================================================
 -->
 
-<title>Register — Back to the Future · Page to Stage | Encore</title>
-<meta name="description" content="Register for Encore's Page to Stage trip to Back to the Future.">
-<link rel="canonical" href="https://www.encorepa.org/back-to-the-future-registration">
+<title>Page to Stage Registration | Encore</title>
+<meta name="description" content="Register for Encore's Page to Stage trip — select your event in the form.">
+<link rel="canonical" href="https://www.encorepa.org/page-to-stage-registration">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#348193">
 
@@ -167,83 +166,19 @@ h2 em{color:var(--teal)}
   <div class="wrap">
     <div class="crumbs"><a href="/">Home</a> › <a href="/page-to-stage">Page to Stage</a> › Register</div>
     <div class="eyebrow">Page to Stage · Event Registration</div>
-    <h1>Register for <em>Back to the Future</em></h1>
-    <p>Reserve your spot on this Page to Stage trip. After you submit, we'll send a secure link to pay and confirm. Seating is limited.</p>
+    <h1>Register for <em>Page to Stage</em></h1>
+    <p>Reserve your spot on a Page to Stage trip — pick your event in the form below. After you submit, we'll send a secure link to pay and confirm. Seating is limited.</p>
   </div>
 </header>
 
 <div class="wrap">
-  <form id="eventForm" novalidate>
-    <input type="hidden" name="production" value="Back to the Future — Page to Stage">
-    <input type="hidden" name="form_type" value="Page to Stage Registration">
-    <div class="hp" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
-
-    <div class="field">
-      <label for="attendee_name">Attendee first &amp; last name <span class="req">*</span></label>
-      <input id="attendee_name" name="attendee_name" type="text" required autocomplete="name">
-      <div class="errmsg">Please enter the attendee's name.</div>
-    </div>
-
-    <div class="field">
-      <label for="attendee_phone">Attendee phone # <span class="req">*</span></label>
-      <input id="attendee_phone" name="attendee_phone" type="tel" required autocomplete="tel">
-      <div class="errmsg">Please enter a phone number.</div>
-    </div>
-
-    <div class="field">
-      <label for="attendee_age">Attendee age <span class="req">*</span></label>
-      <input id="attendee_age" name="attendee_age" type="number" min="1" max="120" inputmode="numeric" required style="max-width:220px;">
-      <div class="errmsg">Please enter the attendee's age.</div>
-    </div>
-
-    <div class="field">
-      <label for="guardian_name">Parent / guardian full name <span class="req">*</span></label>
-      <input id="guardian_name" name="guardian_name" type="text" required>
-      <div class="errmsg">Please enter the parent/guardian's name.</div>
-    </div>
-
-    <div class="field">
-      <label for="guardian_phone">Parent / guardian phone # <span class="req">*</span></label>
-      <input id="guardian_phone" name="guardian_phone" type="tel" required autocomplete="tel">
-      <div class="errmsg">Please enter a phone number.</div>
-    </div>
-
-    <div class="field">
-      <label for="parent_email">Parent / guardian email <span class="req">*</span></label>
-      <input id="parent_email" name="parent_email" type="email" required autocomplete="email">
-      <div class="help">We'll send confirmation and the secure payment link here.</div>
-      <div class="errmsg">Please enter a valid email address.</div>
-    </div>
-
-    <div class="field">
-      <label for="important_info">Any important information you need us to know?</label>
-      <textarea id="important_info" name="important_info" placeholder="Allergies, accessibility needs, anything else…"></textarea>
-    </div>
-
-    <div class="field">
-      <label for="driver">Are you able to be a driver to the event? <span class="req">*</span></label>
-      <select id="driver" name="driver" required>
-        <option value="">Select an option</option>
-        <option>Yes</option>
-        <option>No</option>
-        <option>Maybe</option>
-      </select>
-      <div class="errmsg">Please choose an option.</div>
-    </div>
-
-    <div class="actions">
-      <button class="btn" type="submit" id="submitBtn">Submit registration →</button>
-      <p class="formnote">By submitting, you'll receive a confirmation email and a secure link to pay. Your card details are never entered on this site.</p>
-    </div>
-  </form>
-
-  <div class="status ok" id="okPanel" role="status">
-    <h2>Registration received</h2>
-    <p>Thank you — we've got it. Check your email for confirmation and the secure payment link to reserve your spot. Questions? Call <a href="tel:+14354140049">(435) 414-0049</a>.</p>
-  </div>
-  <div class="status bad" id="badPanel" role="alert">
-    <h2>Something went wrong</h2>
-    <p>We couldn't submit the form just now. Please try again, or email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> and we'll help you register.</p>
+  <!-- Elfsight Form Builder | Page to Stage Field Trip Form
+       App id: 7fea52ee-d466-4fdd-93a9-47e680d0b3d8
+       The form's own dropdown lets registrants choose which event. -->
+  <div class="form-embed" style="padding:18px 0 80px;min-height:200px;">
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-7fea52ee-d466-4fdd-93a9-47e680d0b3d8" data-elfsight-app-lazy></div>
+    <p class="formnote">The registration form loads above. If it doesn't appear, email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> or call <a href="tel:+14354140049">(435) 414-0049</a> and we'll register you. After you submit, you'll receive a confirmation and a secure link to pay — card details are never entered on this site.</p>
   </div>
 </div>
 
@@ -328,46 +263,6 @@ h2 em{color:var(--teal)}
   </div>
 </footer>
 
-<script>
-  /* ====== CONFIG: paste your deployed Apps Script Web App URL here ====== */
-  const ENDPOINT = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
 
-  const form=document.getElementById('eventForm');
-  const submitBtn=document.getElementById('submitBtn');
-
-  function validate(){
-    let ok=true,firstBad=null;
-    form.querySelectorAll('[required]').forEach(el=>{
-      const field=el.closest('.field'); let bad;
-      if(el.type==='email') bad=!el.value||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value);
-      else bad=!el.value||!el.value.trim();
-      field.classList.toggle('show-err',bad); el.classList.toggle('invalid',bad);
-      if(bad){ok=false;firstBad=firstBad||field;}
-    });
-    if(firstBad) firstBad.scrollIntoView({behavior:'smooth',block:'center'});
-    return ok;
-  }
-
-  form.addEventListener('submit', async (e)=>{
-    e.preventDefault();
-    if(!validate()) return;
-    submitBtn.disabled=true; submitBtn.textContent='Submitting…';
-    try{
-      const data={};
-      new FormData(form).forEach((v,k)=>{ data[k]=v; });
-      if(ENDPOINT.startsWith('PASTE')) throw new Error('Endpoint not configured yet.');
-      await fetch(ENDPOINT,{method:'POST',mode:'no-cors',
-        headers:{'Content-Type':'text/plain;charset=utf-8'},
-        body:JSON.stringify(data)});
-      form.style.display='none';
-      document.getElementById('okPanel').classList.add('ok');
-      document.getElementById('okPanel').scrollIntoView({behavior:'smooth'});
-    }catch(err){
-      submitBtn.disabled=false; submitBtn.textContent='Submit registration →';
-      const bad=document.getElementById('badPanel'); bad.style.display='block';
-      bad.scrollIntoView({behavior:'smooth'});
-    }
-  });
-</script>
 </body>
 </html>
