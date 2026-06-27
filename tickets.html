@@ -674,6 +674,21 @@ h2 em{color:var(--teal)}
     {title:"Little Mermaid Jr. Camp", dateRange:"August 21, 2026", location:"The Electric Theater · St. George, UT", status:"Coming soon", ticketUrl:"", cover:"little-mermaid-camp-card.webp"},
     {title:"A Christmas Carol", dateRange:"November 30 – December 19, 2026", location:"The Electric Theater · St. George, UT", status:"Coming soon", ticketUrl:"", cover:"a-christmas-carol-card.webp"}
   ];
+  // Order shows chronologically by start date parsed from dateRange (new shows auto-sort).
+  const MONTH_ORDER=['january','february','march','april','may','june','july','august','september','october','november','december'];
+  function startKey(s){
+    const dr=(s.dateRange||'').toLowerCase();
+    let bestPos=Infinity, mi=11;
+    MONTH_ORDER.forEach((mn,idx)=>{const p=dr.indexOf(mn); if(p>=0 && p<bestPos){bestPos=p; mi=idx;}});
+    const yr=parseInt((dr.match(/\b(20\d{2})\b/)||['','2099'])[1],10);
+    let day=1;
+    if(bestPos!==Infinity){
+      const dm=dr.slice(bestPos).match(/\b([0-3]?\d)\b/);
+      if(dm){const d=parseInt(dm[1],10); if(d>=1 && d<=31) day=d;}
+    }
+    return yr*10000 + mi*100 + day;
+  }
+  TICKETS.sort((a,b)=>startKey(a)-startKey(b));
   const grid=document.getElementById('tkgrid');
   const MONTHS={january:'JAN',february:'FEB',march:'MAR',april:'APR',may:'MAY',june:'JUN',july:'JUL',august:'AUG',september:'SEP',october:'OCT',november:'NOV',december:'DEC'};
   const CAL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>';

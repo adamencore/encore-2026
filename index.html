@@ -518,7 +518,7 @@
   @media(max-width:560px){.annc-link{font-size:13px;}.annc-in{padding:0 38px;}}
 
   /* CASE FOR THE ARTS */
-  .casearts{padding:92px 0;}
+  .casearts{padding:clamp(70px,8vw,104px) 0;background:var(--nh-purple);}
   .casearts .ca-kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:20px;}
   .casearts h2{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,4.6vw,56px);line-height:1.02;letter-spacing:-.03em;color:#123139;max-width:760px;}
   .casearts h2 em{font-style:normal;color:var(--teal);}
@@ -588,8 +588,8 @@ html,body{overflow-x:hidden;}
 .nh-stage-head{max-width:820px;}
 .nh-stage-head h2{max-width:18ch;}
 .nh-stage-head p{margin-top:16px;color:var(--muted);max-width:50ch;font-size:1.06rem;}
-.nh-stage-grid{margin-top:46px;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;}
-.nh-stage-photo{position:relative;border-radius:34px;overflow:hidden;aspect-ratio:4/5;background:var(--cream);box-shadow:0 28px 60px -30px rgba(40,30,60,.4);}
+.nh-stage-grid{margin-top:46px;display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:stretch;}
+.nh-stage-photo{position:relative;border-radius:34px;overflow:hidden;background:var(--cream);box-shadow:0 28px 60px -30px rgba(40,30,60,.4);}
 .nh-pphoto{position:absolute;inset:0;opacity:0;transition:opacity .45s ease;}
 .nh-pphoto.on{opacity:1;}
 .nh-pphoto img{width:100%;height:100%;object-fit:cover;}
@@ -631,9 +631,15 @@ html,body{overflow-x:hidden;}
 .nh-ev-text h3{font-family:var(--font-display);font-size:1.5rem;color:var(--nh-purple);}
 .nh-ev-text p{margin:12px 0 18px;color:var(--muted);font-size:.97rem;}
 .nh-ev-text .lk{font-family:var(--font-display);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--nh-purple);}
-@media(max-width:900px){.nh-stage-grid,.nh-built-grid,.nh-ev-grid{grid-template-columns:1fr;gap:32px;}.nh-collage{height:360px;max-width:420px;margin:0 auto;}}
+@media(max-width:900px){.nh-stage-grid,.nh-built-grid,.nh-ev-grid{grid-template-columns:1fr;gap:32px;}.nh-stage-photo{aspect-ratio:4/5;}.nh-collage{height:360px;max-width:420px;margin:0 auto;}}
 @media(max-width:620px){.nh-ev-grid{grid-template-columns:1fr;}.nh-strip{height:clamp(280px,64vw,380px);gap:8px;}.nh-strip figure{width:40vw;border-radius:18px;}}
 
+/* case-for-the-arts on purple: light text */
+.casearts .ca-kicker{color:var(--nh-lav);}
+.casearts h2{color:#ffffff;}
+.casearts h2 em{color:var(--nh-lav);}
+.casearts .ca-lead{color:rgba(255,255,255,.82);}
+.casearts .ca-note{color:rgba(255,255,255,.72);}
 </style>
 </head>
 <body>
@@ -657,7 +663,7 @@ html,body{overflow-x:hidden;}
       <a href="/contact">Contact</a>
     </div>
     <div class="nav-cta">
-      <a href="#events" class="btn btn-ticket">Get Tickets →</a>
+      <a href="/tickets" class="btn btn-ticket">Get Tickets →</a>
       <a href="/donate" class="btn btn-donate">Donate</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -672,7 +678,7 @@ html,body{overflow-x:hidden;}
     <a href="/about">About<span class="ar" aria-hidden="true">→</span></a>
     <a href="/auditions">Auditions<span class="ar" aria-hidden="true">→</span></a>
     <a href="/contact">Contact<span class="ar" aria-hidden="true">→</span></a>
-    <div class="mm-cta"><a href="#events" class="btn btn-light">Get Tickets →</a><a href="/donate" class="btn btn-light" style="margin-top:11px;">Donate</a></div>
+    <div class="mm-cta"><a href="/tickets" class="btn btn-light">Get Tickets →</a><a href="/donate" class="btn btn-light" style="margin-top:11px;">Donate</a></div>
     <div class="mm-foot">The Historic Electric Theater · St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></div>
     <figure class="mm-photo" style="margin-top:30px;border-radius:16px;overflow:hidden;line-height:0;box-shadow:0 18px 40px -24px rgba(0,0,0,.6);"><picture><source type="image/webp" srcset="/img/electric-theater/facade-dusk.webp"><img src="/img/electric-theater/facade-dusk.jpg" alt="The historic Electric Theater in St. George, Utah at dusk" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></picture></figure>
   </nav>
