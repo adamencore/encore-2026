@@ -610,15 +610,15 @@ html,body{overflow-x:hidden;}
 .nh-built h2{max-width:13ch;margin-bottom:26px;}
 .nh-built blockquote{font-size:1.3rem;line-height:1.5;color:var(--nh-purple);max-width:42ch;}
 .nh-built .qby{margin-top:18px;font-family:var(--font-display);font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
-.nh-collage{position:relative;height:440px;}
-.nh-collage .cc{position:absolute;border-radius:50%;overflow:hidden;box-shadow:0 20px 44px -22px rgba(40,30,60,.5);}
-.nh-collage .cc img{width:100%;height:100%;object-fit:cover;}
-.nh-collage .cc-lg{width:230px;height:230px;top:18px;right:30px;}
-.nh-collage .cc-md{width:150px;height:150px;left:50px;top:96px;}
-.nh-collage .cc-sm{width:104px;height:104px;right:64px;bottom:14px;}
-.nh-collage .sq{position:absolute;width:96px;height:96px;border-radius:22px;background:var(--nh-purple);left:8px;top:22px;transform:rotate(-12deg);}
-.nh-collage .tri{position:absolute;left:150px;bottom:40px;width:0;height:0;border-left:62px solid var(--nh-lav);border-top:42px solid transparent;border-bottom:42px solid transparent;}
-.nh-collage .dot2{position:absolute;width:30px;height:30px;border-radius:50%;background:var(--nh-lav);left:206px;top:42px;}
+.nh-collage{position:relative;width:100%;max-width:420px;aspect-ratio:406/454;margin:0 auto;}
+.nh-collage .cc{position:absolute;border-radius:50%;overflow:hidden;box-shadow:0 20px 44px -22px rgba(40,30,60,.5);aspect-ratio:1;}
+.nh-collage .cc img{width:100%;height:100%;object-fit:cover;}.nh-collage .cc-lg img{object-position:33% 26%;}.nh-collage .cc-sm img{object-position:50% 30%;}
+.nh-collage .cc-lg{width:54.7%;left:38.7%;top:13%;z-index:2;}
+.nh-collage .cc-md{width:30.8%;left:2.6%;top:45.5%;z-index:2;}
+.nh-collage .cc-sm{width:18.2%;left:66.5%;top:74.2%;z-index:3;}
+.nh-collage .sq{position:absolute;width:23.6%;aspect-ratio:1;border-radius:23%;background:var(--nh-purple);left:17.7%;top:24%;transform:rotate(-15deg);z-index:1;}
+.nh-collage .tri{position:absolute;width:39.4%;height:40.1%;left:34.5%;top:48.9%;background:var(--nh-lav);clip-path:polygon(0 0,0 100%,100% 50%);z-index:1;}
+.nh-collage .dot2{position:absolute;width:8.4%;aspect-ratio:1;border-radius:50%;background:var(--nh-lav);left:33.7%;top:20.7%;z-index:2;}
 .nh-ev-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:12px;}
 .nh-ev-icon{flex:none;color:#b9a6e0;margin-top:2px;}
 .nh-ev-icon svg{width:46px;height:46px;}
@@ -631,7 +631,7 @@ html,body{overflow-x:hidden;}
 .nh-ev-text h3{font-family:var(--font-display);font-size:1.5rem;color:var(--nh-purple);}
 .nh-ev-text p{margin:12px 0 18px;color:var(--muted);font-size:.97rem;}
 .nh-ev-text .lk{font-family:var(--font-display);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--nh-purple);}
-@media(max-width:900px){.nh-stage-grid,.nh-built-grid,.nh-ev-grid{grid-template-columns:1fr;gap:32px;}.nh-stage-photo{aspect-ratio:4/5;}.nh-collage{height:360px;max-width:420px;margin:0 auto;}}
+@media(max-width:900px){.nh-stage-grid,.nh-built-grid,.nh-ev-grid{grid-template-columns:1fr;gap:32px;}.nh-stage-photo{aspect-ratio:4/5;}.nh-collage{max-width:420px;}}
 @media(max-width:620px){.nh-ev-grid{grid-template-columns:1fr;}.nh-strip{height:clamp(280px,64vw,380px);gap:8px;}.nh-strip figure{width:40vw;border-radius:18px;}}
 
 /* case-for-the-arts on purple: light text */
@@ -737,10 +737,10 @@ html,body{overflow-x:hidden;}
     <div class="reveal"><h2 class="nh-h2">Built by Southern Utah, for Southern Utah's Young Artists.</h2><blockquote>"My daughter walked in barely able to look an adult in the eye. Two seasons later she's leading warm-ups. Encore didn't just teach her to perform &mdash; it taught her she matters."</blockquote><div class="qby">Encore Parent</div></div>
     <div class="nh-collage reveal" aria-hidden="true">
       <div class="sq"></div><div class="dot2"></div>
-      <div class="cc cc-lg"><img src="/img/gallery/hadestown-dancer.jpg" alt=""></div>
-      <div class="cc cc-md"><img src="/img/gallery/soloist-spotlight.jpg" alt=""></div>
+      <div class="cc cc-lg" style="background:#15102b url(/img/gallery/peter-pan-wendy.jpg) 27% 20%/172% no-repeat;"></div>
+      <div class="cc cc-md"><img src="/img/gallery/hadestown-dancer.jpg" alt=""></div>
       <div class="tri"></div>
-      <div class="cc cc-sm"><img src="/img/gallery/peter-pan-wendy.jpg" alt=""></div>
+      <div class="cc cc-sm"><img src="/img/gallery/a-christmas-carol-tiny-tim.jpg" alt=""></div>
     </div>
   </div></div>
 </section>
