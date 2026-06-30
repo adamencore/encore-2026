@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-13",
+  "generated": "2026-06-30",
   "source": "2026 Show Line-Up (Google Sheet)",
   "shows": {
     "lion-king-jr": {
@@ -54,6 +54,18 @@
       "name": "Page to Stage",
       "program": "Page to Stage",
       "color": "#2f5d6b",
+      "thumb": null
+    },
+    "little-mermaid-camp": {
+      "name": "Little Mermaid Camp",
+      "program": "Camp",
+      "color": "#2a9d8f",
+      "thumb": null
+    },
+    "illuminate": {
+      "name": "Illuminate",
+      "program": "Aspire",
+      "color": "#8e44ad",
       "thumb": null
     }
   },
@@ -660,6 +672,87 @@
       "end": "2026-12-19",
       "time": "7:30pm (2pm matinees)",
       "note": null
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Workshop",
+      "title": "The Outsiders — workshop",
+      "start": "2026-11-11",
+      "end": null,
+      "time": "4:00–6:00 PM",
+      "note": "Page to Stage workshop · Electric Theater · St. George"
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Page to Stage",
+      "title": "The Outsiders — live show",
+      "start": "2026-11-14",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage trip to see The Outsiders · venue TBA"
+    },
+    {
+      "show": "little-mermaid-camp",
+      "type": "Audition",
+      "title": "Auditions",
+      "start": "2026-08-14",
+      "end": null,
+      "time": "6:00–8:00 PM",
+      "note": "Little Mermaid Camp auditions · Electric Theater"
+    },
+    {
+      "show": "little-mermaid-camp",
+      "type": "Parent meeting",
+      "title": "Parent meeting",
+      "start": "2026-08-15",
+      "end": null,
+      "time": "9:00 AM",
+      "note": "Little Mermaid Camp parent meeting"
+    },
+    {
+      "show": "little-mermaid-camp",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-08-15",
+      "end": null,
+      "time": null,
+      "note": "Little Mermaid Camp rehearsals begin"
+    },
+    {
+      "show": "little-mermaid-camp",
+      "type": "Rehearsal",
+      "title": "Tech",
+      "start": "2026-08-20",
+      "end": null,
+      "time": "5:00–8:00 PM",
+      "note": "Little Mermaid Camp tech · Electric Theater"
+    },
+    {
+      "show": "little-mermaid-camp",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-08-21",
+      "end": null,
+      "time": "7:00 PM",
+      "note": "Little Mermaid Camp performance · Electric Theater"
+    },
+    {
+      "show": "illuminate",
+      "type": "Audition",
+      "title": "Auditions",
+      "start": "2026-07-29",
+      "end": null,
+      "time": "10:00 AM–4:00 PM",
+      "note": "Illuminate auditions (vocal, dance & callbacks) · Electric Theater"
+    },
+    {
+      "show": "illuminate",
+      "type": "Parent meeting",
+      "title": "Parent launch",
+      "start": "2026-08-14",
+      "end": null,
+      "time": "3:00 PM",
+      "note": "Illuminate parent launch · Electric Theater"
     }
   ]
 }
