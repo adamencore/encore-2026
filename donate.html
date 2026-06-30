@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <!-- ============================================================
-     DONATE — /donate  (replaces the Squarespace donate page)
-     The give module is a graphical amount/frequency selector that
-     hands off to a SECURE EXTERNAL PROCESSOR. No card data is ever
-     entered on this page.
-     >>> ADAM, set this up:
-       - [DONATE-URL] in the page script: replace DONATE_BASE with your
-         processor's link (Donorbox / Givebutter / Stripe Payment Link).
-         It currently defaults to the live encorepa.org/donate so the
-         button works today. If your processor reads amount/frequency
-         from the query string, map the param names there.
-       - [EMBED] Optional: if you'd rather embed a donation widget
-         instead of linking out, drop the iframe into the marked slot
-         and hide the .give-card.
-       - [EIN] Add your EIN / receipt language in the tax-deductible note.
+     DONATE — /donate
+     INTERIM STATE: online giving is paused while Adam builds a new
+     embeddable donation platform. The amount/frequency selector and the
+     looping processor link have been removed; the give-card now shows a
+     "coming soon" message with an email fallback (mailto:hello@encorepa.org).
+     >>> TO RE-ENABLE later: drop your provider's <iframe> into the .give-card
+         (and delete this note), OR restore the selector + a real processor URL.
+     >>> [EIN] add EIN / receipt language to the tax-deductible note when ready.
      ============================================================ -->
 <html lang="en">
 <head>
@@ -513,37 +507,19 @@ h2 em{color:var(--teal)}
           <p>Encore is a nonprofit youth theater. Your gift funds scholarships, productions, and free, accessible programming for hundreds of young performers in southern Utah.</p>
           <div class="give-trust">
             <span>Tax-deductible</span>
-            <span>Secure checkout</span>
+            <span>501(c)(3)</span>
             <span>Every gift counts</span>
           </div>
         </div>
 
-        <!-- GIVE CARD — selection only; checkout happens on the secure processor.
-             [EMBED] To embed a donation widget instead, replace this .give-card
-             with your provider's <iframe> and delete the page's donate script. -->
+        <!-- GIVE CARD — INTERIM: online giving paused while a new donation platform is built.
+             When ready, replace this .give-card inner with the provider's <iframe>
+             (or restore the amount/frequency selector + processor link). -->
         <div class="give-card">
-          <h2>Make a gift</h2>
-          <div class="freq" role="group" aria-label="Giving frequency">
-            <button type="button" data-freq="once" aria-pressed="true">One-time</button>
-            <button type="button" data-freq="monthly" aria-pressed="false">Monthly</button>
-          </div>
-          <div class="amount-grid" role="group" aria-label="Donation amount">
-            <button type="button" class="amt" data-amt="25">$25</button>
-            <button type="button" class="amt" data-amt="50">$50</button>
-            <button type="button" class="amt" data-amt="100" aria-pressed="true">$100</button>
-            <button type="button" class="amt" data-amt="250">$250</button>
-            <button type="button" class="amt" data-amt="500">$500</button>
-            <button type="button" class="amt other" data-amt="other">Other</button>
-          </div>
-          <div class="custom-wrap" id="customWrap">
-            <div class="custom-field">
-              <span class="cur" aria-hidden="true">$</span>
-              <label for="customAmt" class="sr-only" style="position:absolute;left:-9999px;">Custom amount</label>
-              <input id="customAmt" type="number" min="1" step="1" inputmode="numeric" placeholder="Enter an amount">
-            </div>
-          </div>
-          <a href="https://www.encorepa.org/donate" class="btn give-go" id="giveGo" rel="noopener">Donate $100 →</a>
-          <p class="give-note">You'll complete your gift on our secure donation page. Encore is a 501(c)(3); donations are tax-deductible. <a href="#faq">Questions?</a></p>
+          <h2>A better way to give is <em>on its way</em></h2>
+          <p style="color:var(--muted);font-size:15.5px;line-height:1.6;margin-bottom:20px;">We're upgrading how you support Encore. Online giving will return here shortly — thank you for your patience.</p>
+          <a href="mailto:hello@encorepa.org?subject=I%27d%20like%20to%20support%20Encore" class="btn give-go" rel="noopener">Email us to give today →</a>
+          <p class="give-note">Encore is a 501(c)(3) nonprofit; gifts are tax-deductible. <a href="#faq">Questions?</a></p>
         </div>
       </div>
     </div>
@@ -788,54 +764,6 @@ h2 em{color:var(--teal)}
   t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
-})();
-</script>
-<script>
-(function(){
-  // [DONATE-URL] Replace with your processor's donation link (Donorbox / Givebutter /
-  // Stripe Payment Link). Defaults to the live donate page so the button works today.
-  // If your processor accepts amount/frequency via query string, rename the params below.
-  var DONATE_BASE = 'https://www.encorepa.org/donate';
-
-  var freqBtns=document.querySelectorAll('.freq button');
-  var amtBtns=document.querySelectorAll('.amt');
-  var customWrap=document.getElementById('customWrap');
-  var customAmt=document.getElementById('customAmt');
-  var go=document.getElementById('giveGo');
-  var state={freq:'once',amt:'100'};
-
-  function fmt(v){return v?('$'+v):'';}
-  function update(){
-    var amount = state.amt==='other' ? (customAmt.value||'') : state.amt;
-    var label = amount ? ('Donate '+fmt(amount)+(state.freq==='monthly'?'/mo':'')+' →') : 'Donate →';
-    go.textContent=label;
-    var url=DONATE_BASE;
-    if(amount){
-      var sep = url.indexOf('?')>-1 ? '&' : '?';
-      url += sep+'amount='+encodeURIComponent(amount)+'&frequency='+encodeURIComponent(state.freq);
-    }
-    go.setAttribute('href',url);
-  }
-  freqBtns.forEach(function(b){
-    b.addEventListener('click',function(){
-      freqBtns.forEach(function(x){x.setAttribute('aria-pressed','false');});
-      b.setAttribute('aria-pressed','true');
-      state.freq=b.getAttribute('data-freq');
-      update();
-    });
-  });
-  amtBtns.forEach(function(b){
-    b.addEventListener('click',function(){
-      amtBtns.forEach(function(x){x.setAttribute('aria-pressed','false');});
-      b.setAttribute('aria-pressed','true');
-      state.amt=b.getAttribute('data-amt');
-      if(state.amt==='other'){customWrap.classList.add('show');customAmt.focus();}
-      else{customWrap.classList.remove('show');}
-      update();
-    });
-  });
-  if(customAmt){customAmt.addEventListener('input',update);}
-  update();
 })();
 </script>
 </body>
