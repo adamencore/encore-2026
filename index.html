@@ -705,7 +705,6 @@ html,body{overflow-x:clip;}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <img src="/img/icons/badge-happening-now.svg" alt="Happening Now" style="height:36px;width:auto;display:block;margin-bottom:18px">
         <h2>What's <em>going on</em> at Encore</h2>
       </div>
     </div>
@@ -779,7 +778,6 @@ html,body{overflow-x:clip;}
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
-        <img src="/img/icons/badge-our-home.svg" alt="Our Home" style="height:36px;width:auto;display:block;margin-bottom:18px">
         <h2>Performing at the <em>historic Electric Theater</em></h2>
       </div>
       <p class="lead">Since 2021, Encore has called one of southern Utah's most storied venues home — a downtown St. George landmark built in 1911.</p>
@@ -1120,76 +1118,5 @@ html,body{overflow-x:clip;}
   });
 })();
 </script>
-
-<!-- ===== HOMEPAGE PROMO POPUP — Lion King Kids Camp (auditions Jul 6) — homepage only ===== -->
-<div id="lkPop" class="lk-pop" hidden role="dialog" aria-modal="true" aria-label="Lion King Kids Camp — auditions July 6th">
-  <div class="lk-pop-backdrop" data-lk-close></div>
-  <div class="lk-pop-card">
-    <button class="lk-pop-x" type="button" aria-label="Close" data-lk-close>&times;</button>
-    <a class="lk-pop-link" href="/lion-king-kids-camp-registration">
-      <img src="/img/lion-king-kids-camp-popup.webp" width="1100" height="852" alt="Disney's The Lion King Musical Theater Camp, ages 7 to 11. Auditions July 6th at the Electric Theater. Register today.">
-    </a>
-  </div>
-</div>
-<style>
-  .lk-pop{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:22px;}
-  .lk-pop[hidden]{display:none;}
-  .lk-pop-backdrop{position:absolute;inset:0;background:rgba(20,15,35,.62);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);animation:lkFade .25s ease;}
-  .lk-pop-card{position:relative;max-width:540px;width:100%;animation:lkPop .3s cubic-bezier(.2,.8,.3,1);}
-  .lk-pop-link{display:block;outline-offset:4px;}
-  /* image already has transparent rounded corners; drop-shadow follows that shape */
-  .lk-pop-link img{display:block;width:100%;height:auto;border-radius:24px;filter:drop-shadow(0 20px 46px rgba(0,0,0,.42));}
-  .lk-pop-x{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:999px;border:2px solid #fff;background:#322949;color:#fff;font-size:24px;line-height:1;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;z-index:3;transition:background .15s,transform .15s;}
-  .lk-pop-x:hover{background:#241c38;transform:scale(1.06);}
-  .lk-pop-x:focus-visible{outline:3px solid #d9cbf4;outline-offset:2px;}
-  @keyframes lkFade{from{opacity:0}to{opacity:1}}
-  @keyframes lkPop{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
-  @media (prefers-reduced-motion:reduce){.lk-pop-backdrop,.lk-pop-card{animation:none;}}
-  @media (max-width:600px){.lk-pop{padding:16px;} .lk-pop-x{top:-8px;right:-4px;}}
-</style>
-<script>
-(function(){
-  var KEY='lkCampPopup2026', SUPPRESS_DAYS=3, EXPIRE='2026-07-07'; /* stops after audition (Jul 6) */
-  try{
-    if(new Date() > new Date(EXPIRE+'T23:59:59')) return;                 /* campaign ended */
-    var until=localStorage.getItem(KEY);
-    if(until && Date.now() < parseInt(until,10)) return;                   /* still within suppress window */
-  }catch(e){}
-  var pop=document.getElementById('lkPop'); if(!pop) return;
-  var openedThisLoad=false, lastFocus=null, timer=null;
-  function suppress(days){ try{ localStorage.setItem(KEY, String(Date.now()+days*864e5)); }catch(e){} }
-  function focusables(){ return pop.querySelectorAll('button, a[href]'); }
-  function open(){
-    if(openedThisLoad) return; openedThisLoad=true;
-    if(timer) clearTimeout(timer);
-    lastFocus=document.activeElement;
-    pop.hidden=false; document.body.style.overflow='hidden';
-    var f=focusables(); if(f[0]) f[0].focus();
-    suppress(SUPPRESS_DAYS);                                               /* one impression, then rest 3 days */
-    document.addEventListener('keydown', onKey, true);
-  }
-  function close(){
-    pop.hidden=true; document.body.style.overflow='';
-    document.removeEventListener('keydown', onKey, true);
-    if(lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-  function onKey(e){
-    if(e.key==='Escape'){ close(); return; }
-    if(e.key==='Tab'){                                                     /* trap focus */
-      var f=focusables(); if(!f.length) return;
-      var first=f[0], last=f[f.length-1];
-      if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
-      else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
-    }
-  }
-  pop.addEventListener('click', function(e){ if(e.target.hasAttribute('data-lk-close')) close(); });
-  var link=pop.querySelector('.lk-pop-link');
-  if(link) link.addEventListener('click', function(){ suppress(30); });    /* acted -> rest 30 days */
-  /* triggers: 6s dwell OR desktop exit-intent, whichever comes first */
-  timer=setTimeout(open, 6000);
-  document.addEventListener('mouseout', function(e){ if(!e.relatedTarget && e.clientY<=0) open(); });
-})();
-</script>
-
 </body>
 </html>
