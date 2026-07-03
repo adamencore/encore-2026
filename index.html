@@ -1126,5 +1126,33 @@ html,body{overflow-x:clip;}
   });
 })();
 </script>
+
+<script>
+/* "Built by Southern Utah" collage — multi-speed parallax */
+(function(){
+  var collage=document.querySelector('.nh-collage'); if(!collage) return;
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var map=[['.cc-lg',20,''],['.cc-md',36,''],['.cc-sm',54,''],['.sq',-30,'rotate(-18deg)'],['.tri',-46,''],['.dot2',64,'']];
+  var items=map.map(function(m){var el=collage.querySelector(m[0]); if(el){el.style.willChange='transform';} return {el:el,range:m[1],base:m[2]};}).filter(function(x){return x.el;});
+  var ticking=false;
+  function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(update);} }
+  function update(){
+    ticking=false;
+    var r=collage.getBoundingClientRect();
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    if(r.bottom<-240 || r.top>vh+240) return;                 /* skip when well off-screen */
+    var progress=((r.top + r.height/2) - vh/2)/(vh/2 + r.height/2);
+    progress=Math.max(-1,Math.min(1,progress));               /* -1 entering .. +1 leaving */
+    for(var i=0;i<items.length;i++){
+      var y=(progress*items[i].range).toFixed(1);
+      items[i].el.style.transform='translate3d(0,'+y+'px,0) '+items[i].base;
+    }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll,{passive:true});
+  update();
+})();
+</script>
+
 </body>
 </html>
