@@ -739,7 +739,7 @@ html,body{overflow-x:clip;}
     <div class="reveal"><h2 class="nh-h2">Built by Southern Utah, for Southern Utah's Young Artists.</h2><blockquote>"My daughter walked in barely able to look an adult in the eye. Two seasons later she's leading warm-ups. Encore didn't just teach her to perform &mdash; it taught her she matters."</blockquote><div class="qby">Encore Parent</div></div>
     <div class="nh-collage reveal" aria-hidden="true">
       <div class="sq"></div><div class="dot2"></div>
-      <div class="cc cc-lg" style="background:#15102b url(/img/gallery/peter-pan-wendy.jpg) 100% 0%/215% no-repeat;"></div>
+      <div class="cc cc-lg" style="background:#15102b url(/img/gallery/young-performer-broom.webp) 50% 0%/185% no-repeat;"></div>
       <div class="cc cc-md" style="background:#15102b url(/img/junior/moana.jpg) 5% 64%/235% no-repeat;"></div>
       <div class="tri"></div>
       <div class="cc cc-sm" style="background:#15102b url(/img/gallery/a-christmas-carol-tiny-tim.jpg) 61% 8%/220% no-repeat;"></div>
@@ -1150,6 +1150,33 @@ html,body{overflow-x:clip;}
   }
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll,{passive:true});
+  update();
+})();
+</script>
+
+
+<script>
+/* gentle global horizontal parallax — content drifts right -> left as it passes up the viewport
+   (starts slightly RIGHT on entry, natural position mid-screen, slightly LEFT on exit) */
+(function(){
+  if(window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var els=[].slice.call(document.querySelectorAll('.wrap:not(.nav-inner)'));
+  if(!els.length) return;
+  var DRIFT=48, START=24;                 /* faster: +24px (right) -> 0 -> -24px (left) */
+  for(var i=0;i<els.length;i++){ els[i].style.willChange='transform'; }
+  var vh=window.innerHeight||document.documentElement.clientHeight, ticking=false;
+  function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(update);} }
+  function update(){
+    ticking=false;
+    for(var i=0;i<els.length;i++){
+      var r=els[i].getBoundingClientRect();
+      if(r.bottom<-120 || r.top>vh+120) continue;
+      var p=(vh-(r.top+r.height/2))/vh; if(p<0)p=0; else if(p>1)p=1;   /* 0 entering (bottom) -> 1 leaving (top) */
+      els[i].style.transform='translate3d('+(START-p*DRIFT).toFixed(1)+'px,0,0)';
+    }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',function(){vh=window.innerHeight;onScroll();},{passive:true});
   update();
 })();
 </script>
