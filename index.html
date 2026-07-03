@@ -1075,7 +1075,7 @@ html,body{overflow-x:clip;}
   var strip=document.querySelector('.nh-strip'); if(!strip) return;
   if(window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   var hero=document.querySelector('.nh-hero')||strip.parentNode;
-  var figs=[].slice.call(strip.querySelectorAll('figure'));
+  var figs=[].slice.call(strip.querySelectorAll(':scope > figure'));
   var imgs=figs.map(function(f){return f.querySelector('img');});
   var back=strip.querySelector('.nh-strip-back');
   var paraF=[0.14,0.20,0.10,0.22,0.13,0.18];   /* inner-image parallax rate per card */
