@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     THE ENCORE EXPERIENCE — THE LION KING CAMP
+     Dynamic curriculum page. Interactive 5-day explorer,
+     clickable song-arc, and the show's colour world.
+     Built from the "Encore Experience: The Little Mermaid Camp"
+     curriculum doc. Chrome (nav/footer/logo/fonts) mirrors the
+     live show-page template; Little Mermaid per-show palette retained.
+     ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<title>The Encore Experience: The Little Mermaid Camp | Encore Performing Arts</title>
+<meta name="description" content="A five-day musical theater intensive for ages 7–11 in St. George, Utah. Hands-on theater workshops paired with rehearsals for a Little Mermaid concert revue — then a performance at the Electric Theater. Explore the day-by-day curriculum.">
+<link rel="canonical" href="https://www.encorepa.org/encore-experience-little-mermaid">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="Encore Performing Arts">
+<meta name="theme-color" content="#b5611f">
+<meta name="geo.region" content="US-UT">
+<meta name="geo.placename" content="St. George, Utah">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Encore Performing Arts">
+<meta property="og:url" content="https://www.encorepa.org/encore-experience-little-mermaid">
+<meta property="og:title" content="The Encore Experience: The Little Mermaid Camp">
+<meta property="og:description" content="A five-day musical theater intensive for ages 7–11. Theater workshops + rehearsals building to a Little Mermaid concert revue.">
+<meta property="og:image" content="https://www.encorepa.org/img/shows/little-mermaid-camp-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/cabrio.css">
+<link rel="stylesheet" href="/fonts/mikado.css">
+
+<style>
+  :root{
+    --cream:#e9e4e0;--cream-lite:#f6f5f3;--paper:#fdfcfa;
+    --radius:26px;--radius-lg:34px;
+    /* ===== LITTLE MERMAID per-show theme ===== */
+    --show-bright:#33a7bd;
+    --show-mid:#1c7488;
+    --show-deep:#0c3a48;
+    --show-tint:#c9e9e6;
+    --pride:#c85a48;            /* coral — warmth against the sea */
+    --pride-soft:#dd7a63;
+    --accent:var(--show-mid);--accent-2:var(--show-deep);
+    --teal:var(--show-mid);
+    --charcoal:var(--show-mid);
+    --charcoal-2:var(--show-bright);
+    --charcoal-soft:color-mix(in srgb, var(--show-mid) 80%, #000);
+    --line:color-mix(in srgb, var(--show-mid) 18%, transparent);
+    --muted:#6b6470;
+    --ink:#3a2c1c;             /* readable earthy body ink */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body,'Familjen Grotesk',system-ui,sans-serif);background:var(--cream-lite);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;}
+  ::selection{background:var(--charcoal);color:var(--cream);}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  h1,h2,h3,h4,h5,.dfont{font-family:var(--font-display,'Mikado',Georgia,serif);}
+
+  /* NAV */
+  nav.site{position:sticky;top:var(--annc-h,42px);z-index:100;background:rgba(246,245,243,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;height:78px;}
+  .logo{display:flex;align-items:center;gap:11px;color:var(--charcoal);}
+  .brandmark{height:30px;width:auto;display:block;}
+  .nav-links{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;margin-left:auto;margin-right:30px;}
+  .nav-links a{color:var(--charcoal);opacity:.82;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{display:flex;gap:11px;align-items:center;}
+  .btn{border:none;cursor:pointer;font-family:var(--font-display,'Mikado',sans-serif);font-weight:600;border-radius:100px;padding:13px 24px;font-size:14.5px;transition:transform .2s,background .2s,color .2s;display:inline-flex;align-items:center;gap:9px;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-dark{background:var(--charcoal);color:var(--cream);}
+  .btn-dark:hover{background:var(--charcoal-2);}
+  .btn-ghost{background:transparent;border:1.5px solid var(--charcoal);color:var(--charcoal);}
+  .btn-ghost:hover{background:var(--charcoal);color:var(--cream);}
+  .btn-light{background:var(--cream);color:var(--charcoal);}
+  .btn-accent{background:var(--accent);color:#fff;}
+  .btn-accent:hover{background:var(--accent-2);}
+
+  .crumbs{padding:18px 0 0;}
+  .crumbs ol{list-style:none;display:flex;gap:8px;font-size:13px;color:var(--muted);align-items:center;flex-wrap:wrap;}
+  .crumbs li{display:inline-flex;align-items:center;gap:8px;}
+  .crumbs li+li::before{content:'›';color:var(--muted);opacity:.6;}
+  .crumbs a:hover{color:var(--charcoal);}
+  .crumbs [aria-current="page"]{color:var(--charcoal);font-weight:600;}
+
+  section{padding:64px 0;}
+  section[id]{scroll-margin-top:130px;}
+  .sec-head{max-width:760px;margin-bottom:40px;}
+  .eyebrow{display:inline-block;font-family:var(--font-display,sans-serif);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12.5px;color:var(--show-mid);margin-bottom:14px;}
+  .sec-head h2{font-weight:500;font-size:clamp(28px,3.8vw,48px);line-height:1.04;letter-spacing:-.035em;color:var(--charcoal);}
+  .sec-head h2 em{font-style:italic;color:var(--pride);}
+  .sec-head .lead{margin-top:16px;color:var(--muted);font-size:17px;line-height:1.6;}
+
+  /* HERO */
+  .hero-lk{position:relative;overflow:hidden;border-radius:0 0 var(--radius-lg) var(--radius-lg);background:linear-gradient(155deg,#4bc3d1 0%,var(--show-mid) 46%,var(--show-deep) 100%);color:var(--cream);}
+  .hero-lk::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
+  .hero-lk .wrap{position:relative;z-index:2;padding-top:74px;padding-bottom:78px;}
+  .hero-lk .kicker{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.02em;backdrop-filter:blur(6px);margin-bottom:22px;font-family:var(--font-display,sans-serif);}
+  .hero-lk .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--show-tint);box-shadow:0 0 0 4px rgba(255,255,255,.2);}
+  .hero-lk h1{font-weight:500;font-size:clamp(44px,7.6vw,96px);line-height:.94;letter-spacing:-.045em;}
+  .hero-lk h1 em{font-style:italic;color:var(--show-tint);}
+  .hero-lk .sub{max-width:620px;margin:24px 0 8px;font-size:19px;line-height:1.55;color:rgba(255,255,255,.9);}
+  .hero-lk .meta{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 30px;}
+  .hero-lk .chip{font-family:var(--font-display,sans-serif);font-size:13.5px;font-weight:600;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.22);padding:9px 15px;border-radius:100px;}
+  .hero-actions{display:flex;gap:13px;flex-wrap:wrap;}
+  .hero-note{margin-top:26px;font-size:13px;color:rgba(255,255,255,.68);font-style:italic;max-width:560px;}
+
+  /* OVERVIEW / learn-it-use-it */
+  .band{background:var(--paper);}
+  .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start;}
+  .lede p{font-size:18px;color:var(--ink);margin-bottom:18px;}
+  .lede p strong{color:var(--charcoal);}
+  .loop{background:linear-gradient(160deg,var(--show-mid),var(--show-deep));color:var(--cream);border-radius:var(--radius-lg);padding:34px;position:relative;overflow:hidden;}
+  .loop h3{font-size:20px;font-weight:600;margin-bottom:16px;color:var(--show-tint);}
+  .loop ol{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:14px;}
+  .loop li{counter-increment:s;padding-left:44px;position:relative;font-size:15.5px;line-height:1.5;color:rgba(255,255,255,.92);}
+  .loop li::before{content:counter(s);position:absolute;left:0;top:-2px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-family:var(--font-display,sans-serif);font-weight:600;font-size:14px;color:#fff;}
+
+  /* STAT / schedule */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:12px;}
+  .fact{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;}
+  .fact .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  .fact .v{font-family:var(--font-display,sans-serif);font-size:26px;font-weight:600;color:var(--charcoal);line-height:1.05;margin-top:8px;}
+  .fact .v small{display:block;font-size:13px;color:var(--muted);font-weight:500;margin-top:4px;}
+
+  .sched{display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+  .slot{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 20px;}
+  .slot .t{font-family:var(--font-display,sans-serif);font-weight:600;color:var(--show-mid);font-size:15px;}
+  .slot .l{font-size:15.5px;color:var(--ink);}
+  .slot.big{background:linear-gradient(120deg,rgba(181,97,31,.09),rgba(58,42,92,.08));border-color:color-mix(in srgb,var(--show-mid) 30%,transparent);}
+
+  /* DNA cards + palette */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
+  .card h3{font-size:20px;font-weight:600;color:var(--charcoal);margin-bottom:12px;}
+  .card p{font-size:15.5px;color:var(--ink);}
+  .card ul{margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:8px;}
+  .card li{font-size:15px;color:var(--ink);}
+  .signature{grid-column:1/-1;background:linear-gradient(150deg,var(--pride),var(--pride-soft));color:var(--cream);border:none;}
+  .signature h3{color:#fff;}
+  .signature p{color:rgba(255,255,255,.9);}
+
+  .palette{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;}
+  .sw{border-radius:16px;padding:16px;min-width:150px;flex:1;color:#fff;border:1px solid rgba(0,0,0,.08);}
+  .sw .n{font-family:var(--font-display,sans-serif);font-weight:600;font-size:15px;}
+  .sw .d{font-size:12.5px;opacity:.85;margin-top:3px;line-height:1.4;}
+
+  /* WORKSHOPS */
+  .wk{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;}
+  .video-embed{position:relative;width:100%;padding-top:56.25%;margin-top:16px;border-radius:16px;overflow:hidden;background:#000;border:1px solid var(--line);}
+  .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .vcap{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.4;}
+  .day-videos{margin-top:26px;padding-top:24px;border-top:1px solid var(--line);}
+  .day-videos h4{font-family:var(--font-display,sans-serif);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--show-mid);margin-bottom:16px;}
+  .dvid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .dvid .vcap{margin-top:8px;}
+  .wk-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;}
+  .wk-card .day{font-family:var(--font-display,sans-serif);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--show-mid);}
+  .wk-card h3{font-size:20px;font-weight:600;color:var(--charcoal);margin:10px 0 12px;line-height:1.15;}
+  .wk-card p{font-size:15px;color:var(--ink);}
+  .wk-card .link{margin-top:14px;font-size:13px;font-weight:600;color:var(--pride);}
+
+  /* SONG ARC */
+  .arc-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
+  .arc-legend button{font-family:var(--font-display,sans-serif);font-size:13px;font-weight:600;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 16px;border-radius:100px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;}
+  .arc-legend button .d{width:11px;height:11px;border-radius:50%;}
+  .arc-legend button[aria-pressed="false"]{opacity:.4;}
+  .songs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .song{display:flex;gap:16px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-left-width:5px;border-radius:16px;padding:18px 20px;transition:opacity .25s,transform .25s;}
+  .song .num{font-family:var(--font-display,sans-serif);font-size:22px;font-weight:600;color:var(--show-mid);min-width:30px;}
+  .song h4{font-size:16.5px;font-weight:600;color:var(--charcoal);}
+  .song .badge{display:inline-block;font-family:var(--font-display,sans-serif);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:100px;color:#fff;margin-top:6px;}
+  .song p{font-size:14px;color:var(--muted);margin-top:7px;}
+  .song.dim{opacity:.22;}
+
+  /* DAY EXPLORER */
+  .explorer{background:var(--paper);}
+  .day-pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px;}
+  .day-pill{font-family:var(--font-display,sans-serif);font-weight:600;font-size:14.5px;border:1.5px solid var(--line);background:var(--cream-lite);color:var(--charcoal);border-radius:14px;padding:12px 16px;cursor:pointer;transition:all .2s;min-width:52px;text-align:center;line-height:1.1;}
+  .day-pill small{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;font-weight:600;}
+  .day-pill:hover{border-color:var(--show-mid);}
+  .day-pill[aria-selected="true"]{background:linear-gradient(150deg,var(--show-mid),var(--show-deep));color:#fff;border-color:transparent;}
+  .day-pill[aria-selected="true"] small{color:var(--show-tint);}
+  .day-panel{background:var(--cream-lite);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px;min-height:300px;}
+  .day-panel .dtag{font-family:var(--font-display,sans-serif);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--pride);}
+  .day-panel h3{font-size:clamp(24px,3vw,34px);font-weight:500;letter-spacing:-.03em;color:var(--charcoal);margin:8px 0 10px;line-height:1.05;}
+  .day-panel .theme{font-size:17px;color:var(--ink);font-style:italic;max-width:640px;margin-bottom:26px;}
+  .day-meta{font-family:var(--font-display,sans-serif);font-size:13.5px;font-weight:600;color:var(--pride);margin:2px 0 16px;letter-spacing:.01em;}
+  .day-blocks{display:flex;flex-direction:column;gap:14px;}
+  .blk{display:grid;grid-template-columns:132px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--line);}
+  .blk:first-child{border-top:none;padding-top:4px;}
+  .blk .bt{font-family:var(--font-display,sans-serif);font-weight:600;font-size:14px;color:var(--show-mid);}
+  .blk .bl{font-family:var(--font-display,sans-serif);font-weight:600;font-size:16.5px;color:var(--charcoal);margin-bottom:6px;}
+  .blk p{font-size:15px;color:var(--ink);}
+  .dquote{margin-top:24px;background:linear-gradient(150deg,var(--pride),var(--pride-soft));color:#fff;border-radius:var(--radius);padding:26px 30px;font-size:16.5px;line-height:1.6;font-style:italic;}
+  .dnav{display:flex;justify-content:space-between;margin-top:26px;gap:12px;}
+  .dnav button{font-family:var(--font-display,sans-serif);font-weight:600;font-size:14px;background:transparent;border:1.5px solid var(--line);color:var(--charcoal);padding:11px 20px;border-radius:100px;cursor:pointer;transition:all .2s;}
+  .dnav button:hover:not(:disabled){background:var(--charcoal);color:#fff;border-color:transparent;}
+  .dnav button:disabled{opacity:.35;cursor:default;}
+
+  /* LEARN columns */
+  .learn{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .learn-col{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
+  .learn-col h3{font-size:18px;font-weight:600;color:var(--charcoal);margin-bottom:16px;}
+  .learn-col ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .learn-col li{font-size:14.5px;color:var(--ink);padding-left:22px;position:relative;line-height:1.45;}
+  .learn-col li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--show-mid);}
+
+  /* MIXED AGE */
+  .mixed{background:linear-gradient(150deg,var(--pride),var(--pride-soft));color:var(--cream);border-radius:var(--radius-lg);padding:44px;}
+  .mixed h2{font-family:var(--font-display,sans-serif);color:#fff;font-weight:500;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.03em;margin-bottom:18px;max-width:640px;line-height:1.05;}
+  .mixed p{font-size:16.5px;color:rgba(255,255,255,.9);max-width:760px;margin-bottom:16px;}
+  .mixed .cast{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px;}
+  .mixed .cast div{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:22px;}
+  .mixed .cast h4{color:var(--show-tint);font-size:16px;margin-bottom:8px;}
+  .mixed .cast p{font-size:14.5px;margin:0;}
+
+  /* MATERIALS */
+  .mat{columns:2;column-gap:36px;}
+  .mat li{break-inside:avoid;margin-bottom:12px;font-size:15px;color:var(--ink);list-style:none;padding-left:24px;position:relative;}
+  .mat li::before{content:'▸';position:absolute;left:0;color:var(--show-mid);}
+
+  /* CONCLUSION + CTA */
+  .conclude{background:linear-gradient(160deg,var(--show-mid),var(--show-deep));color:var(--cream);border-radius:var(--radius-lg);padding:56px 44px;text-align:center;}
+  .conclude h2{font-family:var(--font-display,sans-serif);font-weight:500;font-size:clamp(26px,3.6vw,42px);letter-spacing:-.03em;margin:0 auto 18px;max-width:720px;line-height:1.1;}
+  .conclude p{font-size:17px;color:rgba(255,255,255,.88);max-width:640px;margin:0 auto 12px;}
+  .conclude .big{font-family:var(--font-display,sans-serif);font-style:italic;font-size:clamp(22px,2.6vw,30px);color:var(--show-tint);margin-top:26px;}
+  .cta-row{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;}}
+
+  /* ANNOUNCEMENT */
+  .annc{position:sticky;top:0;z-index:170;background:#348193;color:#fff;height:42px;display:flex;align-items:center;font-family:var(--font-display,sans-serif);}
+  .annc.hide{display:none;}
+  .annc-in{max-width:1320px;margin:0 auto;width:100%;padding:0 44px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .annc-link{color:#fff;font-size:14px;font-weight:600;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .annc-link:hover{text-decoration:underline;text-underline-offset:2px;}
+  .annc-x{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;opacity:.85;padding:2px 6px;}
+  .annc-x:hover{opacity:1;}
+
+  /* HAMBURGER + MOBILE MENU */
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:6px;width:46px;height:46px;border:none;background:transparent;cursor:pointer;padding:0;color:inherit;margin-left:auto;}
+  .nav-toggle span{display:block;height:2px;width:26px;background:var(--teal);border-radius:2px;transition:transform .3s,opacity .2s;margin:0 auto;}
+  body.menu-open .nav-toggle span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  body.menu-open .nav-toggle span:nth-child(2){opacity:0;}
+  body.menu-open .nav-toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+  body.menu-open{overflow:hidden;}
+  body.menu-open nav.site{background:transparent !important;border-color:transparent !important;box-shadow:none !important;color:var(--cream);}
+  .mobile-menu{position:fixed;inset:0;z-index:180;background:linear-gradient(165deg,var(--show-bright),var(--show-mid) 55%,var(--show-deep));color:var(--cream);padding:104px 32px 40px;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .32s,transform .32s,visibility .32s;overflow-y:auto;}
+  .mobile-menu>nav{position:static;display:flex;flex-direction:column;}
+  body.menu-open .mobile-menu{opacity:1;visibility:visible;transform:none;}
+  .mobile-menu a{font-family:var(--font-display,sans-serif);font-size:clamp(30px,7.5vw,46px);font-weight:500;letter-spacing:-.035em;color:var(--cream);padding:16px 0;border-bottom:1px solid rgba(233,228,224,.16);display:flex;justify-content:space-between;align-items:center;line-height:1;}
+  .mobile-menu a .ar{font-size:24px;opacity:.6;}
+  .mobile-menu .mm-cta{margin-top:30px;border:none;}
+  .mobile-menu .mm-cta a{font-family:var(--font-display,sans-serif);font-size:17px;font-weight:600;color:var(--teal);border:none;padding:16px 28px;justify-content:center;}
+  .mobile-menu .mm-foot{margin-top:30px;font-size:14px;color:rgba(233,228,224,.7);line-height:1.6;}
+  .mobile-menu .mm-foot a{font-family:var(--font-display,sans-serif);font-size:14px;border:none;padding:0;display:inline;color:var(--show-tint);}
+
+  /* FOOTER */
+  footer{background:var(--charcoal);color:var(--cream);padding:74px 0 36px;margin-top:20px;}
+  .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:36px;padding-bottom:44px;border-bottom:1px solid rgba(233,228,224,.14);}
+  .foot-brand .logo{color:var(--cream);}
+  .foot-tag{font-family:var(--font-display,sans-serif);font-size:23px;line-height:1.3;margin:22px 0 16px;max-width:340px;font-weight:400;}
+  .foot-tag .hl{font-style:italic;color:var(--show-tint);}
+  .foot-loc{color:rgba(233,228,224,.6);font-size:14px;line-height:1.65;}
+  .foot-loc strong{color:var(--cream);font-weight:600;display:block;margin-bottom:4px;}
+  .foot-col h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,228,224,.5);margin-bottom:16px;}
+  .foot-col a{display:block;color:rgba(233,228,224,.85);font-size:14.5px;margin-bottom:10px;}
+  .foot-col a:hover{color:#fff;}
+  .foot-aspire{background:rgba(233,228,224,.08);border:1px solid rgba(233,228,224,.16);border-radius:18px;padding:20px;}
+  .foot-aspire .t{font-family:var(--font-display,sans-serif);font-size:19px;font-weight:600;margin-bottom:6px;}
+  .foot-aspire p{font-size:13px;color:rgba(233,228,224,.7);line-height:1.5;margin-bottom:12px;}
+  .foot-aspire a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;background:var(--cream);color:var(--charcoal);padding:9px 16px;border-radius:100px;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;gap:20px;flex-wrap:wrap;}
+  .foot-bottom p{color:rgba(233,228,224,.5);font-size:13.5px;}
+  .foot-social{display:flex;gap:11px;}
+  .foot-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(233,228,224,.2);display:grid;place-items:center;color:var(--cream);}
+  .foot-social a:hover{background:var(--cream);color:var(--charcoal);}
+  .foot-social a svg{width:18px;height:18px;}
+
+  @media(max-width:980px){
+    .nav-links,.nav-cta{display:none;}
+    .nav-toggle{display:flex;}
+    .grid-2{grid-template-columns:1fr;gap:30px;}
+    .facts{grid-template-columns:1fr 1fr;}
+    .cards,.wk,.songs,.learn{grid-template-columns:1fr;}
+    .mixed .cast{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px;}
+    .facts{grid-template-columns:1fr;}
+    .mat{columns:1;}
+    .slot,.blk{grid-template-columns:1fr;gap:4px;}
+    .day-panel{padding:24px 20px;}
+    .conclude,.mixed{padding:34px 22px;}
+    .foot-top{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<!-- ANNOUNCEMENT BAR -->
+<div class="annc" id="anncBar" role="region" aria-label="Site announcement">
+  <div class="annc-in">
+    <a class="annc-link" href="/little-women-2026">Now casting Little Women &mdash; auditions open &rarr;</a>
+    <button class="annc-x" type="button" aria-label="Dismiss announcement">&times;</button>
+  </div>
+</div>
+<script>(function(){var b=document.getElementById("anncBar"),K="encoreAnnc_v1";if(!b)return;function off(){b.classList.add("hide");document.documentElement.style.setProperty("--annc-h","0px");}try{if(localStorage.getItem(K)==="1")off();}catch(e){}var x=b.querySelector(".annc-x");if(x)x.addEventListener("click",function(){off();try{localStorage.setItem(K,"1")}catch(e){}});})();</script>
+
+<!-- ========== NAV ========== -->
+<nav class="site" aria-label="Primary">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="Encore Performing Arts — Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+    <div class="nav-links">
+      <a href="/about">About</a>
+      <a href="/auditions">Auditions</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="/tickets" class="btn btn-dark">Get Tickets →</a>
+      <a href="/donate" class="btn btn-ghost">Donate</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <nav aria-label="Mobile">
+    <a href="/about">About<span class="ar" aria-hidden="true">→</span></a>
+    <a href="/auditions">Auditions<span class="ar" aria-hidden="true">→</span></a>
+    <a href="/contact">Contact<span class="ar" aria-hidden="true">→</span></a>
+    <div class="mm-cta"><a href="/tickets" class="btn btn-light">Get Tickets →</a><a href="/donate" class="btn btn-light" style="margin-top:11px;">Donate</a></div>
+    <div class="mm-foot">The Historic Electric Theater · St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></div>
+  </nav>
+</div>
+
+<!-- ========== BREADCRUMB ========== -->
+<nav class="crumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/programs">Programs</a></li>
+      <li aria-current="page">The Encore Experience: The Little Mermaid Camp</li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+<!-- ========== HERO ========== -->
+<header class="hero-lk">
+  <div class="wrap reveal">
+    <span class="kicker"><span class="dot"></span>The Encore Experience</span>
+    <h1>The Little Mermaid <em>Camp</em></h1>
+    <p class="sub">A five-day musical theater intensive where Young Artists don't just perform a show — they learn the craft of theater-making, then put it straight to work building a Little Mermaid concert revue. No costumes, no scenery — the performers are the whole show.</p>
+    <div class="meta">
+      <span class="chip">Ages 7–11</span>
+      <span class="chip">5 Days + Performance · Aug 15–21</span>
+      <span class="chip">Concert Revue · ~30 min</span>
+      <span class="chip">The Historic Electric Theater</span>
+    </div>
+    <div class="hero-actions">
+      <a href="/little-mermaid-camp-registration" class="btn btn-light">Register →</a>
+      <a href="#journey" class="btn btn-ghost" style="border-color:rgba(255,255,255,.45);color:#fff;">Explore the 5 days</a>
+    </div>
+    <p class="hero-note">Please note: these are suggested outlines and times. Some specifics may vary by production and season.</p>
+  </div>
+</header>
+
+<!-- ========== OVERVIEW ========== -->
+<section class="band">
+  <div class="wrap">
+    <div class="grid-2">
+      <div class="lede reveal">
+        <span class="eyebrow">Program Overview</span>
+        <div class="sec-head" style="margin-bottom:22px;"><h2>Not a camp that ends in a show — a <em>front-row education</em></h2></div>
+        <p>The Encore Experience transforms the traditional theater camp into a comprehensive arts-education program. Each day opens with a hands-on Experience Session teaching a fundamental skill of theater-making — then Young Artists put it straight to work in that day's rehearsal.</p>
+        <p><strong>The Little Mermaid runs in a classroom, not a theater — no costumes, no sets, no lights.</strong> That's the point: with nothing to hide behind, Young Artists learn to build two whole worlds — the sea below and the shore above — with only their bodies, their voices, and the space. The one day in the theater is the performance.</p>
+      </div>
+      <div class="loop reveal">
+        <h3>The "learn it, use it" model</h3>
+        <ol>
+          <li>Warm up and build community as a company.</li>
+          <li>Learn a core theater skill in the Experience Session.</li>
+          <li>Apply that exact skill in the rehearsal that follows.</li>
+          <li>Watch it become part of the show you're building — day by day.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="facts reveal" style="margin-top:44px;">
+      <div class="fact"><div class="k">Structure</div><div class="v">5 Days<small>+ performance · Aug 21</small></div></div>
+      <div class="fact"><div class="k">Ages</div><div class="v">7–11<small>intentional mixed-age casting</small></div></div>
+      <div class="fact"><div class="k">Daily</div><div class="v">9–12<small>am at the Electric Theater</small></div></div>
+      <div class="fact"><div class="k">Show format</div><div class="v">Concert Revue<small>~10 songs, thematic arc</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DAILY SCHEDULE ========== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">A Day at Camp</span><h2>Every camp day follows the same <em>rhythm</em></h2><p class="lead">Skills first, applied right after — so nothing feels abstract. What you learn at 9:15, you're using by 10. Rehearsal is always the biggest block of the day. (Performance day runs its own schedule — see below.)</p></div>
+    <div class="sched reveal">
+      <div class="slot"><span class="t">9:00–9:15</span><span class="l">Warm-Up &amp; Community Building — the whole company grounds and connects</span></div>
+      <div class="slot big"><span class="t">9:15–9:45</span><span class="l"><strong>Experience Session</strong> — the day's theater-skills workshop</span></div>
+      <div class="slot big"><span class="t">9:45–10:45</span><span class="l"><strong>Specialty Workshop</strong> (Days 1–3) — a deep dive into the world of the show</span></div>
+      <div class="slot big"><span class="t">10:45–12:00</span><span class="l"><strong>Rehearsal</strong> — apply the day's concepts to the show, with a short snack break</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SHOW DNA ========== -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Show DNA</span><h2>Built on a single ache: <em>wanting to belong to a world that isn't yours yet</em></h2></div>
+    <div class="cards">
+      <div class="card reveal">
+        <h3>Themes &amp; messages</h3>
+        <ul>
+          <li>Longing for more than the world you were given — and the courage to reach for it.</li>
+          <li>Two worlds, and the bravery it takes to cross between them.</li>
+          <li>Finding your voice — literally and figuratively.</li>
+          <li>Growing up means risking comfort for the life you imagine.</li>
+          <li>Belonging is something you choose and earn, not something you're simply given.</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3>The emotional journey</h3>
+        <ul>
+          <li><strong>Beginning —</strong> a world that feels too small for the person inside it.</li>
+          <li><strong>Middle —</strong> a leap toward something new — thrilling, risky, and costly.</li>
+          <li><strong>End —</strong> a person who has found where, and to whom, they belong.</li>
+        </ul>
+      </div>
+      <div class="card signature reveal">
+        <h3>Signature element — the longing</h3>
+        <p>The Little Mermaid lives in the ache of wanting to belong to a world that isn't yours yet — and the bravery it takes to go after it anyway. Our revue is built on that longing: the pull between the world below and the world above, and the voice it takes to bridge them. The ensemble's job is to make an audience <em>feel</em> that reach — without ever forcing it.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Two worlds, told by the body</h3>
+        <p>The Little Mermaid is a show of two physical worlds. With no costumes, sets, or lights, the performers make the audience see the sea and the shore using movement alone — buoyant and weightless below the surface, grounded and upright above it. A single length of blue fabric, used with conviction, can become the entire ocean.</p>
+      </div>
+      <div class="card reveal">
+        <h3>The visual world</h3>
+        <p>Colors as feeling and movement as place. The world is carried entirely by the ensemble — how they move, the levels and formations they make, and the energy they hold. The audience sees the change in the bodies.</p>
+        <div class="palette">
+          <div class="sw" style="background:#0c3a48;"><div class="n">Deep sea</div><div class="d">The world below · the beginning</div></div>
+          <div class="sw" style="background:#1c7488;"><div class="n">Ocean teal</div><div class="d">Home, and the longing to leave it</div></div>
+          <div class="sw" style="background:#2f9e86;"><div class="n">Sea green</div><div class="d">Movement · buoyant &amp; alive</div></div>
+          <div class="sw" style="background:#c85a48;"><div class="n">Coral</div><div class="d">Character, wit &amp; heart</div></div>
+          <div class="sw" style="background:#e0a53f;"><div class="n">Warm gold</div><div class="d">The world above · the shore</div></div>
+          <div class="sw" style="background:#8fc7e8;"><div class="n">Sky</div><div class="d">Wonder · the new world</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SPECIALTY WORKSHOPS ========== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Specialty Workshops</span><h2>Three deep dives into the world of the show</h2><p class="lead">Woven through the camp — not one-off add-ons, but foundations the whole revue is built on.</p></div>
+    <div class="wk">
+      <div class="wk-card reveal">
+        <div class="day">Day 1</div>
+        <h3>Finding Your Voice — Longing as a Performance Tool</h3>
+        <p>Young Artists explore want as the engine of performance: what does it look like to ache for something, and how do you let an audience feel it without forcing it? Stillness and breath as longing; "finding your voice" games from a whisper to full, free sound.</p>
+        <div class="link">Connects to → vocal performance, presence, the heart of the show</div>
+      </div>
+      <div class="wk-card reveal">
+        <div class="day">Day 2</div>
+        <h3>Two Worlds — Movement Below &amp; Above</h3>
+        <p>The Little Mermaid is a show of two physical worlds. This workshop teaches Young Artists to make the audience see the sea and the shore using only the body — buoyancy and flow below, weight and grounding above — and to cross between them, together, as an ensemble.</p>
+        <div class="link">Connects to → choreography, physical theater, the visual world</div>
+      </div>
+      <div class="wk-card reveal">
+        <div class="day">Day 3</div>
+        <h3>Character &amp; Comedy — Villains, Sidekicks &amp; Heart</h3>
+        <p>From a charismatic villain to comic sidekicks to the show's deep emotional core, The Little Mermaid asks for range. Big, delicious villainy played with control; comic timing in the lighter numbers; sincerity in the emotional songs — and matching your style to the kind of song you're in.</p>
+        <div class="link">Connects to → character work, comic timing, emotional truth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SONG ARC ========== -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">The Revue</span><h2>Ten songs, two <em>worlds</em></h2><p class="lead">The revue moves from the sea below to the shore above — longing, the leap, and belonging. Filter by where each song lives in the journey.</p></div>
+    <div class="arc-legend reveal" id="arcLegend">
+      <button data-state="all" aria-pressed="true"><span class="d" style="background:#6b6470"></span>All</button>
+      <button data-state="sea" aria-pressed="true"><span class="d" style="background:#17627a"></span>The Sea</button>
+      <button data-state="leap" aria-pressed="true"><span class="d" style="background:#d9614e"></span>The Leap</button>
+      <button data-state="shore" aria-pressed="true"><span class="d" style="background:#e0a53f"></span>The Shore</button>
+    </div>
+    <div class="songs reveal" id="songs"></div>
+  </div>
+</section>
+
+<!-- ========== 5-DAY EXPLORER ========== -->
+<section class="explorer" id="journey">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">The 5-Day Journey</span><h2>Tap any day to see what happens</h2><p class="lead">Each day's Experience Session teaches a skill; the rehearsals that follow put it to work. Here's the arc, day by day.</p></div>
+    <div class="day-pills reveal" id="dayPills" role="tablist" aria-label="Camp days"></div>
+    <div class="day-panel reveal" id="dayPanel" role="region" aria-live="polite"></div>
+    <div class="dnav">
+      <button id="dPrev" type="button">← Previous day</button>
+      <button id="dNext" type="button">Next day →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHAT THEY LEARN ========== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">What Young Artists Learn</span><h2>Skills that outlast the show</h2></div>
+    <div class="learn">
+      <div class="learn-col reveal">
+        <h3>Theater skills</h3>
+        <ul>
+          <li>Building a world with body, voice, and space — no scenery</li>
+          <li>Two physical registers — buoyant below, grounded above</li>
+          <li>Longing as a performance engine — want you can feel</li>
+          <li>Vocal range and style across the whole score</li>
+          <li>Ensemble unity and stage-picture composition</li>
+          <li>Character &amp; comedy — villains, sidekicks, and heart</li>
+          <li>Concert-revue structure and thematic arc</li>
+          <li>Mixed-age ensemble leadership and collaboration</li>
+        </ul>
+      </div>
+      <div class="learn-col reveal">
+        <h3>21st-century skills</h3>
+        <ul>
+          <li>Courage — reaching for more than the world you were given</li>
+          <li>Finding your voice, literally and figuratively</li>
+          <li>Belonging as something you choose and earn</li>
+          <li>Persistence through difficulty</li>
+          <li>Collaboration — the ensemble as one company</li>
+          <li>Empathy through character and story</li>
+        </ul>
+      </div>
+      <div class="learn-col reveal">
+        <h3>Story &amp; thematic connections</h3>
+        <ul>
+          <li>Two worlds, and the bravery to cross between them</li>
+          <li>Growing up — risking comfort for the life you imagine</li>
+          <li>Imagination and world-building without spectacle</li>
+          <li>The classic Little Mermaid story and its heart</li>
+          <li>How movement and stillness tell a place apart</li>
+          <li>Wanting more as the beginning of every brave thing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MIXED AGE ========== -->
+<section class="band">
+  <div class="wrap reveal">
+    <div class="mixed">
+      <h2>Why the mixed-age range is the whole point</h2>
+      <p>The mixed-age ensemble isn't a logistical compromise — it <em>is</em> the show's central image: a whole company, ranging from 7 to 11, that feels like a real community in a way a same-age group simply cannot. Everyone is in every number. No one steps outside the circle.</p>
+      <p>Built-in differentiation runs through every session: younger Artists (7–9) work in concrete, physical, imaginative modes; older Artists (10–11) engage in analytical, leadership, and emotionally nuanced work.</p>
+      <div class="cast">
+        <div><h4>Younger Artists (7–9)</h4><p>Bright, high-energy ensemble features and the uncomplicated joy the playful numbers require — partnered with older Artists for support.</p></div>
+        <div><h4>Older Artists (10–11)</h4><p>Lead solos, narration, and the show's weightier emotional moments — the longing, the leap, and the belonging.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MATERIALS ========== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Behind the Scenes</span><h2>What makes it possible</h2></div>
+    <ul class="mat reveal">
+      <li>Soundtrack and accompaniment tracks for the songs in the revue</li>
+      <li>Camp or show t-shirts — performance attire (there are no costumes)</li>
+      <li>A few simple, deliberate props as imagination anchors — a length of blue fabric for the sea</li>
+      <li>Optional fabric pieces or scarves for movement exploration</li>
+      <li>Drawing and design supplies, markers, and paper</li>
+      <li>Scripts with narration and transitions</li>
+      <li>Reference images that capture the world of the show</li>
+      <li>A classroom rehearsal space, whiteboard or chart paper, water bottles, first-aid kit, emergency contacts</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== CONCLUSION + CTA ========== -->
+<section class="band">
+  <div class="wrap reveal">
+    <div class="conclude">
+      <h2>They learn that wanting more is where every brave thing begins</h2>
+      <p>The Little Mermaid Experience teaches Young Artists that wanting more is not something to apologize for — it is the beginning of every brave thing a person does. With no scenery to hide behind, they learn to build two whole worlds with their bodies and their voices.</p>
+      <p>And they learn to reach — fully and without fear — for the life just past the surface. That isn't just theater training; it's something they carry long after the show closes.</p>
+      <div class="big">Up where they walk, up where they run.</div>
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="/" class="logo" aria-label="Encore Performing Arts — Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+        <div class="foot-tag">Inspiring discovery &amp; <span class="hl">imagination</span> through exploration and play.</div>
+        <div class="foot-loc">
+          <strong>Visit us</strong>
+          The Historic Electric Theater<br>
+          68 E Tabernacle St · St. George, UT<br>
+          <a href="tel:+14354140049" style="color:#cfc6b4;">(435) 414-0049</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="/calendar">What's On</a>
+        <a href="/programs">Programs by Age</a>
+        <a href="/sensory-friendly-performances">Sensory-Friendly</a>
+        <a href="/page-to-stage">Page to Stage</a>
+        <a href="/past-shows">Past Shows</a>
+        <a href="/blog">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h5>Support</h5>
+        <a href="/donate">Donate</a>
+        <a href="/core-community">Join The Core</a>
+        <a href="/encore-scholarship-application">Apply for a Scholarship</a>
+        <a href="/contact">Contact Us</a>
+      </div>
+      <div class="foot-col">
+        <h5>This Program</h5>
+        <a href="/little-mermaid-camp-registration">Register for Camp</a>
+        <a href="/little-mermaid-kids-camp-2026">Little Mermaid Kids Camp</a>
+        <a href="/auditions">All Auditions</a>
+        <a href="/calendar">Season Calendar</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Encore Performing Arts · A 501(c)(3) nonprofit · <a href="/terms-and-conditions" style="color:#cfc6b4;text-decoration:underline;text-underline-offset:2px;font-weight:600;">Terms</a> · <a href="/privacy-policy" style="color:#cfc6b4;text-decoration:underline;text-underline-offset:2px;font-weight:600;">Privacy Policy</a></p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/encorestg" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+        <a href="https://www.facebook.com/encorestg" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCBqCS2LKe-5UHp7osQFA-fg" rel="noopener" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* reveal on scroll */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(i%3)*0.07+'s';io.observe(el);});
+</script>
+<script>
+  /* mobile menu */
+  (function(){
+    var t=document.getElementById('navToggle'),m=document.getElementById('mobileMenu');
+    if(!t||!m)return;
+    function s(o){document.body.classList.toggle('menu-open',o);t.setAttribute('aria-expanded',o);t.setAttribute('aria-label',o?'Close menu':'Open menu');}
+    t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
+  })();
+</script>
+<script>
+  /* ===== SONG ARC ===== */
+  var STATE_COLOR={sea:'#17627a',leap:'#d9614e',shore:'#e0a53f'};
+  var STATE_LABEL={sea:'The Sea',leap:'The Leap',shore:'The Shore'};
+  var SONGS=[
+    {n:1,t:'Fathoms Below',s:'sea',d:'Opening — the world of the sea, vast and alive.'},
+    {n:2,t:'Daughters of Triton',s:'sea',d:'The ensemble introduces the world below.'},
+    {n:3,t:'Part of Your World',s:'sea',d:'Longing — the heart of the show; a world that feels too small.'},
+    {n:4,t:'Under the Sea',s:'leap',d:'Joy and spectacle — the full ensemble at its brightest.'},
+    {n:5,t:"She's in Love",s:'leap',d:'Playful, bright ensemble energy.'},
+    {n:6,t:'Poor Unfortunate Souls',s:'leap',d:'Character, wit, and danger — the bargain.'},
+    {n:7,t:'Kiss the Girl',s:'leap',d:'Warmth and gentle comedy — the world above.'},
+    {n:8,t:'Beyond My Wildest Dreams',s:'shore',d:'Wonder at a brand-new world.'},
+    {n:9,t:'If Only',s:'shore',d:'The emotional center — longing across two worlds.'},
+    {n:10,t:'Part of Your World (Finale)',s:'shore',d:'Resolution — belonging, found and chosen.'}
+  ];
+  (function(){
+    var wrap=document.getElementById('songs'); if(!wrap)return;
+    wrap.innerHTML=SONGS.map(function(o){
+      return '<div class="song" data-state="'+o.s+'" style="border-left-color:'+STATE_COLOR[o.s]+'">'+
+        '<div class="num">'+o.n+'</div><div><h4>'+o.t+'</h4>'+
+        '<span class="badge" style="background:'+STATE_COLOR[o.s]+'">'+STATE_LABEL[o.s]+'</span>'+
+        '<p>'+o.d+'</p></div></div>';
+    }).join('');
+    var active={whole:true,break:true,return:true};
+    var legend=document.getElementById('arcLegend');
+    function apply(){
+      wrap.querySelectorAll('.song').forEach(function(el){
+        el.classList.toggle('dim',!active[el.getAttribute('data-state')]);
+      });
+    }
+    legend.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click',function(){
+        var st=b.getAttribute('data-state');
+        if(st==='all'){active={whole:true,break:true,return:true};
+          legend.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','true');});
+        }else{
+          active[st]=!active[st]; b.setAttribute('aria-pressed',active[st]?'true':'false');
+          var allOn=active.whole&&active.break&&active.return;
+          legend.querySelector('[data-state="all"]').setAttribute('aria-pressed',allOn?'true':'false');
+        }
+        apply();
+      });
+    });
+  })();
+</script>
+<script>
+  /* ===== 5-DAY EXPLORER ===== */
+  var DAYS=[
+    {n:1,label:'Day 1',date:'Sat Aug 15',dateLong:'Saturday, August 15',venue:'The Electric Theater',hours:'9:00am\u201312:00pm',tag:'Experience Session \u00b7 Specialty Workshop',title:'Foundations & Finding Your Voice',theme:'What makes a musical \u2014 and how do you let an audience feel a longing without forcing it?',blocks:[
+      {t:'9:00\u20139:15',l:'Warm-Up & Welcome',p:'A welcome circle \u2014 name, one thing you love about The Little Mermaid, one hope for the week \u2014 and a body warm-up moving between the show\u2019s two worlds: the still, heavy world below the surface and the bright, open world above. Community agreements: every contribution matters, no one is left out.'},
+      {t:'9:15\u20139:45',l:'Experience Session: Foundations',p:'The three elements of a musical \u2014 acting, singing, dancing \u2014 and why this story is told in song. Name the feeling each song carries, then meet the revue and the ensemble\u2019s role as the world of the show.'},
+      {t:'9:45\u201310:45',l:'Workshop: Finding Your Voice',p:'Longing as a performance tool. Want as the engine of every song; stillness and breath as longing; \u201cfinding your voice\u201d games from a whisper to full, free sound \u2014 letting the audience lean in.'},
+      {t:'10:45\u201312:00',l:'Rehearsal: Into the Show',p:'Begin learning the opening music \u2014 \u201cFathoms Below\u201d and \u201cDaughters of Triton\u201d \u2014 and play through the full song list. Step into the world of the show. (Snack break worked in.)'}
+    ]},
+    {n:2,label:'Day 2',date:'Mon Aug 17',dateLong:'Monday, August 17',venue:'The Electric Theater',hours:'9:00am\u201312:00pm',tag:'Experience Session \u00b7 Specialty Workshop',title:'Character, Movement & Two Worlds',theme:'Two worlds, told by the body alone \u2014 buoyant below, grounded above.',blocks:[
+      {t:'9:00\u20139:15',l:'Warm-Up',p:'Vocal diction and tone tuned to the show\u2019s style; a physical warm-up moving between the two registers \u2014 the still world below and the open world above.'},
+      {t:'9:15\u20139:45',l:'Experience Session: Character & Voice',p:'What each character wants, and how that want lives in the body and the voice. Song groups find where the warmth, the want, and the energy live in their number.'},
+      {t:'9:45\u201310:45',l:'Workshop: Two Worlds \u2014 Movement Below & Above',p:'Buoyant, weightless movement underwater; grounded, upright movement on land; transition on a signal between the two, and cross from sea to shore as an ensemble.'},
+      {t:'10:45\u201312:00',l:'Rehearsal: Music & First Staging',p:'Begin staging the opening of the revue; learn \u201cPart of Your World\u201d; run what\u2019s learned with character choices alive in the body. (Snack break worked in.)'}
+    ]},
+    {n:3,label:'Day 3',date:'Tue Aug 18',dateLong:'Tuesday, August 18',venue:'The Electric Theater',hours:'9:00am\u201312:00pm',tag:'Experience Session \u00b7 Specialty Workshop',title:'Ensemble, Design & Character',theme:'The ensemble is the world \u2014 and the world is built with bodies, not scenery.',blocks:[
+      {t:'9:00\u20139:15',l:'Warm-Up',p:'Ensemble-unity games and mixed-age partner work \u2014 older Artists guide younger ones; the company moves as one.'},
+      {t:'9:15\u20139:45',l:'Experience Session: Ensemble & Design',p:'The story happens through the ensemble. With no costumes, sets, or lights, the performers build the world \u2014 movement, space, levels and formations, energy and stillness, and the occasional simple prop used with conviction.'},
+      {t:'9:45\u201310:45',l:'Workshop: Character & Comedy',p:'Villains, sidekicks, and heart. Big, delicious villainy played with control; comic timing in the lighter numbers; sincerity in the emotional songs \u2014 matching style to the kind of song you\u2019re in.'},
+      {t:'10:45\u201312:00',l:'Rehearsal: Ensemble Numbers',p:'Learn and stage the big ensemble numbers \u2014 \u201cUnder the Sea,\u201d \u201cShe\u2019s in Love,\u201d \u201cPoor Unfortunate Souls\u201d \u2014 everyone featured. (Snack break worked in.)'}
+    ]},
+    {n:4,label:'Day 4',date:'Wed Aug 19',dateLong:'Wednesday, August 19',venue:'The Electric Theater',hours:'9:00am\u201312:00pm',tag:'Experience Session',title:'Music, Storytelling & Staging',theme:'Ten songs, one story \u2014 and the first full run.',blocks:[
+      {t:'9:00\u20139:15',l:'Warm-Up',p:'Vocal warm-ups across the show\u2019s styles; the movement registers in sequence.'},
+      {t:'9:15\u20139:45',l:'Experience Session: Music, Storytelling & Directing',p:'How a set of songs becomes one emotional journey; how a director builds stage pictures that land the story; the finale image the audience carries home.'},
+      {t:'9:45\u201312:00',l:'Rehearsal: Finish & Run',p:'Finish learning any remaining songs; complete the blocking; integrate the connective narration so the world speaks with one voice; then a first full run-through with prioritized notes. (Two snack breaks worked in.)'}
+    ]},
+    {n:5,label:'Day 5',date:'Thu Aug 20',dateLong:'Thursday, August 20',venue:'The Electric Theater',hours:'9:00am\u201312:00pm',tag:'Experience Session',title:'Presence, Full Runs & Readiness',theme:'With no costumes, sets, or lights, the performers are the whole show.',blocks:[
+      {t:'9:00\u20139:15',l:'Warm-Up',p:'Gentle and centered; eye-contact and presence games; the ensemble is one company today.'},
+      {t:'9:15\u20139:45',l:'Experience Session: Presence & Performance Prep',p:'The actor\u2019s tools are the only special effects we have \u2014 focus, energy, specificity, stillness, commitment. Managing nerves, connecting with the audience, and the mindset for the show: you are the show.'},
+      {t:'9:45\u201312:00',l:'Rehearsal: Full Runs & Readiness',p:'Full run top to bottom, including bows, with minimal stopping; targeted notes on top priorities; a closing circle and performance-day logistics \u2014 call time at the theater, what to bring, wear the camp t-shirt. (Two snack breaks worked in.)'}
+    ]},
+    {perf:true,label:'Show',date:'Fri Aug 21',dateLong:'Friday, August 21',venue:'The Electric Theater',hours:'Tech run earlier \u00b7 Show 7:00pm',tag:'Performance Day',title:'Showtime at the Electric Theater',theme:'Up where they walk, up where they run \u2014 the leap, made in front of an audience.',blocks:[
+      {t:'Afternoon',l:'Tech & Sound Run',p:'The one time on the actual stage: a tech and sound run to get comfortable in the space. No lighting or tech is used during camp \u2014 this is the day it all comes together.'},
+      {t:'Pre-show',l:'Warm-Up & Company Circle',p:'A light warm-up, a final pep talk, and a company circle \u2014 trust the work, and mean every word.'},
+      {t:'7:00pm',l:'Showtime \u2192 Bows \u2192 Celebration',p:'The performance, then bows and a celebration. No costumes \u2014 Young Artists perform in their camp t-shirts, and the whole show is carried by their bodies and their voices.'}
+    ],
+    quote:'"The Little Mermaid lives in the ache of wanting to belong to a world that isn\u2019t yours yet \u2014 and the bravery it takes to go after it anyway. Tonight, with nothing to hide behind, you build two whole worlds with your bodies and your voices, and you reach, fully and without fear, for the life just past the surface."'}
+  ];
+
+  (function(){
+    var pills=document.getElementById('dayPills'), panel=document.getElementById('dayPanel');
+    var prev=document.getElementById('dPrev'), next=document.getElementById('dNext');
+    if(!pills||!panel)return;
+    var cur=0;
+    DAYS.forEach(function(d,i){
+      var b=document.createElement('button');
+      b.className='day-pill'; b.setAttribute('role','tab'); b.type='button';
+      b.innerHTML=d.label+'<small>'+d.date+'</small>';
+      b.addEventListener('click',function(){show(i);});
+      pills.appendChild(b);
+    });
+    function show(i){
+      cur=i;
+      Array.prototype.forEach.call(pills.children,function(el,idx){el.setAttribute('aria-selected',idx===i?'true':'false');});
+      var d=DAYS[i];
+      var html='<div class="dtag">'+d.tag+'</div><h3>'+(d.perf?d.title:'Day '+d.n+' — '+d.title)+'</h3><div class="day-meta">'+d.dateLong+' · '+d.venue+' · '+d.hours+'</div><p class="theme">'+d.theme+'</p><div class="day-blocks">';
+      d.blocks.forEach(function(b){
+        html+='<div class="blk"><div class="bt">'+b.t+'</div><div><div class="bl">'+b.l+'</div><p>'+b.p+'</p></div></div>';
+      });
+      html+='</div>';
+      if(d.videos && d.videos.length){
+        html+='<div class="day-videos"><h4>Watch</h4><div class="dvid-grid">';
+        d.videos.forEach(function(v){
+          var t=v.cap.replace(/"/g,'&quot;');
+          html+='<div class="dvid"><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/'+v.id+'" title="'+t+'" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="vcap">'+v.cap+'</div></div>';
+        });
+        html+='</div></div>';
+      }
+      if(d.quote){html+='<div class="dquote">'+d.quote+'</div>';}
+      panel.innerHTML=html;
+      prev.disabled=(i===0); next.disabled=(i===DAYS.length-1);
+    }
+    prev.addEventListener('click',function(){if(cur>0)show(cur-1);});
+    next.addEventListener('click',function(){if(cur<DAYS.length-1)show(cur+1);});
+    show(0);
+  })();
+</script>
+</body>
+</html>
