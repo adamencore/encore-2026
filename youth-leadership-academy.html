@@ -33,7 +33,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{font-family:var(--font-body,'Familjen Grotesk',system-ui,sans-serif);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+  body{font-family:var(--font-body,'Familjen Grotesk',system-ui,sans-serif);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:clip;}
   ::selection{background:var(--teal);color:#fff;}
   a{color:inherit;text-decoration:none;}
   img{display:block;max-width:100%;}
@@ -51,6 +51,7 @@
   .tb-actions{margin-left:auto;display:flex;gap:8px;align-items:center;}
   .tb-btn{font-family:var(--font-display,sans-serif);font-weight:600;font-size:12.5px;color:var(--charcoal);background:var(--cream);border:1px solid var(--line);border-radius:100px;padding:8px 14px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px;}
   .tb-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal);}
+  .tb-btn .lbl-short{display:none;}
   .tb-progress{position:relative;height:3px;background:var(--line-2);}
   .tb-progress span{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--teal),var(--yellow));transition:width .15s;}
 
@@ -224,12 +225,27 @@
     .prog{grid-template-columns:1fr 1fr;}
     .content{padding-top:8px;}
   }
+  @media(max-width:700px){.tb-label{display:none;}}
   @media(max-width:560px){
     .wrap,.layout{padding-left:18px;padding-right:18px;}
+    .hero-in{padding-left:18px;padding-right:18px;}
+    .pband-in{padding-left:18px;padding-right:18px;}
     .slot{grid-template-columns:1fr;gap:4px;}
     .step{grid-template-columns:1fr;}
     .tb-label{display:none;}
     .prog{grid-template-columns:1fr;}
+    /* keep the full-bleed section nav aligned to the reduced mobile padding */
+    .sidenav{margin:0 -18px;}
+    .sidenav-inner{padding-left:18px;padding-right:18px;}
+    /* top bar: shrink so logo + actions fit narrow screens */
+    .topbar-in{padding:0 16px;gap:10px;}
+    .tb-logo .brandmark{height:22px;}
+    .tb-actions{gap:6px;}
+    .tb-btn{padding:7px 12px;font-size:11.5px;}
+    .tb-btn .lbl-full{display:none;}
+    .tb-btn .lbl-short{display:inline;}
+    .stagemap div{font-size:12px;padding:14px 6px;}
+    .notation span{font-size:13px;}
   }
   @media print{
     .topbar,.sidenav,.pband,.done-row,.tb-actions{display:none!important;}
@@ -248,7 +264,7 @@
     <div class="tb-label">Youth Leadership Academy<small>Training &amp; Support · 2026</small></div>
     <div class="tb-actions">
       <button class="tb-btn" id="printBtn" type="button" title="Print / Save as PDF">Print</button>
-      <button class="tb-btn" id="resetBtn" type="button" title="Reset your saved progress">Reset progress</button>
+      <button class="tb-btn" id="resetBtn" type="button" title="Reset your saved progress"><span class="lbl-full">Reset progress</span><span class="lbl-short">Reset</span></button>
     </div>
   </div>
   <div class="tb-progress"><span id="scrollProg"></span></div>
