@@ -88,6 +88,28 @@
   .xcard.ghost h3{font-size:18px;color:var(--charcoal);}
   .xcard.ghost p{margin-bottom:0;}
 
+  /* RESOURCES — theater games */
+  .sec-intro{font-size:15px;color:var(--muted);margin:-4px 0 18px;max-width:660px;}
+  .games{display:flex;flex-direction:column;gap:12px;}
+  .game{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:border-color .18s;}
+  .game[open]{border-color:color-mix(in srgb,var(--teal) 34%,var(--line));}
+  .game>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:15px;padding:17px 20px;}
+  .game>summary::-webkit-details-marker{display:none;}
+  .game .g-num{flex:none;width:34px;height:34px;border-radius:10px;background:var(--cream-2);color:var(--teal);display:grid;place-items:center;font-family:'Mikado',sans-serif;font-weight:700;font-size:15px;}
+  .game[open] .g-num{background:var(--teal);color:#fff;}
+  .game .g-head{display:flex;flex-direction:column;gap:2px;min-width:0;}
+  .game .g-name{font-size:17px;font-weight:600;color:var(--charcoal);line-height:1.2;}
+  .game .g-tag{font-size:13.5px;color:var(--muted);}
+  .game .g-chev{margin-left:auto;color:var(--teal);font-size:13px;transition:transform .2s;flex:none;}
+  .game[open] .g-chev{transform:rotate(180deg);}
+  .game .g-body{padding:2px 22px 22px 69px;}
+  .game .g-body h4{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-deep);margin:16px 0 8px;font-weight:700;}
+  .game .g-pill{display:inline-block;font-size:13px;color:var(--ink);background:var(--cream);border:1px solid var(--line);border-radius:100px;padding:6px 13px;line-height:1.4;}
+  .game .g-body ol,.game .g-body ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px;}
+  .game .g-body li{font-size:14.5px;color:var(--ink);line-height:1.5;}
+  .game .g-body li strong,.game .g-body p strong{color:var(--charcoal);}
+  .game .g-body p{font-size:14.5px;color:var(--ink);margin:0;line-height:1.55;}
+
   /* FOOTER */
   footer{margin-top:30px;border-top:1px solid var(--line);}
   .foot-in{max-width:1160px;margin:0 auto;padding:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;}
@@ -101,6 +123,8 @@
     .tb-pill{display:none;}
     .head{padding-top:34px;}
     .xcard{padding:22px 20px 20px;}
+    .game>summary{padding:15px 16px;gap:12px;}
+    .game .g-body{padding:2px 18px 20px 18px;}
   }
 </style>
 </head>
@@ -178,6 +202,82 @@
         <div class="chips"><span>Staff training</span><span>15 sections + Ten Agreements</span><span>Audio included</span></div>
         <span class="open">Open training <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
       </a>
+
+    </div>
+  </section>
+
+  <!-- ===== RESOURCES ===== -->
+  <section class="sec">
+    <div class="sec-head"><h2>Resources</h2><span class="count">Theater &amp; warm-up games</span><span class="sec-rule"></span></div>
+    <p class="sec-intro">Quick, low-prep drama games for warm-ups and building ensemble energy. Tap a game to see how to play.</p>
+    <div class="games">
+
+      <details class="game">
+        <summary>
+          <span class="g-num">1</span>
+          <span class="g-head"><span class="g-name">Emotion Telephone</span><span class="g-tag">Pass an emotion down the line and watch how it changes</span></span>
+          <span class="g-chev" aria-hidden="true">▾</span>
+        </summary>
+        <div class="g-body">
+          <span class="g-pill">Materials: emotion cards or slips (excited, sad, nervous, angry, thrilled, sleepy) · a quiet space</span>
+          <h4>How to play</h4>
+          <ol>
+            <li>Line the players up facing the same direction, so they can't see each other — like a relay line.</li>
+            <li>The first Young Artist pulls an emotion card (without showing the others) and acts it out for the person behind them — facial expression, body language, and a single sound effect (a sigh, a laugh).</li>
+            <li>That person observes, then turns and passes the emotion to the next — no talking or explaining, just acting it out.</li>
+            <li>The last Young Artist performs the emotion they received for everyone. Then the first reveals the original card, and the group sees how much it changed down the line.</li>
+            <li>Shuffle the order and try a new emotion.</li>
+          </ol>
+          <h4>Optional twist</h4>
+          <p>Add a situation for extra fun — "Excited on a roller coaster" or "Sleepy at a royal banquet."</p>
+        </div>
+      </details>
+
+      <details class="game">
+        <summary>
+          <span class="g-num">2</span>
+          <span class="g-head"><span class="g-name">Magical Mirror</span><span class="g-tag">Mirror a partner's movements and expressions as perfectly as possible</span></span>
+          <span class="g-chev" aria-hidden="true">▾</span>
+        </summary>
+        <div class="g-body">
+          <span class="g-pill">Materials: just some space to spread out</span>
+          <h4>How to play</h4>
+          <ol>
+            <li>Pair up, facing each other. One is the <strong>Leader</strong>, one is the <strong>Mirror</strong>.</li>
+            <li>The Leader makes slow, exaggerated movements; the Mirror mimics as closely as possible, like a reflection — hand gestures, facial expressions, dance moves, or a character (a graceful queen, a shy princess).</li>
+            <li>Once comfortable, the Leader gradually picks up the pace while keeping movements smooth and clear to follow.</li>
+            <li>Switch roles so the Mirror becomes the Leader; try new movements, characters, or emotions.</li>
+            <li>Come back together and talk about what it was like to lead and to mirror.</li>
+          </ol>
+          <h4>Variation</h4>
+          <p>Let pairs perform their mirroring for the whole group — a little friendly competition for who can stay most in sync.</p>
+          <h4>Why it works</h4>
+          <p>Builds listening, observing, and responding — all essential for acting — and lets pairs create expressive movement together in a light-hearted way.</p>
+        </div>
+      </details>
+
+      <details class="game">
+        <summary>
+          <span class="g-num">3</span>
+          <span class="g-head"><span class="g-name">Character Switcheroo</span><span class="g-tag">Jump between characters and emotions on the spot</span></span>
+          <span class="g-chev" aria-hidden="true">▾</span>
+        </summary>
+        <div class="g-body">
+          <span class="g-pill">Materials: character cards (pirate, queen, superhero, fairy, animal) · emotion cards (happy, grumpy, excited, scared, confused) · space to move</span>
+          <h4>How to play</h4>
+          <ol>
+            <li>Each Young Artist draws one character card and one emotion card, then acts out that character with that emotion, moving around the room in character.</li>
+            <li>Give everyone a few moments to fully embody the combo — exaggerate expressions, movement, voice, and sound.</li>
+            <li>Call out <strong>"Switcheroo!"</strong> at random. On the command, everyone freezes, finds someone near them, and trades character and emotion cards.</li>
+            <li>They jump straight into the new combo — adjusting voice, posture, and expression on the spot. Keep calling "Switcheroo!" every few minutes.</li>
+            <li>After a few rounds, gather to share favorite character-emotion combos.</li>
+          </ol>
+          <h4>Variation</h4>
+          <p>Add location cards for even more context — "in a spooky cave" or "at a royal ball."</p>
+          <h4>Why it works</h4>
+          <p>Keeps everyone on their toes, sparks creativity with each new combination, and builds the skill of staying in character while quickly adapting.</p>
+        </div>
+      </details>
 
     </div>
   </section>
