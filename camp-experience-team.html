@@ -109,6 +109,18 @@
   .game .g-body li{font-size:14.5px;color:var(--ink);line-height:1.5;}
   .game .g-body li strong,.game .g-body p strong{color:var(--charcoal);}
   .game .g-body p{font-size:14.5px;color:var(--ink);margin:0;line-height:1.55;}
+  .res-sub{font-family:'Mikado',sans-serif;font-size:15px;font-weight:600;color:var(--charcoal);margin:26px 0 12px;}
+  .gvideos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px;}
+  .gv-card{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;min-width:0;transition:transform .18s,box-shadow .18s,border-color .18s;}
+  .gv-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(53,68,77,.12);border-color:color-mix(in srgb,var(--teal) 40%,var(--line));}
+  .gv-thumb{position:relative;aspect-ratio:16/9;background:#1a2a30;overflow:hidden;}
+  .gv-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .gv-thumb .play{position:absolute;inset:0;margin:auto;width:46px;height:46px;border-radius:50%;background:rgba(53,68,77,.82);display:grid;place-items:center;transition:transform .18s,background .18s;}
+  .gv-card:hover .gv-thumb .play{transform:scale(1.08);background:var(--teal);}
+  .gv-thumb .play svg{width:18px;height:18px;fill:#fff;margin-left:3px;}
+  .gv-body{padding:13px 15px 15px;}
+  .gv-body h4{font-size:14.5px;font-weight:600;color:var(--charcoal);line-height:1.25;margin:0 0 5px;}
+  .gv-body p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.45;}
 
   /* FOOTER */
   footer{margin-top:30px;border-top:1px solid var(--line);}
@@ -279,6 +291,22 @@
         </div>
       </details>
 
+    </div>
+
+    <h3 class="res-sub">Drama games on video</h3>
+    <div class="gvideos">
+      <a class="gv-card" href="https://www.youtube.com/watch?v=rjNAj9rTnYE" target="_blank" rel="noopener">
+        <div class="gv-thumb"><img src="https://img.youtube.com/vi/rjNAj9rTnYE/hqdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+        <div class="gv-body"><h4>King of the Jungle</h4><p>A rhythm-and-focus circle game — keep the beat and don't break the pattern to hold the throne.</p></div>
+      </a>
+      <a class="gv-card" href="https://www.youtube.com/watch?v=kv_QAnA-V48" target="_blank" rel="noopener">
+        <div class="gv-thumb"><img src="https://img.youtube.com/vi/kv_QAnA-V48/hqdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+        <div class="gv-body"><h4>Chair Zombie</h4><p>A high-energy warm-up that builds teamwork, focus, and quick thinking.</p></div>
+      </a>
+      <a class="gv-card" href="https://www.youtube.com/watch?v=IfL-I9Nmsao" target="_blank" rel="noopener">
+        <div class="gv-thumb"><img src="https://img.youtube.com/vi/IfL-I9Nmsao/hqdefault.jpg" alt="" loading="lazy"><span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+        <div class="gv-body"><h4>10 Best Drama Games &amp; Exercises</h4><p>A quick tour of ten favorite drama games and exercises to bring a room to life.</p></div>
+      </a>
     </div>
   </section>
 </div>
