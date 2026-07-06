@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     THE ENCORE EXPERIENCE — THE LION KING CAMP
+     Dynamic curriculum page. Interactive 10-day explorer,
+     clickable song-arc, and the show's colour world.
+     Built from the "Encore Experience: The Lion King Camp"
+     curriculum doc. Chrome (nav/footer/logo/fonts) mirrors the
+     live show-page template; Lion King per-show palette retained.
+     ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<title>The Encore Experience: The Lion King Camp | Encore Performing Arts</title>
+<meta name="description" content="A two-week musical theater intensive for ages 7–13 in St. George, Utah. Ten days of hands-on theater workshops paired with rehearsals for a Lion King concert revue — then a live performance. Explore the day-by-day curriculum.">
+<link rel="canonical" href="https://www.encorepa.org/encore-experience-lion-king">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="Encore Performing Arts">
+<meta name="theme-color" content="#b5611f">
+<meta name="geo.region" content="US-UT">
+<meta name="geo.placename" content="St. George, Utah">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Encore Performing Arts">
+<meta property="og:url" content="https://www.encorepa.org/encore-experience-lion-king">
+<meta property="og:title" content="The Encore Experience: The Lion King Camp">
+<meta property="og:description" content="A two-week musical theater intensive for ages 7–13. Ten days of theater workshops + rehearsals building to a Lion King concert revue.">
+<meta property="og:image" content="https://www.encorepa.org/img/shows/lion-king-kids-camp-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/cabrio.css">
+<link rel="stylesheet" href="/fonts/mikado.css">
+
+<style>
+  :root{
+    --cream:#e9e4e0;--cream-lite:#f6f5f3;--paper:#fdfcfa;
+    --radius:26px;--radius-lg:34px;
+    /* ===== LION KING per-show theme ===== */
+    --show-bright:#e0922e;
+    --show-mid:#b5611f;
+    --show-deep:#43230f;
+    --show-tint:#f3d9ac;
+    --pride:#3a2a5c;            /* Pride Rock purple — ties to Encore brand */
+    --pride-soft:#4c3a70;
+    --accent:var(--show-mid);--accent-2:var(--show-deep);
+    --teal:var(--show-mid);
+    --charcoal:var(--show-mid);
+    --charcoal-2:var(--show-bright);
+    --charcoal-soft:color-mix(in srgb, var(--show-mid) 80%, #000);
+    --line:color-mix(in srgb, var(--show-mid) 18%, transparent);
+    --muted:#6b6470;
+    --ink:#3a2c1c;             /* readable earthy body ink */
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body,'Familjen Grotesk',system-ui,sans-serif);background:var(--cream-lite);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6;}
+  ::selection{background:var(--charcoal);color:var(--cream);}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  h1,h2,h3,h4,h5,.dfont{font-family:var(--font-display,'Mikado',Georgia,serif);}
+
+  /* NAV */
+  nav.site{position:sticky;top:var(--annc-h,42px);z-index:100;background:rgba(246,245,243,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .nav-inner{display:flex;align-items:center;height:78px;}
+  .logo{display:flex;align-items:center;gap:11px;color:var(--charcoal);}
+  .brandmark{height:30px;width:auto;display:block;}
+  .nav-links{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:500;margin-left:auto;margin-right:30px;}
+  .nav-links a{color:var(--charcoal);opacity:.82;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{display:flex;gap:11px;align-items:center;}
+  .btn{border:none;cursor:pointer;font-family:var(--font-display,'Mikado',sans-serif);font-weight:600;border-radius:100px;padding:13px 24px;font-size:14.5px;transition:transform .2s,background .2s,color .2s;display:inline-flex;align-items:center;gap:9px;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-dark{background:var(--charcoal);color:var(--cream);}
+  .btn-dark:hover{background:var(--charcoal-2);}
+  .btn-ghost{background:transparent;border:1.5px solid var(--charcoal);color:var(--charcoal);}
+  .btn-ghost:hover{background:var(--charcoal);color:var(--cream);}
+  .btn-light{background:var(--cream);color:var(--charcoal);}
+  .btn-accent{background:var(--accent);color:#fff;}
+  .btn-accent:hover{background:var(--accent-2);}
+
+  .crumbs{padding:18px 0 0;}
+  .crumbs ol{list-style:none;display:flex;gap:8px;font-size:13px;color:var(--muted);align-items:center;flex-wrap:wrap;}
+  .crumbs li{display:inline-flex;align-items:center;gap:8px;}
+  .crumbs li+li::before{content:'›';color:var(--muted);opacity:.6;}
+  .crumbs a:hover{color:var(--charcoal);}
+  .crumbs [aria-current="page"]{color:var(--charcoal);font-weight:600;}
+
+  section{padding:64px 0;}
+  section[id]{scroll-margin-top:130px;}
+  .sec-head{max-width:760px;margin-bottom:40px;}
+  .eyebrow{display:inline-block;font-family:var(--font-display,sans-serif);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12.5px;color:var(--show-mid);margin-bottom:14px;}
+  .sec-head h2{font-weight:500;font-size:clamp(28px,3.8vw,48px);line-height:1.04;letter-spacing:-.035em;color:var(--charcoal);}
+  .sec-head h2 em{font-style:italic;color:var(--pride);}
+  .sec-head .lead{margin-top:16px;color:var(--muted);font-size:17px;line-height:1.6;}
+
+  /* HERO */
+  .hero-lk{position:relative;overflow:hidden;border-radius:0 0 var(--radius-lg) var(--radius-lg);background:linear-gradient(155deg,#e0a53f 0%,var(--show-mid) 46%,var(--show-deep) 100%);color:var(--cream);}
+  .hero-lk::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
+  .hero-lk .wrap{position:relative;z-index:2;padding-top:74px;padding-bottom:78px;}
+  .hero-lk .kicker{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.02em;backdrop-filter:blur(6px);margin-bottom:22px;font-family:var(--font-display,sans-serif);}
+  .hero-lk .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--show-tint);box-shadow:0 0 0 4px rgba(255,255,255,.2);}
+  .hero-lk h1{font-weight:500;font-size:clamp(44px,7.6vw,96px);line-height:.94;letter-spacing:-.045em;}
+  .hero-lk h1 em{font-style:italic;color:var(--show-tint);}
+  .hero-lk .sub{max-width:620px;margin:24px 0 8px;font-size:19px;line-height:1.55;color:rgba(255,255,255,.9);}
+  .hero-lk .meta{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 30px;}
+  .hero-lk .chip{font-family:var(--font-display,sans-serif);font-size:13.5px;font-weight:600;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.22);padding:9px 15px;border-radius:100px;}
+  .hero-actions{display:flex;gap:13px;flex-wrap:wrap;}
+  .hero-note{margin-top:26px;font-size:13px;color:rgba(255,255,255,.68);font-style:italic;max-width:560px;}
+
+  /* OVERVIEW / learn-it-use-it */
+  .band{background:var(--paper);}
+  .grid-2{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start;}
+  .lede p{font-size:18px;color:var(--ink);margin-bottom:18px;}
+  .lede p strong{color:var(--charcoal);}
+  .loop{background:linear-gradient(160deg,var(--show-mid),var(--show-deep));color:var(--cream);border-radius:var(--radius-lg);padding:34px;position:relative;overflow:hidden;}
+  .loop h3{font-size:20px;font-weight:600;margin-bottom:16px;color:var(--show-tint);}
+  .loop ol{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:14px;}
+  .loop li{counter-increment:s;padding-left:44px;position:relative;font-size:15.5px;line-height:1.5;color:rgba(255,255,255,.92);}
+  .loop li::before{content:counter(s);position:absolute;left:0;top:-2px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);display:grid;place-items:center;font-family:var(--font-display,sans-serif);font-weight:600;font-size:14px;color:#fff;}
+
+  /* STAT / schedule */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:12px;}
+  .fact{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px;}
+  .fact .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;}
+  .fact .v{font-family:var(--font-display,sans-serif);font-size:26px;font-weight:600;color:var(--charcoal);line-height:1.05;margin-top:8px;}
+  .fact .v small{display:block;font-size:13px;color:var(--muted);font-weight:500;margin-top:4px;}
+
+  .sched{display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+  .slot{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 20px;}
+  .slot .t{font-family:var(--font-display,sans-serif);font-weight:600;color:var(--show-mid);font-size:15px;}
+  .slot .l{font-size:15.5px;color:var(--ink);}
+  .slot.big{background:linear-gradient(120deg,rgba(181,97,31,.09),rgba(58,42,92,.08));border-color:color-mix(in srgb,var(--show-mid) 30%,transparent);}
+
+  /* DNA cards + palette */
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
+  .card h3{font-size:20px;font-weight:600;color:var(--charcoal);margin-bottom:12px;}
+  .card p{font-size:15.5px;color:var(--ink);}
+  .card ul{margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:8px;}
+  .card li{font-size:15px;color:var(--ink);}
+  .signature{grid-column:1/-1;background:linear-gradient(150deg,var(--pride),var(--pride-soft));color:var(--cream);border:none;}
+  .signature h3{color:#fff;}
+  .signature p{color:rgba(255,255,255,.9);}
+
+  .palette{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;}
+  .sw{border-radius:16px;padding:16px;min-width:150px;flex:1;color:#fff;border:1px solid rgba(0,0,0,.08);}
+  .sw .n{font-family:var(--font-display,sans-serif);font-weight:600;font-size:15px;}
+  .sw .d{font-size:12.5px;opacity:.85;margin-top:3px;line-height:1.4;}
+
+  /* WORKSHOPS */
+  .wk{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;}
+  .video-embed{position:relative;width:100%;padding-top:56.25%;margin-top:16px;border-radius:16px;overflow:hidden;background:#000;border:1px solid var(--line);}
+  .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .vcap{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.4;}
+  .wk-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;}
+  .wk-card .day{font-family:var(--font-display,sans-serif);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--show-mid);}
+  .wk-card h3{font-size:20px;font-weight:600;color:var(--charcoal);margin:10px 0 12px;line-height:1.15;}
+  .wk-card p{font-size:15px;color:var(--ink);}
+  .wk-card .link{margin-top:14px;font-size:13px;font-weight:600;color:var(--pride);}
+
+  /* SONG ARC */
+  .arc-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
+  .arc-legend button{font-family:var(--font-display,sans-serif);font-size:13px;font-weight:600;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);padding:9px 16px;border-radius:100px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;}
+  .arc-legend button .d{width:11px;height:11px;border-radius:50%;}
+  .arc-legend button[aria-pressed="false"]{opacity:.4;}
+  .songs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .song{display:flex;gap:16px;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-left-width:5px;border-radius:16px;padding:18px 20px;transition:opacity .25s,transform .25s;}
+  .song .num{font-family:var(--font-display,sans-serif);font-size:22px;font-weight:600;color:var(--show-mid);min-width:30px;}
+  .song h4{font-size:16.5px;font-weight:600;color:var(--charcoal);}
+  .song .badge{display:inline-block;font-family:var(--font-display,sans-serif);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:100px;color:#fff;margin-top:6px;}
+  .song p{font-size:14px;color:var(--muted);margin-top:7px;}
+  .song.dim{opacity:.22;}
+
+  /* DAY EXPLORER */
+  .explorer{background:var(--paper);}
+  .day-pills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:28px;}
+  .day-pill{font-family:var(--font-display,sans-serif);font-weight:600;font-size:14.5px;border:1.5px solid var(--line);background:var(--cream-lite);color:var(--charcoal);border-radius:14px;padding:12px 16px;cursor:pointer;transition:all .2s;min-width:52px;text-align:center;line-height:1.1;}
+  .day-pill small{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px;font-weight:600;}
+  .day-pill:hover{border-color:var(--show-mid);}
+  .day-pill[aria-selected="true"]{background:linear-gradient(150deg,var(--show-mid),var(--show-deep));color:#fff;border-color:transparent;}
+  .day-pill[aria-selected="true"] small{color:var(--show-tint);}
+  .day-panel{background:var(--cream-lite);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px;min-height:300px;}
+  .day-panel .dtag{font-family:var(--font-display,sans-serif);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--pride);}
+  .day-panel h3{font-size:clamp(24px,3vw,34px);font-weight:500;letter-spacing:-.03em;color:var(--charcoal);margin:8px 0 10px;line-height:1.05;}
+  .day-panel .theme{font-size:17px;color:var(--ink);font-style:italic;max-width:640px;margin-bottom:26px;}
+  .day-blocks{display:flex;flex-direction:column;gap:14px;}
+  .blk{display:grid;grid-template-columns:132px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--line);}
+  .blk:first-child{border-top:none;padding-top:4px;}
+  .blk .bt{font-family:var(--font-display,sans-serif);font-weight:600;font-size:14px;color:var(--show-mid);}
+  .blk .bl{font-family:var(--font-display,sans-serif);font-weight:600;font-size:16.5px;color:var(--charcoal);margin-bottom:6px;}
+  .blk p{font-size:15px;color:var(--ink);}
+  .dquote{margin-top:24px;background:linear-gradient(150deg,var(--pride),var(--pride-soft));color:#fff;border-radius:var(--radius);padding:26px 30px;font-size:16.5px;line-height:1.6;font-style:italic;}
+  .dnav{display:flex;justify-content:space-between;margin-top:26px;gap:12px;}
+  .dnav button{font-family:var(--font-display,sans-serif);font-weight:600;font-size:14px;background:transparent;border:1.5px solid var(--line);color:var(--charcoal);padding:11px 20px;border-radius:100px;cursor:pointer;transition:all .2s;}
+  .dnav button:hover:not(:disabled){background:var(--charcoal);color:#fff;border-color:transparent;}
+  .dnav button:disabled{opacity:.35;cursor:default;}
+
+  /* LEARN columns */
+  .learn{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .learn-col{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;}
+  .learn-col h3{font-size:18px;font-weight:600;color:var(--charcoal);margin-bottom:16px;}
+  .learn-col ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .learn-col li{font-size:14.5px;color:var(--ink);padding-left:22px;position:relative;line-height:1.45;}
+  .learn-col li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--show-mid);}
+
+  /* MIXED AGE */
+  .mixed{background:linear-gradient(150deg,var(--pride),var(--pride-soft));color:var(--cream);border-radius:var(--radius-lg);padding:44px;}
+  .mixed h2{font-family:var(--font-display,sans-serif);color:#fff;font-weight:500;font-size:clamp(26px,3.4vw,40px);letter-spacing:-.03em;margin-bottom:18px;max-width:640px;line-height:1.05;}
+  .mixed p{font-size:16.5px;color:rgba(255,255,255,.9);max-width:760px;margin-bottom:16px;}
+  .mixed .cast{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px;}
+  .mixed .cast div{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:22px;}
+  .mixed .cast h4{color:var(--show-tint);font-size:16px;margin-bottom:8px;}
+  .mixed .cast p{font-size:14.5px;margin:0;}
+
+  /* MATERIALS */
+  .mat{columns:2;column-gap:36px;}
+  .mat li{break-inside:avoid;margin-bottom:12px;font-size:15px;color:var(--ink);list-style:none;padding-left:24px;position:relative;}
+  .mat li::before{content:'▸';position:absolute;left:0;color:var(--show-mid);}
+
+  /* CONCLUSION + CTA */
+  .conclude{background:linear-gradient(160deg,var(--show-mid),var(--show-deep));color:var(--cream);border-radius:var(--radius-lg);padding:56px 44px;text-align:center;}
+  .conclude h2{font-family:var(--font-display,sans-serif);font-weight:500;font-size:clamp(26px,3.6vw,42px);letter-spacing:-.03em;margin:0 auto 18px;max-width:720px;line-height:1.1;}
+  .conclude p{font-size:17px;color:rgba(255,255,255,.88);max-width:640px;margin:0 auto 12px;}
+  .conclude .big{font-family:var(--font-display,sans-serif);font-style:italic;font-size:clamp(22px,2.6vw,30px);color:var(--show-tint);margin-top:26px;}
+  .cta-row{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;}}
+
+  /* ANNOUNCEMENT */
+  .annc{position:sticky;top:0;z-index:170;background:#348193;color:#fff;height:42px;display:flex;align-items:center;font-family:var(--font-display,sans-serif);}
+  .annc.hide{display:none;}
+  .annc-in{max-width:1320px;margin:0 auto;width:100%;padding:0 44px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .annc-link{color:#fff;font-size:14px;font-weight:600;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .annc-link:hover{text-decoration:underline;text-underline-offset:2px;}
+  .annc-x{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fff;font-size:22px;line-height:1;cursor:pointer;opacity:.85;padding:2px 6px;}
+  .annc-x:hover{opacity:1;}
+
+  /* HAMBURGER + MOBILE MENU */
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:6px;width:46px;height:46px;border:none;background:transparent;cursor:pointer;padding:0;color:inherit;margin-left:auto;}
+  .nav-toggle span{display:block;height:2px;width:26px;background:var(--teal);border-radius:2px;transition:transform .3s,opacity .2s;margin:0 auto;}
+  body.menu-open .nav-toggle span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  body.menu-open .nav-toggle span:nth-child(2){opacity:0;}
+  body.menu-open .nav-toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+  body.menu-open{overflow:hidden;}
+  body.menu-open nav.site{background:transparent !important;border-color:transparent !important;box-shadow:none !important;color:var(--cream);}
+  .mobile-menu{position:fixed;inset:0;z-index:180;background:linear-gradient(165deg,var(--show-bright),var(--show-mid) 55%,var(--show-deep));color:var(--cream);padding:104px 32px 40px;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .32s,transform .32s,visibility .32s;overflow-y:auto;}
+  .mobile-menu>nav{position:static;display:flex;flex-direction:column;}
+  body.menu-open .mobile-menu{opacity:1;visibility:visible;transform:none;}
+  .mobile-menu a{font-family:var(--font-display,sans-serif);font-size:clamp(30px,7.5vw,46px);font-weight:500;letter-spacing:-.035em;color:var(--cream);padding:16px 0;border-bottom:1px solid rgba(233,228,224,.16);display:flex;justify-content:space-between;align-items:center;line-height:1;}
+  .mobile-menu a .ar{font-size:24px;opacity:.6;}
+  .mobile-menu .mm-cta{margin-top:30px;border:none;}
+  .mobile-menu .mm-cta a{font-family:var(--font-display,sans-serif);font-size:17px;font-weight:600;color:var(--teal);border:none;padding:16px 28px;justify-content:center;}
+  .mobile-menu .mm-foot{margin-top:30px;font-size:14px;color:rgba(233,228,224,.7);line-height:1.6;}
+  .mobile-menu .mm-foot a{font-family:var(--font-display,sans-serif);font-size:14px;border:none;padding:0;display:inline;color:var(--show-tint);}
+
+  /* FOOTER */
+  footer{background:var(--charcoal);color:var(--cream);padding:74px 0 36px;margin-top:20px;}
+  .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:36px;padding-bottom:44px;border-bottom:1px solid rgba(233,228,224,.14);}
+  .foot-brand .logo{color:var(--cream);}
+  .foot-tag{font-family:var(--font-display,sans-serif);font-size:23px;line-height:1.3;margin:22px 0 16px;max-width:340px;font-weight:400;}
+  .foot-tag .hl{font-style:italic;color:var(--show-tint);}
+  .foot-loc{color:rgba(233,228,224,.6);font-size:14px;line-height:1.65;}
+  .foot-loc strong{color:var(--cream);font-weight:600;display:block;margin-bottom:4px;}
+  .foot-col h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,228,224,.5);margin-bottom:16px;}
+  .foot-col a{display:block;color:rgba(233,228,224,.85);font-size:14.5px;margin-bottom:10px;}
+  .foot-col a:hover{color:#fff;}
+  .foot-aspire{background:rgba(233,228,224,.08);border:1px solid rgba(233,228,224,.16);border-radius:18px;padding:20px;}
+  .foot-aspire .t{font-family:var(--font-display,sans-serif);font-size:19px;font-weight:600;margin-bottom:6px;}
+  .foot-aspire p{font-size:13px;color:rgba(233,228,224,.7);line-height:1.5;margin-bottom:12px;}
+  .foot-aspire a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;background:var(--cream);color:var(--charcoal);padding:9px 16px;border-radius:100px;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;gap:20px;flex-wrap:wrap;}
+  .foot-bottom p{color:rgba(233,228,224,.5);font-size:13.5px;}
+  .foot-social{display:flex;gap:11px;}
+  .foot-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(233,228,224,.2);display:grid;place-items:center;color:var(--cream);}
+  .foot-social a:hover{background:var(--cream);color:var(--charcoal);}
+  .foot-social a svg{width:18px;height:18px;}
+
+  @media(max-width:980px){
+    .nav-links,.nav-cta{display:none;}
+    .nav-toggle{display:flex;}
+    .grid-2{grid-template-columns:1fr;gap:30px;}
+    .facts{grid-template-columns:1fr 1fr;}
+    .cards,.wk,.songs,.learn{grid-template-columns:1fr;}
+    .mixed .cast{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 18px;}
+    .facts{grid-template-columns:1fr;}
+    .mat{columns:1;}
+    .slot,.blk{grid-template-columns:1fr;gap:4px;}
+    .day-panel{padding:24px 20px;}
+    .conclude,.mixed{padding:34px 22px;}
+    .foot-top{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<!-- ANNOUNCEMENT BAR -->
+<div class="annc" id="anncBar" role="region" aria-label="Site announcement">
+  <div class="annc-in">
+    <a class="annc-link" href="/little-women-2026">Now casting Little Women &mdash; auditions open &rarr;</a>
+    <button class="annc-x" type="button" aria-label="Dismiss announcement">&times;</button>
+  </div>
+</div>
+<script>(function(){var b=document.getElementById("anncBar"),K="encoreAnnc_v1";if(!b)return;function off(){b.classList.add("hide");document.documentElement.style.setProperty("--annc-h","0px");}try{if(localStorage.getItem(K)==="1")off();}catch(e){}var x=b.querySelector(".annc-x");if(x)x.addEventListener("click",function(){off();try{localStorage.setItem(K,"1")}catch(e){}});})();</script>
+
+<!-- ========== NAV ========== -->
+<nav class="site" aria-label="Primary">
+  <div class="wrap nav-inner">
+    <a href="/" class="logo" aria-label="Encore Performing Arts — Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+    <div class="nav-links">
+      <a href="/about">About</a>
+      <a href="/auditions">Auditions</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a href="/tickets" class="btn btn-dark">Get Tickets →</a>
+      <a href="/donate" class="btn btn-ghost">Donate</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <nav aria-label="Mobile">
+    <a href="/about">About<span class="ar" aria-hidden="true">→</span></a>
+    <a href="/auditions">Auditions<span class="ar" aria-hidden="true">→</span></a>
+    <a href="/contact">Contact<span class="ar" aria-hidden="true">→</span></a>
+    <div class="mm-cta"><a href="/tickets" class="btn btn-light">Get Tickets →</a><a href="/donate" class="btn btn-light" style="margin-top:11px;">Donate</a></div>
+    <div class="mm-foot">The Historic Electric Theater · St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></div>
+  </nav>
+</div>
+
+<!-- ========== BREADCRUMB ========== -->
+<nav class="crumbs" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/programs">Programs</a></li>
+      <li aria-current="page">The Encore Experience: The Lion King Camp</li>
+    </ol>
+  </div>
+</nav>
+
+<main>
+
+<!-- ========== HERO ========== -->
+<header class="hero-lk">
+  <div class="wrap reveal">
+    <span class="kicker"><span class="dot"></span>The Encore Experience</span>
+    <h1>The Lion King <em>Camp</em></h1>
+    <p class="sub">A two-week musical theater intensive where Young Artists don't just perform a show — they learn the craft of theater-making, then put it straight to work building a Lion King concert revue.</p>
+    <div class="meta">
+      <span class="chip">Ages 7–13</span>
+      <span class="chip">10 Days + Performance</span>
+      <span class="chip">Concert Revue · ~30 min</span>
+      <span class="chip">The Historic Electric Theater</span>
+    </div>
+    <div class="hero-actions">
+      <a href="/lion-king-kids-camp-registration" class="btn btn-light">Register →</a>
+      <a href="#journey" class="btn btn-ghost" style="border-color:rgba(255,255,255,.45);color:#fff;">Explore the 10 days</a>
+    </div>
+    <p class="hero-note">Please note: these are suggested outlines and times. Some specifics may vary by production and season.</p>
+  </div>
+</header>
+
+<!-- ========== OVERVIEW ========== -->
+<section class="band">
+  <div class="wrap">
+    <div class="grid-2">
+      <div class="lede reveal">
+        <span class="eyebrow">Program Overview</span>
+        <div class="sec-head" style="margin-bottom:22px;"><h2>Not a camp that ends in a show — a <em>front-row education</em></h2></div>
+        <p>The Encore Experience transforms the traditional theater camp into a comprehensive arts-education program. Each day opens with a hands-on Experience Session teaching a fundamental skill of theater-making — then Young Artists put it straight to work in that day's rehearsal.</p>
+        <p><strong>The Lion King is among the most culturally and physically rich shows in the repertoire.</strong> The curriculum honors that depth — African musical tradition, animal movement as physical theater, the circle as a philosophy — while keeping the work joyful, grounded, and accessible for every age in the room.</p>
+      </div>
+      <div class="loop reveal">
+        <h3>The "learn it, use it" model</h3>
+        <ol>
+          <li>Warm up and build community as a company.</li>
+          <li>Learn a core theater skill in the Experience Session.</li>
+          <li>Apply that exact skill in the rehearsal that follows.</li>
+          <li>Watch it become part of the show you're building — day by day.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="facts reveal" style="margin-top:44px;">
+      <div class="fact"><div class="k">Structure</div><div class="v">10 Days<small>+ performance on Day 11</small></div></div>
+      <div class="fact"><div class="k">Ages</div><div class="v">7–13<small>intentional mixed-age casting</small></div></div>
+      <div class="fact"><div class="k">Daily</div><div class="v">1:30–4:30<small>pm each day</small></div></div>
+      <div class="fact"><div class="k">Show format</div><div class="v">Concert Revue<small>~10 songs, thematic arc</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== DAILY SCHEDULE ========== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">A Day at Camp</span><h2>Every day follows the same <em>rhythm</em></h2><p class="lead">Skills first, applied right after — so nothing feels abstract. What you learn at 1:45, you use by 2:30.</p></div>
+    <div class="sched reveal">
+      <div class="slot"><span class="t">1:30–1:45</span><span class="l">Warm-Up &amp; Community Building — the whole company grounds and connects</span></div>
+      <div class="slot big"><span class="t">1:45–2:30</span><span class="l"><strong>Experience Session</strong> — the day's theater-skills workshop</span></div>
+      <div class="slot big"><span class="t">2:30–3:30</span><span class="l"><strong>Rehearsal</strong> — apply the day's concepts to the show</span></div>
+      <div class="slot"><span class="t">3:30–3:40</span><span class="l">Break</span></div>
+      <div class="slot big"><span class="t">3:40–4:30</span><span class="l"><strong>Rehearsal</strong> — music, choreography, staging, and runs</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SHOW DNA ========== -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Show DNA</span><h2>Built on the most fundamental theatrical idea: <em>the circle</em></h2></div>
+    <div class="cards">
+      <div class="card reveal">
+        <h3>Themes &amp; messages</h3>
+        <ul>
+          <li>You are part of something larger than yourself — a circle, a community, a legacy.</li>
+          <li>Responsibility isn't a burden; it's what connects you to those before and after you.</li>
+          <li>Running from who you are only delays the return — and the return is always possible.</li>
+          <li>Community — the pride, the herd, the circle — is what makes us strong.</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3>The emotional journey</h3>
+        <ul>
+          <li><strong>Beginning —</strong> the world in its fullness; everything in its place, belonging announced.</li>
+          <li><strong>Middle —</strong> disruption, loss, running, forgetting — and the call back.</li>
+          <li><strong>End —</strong> the return, responsibility claimed, the circle completed and begun again.</li>
+        </ul>
+      </div>
+      <div class="card signature reveal">
+        <h3>Signature element — the circle</h3>
+        <p>The Circle of Life is not just a song; it's the show's entire structure, its visual language, its emotional philosophy. Our revue begins with the circle, breaks it, and restores it. Every song is an expression of the circle, a departure from it, or a return to it. The ensemble's job is to <em>be</em> the circle — to make the audience feel what it means to belong to something that was here before them and will continue after.</p>
+      </div>
+      <div class="card reveal">
+        <h3>Cultural foundation</h3>
+        <p>The Lion King draws from Zulu, Swahili, and the broader musical traditions of sub-Saharan Africa. This isn't decoration — it's the show's DNA. Young Artists learn Swahili words and their meanings, explore African drumming as a theatrical tool, and approach animal movement as physical research rooted in real observation and respect.</p>
+      </div>
+      <div class="card reveal">
+        <h3>The visual world</h3>
+        <p>Epic and grounded at once — vast landscapes, but every story personal. Movement-forward, earth-toned costuming with vivid accents, where animal physicality lives in the body rather than the costume.</p>
+        <div class="palette">
+          <div class="sw" style="background:#e0a53f;"><div class="n">Deep gold</div><div class="d">Dawn · the world in fullness</div></div>
+          <div class="sw" style="background:#c26a1f;"><div class="n">Burnt orange</div><div class="d">Pride Lands, earth &amp; sun</div></div>
+          <div class="sw" style="background:#9e2b25;"><div class="n">Crimson</div><div class="d">Intensity &amp; heart</div></div>
+          <div class="sw" style="background:#5c3a1e;"><div class="n">Earth brown</div><div class="d">Grounded, rooted</div></div>
+          <div class="sw" style="background:#3a2a5c;"><div class="n">Pride Rock purple</div><div class="d">The ancient &amp; the vast</div></div>
+          <div class="sw" style="background:#2b4a45;"><div class="n">Cool shadow</div><div class="d">The dark period</div></div>
+          <div class="sw" style="background:#4e7a3f;"><div class="n">Restored green</div><div class="d">The finale · life returns</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SPECIALTY WORKSHOPS ========== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Specialty Workshops</span><h2>Three deep dives into the world of the show</h2><p class="lead">Woven through the ten days — not one-off add-ons, but foundations the whole revue is built on.</p></div>
+    <div class="wk">
+      <div class="wk-card reveal">
+        <div class="day">Day 1</div>
+        <h3>The Circle of Life — African Music, Rhythm &amp; Community</h3>
+        <p>A deep dive into the African musical traditions at the show's foundation: drumming as communication, call-and-response as community structure, rhythm as a physical and collective experience.</p>
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/l0urqu1Ozj4" title="Djembe hand-drumming basics" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="vcap">Watch: djembe hand-drumming basics — building the heartbeat of the Pride Lands.</div>
+        <div class="link">Connects to → ensemble identity, the circle, rhythmic precision</div>
+      </div>
+      <div class="wk-card reveal">
+        <div class="day">Day 3</div>
+        <h3>Animal Movement — Physical Theater &amp; the Natural World</h3>
+        <p>Young Artists study real animals — their weight, gait, stillness, and attention — and translate that observation into physical-theater vocabulary. Not costume or mimicry: physical research.</p>
+        <div class="link">Connects to → choreography, character physicality, the visual world</div>
+      </div>
+      <div class="wk-card reveal">
+        <div class="day">Day 5</div>
+        <h3>Swahili, Story &amp; the Meaning Behind the Music</h3>
+        <p>Exploring the Swahili and Zulu in the score — the opening chant, character names, key phrases — and connecting language to meaning. Understanding what you're singing changes how you sing it.</p>
+        <div class="link">Connects to → vocal performance, cultural respect, thematic depth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SONG ARC ========== -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">The Revue</span><h2>Ten songs, one <em>circle</em></h2><p class="lead">The revue takes the audience around the circle — whole, then broken, then restored. Filter by where each song lives on the arc.</p></div>
+    <div class="arc-legend reveal" id="arcLegend">
+      <button data-state="all" aria-pressed="true"><span class="d" style="background:#6b6470"></span>All</button>
+      <button data-state="whole" aria-pressed="true"><span class="d" style="background:#e0a53f"></span>Whole</button>
+      <button data-state="break" aria-pressed="true"><span class="d" style="background:#2b4a45"></span>The Break</button>
+      <button data-state="return" aria-pressed="true"><span class="d" style="background:#4e7a3f"></span>The Return</button>
+    </div>
+    <div class="songs reveal" id="songs"></div>
+  </div>
+</section>
+
+<!-- ========== 10-DAY EXPLORER ========== -->
+<section class="explorer" id="journey">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">The 10-Day Journey</span><h2>Tap any day to see what happens</h2><p class="lead">Each day's Experience Session teaches a skill; the rehearsals that follow put it to work. Here's the arc, day by day.</p></div>
+    <div class="day-pills reveal" id="dayPills" role="tablist" aria-label="Camp days"></div>
+    <div class="day-panel reveal" id="dayPanel" role="region" aria-live="polite"></div>
+    <div class="dnav">
+      <button id="dPrev" type="button">← Previous day</button>
+      <button id="dNext" type="button">Next day →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHAT THEY LEARN ========== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">What Young Artists Learn</span><h2>Skills that outlast the show</h2></div>
+    <div class="learn">
+      <div class="learn-col reveal">
+        <h3>Theater skills</h3>
+        <ul>
+          <li>The circle as a theatrical and staging concept</li>
+          <li>Animal movement — physical research and translation</li>
+          <li>Rhythmic precision and ensemble unity</li>
+          <li>Call-and-response as theatrical and communal practice</li>
+          <li>Physical theater — levels, weight, animal quality</li>
+          <li>Vocal range across the show's full spectrum</li>
+          <li>Concert-revue structure and thematic arc</li>
+          <li>Mixed-age ensemble leadership and collaboration</li>
+        </ul>
+      </div>
+      <div class="learn-col reveal">
+        <h3>21st-century skills</h3>
+        <ul>
+          <li>Cultural curiosity and respect</li>
+          <li>Responsibility — carrying something for a community</li>
+          <li>Belonging — the lived experience of the circle</li>
+          <li>Persistence through difficulty, and the practice of return</li>
+          <li>Collaboration — the pride as a model for ensemble work</li>
+          <li>Empathy through character and cultural exploration</li>
+        </ul>
+      </div>
+      <div class="learn-col reveal">
+        <h3>Cultural &amp; thematic connections</h3>
+        <ul>
+          <li>Sub-Saharan African musical traditions (Zulu choral, South &amp; East African)</li>
+          <li>Swahili language and East African cultural context</li>
+          <li>African drumming tradition as community practice</li>
+          <li>The Broadway Lion King's physical-theater tradition</li>
+          <li>The Circle of Life as a philosophical concept</li>
+          <li>Responsibility as an expression of love</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MIXED AGE ========== -->
+<section class="band">
+  <div class="wrap reveal">
+    <div class="mixed">
+      <h2>Why the 7–13 range is the whole point</h2>
+      <p>The mixed-age circle isn't a logistical compromise — it <em>is</em> the show's central image. A circle of Young Artists ranging from 7 to 13 looks and feels like a real community in a way a same-age group simply cannot. Everyone is in every number. No one steps outside the circle.</p>
+      <p>Built-in differentiation runs through every session: younger Artists (7–10) work in concrete, physical, imaginative modes; older Artists (11–13) engage in analytical, leadership, and emotionally nuanced work.</p>
+      <div class="cast">
+        <div><h4>Younger Artists (7–10)</h4><p>Simba-spirit roles, high-energy ensemble features, and the uncomplicated joy the early songs require.</p></div>
+        <div><h4>Older Artists (11–13)</h4><p>Lead solos, narration, and the show's weightier emotional moments — grief, courage, and the return.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MATERIALS ========== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="eyebrow">Behind the Scenes</span><h2>What makes it possible</h2></div>
+    <ul class="mat reveal">
+      <li>The Lion King original Broadway cast recording (Lebo M., Hans Zimmer, Elton John)</li>
+      <li>The Lion King film soundtrack for comparison and listening</li>
+      <li>Drumming materials — hand drums, djembes, or improvised percussion</li>
+      <li>Earth-toned costume elements with vivid accent pieces</li>
+      <li>Fabric pieces for movement exploration</li>
+      <li>Design supplies in the Pride Lands palette</li>
+      <li>Scripts with narration and transitions</li>
+      <li>Color lighting — the sunrise and the shadow are tech moments</li>
+      <li>Reference images: the savanna, the Broadway physical-theater approach, real animals</li>
+      <li>A Swahili / Zulu language reference sheet for every Young Artist on Day 1</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== CONCLUSION + CTA ========== -->
+<section class="band">
+  <div class="wrap reveal">
+    <div class="conclude">
+      <h2>They learn what the Circle of Life actually means</h2>
+      <p>Not just as a song, but as a truth: that they are part of something that was here before them and will continue after; that the people who came before live in them; that the community around them holds them; and that returning to who they are is always possible, and always worth the journey.</p>
+      <p>Every Young Artist in this camp knows what it feels like to be part of the circle, to feel it break, and to help restore it. That isn't just theater training — it's something they carry long after the show closes.</p>
+      <div class="big">The circle is alive. It begins again.</div>
+      <div class="cta-row">
+        <a href="/lion-king-kids-camp-registration" class="btn btn-light">Register for camp →</a>
+        <a href="/contact" class="btn btn-ghost" style="border-color:rgba(255,255,255,.45);color:#fff;">Ask a question</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="/" class="logo" aria-label="Encore Performing Arts — Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+        <div class="foot-tag">Inspiring discovery &amp; <span class="hl">imagination</span> through exploration and play.</div>
+        <div class="foot-loc">
+          <strong>Visit us</strong>
+          The Historic Electric Theater<br>
+          68 E Tabernacle St · St. George, UT<br>
+          <a href="tel:+14354140049" style="color:#cfc6b4;">(435) 414-0049</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="/calendar">What's On</a>
+        <a href="/programs">Programs by Age</a>
+        <a href="/sensory-friendly-performances">Sensory-Friendly</a>
+        <a href="/page-to-stage">Page to Stage</a>
+        <a href="/past-shows">Past Shows</a>
+        <a href="/blog">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h5>Support</h5>
+        <a href="/donate">Donate</a>
+        <a href="/core-community">Join The Core</a>
+        <a href="/encore-scholarship-application">Apply for a Scholarship</a>
+        <a href="/contact">Contact Us</a>
+      </div>
+      <div class="foot-col">
+        <h5>This Program</h5>
+        <a href="/lion-king-kids-camp-registration">Register for Camp</a>
+        <a href="/lion-king-kids-camp-2026">Lion King Kids Camp</a>
+        <a href="/auditions">All Auditions</a>
+        <a href="/calendar">Season Calendar</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Encore Performing Arts · A 501(c)(3) nonprofit · <a href="/terms-and-conditions" style="color:#cfc6b4;text-decoration:underline;text-underline-offset:2px;font-weight:600;">Terms</a> · <a href="/privacy-policy" style="color:#cfc6b4;text-decoration:underline;text-underline-offset:2px;font-weight:600;">Privacy Policy</a></p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/encorestg" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+        <a href="https://www.facebook.com/encorestg" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCBqCS2LKe-5UHp7osQFA-fg" rel="noopener" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* reveal on scroll */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(i%3)*0.07+'s';io.observe(el);});
+</script>
+<script>
+  /* mobile menu */
+  (function(){
+    var t=document.getElementById('navToggle'),m=document.getElementById('mobileMenu');
+    if(!t||!m)return;
+    function s(o){document.body.classList.toggle('menu-open',o);t.setAttribute('aria-expanded',o);t.setAttribute('aria-label',o?'Close menu':'Open menu');}
+    t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
+  })();
+</script>
+<script>
+  /* ===== SONG ARC ===== */
+  var STATE_COLOR={whole:'#e0a53f',break:'#2b4a45',return:'#4e7a3f'};
+  var STATE_LABEL={whole:'Whole',break:'The Break',return:'The Return'};
+  var SONGS=[
+    {n:1,t:'Circle of Life',s:'whole',d:'Opening — the world in its fullness, the circle announced.'},
+    {n:2,t:'The Morning Report',s:'whole',d:'Playful, rhythmic ensemble energy — the kingdom at work.'},
+    {n:3,t:"I Just Can't Wait to Be King",s:'whole',d:'Joy, impatience, the dream of the future.'},
+    {n:4,t:'Be Prepared',s:'break',d:'Darkness, manipulation — the circle threatened.'},
+    {n:5,t:'Hakuna Matata',s:'break',d:'Escape and comfort — the philosophy of avoidance, and its limits.'},
+    {n:6,t:'Can You Feel the Love Tonight',s:'return',d:'Tenderness, connection — the heart opening.'},
+    {n:7,t:'He Lives in You',s:'return',d:'Grief, memory, legacy — the ancestors present.'},
+    {n:8,t:'One by One',s:'return',d:'Community, rhythm — the pride together.'},
+    {n:9,t:'Shadowland',s:'return',d:'Courage; grief transformed into action — the return begins.'},
+    {n:10,t:'Circle of Life (Finale)',s:'whole',d:'The circle restored, the return complete — everyone belongs.'}
+  ];
+  (function(){
+    var wrap=document.getElementById('songs'); if(!wrap)return;
+    wrap.innerHTML=SONGS.map(function(o){
+      return '<div class="song" data-state="'+o.s+'" style="border-left-color:'+STATE_COLOR[o.s]+'">'+
+        '<div class="num">'+o.n+'</div><div><h4>'+o.t+'</h4>'+
+        '<span class="badge" style="background:'+STATE_COLOR[o.s]+'">'+STATE_LABEL[o.s]+'</span>'+
+        '<p>'+o.d+'</p></div></div>';
+    }).join('');
+    var active={whole:true,break:true,return:true};
+    var legend=document.getElementById('arcLegend');
+    function apply(){
+      wrap.querySelectorAll('.song').forEach(function(el){
+        el.classList.toggle('dim',!active[el.getAttribute('data-state')]);
+      });
+    }
+    legend.querySelectorAll('button').forEach(function(b){
+      b.addEventListener('click',function(){
+        var st=b.getAttribute('data-state');
+        if(st==='all'){active={whole:true,break:true,return:true};
+          legend.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed','true');});
+        }else{
+          active[st]=!active[st]; b.setAttribute('aria-pressed',active[st]?'true':'false');
+          var allOn=active.whole&&active.break&&active.return;
+          legend.querySelector('[data-state="all"]').setAttribute('aria-pressed',allOn?'true':'false');
+        }
+        apply();
+      });
+    });
+  })();
+</script>
+<script>
+  /* ===== 10-DAY EXPLORER ===== */
+  var DAYS=[
+    {n:1,tag:'Experience Session · Auditions',title:'Musical Theater Foundations',theme:'What makes a musical special — and what makes this one unlike any other?',blocks:[
+      {t:'1:30–1:45',l:'Warm-Up & Welcome',p:'A welcome circle — name, an animal that reminds you of yourself, one hope for the week. A ground-up body warm-up: "everything in this show comes from the ground up." Community agreements: every voice is part of the circle, no one is left out of the pride.'},
+      {t:'1:45–2:30',l:'Experience Session: Foundations',p:'The three elements of a musical — acting, singing, dancing — and why The Lion King opens with something ancient. In mixed-age groups, Young Artists build a 45-second "world" from sound and movement alone, then meet the concert-revue structure: wholeness → break → return.'},
+      {t:'2:30–3:30',l:'Circle of Life Workshop + Auditions',p:'African musical roots and the Zulu opening chant — "Nants ingonyama bagithi Baba" ("Here comes a lion, Father"). Call-and-response and a simple drumming heartbeat. Placement auditions run alongside: everyone is in the ensemble; auditions set soloists, features, and narration.'},
+      {t:'3:40–4:30',l:'The Circle, Continued',p:'The circle as a staging principle — form it, break it, restore it: "the entire show in 60 seconds." The ensemble learns it is the Pride Lands itself, then maps all ten songs onto the circle.'}
+    ]},
+    {n:2,tag:'Experience Session',title:'Character Development & Vocal Performance',theme:'Responsibility, escape, and the courage to return.',blocks:[
+      {t:'1:30–1:45',l:'Warm-Up',p:'Chest-resonance vocals and call-and-response; a ground-up physical warm-up with a first taste of animal quality in the body.'},
+      {t:'1:45–2:25',l:'Experience Session: Character',p:'Every character is defined by their relationship to responsibility. Young Artists explore a "Responsibility Spectrum" from 1 to 10 and map it onto the songs, then find the physical life of each moment.'},
+      {t:'2:25–3:10',l:'Rehearsal: Begin Staging',p:'The circle in the body — expand, break, restore. Staging begins on "Circle of Life," the show\u2019s most important image: ancient, vast, and completely present.'},
+      {t:'3:10–3:50',l:'Experience Session: Voice',p:'One of the most vocally diverse scores in musical theater. Young Artists find the physical home of each style — chest resonance for the ancient songs, breath support for the ballads, rhythmic precision for the up-tempo numbers.'},
+      {t:'3:50–4:30',l:'Rehearsal: Music',p:'Learn "Hakuna Matata" — easy, playful, precise — while older Artists find the something-being-avoided underneath the fun.'}
+    ]},
+    {n:3,tag:'Experience Session · Specialty Workshop',title:'Movement, Choreography & Physical Theater',theme:'Finding the animal — physical research and translation, not imitation.',blocks:[
+      {t:'1:30–1:45',l:'Warm-Up (Physical)',p:'Begin in stillness and rise from the earth; an animal-quality warm-up where a called animal becomes a quality in the body, not a costume or a noise.'},
+      {t:'1:45–2:25',l:'Experience Session: Movement',p:'The difference between imitation and research. Young Artists study the lion (weight and patience), the bird (the head leads), the wildebeest (momentum), and the hyena (unpredictability), then build 30-second animal portraits.'},
+      {t:'2:25–3:10',l:'Rehearsal: Choreography',p:'Learn "One by One" — the ensemble\u2019s rhythmic showcase — grounded, driving, communal. Simpler patterns for newer movers, layered movement for experienced dancers; everyone in the full formations.'},
+      {t:'3:10–3:50',l:'Animal Movement Workshop',p:'Four rotating physical-theater stations: The Stampede, Pride Rock, The Migration, and Ancestor Presence — building the vocabulary that lets bodies tell the show\u2019s biggest stories.'},
+      {t:'3:50–4:30',l:'Rehearsal: Staging',p:'Begin staging "He Lives in You," the show\u2019s emotional and spiritual center — vast and intimate at once.'}
+    ]},
+    {n:4,tag:'Experience Session',title:'Ensemble Building & Collaboration',theme:'The pride is the show — every circle requires every person.',blocks:[
+      {t:'1:30–1:45',l:'Warm-Up',p:'Ensemble-unity games and mixed-age partner work, building "we are the Pride Lands" energy — the circle is whole when everyone is here.'},
+      {t:'1:45–2:30',l:'Experience Session: Ensemble',p:'This is an ensemble show with solo moments, not the reverse. In "The Circle" exercise the group moves as one organism — whole, broken, restored — then builds a 60-second Pride Portrait where every person is visible in all three states.'},
+      {t:'2:30–3:30',l:'Rehearsal: Ensemble Numbers',p:'Polish "Circle of Life" — every person part of the whole — and continue "One by One" as a single rhythmic organism.'},
+      {t:'3:40–4:30',l:'Rehearsal: Music & Staging',p:'Learn "I Just Can\u2019t Wait to Be King" — pure, uncomplicated joy — then review all learned music and clean blocking, strengthening the circle in every number.'}
+    ]},
+    {n:5,tag:'Experience Session · Specialty Workshop',title:'Design Thinking & the Meaning Behind the Music',theme:'Making the Pride Lands appear from nothing.',blocks:[
+      {t:'1:30–1:45',l:'Warm-Up',p:'Creative movement through the Pride Lands in different seasons; an imagination warm-up atop Pride Rock at sunrise.'},
+      {t:'1:45–2:25',l:'Experience Session: Design',p:'The performers ARE the landscape. Young Artists explore the design world — dawn, the dark period, the return — and choose a challenge: costume, stage, or narration design.'},
+      {t:'2:25–3:10',l:'Rehearsal: Build the Show',p:'Learn "Be Prepared," "Can You Feel the Love Tonight," and "Shadowland," placing each on the circle as staging begins.'},
+      {t:'3:10–3:50',l:'Swahili, Story & Meaning',p:'Key words and their meanings — Simba (lion), Rafiki (friend), Hakuna Matata (no worries), Nants ingonyama (here comes a lion) — and a real conversation about respect versus appropriation. Then the opening chant, sung knowing what every word means.'},
+      {t:'3:50–4:30',l:'Rehearsal: First Half',p:'Build transitions, add the connective narration where the Pride Lands speaks, and run the first half of the show.'}
+    ]},
+    {n:6,tag:'Experience Session',title:'Music & Storytelling',theme:'How songs carry the weight of the circle.',blocks:[
+      {t:'1:30–1:45',l:'Warm-Up',p:'Full vocal range, the drumming heartbeat built together, and physical prep through animal qualities.'},
+      {t:'1:45–2:30',l:'Experience Session: Storytelling',p:'A revue creates a journey the audience feels. Young Artists map all ten songs onto the circle — whole, broken, returning — and write transition narration that names the feeling, not the plot.'},
+      {t:'2:30–3:30',l:'Rehearsal: Music Deep Dive',p:'Finish learning all ten songs; polish vocals across the full range with correct Swahili and Zulu pronunciation.'},
+      {t:'3:40–4:30',l:'Rehearsal: Complete Staging',p:'Finish blocking every song so its position on the circle is clear, and integrate all narration — the whole ensemble speaking as the land.'}
+    ]},
+    {n:7,tag:'Experience Session',title:'Directing Basics & Staging',theme:'Stage pictures that carry the weight of something ancient.',blocks:[
+      {t:'1:30–1:45',l:'Warm-Up',p:'Full-company warm-up; the director disrupts the circle and the ensemble restores it — practicing the instinct.'},
+      {t:'1:45–2:30',l:'Experience Session: Directing',p:'A director creates images the audience carries. Young Artists try three stagings of "He Lives in You," then direct the finale image — the circle restored, using every level and every person.'},
+      {t:'2:30–3:30',l:'Rehearsal: Refine Staging',p:'Polish every song; strengthen the circle in every formation and transition so each image tells us where the circle is.'},
+      {t:'3:40–4:30',l:'Rehearsal: Full Run',p:'Run the entire show — all ten songs, all transitions and narration — then a focused notes session and drilling of trouble spots.'}
+    ]},
+    {n:8,tag:'Experience Session',title:'Technical Theater',theme:'Tech creates the savanna we can\u2019t build.',blocks:[
+      {t:'1:30–1:45',l:'Warm-Up',p:'A gentle warm-up to save the voice, grounded in the drumming heartbeat before tech begins.'},
+      {t:'1:45–2:30',l:'Experience Session: Tech',p:'How light makes an audience feel the savanna at dawn. Lighting concepts per song, sound design that makes voices as large as the landscape, and the tech roles that run the show — stage manager, lighting, sound, crew.'},
+      {t:'2:30–3:30',l:'Rehearsal: Tech Integration',p:'Sound check, lighting rehearsal, and costumes-and-movement — earth tones with vivid accents, animal quality alive in the costume.'},
+      {t:'3:40–4:30',l:'Rehearsal: Final Polish',p:'Choreography detail, vocal polish with committed pronunciation, and full performance energy: "when the ensemble believes in the circle, the audience believes in the circle."'}
+    ]},
+    {n:9,tag:'Experience Session',title:'Performance Preparation',theme:'You are the circle. You carry what came before.',blocks:[
+      {t:'1:30–1:45',l:'Warm-Up',p:'Gentle and intentional; grounding into the earth and forming the circle as one organism.'},
+      {t:'1:45–2:30',l:'Experience Session: Prep',p:'What the show is truly about, and how to hold it: nerves are the break in the circle and performance is the restoration. Connecting with the audience, and the stamina to feel every state fully — don\u2019t skip to the ending; earn the restoration.'},
+      {t:'2:30–3:30',l:'Dress / Tech Rehearsal',p:'A full dress rehearsal — the circle from opening to close.'},
+      {t:'3:40–4:30',l:'Final Dress Rehearsal',p:'A complete run including bows, brief affirming notes, and a closing circle: "tomorrow we give the audience the circle. They need it."'}
+    ]},
+    {n:10,tag:'Performance Day',title:'Showtime',theme:'Grounded. Vast. Ancient. Alive.',blocks:[
+      {t:'4:30–5:00',l:'Arrival & Warm-Up',p:'Ground-up warm-up, the drumming heartbeat one last time, and call-and-response — the circle alive in sound.'},
+      {t:'5:00–5:30',l:'Costumes',p:'Into costume as a company, older Artists supporting younger. When the costume goes on, the Pride Lands begins.'},
+      {t:'5:30–6:15',l:'Energy & Tech Check',p:'A light run of the opening, key transitions, and finale; sound, lights, and a walk of the stage.'},
+      {t:'6:30',l:'Final Pep Talk & Company Circle',p:'The whole company, hands joined, the drumming heartbeat tapped together: "Three, two, one — the circle is alive. Let\u2019s go."'},
+      {t:'7:00 · ~7:45 · 8:00',l:'Showtime → Bows → Final Circle',p:'Thirty minutes inside the circle, then bows, celebration, and one last circle together — photos and joy.'}
+    ],
+    quote:'"For ten days you have learned what the Circle of Life actually means — not just as a song, but as a truth. Tonight you give the audience thirty minutes inside the circle, and when they leave, they carry it with them. Every single one of you belongs in this circle — exactly as you are, exactly here."'}
+  ];
+  (function(){
+    var pills=document.getElementById('dayPills'), panel=document.getElementById('dayPanel');
+    var prev=document.getElementById('dPrev'), next=document.getElementById('dNext');
+    if(!pills||!panel)return;
+    var cur=0;
+    DAYS.forEach(function(d,i){
+      var b=document.createElement('button');
+      b.className='day-pill'; b.setAttribute('role','tab'); b.type='button';
+      b.innerHTML='Day '+d.n+'<small>'+(d.n===10?'Show':'Skill '+d.n)+'</small>';
+      b.addEventListener('click',function(){show(i);});
+      pills.appendChild(b);
+    });
+    function show(i){
+      cur=i;
+      Array.prototype.forEach.call(pills.children,function(el,idx){el.setAttribute('aria-selected',idx===i?'true':'false');});
+      var d=DAYS[i];
+      var html='<div class="dtag">'+d.tag+'</div><h3>Day '+d.n+' — '+d.title+'</h3><p class="theme">'+d.theme+'</p><div class="day-blocks">';
+      d.blocks.forEach(function(b){
+        html+='<div class="blk"><div class="bt">'+b.t+'</div><div><div class="bl">'+b.l+'</div><p>'+b.p+'</p></div></div>';
+      });
+      html+='</div>';
+      if(d.quote){html+='<div class="dquote">'+d.quote+'</div>';}
+      panel.innerHTML=html;
+      prev.disabled=(i===0); next.disabled=(i===DAYS.length-1);
+    }
+    prev.addEventListener('click',function(){if(cur>0)show(cur-1);});
+    next.addEventListener('click',function(){if(cur<DAYS.length-1)show(cur+1);});
+    show(0);
+  })();
+</script>
+</body>
+</html>
