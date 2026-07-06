@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     ENCORE YOUTH LEADERSHIP ACADEMY — Training & Support 2026
+     Interactive training microsite. Teal + yellow Academy theme.
+     Sticky section navigator, completion tracking (localStorage),
+     persistent interactive checklists, collapsible role guides.
+     Built from the "Youth Leadership Academy Training" workbook.
+     ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<title>Youth Leadership Academy — Training &amp; Support | Encore Performing Arts</title>
+<meta name="description" content="Encore Youth Leadership Academy training and support — an interactive workbook for youth leaders running a one-week theater camp for Young Artists ages 7–12.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#348193">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/cabrio.css">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<style>
+  :root{
+    --teal:#348193;--teal-deep:#255f6e;--teal-dark:#173f49;
+    --yellow:#f7ce4b;--yellow-deep:#e3b638;--yellow-soft:#fdefbf;
+    --cream:#f6f5f3;--cream-2:#efece4;--paper:#ffffff;
+    --charcoal:#35444d;--ink:#374850;--muted:#6d7a82;
+    --line:#e4ded3;--line-2:#eee9df;
+    --radius:18px;--radius-lg:28px;
+    --red:#c0553f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body,'Familjen Grotesk',system-ui,sans-serif);background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6;}
+  ::selection{background:var(--teal);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  h1,h2,h3,h4,h5,.dfont{font-family:var(--font-display,'Mikado',Georgia,serif);letter-spacing:-.01em;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 26px;}
+
+  /* TOP BAR */
+  .topbar{position:sticky;top:0;z-index:120;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .topbar-in{max-width:1300px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;gap:16px;}
+  .tb-logo{display:flex;align-items:center;gap:12px;color:var(--teal);}
+  .tb-logo .brandmark{height:26px;width:auto;}
+  .tb-div{width:1px;height:26px;background:var(--line);}
+  .tb-label{font-family:var(--font-display,sans-serif);font-weight:600;font-size:14px;color:var(--charcoal);line-height:1.05;}
+  .tb-label small{display:block;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--teal);font-weight:600;}
+  .tb-actions{margin-left:auto;display:flex;gap:8px;align-items:center;}
+  .tb-btn{font-family:var(--font-display,sans-serif);font-weight:600;font-size:12.5px;color:var(--charcoal);background:var(--cream);border:1px solid var(--line);border-radius:100px;padding:8px 14px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:6px;}
+  .tb-btn:hover{background:var(--teal);color:#fff;border-color:var(--teal);}
+  .tb-progress{position:relative;height:3px;background:var(--line-2);}
+  .tb-progress span{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--teal),var(--yellow));transition:width .15s;}
+
+  /* HERO */
+  .hero{background:radial-gradient(120% 130% at 15% 0%,var(--teal) 0%,var(--teal-deep) 55%,var(--teal-dark) 100%);color:#fff;position:relative;overflow:hidden;}
+  .hero::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");pointer-events:none;}
+  .hero-in{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:56px 26px 60px;display:grid;grid-template-columns:1.4fr .9fr;gap:40px;align-items:center;}
+  .hero .eyebrow{display:inline-block;font-family:var(--font-display,sans-serif);font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:var(--yellow);margin-bottom:16px;}
+  .hero h1{font-weight:500;font-size:clamp(38px,5.6vw,68px);line-height:.98;letter-spacing:-.03em;}
+  .hero h1 em{font-style:normal;color:var(--yellow);}
+  .hero .sub{margin-top:18px;font-size:18px;line-height:1.55;color:rgba(255,255,255,.9);max-width:560px;}
+  .hero-badge-wrap{justify-self:center;position:relative;}
+  .hero-badge-wrap img{width:min(300px,72vw);filter:drop-shadow(0 26px 44px rgba(0,0,0,.34));}
+  .mission{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;}
+  .mission span{font-family:var(--font-display,sans-serif);font-size:13px;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.24);padding:8px 14px;border-radius:100px;}
+
+  /* PROGRESS SUMMARY BAND */
+  .pband{background:var(--yellow);color:var(--charcoal);}
+  .pband-in{max-width:1240px;margin:0 auto;padding:16px 26px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .pband .pct{font-family:var(--font-display,sans-serif);font-weight:700;font-size:15px;}
+  .pmeter{flex:1;min-width:180px;height:10px;background:rgba(53,68,77,.16);border-radius:100px;overflow:hidden;}
+  .pmeter span{display:block;height:100%;width:0;background:var(--charcoal);border-radius:100px;transition:width .3s;}
+  .pband .note{font-size:13px;color:var(--teal-dark);font-weight:600;}
+
+  /* LAYOUT */
+  .layout{max-width:1240px;margin:0 auto;padding:0 26px 40px;display:grid;grid-template-columns:250px 1fr;gap:44px;align-items:start;}
+  /* SIDE NAV */
+  .sidenav{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 96px);overflow-y:auto;padding:24px 0;}
+  .sidenav .grp{font-family:var(--font-display,sans-serif);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:18px 0 8px;}
+  .sidenav .grp:first-child{margin-top:0;}
+  .sidenav a{display:flex;align-items:center;gap:9px;padding:7px 12px;border-radius:10px;font-size:13.5px;color:var(--ink);transition:all .18s;line-height:1.25;}
+  .sidenav a:hover{background:var(--cream-2);}
+  .sidenav a.active{background:var(--teal);color:#fff;font-weight:600;}
+  .sidenav a .dot{flex:none;width:16px;height:16px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:10px;transition:all .2s;}
+  .sidenav a.done .dot{background:var(--yellow);border-color:var(--yellow);color:var(--charcoal);}
+  .sidenav a.active .dot{border-color:rgba(255,255,255,.6);}
+  .sidenav a.active.done .dot{background:var(--yellow);border-color:var(--yellow);}
+
+  /* CONTENT */
+  .content{min-width:0;padding-top:28px;}
+  section.sec{scroll-margin-top:80px;padding:26px 0 42px;border-bottom:1px solid var(--line);}
+  section.sec:last-child{border-bottom:none;}
+  .sec-num{font-family:var(--font-display,sans-serif);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);}
+  .sec h2{font-weight:500;font-size:clamp(26px,3.2vw,40px);line-height:1.05;color:var(--charcoal);margin:6px 0 6px;}
+  .sec .tag{color:var(--muted);font-size:15px;margin-bottom:22px;}
+  .sec h3{font-size:19px;font-weight:600;color:var(--charcoal);margin:26px 0 12px;}
+  .sec h4{font-size:15px;font-weight:700;color:var(--teal-deep);margin:18px 0 8px;letter-spacing:.01em;}
+  .sec p{margin-bottom:12px;}
+  .sec ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin:6px 0 14px;}
+  .sec ul li{position:relative;padding-left:22px;}
+  .sec ul li::before{content:'';position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--teal);}
+  .sec ul.yellow li::before{background:var(--yellow-deep);}
+  .lead{font-size:18px;color:var(--charcoal);}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+
+  /* CALLOUTS */
+  .callout{border-radius:var(--radius);padding:20px 22px;margin:18px 0;border-left:5px solid var(--teal);background:#eef5f6;}
+  .callout .k{font-family:var(--font-display,sans-serif);font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:6px;}
+  .callout.yellow{background:var(--yellow-soft);border-left-color:var(--yellow-deep);}
+  .callout.yellow .k{color:#8a6a12;}
+  .callout.warn{background:#fbeee9;border-left-color:var(--red);}
+  .callout.warn .k{color:var(--red);}
+  .callout p{margin:0;}
+  .callout strong{color:var(--charcoal);}
+
+  /* SCHEDULE / TIMELINE */
+  .sched{display:flex;flex-direction:column;gap:10px;margin:8px 0 16px;}
+  .slot{display:grid;grid-template-columns:118px 1fr;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 18px;}
+  .slot .t{font-family:var(--font-display,sans-serif);font-weight:700;color:var(--teal);font-size:13.5px;}
+  .slot .l strong{color:var(--charcoal);}
+  .slot .l ul{margin:6px 0 0;}
+
+  /* PROGRESSION STRIP */
+  .prog{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:14px 0 8px;}
+  .prog .d{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;}
+  .prog .d b{display:block;font-family:var(--font-display,sans-serif);color:var(--teal);font-size:14px;margin-bottom:6px;}
+  .prog .d.perf{background:var(--teal);color:#fff;border-color:var(--teal);}
+  .prog .d.perf b{color:var(--yellow);}
+  .prog .d span{font-size:12.5px;line-height:1.35;color:var(--muted);}
+  .prog .d.perf span{color:rgba(255,255,255,.85);}
+
+  /* STEPPER */
+  .stepper{display:flex;flex-direction:column;gap:12px;margin:10px 0 16px;}
+  .step{display:grid;grid-template-columns:44px 1fr;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 20px;}
+  .step .n{width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-family:var(--font-display,sans-serif);font-weight:700;}
+  .step h4{margin:0 0 6px;color:var(--charcoal);}
+  .step ul{margin:0;}
+
+  /* SWAP (instead of / try) */
+  .swaps{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;}
+  .swap{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+  .swap .no{padding:14px 18px;color:var(--red);font-size:14.5px;border-bottom:1px dashed var(--line);}
+  .swap .no b{font-family:var(--font-display,sans-serif);font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:block;opacity:.75;margin-bottom:3px;}
+  .swap .yes{padding:14px 18px;color:var(--teal-deep);font-size:15px;background:#eef5f6;}
+  .swap .yes b{font-family:var(--font-display,sans-serif);font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:block;color:var(--teal);margin-bottom:3px;}
+
+  /* STAGE MAP + NOTATION */
+  .stagemap{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 4px;}
+  .stagemap div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 10px;text-align:center;font-size:13.5px;color:var(--charcoal);font-weight:600;}
+  .stagemap div:nth-child(8){background:var(--teal);color:#fff;border-color:var(--teal);}
+  .audience{text-align:center;font-family:var(--font-display,sans-serif);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 18px;font-weight:700;}
+  .notation{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0;}
+  .notation span{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14px;color:var(--ink);display:inline-flex;align-items:center;gap:10px;}
+  .notation b{font-family:var(--font-display,sans-serif);color:var(--teal-deep);background:var(--yellow-soft);border-radius:7px;padding:2px 8px;font-size:13px;}
+
+  /* INTERACTIVE CHECKLIST */
+  .checklist{display:flex;flex-direction:column;gap:2px;margin:10px 0 16px;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:8px;}
+  .chk{display:flex;gap:13px;align-items:flex-start;padding:12px 14px;border-radius:12px;cursor:pointer;transition:background .15s;}
+  .chk:hover{background:var(--cream-2);}
+  .chk input{position:absolute;opacity:0;pointer-events:none;}
+  .chk .box{flex:none;width:22px;height:22px;border-radius:7px;border:2px solid var(--teal);display:grid;place-items:center;color:#fff;transition:all .18s;margin-top:1px;}
+  .chk .box svg{width:13px;height:13px;opacity:0;transform:scale(.5);transition:all .18s;}
+  .chk input:checked + .box{background:var(--teal);}
+  .chk input:checked + .box svg{opacity:1;transform:scale(1);}
+  .chk .lbl{font-size:15px;color:var(--ink);}
+  .chk input:checked ~ .lbl{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line);}
+
+  /* ROLE ACCORDION (native details) */
+  details.acc{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:10px 0;overflow:hidden;}
+  details.acc>summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:12px;font-family:var(--font-display,sans-serif);font-weight:600;font-size:16px;color:var(--charcoal);}
+  details.acc>summary::-webkit-details-marker{display:none;}
+  details.acc>summary .chev{margin-left:auto;transition:transform .2s;color:var(--teal);font-size:14px;}
+  details.acc[open]>summary .chev{transform:rotate(180deg);}
+  details.acc>summary .rico{width:30px;height:30px;border-radius:9px;background:var(--yellow-soft);color:var(--teal-deep);display:grid;place-items:center;font-weight:700;font-size:14px;}
+  .acc-body{padding:4px 20px 20px;}
+
+  /* AGREEMENTS */
+  .agrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px;}
+  .agree{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;position:relative;}
+  .agree .num{font-family:var(--font-display,sans-serif);font-weight:700;font-size:34px;line-height:1;color:var(--yellow-deep);}
+  .agree.hl{background:var(--teal);color:#fff;border-color:var(--teal);}
+  .agree.hl .num{color:var(--yellow);}
+  .agree p{margin:8px 0 0;font-size:15px;}
+  .agree.hl p{color:rgba(255,255,255,.94);}
+
+  /* COMPLETE BUTTON */
+  .done-row{margin-top:24px;}
+  .done-btn{font-family:var(--font-display,sans-serif);font-weight:600;font-size:14px;border:1.5px solid var(--teal);background:transparent;color:var(--teal);border-radius:100px;padding:11px 20px;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:9px;}
+  .done-btn:hover{background:var(--teal);color:#fff;}
+  .done-btn.is-done{background:var(--yellow);border-color:var(--yellow);color:var(--charcoal);}
+  .done-btn .ic{width:18px;height:18px;}
+
+  /* FOOTER */
+  footer{background:var(--charcoal);color:#e9e4e0;padding:56px 0 34px;}
+  .foot-in{max-width:1240px;margin:0 auto;padding:0 26px;}
+  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start;padding-bottom:30px;border-bottom:1px solid rgba(233,228,224,.16);}
+  .foot-brand .brandmark{height:28px;color:#e9e4e0;}
+  .foot-tag{font-family:var(--font-display,sans-serif);font-size:18px;margin-top:14px;max-width:320px;line-height:1.35;}
+  .foot-tag .hl{color:var(--yellow);}
+  .foot-links{display:flex;gap:40px;flex-wrap:wrap;}
+  .foot-links h5{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:rgba(233,228,224,.5);margin-bottom:12px;}
+  .foot-links a{display:block;color:rgba(233,228,224,.85);font-size:14px;margin-bottom:9px;}
+  .foot-links a:hover{color:var(--yellow);}
+  .foot-bottom{padding-top:24px;font-size:13px;color:rgba(233,228,224,.5);}
+
+  @media(max-width:920px){
+    .hero-in{grid-template-columns:1fr;gap:24px;text-align:center;}
+    .hero .sub{margin-left:auto;margin-right:auto;}
+    .mission{justify-content:center;}
+    .hero-badge-wrap{order:-1;}
+    .layout{grid-template-columns:1fr;gap:0;}
+    .sidenav{position:sticky;top:64px;max-height:none;overflow:visible;padding:10px 0;background:var(--cream);border-bottom:1px solid var(--line);z-index:90;margin:0 -26px;}
+    .sidenav .grp{display:none;}
+    .sidenav-inner{display:flex;gap:8px;overflow-x:auto;padding:6px 26px;scrollbar-width:thin;}
+    .sidenav a{flex:none;white-space:nowrap;border:1px solid var(--line);border-radius:100px;padding:8px 14px;background:var(--paper);}
+    .sidenav a .dot{width:14px;height:14px;}
+    .grid2,.grid3,.swaps,.agrid{grid-template-columns:1fr;}
+    .prog{grid-template-columns:1fr 1fr;}
+    .content{padding-top:8px;}
+  }
+  @media(max-width:560px){
+    .wrap,.layout{padding-left:18px;padding-right:18px;}
+    .slot{grid-template-columns:1fr;gap:4px;}
+    .step{grid-template-columns:1fr;}
+    .tb-label{display:none;}
+    .prog{grid-template-columns:1fr;}
+  }
+  @media print{
+    .topbar,.sidenav,.pband,.done-row,.tb-actions{display:none!important;}
+    details.acc{border:none;} details.acc>summary .chev{display:none;}
+    .layout{grid-template-columns:1fr;} body{background:#fff;}
+    section.sec{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="topbar-in">
+    <a href="/" class="tb-logo" aria-label="Encore Performing Arts — Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true"><g><path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/><path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/><polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/><path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/><path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/><path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/><path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/><path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/><path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/></g></svg></a>
+    <div class="tb-div" aria-hidden="true"></div>
+    <div class="tb-label">Youth Leadership Academy<small>Training &amp; Support · 2026</small></div>
+    <div class="tb-actions">
+      <button class="tb-btn" id="printBtn" type="button" title="Print / Save as PDF">Print</button>
+      <button class="tb-btn" id="resetBtn" type="button" title="Reset your saved progress">Reset progress</button>
+    </div>
+  </div>
+  <div class="tb-progress"><span id="scrollProg"></span></div>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="hero-in">
+    <div>
+      <span class="eyebrow">Encore Youth Leadership Academy</span>
+      <h1>Training &amp; <em>Support</em></h1>
+      <p class="sub">You're not just a leader — you're a mentor. This interactive workbook guides you through creating a positive, professional, and joyful theater experience for Young Artists ages 7–12, and building a full show in a single week.</p>
+      <div class="mission">
+        <span>One week</span><span>~30-minute showcase</span><span>Ages 7–12</span><span>You've got this</span>
+      </div>
+    </div>
+    <div class="hero-badge-wrap">
+      <img src="data:image/png;base64,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" alt="Encore Youth Leadership Academy badge">
+    </div>
+  </div>
+</header>
+
+<!-- ===== PROGRESS BAND ===== -->
+<div class="pband">
+  <div class="pband-in">
+    <span class="pct" id="pbPct">0% complete</span>
+    <div class="pmeter"><span id="pbBar"></span></div>
+    <span class="note" id="pbNote">Mark each section complete as you work through it — your progress saves on this device.</span>
+  </div>
+</div>
+
+<!-- ===== LAYOUT ===== -->
+<div class="layout">
+  <!-- SIDE NAV -->
+  <nav class="sidenav" id="sidenav" aria-label="Training sections">
+    <div class="sidenav-inner">
+      <div class="grp">Foundations</div>
+      <a href="#welcome" data-sec="welcome"><span class="dot"></span>1 · Welcome to Leadership</a>
+      <a href="#ages" data-sec="ages"><span class="dot"></span>2 · Working with Ages 7–12</a>
+      <div class="grp">Planning the Week</div>
+      <a href="#planning" data-sec="planning"><span class="dot"></span>3 · Pre-Camp Planning</a>
+      <a href="#audition" data-sec="audition"><span class="dot"></span>4 · Audition Day</a>
+      <a href="#daily" data-sec="daily"><span class="dot"></span>5 · Daily Rehearsal Structure</a>
+      <div class="grp">The Four Roles</div>
+      <a href="#music" data-sec="music"><span class="dot"></span>6 · Music Director</a>
+      <a href="#choreo" data-sec="choreo"><span class="dot"></span>7 · Choreographer</a>
+      <a href="#director" data-sec="director"><span class="dot"></span>8 · Director</a>
+      <a href="#stagemgr" data-sec="stagemgr"><span class="dot"></span>9 · Stage Manager</a>
+      <div class="grp">Leading Well</div>
+      <a href="#comms" data-sec="comms"><span class="dot"></span>10 · Communication &amp; Leadership</a>
+      <a href="#behavior" data-sec="behavior"><span class="dot"></span>11 · Behavior Management</a>
+      <div class="grp">The Performance</div>
+      <a href="#perfweek" data-sec="perfweek"><span class="dot"></span>12 · Performance Week Prep</a>
+      <a href="#perfday" data-sec="perfday"><span class="dot"></span>13 · Performance Day</a>
+      <div class="grp">You</div>
+      <a href="#selfcare" data-sec="selfcare"><span class="dot"></span>14 · Self-Care &amp; Reflection</a>
+      <a href="#final" data-sec="final"><span class="dot"></span>15 · Final Thoughts</a>
+      <a href="#agreements" data-sec="agreements"><span class="dot"></span>★ The Ten Agreements</a>
+    </div>
+  </nav>
+
+  <main class="content">
+<!-- 1 -->
+<section class="sec" id="welcome" data-sec="welcome">
+  <div class="sec-num">Section 1</div>
+  <h2>Welcome to Leadership</h2>
+  <p class="tag">You're not just a leader — you're a mentor.</p>
+  <p class="lead">Congratulations on stepping into a leadership role at Encore. Just a few years ago, you were in their shoes. You know what inspired you, what frustrated you, and what made you fall in love with theater. Use that knowledge.</p>
+  <div class="grid2" style="margin-top:20px;">
+    <div class="card">
+      <h4>Your mission this week</h4>
+      <ul>
+        <li>Create a safe, encouraging environment</li>
+        <li>Teach theatrical skills with patience and clarity</li>
+        <li>Build a cohesive ensemble in just one week</li>
+        <li>Produce a 30-minute performance that showcases growth</li>
+        <li>Have fun while maintaining professionalism</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Core values for youth leaders</h4>
+      <ul class="yellow">
+        <li><strong>Patience</strong> — Young Artists learn at different speeds. Celebrate small victories.</li>
+        <li><strong>Clarity</strong> — Simple, clear instructions beat complex explanations.</li>
+        <li><strong>Encouragement</strong> — Positive reinforcement builds confidence faster than criticism.</li>
+        <li><strong>Energy</strong> — Your enthusiasm is contagious. Bring it every single day.</li>
+        <li><strong>Flexibility</strong> — Things won't go exactly as planned. Adapt and problem-solve.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="done-row"><button class="done-btn" data-done="welcome" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 2 -->
+<section class="sec" id="ages" data-sec="ages">
+  <div class="sec-num">Section 2</div>
+  <h2>Working with Ages 7–12</h2>
+  <p class="tag">Understanding your Young Artists.</p>
+  <div class="grid3">
+    <div class="card"><h4>Ages 7–8</h4><ul>
+      <li>Short attention spans (10–15 min max on one task)</li>
+      <li>Need movement breaks frequently</li>
+      <li>Respond well to games and imaginative play</li>
+      <li>May need help with choreography repetition</li>
+      <li>Thrive on enthusiastic praise</li></ul></div>
+    <div class="card"><h4>Ages 9–10</h4><ul>
+      <li>Building independence but still need guidance</li>
+      <li>Can handle more complex choreography</li>
+      <li>Starting to understand character work</li>
+      <li>May compare themselves to others</li>
+      <li>Need clear expectations and structure</li></ul></div>
+    <div class="card"><h4>Ages 11–12</h4><ul>
+      <li>Capable of sophisticated performance</li>
+      <li>May feel self-conscious or "too cool"</li>
+      <li>Can be critical of themselves and others</li>
+      <li>Ready for leadership within the group (helpers, mentors to younger artists)</li>
+      <li>Need respect and age-appropriate challenges</li></ul></div>
+  </div>
+  <h3>Universal strategies</h3>
+  <ul>
+    <li><strong>Keep it moving</strong> — plan transitions between activities</li>
+    <li><strong>Make it fun</strong> — learning should feel like play, not work</li>
+    <li><strong>Be specific</strong> — "stand here" beats "move over there"</li>
+    <li><strong>Use names</strong> — learn them fast and use them constantly (make it a goal!)</li>
+    <li><strong>Celebrate effort</strong> — not just talent</li>
+  </ul>
+  <div class="callout warn">
+    <div class="k">Red flags to report to adult leadership</div>
+    <p>A Young Artist seems injured or unwell · behavioral issues you can't manage · a Young Artist seems unusually withdrawn or upset · any safety concern · parent conflicts or questions beyond your scope. <strong>You're not expected to handle everything alone — ask for help.</strong></p>
+  </div>
+  <div class="done-row"><button class="done-btn" data-done="ages" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 3 -->
+<section class="sec" id="planning" data-sec="planning">
+  <div class="sec-num">Section 3</div>
+  <h2>Pre-Camp Planning</h2>
+  <p class="tag">Over-planning beats under-planning — but don't make more work than necessary.</p>
+  <h4>Before you meet as a leadership team</h4>
+  <ul>
+    <li>Listen to / watch the source material multiple times</li>
+    <li>Identify approximately 10 songs that tell a story</li>
+    <li>Consider which songs need solos vs. ensemble</li>
+    <li>Think about basic staging possibilities</li>
+  </ul>
+  <h3>Production meeting checklist</h3>
+  <p>Work through these together — tap to check them off as you go.</p>
+  <div class="checklist" data-check="pm">
+    <label class="chk"><input type="checkbox" data-id="pm1"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Select final song list (aim for 10 songs, ~30 minutes)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pm2"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Assign song responsibilities (who teaches / stages which numbers)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pm3"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Plan the audition process (what will they sing? how will you evaluate?)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pm4"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Discuss role breakdown (how many solos? small groups? ensemble moments?)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pm5"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Sketch costume concepts (simple, achievable, parent-friendly)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pm6"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Identify set needs (keep it minimal — what's essential?)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pm7"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Create rehearsal schedule (template for Days 2–6)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pm8"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Prepare materials (script, lyric sheets, audition forms)</span></label>
+  </div>
+  <h3>Creating your script</h3>
+  <p>Since you're doing song showcases (not full licensed shows):</p>
+  <ul>
+    <li>Brief narration or introduction between songs (no dialogue from actual shows)</li>
+    <li>Lyric sheets for all songs</li>
+    <li>Notes on staging / blocking for each number</li>
+    <li>Character assignment chart</li>
+    <li>Prop and costume list</li>
+  </ul>
+  <div class="callout yellow"><div class="k">Keep it simple</div><p>A song showcase means you're telling a story through music — no licensed dialogue required. Clear beats clever.</p></div>
+  <div class="done-row"><button class="done-btn" data-done="planning" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 4 -->
+<section class="sec" id="audition" data-sec="audition">
+  <div class="sec-num">Section 4</div>
+  <h2>Audition Day (Day 1)</h2>
+  <p class="tag">Everyone gets a part.</p>
+  <div class="callout"><div class="k">One purpose</div><p>Your auditions serve one purpose: determining solos and groupings. <strong>Every Young Artist who shows up gets cast.</strong></p></div>
+  <h3>Sample structure — 3-hour session</h3>
+  <div class="sched">
+    <div class="slot"><span class="t">0:00–0:15</span><span class="l"><strong>Welcome &amp; warm-up</strong> — introduce your team, explain how the week works, lead a fun vocal + physical warm-up, set expectations: "we're all going to work hard and have fun together."</span></div>
+    <div class="slot"><span class="t">0:15–1:45</span><span class="l"><strong>Auditions</strong> — call Young Artists in small groups (4–6), teach a short 16-bar section, have them perform it back. Note confidence, pitch, stage presence, energy. Others do a supervised activity while they wait.</span></div>
+    <div class="slot"><span class="t">1:45–2:30</span><span class="l"><strong>Group activities &amp; team building</strong> — theater games that build trust and energy; get everyone moving and laughing; start building ensemble unity immediately.</span></div>
+    <div class="slot"><span class="t">2:30–3:00</span><span class="l"><strong>Parent pickup &amp; team huddle</strong> — thank families, remind them to check email tonight; leadership team finalizes casting.</span></div>
+  </div>
+  <h3>Casting considerations</h3>
+  <ul>
+    <li>Balance experience across song groupings</li>
+    <li>Pair confident Young Artists with shy ones</li>
+    <li>Give everyone at least one spotlight moment</li>
+    <li>Consider who will mentor younger or newer artists</li>
+    <li>Remember: growth matters more than perfection</li>
+  </ul>
+  <div class="callout yellow"><div class="k">Evening — send the casting email</div><p>Include role assignment, what to bring tomorrow, the rehearsal schedule, and encouragement.</p></div>
+  <div class="done-row"><button class="done-btn" data-done="audition" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 5 -->
+<section class="sec" id="daily" data-sec="daily">
+  <div class="sec-num">Section 5</div>
+  <h2>Daily Rehearsal Structure</h2>
+  <p class="tag">Sample daily schedule (Days 2–6) — adjust timing to your camp hours. This is a template.</p>
+  <div class="sched">
+    <div class="slot"><span class="t">0:00–0:15</span><span class="l"><strong>Arrival &amp; warm-up</strong> — vocal warm-ups (Music Director), physical warm-ups (Choreographer), an energy-building game or song.</span></div>
+    <div class="slot"><span class="t">0:15–1:00</span><span class="l"><strong>Music block</strong> — teach new songs or refine learned ones; break into small groups by part if needed; focus on pitch, blend, dynamics.</span></div>
+    <div class="slot"><span class="t">1:00–1:45</span><span class="l"><strong>Choreography block</strong> — teach new choreography or clean learned numbers; run sections with music; polish spacing and formations.</span></div>
+    <div class="slot"><span class="t">1:45–2:00</span><span class="l"><strong>Break</strong> — bathroom, water, snack; give them actual downtime.</span></div>
+    <div class="slot"><span class="t">2:00–2:45</span><span class="l"><strong>Blocking / staging block</strong> — Director leads transitions, entrances/exits; add acting and character work; integrate music + movement.</span></div>
+    <div class="slot"><span class="t">2:45–3:15</span><span class="l"><strong>Run-through &amp; notes</strong> — run what you've learned; give specific, positive notes; preview tomorrow's goals.</span></div>
+    <div class="slot"><span class="t">3:15–3:30</span><span class="l"><strong>Closing circle</strong> — celebrate the day's wins, remind about tomorrow, send them home excited.</span></div>
+  </div>
+  <h3>Progression across the week</h3>
+  <div class="prog">
+    <div class="d"><b>Day 2</b><span>Teach foundation (music, basic choreo, staging)</span></div>
+    <div class="d"><b>Day 3</b><span>Continue teaching, start integrating elements</span></div>
+    <div class="d"><b>Day 4</b><span>Finish teaching, run sections together</span></div>
+    <div class="d"><b>Day 5</b><span>Polish and clean, run full show</span></div>
+    <div class="d"><b>Day 6</b><span>Final rehearsal, tech elements, full run</span></div>
+    <div class="d perf"><b>Day 7</b><span>Performance!</span></div>
+  </div>
+  <div class="done-row"><button class="done-btn" data-done="daily" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+<!-- 6 -->
+<section class="sec" id="music" data-sec="music">
+  <div class="sec-num">Section 6 · The Four Roles</div>
+  <h2>Music Director Essentials</h2>
+  <p class="tag">Teach songs with clarity, patience, and musicality. Make singing fun and achievable for all skill levels.</p>
+  <h3>Teaching a new song</h3>
+  <div class="stepper">
+    <div class="step"><span class="n">1</span><div><h4>Let them hear it first</h4><ul><li>Play the recording or perform it yourself</li><li>Let them absorb the melody and energy</li></ul></div></div>
+    <div class="step"><span class="n">2</span><div><h4>Break it down</h4><ul><li>Teach phrase by phrase (4–8 bars at a time)</li><li>Sing it, have them repeat</li><li>Use hand motions or movement to reinforce rhythm</li></ul></div></div>
+    <div class="step"><span class="n">3</span><div><h4>Add lyrics</h4><ul><li>Once melody is solid, focus on words</li><li>Clarify pronunciation</li><li>Discuss what the song means</li></ul></div></div>
+    <div class="step"><span class="n">4</span><div><h4>Layer in musicality</h4><ul><li>Dynamics (loud / soft)</li><li>Expression and emotion</li><li>Blend and listening to each other</li></ul></div></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Warm-up ideas</h4><ul><li>Lip trills and sirens</li><li>"Mee-may-mah-mo-moo" scales</li><li>Tongue twisters</li><li>Call-and-response rhythm games</li></ul></div>
+    <div class="card"><h4>Different skill levels</h4><ul><li><strong>Strong singers</strong> — harmonies or leadership roles helping others</li><li><strong>Developing singers</strong> — keep on melody, give encouragement</li><li><strong>Shy singers</strong> — pair with confident artists, build trust gradually</li></ul></div>
+  </div>
+  <details class="acc"><summary><span class="rico">?</span>Quick fixes<span class="chev">▾</span></summary><div class="acc-body"><ul>
+    <li><strong>Pitchy singing</strong> — slow it down, isolate the problem phrase</li>
+    <li><strong>Low energy</strong> — model the energy you want to see</li>
+    <li><strong>Rushing</strong> — clap the rhythm without singing, then add voice</li>
+    <li><strong>Can't hear words</strong> — exaggerate consonants</li>
+  </ul></div></details>
+  <div class="callout yellow"><div class="k">Remember</div><p>You're not producing a recording. <strong>You're building confidence and joy.</strong></p></div>
+  <div class="done-row"><button class="done-btn" data-done="music" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 7 -->
+<section class="sec" id="choreo" data-sec="choreo">
+  <div class="sec-num">Section 7 · The Four Roles</div>
+  <h2>Choreographer Essentials</h2>
+  <p class="tag">Create movement that's age-appropriate, exciting, and achievable. Make dance accessible for all bodies and abilities.</p>
+  <div class="grid2">
+    <div class="card"><h4>Keep it simple</h4><ul><li>Repetition is your friend</li><li>8-count phrases work well</li><li>Big, clear movements beat intricate details</li></ul></div>
+    <div class="card"><h4>Make it visual</h4><ul><li>Use levels (high, medium, low)</li><li>Create interesting stage pictures</li><li>Think about formations (lines, circles, diagonals)</li></ul></div>
+    <div class="card"><h4>Build progressively</h4><ul><li>Teach without music first</li><li>Add music at half-speed</li><li>Gradually increase tempo</li></ul></div>
+    <div class="card"><h4>Include everyone</h4><ul><li>Modify for different abilities</li><li>Create moments for less experienced dancers to shine</li><li>No one sits out</li></ul></div>
+  </div>
+  <h3>Teaching choreography, step by step</h3>
+  <div class="stepper">
+    <div class="step"><span class="n">1</span><div><h4>Demonstrate full-out</h4><ul><li>Show the whole combo with energy</li><li>Let them see what they're working toward</li></ul></div></div>
+    <div class="step"><span class="n">2</span><div><h4>Break into counts</h4><ul><li>Teach 8 counts at a time</li><li>Face the same direction they face (mirror yourself)</li><li>Count out loud, repeat multiple times</li></ul></div></div>
+    <div class="step"><span class="n">3</span><div><h4>Add music</h4><ul><li>Start slow, drill until comfortable, speed up gradually</li></ul></div></div>
+    <div class="step"><span class="n">4</span><div><h4>Clean and polish</h4><ul><li>Adjust spacing, sharpen movements</li><li>Facial expressions and performance quality</li></ul></div></div>
+  </div>
+  <div class="card"><h4>Formation ideas</h4><ul>
+    <li>Lines (horizontal, diagonal, vertical) · circles · scattered / organic groupings</li>
+    <li>Two groups alternating · soloists in front, ensemble behind · entrances from different areas</li></ul></div>
+  <details class="acc"><summary><span class="rico">?</span>Quick fixes<span class="chev">▾</span></summary><div class="acc-body"><ul>
+    <li><strong>They're lost</strong> — slow down, repeat more</li>
+    <li><strong>Timing is off</strong> — remove music, clap it out</li>
+    <li><strong>Low energy</strong> — model huge performance energy</li>
+    <li><strong>Spacing is messy</strong> — mark spots with tape</li>
+  </ul></div></details>
+  <div class="done-row"><button class="done-btn" data-done="choreo" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 8 -->
+<section class="sec" id="director" data-sec="director">
+  <div class="sec-num">Section 8 · The Four Roles</div>
+  <h2>Director Essentials</h2>
+  <p class="tag">Shape the overall vision, create compelling staging, and guide character development. You're the artistic leader.</p>
+  <h3>Blocking basics</h3>
+  <p><strong>What is blocking?</strong> Where actors stand, when they move, and how they use the stage to tell the story.</p>
+  <ul>
+    <li><strong>Use the full stage</strong> — don't clump everyone center</li>
+    <li><strong>Create focus</strong> — draw the eye where you want it</li>
+    <li><strong>Motivate movement</strong> — give actors reasons to move</li>
+    <li><strong>Think in pictures</strong> — every moment should look intentional</li>
+  </ul>
+  <h4>Stage areas <span style="font-weight:500;color:var(--muted)">(downstage = closer to audience)</span></h4>
+  <div class="stagemap">
+    <div>Upstage Left</div><div>Upstage Center</div><div>Upstage Right</div>
+    <div>Center Left</div><div>Center Stage</div><div>Center Right</div>
+    <div>Downstage Left</div><div>Downstage Center</div><div>Downstage Right</div>
+  </div>
+  <div class="audience">▲ Audience</div>
+  <h3>Directing young performers</h3>
+  <div class="swaps">
+    <div class="swap"><div class="no"><b>Don't say</b>"Move over there"</div><div class="yes"><b>Do say</b>"Take three steps to center stage, then turn to face stage right"</div></div>
+    <div class="swap"><div class="no"><b>Vague context</b>"Just look happy"</div><div class="yes"><b>Give the why</b>"You're excited because you just discovered something amazing" — help them understand the reason behind actions</div></div>
+  </div>
+  <ul>
+    <li><strong>Use demonstrations</strong> — show them what you want; let confident artists demonstrate; walk through it with them</li>
+    <li><strong>Adjust for age</strong> — younger artists: simple, clear blocking; older artists: more nuanced character work</li>
+  </ul>
+  <div class="grid2">
+    <div class="callout" style="margin:0;"><p><strong>Find ways to make each scene have movement and an interesting layout.</strong></p></div>
+    <div class="callout yellow" style="margin:0;"><p><strong>Have as many Young Artists on stage as possible.</strong></p></div>
+  </div>
+  <h3>Running rehearsal</h3>
+  <ul>
+    <li><strong>Start and end strong</strong> — begin with energy and focus; end with encouragement and clarity about next time</li>
+    <li><strong>Manage time</strong> — know what you need to accomplish, move efficiently, don't dwell too long on one moment</li>
+    <li><strong>Give notes wisely</strong> — positive first, then constructive; be specific ("let's make that entrance bigger," not "that was bad"); fix the biggest issues first</li>
+    <li><strong>Keep it fun</strong> — celebrate breakthroughs, use theater games between intensive work, laugh with them</li>
+  </ul>
+  <div class="done-row"><button class="done-btn" data-done="director" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 9 -->
+<section class="sec" id="stagemgr" data-sec="stagemgr">
+  <div class="sec-num">Section 9 · The Four Roles</div>
+  <h2>Stage Manager Essentials</h2>
+  <p class="tag">You're the organizational backbone. Track everything, keep the team on schedule, ensure smooth operations.</p>
+  <div class="grid3">
+    <div class="card"><h4>Before camp</h4><ul><li>Help create the rehearsal schedule</li><li>Organize all materials (scripts, lyric sheets)</li><li>Prepare audition forms and tracking systems</li></ul></div>
+    <div class="card"><h4>During camp</h4><ul><li>Keep rehearsal on schedule (time warnings)</li><li>Track blocking and choreography notes</li><li>Maintain attendance</li><li>Coordinate logistics with adult leadership</li><li>Manage prop and costume tracking</li><li>Communicate with families</li></ul></div>
+    <div class="card"><h4>During performance</h4><ul><li>Call places and standby</li><li>Coordinate backstage traffic</li><li>Problem-solve in real time</li><li>Keep calm when chaos happens</li></ul></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Your stage manager kit</h4><ul><li>Clipboard &amp; paper · pens / pencils / highlighters</li><li>Script with blocking notes · cast contact list · daily schedule</li><li>Tape (spike marks, quick fixes) · safety pins · tissues · band-aids</li></ul></div>
+    <div class="card"><h4>Digital tools</h4><ul><li>Email access for family communication</li><li>Phone for emergencies</li><li>Shared document for notes / updates</li></ul></div>
+  </div>
+  <h3>Blocking notation</h3>
+  <p>Learn standard notation to track what the Director creates:</p>
+  <div class="notation">
+    <span><b>X</b>cross / move</span><span><b>E</b>enter</span><span><b>Ex</b>exit</span><span><b>C</b>center</span>
+    <span><b>U / D</b>upstage / downstage</span><span><b>L / R</b>left / right</span>
+  </div>
+  <p style="font-size:14.5px;color:var(--muted);"><em>Example:</em> "Sarah X DC on 'hello'" = Sarah crosses to downstage center when she says "hello."</p>
+  <details class="acc"><summary><span class="rico">✎</span>Time management &amp; problem-solving<span class="chev">▾</span></summary><div class="acc-body">
+    <h4>Give warnings</h4><ul><li>"We have 5 minutes left in this section"</li><li>"We're moving to choreography in 2 minutes"</li></ul>
+    <h4>Keep the Director on track</h4><ul><li>Gentle reminders: "we wanted to finish this song by 2:00"</li><li>Suggest: "should we move on or spend more time here?" — support decisions, don't undermine</li></ul>
+    <h4>Common situations</h4><ul>
+      <li><strong>Someone's missing</strong> — check with adult leadership immediately; adjust staging for rehearsal</li>
+      <li><strong>Running behind</strong> — identify essential vs. nice-to-have; prioritize key moments</li>
+      <li><strong>Conflict between Young Artists</strong> — redirect to the task; get adult support if needed; keep it professional</li>
+    </ul>
+  </div></details>
+  <div class="done-row"><button class="done-btn" data-done="stagemgr" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+<!-- 10 -->
+<section class="sec" id="comms" data-sec="comms">
+  <div class="sec-num">Section 10 · Leading Well</div>
+  <h2>Communication &amp; Leadership Skills</h2>
+  <p class="tag">Leading without being bossy.</p>
+  <div class="callout"><div class="k">Authority vs. authoritarianism</div><p><strong>Authority</strong> = confident, clear, respectful leadership. <strong>Authoritarianism</strong> = demanding, rigid, dismissive. <strong>You want authority.</strong></p></div>
+  <div class="grid3">
+    <div class="card"><h4>Be clear</h4><ul><li>Say exactly what you need</li><li>Use simple language</li><li>Confirm understanding</li></ul></div>
+    <div class="card"><h4>Be kind</h4><ul><li>Respect goes both ways</li><li>Use "please" and "thank you"</li><li>Acknowledge effort</li></ul></div>
+    <div class="card"><h4>Be consistent</h4><ul><li>Follow through on what you say</li><li>Maintain expectations</li><li>Build trust through reliability</li></ul></div>
+  </div>
+  <h3>Positive language</h3>
+  <div class="swaps">
+    <div class="swap"><div class="no"><b>Instead of</b>"Don't run around"</div><div class="yes"><b>Try</b>"Let's save our energy for the stage"</div></div>
+    <div class="swap"><div class="no"><b>Instead of</b>"That was wrong"</div><div class="yes"><b>Try</b>"Let's try it this way"</div></div>
+    <div class="swap"><div class="no"><b>Instead of</b>"You're being too loud"</div><div class="yes"><b>Try</b>"I need everyone's eyes on me and voices off"</div></div>
+    <div class="swap"><div class="no"><b>Instead of</b>"Stop goofing off"</div><div class="yes"><b>Try</b>"Let's refocus — we've got a lot to accomplish"</div></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>Working with your leadership team</h4><ul><li>Respect each other's roles — don't step on toes, defer to expertise</li><li>Support decisions publicly, discuss concerns privately</li><li>Communicate constantly with quick check-ins; stay aligned on priorities</li><li>Problem-solve together and decide collectively when possible</li></ul></div>
+    <div class="card"><h4>When to get adult help</h4><ul><li>Safety concerns or injuries</li><li>Behavioral issues beyond your management</li><li>Parent complaints or questions</li><li>Scheduling conflicts</li><li>Any situation that feels over your head</li></ul></div>
+  </div>
+  <div class="callout yellow"><div class="k">Remember</div><p>You're leaders, not professionals. <strong>Asking for help is a sign of maturity, not weakness.</strong></p></div>
+  <div class="done-row"><button class="done-btn" data-done="comms" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 11 -->
+<section class="sec" id="behavior" data-sec="behavior">
+  <div class="sec-num">Section 11 · Leading Well</div>
+  <h2>Behavior Management</h2>
+  <p class="tag">Day 1 is crucial — establish your culture from minute one.</p>
+  <div class="grid2">
+    <div class="card"><h4>Key expectations</h4><ul><li>Respect everyone (leaders, peers, space)</li><li>Listen when someone is speaking</li><li>Give your best effort</li><li>Have fun while staying focused</li><li>Ask questions when you're confused</li></ul></div>
+    <div class="card"><h4>How to communicate them</h4><ul><li>State them clearly at the start</li><li>Model them yourself</li><li>Reinforce when you see them</li><li>Redirect when they're not met</li></ul></div>
+  </div>
+  <h3>Proactive strategies</h3>
+  <ul>
+    <li><strong>Keep them busy</strong> — idle time = behavior issues; plan transitions carefully</li>
+    <li><strong>Use movement</strong> — if energy is high, channel it into physical activity before expecting stillness</li>
+    <li><strong>Give ownership</strong> — assign small responsibilities (line leader, prop manager); they behave better when invested</li>
+    <li><strong>Catch them doing good</strong> — name and praise positive behavior immediately</li>
+  </ul>
+  <h3>Redirecting behavior — escalate gently</h3>
+  <div class="stepper">
+    <div class="step"><span class="n">1</span><div><h4>Non-verbal cue</h4><ul><li>Eye contact · proximity (move closer) · a gentle touch on the shoulder</li></ul></div></div>
+    <div class="step"><span class="n">2</span><div><h4>Private quiet reminder</h4><ul><li>Pull them aside briefly: "I need you to focus right now" — give a chance to self-correct</li></ul></div></div>
+    <div class="step"><span class="n">3</span><div><h4>Clear direct instruction</h4><ul><li>"I need you sitting criss-cross, eyes on me" — calm, firm, not angry; wait for compliance</li></ul></div></div>
+    <div class="step"><span class="n">4</span><div><h4>Consequence</h4><ul><li>Short break sitting out (1–2 min) · loss of a privilege · call adult leadership for backup</li></ul></div></div>
+  </div>
+  <details class="acc"><summary><span class="rico">!</span>Common issues &amp; solutions<span class="chev">▾</span></summary><div class="acc-body"><ul>
+    <li><strong>Constant talking</strong> — "voices off, eyes on me. If I see it, we can move on." Wait for silence before proceeding.</li>
+    <li><strong>Goofing off</strong> — redirect the energy: "save that for the stage!" Give a specific task immediately.</li>
+    <li><strong>Exclusion / cliques</strong> — rotate partners frequently, assign mixed groupings, address directly: "we're all on the same team."</li>
+    <li><strong>Frustration / giving up</strong> — break the task into smaller pieces, celebrate small progress, pair with a confident helper.</li>
+  </ul></div></details>
+  <div class="callout warn"><div class="k">Remember</div><p>Most behavior issues stem from boredom, confusion, or lack of confidence. <strong>Address the root cause.</strong></p></div>
+  <div class="done-row"><button class="done-btn" data-done="behavior" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 12 -->
+<section class="sec" id="perfweek" data-sec="perfweek">
+  <div class="sec-num">Section 12 · The Performance</div>
+  <h2>Performance Week Prep</h2>
+  <p class="tag">The days leading up to the show.</p>
+  <div class="grid2">
+    <div class="card"><h4>Day 5 · Polish &amp; finalize</h4><ul><li>Run the full show beginning to end</li><li>Give detailed notes</li><li>Clean spacing, timing, transitions</li><li>Finalize costume / prop needs</li></ul></div>
+    <div class="card"><h4>Day 6 · Technical rehearsal</h4><ul><li>Add tech elements (lights, sound cues)</li><li>Practice entrances and exits with flow</li><li>Full dress rehearsal if possible</li><li>Build confidence with successful runs</li></ul></div>
+  </div>
+  <h3>Pre-performance checklist</h3>
+  <div class="checklist" data-check="pp">
+    <label class="chk"><input type="checkbox" data-id="pp1"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Costumes ready (communicate clearly to families what's needed)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pp2"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Props organized (create a prop table, assign responsibility)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pp3"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Set pieces in place (mark spike marks if needed)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pp4"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Music / sound check (test audio, have a backup plan)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pp5"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Running order confirmed (everyone knows the sequence)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pp6"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Backstage traffic flow planned (where do they wait? how do they enter / exit?)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pp7"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Emergency contacts available (Stage Manager keeps the list)</span></label>
+    <label class="chk"><input type="checkbox" data-id="pp8"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span class="lbl">Adult leadership briefed (they know the plan and their role)</span></label>
+  </div>
+  <div class="callout yellow"><div class="k">Day 7 · Pre-show pep talk</div><p>Gather your cast in a circle, keep it short and heartfelt: "You've worked incredibly hard this week. Today isn't about being perfect — it's about sharing the joy we've created. The audience is already on your side. Let's give them a great show!" Then build energy together — hold hands, squeeze around the circle, cheer, and send them out confident.</p></div>
+  <div class="done-row"><button class="done-btn" data-done="perfweek" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 13 -->
+<section class="sec" id="perfday" data-sec="perfday">
+  <div class="sec-num">Section 13 · The Performance</div>
+  <h2>Performance Day</h2>
+  <p class="tag">Stage Manager's performance duties.</p>
+  <div class="sched">
+    <div class="slot"><span class="t">60 min before</span><span class="l"><strong>Pre-show</strong> — check all props, costumes, set pieces; confirm cast attendance; test audio / tech; walk through backstage traffic flow.</span></div>
+    <div class="slot"><span class="t">30 min before</span><span class="l"><strong>Gather</strong> — cast in designated space; final costume / makeup checks; bathroom breaks; warm-ups (vocal, physical, energy).</span></div>
+    <div class="slot"><span class="t">15 min before</span><span class="l"><strong>Focus</strong> — pep talk from leadership; final reminders (smile, project, have fun); quiet focus time.</span></div>
+    <div class="slot"><span class="t">5 min before</span><span class="l"><strong>Places</strong> — "places for the top of the show, please"; final check: everyone ready?</span></div>
+    <div class="slot"><span class="t">During</span><span class="l"><strong>Run the show</strong> — stay calm; track any blocking / prop changes; be ready to problem-solve; cue entrances if necessary.</span></div>
+    <div class="slot"><span class="t">After</span><span class="l"><strong>Celebrate</strong> — gather the cast for a closing circle; celebrate together; thank-yous and goodbyes.</span></div>
+  </div>
+  <details class="acc"><summary><span class="rico">!</span>Handling performance issues<span class="chev">▾</span></summary><div class="acc-body"><ul>
+    <li><strong>Someone forgets lyrics</strong> — they keep going, others support; the audience won't know</li>
+    <li><strong>Someone misses an entrance</strong> — Stage Manager quietly redirects; adjust on the fly</li>
+    <li><strong>Prop breaks</strong> — quick fix or cut it, keep moving</li>
+    <li><strong>Tech fails</strong> — performers continue without; adapt and commit</li>
+  </ul><p style="margin-top:8px;"><strong>General rule:</strong> keep going. The show must go on — solve problems without stopping.</p></div></details>
+  <div class="done-row"><button class="done-btn" data-done="perfday" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 14 -->
+<section class="sec" id="selfcare" data-sec="selfcare">
+  <div class="sec-num">Section 14 · You</div>
+  <h2>Self-Care &amp; Reflection</h2>
+  <p class="tag">Leading is exhausting. You're giving energy all week — don't burn out.</p>
+  <div class="grid3">
+    <div class="card"><h4>During camp</h4><ul><li>Stay hydrated</li><li>Eat actual food</li><li>Get sleep every night</li><li>Take breaks when you can</li><li>Lean on your team</li></ul></div>
+    <div class="card"><h4>Red flags you're overextending</h4><ul><li>Snapping at Young Artists or teammates</li><li>Feeling resentful or frustrated constantly</li><li>Physical exhaustion</li><li>Not enjoying the process</li></ul></div>
+    <div class="card"><h4>If you're struggling</h4><ul><li>Talk to adult leadership immediately</li><li>Ask your team for support</li><li>Adjust expectations if needed</li><li>Remember: it's okay to not be perfect</li></ul></div>
+  </div>
+  <h3>Post-camp reflection</h3>
+  <p>After the show, take time to think about what you learned:</p>
+  <ul>
+    <li>What went really well?</li>
+    <li>What would I do differently next time?</li>
+    <li>What surprised me about this experience?</li>
+    <li>How did I grow as a leader?</li>
+    <li>What did I learn about myself?</li>
+  </ul>
+  <div class="callout"><div class="k">Growth mindset</div><p>You <strong>will</strong> make mistakes — that's how you learn. You'll have moments of doubt — that's normal. You'll face challenges you didn't expect — that's leadership. The fact that you're doing this at all is remarkable. Give yourself credit.</p></div>
+  <div class="done-row"><button class="done-btn" data-done="selfcare" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- 15 -->
+<section class="sec" id="final" data-sec="final">
+  <div class="sec-num">Section 15 · You</div>
+  <h2>Final Thoughts</h2>
+  <p class="tag">You're building more than a show.</p>
+  <p class="lead">In one week, you're not just teaching songs and choreography. You're showing Young Artists that theater is a safe, joyful place; modeling what leadership looks like; building confidence and self-expression; creating memories they'll carry forever; and inspiring the next generation of artists.</p>
+  <div class="callout yellow"><p>Some of those 7–12 year-olds will be in your shoes in a few years <strong>because of you.</strong> You were once a Young Artist who needed someone to believe in you. Now you're that person for someone else.</p></div>
+  <h3>Leadership principles to remember</h3>
+  <div class="grid2">
+    <ul>
+      <li><strong>Patience wins</strong> — they learn at their own pace</li>
+      <li><strong>Clarity matters</strong> — simple, direct communication gets results</li>
+      <li><strong>Encouragement builds</strong> — celebrate effort, not just talent</li>
+      <li><strong>Energy is contagious</strong> — bring enthusiasm every day</li>
+      <li><strong>Flexibility saves the day</strong> — adapt and problem-solve</li>
+    </ul>
+    <ul>
+      <li><strong>Teamwork makes it work</strong> — lean on your fellow leaders</li>
+      <li><strong>Kindness first</strong> — respect everyone: artists, families, your team</li>
+      <li><strong>Ask for help</strong> — you're not expected to know everything</li>
+      <li><strong>Reflect and grow</strong> — every camp makes you better</li>
+      <li><strong>Have fun</strong> — if you're not enjoying it, they won't either</li>
+    </ul>
+  </div>
+  <div class="callout"><div class="k">You've got this</div><p>You were chosen for this role because someone saw leadership potential in you. Trust that. Trust yourself. Trust your team. Trust the process. The work you're about to do matters. <strong>Go create something beautiful.</strong></p></div>
+  <div class="done-row"><button class="done-btn" data-done="final" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+<!-- AGREEMENTS -->
+<section class="sec" id="agreements" data-sec="agreements">
+  <div class="sec-num">The Ten Agreements</div>
+  <h2>How we show up — every day</h2>
+  <p class="tag">The commitments every Encore youth leader makes.</p>
+  <div class="agrid">
+    <div class="agree"><div class="num">1</div><p>Talk to the Young Artists with respect. We don't yell, snap, use condescending language or tone, or belittle anyone.</p></div>
+    <div class="agree hl"><div class="num">2</div><p>Refer to the youth as <strong>Young Artists</strong>, not kids.</p></div>
+    <div class="agree"><div class="num">3</div><p>Encore's primary goal is emotional intelligence; secondary to that is giving Young Artists a professional theater experience.</p></div>
+    <div class="agree"><div class="num">4</div><p>Young Artists are seen and heard on and off stage. Light them, make sure mics work — and make sure we stop and listen to their concerns and watch for signs of problems and challenges.</p></div>
+    <div class="agree"><div class="num">5</div><p>Safety is more important than showmanship. No stunt or choreography is more important than a Young Artist's emotional or physical well-being.</p></div>
+    <div class="agree"><div class="num">6</div><p>Effective communication is crucial. Simply mentioning important information during a production meeting is not the same as clearly and thoroughly communicating it.</p></div>
+    <div class="agree"><div class="num">7</div><p>Respect each other's expertise — stay in your lane. The costume person doesn't need to offer dance advice, and the choreographer doesn't need to comment on the music director's assessment.</p></div>
+    <div class="agree"><div class="num">8</div><p>Maintain a positive atmosphere around the Young Artists, parents, and patrons. To discuss a Young Artist, a performance, or a stressful situation, relocate to a different area for that conversation.</p></div>
+    <div class="agree"><div class="num">9</div><p>Immaturity and inexperience is a feature of the youth we work with, not a weakness. Part of our mission is to help them grow through experience and mentorship — they aren't expected to show up day one with it all figured out.</p></div>
+    <div class="agree"><div class="num">10</div><p>Set expectations up front. If we want Young Artists at rehearsal ten minutes early, or off phones during rehearsal, we have to communicate that clearly. It's not fair to assume things and hold them to it.</p></div>
+  </div>
+  <div class="done-row"><button class="done-btn" data-done="agreements" type="button"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span class="t">Mark complete</span></button></div>
+</section>
+
+  </main>
+</div>
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="/" aria-label="Encore Performing Arts — Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true"><g><path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/><path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/><polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/><path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/><path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/><path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/><path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/><path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/><path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/></g></svg></a>
+        <div class="foot-tag">Building the next generation of <span class="hl">Young Artists</span> — and the leaders who mentor them.</div>
+      </div>
+      <div class="foot-links">
+        <div><h5>Encore</h5><a href="/">Home</a><a href="/about">About</a><a href="/programs">Programs</a><a href="/contact">Contact</a></div>
+        <div><h5>This Guide</h5><a href="#welcome">Start over</a><a href="#agreements">The Ten Agreements</a><a href="#" id="printBtn2">Print / save PDF</a></div>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Encore Performing Arts · A 501(c)(3) nonprofit · Youth Leadership Academy — Training &amp; Support</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var LS_PROG='yla_progress_v1', LS_CHK='yla_checks_v1';
+  function load(k){try{return JSON.parse(localStorage.getItem(k))||{};}catch(e){return {};}}
+  function save(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+  var progress=load(LS_PROG), checks=load(LS_CHK);
+  var secs=Array.prototype.slice.call(document.querySelectorAll('section.sec'));
+  var navLinks=Array.prototype.slice.call(document.querySelectorAll('.sidenav a'));
+  var total=secs.length;
+
+  /* ---- reading progress bar ---- */
+  var sp=document.getElementById('scrollProg');
+  function onScroll(){
+    var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+    var pct=max>0?(h.scrollTop/max)*100:0;
+    sp.style.width=pct.toFixed(1)+'%';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  /* ---- completion tracking ---- */
+  var pbBar=document.getElementById('pbBar'), pbPct=document.getElementById('pbPct'), pbNote=document.getElementById('pbNote');
+  function navFor(id){return navLinks.filter(function(a){return a.getAttribute('data-sec')===id;})[0];}
+  function refreshProgress(){
+    var done=Object.keys(progress).filter(function(k){return progress[k];}).length;
+    var pct=Math.round(done/total*100);
+    pbBar.style.width=pct+'%';
+    pbPct.textContent=pct+'% complete';
+    pbNote.textContent = done===0 ? 'Mark each section complete as you work through it — your progress saves on this device.'
+      : done===total ? 'You\u2019ve completed every section. Go create something beautiful.'
+      : done+' of '+total+' sections complete — keep going.';
+  }
+  function setDone(id,val){
+    if(val)progress[id]=true; else delete progress[id];
+    save(LS_PROG,progress);
+    var btn=document.querySelector('.done-btn[data-done="'+id+'"]');
+    if(btn){btn.classList.toggle('is-done',val);btn.querySelector('.t').textContent=val?'Completed':'Mark complete';}
+    var nav=navFor(id); if(nav)nav.classList.toggle('done',val);
+    refreshProgress();
+  }
+  document.querySelectorAll('.done-btn').forEach(function(btn){
+    var id=btn.getAttribute('data-done');
+    setDone(id,!!progress[id]);
+    btn.addEventListener('click',function(){setDone(id,!progress[id]);});
+  });
+
+  /* ---- active-section highlight ---- */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        var id=e.target.getAttribute('data-sec');
+        navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('data-sec')===id);});
+        var act=navFor(id);
+        if(act && act.parentNode && act.parentNode.scrollWidth>act.parentNode.clientWidth){
+          act.scrollIntoView({inline:'center',block:'nearest'});
+        }
+      }
+    });
+  },{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(s){io.observe(s);});
+
+  /* ---- persistent checklists ---- */
+  document.querySelectorAll('.checklist input[type=checkbox]').forEach(function(cb){
+    var id=cb.getAttribute('data-id');
+    cb.checked=!!checks[id];
+    cb.addEventListener('change',function(){
+      if(cb.checked)checks[id]=true; else delete checks[id];
+      save(LS_CHK,checks);
+    });
+  });
+
+  /* ---- print + reset ---- */
+  function doPrint(e){if(e)e.preventDefault();window.print();}
+  document.getElementById('printBtn').addEventListener('click',doPrint);
+  var p2=document.getElementById('printBtn2'); if(p2)p2.addEventListener('click',doPrint);
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(!confirm('Reset your saved progress and checklists on this device?'))return;
+    progress={}; checks={}; save(LS_PROG,progress); save(LS_CHK,checks);
+    document.querySelectorAll('.done-btn').forEach(function(b){setDone(b.getAttribute('data-done'),false);});
+    document.querySelectorAll('.checklist input[type=checkbox]').forEach(function(cb){cb.checked=false;});
+    refreshProgress();
+  });
+
+  refreshProgress();
+})();
+</script>
+</body>
+</html>
