@@ -161,6 +161,10 @@
   .video-embed{position:relative;width:100%;padding-top:56.25%;margin-top:16px;border-radius:16px;overflow:hidden;background:#000;border:1px solid var(--line);}
   .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
   .vcap{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.4;}
+  .day-videos{margin-top:26px;padding-top:24px;border-top:1px solid var(--line);}
+  .day-videos h4{font-family:var(--font-display,sans-serif);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--show-mid);margin-bottom:16px;}
+  .dvid-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .dvid .vcap{margin-top:8px;}
   .wk-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;position:relative;overflow:hidden;}
   .wk-card .day{font-family:var(--font-display,sans-serif);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--show-mid);}
   .wk-card h3{font-size:20px;font-weight:600;color:var(--charcoal);margin:10px 0 12px;line-height:1.15;}
@@ -753,7 +757,7 @@
       {t:'2:25–3:10',l:'Rehearsal: Choreography',p:'Learn "One by One" — the ensemble\u2019s rhythmic showcase — grounded, driving, communal. Simpler patterns for newer movers, layered movement for experienced dancers; everyone in the full formations.'},
       {t:'3:10–3:50',l:'Animal Movement Workshop',p:'Four rotating physical-theater stations: The Stampede, Pride Rock, The Migration, and Ancestor Presence — building the vocabulary that lets bodies tell the show\u2019s biggest stories.'},
       {t:'3:50–4:30',l:'Rehearsal: Staging',p:'Begin staging "He Lives in You," the show\u2019s emotional and spiritual center — vast and intimate at once.'}
-    ]},
+    ],videos:[{id:'-1-s8GBpFeQ',cap:'Animal movement warm-up — finding each creature\u2019s quality in the body.'}]},
     {n:4,tag:'Experience Session',title:'Ensemble Building & Collaboration',theme:'The pride is the show — every circle requires every person.',blocks:[
       {t:'1:30–1:45',l:'Warm-Up',p:'Ensemble-unity games and mixed-age partner work, building "we are the Pride Lands" energy — the circle is whole when everyone is here.'},
       {t:'1:45–2:30',l:'Experience Session: Ensemble',p:'This is an ensemble show with solo moments, not the reverse. In "The Circle" exercise the group moves as one organism — whole, broken, restored — then builds a 60-second Pride Portrait where every person is visible in all three states.'},
@@ -766,7 +770,7 @@
       {t:'2:25–3:10',l:'Rehearsal: Build the Show',p:'Learn "Be Prepared," "Can You Feel the Love Tonight," and "Shadowland," placing each on the circle as staging begins.'},
       {t:'3:10–3:50',l:'Swahili, Story & Meaning',p:'Key words and their meanings — Simba (lion), Rafiki (friend), Hakuna Matata (no worries), Nants ingonyama (here comes a lion) — and a real conversation about respect versus appropriation. Then the opening chant, sung knowing what every word means.'},
       {t:'3:50–4:30',l:'Rehearsal: First Half',p:'Build transitions, add the connective narration where the Pride Lands speaks, and run the first half of the show.'}
-    ]},
+    ],videos:[{id:'DjmLoxkeMPg',cap:'Learning Swahili with Akili and Me — edutainment made in Africa.'},{id:'i5bYxsfB1sU',cap:'Exploring the language and story behind the music.'}]},
     {n:6,tag:'Experience Session',title:'Music & Storytelling',theme:'How songs carry the weight of the circle.',blocks:[
       {t:'1:30–1:45',l:'Warm-Up',p:'Full vocal range, the drumming heartbeat built together, and physical prep through animal qualities.'},
       {t:'1:45–2:30',l:'Experience Session: Storytelling',p:'A revue creates a journey the audience feels. Young Artists map all ten songs onto the circle — whole, broken, returning — and write transition narration that names the feeling, not the plot.'},
@@ -821,6 +825,14 @@
         html+='<div class="blk"><div class="bt">'+b.t+'</div><div><div class="bl">'+b.l+'</div><p>'+b.p+'</p></div></div>';
       });
       html+='</div>';
+      if(d.videos && d.videos.length){
+        html+='<div class="day-videos"><h4>Watch</h4><div class="dvid-grid">';
+        d.videos.forEach(function(v){
+          var t=v.cap.replace(/"/g,'&quot;');
+          html+='<div class="dvid"><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/'+v.id+'" title="'+t+'" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><div class="vcap">'+v.cap+'</div></div>';
+        });
+        html+='</div></div>';
+      }
       if(d.quote){html+='<div class="dquote">'+d.quote+'</div>';}
       panel.innerHTML=html;
       prev.disabled=(i===0); next.disabled=(i===DAYS.length-1);
