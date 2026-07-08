@@ -457,6 +457,15 @@
   }
   .nav-toggle{margin-left:auto;}
 </style>
+<style>
+  /* Auditions-closed state */
+  .closed-banner{background:#fbeaea;border-bottom:1px solid #f0cccc;}
+  .closed-banner .wrap{padding:13px 22px;display:flex;gap:6px 12px;flex-wrap:wrap;align-items:baseline;justify-content:center;text-align:center;}
+  .closed-banner strong{color:#a3352f;font-family:var(--font-display,'Mikado',sans-serif);font-size:15px;font-weight:600;}
+  .closed-banner span{color:#8a504d;font-size:14px;}
+  .sh-badge.closed{background:#fbeaea!important;color:#a3352f!important;border-color:#f0cccc!important;}
+  .sh-badge.closed .dot{background:#d0564e!important;animation:none!important;}
+</style>
 </head>
 <body>
 <!-- ANNOUNCEMENT BAR -->
@@ -508,17 +517,25 @@
 
 <main>
 
+  <!-- ===== AUDITIONS CLOSED BANNER ===== -->
+  <div class="closed-banner" role="status">
+    <div class="wrap">
+      <strong>Auditions for the 2026 Lion King Kids Camp are now closed.</strong>
+      <span>Thank you for the incredible interest &mdash; join the waitlist to be first to hear about the next camp.</span>
+    </div>
+  </div>
+
   <!-- ===== HERO ===== -->
   <header class="show-hero">
     <div class="wrap">
       <div class="sh-grid reveal">
         <div class="sh-text">
-          <span class="sh-badge"><span class="dot"></span>Now Enrolling · Ages 7–11</span>
+          <span class="sh-badge closed"><span class="dot"></span>Auditions Closed · Ages 7–11</span>
           <span class="eyebrow">Encore Performing Arts presents</span>
           <h1><em>Lion King Kids Camp</em></h1>
           <p class="tagline">A week-long musical theater camp where Young Artists learn the songs, choreography, and scenes of Disney's The Lion King Kids — then perform it on the Electric Theater stage.</p>
           <div class="sh-actions">
-            <a href="/lion-king-kids-camp-registration" class="btn btn-accent">Register to audition →</a>
+            <a href="/contact" class="btn btn-accent">Join the waitlist →</a>
             <a href="#auditions" class="btn btn-light">Audition details</a>
           </div>
         </div>
@@ -590,7 +607,7 @@
           <div class="ic" aria-hidden="true">♪</div>
           <h3>Placement audition</h3>
           <p><strong>July 6, 2026 · 3–5pm</strong><br>St. George Academy</p>
-          <a href="/lion-king-kids-camp-registration" class="lnk">Sign up to audition →</a>
+          <a href="/contact" class="lnk">Join the waitlist →</a>
         </div>
         <div class="aud">
           <div class="ic" aria-hidden="true">✦</div>
@@ -605,7 +622,7 @@
         </div>
       </div>
       <div class="aud-cta reveal">
-        <a href="/lion-king-kids-camp-registration" class="btn btn-dark">Register to audition →</a>
+        <a href="/contact" class="btn btn-dark">Join the waitlist →</a>
         <span class="note"><strong>Prepare:</strong> A short song, about a minute, that you enjoy singing, comfortable clothes you can move in, and a list of any conflicts during the camp week (July 6–14).</span>
       </div>
     </div>
@@ -670,7 +687,7 @@
             <li>T-shirt size</li>
             <li>Home address</li>
           </ul>
-          <div class="reg-cta"><a href="/lion-king-kids-camp-registration" class="btn btn-accent">Register to audition →</a></div>
+          <div class="reg-cta"><a href="/contact" class="btn btn-accent">Join the waitlist →</a></div>
         </div>
       </div>
     </div>
@@ -726,7 +743,7 @@
             <p>Register today and join the Lion King Kids Camp. We can't wait to see you on the first day.</p>
           </div>
           <div style="display:flex;gap:11px;flex-wrap:wrap;">
-            <a href="/lion-king-kids-camp-registration" class="btn btn-white">Register to audition →</a>
+            <a href="/contact" class="btn btn-white">Join the waitlist →</a>
             <a href="/contact" class="btn btn-white" style="background:transparent;border:1.5px solid rgba(255,255,255,.6);color:#fff;">Ask a question</a>
           </div>
         </div>
