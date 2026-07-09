@@ -1,237 +1,150 @@
 <!DOCTYPE html>
+<!-- Encore Team Hub — internal. Protected server-side by netlify/edge-functions/team-gate.js (/team/*). -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encore Team Hub</title>
-    <!-- Prevent search engines from indexing the private team hub -->
-    <meta name="robots" content="noindex, nofollow">
-    
-    <!-- Google Fonts: Montserrat -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="family">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Team Hub | Encore Performing Arts</title>
+<meta name="theme-color" content="#322949">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<style>
+  :root{
+    --purple:#322949;--purple2:#473a63;--cream:#eee5de;--cream-lite:#f5f1ec;--paper:#fffdf9;
+    --coral-2:#fbaca8;--coral-3:#f8918c;--coral-4:#e8716b;--muted:#5d566f;--line:rgba(32,65,74,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Familjen Grotesk',system-ui,sans-serif;background:var(--cream-lite);color:var(--purple);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:clip}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:'Mikado',Georgia,serif;letter-spacing:-.01em}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
 
-    <style>
-        :root {
-            --encore-purple: #4A154B;
-            --mikado-yellow: #FFC72C;
-            --text-dark: #2D3748;
-            --bg-light: #F7FAFC;
-            --white: #FFFFFF;
-        }
+  .topbar{background:var(--paper);border-bottom:1px solid var(--line)}
+  .topbar-in{max-width:1000px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .topbar .brandmark{height:24px;color:var(--purple)}
+  .tb-right{display:flex;align-items:center;gap:14px}
+  .tb-badge{font-family:'Mikado',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--purple);border-radius:100px;padding:6px 12px}
+  .tb-logout{font-size:13.5px;color:var(--muted);font-weight:500}
+  .tb-logout:hover{color:var(--purple)}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  .hero{background:radial-gradient(120% 130% at 20% 0%,var(--purple2),var(--purple) 62%);color:#fff}
+  .hero-in{max-width:1000px;margin:0 auto;padding:46px 20px 42px}
+  .hero .k{font-family:'Mikado',sans-serif;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:11.5px;color:var(--coral-2)}
+  .hero h1{font-weight:500;font-size:clamp(34px,7vw,52px);line-height:1;margin-top:12px}
+  .hero p{margin-top:14px;max-width:560px;color:rgba(255,255,255,.86);font-size:16px}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  section.band{padding:34px 0 6px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:16px}
+  .sec-head h2{font-size:22px;font-weight:600;color:var(--purple)}
+  .sec-head .count{font-family:'Mikado',sans-serif;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .sec-head .rule{flex:1;height:1px;background:var(--line)}
 
-        header {
-            background-color: var(--encore-purple);
-            color: var(--white);
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px}
+  .card{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 22px 20px;min-width:0;transition:transform .18s,box-shadow .18s,border-color .18s}
+  a.card:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(53,42,84,.5);border-color:color-mix(in srgb,var(--coral-4) 40%,var(--line))}
+  .card .tag{font-family:'Mikado',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--coral-4)}
+  .card h3{font-size:19px;font-weight:600;color:var(--purple);margin:10px 0 6px}
+  .card p{font-size:14px;color:var(--muted);margin:0}
+  .card .go{margin-top:16px;font-family:'Mikado',sans-serif;font-weight:600;font-size:13.5px;color:var(--purple)}
+  a.card:hover .go{color:var(--coral-4)}
+  .card.ghost{border-style:dashed;background:transparent;justify-content:center;align-items:flex-start;color:var(--muted)}
+  .card.ghost .h{font-family:'Mikado',sans-serif;font-weight:600;color:var(--purple);font-size:15px;margin-bottom:4px}
 
-        header h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
+  footer{margin-top:34px;background:var(--purple);color:rgba(255,255,255,.75);text-align:center;padding:26px 20px}
+  footer .brandmark{height:20px;color:#fff;opacity:.9}
+  footer p{font-size:12.5px;margin-top:10px}
 
-        .logout-btn {
-            color: var(--mikado-yellow);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            border: 2px solid var(--mikado-yellow);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .logout-btn:hover {
-            background-color: var(--mikado-yellow);
-            color: var(--encore-purple);
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .welcome-section {
-            margin-bottom: 3rem;
-        }
-
-        .welcome-section h2 {
-            font-size: 2rem;
-            color: var(--encore-purple);
-            margin-bottom: 0.5rem;
-        }
-
-        .hub-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .section-title {
-            grid-column: 1 / -1;
-            font-size: 1.25rem;
-            color: var(--encore-purple);
-            border-bottom: 2px solid var(--encore-purple);
-            padding-bottom: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-top: 4px solid var(--encore-purple);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        }
-
-        .card.placeholder {
-            border-top-color: #CBD5E0;
-            background-color: #FAFAFA;
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: #4A5568;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .card-btn {
-            display: inline-block;
-            background-color: var(--encore-purple);
-            color: var(--white);
-            text-decoration: none;
-            padding: 0.75rem 1.2rem;
-            border-radius: 4px;
-            font-weight: 600;
-            text-align: center;
-            transition: background-color 0.2s ease;
-        }
-
-        .card-btn:hover {
-            background-color: #330e34;
-        }
-
-        .card.placeholder .card-btn {
-            background-color: #A0AEC0;
-            cursor: not-allowed;
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-            .welcome-section h2 {
-                font-size: 1.75rem;
-            }
-        }
-
-        @media (max-width: 390px) {
-            main {
-                margin: 1.5rem auto;
-            }
-            .welcome-section h2 {
-                font-size: 1.5rem;
-            }
-            .hub-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  @media(max-width:560px){.hero-in{padding:38px 18px 34px}.wrap{padding:0 16px}.card{padding:20px 18px 18px}}
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>encore! Team Hub</h1>
-        <!-- Appending ?logout=1 tells the edge function to drop the cookie session -->
-        <a href="/team/?logout=1" class="logout-btn">Log Out</a>
-    </header>
+<div class="topbar"><div class="topbar-in">
+  <a href="/" aria-label="Encore Performing Arts"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true"><g><path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/><path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/><polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/><path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/><path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/><path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/><path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/><path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/><path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/></g></svg></a>
+  <div class="tb-right">
+    <span class="tb-badge">Team Hub</span>
+    <a class="tb-logout" href="/team/?logout=1">Log out</a>
+  </div>
+</div></div>
 
-    <main>
-        <div class="welcome-section">
-            <h2>Welcome back, Team!</h2>
-            <p>Access internal administrative forms, operational resources, and team documentation below.</p>
-        </div>
+<header class="hero"><div class="hero-in">
+  <div class="k">Encore Performing Arts</div>
+  <h1>Team Hub</h1>
+  <p>Forms, resources, and internal tools for the Encore team — all in one place.</p>
+</div></header>
 
-        <div class="hub-grid">
-            <!-- SECTION 1: FORMS -->
-            <h2 class="section-title">Internal Team Forms</h2>
-            
-            <div class="card">
-                <div>
-                    <h3>Financial Reimbursement</h3>
-                    <p>Submit expenses, mileage, and purchase receipts directly to operations for approval and processing.</p>
-                </div>
-                <a href="/team/financial-reimbursement" class="card-btn">Open Form</a>
-            </div>
+<div class="wrap">
 
-            <div class="card placeholder">
-                <div>
-                    <h3>More Forms Coming</h3>
-                    <p>Standard operational forms, time sheets, and feedback pipelines will be deployed here soon.</p>
-                </div>
-                <a href="#" class="card-btn" onclick="return false;">Coming Soon</a>
-            </div>
+  <section class="band">
+    <div class="sec-head"><h2>Forms &amp; Requests</h2><span class="count">Submit &amp; request</span><span class="rule"></span></div>
+    <div class="cards">
+      <a class="card" href="/team/financial-reimbursement">
+        <span class="tag">Reimbursement</span>
+        <h3>Financial Reimbursement</h3>
+        <p>Submit an expense for reimbursement — date, amount, purpose, and a receipt.</p>
+        <span class="go">Open form →</span>
+      </a>
+      <a class="card" href="/printed-materials-request">
+        <span class="tag">Print</span>
+        <h3>Printed Materials Request</h3>
+        <p>Request programs, flyers, or other printed materials for a show or event.</p>
+        <span class="go">Open form →</span>
+      </a>
+      <a class="card" href="/youth-tech-application">
+        <span class="tag">Crew</span>
+        <h3>Youth Tech Application</h3>
+        <p>Application for youth tech-crew positions — backstage, lighting, and sound.</p>
+        <span class="go">Open form →</span>
+      </a>
+      <a class="card" href="/multi-child-discount">
+        <span class="tag">Discount</span>
+        <h3>Multi Child Discount</h3>
+        <p>Family discount request for households with more than one Young Artist enrolled.</p>
+        <span class="go">Open form →</span>
+      </a>
+    </div>
+  </section>
 
-            <!-- SECTION 2: INFORMATION & RESOURCES -->
-            <h2 class="section-title">Quick Links & Resources</h2>
+  <section class="band">
+    <div class="sec-head"><h2>Resources</h2><span class="count">Links &amp; training</span><span class="rule"></span></div>
+    <div class="cards">
+      <a class="card" href="/smiths-donations">
+        <span class="tag">Fundraising</span>
+        <h3>Smith&rsquo;s Donations</h3>
+        <p>Link a Smith&rsquo;s Rewards Card to support Encore — organization number FX830.</p>
+        <span class="go">Open →</span>
+      </a>
+      <a class="card" href="/sitemap">
+        <span class="tag">Index</span>
+        <h3>Sitemap</h3>
+        <p>Every page on the site, grouped by category — handy for finding anything fast.</p>
+        <span class="go">Open →</span>
+      </a>
+      <a class="card" href="/camp-experience-team">
+        <span class="tag">Camp</span>
+        <h3>Camp Experience Team</h3>
+        <p>Schedules, curriculum, drama games, and everything for running a camp week.</p>
+        <span class="go">Open →</span>
+      </a>
+      <a class="card" href="/youth-leadership-academy">
+        <span class="tag">Training</span>
+        <h3>Youth Leadership Academy</h3>
+        <p>Leader training — the four roles, rehearsal structure, and the Ten Agreements.</p>
+        <span class="go">Open →</span>
+      </a>
+    </div>
+  </section>
 
-            <div class="card">
-                <div>
-                    <h3>Camp Experience Team</h3>
-                    <p>Access internal rosters, scheduling assets, and lesson materials for the Camp program.</p>
-                </div>
-                <a href="/camp-experience" class="card-btn">View Portal</a>
-            </div>
+</div>
 
-            <div class="card">
-                <div>
-                    <h3>Youth Leadership Academy</h3>
-                    <p>Review instructional guidelines, leadership modules, and current cohort databases.</p>
-                </div>
-                <a href="/youth-leadership" class="card-btn">View Portal</a>
-            </div>
-        </div>
-    </main>
+<footer>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true"><g><path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/><path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/><path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/><path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/><path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/><path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/><path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/><path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/></g></svg>
+  <p>Encore Performing Arts · Internal team resources</p>
+</footer>
 
 </body>
 </html>
