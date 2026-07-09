@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encore Team Hub</title>
+    <!-- Prevent search engines from indexing the private team hub -->
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="family">
+
+    <style>
+        :root {
+            --encore-purple: #4A154B;
+            --mikado-yellow: #FFC72C;
+            --text-dark: #2D3748;
+            --bg-light: #F7FAFC;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: var(--encore-purple);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logout-btn {
+            color: var(--mikado-yellow);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 2px solid var(--mikado-yellow);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: var(--mikado-yellow);
+            color: var(--encore-purple);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .welcome-section {
+            margin-bottom: 3rem;
+        }
+
+        .welcome-section h2 {
+            font-size: 2rem;
+            color: var(--encore-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            grid-column: 1 / -1;
+            font-size: 1.25rem;
+            color: var(--encore-purple);
+            border-bottom: 2px solid var(--encore-purple);
+            padding-bottom: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid var(--encore-purple);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .card.placeholder {
+            border-top-color: #CBD5E0;
+            background-color: #FAFAFA;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #4A5568;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-btn {
+            display: inline-block;
+            background-color: var(--encore-purple);
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.75rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .card-btn:hover {
+            background-color: #330e34;
+        }
+
+        .card.placeholder .card-btn {
+            background-color: #A0AEC0;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            .welcome-section h2 {
+                font-size: 1.75rem;
+            }
+        }
+
+        @media (max-width: 390px) {
+            main {
+                margin: 1.5rem auto;
+            }
+            .welcome-section h2 {
+                font-size: 1.5rem;
+            }
+            .hub-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>encore! Team Hub</h1>
+        <!-- Appending ?logout=1 tells the edge function to drop the cookie session -->
+        <a href="/team/?logout=1" class="logout-btn">Log Out</a>
+    </header>
+
+    <main>
+        <div class="welcome-section">
+            <h2>Welcome back, Team!</h2>
+            <p>Access internal administrative forms, operational resources, and team documentation below.</p>
+        </div>
+
+        <div class="hub-grid">
+            <!-- SECTION 1: FORMS -->
+            <h2 class="section-title">Internal Team Forms</h2>
+            
+            <div class="card">
+                <div>
+                    <h3>Financial Reimbursement</h3>
+                    <p>Submit expenses, mileage, and purchase receipts directly to operations for approval and processing.</p>
+                </div>
+                <a href="/team/financial-reimbursement" class="card-btn">Open Form</a>
+            </div>
+
+            <div class="card placeholder">
+                <div>
+                    <h3>More Forms Coming</h3>
+                    <p>Standard operational forms, time sheets, and feedback pipelines will be deployed here soon.</p>
+                </div>
+                <a href="#" class="card-btn" onclick="return false;">Coming Soon</a>
+            </div>
+
+            <!-- SECTION 2: INFORMATION & RESOURCES -->
+            <h2 class="section-title">Quick Links & Resources</h2>
+
+            <div class="card">
+                <div>
+                    <h3>Camp Experience Team</h3>
+                    <p>Access internal rosters, scheduling assets, and lesson materials for the Camp program.</p>
+                </div>
+                <a href="/camp-experience" class="card-btn">View Portal</a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>Youth Leadership Academy</h3>
+                    <p>Review instructional guidelines, leadership modules, and current cohort databases.</p>
+                </div>
+                <a href="/youth-leadership" class="card-btn">View Portal</a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
