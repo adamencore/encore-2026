@@ -370,7 +370,12 @@ h2 em{color:var(--teal)}
   a.ps-card[href]{cursor:pointer;}
   a.ps-card[href]:hover img{transform:scale(1.05);}
   a.ps-card[href]:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));}
-  .ps-card.ps-soon::after{content:"Gallery coming";position:absolute;left:0;right:0;bottom:0;font-family:var(--font-display);font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.62));padding:26px 10px 9px;text-align:center;}
+  .ps-group{grid-column:1/-1;border:1px solid var(--line);background:rgba(50,41,73,.04);border-radius:18px;padding:14px 16px 16px;}
+  .ps-group-head{margin:2px 2px 13px;}
+  .ps-group-head .lbl{font-family:var(--font-display);font-weight:600;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);}
+  .ps-group-row{display:flex;flex-wrap:wrap;gap:14px;}
+  .ps-group-row .ps-card{flex:1 1 170px;max-width:250px;}
+  .ps-head{cursor:default;}
 </style>
 </head>
 <body>
@@ -432,44 +437,61 @@ h2 em{color:var(--teal)}
   <section>
     <div class="wrap">
       <div class="ps-grid">
-        <!-- Disney's Frozen Kids | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="frozen-kids" aria-label="Disney's Frozen Kids — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/frozen-kids.webp"><img src="/img/past-shows/frozen-kids.jpg" alt="Disney's Frozen Kids" loading="lazy"></picture></a>
-        <!-- The Greatest Showman | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="greatest-showman" aria-label="The Greatest Showman — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/greatest-showman.webp"><img src="/img/past-shows/greatest-showman.jpg" alt="The Greatest Showman" loading="lazy"></picture></a>
-        <!-- Hadestown Teen Edition | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="hadestown-teen-edition" aria-label="Hadestown Teen Edition — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/hadestown-teen-edition.webp"><img src="/img/past-shows/hadestown-teen-edition.jpg" alt="Hadestown Teen Edition" loading="lazy"></picture></a>
-        <!-- Chitty Chitty Bang Bang | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="chitty-chitty-bang-bang" aria-label="Chitty Chitty Bang Bang — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/chitty-chitty-bang-bang.webp"><img src="/img/past-shows/chitty-chitty-bang-bang.jpg" alt="Chitty Chitty Bang Bang" loading="lazy"></picture></a>
-        <!-- A Christmas Carol: A New Musical (2025) | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="a-christmas-carol-2025" aria-label="A Christmas Carol: A New Musical (2025) — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2025.webp"><img src="/img/past-shows/a-christmas-carol-2025.jpg" alt="A Christmas Carol: A New Musical (2025)" loading="lazy"></picture></a>
-        <!-- Anastasia The Musical | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="anastasia" aria-label="Anastasia The Musical — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/anastasia.webp"><img src="/img/past-shows/anastasia.jpg" alt="Anastasia The Musical" loading="lazy"></picture></a>
-        <!-- Disney's Alice in Wonderland Jr. | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="alice-in-wonderland-jr" aria-label="Disney's Alice in Wonderland Jr. — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/alice-in-wonderland-jr.webp"><img src="/img/past-shows/alice-in-wonderland-jr.jpg" alt="Disney's Alice in Wonderland Jr." loading="lazy"></picture></a>
-        <!-- Disney's Aladdin Jr. | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="aladdin-jr" aria-label="Disney's Aladdin Jr. — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/aladdin-jr.webp"><img src="/img/past-shows/aladdin-jr.jpg" alt="Disney's Aladdin Jr." loading="lazy"></picture></a>
-        <!-- A Christmas Carol: A New Musical (2024) | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="a-christmas-carol-2024" aria-label="A Christmas Carol: A New Musical (2024) — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2024.webp"><img src="/img/past-shows/a-christmas-carol-2024.jpg" alt="A Christmas Carol: A New Musical (2024)" loading="lazy"></picture></a>
-        <!-- Disney's 101 Dalmatians | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="101-dalmatians" aria-label="Disney's 101 Dalmatians — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/101-dalmatians.webp"><img src="/img/past-shows/101-dalmatians.jpg" alt="Disney's 101 Dalmatians" loading="lazy"></picture></a>
-        <!-- Roald Dahl's Matilda Jr. The Musical | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="matilda-jr" aria-label="Roald Dahl's Matilda Jr. The Musical — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/matilda-jr.webp"><img src="/img/past-shows/matilda-jr.jpg" alt="Roald Dahl's Matilda Jr. The Musical" loading="lazy"></picture></a>
-        <!-- Shrek The Musical Kids | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="shrek-kids" aria-label="Shrek The Musical Kids — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/shrek-kids.webp"><img src="/img/past-shows/shrek-kids.jpg" alt="Shrek The Musical Kids" loading="lazy"></picture></a>
-        <!-- Les Misérables | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="les-miserables" aria-label="Les Misérables — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/les-miserables.webp"><img src="/img/past-shows/les-miserables.jpg" alt="Les Misérables" loading="lazy"></picture></a>
-        <!-- Villains Night 2023 | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="villains-night-2023" aria-label="Villains Night 2023 — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/villains-night-2023.webp"><img src="/img/past-shows/villains-night-2023.jpg" alt="Villains Night 2023" loading="lazy"></picture></a>
-        <!-- Seven Brides for Seven Brothers | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="seven-brides-for-seven-brothers" aria-label="Seven Brides for Seven Brothers — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/seven-brides-for-seven-brothers.webp"><img src="/img/past-shows/seven-brides-for-seven-brothers.jpg" alt="Seven Brides for Seven Brothers" loading="lazy"></picture></a>
-        <!-- Disney's Moana Jr. | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="moana-jr" aria-label="Disney's Moana Jr. — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/moana-jr.webp"><img src="/img/past-shows/moana-jr.jpg" alt="Disney's Moana Jr." loading="lazy"></picture></a>
-        <!-- Disney's Newsies | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="newsies" aria-label="Disney's Newsies — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/newsies.webp"><img src="/img/past-shows/newsies.jpg" alt="Disney's Newsies" loading="lazy"></picture></a>
-        <!-- Villains Night 2024 | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="villains-night-2024" aria-label="Villains Night 2024 — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/villains-night-2024.webp"><img src="/img/past-shows/villains-night-2024.jpg" alt="Villains Night 2024" loading="lazy"></picture></a>
-        <!-- Disney and Pixar's Finding Nemo Jr. | SmugMug: (add href) -->
-        <a class="ps-card ps-soon" data-slug="finding-nemo-jr" aria-label="Disney and Pixar's Finding Nemo Jr. — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/finding-nemo-jr.webp"><img src="/img/past-shows/finding-nemo-jr.jpg" alt="Disney and Pixar's Finding Nemo Jr." loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="frozen-kids" aria-label="Disney's Frozen Kids"><picture><source type="image/webp" srcset="/img/past-shows/frozen-kids.webp"><img src="/img/past-shows/frozen-kids.jpg" alt="Disney's Frozen Kids" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="greatest-showman" aria-label="The Greatest Showman"><picture><source type="image/webp" srcset="/img/past-shows/greatest-showman.webp"><img src="/img/past-shows/greatest-showman.jpg" alt="The Greatest Showman" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="hadestown-teen-edition" aria-label="Hadestown Teen Edition"><picture><source type="image/webp" srcset="/img/past-shows/hadestown-teen-edition.webp"><img src="/img/past-shows/hadestown-teen-edition.jpg" alt="Hadestown Teen Edition" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="chitty-chitty-bang-bang" aria-label="Chitty Chitty Bang Bang"><picture><source type="image/webp" srcset="/img/past-shows/chitty-chitty-bang-bang.webp"><img src="/img/past-shows/chitty-chitty-bang-bang.jpg" alt="Chitty Chitty Bang Bang" loading="lazy"></picture></a>
+      <div class="ps-group">
+        <div class="ps-group-head"><span class="lbl">A Christmas Carol &middot; 2025 &middot; choose a cast</span></div>
+        <div class="ps-group-row">
+          <div class="ps-card ps-head" aria-label="A Christmas Carol: A New Musical (2025)"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2025.webp"><img src="/img/past-shows/a-christmas-carol-2025.jpg" alt="A Christmas Carol: A New Musical (2025)" loading="lazy"></picture></div>
+          <a class="ps-card" data-slug="a-christmas-carol-2025-ivy-cast" aria-label="A Christmas Carol 2025 — Ivy Cast"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2025-ivy-cast.webp"><img src="/img/past-shows/a-christmas-carol-2025-ivy-cast.jpg" alt="A Christmas Carol 2025 — Ivy Cast" loading="lazy"></picture></a>
+          <a class="ps-card" data-slug="a-christmas-carol-2025-holly-cast" aria-label="A Christmas Carol 2025 — Holly Cast"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2025-holly-cast.webp"><img src="/img/past-shows/a-christmas-carol-2025-holly-cast.jpg" alt="A Christmas Carol 2025 — Holly Cast" loading="lazy"></picture></a>
+        </div>
+      </div>
+      <div class="ps-group">
+        <div class="ps-group-head"><span class="lbl">Anastasia The Musical &middot; choose a cast</span></div>
+        <div class="ps-group-row">
+          <div class="ps-card ps-head" aria-label="Anastasia The Musical"><picture><source type="image/webp" srcset="/img/past-shows/anastasia.webp"><img src="/img/past-shows/anastasia.jpg" alt="Anastasia The Musical" loading="lazy"></picture></div>
+          <a class="ps-card" data-slug="anastasia-empress-cast" aria-label="Anastasia — Empress Cast"><picture><source type="image/webp" srcset="/img/past-shows/anastasia-empress-cast.webp"><img src="/img/past-shows/anastasia-empress-cast.jpg" alt="Anastasia — Empress Cast" loading="lazy"></picture></a>
+          <a class="ps-card" data-slug="anastasia-imperial-cast" aria-label="Anastasia — Imperial Cast"><picture><source type="image/webp" srcset="/img/past-shows/anastasia-imperial-cast.webp"><img src="/img/past-shows/anastasia-imperial-cast.jpg" alt="Anastasia — Imperial Cast" loading="lazy"></picture></a>
+        </div>
+      </div>
+        <a class="ps-card" data-slug="alice-in-wonderland-jr" aria-label="Disney's Alice in Wonderland Jr."><picture><source type="image/webp" srcset="/img/past-shows/alice-in-wonderland-jr.webp"><img src="/img/past-shows/alice-in-wonderland-jr.jpg" alt="Disney's Alice in Wonderland Jr." loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="aladdin-jr" aria-label="Disney's Aladdin Jr."><picture><source type="image/webp" srcset="/img/past-shows/aladdin-jr.webp"><img src="/img/past-shows/aladdin-jr.jpg" alt="Disney's Aladdin Jr." loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="a-christmas-carol-2024" aria-label="A Christmas Carol: A New Musical (2024)"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2024.webp"><img src="/img/past-shows/a-christmas-carol-2024.jpg" alt="A Christmas Carol: A New Musical (2024)" loading="lazy"></picture></a>
+      <div class="ps-group">
+        <div class="ps-group-head"><span class="lbl">A Christmas Carol &middot; 2023 &middot; choose a cast</span></div>
+        <div class="ps-group-row">
+          <a class="ps-card" data-slug="a-christmas-carol-2023-red-cast" aria-label="A Christmas Carol 2023 — Red Cast"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2023-red-cast.webp"><img src="/img/past-shows/a-christmas-carol-2023-red-cast.jpg" alt="A Christmas Carol 2023 — Red Cast" loading="lazy"></picture></a>
+          <a class="ps-card" data-slug="a-christmas-carol-2023-green-cast" aria-label="A Christmas Carol 2023 — Green Cast"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2023-green-cast.webp"><img src="/img/past-shows/a-christmas-carol-2023-green-cast.jpg" alt="A Christmas Carol 2023 — Green Cast" loading="lazy"></picture></a>
+        </div>
+      </div>
+        <a class="ps-card" data-slug="101-dalmatians" aria-label="Disney's 101 Dalmatians"><picture><source type="image/webp" srcset="/img/past-shows/101-dalmatians.webp"><img src="/img/past-shows/101-dalmatians.jpg" alt="Disney's 101 Dalmatians" loading="lazy"></picture></a>
+      <div class="ps-group">
+        <div class="ps-group-head"><span class="lbl">Matilda Jr. The Musical &middot; choose a cast</span></div>
+        <div class="ps-group-row">
+          <div class="ps-card ps-head" aria-label="Roald Dahl's Matilda Jr. The Musical"><picture><source type="image/webp" srcset="/img/past-shows/matilda-jr.webp"><img src="/img/past-shows/matilda-jr.jpg" alt="Roald Dahl's Matilda Jr. The Musical" loading="lazy"></picture></div>
+          <a class="ps-card" data-slug="matilda-jr-mayhem-cast" aria-label="Matilda Jr. — Mayhem Cast"><picture><source type="image/webp" srcset="/img/past-shows/matilda-jr-mayhem-cast.webp"><img src="/img/past-shows/matilda-jr-mayhem-cast.jpg" alt="Matilda Jr. — Mayhem Cast" loading="lazy"></picture></a>
+          <a class="ps-card" data-slug="matilda-jr-mischief-cast" aria-label="Matilda Jr. — Mischief Cast"><picture><source type="image/webp" srcset="/img/past-shows/matilda-jr-mischief-cast.webp"><img src="/img/past-shows/matilda-jr-mischief-cast.jpg" alt="Matilda Jr. — Mischief Cast" loading="lazy"></picture></a>
+        </div>
+      </div>
+      <div class="ps-group">
+        <div class="ps-group-head"><span class="lbl">Shrek The Musical Kids &middot; choose a cast</span></div>
+        <div class="ps-group-row">
+          <div class="ps-card ps-head" aria-label="Shrek The Musical Kids"><picture><source type="image/webp" srcset="/img/past-shows/shrek-kids.webp"><img src="/img/past-shows/shrek-kids.jpg" alt="Shrek The Musical Kids" loading="lazy"></picture></div>
+          <a class="ps-card" data-slug="shrek-kids-storybook-cast" aria-label="Shrek Kids — Storybook Cast"><picture><source type="image/webp" srcset="/img/past-shows/shrek-kids-storybook-cast.webp"><img src="/img/past-shows/shrek-kids-storybook-cast.jpg" alt="Shrek Kids — Storybook Cast" loading="lazy"></picture></a>
+          <a class="ps-card" data-slug="shrek-kids-fairytale-cast" aria-label="Shrek Kids — Fairytale Cast"><picture><source type="image/webp" srcset="/img/past-shows/shrek-kids-fairytale-cast.webp"><img src="/img/past-shows/shrek-kids-fairytale-cast.jpg" alt="Shrek Kids — Fairytale Cast" loading="lazy"></picture></a>
+        </div>
+      </div>
+        <a class="ps-card" data-slug="les-miserables" aria-label="Les Misérables"><picture><source type="image/webp" srcset="/img/past-shows/les-miserables.webp"><img src="/img/past-shows/les-miserables.jpg" alt="Les Misérables" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="beauty-and-the-beast" aria-label="Disney's Beauty and the Beast"><picture><source type="image/webp" srcset="/img/past-shows/beauty-and-the-beast.webp"><img src="/img/past-shows/beauty-and-the-beast.jpg" alt="Disney's Beauty and the Beast" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="villains-night-2023" aria-label="Villains Night 2023"><picture><source type="image/webp" srcset="/img/past-shows/villains-night-2023.webp"><img src="/img/past-shows/villains-night-2023.jpg" alt="Villains Night 2023" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="seven-brides-for-seven-brothers" aria-label="Seven Brides for Seven Brothers"><picture><source type="image/webp" srcset="/img/past-shows/seven-brides-for-seven-brothers.webp"><img src="/img/past-shows/seven-brides-for-seven-brothers.jpg" alt="Seven Brides for Seven Brothers" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="moana-jr" aria-label="Disney's Moana Jr."><picture><source type="image/webp" srcset="/img/past-shows/moana-jr.webp"><img src="/img/past-shows/moana-jr.jpg" alt="Disney's Moana Jr." loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="newsies" aria-label="Disney's Newsies"><picture><source type="image/webp" srcset="/img/past-shows/newsies.webp"><img src="/img/past-shows/newsies.jpg" alt="Disney's Newsies" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="villains-night-2024" aria-label="Villains Night 2024"><picture><source type="image/webp" srcset="/img/past-shows/villains-night-2024.webp"><img src="/img/past-shows/villains-night-2024.jpg" alt="Villains Night 2024" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="finding-nemo-jr" aria-label="Disney and Pixar's Finding Nemo Jr."><picture><source type="image/webp" srcset="/img/past-shows/finding-nemo-jr.webp"><img src="/img/past-shows/finding-nemo-jr.jpg" alt="Disney and Pixar's Finding Nemo Jr." loading="lazy"></picture></a>
       </div>
     </div>
   </section>
