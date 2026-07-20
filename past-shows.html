@@ -72,7 +72,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/fonts/cabrio.css">
 <link rel="stylesheet" href="/fonts/mikado.css">
 
@@ -361,6 +361,17 @@
   @media(max-width:600px){.lb-prev{left:8px}.lb-next{right:8px}.lb-btn{width:44px;height:44px;font-size:18px}}
 h2 em{color:var(--teal)}
 </style>
+<style>
+  .ps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  @media(max-width:900px){.ps-grid{grid-template-columns:repeat(3,1fr);gap:14px;}}
+  @media(max-width:600px){.ps-grid{grid-template-columns:repeat(2,1fr);gap:12px;}}
+  .ps-card{position:relative;display:block;aspect-ratio:1/1;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0e0a17;text-decoration:none;}
+  .ps-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s ease;}
+  a.ps-card[href]{cursor:pointer;}
+  a.ps-card[href]:hover img{transform:scale(1.05);}
+  a.ps-card[href]:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));}
+  .ps-card.ps-soon::after{content:"Gallery coming";position:absolute;left:0;right:0;bottom:0;font-family:var(--font-display);font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.62));padding:26px 10px 9px;text-align:center;}
+</style>
 </head>
 <body>
 <!-- ANNOUNCEMENT BAR -->
@@ -415,13 +426,51 @@ h2 em{color:var(--teal)}
     <div class="wrap"><div class="hero-card reveal"><div class="hero-inner">
       <span class="hero-eyebrow">Encore Performing Arts</span>
       <h1>Past <em>shows</em></h1>
-      <p>A look back at our productions. Browse the photo gallery from each Encore show.</p>
+      <p>A look back at our productions. Tap any show to open its full photo gallery.</p>
     </div></div></div>
   </header>
   <section>
     <div class="wrap">
-      <div id="gal-grid" class="gal-grid" aria-busy="true"></div>
-      <p id="gal-empty" class="gal-empty" hidden>Galleries are on their way — check back soon.</p>
+      <div class="ps-grid">
+        <!-- Disney's Frozen Kids | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="frozen-kids" aria-label="Disney's Frozen Kids — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/frozen-kids.webp"><img src="/img/past-shows/frozen-kids.jpg" alt="Disney's Frozen Kids" loading="lazy"></picture></a>
+        <!-- The Greatest Showman | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="greatest-showman" aria-label="The Greatest Showman — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/greatest-showman.webp"><img src="/img/past-shows/greatest-showman.jpg" alt="The Greatest Showman" loading="lazy"></picture></a>
+        <!-- Hadestown Teen Edition | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="hadestown-teen-edition" aria-label="Hadestown Teen Edition — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/hadestown-teen-edition.webp"><img src="/img/past-shows/hadestown-teen-edition.jpg" alt="Hadestown Teen Edition" loading="lazy"></picture></a>
+        <!-- Chitty Chitty Bang Bang | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="chitty-chitty-bang-bang" aria-label="Chitty Chitty Bang Bang — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/chitty-chitty-bang-bang.webp"><img src="/img/past-shows/chitty-chitty-bang-bang.jpg" alt="Chitty Chitty Bang Bang" loading="lazy"></picture></a>
+        <!-- A Christmas Carol: A New Musical (2025) | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="a-christmas-carol-2025" aria-label="A Christmas Carol: A New Musical (2025) — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2025.webp"><img src="/img/past-shows/a-christmas-carol-2025.jpg" alt="A Christmas Carol: A New Musical (2025)" loading="lazy"></picture></a>
+        <!-- Anastasia The Musical | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="anastasia" aria-label="Anastasia The Musical — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/anastasia.webp"><img src="/img/past-shows/anastasia.jpg" alt="Anastasia The Musical" loading="lazy"></picture></a>
+        <!-- Disney's Alice in Wonderland Jr. | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="alice-in-wonderland-jr" aria-label="Disney's Alice in Wonderland Jr. — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/alice-in-wonderland-jr.webp"><img src="/img/past-shows/alice-in-wonderland-jr.jpg" alt="Disney's Alice in Wonderland Jr." loading="lazy"></picture></a>
+        <!-- Disney's Aladdin Jr. | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="aladdin-jr" aria-label="Disney's Aladdin Jr. — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/aladdin-jr.webp"><img src="/img/past-shows/aladdin-jr.jpg" alt="Disney's Aladdin Jr." loading="lazy"></picture></a>
+        <!-- A Christmas Carol: A New Musical (2024) | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="a-christmas-carol-2024" aria-label="A Christmas Carol: A New Musical (2024) — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2024.webp"><img src="/img/past-shows/a-christmas-carol-2024.jpg" alt="A Christmas Carol: A New Musical (2024)" loading="lazy"></picture></a>
+        <!-- Disney's 101 Dalmatians | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="101-dalmatians" aria-label="Disney's 101 Dalmatians — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/101-dalmatians.webp"><img src="/img/past-shows/101-dalmatians.jpg" alt="Disney's 101 Dalmatians" loading="lazy"></picture></a>
+        <!-- Roald Dahl's Matilda Jr. The Musical | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="matilda-jr" aria-label="Roald Dahl's Matilda Jr. The Musical — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/matilda-jr.webp"><img src="/img/past-shows/matilda-jr.jpg" alt="Roald Dahl's Matilda Jr. The Musical" loading="lazy"></picture></a>
+        <!-- Shrek The Musical Kids | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="shrek-kids" aria-label="Shrek The Musical Kids — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/shrek-kids.webp"><img src="/img/past-shows/shrek-kids.jpg" alt="Shrek The Musical Kids" loading="lazy"></picture></a>
+        <!-- Les Misérables | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="les-miserables" aria-label="Les Misérables — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/les-miserables.webp"><img src="/img/past-shows/les-miserables.jpg" alt="Les Misérables" loading="lazy"></picture></a>
+        <!-- Villains Night 2023 | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="villains-night-2023" aria-label="Villains Night 2023 — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/villains-night-2023.webp"><img src="/img/past-shows/villains-night-2023.jpg" alt="Villains Night 2023" loading="lazy"></picture></a>
+        <!-- Seven Brides for Seven Brothers | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="seven-brides-for-seven-brothers" aria-label="Seven Brides for Seven Brothers — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/seven-brides-for-seven-brothers.webp"><img src="/img/past-shows/seven-brides-for-seven-brothers.jpg" alt="Seven Brides for Seven Brothers" loading="lazy"></picture></a>
+        <!-- Disney's Moana Jr. | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="moana-jr" aria-label="Disney's Moana Jr. — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/moana-jr.webp"><img src="/img/past-shows/moana-jr.jpg" alt="Disney's Moana Jr." loading="lazy"></picture></a>
+        <!-- Disney's Newsies | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="newsies" aria-label="Disney's Newsies — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/newsies.webp"><img src="/img/past-shows/newsies.jpg" alt="Disney's Newsies" loading="lazy"></picture></a>
+        <!-- Villains Night 2024 | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="villains-night-2024" aria-label="Villains Night 2024 — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/villains-night-2024.webp"><img src="/img/past-shows/villains-night-2024.jpg" alt="Villains Night 2024" loading="lazy"></picture></a>
+        <!-- Disney and Pixar's Finding Nemo Jr. | SmugMug: (add href) -->
+        <a class="ps-card ps-soon" data-slug="finding-nemo-jr" aria-label="Disney and Pixar's Finding Nemo Jr. — gallery coming soon"><picture><source type="image/webp" srcset="/img/past-shows/finding-nemo-jr.webp"><img src="/img/past-shows/finding-nemo-jr.jpg" alt="Disney and Pixar's Finding Nemo Jr." loading="lazy"></picture></a>
+      </div>
     </div>
   </section>
 </main>
@@ -521,24 +570,6 @@ h2 em{color:var(--teal)}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
 })();
 </script>
-<script>
-(function(){
-  var grid=document.getElementById('gal-grid'), empty=document.getElementById('gal-empty');
-  fetch('/img/gallery/index.json').then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(list){
-    if(!list||!list.length){empty.hidden=false;grid.removeAttribute('aria-busy');return;}
-    var frag=document.createDocumentFragment();
-    list.forEach(function(s){
-      var a=document.createElement('a');a.className='gal-card';a.href='/gallery/'+s.slug;
-      var cov=document.createElement('span');cov.className='gal-cover';
-      var img=document.createElement('img');img.src=s.cover;img.loading='lazy';img.decoding='async';img.alt='';cov.appendChild(img);
-      var meta=document.createElement('span');meta.className='gal-meta';
-      var nm=document.createElement('span');nm.className='gal-name';nm.textContent=s.title;
-      var sub=document.createElement('span');sub.className='gal-sub';sub.textContent=(s.year?s.year+' \u00b7 ':'')+s.count+' photo'+(s.count==1?'':'s');
-      meta.appendChild(nm);meta.appendChild(sub);a.appendChild(cov);a.appendChild(meta);frag.appendChild(a);
-    });
-    grid.innerHTML='';grid.appendChild(frag);grid.removeAttribute('aria-busy');
-  }).catch(function(){empty.hidden=false;grid.removeAttribute('aria-busy');});
-})();
-</script>
+
 </body>
 </html>
