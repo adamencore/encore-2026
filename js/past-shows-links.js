@@ -1,10 +1,12 @@
-/* Past Shows -> SmugMug gallery links (interim shim, v2).
+/* Past Shows -> SmugMug gallery links (interim shim, v3).
    Repo path: js/past-shows-links.js
-   v2: matches image paths with or without a leading slash, runs regardless of
-   script placement, and logs "past-shows-links: N cards linked" to the console.
-   Replace with real static anchor tags in the next tooled build session, then delete. */
+   v3: collapses the Matilda + Shrek cast bands into single grid cards (their
+   primary gallery covers all casts), then links every card. Logs
+   "past-shows-links: N cards linked" to the console.
+   Replace with real static markup in the next tooled build session, then delete. */
 (function () {
   var BASE = 'https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/';
+  var COLLAPSE = ['matilda-jr', 'shrek-kids'];
   var MAP = {
     'chitty-chitty-bang-bang': '2025-Chitty-Chitty-Bang-Bang',
     'a-christmas-carol-2025': '2025-A-Christmas-Carol',
@@ -14,11 +16,7 @@
     'anastasia-empress-cast': '2026-Anastasia/2026-Anastasia-Empress-cast',
     'anastasia-imperial-cast': '2026-Anastasia/2026-Anastasia-Imperial-cast',
     'matilda-jr': '2026-Matilda',
-    'matilda-jr-mayhem-cast': '2026-Matilda/Matilda-Mayhem-cast',
-    'matilda-jr-mischief-cast': '2026-Matilda',
     'shrek-kids': '2026-Shrek',
-    'shrek-kids-fairytale-cast': '2026-Shrek/2026-Shrek-Fairytale-Cast',
-    'shrek-kids-storybook-cast': '2026-Shrek/2026-Shrek-Storybook',
     'a-christmas-carol-2023-red-cast': '2023-A-Christmas-Carol-1/2023-A-Christmas-Carol-RED-11302023',
     'a-christmas-carol-2023-green-cast': '2023-A-Christmas-Carol-1/2023-A-Christmas-Carol-GREEN-12042023',
     'frozen-kids': '2024-Frozen',
@@ -35,16 +33,36 @@
     'finding-nemo-jr': '2023-Nemo-Junior',
     'les-miserables': '2025-Les-Miserables-rehearsal'
   };
+  function collapseGroups() {
+    COLLAPSE.forEach(function (base) {
+      var cast = document.querySelector('[data-slug^="' + base + '-"]');
+      if (!cast) return;
+      var group = cast.closest('.ps-group');
+      if (!group || !group.parentElement) return;
+      var head = group.querySelector('.ps-head');
+      var img = head ? head.querySelector('img') : null;
+      var pic = img ? (img.closest('picture') || img) : null;
+      if (!pic) return;
+      var a = document.createElement('a');
+      a.className = 'ps-card';
+      a.setAttribute('data-slug', base);
+      a.setAttribute('aria-label', img.getAttribute('alt') || base);
+      a.appendChild(pic);
+      group.parentElement.replaceChild(a, group);
+    });
+  }
   function wire() {
+    collapseGroups();
     var linked = 0;
     document.querySelectorAll('img').forEach(function (img) {
       var src = img.currentSrc || img.src || img.getAttribute('src') || '';
       if (src.indexOf('img/past-shows/') === -1) return;
       var slug = src.split('/').pop().split('?')[0].replace(/\.(webp|jpe?g|png)$/i, '');
-      var path = MAP[slug];
-      if (!path) return;
       var card = img.closest('figure') || img.closest('a') || img.parentElement;
       if (!card || card.dataset.psLinked) return;
+      var key = (card.getAttribute && card.getAttribute('data-slug')) || slug;
+      var path = MAP[key] || MAP[slug];
+      if (!path) return;
       card.dataset.psLinked = '1';
       var url = BASE + path;
       linked++;
