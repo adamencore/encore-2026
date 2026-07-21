@@ -1,8 +1,8 @@
-/* Past Shows -> SmugMug gallery links (interim shim).
+/* Past Shows -> SmugMug gallery links (interim shim, v2).
    Repo path: js/past-shows-links.js
-   Loaded from past-shows.html via:
-   <script src="/js/past-shows-links.js" defer></script>
-   Replace with real static <a> wrappers in the next tooled build session, then delete this file. */
+   v2: matches image paths with or without a leading slash, runs regardless of
+   script placement, and logs "past-shows-links: N cards linked" to the console.
+   Replace with real static anchor tags in the next tooled build session, then delete. */
 (function () {
   var BASE = 'https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/';
   var MAP = {
@@ -35,25 +35,40 @@
     'finding-nemo-jr': '2023-Nemo-Junior',
     'les-miserables': '2025-Les-Miserables-rehearsal'
   };
-  document.querySelectorAll('img[src*="/img/past-shows/"]').forEach(function (img) {
-    var slug = (img.getAttribute('src') || '').split('/').pop().replace(/\.(webp|jpe?g|png)$/i, '');
-    var path = MAP[slug];
-    if (!path) return;
-    var card = img.closest('figure') || img.parentElement;
-    if (!card) return;
-    var url = BASE + path;
-    if (card.closest('a')) { card.closest('a').href = url; return; }
-    card.style.cursor = 'pointer';
-    card.setAttribute('role', 'link');
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('aria-label', 'Open photo gallery: ' + (img.getAttribute('alt') || slug));
-    function go() { window.open(url, '_blank', 'noopener'); }
-    card.addEventListener('click', go);
-    card.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+  function wire() {
+    var linked = 0;
+    document.querySelectorAll('img').forEach(function (img) {
+      var src = img.currentSrc || img.src || img.getAttribute('src') || '';
+      if (src.indexOf('img/past-shows/') === -1) return;
+      var slug = src.split('/').pop().split('?')[0].replace(/\.(webp|jpe?g|png)$/i, '');
+      var path = MAP[slug];
+      if (!path) return;
+      var card = img.closest('figure') || img.closest('a') || img.parentElement;
+      if (!card || card.dataset.psLinked) return;
+      card.dataset.psLinked = '1';
+      var url = BASE + path;
+      linked++;
+      if (card.tagName === 'A') { card.href = url; card.target = '_blank'; card.rel = 'noopener'; return; }
+      var wrapA = card.closest('a');
+      if (wrapA) { wrapA.href = url; wrapA.target = '_blank'; wrapA.rel = 'noopener'; return; }
+      card.style.cursor = 'pointer';
+      card.setAttribute('role', 'link');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', 'Open photo gallery: ' + (img.getAttribute('alt') || slug));
+      function go() { window.open(url, '_blank', 'noopener'); }
+      card.addEventListener('click', go);
+      card.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+      });
+      card.querySelectorAll('*').forEach(function (el) {
+        if (el.children.length === 0 && el.textContent.trim().toLowerCase() === 'gallery coming') { el.remove(); }
+      });
     });
-    card.querySelectorAll('*').forEach(function (el) {
-      if (el.children.length === 0 && el.textContent.trim().toLowerCase() === 'gallery coming') { el.remove(); }
-    });
-  });
+    if (window.console && console.log) { console.log('past-shows-links: ' + linked + ' cards linked'); }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', wire);
+  } else {
+    wire();
+  }
 })();
