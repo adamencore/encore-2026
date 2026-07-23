@@ -179,7 +179,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/fonts/cabrio.css">
 <link rel="stylesheet" href="/fonts/mikado.css">
 
@@ -470,6 +470,16 @@
   .nav-toggle{margin-left:auto;}
 h2 em{color:var(--teal)}
 </style>
+<style>
+  /* TESTIMONIALS */
+  .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .quote{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:40px;display:flex;flex-direction:column;}
+  .quote .qmark{font-family:var(--font-display);font-size:52px;line-height:.6;color:var(--accent);opacity:.28;margin-bottom:20px;}
+  .quote blockquote p{font-size:16.5px;line-height:1.75;color:var(--charcoal-soft);margin-bottom:14px;}
+  .quote blockquote p:last-of-type{margin-bottom:0;}
+  .quote figcaption{margin-top:auto;padding-top:22px;font-size:13.5px;font-weight:600;color:var(--muted);letter-spacing:.02em;}
+  @media(max-width:900px){.quote-grid{grid-template-columns:1fr;}.quote{padding:30px 26px;}}
+</style>
 </head>
 <body>
 <!-- ANNOUNCEMENT BAR -->
@@ -738,6 +748,34 @@ h2 em{color:var(--teal)}
           <p>We think about the whole experience — both the performance and everything around it: preparation, arrival, and navigating the space. The best events are built specifically around the show, the space, and the community.</p>
           <div class="tags"><span class="tag">Preparation</span><span class="tag">Arrival</span><span class="tag">The space</span><span class="tag">The performance</span></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION — TESTIMONIALS ===== -->
+  <section style="padding-top:0;" aria-labelledby="testimonials-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>From Our Audiences</span>
+          <h2 id="testimonials-h">What families are <em>saying</em></h2>
+        </div>
+      </div>
+      <div class="quote-grid reveal">
+        <figure class="quote">
+          <div class="qmark" aria-hidden="true">&ldquo;</div>
+          <blockquote>
+            <p>Encore really takes the time to make sure they are accommodating everyone. They spend some time before the performance to give plenty of information and involve the audience. They really care about individuals and the group experience. Our group loves going to their performances and we are never disappointed!</p>
+          </blockquote>
+          <figcaption>&mdash; A sensory-friendly performance guest</figcaption>
+        </figure>
+        <figure class="quote">
+          <div class="qmark" aria-hidden="true">&ldquo;</div>
+          <blockquote>
+            <p>With over half of our children being autistic, it felt impossible to attend a show or performance of any kind, at any venue. Now we&rsquo;ve been attending Encore sensory performances for over a year and all 5 of our children have come to expect a good time, and to feel safe. Felt-safety for our family is truly priceless. Thank you for your commitment to inclusion. It&rsquo;s making a difference to us.</p>
+          </blockquote>
+          <figcaption>&mdash; An Encore sensory-friendly family</figcaption>
+        </figure>
       </div>
     </div>
   </section>
