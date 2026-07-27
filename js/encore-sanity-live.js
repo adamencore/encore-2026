@@ -1,42 +1,30 @@
 /* ============================================================
    ENCORE — live content from Sanity
    ------------------------------------------------------------
-   Connects encorepa.org to the Sanity CMS.
+   Controls the announcement bar at the top of every page.
+   Edit it in Sanity under "Site Settings", hit Publish,
+   refresh the site. No pushing, no GitHub.
 
-   Right now it controls ONE thing: the announcement bar at the
-   top of every page. Edit it in Sanity under "Site Settings",
-   hit Publish, refresh the site — it changes. No pushing, no
-   GitHub, no waiting.
+   It reads from /.netlify/functions/site-content, NOT from
+   Sanity directly. That endpoint holds the read token on the
+   server, so the Sanity dataset stays private and no password
+   is ever exposed in the browser.
 
-   SAFE BY DESIGN: if Sanity is unreachable, slow, or the
-   content is empty, this script does nothing at all and the
-   bar keeps whatever text is already written into the page.
-   It can't break the site.
-
-   Project: cakoldrm   Dataset: production
+   SAFE BY DESIGN: if anything fails, this script does nothing
+   and the bar keeps whatever text is already in the page.
    ============================================================ */
 (function () {
   'use strict';
 
-  var PROJECT = 'cakoldrm';
-  var DATASET = 'production';
-  var API_VERSION = 'v2023-05-03';
+  var ENDPOINT = '/.netlify/functions/site-content';
 
-  var query =
-    '*[_type=="siteSettings"][0]{announcementEnabled,announcementText,announcementLink}';
-
-  var url =
-    'https://' + PROJECT + '.apicdn.sanity.io/' + API_VERSION +
-    '/data/query/' + DATASET + '?query=' + encodeURIComponent(query);
-
-  function applyAnnouncement(s) {
-    if (!s) return;
+  function applyAnnouncement(a) {
+    if (!a) return;
 
     var bar = document.getElementById('anncBar') || document.querySelector('.annc');
     if (!bar) return;
 
-    // Turned off in Sanity -> hide the bar site-wide.
-    if (s.announcementEnabled === false) {
+    if (a.enabled === false) {
       bar.style.display = 'none';
       document.documentElement.style.setProperty('--annc-h', '0px');
       return;
@@ -45,19 +33,17 @@
     var link = bar.querySelector('.annc-link');
     if (!link) return;
 
-    var text = (s.announcementText || '').trim();
-    var href = (s.announcementLink || '').trim();
+    var text = (a.text || '').trim();
+    var href = (a.link || '').trim();
     if (!text) return;
 
-    // If the message CHANGED, un-dismiss it for people who closed the old one.
+    // If the message CHANGED, show it again to people who dismissed the old one.
     try {
       var seenKey = 'encoreAnncSeen';
-      var lastSeen = window.localStorage.getItem(seenKey);
-      if (lastSeen !== text) {
+      if (window.localStorage.getItem(seenKey) !== text) {
         window.localStorage.setItem(seenKey, text);
         bar.classList.remove('hide');
         bar.style.display = '';
-        // clear any older dismissal flags this site has used
         for (var i = window.localStorage.length - 1; i >= 0; i--) {
           var k = window.localStorage.key(i);
           if (k && k.indexOf('encoreAnnc_') === 0) window.localStorage.removeItem(k);
@@ -71,10 +57,12 @@
 
   function go() {
     if (!window.fetch) return;
-    fetch(url, { mode: 'cors', credentials: 'omit' })
+    fetch(ENDPOINT, { credentials: 'omit' })
       .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (d) { if (d && d.result) applyAnnouncement(d.result); })
-      .catch(function () { /* offline or blocked — leave the page as-is */ });
+      .then(function (d) {
+        if (d && d.ok && d.announcement) applyAnnouncement(d.announcement);
+      })
+      .catch(function () { /* leave the page exactly as it is */ });
   }
 
   if (document.readyState === 'loading') {
