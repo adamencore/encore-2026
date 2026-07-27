@@ -11,63 +11,90 @@
   if (window.__askEncoreLoaded) return;
   window.__askEncoreLoaded = true;
 
-  var TEAL = "#338093", INK = "#22454d", CREAM = "#f4f0ea";
+  var TEAL = "#322949", INK = "#241c38", CREAM = "#f6f5f3";  /* brand purple */
 
   /* ---- Curated knowledge base (edit here to keep answers current) ----
      a = answer shown · url/title = the source link · k = match keywords */
   var KB = [
+    // ============================================================
+    //  CORE — always shown
+    // ============================================================
     { title: "Programs", url: "/programs", k: "program programs classes overview what offer ages levels options",
-      a: "Encore offers six youth programs: week-long Camps, Junior shows, Emerging Artists, the Signature Series, the audition-based Aspire Performing Co, and Page to Stage \u2014 each built for different ages and experience levels." },
-    { title: "Musical Theater Camps", url: "/camps", k: "camp camps summer week intensive young beginner first short ages",
-      a: "Camps are short, week-long intensives (generally ages 7\u201311) that end with one performance \u2014 a great first taste of theater. Check the specific camp's page for its exact ages and dates." },
+      a: "Encore offers six youth programs: week-long Camps, Junior shows, Emerging Artists, the Signature Series, the audition-based Aspire Performing Co., and Page to Stage \u2014 each built for different ages and experience levels." },
+    { title: "Musical Theater Camps", url: "/camps", k: "camp camps summer week intensive young beginner first short",
+      a: "Camps are short, week-long intensives that end with one performance \u2014 a great first taste of theater. Check the specific camp's page for its exact ages, dates, and fee." },
     { title: "Junior shows", url: "/junior", k: "junior jr younger show production",
       a: "Junior productions are for younger Young Artists stepping into a fuller staged show. See the page for the current Junior title and age range." },
-    { title: "Emerging Artists", url: "/emerging-artists", k: "emerging artists middle peter pan tween",
+    { title: "Emerging Artists", url: "/emerging-artists", k: "emerging artists middle tween",
       a: "Emerging Artists is for middle-grade Young Artists building toward larger roles. Peter Pan Jr. is the current Emerging Artists production." },
-    { title: "Signature Series", url: "/senior", k: "signature series teen teens older licensed lion king little women main mainstage",
-      a: "The Signature Series is Encore's fully staged, licensed productions for teen Young Artists (generally ages 13\u201318). 2026 includes Disney's The Lion King Jr. and Little Women." },
-    { title: "Aspire Performing Co", url: "/aspire-performing-co", k: "aspire company audition troupe villains illuminate touring age old how old ages",
-      a: "Aspire is Encore's audition-based performing company, open to Young Artists ages 5\u201318. Its fall 2026 production is Villains Night, and it also tours (Illuminate at Disney California Adventure)." },
-    { title: "Page to Stage", url: "/page-to-stage", k: "page to stage field trip workshop professional see watch register",
+    { title: "Signature Series", url: "/senior", k: "signature series teen teens older licensed main mainstage",
+      a: "The Signature Series is Encore's fully staged, licensed productions for teen Young Artists. Little Women performs September 5\u201312, 2026, and A Christmas Carol runs November 30\u2013December 19, 2026." },
+    { title: "Aspire Performing Co.", url: "/aspire-performing-co", k: "aspire company troupe show choir choir touring",
+      a: "Aspire is Encore's audition-based show choir. Its fall production is Villains Night (October 29\u201330), and it now includes Aspire: Traditions \u2014 a travel performance program that ends on a Disney stage." },
+    { title: "Page to Stage", url: "/page-to-stage", k: "page stage field trip workshop professional see watch register",
       a: "Page to Stage takes Young Artists to professional productions with field trips and workshops. It's register-only \u2014 no audition needed." },
-    { title: "Auditions", url: "/auditions", k: "audition auditions tryout try out cast casting signup sign up prepare when how",
-      a: "Auditions are open per production. Each show's audition page lists the dates, what to prepare, and how to sign up (some shows offer virtual auditions). Browse current openings on the auditions page." },
-    { title: "Tickets", url: "/tickets", k: "ticket tickets buy purchase seats see show watch attend coming",
-      a: "Tickets are sold through ThunderTix. The tickets page lists every show and links straight to purchase; shows not yet on sale show \u201cTickets coming soon.\u201d" },
-    { title: "Disney's The Lion King Jr.", url: "/shows/lion-king", k: "lion king simba summer july show tickets on sale",
-      a: "Disney's The Lion King Jr. runs July 18\u201325, 2026 at the Electric Theater (5:00 & 7:00 PM, $15). Sensory performance July 20, ASL July 23. On sale now \u2014 confirm on the page." },
-    { title: "Little Women", url: "/tickets", k: "little women september fall signature show tickets",
-      a: "Little Women performs September 5\u201312, 2026 at the Electric Theater, 7:30 PM. Tickets $22/$18/$15/$10. Confirm on-sale status on the tickets page." },
-    { title: "Villains Night", url: "/tickets", k: "villains night aspire october halloween show tickets",
-      a: "Villains Night (Aspire) performs October 29\u201330, 2026 at the Electric Theater (5:00 & 7:30 PM, $15). Sensory performance October 28. Confirm on-sale status on the tickets page." },
-    { title: "Peter Pan Jr.", url: "/tickets", k: "peter pan november emerging show tickets",
-      a: "Disney's Peter Pan Jr. performs November 19\u201321, 2026 at the Electric Theater (5:00 & 7:30 PM, $15). Sensory Nov 19, ASL Nov 21. Confirm on-sale status on the tickets page." },
-    { title: "A Christmas Carol", url: "/tickets", k: "christmas carol december holiday winter show tickets scrooge",
-      a: "A Christmas Carol performs November 30\u2013December 19, 2026 at the Electric Theater (7:30 PM, 2:00 PM matinee). Tickets $22/$18/$15/$10. Sensory Dec 1, ASL Dec 12." },
 
-    // --- Auditions, rehearsals & key dates (rest of 2026) ---
-    { title: "Little Women \u2014 auditions & rehearsals", url: "/little-women-2026", k: "little women audition auditions tryout callback rehearsal rehearsals rehearse rehearsing schedule when cast date dates time fall",
-      a: "Little Women auditions are Saturday, July 18, 10am\u20131pm at the Electric Theater (callbacks Monday, July 20). Rehearsals run Aug 1\u2013Sep 4, Mon\u2013Thurs and Saturdays. Performances are Sep 5\u201312. Sign up on the show's audition page." },
-    { title: "Peter Pan Jr. \u2014 auditions & rehearsals", url: "/peter-pan-jr-2026", k: "peter pan audition auditions tryout callback dance rehearsal rehearsals rehearse rehearsing schedule when cast date dates time emerging fall",
-      a: "Peter Pan Jr. auditions are Monday, Sep 21 (vocal, 5:30\u20139:30pm) and Tuesday, Sep 22 (dance) at the Electric Theater. Rehearsals run Oct 5\u2013Nov 14. Performances are Nov 19\u201321. Sign up on the show's audition page." },
-    { title: "A Christmas Carol \u2014 auditions & rehearsals", url: "/a-christmas-carol-2026", k: "christmas carol audition auditions tryout callback dance rehearsal rehearsals rehearse rehearsing schedule when cast date dates time scrooge",
-      a: "A Christmas Carol auditions are Monday, Sep 28 (6\u20139pm) and Tuesday, Sep 29 (dance) at the Electric Theater. Rehearsals run Oct 5\u2013Nov 21. Performances are Nov 30\u2013Dec 19. Sign up on the show's audition page." },
-    { title: "Villains Night \u2014 auditions & rehearsals", url: "/aspire-performing-co", k: "villains night aspire audition auditions tryout dance call rehearsal rehearsals rehearse rehearsing schedule when cast date dates time fall",
-      a: "Villains Night (Aspire) auditions are Monday, June 29 (vocal, 4\u20138pm) and Wednesday, July 1 (dance call) at St. George Academy. Rehearsals run Aug 13\u2013Oct 22 on Thursdays. Performances are Oct 29\u201330." },
-    { title: "Lion King Kids Camp \u2014 auditions & dates", url: "/lion-king-kids-camp-2026", k: "lion king kids camp audition auditions tryout rehearsal schedule when date dates time july perform summer",
-      a: "Lion King Kids Camp auditions are Monday, July 6, 3\u20135pm at St. George Academy. The camp rehearses July 7\u201314 and performs Tuesday, July 14 at 7pm. Cost $175." },
-    { title: "Little Mermaid Camp \u2014 auditions & dates", url: "/little-mermaid-camp-2026", k: "little mermaid camp audition auditions tryout when date dates time august perform summer",
-      a: "Little Mermaid Camp auditions are Friday, Aug 14, 6\u20138pm at the Electric Theater. The performance is Friday, Aug 21 at 7pm. Cost $175." },
-    { title: "November Camp \u2014 auditions & dates", url: "/november-camp-2026", k: "november camp audition auditions tryout when date dates time perform fall",
-      a: "November Camp auditions are Saturday, Oct 31, 10am\u201312pm. The camp rehearses Nov 2\u20136 and performs Saturday, Nov 7 at 7pm. Cost $175." },
-    { title: "Illuminate (Aspire touring ensemble) \u2014 auditions", url: "/aspire-performing-co", k: "illuminate aspire touring ensemble audition auditions tryout when date dates time disney",
-      a: "Illuminate, Aspire's touring ensemble, auditions Wednesday, July 29 \u2014 vocal 10am\u201312pm and dance 12\u20132pm \u2014 at the Electric Theater." },
+    // ============================================================
+    //  AUDITIONS — general + LOCATION (the most-asked questions)
+    // ============================================================
+    { title: "Auditions \u2014 how they work", url: "/auditions", k: "audition auditions tryout try out cast casting signup sign up prepare bring wear what how process",
+      a: "Auditions are held per production, and almost all of them take place at the Historic Electric Theater, 68 E Tabernacle St, St. George. Each show's page lists its audition date, time, what to prepare, and how to sign up \u2014 several shows also offer a virtual audition option. Browse everything currently open on the auditions page." },
+    { title: "Where auditions are held", url: "/electric-theater", k: "where location located address venue place held building site directions map parking drive find audition auditions rehearsal rehearsals",
+      a: "Auditions are held at the Historic Electric Theater, 68 E Tabernacle St, St. George, UT 84770 \u2014 downtown, with nearby public parking. That is the audition location for every currently open show. Note that some productions rehearse elsewhere: A Christmas Carol rehearses at St. George Academy, though its auditions are still at the Electric Theater. Always check the specific show's page to be sure." },
+    { title: "Rehearsal locations", url: "/auditions", k: "rehearsal rehearsals rehearse practice where location held academy schedule weekly",
+      a: "Most rehearsals are at the Electric Theater, but not all \u2014 A Christmas Carol rehearses at St. George Academy. Each show's page lists its own rehearsal days, times, and location, so check there before planning your week." },
+    { title: "Virtual auditions", url: "/auditions", k: "virtual online video remote zoom submit upload cant make miss away",
+      a: "Several productions offer a virtual audition option \u2014 you complete a virtual audition form, then upload your video to the matching folder. Peter Pan Jr. and A Christmas Carol both offer this. Links are on each show's audition page." },
+
+    // ============================================================
+    //  OPEN AUDITIONS — each auto-hides after its date
+    // ============================================================
+    { title: "Aspire: Traditions \u2014 auditions", url: "/aspire-traditions", until: "2026-07-30",
+      k: "aspire traditions travel disney disneyland audition auditions tryout when where date time location july 30 new program trip",
+      a: "Aspire: Traditions auditions are Thursday, July 30, 2026 at the Electric Theater, 68 E Tabernacle St \u2014 vocal 5:00\u20137:00pm, dance 7:00\u20139:00pm. It's a new travel performance program for Young Artists ages 12\u201318: Friday rehearsals through the year, then a performance at the Disneyland Resort in March 2027. Prepare 45 seconds of a song of your choice; the dance combination is taught at the audition." },
+    { title: "Illuminate (Aspire touring ensemble) \u2014 auditions", url: "/aspire-performing-co", until: "2026-07-29",
+      k: "illuminate aspire touring ensemble audition auditions tryout when where date time location disney",
+      a: "Illuminate, Aspire's touring ensemble, auditions Wednesday, July 29 at the Electric Theater \u2014 vocal 10am\u201312pm, dance 12\u20132pm." },
+    { title: "Little Mermaid Jr. Camp \u2014 auditions", url: "/little-mermaid-camp-2026", until: "2026-08-14",
+      k: "little mermaid camp audition auditions tryout when where date time location august ariel summer",
+      a: "Little Mermaid Jr. Camp auditions are Friday, August 14, 2026, 6\u20138pm at the Electric Theater, 68 E Tabernacle St. It's a friendly vocal and dance audition \u2014 every camper is part of the show. Come with a song from the audition folder plus a headshot and resume. The performance is Friday, August 21." },
+    { title: "Peter Pan Jr. \u2014 auditions", url: "/peter-pan-jr-2026", until: "2026-09-22",
+      k: "peter pan jr audition auditions tryout callback dance vocal when where date time location september emerging",
+      a: "Peter Pan Jr. auditions are at the Electric Theater, 68 E Tabernacle St: vocal Monday, September 21, 6\u20139pm, and dance call plus callbacks Tuesday, September 22, 6\u20139pm (callbacks by invitation). Prepare 16 bars of a song, a printed headshot and resume, and clothes you can move in. A virtual option is available. Performances are November 19\u201321." },
+    { title: "A Christmas Carol \u2014 auditions", url: "/a-christmas-carol-2026", until: "2026-09-29",
+      k: "christmas carol audition auditions tryout callback dance vocal when where date time location september scrooge holiday",
+      a: "A Christmas Carol auditions are at the Electric Theater, 68 E Tabernacle St: vocal Monday, September 28, 6\u20139pm, and dance call plus callbacks Tuesday, September 29, 6\u20139pm (callbacks by invitation). Prepare 16\u201332 bars of a song, a printed headshot and resume, and clothes you can move in. A virtual option is available. Note that rehearsals are held at St. George Academy. Performances run November 30\u2013December 19." },
+    { title: "November Camp \u2014 auditions", url: "/november-camp-2026", until: "2026-10-31",
+      k: "november camp audition auditions tryout placement when where date time location october fall",
+      a: "November Camp holds a short placement audition on Saturday, October 31, 2026, 10am\u201312pm at the Electric Theater, 68 E Tabernacle St \u2014 singing and a short taught dance combination. Everyone who registers is part of the camp; the audition simply helps with placement. Bring a song of about a minute that you enjoy singing." },
+
+    // ============================================================
+    //  UPCOMING PERFORMANCES — each auto-hides after its run
+    // ============================================================
+    { title: "Little Women \u2014 performances", url: "/tickets", until: "2026-09-12",
+      k: "little women september fall signature show tickets performance see watch",
+      a: "Little Women performs September 5\u201312, 2026 at the Electric Theater, 7:30 PM. Tickets $22/$18/$15/$10 \u2014 confirm on-sale status on the tickets page." },
+    { title: "Villains Night \u2014 performances", url: "/tickets", until: "2026-10-30",
+      k: "villains night aspire october halloween show tickets performance see watch",
+      a: "Villains Night (Aspire) performs October 29\u201330, 2026 at the Electric Theater, 5:00 & 7:30 PM, $15. There's a free sensory-friendly performance October 28. Auditions for this show are closed \u2014 the cast is set." },
+    { title: "Peter Pan Jr. \u2014 performances", url: "/tickets", until: "2026-11-21",
+      k: "peter pan november emerging show tickets performance see watch",
+      a: "Peter Pan Jr. performs November 19\u201321, 2026 at the Electric Theater, 5:00 & 7:30 PM, $15. Sensory-friendly performance November 19, ASL-interpreted November 21." },
+    { title: "A Christmas Carol \u2014 performances", url: "/tickets", until: "2026-12-19",
+      k: "christmas carol december holiday winter show tickets scrooge performance see watch",
+      a: "A Christmas Carol performs November 30\u2013December 19, 2026 at the Electric Theater, 7:30 PM with 2:00 PM matinees. Tickets $22/$18/$15/$10. Sensory-friendly December 1, ASL-interpreted December 12." },
+
+    // ============================================================
+    //  PRACTICAL
+    // ============================================================
+    { title: "Tickets", url: "/tickets", k: "ticket tickets buy purchase seats attend coming cost price",
+      a: "Tickets are sold through ThunderTix. The tickets page lists every show and links straight to purchase; shows not yet on sale show \u201cTickets coming soon.\u201d" },
     { title: "Participation fees", url: "/fees", k: "fee fees cost costs price prices how much pay tuition expensive money afford participation",
-      a: "Every production and camp has a participation fee covering licensing, costumes, sets, staff, and the venue. Each show lists its own fee on its page. Multi-Young-Artist discounts apply, and fees are non-refundable." },
-    { title: "Scholarships", url: "/encore-scholarship-application", k: "scholarship scholarships financial aid help afford free assistance need cant afford",
+      a: "Every production and camp has a participation fee covering licensing, costumes, sets, staff, and the venue. Each show lists its own fee on its page. Multi-child discounts apply, and fees are non-refundable." },
+    { title: "Scholarships", url: "/encore-scholarship-application", k: "scholarship scholarships financial aid help afford free assistance need",
       a: "Need-based scholarships are available for every program so cost is never a barrier. The application is simple and confidential." },
-    { title: "The Electric Theater (venue & parking)", url: "/electric-theater", k: "venue where location address parking park directions theater theatre map get there",
-      a: "Performances are at The Historic Electric Theater, 68 E Tabernacle St, St. George, UT 84770 \u2014 in downtown St. George with nearby public parking." },
+    { title: "The Electric Theater (venue & parking)", url: "/electric-theater", k: "electric theater theatre venue downtown parking park address directions map historic",
+      a: "Encore performs at The Historic Electric Theater, 68 E Tabernacle St, St. George, UT 84770 \u2014 in downtown St. George with nearby public parking. Encore is a resident company at the theater, not its owner." },
     { title: "Sensory-friendly performances", url: "/sensory-friendly-performances", k: "sensory friendly autism accessible relaxed quiet lights sound",
       a: "Encore offers sensory-friendly performances with adjusted lights and sound and a welcoming, relaxed environment. Check each show for its sensory performance date." },
     { title: "ASL-interpreted performances", url: "/asl-interpreted-performances", k: "asl sign language interpreted deaf hearing accessible",
@@ -81,6 +108,18 @@
     { title: "About Encore", url: "/about", k: "about who history founded story mission team",
       a: "Encore Performing Arts is a youth musical theater nonprofit founded in 2021, based at the historic Electric Theater in St. George, Utah, where performers are always called Young Artists." }
   ];
+
+  /* Auto-retire dated entries: anything with an "until" date disappears the day
+     after it passes, so the widget stops advertising events that already happened. */
+  (function () {
+    var today = new Date(); today.setHours(0, 0, 0, 0);
+    KB = KB.filter(function (e) {
+      if (!e.until) return true;
+      var p = e.until.split("-");
+      return new Date(+p[0], +p[1] - 1, +p[2], 23, 59, 59) >= today;
+    });
+  })();
+
 
   var STOP = {the:1,a:1,an:1,is:1,are:1,do:1,does:1,can:1,how:1,what:1,when:1,where:1,who:1,i:1,my:1,we:1,you:1,for:1,to:1,of:1,and:1,or:1,in:1,on:1,at:1,it:1,me:1,about:1,get:1,have:1,with:1,your:1};
 
@@ -108,7 +147,7 @@
   /* ---------- UI ---------- */
   var css = `
   .ae-btn{position:fixed;right:20px;bottom:20px;z-index:2147483000;display:flex;align-items:center;gap:9px;
-    background:${TEAL};color:#fff;border:none;border-radius:999px;padding:13px 19px;font:600 15px/1 'Familjen Grotesk',system-ui,sans-serif;
+    background:${TEAL};color:#fff;border:none;border-radius:999px;padding:13px 19px;font:600 15px/1 'Mikado',system-ui,sans-serif;
     box-shadow:0 10px 30px rgba(0,0,0,.22);cursor:pointer;transition:transform .15s ease,box-shadow .15s ease;}
   .ae-btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.28);}
   .ae-btn svg{width:20px;height:20px;}
@@ -117,31 +156,31 @@
     flex-direction:column;box-shadow:0 24px 70px rgba(0,0,0,.32);}
   .ae-panel.on{display:flex;}
   .ae-head{background:${TEAL};color:#fff;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;}
-  .ae-head h3{margin:0;font:600 18px/1.1 'Cabrio','Familjen Grotesk',system-ui,sans-serif;letter-spacing:-.01em;}
-  .ae-head p{margin:3px 0 0;font:400 12.5px/1.3 'Familjen Grotesk',sans-serif;opacity:.85;}
+  .ae-head h3{margin:0;font:600 18px/1.1 'Mikado',system-ui,sans-serif;letter-spacing:-.01em;}
+  .ae-head p{margin:3px 0 0;font:400 12.5px/1.3 'Mikado',sans-serif;opacity:.85;}
   .ae-x{background:rgba(255,255,255,.16);border:none;color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:18px;line-height:1;}
-  .ae-body{flex:1;overflow-y:auto;padding:16px;background:${CREAM};font:400 14.5px/1.55 'Familjen Grotesk',system-ui,sans-serif;color:#2b2b2b;}
+  .ae-body{flex:1;overflow-y:auto;padding:16px;background:${CREAM};font:400 14.5px/1.55 'Mikado',system-ui,sans-serif;color:#2b2b2b;}
   .ae-msg{margin-bottom:14px;display:flex;}
   .ae-msg.u{justify-content:flex-end;}
   .ae-bub{max-width:84%;padding:10px 13px;border-radius:14px;}
   .ae-msg.a .ae-bub{background:#fff;border:1px solid #e6dfd3;border-top-left-radius:4px;}
   .ae-msg.u .ae-bub{background:${INK};color:#fff;border-top-right-radius:4px;}
   .ae-src{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px;}
-  .ae-src a{display:inline-flex;align-items:center;gap:5px;font:600 12.5px/1 'Familjen Grotesk',sans-serif;
+  .ae-src a{display:inline-flex;align-items:center;gap:5px;font:600 12.5px/1 'Mikado',sans-serif;
     color:${TEAL};text-decoration:none;border:1.5px solid ${TEAL};border-radius:999px;padding:6px 11px;}
   .ae-src a:hover{background:${TEAL};color:#fff;}
   .ae-seealso{margin-top:9px;font-size:12.5px;color:#7a7264;}
   .ae-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px;}
   .ae-chip{background:#fff;border:1px solid #ddd3c4;color:${INK};border-radius:999px;padding:7px 12px;
-    font:500 12.5px/1 'Familjen Grotesk',sans-serif;cursor:pointer;}
+    font:500 12.5px/1 'Mikado',sans-serif;cursor:pointer;}
   .ae-chip:hover{border-color:${TEAL};color:${TEAL};}
   .ae-foot{border-top:1px solid #e6dfd3;background:#fff;padding:10px 12px;}
   .ae-row{display:flex;gap:8px;align-items:flex-end;}
   .ae-row input{flex:1;border:1px solid #ddd3c4;border-radius:12px;padding:11px 12px;
-    font:400 14px/1.4 'Familjen Grotesk',system-ui,sans-serif;outline:none;}
+    font:400 14px/1.4 'Mikado',system-ui,sans-serif;outline:none;}
   .ae-row input:focus{border-color:${TEAL};}
   .ae-send{background:${TEAL};color:#fff;border:none;border-radius:12px;width:42px;height:42px;cursor:pointer;flex:none;}
-  .ae-note{margin:8px 2px 0;font:400 10.5px/1.35 'Familjen Grotesk',sans-serif;color:#9a8f80;text-align:center;}
+  .ae-note{margin:8px 2px 0;font:400 10.5px/1.35 'Mikado',sans-serif;color:#9a8f80;text-align:center;}
   @media(max-width:480px){.ae-panel{right:0;bottom:0;width:100vw;max-width:100vw;height:100vh;max-height:100vh;border-radius:0;}}
   `;
   var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
@@ -179,7 +218,7 @@
   function greet(){
     if (greeted) return; greeted=true;
     var m=addMsg("a","Hi! Ask me anything about Encore \u2014 auditions, shows, tickets, fees, or our programs. I'll point you to the right page.");
-    var chips=["When are auditions?","How much does it cost?","Where do I park?","What shows are coming up?"];
+    var chips=["Where are auditions held?","What can I audition for?","How much does it cost?","What shows are coming up?"];
     var wrap=document.createElement("div"); wrap.className="ae-chips";
     chips.forEach(function(c){
       var b=document.createElement("button"); b.className="ae-chip"; b.textContent=c;
@@ -203,8 +242,8 @@
     addMsg("u", esc(q)); input.value="";
     var hits=search(q);
     if(!hits.length || hits[0].score<2){
-      var fb='I couldn\u2019t find that one. Try rephrasing, or reach out and we\u2019ll help.'
-        + '<div class="ae-src"><a href="/contact">Contact us \u2192</a></div>';
+      var fb='I couldn\u2019t find that one. Try naming a show (\u201cPeter Pan auditions\u201d) or a topic like fees, tickets, or parking \u2014 or reach out and we\u2019ll help.'
+        + '<div class="ae-src"><a href="/auditions">Auditions \u2192</a><a href="/contact">Contact us \u2192</a></div>';
       addMsg("a", fb); return;
     }
     var top=hits[0].e;
