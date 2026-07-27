@@ -1,0 +1,21 @@
+# Netlify config for the Sanity Studio site.
+# This is a SEPARATE Netlify site from encorepa.org — it does not affect the website.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Sanity Studio is a single-page app: every route must serve index.html.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Keep the Studio out of search results.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
