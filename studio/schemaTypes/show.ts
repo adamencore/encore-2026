@@ -1,0 +1,142 @@
+import {defineType, defineField, defineArrayMember} from 'sanity'
+
+export default defineType({
+  name: 'show',
+  title: 'Show',
+  type: 'document',
+  description: 'One record per production or camp. This single record feeds the show page, the tickets page, the auditions page, the calendar, the program listing, and Ask Encore.',
+  groups: [
+    {name: 'basics', title: 'Basics', default: true},
+    {name: 'auditions', title: 'Auditions'},
+    {name: 'rehearsals', title: 'Rehearsals'},
+    {name: 'performances', title: 'Performances'},
+    {name: 'design', title: 'Artwork & colors'},
+  ],
+  fields: [
+    defineField({name: 'title', title: 'Show title', type: 'string', group: 'basics', validation: (Rule) => Rule.required(),
+      description: 'Drop "Disney\'s" from titles per Encore style.'}),
+    defineField({name: 'slug', title: 'Page address', type: 'slug', group: 'basics',
+      options: {source: 'title', maxLength: 96},
+      description: 'IMPORTANT: do not change this once the page is live — it breaks links and search rankings.',
+      validation: (Rule) => Rule.required()}),
+    defineField({name: 'program', title: 'Program', type: 'reference', to: [{type: 'program'}], group: 'basics', validation: (Rule) => Rule.required()}),
+    defineField({name: 'season', title: 'Season / year', type: 'string', group: 'basics', description: 'e.g. 2026'}),
+    defineField({
+      name: 'status',
+      title: 'Status',
+      type: 'string',
+      group: 'basics',
+      description: 'This drives what the site shows. Set to "Auditions closed" and the audition calls come down automatically everywhere.',
+      options: {
+        list: [
+          {title: 'Announced (not yet open)', value: 'announced'},
+          {title: 'Auditions open', value: 'auditionsOpen'},
+          {title: 'Auditions closed', value: 'auditionsClosed'},
+          {title: 'In rehearsal', value: 'inRehearsal'},
+          {title: 'Performing / tickets on sale', value: 'performing'},
+          {title: 'Past', value: 'past'},
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'announced',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({name: 'ageRange', title: 'Ages (if different from the program)', type: 'string', group: 'basics',
+      description: 'Leave blank to use the program default.'}),
+    defineField({name: 'fee', title: 'Participation fee', type: 'string', group: 'basics', description: 'e.g. $175'}),
+    defineField({name: 'synopsis', title: 'Synopsis', type: 'array', of: [{type: 'block'}], group: 'basics'}),
+    defineField({name: 'registrationUrl', title: 'Registration page address', type: 'string', group: 'basics'}),
+    defineField({name: 'elfsightAppId', title: 'Elfsight form ID', type: 'string', group: 'basics',
+      description: 'The ID only, not the whole embed code.'}),
+
+    defineField({
+      name: 'auditions',
+      title: 'Audition dates',
+      type: 'array',
+      group: 'auditions',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({name: 'type', title: 'Type', type: 'string',
+              options: {list: [
+                {title: 'Vocal audition', value: 'vocal'},
+                {title: 'Dance call', value: 'dance'},
+                {title: 'Callbacks', value: 'callbacks'},
+                {title: 'Placement audition', value: 'placement'},
+              ]}, validation: (Rule) => Rule.required()}),
+            defineField({name: 'date', title: 'Date', type: 'date', validation: (Rule) => Rule.required()}),
+            defineField({name: 'startTime', title: 'Start time', type: 'string', description: 'e.g. 6:00pm'}),
+            defineField({name: 'endTime', title: 'End time', type: 'string', description: 'e.g. 9:00pm'}),
+            defineField({name: 'venue', title: 'Where', type: 'reference', to: [{type: 'venue'}],
+              description: 'This is what Ask Encore reads when someone asks where auditions are.',
+              validation: (Rule) => Rule.required()}),
+            defineField({name: 'notes', title: 'Notes', type: 'text', rows: 2}),
+          ],
+          preview: {select: {title: 'type', subtitle: 'date'}},
+        }),
+      ],
+    }),
+    defineField({name: 'auditionPrep', title: 'What to prepare', type: 'array', of: [{type: 'block'}], group: 'auditions'}),
+    defineField({name: 'virtualOption', title: 'Virtual auditions offered?', type: 'boolean', group: 'auditions', initialValue: false}),
+
+    defineField({
+      name: 'rehearsals',
+      title: 'Rehearsal schedule',
+      type: 'object',
+      group: 'rehearsals',
+      fields: [
+        defineField({name: 'startDate', title: 'First rehearsal', type: 'date'}),
+        defineField({name: 'endDate', title: 'Last rehearsal', type: 'date'}),
+        defineField({name: 'days', title: 'Days', type: 'string', description: 'e.g. Mon-Thu and Saturdays'}),
+        defineField({name: 'time', title: 'Time', type: 'string', description: 'e.g. 6:30-9:30pm'}),
+        defineField({name: 'venue', title: 'Where', type: 'reference', to: [{type: 'venue'}],
+          description: 'Often different from the audition venue — A Christmas Carol rehearses at St. George Academy.'}),
+        defineField({name: 'notes', title: 'Notes', type: 'text', rows: 2}),
+      ],
+    }),
+
+    defineField({
+      name: 'performances',
+      title: 'Performances',
+      type: 'array',
+      group: 'performances',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({name: 'date', title: 'Date', type: 'date', validation: (Rule) => Rule.required()}),
+            defineField({name: 'time', title: 'Time', type: 'string', description: 'e.g. 7:30pm'}),
+            defineField({name: 'venue', title: 'Where', type: 'reference', to: [{type: 'venue'}]}),
+            defineField({name: 'ticketUrl', title: 'ThunderTix link', type: 'url'}),
+            defineField({name: 'isSensory', title: 'Sensory-friendly performance', type: 'boolean', initialValue: false}),
+            defineField({name: 'isASL', title: 'ASL-interpreted performance', type: 'boolean', initialValue: false}),
+          ],
+          preview: {select: {title: 'date', subtitle: 'time'}},
+        }),
+      ],
+    }),
+    defineField({name: 'priceTiers', title: 'Ticket prices', type: 'string', group: 'performances', description: 'e.g. $22 / $18 / $15 / $10'}),
+
+    defineField({name: 'keyArt', title: 'Key art', type: 'image', options: {hotspot: true}, group: 'design'}),
+    defineField({name: 'cardArt', title: 'Card artwork', type: 'image', options: {hotspot: true}, group: 'design',
+      description: 'Wide crop used on listing cards.'}),
+    defineField({
+      name: 'palette',
+      title: 'Show colors',
+      type: 'object',
+      group: 'design',
+      description: 'Each show keeps its own color scheme. Enter hex codes like #e0922e.',
+      fields: [
+        defineField({name: 'bright', title: 'Bright', type: 'string'}),
+        defineField({name: 'mid', title: 'Mid', type: 'string'}),
+        defineField({name: 'deep', title: 'Deep', type: 'string'}),
+        defineField({name: 'tint', title: 'Tint', type: 'string'}),
+      ],
+    }),
+  ],
+  preview: {
+    select: {title: 'title', status: 'status', media: 'keyArt'},
+    prepare: ({title, status, media}) => ({title, subtitle: status, media}),
+  },
+})
