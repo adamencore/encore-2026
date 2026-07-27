@@ -116,7 +116,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/fonts/cabrio.css">
 <link rel="stylesheet" href="/fonts/mikado.css">
 <style>
@@ -487,6 +487,13 @@
   }
   .nav-toggle{margin-left:auto;}
 h2 em{color:var(--teal)}
+
+/* FIX: mobile overflow — aspect-ratio + min-height was forcing .aud-invite-photo to 384px
+   wide inside a 320px viewport (min-height won, so width = 240 x 16/10). Let width lead. */
+@media(max-width:620px){
+  .aud-invite{min-width:0;}
+  .aud-invite-photo{min-height:0;min-width:0;width:100%;}
+}
 </style>
 </head>
 <body>
@@ -580,16 +587,16 @@ h2 em{color:var(--teal)}
       <p class="lead">Open auditions and rolling enrollment, updated each season.</p>
     </div>
     <div class="aud-cards">
-      <a class="scard" href="/little-women-2026">
+      <a class="scard" href="/aspire-traditions">
         <div class="scard-media">
-          <img src="/img/shows/little-women.webp" alt="Little Women: The Musical" loading="lazy">
+          <img src="/img/shows/aspire-traditions-card.webp" alt="Aspire: Traditions" loading="lazy">
           <span class="scard-badge">Audition</span>
           <span class="scard-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
         </div>
         <div class="scard-foot">
-          <div class="scard-when">Auditions July 18</div>
-          <h3 class="scard-title">Little Women: The Musical</h3>
-          <div class="scard-meta">Signature Series · Ages 13–18</div>
+          <div class="scard-when">Auditions July 30</div>
+          <h3 class="scard-title">Aspire: Traditions</h3>
+          <div class="scard-meta">Aspire Performing Co. · Ages 12–18</div>
         </div>
       </a>
       <a class="scard" href="/little-mermaid-camp-2026">

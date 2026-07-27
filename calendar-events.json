@@ -67,6 +67,12 @@
       "program": "Aspire",
       "color": "#8e44ad",
       "thumb": null
+    },
+    "aspire-traditions": {
+      "name": "Aspire: Traditions",
+      "program": "Aspire Performing Co.",
+      "color": "#473a63",
+      "thumb": "/img/shows/aspire-traditions-card.webp"
     }
   },
   "events": [
@@ -198,20 +204,20 @@
     },
     {
       "show": "frozen-camp",
-      "type": "Performance",
-      "title": "Performance",
-      "start": "2026-06-12",
-      "end": null,
-      "time": "7:00pm",
-      "note": null
-    },
-    {
-      "show": "frozen-camp",
       "type": "Rehearsal",
       "title": "Tech",
       "start": "2026-06-12",
       "end": null,
       "time": "11am–3pm",
+      "note": null
+    },
+    {
+      "show": "frozen-camp",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-06-12",
+      "end": null,
+      "time": "7:00pm",
       "note": null
     },
     {
@@ -252,20 +258,20 @@
     },
     {
       "show": "lion-king-kids-camp",
-      "type": "Parent meeting",
-      "title": "Parent meeting",
-      "start": "2026-07-07",
-      "end": null,
-      "time": "1:30pm",
-      "note": null
-    },
-    {
-      "show": "lion-king-kids-camp",
       "type": "Rehearsal",
       "title": "Rehearsals",
       "start": "2026-07-07",
       "end": "2026-07-14",
       "time": null,
+      "note": null
+    },
+    {
+      "show": "lion-king-kids-camp",
+      "type": "Parent meeting",
+      "title": "Parent meeting",
+      "start": "2026-07-07",
+      "end": null,
+      "time": "1:30pm",
       "note": null
     },
     {
@@ -377,6 +383,33 @@
       "note": "Page to Stage trip to see Les Misérables · Tuacahn Amphitheatre · Ivins"
     },
     {
+      "show": "illuminate",
+      "type": "Audition",
+      "title": "Auditions",
+      "start": "2026-07-29",
+      "end": null,
+      "time": "10:00 AM–4:00 PM",
+      "note": "Illuminate auditions (vocal, dance & callbacks) · Electric Theater"
+    },
+    {
+      "show": "aspire-traditions",
+      "type": "Audition",
+      "title": "Vocal auditions",
+      "start": "2026-07-30",
+      "end": null,
+      "time": "5:00–7:00pm",
+      "note": "Electric Theater · ages 12–18 · prepare 45 seconds of a song of your choice"
+    },
+    {
+      "show": "aspire-traditions",
+      "type": "Audition",
+      "title": "Dance auditions",
+      "start": "2026-07-30",
+      "end": null,
+      "time": "7:00–9:00pm",
+      "note": "Electric Theater · combination taught at the audition"
+    },
+    {
       "show": "little-women",
       "type": "Parent meeting",
       "title": "Parent launch",
@@ -420,6 +453,69 @@
       "end": "2026-10-22",
       "time": "Thursdays 4–6pm",
       "note": null
+    },
+    {
+      "show": "illuminate",
+      "type": "Parent meeting",
+      "title": "Parent launch",
+      "start": "2026-08-14",
+      "end": null,
+      "time": "3:00 PM",
+      "note": "Illuminate parent launch · Electric Theater"
+    },
+    {
+      "show": "little-mermaid-camp",
+      "type": "Audition",
+      "title": "Auditions",
+      "start": "2026-08-14",
+      "end": null,
+      "time": "6:00–8:00 PM",
+      "note": "Little Mermaid Camp auditions · Electric Theater"
+    },
+    {
+      "show": "little-mermaid-camp",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-08-15",
+      "end": null,
+      "time": null,
+      "note": "Little Mermaid Camp rehearsals begin"
+    },
+    {
+      "show": "little-mermaid-camp",
+      "type": "Parent meeting",
+      "title": "Parent meeting",
+      "start": "2026-08-15",
+      "end": null,
+      "time": "9:00 AM",
+      "note": "Little Mermaid Camp parent meeting"
+    },
+    {
+      "show": "little-mermaid-camp",
+      "type": "Rehearsal",
+      "title": "Tech",
+      "start": "2026-08-20",
+      "end": null,
+      "time": "5:00–8:00 PM",
+      "note": "Little Mermaid Camp tech · Electric Theater"
+    },
+    {
+      "show": "little-mermaid-camp",
+      "type": "Performance",
+      "title": "Performance",
+      "start": "2026-08-21",
+      "end": null,
+      "time": "7:00 PM",
+      "note": "Little Mermaid Camp performance · Electric Theater"
+    },
+    {
+      "show": "aspire-traditions",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-08-21",
+      "end": "2027-03-05",
+      "time": "Fridays 1:00–3:00pm",
+      "note": "Electric Theater · holidays off"
     },
     {
       "show": "little-women",
@@ -512,21 +608,21 @@
       "note": null
     },
     {
-      "show": "peter-pan-jr",
-      "type": "Rehearsal",
-      "title": "Rehearsals",
-      "start": "2026-10-05",
-      "end": "2026-11-14",
-      "time": "Mon–Thurs 6:30–9pm, Sat 10am–1pm",
-      "note": null
-    },
-    {
       "show": "christmas-carol",
       "type": "Rehearsal",
       "title": "Rehearsals",
       "start": "2026-10-05",
       "end": "2026-11-21",
       "time": "Mon–Thurs + Sat",
+      "note": null
+    },
+    {
+      "show": "peter-pan-jr",
+      "type": "Rehearsal",
+      "title": "Rehearsals",
+      "start": "2026-10-05",
+      "end": "2026-11-14",
+      "time": "Mon–Thurs 6:30–9pm, Sat 10am–1pm",
       "note": null
     },
     {
@@ -620,6 +716,15 @@
       "note": null
     },
     {
+      "show": "page-to-stage",
+      "type": "Workshop",
+      "title": "The Outsiders — workshop",
+      "start": "2026-11-11",
+      "end": null,
+      "time": "4:00–6:00 PM",
+      "note": "Page to Stage workshop · Electric Theater · St. George"
+    },
+    {
       "show": "peter-pan-jr",
       "type": "Rehearsal",
       "title": "Tech week",
@@ -627,6 +732,15 @@
       "end": "2026-11-18",
       "time": null,
       "note": null
+    },
+    {
+      "show": "page-to-stage",
+      "type": "Page to Stage",
+      "title": "The Outsiders — live show",
+      "start": "2026-11-14",
+      "end": null,
+      "time": null,
+      "note": "Page to Stage trip to see The Outsiders · venue TBA"
     },
     {
       "show": "peter-pan-jr",
@@ -674,85 +788,13 @@
       "note": null
     },
     {
-      "show": "page-to-stage",
-      "type": "Workshop",
-      "title": "The Outsiders — workshop",
-      "start": "2026-11-11",
-      "end": null,
-      "time": "4:00–6:00 PM",
-      "note": "Page to Stage workshop · Electric Theater · St. George"
-    },
-    {
-      "show": "page-to-stage",
-      "type": "Page to Stage",
-      "title": "The Outsiders — live show",
-      "start": "2026-11-14",
-      "end": null,
-      "time": null,
-      "note": "Page to Stage trip to see The Outsiders · venue TBA"
-    },
-    {
-      "show": "little-mermaid-camp",
-      "type": "Audition",
-      "title": "Auditions",
-      "start": "2026-08-14",
-      "end": null,
-      "time": "6:00–8:00 PM",
-      "note": "Little Mermaid Camp auditions · Electric Theater"
-    },
-    {
-      "show": "little-mermaid-camp",
-      "type": "Parent meeting",
-      "title": "Parent meeting",
-      "start": "2026-08-15",
-      "end": null,
-      "time": "9:00 AM",
-      "note": "Little Mermaid Camp parent meeting"
-    },
-    {
-      "show": "little-mermaid-camp",
-      "type": "Rehearsal",
-      "title": "Rehearsals",
-      "start": "2026-08-15",
-      "end": null,
-      "time": null,
-      "note": "Little Mermaid Camp rehearsals begin"
-    },
-    {
-      "show": "little-mermaid-camp",
-      "type": "Rehearsal",
-      "title": "Tech",
-      "start": "2026-08-20",
-      "end": null,
-      "time": "5:00–8:00 PM",
-      "note": "Little Mermaid Camp tech · Electric Theater"
-    },
-    {
-      "show": "little-mermaid-camp",
+      "show": "aspire-traditions",
       "type": "Performance",
-      "title": "Performance",
-      "start": "2026-08-21",
-      "end": null,
-      "time": "7:00 PM",
-      "note": "Little Mermaid Camp performance · Electric Theater"
-    },
-    {
-      "show": "illuminate",
-      "type": "Audition",
-      "title": "Auditions",
-      "start": "2026-07-29",
-      "end": null,
-      "time": "10:00 AM–4:00 PM",
-      "note": "Illuminate auditions (vocal, dance & callbacks) · Electric Theater"
-    },
-    {
-      "show": "illuminate",
-      "type": "Parent meeting",
-      "title": "Parent launch",
-      "start": "2026-08-14",
-      "end": null,
-      "time": "3:00 PM",
-      "note": "Illuminate parent launch · Electric Theater"
+      "title": "Disneyland Resort performance trip",
+      "start": "2027-03-08",
+      "end": "2027-03-11",
+      "time": null,
+      "note": "Disney California Adventure Park · Disneyland Resort"
     }
   ]
 }
