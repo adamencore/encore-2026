@@ -55,6 +55,40 @@
     if (href) link.setAttribute('href', href);
   }
 
+
+  /* ---------------------------------------------------------
+     Footer: add the Classes link to the Explore column.
+     Done here rather than editing ~66 page files by hand.
+     Idempotent and self-removing if the link is ever baked in.
+     --------------------------------------------------------- */
+  function addClassesToFooter() {
+    try {
+      var cols = document.querySelectorAll('footer .foot-col');
+      for (var i = 0; i < cols.length; i++) {
+        var h = cols[i].querySelector('h5');
+        if (!h || h.textContent.trim().toLowerCase() !== 'explore') continue;
+
+        // already present (baked into the HTML, or added by a previous run)
+        if (cols[i].querySelector('a[href="/classes"]')) return;
+
+        var link = document.createElement('a');
+        link.href = '/classes';
+        link.textContent = 'Classes';
+
+        // sit it next to Programs by Age, which is its natural neighbour
+        var programs = cols[i].querySelector('a[href="/programs"]');
+        if (programs && programs.nextSibling) {
+          cols[i].insertBefore(link, programs.nextSibling);
+        } else if (programs) {
+          cols[i].appendChild(link);
+        } else {
+          cols[i].appendChild(link);
+        }
+        return;
+      }
+    } catch (e) { /* never break the page over a footer link */ }
+  }
+
   function go() {
     if (!window.fetch) return;
     fetch(ENDPOINT, { credentials: 'omit' })
@@ -65,9 +99,14 @@
       .catch(function () { /* leave the page exactly as it is */ });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', go);
-  } else {
+  function init() {
+    addClassesToFooter();   // runs regardless of whether Sanity responds
     go();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
   }
 })();
