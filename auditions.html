@@ -494,6 +494,23 @@ h2 em{color:var(--teal)}
   .aud-invite{min-width:0;}
   .aud-invite-photo{min-height:0;min-width:0;width:100%;}
 }
+
+/* ===== FULL-BLEED AUDITIONS HERO ===== */
+.hero-full{position:relative;min-height:clamp(470px,64vh,660px);display:flex;align-items:flex-end;overflow:hidden;background:#241c38;}
+.hero-full-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;z-index:0;}
+.hero-full-veil{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(102deg,rgba(28,24,48,.86) 0%,rgba(28,24,48,.50) 54%,rgba(28,24,48,.20) 100%),
+  linear-gradient(to top,rgba(28,24,48,.80),rgba(28,24,48,0) 60%);}
+.hero-full-in{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:150px 28px 74px;color:var(--cream);}
+.hero-full-in .aud-eyebrow{display:inline-block;margin-bottom:12px;}
+.hero-full-in h1{margin:0 0 16px;}
+.hero-full-in .aud-sub{max-width:640px;margin:0 0 26px;}
+.hero-full-in .aud-hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+@media(max-width:700px){
+  .hero-full{min-height:clamp(520px,74vh,640px);}
+  .hero-full-in{padding:132px 20px 56px;}
+  .hero-full-bg{object-position:center 34%;}
+}
 </style>
 </head>
 <body>
@@ -532,48 +549,28 @@ h2 em{color:var(--teal)}
 </div>
 
 <!-- ========== BREADCRUMB ========== -->
-<nav class="crumbs" aria-label="Breadcrumb">
-  <div class="wrap">
-    <ol>
-      <li><a href="/">Home</a></li>
-      <li aria-current="page">Sensory-Friendly Performances</li>
-    </ol>
-  </div>
-</nav>
 
 
 <main id="main">
 
 <!-- BREADCRUMB -->
-<nav class="crumbs" aria-label="Breadcrumb">
-  <div class="wrap">
-    <ol>
-      <li><a href="/">Home</a></li>
-      <li aria-current="page">Auditions</li>
-    </ol>
-  </div>
-</nav>
 
 <!-- HERO -->
-<header class="hero">
-  <div class="wrap">
-    <div class="aud-hero">
-      <picture>
-        <source type="image/webp" srcset="/img/gallery/newsies-company.webp">
-        <img class="aud-hero-bg" src="/img/gallery/newsies-company.jpg" alt="Encore's cast performing a high-energy number from Newsies on stage" fetchpriority="high">
-      </picture>
-      <div class="aud-veil" aria-hidden="true"></div>
-      <div class="aud-hero-in">
-        <span class="aud-eyebrow">Auditions · Ages 7 to 18</span>
-        <h1>Auditions at <em>Encore</em></h1>
-        <p class="aud-sub">Every season we cast young performers in fully staged musicals at the historic Electric Theater. No experience required, just bring your voice and your nerve.</p>
-        <div class="aud-hero-actions">
-          <a href="#casting" class="btn btn-light">See what's casting →</a>
-          <a href="#how" class="btn btn-ghost" style="border-color:rgba(233,228,224,.45);color:var(--cream);">How it works</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<header class="hero-full">
+<picture>
+<source type="image/webp" srcset="/img/gallery/newsies-company.webp">
+<img class="hero-full-bg" src="/img/gallery/newsies-company.jpg" alt="Encore's cast performing a high-energy number from Newsies on stage" fetchpriority="high" decoding="async">
+</picture>
+<span class="hero-full-veil" aria-hidden="true"></span>
+<div class="hero-full-in">
+<span class="aud-eyebrow">Auditions &middot; Ages 7 to 18</span>
+<h1>Auditions at <em>Encore</em></h1>
+<p class="aud-sub">Every season we cast young performers in fully staged musicals at the historic Electric Theater. No experience required, just bring your voice and your nerve.</p>
+<div class="aud-hero-actions">
+<a href="#casting" class="btn btn-light">See what&rsquo;s casting &rarr;</a>
+<a href="#how" class="btn btn-ghost" style="border-color:rgba(233,228,224,.45);color:var(--cream);">How it works</a>
+</div>
+</div>
 </header>
 
 <!-- CURRENT AUDITIONS -->

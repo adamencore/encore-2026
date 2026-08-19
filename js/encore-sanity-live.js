@@ -1,43 +1,37 @@
 /* ============================================================
-   ENCORE — live content from Sanity
+   ENCORE, site-wide announcement bar + footer Classes link
    ------------------------------------------------------------
-   Controls the announcement bar at the top of every page.
-   Edit it in Sanity under "Site Settings", hit Publish,
-   refresh the site. No pushing, no GitHub.
+   TO CHANGE THE ANNOUNCEMENT BAR, edit the three lines below.
+   It updates on EVERY page of the site. Save, push, done.
 
-   It reads from /.netlify/functions/site-content, NOT from
-   Sanity directly. That endpoint holds the read token on the
-   server, so the Sanity dataset stays private and no password
-   is ever exposed in the browser.
-
-   SAFE BY DESIGN: if anything fails, this script does nothing
-   and the bar keeps whatever text is already in the page.
+   Set SHOW to false to hide the bar entirely.
    ============================================================ */
 (function () {
   'use strict';
 
-  var ENDPOINT = '/.netlify/functions/site-content';
+  var ANNOUNCEMENT = {
+    show: true,
+    text: 'Fall 2026 classes now open for registration!',
+    link: '/classes'
+  };
 
   function applyAnnouncement(a) {
     if (!a) return;
-
     var bar = document.getElementById('anncBar') || document.querySelector('.annc');
     if (!bar) return;
 
-    if (a.enabled === false) {
+    if (a.show === false) {
       bar.style.display = 'none';
       document.documentElement.style.setProperty('--annc-h', '0px');
       return;
     }
-
     var link = bar.querySelector('.annc-link');
     if (!link) return;
-
     var text = (a.text || '').trim();
     var href = (a.link || '').trim();
     if (!text) return;
 
-    // If the message CHANGED, show it again to people who dismissed the old one.
+    /* If the message changed, show it again to anyone who dismissed the old one. */
     try {
       var seenKey = 'encoreAnncSeen';
       if (window.localStorage.getItem(seenKey) !== text) {
@@ -49,12 +43,11 @@
           if (k && k.indexOf('encoreAnnc_') === 0) window.localStorage.removeItem(k);
         }
       }
-    } catch (e) { /* private browsing — ignore */ }
+    } catch (e) { /* private browsing */ }
 
     link.textContent = text;
     if (href) link.setAttribute('href', href);
   }
-
 
   /* ---------------------------------------------------------
      Footer: add the Classes link to the Explore column.
@@ -89,19 +82,9 @@
     } catch (e) { /* never break the page over a footer link */ }
   }
 
-  function go() {
-    if (!window.fetch) return;
-    fetch(ENDPOINT, { credentials: 'omit' })
-      .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (d) {
-        if (d && d.ok && d.announcement) applyAnnouncement(d.announcement);
-      })
-      .catch(function () { /* leave the page exactly as it is */ });
-  }
-
   function init() {
-    addClassesToFooter();   // runs regardless of whether Sanity responds
-    go();
+    applyAnnouncement(ANNOUNCEMENT);
+    addClassesToFooter();
   }
 
   if (document.readyState === 'loading') {
