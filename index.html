@@ -666,6 +666,9 @@ html,body{overflow-x:clip;}
 
 /* ===== CLASSES POPUP ===== */
 .cpop{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .26s ease;}
+.cpop[hidden]{display:none !important;}
+.cpop:not(.is-open){pointer-events:none;}
+.cpop.is-open{pointer-events:auto;}
 .cpop.is-open{opacity:1;}
 .cpop-veil{position:absolute;inset:0;background:rgba(20,16,34,.72);backdrop-filter:blur(3px);}
 .cpop-box{position:relative;z-index:1;width:min(880px,100%);max-height:calc(100vh - 40px);overflow:auto;background:var(--nh-purple,#322949);color:var(--cream,#e9e4e0);border-radius:26px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);transform:translateY(14px) scale(.98);transition:transform .3s cubic-bezier(.22,1,.36,1);}
