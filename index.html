@@ -663,6 +663,34 @@ html,body{overflow-x:clip;}
 .cf-note{font-size:14.5px;color:rgba(233,228,224,.72);}
 @media(max-width:900px){.cf-grid{grid-template-columns:repeat(3,1fr);row-gap:30px;}.cf-photo{border-radius:20px;}}
 @media(max-width:560px){.cf-grid{grid-template-columns:repeat(2,1fr);row-gap:26px;}.cf-photo{border-radius:18px;}}
+
+/* ===== CLASSES POPUP ===== */
+.cpop{position:fixed;inset:0;z-index:400;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .26s ease;}
+.cpop.is-open{opacity:1;}
+.cpop-veil{position:absolute;inset:0;background:rgba(20,16,34,.72);backdrop-filter:blur(3px);}
+.cpop-box{position:relative;z-index:1;width:min(880px,100%);max-height:calc(100vh - 40px);overflow:auto;background:var(--nh-purple,#322949);color:var(--cream,#e9e4e0);border-radius:26px;box-shadow:0 40px 90px -30px rgba(0,0,0,.7);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);transform:translateY(14px) scale(.98);transition:transform .3s cubic-bezier(.22,1,.36,1);}
+.cpop.is-open .cpop-box{transform:none;}
+.cpop-media{position:relative;overflow:hidden;border-radius:26px 0 0 26px;min-height:280px;}
+.cpop-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:56% 42%;}
+.cpop-body{padding:clamp(28px,3.4vw,44px);}
+.cpop-kicker{display:inline-block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--nh-lav,#d9cbf4);margin-bottom:12px;}
+.cpop-body h2{font-family:var(--font-display);font-weight:600;font-size:clamp(24px,3.1vw,34px);line-height:1.12;letter-spacing:-.02em;margin:0 0 12px;color:var(--cream,#e9e4e0);}
+.cpop-body h2 em{font-style:italic;color:var(--nh-lav,#d9cbf4);}
+.cpop-body p{font-size:16px;line-height:1.62;color:rgba(233,228,224,.84);margin:0 0 24px;}
+.cpop-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+.cpop-btn{display:inline-flex;align-items:center;gap:8px;background:var(--cream,#e9e4e0);color:var(--nh-purple,#322949);font-family:var(--font-display);font-weight:600;font-size:15.5px;padding:14px 26px;border-radius:999px;text-decoration:none;transition:transform .2s,background .2s;}
+.cpop-btn:hover{transform:translateY(-2px);background:#fff;}
+.cpop-later{background:none;border:none;color:rgba(233,228,224,.72);font-size:14.5px;cursor:pointer;padding:10px 6px;text-decoration:underline;font-family:inherit;}
+.cpop-later:hover{color:var(--cream,#e9e4e0);}
+.cpop-x{position:absolute;top:12px;right:14px;z-index:2;background:rgba(20,16,34,.4);border:none;color:var(--cream,#e9e4e0);font-size:26px;line-height:1;width:38px;height:38px;border-radius:50%;cursor:pointer;transition:background .2s;}
+.cpop-x:hover{background:rgba(20,16,34,.7);}
+@media(max-width:720px){
+  .cpop-box{grid-template-columns:1fr;}
+  .cpop-media{min-height:170px;border-radius:26px 26px 0 0;}
+}
+@media(prefers-reduced-motion:reduce){
+  .cpop,.cpop-box{transition:none;}
+}
 </style>
 </head>
 <body>
@@ -730,7 +758,7 @@ html,body{overflow-x:clip;}
         <h2>What's <em>going on</em> at Encore</h2>
       </div>
     </div>
-    <div class="pill-grid"><a class="evp reveal" href="/aspire-traditions" aria-label="Aspire: Traditions"><span class="evp-bg"><img src="img/shows/aspire-traditions-card.webp" width="1200" height="750" loading="lazy" alt=""></span><span class="evp-scrim"></span><span class="evp-mark" aria-hidden="true">e</span><span class="evp-txt"><span class="evp-status">Audition now</span><h3 class="evp-name">Aspire: Traditions</h3><span class="evp-when">Aspire Performing Co. &middot; ages 12&ndash;18</span></span><span class="evp-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="evp reveal" href="/peter-pan-jr-2026" aria-label="Disney's Peter Pan Jr."><span class="evp-bg"><img src="img/shows/peter-pan-jr/art-md.webp" width="619" height="1100" loading="lazy" alt=""></span><span class="evp-scrim"></span><span class="evp-mark" aria-hidden="true">e</span><span class="evp-txt"><span class="evp-status">Audition now</span><h3 class="evp-name">Peter Pan Jr.</h3><span class="evp-when">Emerging Artists &middot; ages 9&ndash;13</span></span><span class="evp-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="evp reveal" href="/little-mermaid-camp-2026" aria-label="Little Mermaid Jr. Camp"><span class="evp-bg"><img src="img/shows/little-mermaid-camp-keyart.webp" width="1398" height="1104" loading="lazy" alt=""></span><span class="evp-scrim"></span><span class="evp-mark" aria-hidden="true">e</span><span class="evp-txt"><span class="evp-status">Performs Aug 21</span><h3 class="evp-name">Little Mermaid Jr. Camp</h3><span class="evp-when">Camps &middot; ages 5&ndash;12</span></span><span class="evp-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="evp reveal" href="/a-christmas-carol-2026" aria-label="A Christmas Carol"><span class="evp-bg"><img src="img/shows/a-christmas-carol-card.webp" width="1200" height="750" loading="lazy" alt=""></span><span class="evp-scrim"></span><span class="evp-mark" aria-hidden="true">e</span><span class="evp-txt"><span class="evp-status">Audition now</span><h3 class="evp-name">A Christmas Carol</h3><span class="evp-when">Signature Series &middot; ages 13&ndash;18</span></span><span class="evp-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a></div>
+    <div class="pill-grid"><a class="evp reveal" href="/classes" aria-label="Classes and Workshops"><span class="evp-bg"><img src="img/classes/musical-theatre-foundations.webp" width="1200" height="750" loading="lazy" alt=""></span><span class="evp-scrim"></span><span class="evp-mark" aria-hidden="true">e</span><span class="evp-txt"><span class="evp-status">Now enrolling</span><h3 class="evp-name">Classes &amp; Workshops</h3><span class="evp-when">Fall 2026 &middot; ages 7&ndash;18</span></span><span class="evp-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="evp reveal" href="/peter-pan-jr-2026" aria-label="Disney's Peter Pan Jr."><span class="evp-bg"><img src="img/shows/peter-pan-jr/art-md.webp" width="619" height="1100" loading="lazy" alt=""></span><span class="evp-scrim"></span><span class="evp-mark" aria-hidden="true">e</span><span class="evp-txt"><span class="evp-status">Audition now</span><h3 class="evp-name">Peter Pan Jr.</h3><span class="evp-when">Emerging Artists &middot; ages 9&ndash;13</span></span><span class="evp-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="evp reveal" href="/little-mermaid-camp-2026" aria-label="Little Mermaid Jr. Camp"><span class="evp-bg"><img src="img/shows/little-mermaid-camp-keyart.webp" width="1398" height="1104" loading="lazy" alt=""></span><span class="evp-scrim"></span><span class="evp-mark" aria-hidden="true">e</span><span class="evp-txt"><span class="evp-status">Performs Aug 21</span><h3 class="evp-name">Little Mermaid Jr. Camp</h3><span class="evp-when">Camps &middot; ages 5&ndash;12</span></span><span class="evp-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="evp reveal" href="/a-christmas-carol-2026" aria-label="A Christmas Carol"><span class="evp-bg"><img src="img/shows/a-christmas-carol-card.webp" width="1200" height="750" loading="lazy" alt=""></span><span class="evp-scrim"></span><span class="evp-mark" aria-hidden="true">e</span><span class="evp-txt"><span class="evp-status">Audition now</span><h3 class="evp-name">A Christmas Carol</h3><span class="evp-when">Signature Series &middot; ages 13&ndash;18</span></span><span class="evp-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a></div>
     <div class="events-foot reveal">
       <a href="/auditions" class="btn btn-dark">See all upcoming auditions →</a>
     </div>
@@ -1221,5 +1249,63 @@ html,body{overflow-x:clip;}
 })();
 </script>
 
+
+<!-- ========== CLASSES POPUP (homepage, first visit) ========== -->
+<div class="cpop" id="cpop" role="dialog" aria-modal="true" aria-labelledby="cpop-h" aria-describedby="cpop-d" hidden>
+  <div class="cpop-veil" data-cpop-close></div>
+  <div class="cpop-box" role="document">
+    <button class="cpop-x" type="button" aria-label="Close" data-cpop-close>&times;</button>
+    <div class="cpop-media" aria-hidden="true">
+      <img src="/img/blog/little-mermaid-camp-underway/dance-class.webp" alt="" loading="lazy"
+           onerror="if(this.dataset.fb){this.closest('.cpop-media').style.display='none';}else{this.dataset.fb=1;this.src='/img/blog/little-mermaid-camp-underway/dance-class.jpg';}">
+    </div>
+    <div class="cpop-body">
+      <span class="cpop-kicker">Fall 2026</span>
+      <h2 id="cpop-h">Classes are open for <em>registration</em></h2>
+      <p id="cpop-d">Five weekly classes in dance, improv, and audition technique, taught by working professionals and ending together on the Electric Theater stage in December.</p>
+      <div class="cpop-actions">
+        <a class="cpop-btn" href="/classes">Find your class today</a>
+        <button class="cpop-later" type="button" data-cpop-close>Maybe later</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='encoreClassesPop2026';
+  try{ if(localStorage.getItem(KEY)) return; }catch(e){}
+  var pop=document.getElementById('cpop'); if(!pop) return;
+  var lastFocus=null;
+
+  function close(){
+    pop.classList.remove('is-open');
+    setTimeout(function(){ pop.hidden=true; }, 260);
+    document.documentElement.style.overflow='';
+    try{ localStorage.setItem(KEY,'1'); }catch(e){}
+    document.removeEventListener('keydown', onKey);
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  function onKey(e){
+    if(e.key==='Escape'){ close(); return; }
+    if(e.key!=='Tab') return;
+    var f=pop.querySelectorAll('a[href],button:not([disabled])');
+    if(!f.length) return;
+    var first=f[0], last=f[f.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+  function open(){
+    lastFocus=document.activeElement;
+    pop.hidden=false;
+    requestAnimationFrame(function(){ pop.classList.add('is-open'); });
+    document.documentElement.style.overflow='hidden';
+    document.addEventListener('keydown', onKey);
+    var btn=pop.querySelector('.cpop-btn'); if(btn) btn.focus();
+  }
+  pop.addEventListener('click', function(e){ if(e.target.closest('[data-cpop-close]')) close(); });
+  // let the page settle first so it does not fight the hero loading
+  setTimeout(open, 1400);
+})();
+</script>
 </body>
 </html>
