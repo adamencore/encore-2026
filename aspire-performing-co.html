@@ -447,6 +447,18 @@
   .aspire-wordmark{margin:0 0 4px;line-height:0;}
   .aspire-wordmark .asp-logo-svg{width:clamp(230px,40vw,430px);height:auto;display:block;color:var(--cream);}
   @media(max-width:560px){.aspire-wordmark .asp-logo-svg{width:min(74vw,320px);}}
+
+/* ===== ASPIRE WAITLIST ===== */
+.wl-card{max-width:860px;margin:0 auto;background:var(--paper,#fdfcfa);border:1px solid var(--line,rgba(50,41,73,.14));border-radius:var(--radius-lg,26px);padding:clamp(28px,3.6vw,48px);}
+.wl-head{margin-bottom:26px;}
+.wl-eyebrow{display:inline-block;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.wl-head h2{font-family:var(--font-display);font-weight:600;font-size:clamp(24px,3.2vw,34px);line-height:1.12;letter-spacing:-.02em;margin:0 0 12px;color:var(--charcoal);}
+.wl-head h2 em{font-style:italic;color:var(--teal);}
+.wl-head p{font-size:16px;line-height:1.65;color:var(--muted);margin:0 0 10px;}
+.wl-note{font-size:14.5px;opacity:.9;}
+.wl-fallback{font-size:13px;color:var(--muted);line-height:1.6;margin:18px 0 0;}
+.wl-fallback a{color:var(--charcoal);font-weight:600;}
+@media(max-width:560px){.wl-card{padding:24px 18px;}}
 </style>
 </head>
 <body>
@@ -599,7 +611,8 @@
             <p style="margin:0;font-size:14.5px;color:rgba(233,228,224,.85);line-height:1.5;">Villains Night takes the Electric Theater stage October 29&ndash;30, with a free sensory-friendly performance on October 28. Ticket details are coming soon.</p>
           </div>
           <div class="act">
-            <a href="/aspire-traditions" class="btn btn-light">About Aspire: Traditions &rarr;</a>
+            <a href="#waitlist" class="btn btn-light">Join the waitlist &rarr;</a>
+            <a href="/aspire-traditions" class="btn btn-ghost" style="border-color:rgba(233,228,224,.4);color:var(--cream);">About Aspire: Traditions &rarr;</a>
             <a href="/sensory-friendly-performances" class="btn btn-ghost" style="border-color:rgba(233,228,224,.4);color:var(--cream);">Sensory-friendly show →</a>
             <p style="margin:13px 0 0;font-size:.8rem;opacity:.78;line-height:1.5;">Cast rehearsals run through Oct 22 at the Electric Theater. Performances Oct 29&ndash;30 at 5:00 &amp; 7:30 PM.</p>
           </div>
@@ -816,6 +829,25 @@
       </div>
     </div>
   </section>
+  <!-- ========== WAITLIST ========== -->
+  <section id="waitlist" aria-labelledby="wl-h" style="padding-top:0;">
+    <div class="wrap">
+      <div class="wl-card reveal">
+        <div class="wl-head">
+          <span class="wl-eyebrow">Auditions are closed for now</span>
+          <h2 id="wl-h">Join the <em>waitlist</em></h2>
+          <p>Aspire auditions come around twice a year and spots are limited. Add your Young Artist to the waitlist and you will hear from us first when the next round opens, before it is announced anywhere else.</p>
+          <p class="wl-note">We will also be in touch if a place opens mid-season, which does happen.</p>
+        </div>
+        <!-- Elfsight Form Builder | Encore Contact Form -->
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-a43aa25d-52a3-4a11-914a-60ce99d4f6aa" data-elfsight-app-lazy></div>
+        <p class="wl-fallback">If the form does not load, email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> or call <a href="tel:+14354140049">(435) 414-0049</a> and we will add you.</p>
+      </div>
+    </div>
+  </section>
+
+  
 
   <!-- ========== CTA ========== -->
   <section>
