@@ -194,6 +194,95 @@ h2 em{color:var(--teal)}
   .tk-cast{flex:1 1 auto;}
   .tk-go{flex:0 0 auto;}
 }
+
+/* ===== sections carried over from the tickets page ===== */
+.band{background:var(--charcoal);border-radius:var(--radius-lg);padding:48px;color:var(--cream);display:flex;justify-content:space-between;align-items:center;gap:36px;flex-wrap:wrap;}
+.band h2{font-family:var(--font-display);font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.1;letter-spacing:-.035em;max-width:560px;}
+.band h2 em{font-style:italic;color:#cfc6b4;}
+.band p{color:rgba(233,228,224,.8);margin-top:12px;font-size:15.5px;line-height:1.6;max-width:540px;}
+.band .phone{display:inline-flex;align-items:center;gap:11px;background:var(--cream);color:var(--charcoal);border-radius:100px;padding:14px 24px;font-weight:600;font-size:16px;white-space:nowrap;}
+.band .phone .ic{width:30px;height:30px;border-radius:50%;background:var(--charcoal);color:var(--cream);display:grid;place-items:center;font-size:13px;}
+.band{padding:34px 26px;}
+.sensory{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:34px 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;}
+.sensory .l{display:flex;align-items:center;gap:18px;}
+.sensory .star{flex:none;width:52px;height:52px;border-radius:50%;background:var(--charcoal);color:var(--cream);display:grid;place-items:center;font-size:22px;}
+.sensory h3{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--charcoal);line-height:1.15;}
+.sensory p{color:var(--muted);font-size:14.5px;margin-top:4px;}
+.sensory{padding:26px;}
+.incl-intro{max-width:720px;color:var(--charcoal-soft);font-size:15.5px;line-height:1.7;margin-bottom:34px;}
+.incl-intro a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
+.incl-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+.incl-groups{grid-template-columns:1fr;}
+.incl-group{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;}
+.incl-group h3{font-family:var(--font-display);font-size:22px;font-weight:600;color:var(--charcoal);margin-bottom:16px;display:flex;align-items:center;gap:11px;}
+.incl-group h3 .gi{flex:none;width:34px;height:34px;border-radius:50%;background:var(--cream);display:grid;place-items:center;font-size:15px;}
+.incl-item{padding:14px 0;border-top:1px solid var(--line);}
+.incl-item:first-of-type{border-top:0;padding-top:2px;}
+.incl-item .t{font-weight:600;font-size:14.5px;color:var(--charcoal);margin-bottom:4px;}
+.incl-item .d{font-size:14px;color:var(--charcoal-soft);line-height:1.6;}
+.incl-item .d a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
+.gi{flex:none;width:34px;height:34px;border-radius:50%;background:var(--cream);display:grid;place-items:center;font-size:15px;}
+.ic{width:30px;height:30px;border-radius:50%;background:var(--charcoal);color:var(--cream);display:grid;place-items:center;font-size:13px;}
+.ic svg,.icon svg{display:block;}
+.et{background:var(--charcoal);border-radius:var(--radius-lg);padding:56px 48px;color:var(--cream);}
+.et .pill{background:rgba(233,228,224,.1);border-color:rgba(233,228,224,.2);color:var(--cream);}
+.et h2{font-family:var(--font-display);font-weight:500;font-size:clamp(28px,3.6vw,42px);color:var(--cream);letter-spacing:-.035em;margin:18px 0 16px;}
+.et h2 em{font-style:italic;color:#cfc6b4;}
+.et > p{color:rgba(233,228,224,.82);font-size:15.5px;line-height:1.7;max-width:680px;}
+.et{padding:38px 24px;}
+.et-points{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0;}
+.et-points{grid-template-columns:1fr;}
+.et-point{background:rgba(233,228,224,.06);border:1px solid rgba(233,228,224,.14);border-radius:20px;padding:24px;}
+.et-point .t{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:8px;}
+.et-point p{color:rgba(233,228,224,.78);font-size:14px;line-height:1.6;}
+.et-point a{color:#cfc6b4;font-weight:600;}
+.et-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.star{flex:none;width:52px;height:52px;border-radius:50%;background:var(--charcoal);color:var(--cream);display:grid;place-items:center;font-size:22px;}
+.phone{display:inline-flex;align-items:center;gap:11px;background:var(--cream);color:var(--charcoal);border-radius:100px;padding:14px 24px;font-weight:600;font-size:16px;white-space:nowrap;}
+.phone .ic{width:30px;height:30px;border-radius:50%;background:var(--charcoal);color:var(--cream);display:grid;place-items:center;font-size:13px;}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);color:var(--charcoal);padding:9px 18px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.04em;}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--charcoal);}
+.pill{background:rgba(233,228,224,.1);border-color:rgba(233,228,224,.2);color:var(--cream);}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--charcoal);}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:40px;flex-wrap:wrap;}
+.sec-head h2,.sec-head h1{font-family:var(--font-display);font-weight:500;font-size:clamp(28px,3.6vw,46px);line-height:1.05;letter-spacing:-.035em;color:var(--charcoal);max-width:600px;}
+.sec-head h2 em,.sec-head h1 em{font-style:italic;}
+.sec-head .lead{max-width:380px;color:var(--muted);font-size:15.5px;line-height:1.6;}
+.lead{max-width:380px;color:var(--muted);font-size:15.5px;line-height:1.6;}
+.sensory .l{display:flex;align-items:center;gap:18px;}
+.et-point .t, .incl-item .t{font-weight:600;font-size:14.5px;color:var(--charcoal);margin-bottom:4px;}
+.et-point .t, .incl-item .t{font-family:var(--font-display);font-size:18px;font-weight:600;margin-bottom:8px;}
+.et-point .t, .incl-item .t{font-family:var(--font-display);font-size:19px;font-weight:600;margin-bottom:6px;}
+.et-point .d, .incl-item .d{font-size:14px;color:var(--charcoal-soft);line-height:1.6;}
+.et-point .d a, .incl-item .d a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
+@media(max-width:980px){
+    .nav-links,.nav-cta{display:none;}
+    .nav-toggle{display:flex !important;}
+    .tk-grid{grid-template-columns:1fr 1fr;}
+    .band{padding:34px 26px;}
+    .sensory{padding:26px;}
+    .form-wrap{padding:30px 24px;}
+    .incl-groups{grid-template-columns:1fr;}
+    .et{padding:38px 24px;}
+    .et-points{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr 1fr;}
+  }
+
+/* breakpoints carried over with those sections */
+@media(max-width:560px){
+    .wrap{padding:0 18px;}
+    .tk-grid{grid-template-columns:1fr;}
+    .grid2{grid-template-columns:1fr;}
+    .foot-top{grid-template-columns:1fr;}
+    .hero-card{padding:28px;min-height:340px;}
+  }
+@media(max-width:560px){.foot-top{grid-template-columns:1fr;}}
+
+/* the carried sections sit on dark panels: keep their text inheriting the panel colour */
+.et .t,.et .d,.et-point .t,.et-point .d{color:inherit;}
+.et-point .t{color:var(--cream,#e9e4e0);}
+.et-point .d,.et-point p{color:rgba(233,228,224,.82);}
+.incl-item .t{color:var(--charcoal,#322949);}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TheaterEvent", "name": "Little Women: The Musical", "description": "Tickets for Little Women: The Musical at the Historic Electric Theater in St. George, Utah. Nine performances September 5 to 12, 2026, including a sensory-friendly matinee and an ASL interpreted night.", "image": "https://www.encorepa.org/img/shows/little-women.jpg", "url": "https://www.encorepa.org/little-women-tickets", "startDate": "2026-09-05T14:00:00-06:00", "endDate": "2026-09-12T21:00:00-06:00", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "PerformingArtsTheater", "name": "The Historic Electric Theater", "address": {"@type": "PostalAddress", "streetAddress": "68 E Tabernacle St", "addressLocality": "St. George", "addressRegion": "UT", "postalCode": "84770", "addressCountry": "US"}}, "organizer": {"@type": "Organization", "name": "Encore Performing Arts", "url": "https://www.encorepa.org"}, "offers": {"@type": "Offer", "url": "https://encoreperformingarts.thundertix.com/events/270667", "availability": "https://schema.org/InStock", "validFrom": "2026-08-22T09:00:00-06:00"}, "subEvent": [{"@type": "TheaterEvent", "name": "Little Women: The Musical (Full company)", "startDate": "2026-09-05T14:00:00-06:00", "location": {"@type": "PerformingArtsTheater", "name": "The Historic Electric Theater", "address": {"@type": "PostalAddress", "streetAddress": "68 E Tabernacle St", "addressLocality": "St. George", "addressRegion": "UT", "postalCode": "84770", "addressCountry": "US"}}, "offers": {"@type": "Offer", "url": "https://encoreperformingarts.thundertix.com/events/270667", "availability": "https://schema.org/InStock"}}, {"@type": "TheaterEvent", "name": "Little Women: The Musical (Quill)", "startDate": "2026-09-05T19:00:00-06:00", "location": {"@type": "PerformingArtsTheater", "name": "The Historic Electric Theater", "address": {"@type": "PostalAddress", "streetAddress": "68 E Tabernacle St", "addressLocality": "St. George", "addressRegion": "UT", "postalCode": "84770", "addressCountry": "US"}}, "offers": {"@type": "Offer", "url": "https://encoreperformingarts.thundertix.com/events/270667", "availability": "https://schema.org/InStock"}}, {"@type": "TheaterEvent", "name": "Little Women: The Musical (Thimble)", "startDate": "2026-09-07T19:00:00-06:00", "location": {"@type": "PerformingArtsTheater", "name": "The Historic Electric Theater", "address": {"@type": "PostalAddress", "streetAddress": "68 E Tabernacle St", "addressLocality": "St. George", "addressRegion": "UT", "postalCode": "84770", "addressCountry": "US"}}, "offers": {"@type": "Offer", "url": "https://encoreperformingarts.thundertix.com/events/270667", "availability": "https://schema.org/InStock"}}, {"@type": "TheaterEvent", "name": "Little Women: The Musical (Quill)", "startDate": "2026-09-08T19:00:00-06:00", "location": {"@type": "PerformingArtsTheater", "name": "The Historic Electric Theater", "address": {"@type": "PostalAddress", "streetAddress": "68 E Tabernacle St", "addressLocality": "St. George", "addressRegion": "UT", "postalCode": "84770", "addressCountry": "US"}}, "offers": {"@type": "Offer", "url": "https://encoreperformingarts.thundertix.com/events/270667", "availability": "https://schema.org/InStock"}}, {"@type": "TheaterEvent", "name": "Little Women: The Musical (Thimble)", "startDate": "2026-09-09T19:00:00-06:00", "location": {"@type": "PerformingArtsTheater", "name": "The Historic Electric Theater", "address": {"@type": "PostalAddress", "streetAddress": "68 E Tabernacle St", "addressLocality": "St. George", "addressRegion": "UT", "postalCode": "84770", "addressCountry": "US"}}, "offers": {"@type": "Offer", "url": "https://encoreperformingarts.thundertix.com/events/270667", "availability": "https://schema.org/InStock"}}, {"@type": "TheaterEvent", "name": "Little Women: The Musical (Quill)", "startDate": "2026-09-10T19:00:00-06:00", "location": {"@type": "PerformingArtsTheater", "name": "The Historic Electric Theater", "address": {"@type": "PostalAddress", "streetAddress": "68 E Tabernacle St", "addressLocality": "St. George", "addressRegion": "UT", "postalCode": "84770", "addressCountry": "US"}}, "offers": {"@type": "Offer", "url": "https://encoreperformingarts.thundertix.com/events/270667", "availability": "https://schema.org/InStock"}}, {"@type": "TheaterEvent", "name": "Little Women: The Musical (Thimble)", "startDate": "2026-09-11T19:00:00-06:00", "location": {"@type": "PerformingArtsTheater", "name": "The Historic Electric Theater", "address": {"@type": "PostalAddress", "streetAddress": "68 E Tabernacle St", "addressLocality": "St. George", "addressRegion": "UT", "postalCode": "84770", "addressCountry": "US"}}, "offers": {"@type": "Offer", "url": "https://encoreperformingarts.thundertix.com/events/270667", "availability": "https://schema.org/InStock"}}, {"@type": "TheaterEvent", "name": "Little Women: The Musical (Quill)", "startDate": "2026-09-12T14:00:00-06:00", "location": {"@type": "PerformingArtsTheater", "name": "The Historic Electric Theater", "address": {"@type": "PostalAddress", "streetAddress": "68 E Tabernacle St", "addressLocality": "St. George", "addressRegion": "UT", "postalCode": "84770", "addressCountry": "US"}}, "offers": {"@type": "Offer", "url": "https://encoreperformingarts.thundertix.com/events/270667", "availability": "https://schema.org/InStock"}}, {"@type": "TheaterEvent", "name": "Little Women: The Musical (Thimble)", "startDate": "2026-09-12T19:00:00-06:00", "location": {"@type": "PerformingArtsTheater", "name": "The Historic Electric Theater", "address": {"@type": "PostalAddress", "streetAddress": "68 E Tabernacle St", "addressLocality": "St. George", "addressRegion": "UT", "postalCode": "84770", "addressCountry": "US"}}, "offers": {"@type": "Offer", "url": "https://encoreperformingarts.thundertix.com/events/270667", "availability": "https://schema.org/InStock"}}]}</script>
 </head><body>
@@ -273,6 +362,109 @@ h2 em{color:var(--teal)}
     </div>
   </div>
 </section>
+
+<section style="padding-top:0;" aria-labelledby="pricing-h">
+    <div class="wrap">
+      <div class="band reveal">
+        <div>
+          <h2 id="pricing-h">Special pricing for <em>students, military, veterans, seniors &amp; groups</em></h2>
+          <p>We're proud to offer special pricing across most productions. Reach out to our box office manager for details and group rates.</p>
+        </div>
+        <a class="phone" href="tel:+14354140049,103"><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span>(435) 414-0049 ext. 103</a>
+      </div>
+    </div>
+  </section>
+<section style="padding-top:0;" aria-labelledby="sensory-h">
+    <div class="wrap">
+      <div class="sensory reveal">
+        <div class="l">
+          <div class="star" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 18.6l-5.88 3.1 1.12-6.55L2.48 9.52l6.58-.96z"/></svg></div>
+          <div>
+            <h3 id="sensory-h">Interested in a Sensory-Friendly Performance?</h3>
+            <p>Modified, welcoming performances designed for every audience.</p>
+          </div>
+        </div>
+        <a href="/sensory-friendly-performances" class="btn btn-dark">Learn more →</a>
+      </div>
+    </div>
+  </section>
+<section style="padding-top:0;" aria-labelledby="change-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Need a Change?</span>
+          <h2 id="change-h">Switch dates or <em>adjust your tickets</em></h2>
+        </div>
+        <p class="lead">Need to switch dates or change your tickets? Fill this out and we'll be in touch shortly.</p>
+      </div>
+
+      <!-- Elfsight Form Builder | Ticket Alteration Request -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-f44dad87-c7ce-4b2e-85c2-23e70fa9f3e4" data-elfsight-app-lazy></div>
+    </div>
+  </section>
+<section style="padding-top:0;" aria-labelledby="incl-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Accessibility</span>
+          <h2 id="incl-h">Inclusivity &amp; accessibility <em>resources</em></h2>
+        </div>
+        <p class="lead">Accommodations and policies that make our performances welcoming for everyone.</p>
+      </div>
+      <p class="incl-intro reveal">Encore Performing Arts is committed to making our performances accessible and inclusive for everyone. We offer a variety of resources and accommodations to ensure a welcoming environment for all attendees. If you have any questions, call <a href="tel:+14354140049">(435) 414-0049</a> or email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a>.</p>
+      <div class="incl-groups reveal">
+
+        <div class="incl-group">
+          <h3><span class="gi" aria-hidden="true">✓</span>Policies</h3>
+          <div class="incl-item"><div class="t">Service animals</div><div class="d">We adhere to ADA and state laws regarding service animals. Service animals are always welcome at our events. Emotional support animals and pets are not permitted.</div></div>
+          <div class="incl-item"><div class="t">Therapists &amp; caregivers</div><div class="d">A therapist or caregiver accompanying a paying attendee who requires assistance receives complimentary admission. Please contact us beforehand to reserve the ticket. This does not extend to nannies or babysitters.</div></div>
+          <div class="incl-item"><div class="t">Food &amp; drink</div><div class="d">Outside food and drinks are not allowed, except water. Guests are encouraged to enjoy food and drinks before the event. If an exception is needed, please let a staff member know.</div></div>
+          <div class="incl-item"><div class="t">Strollers</div><div class="d">Strollers are permitted, but we encourage minimizing their use inside the venue due to space limitations.</div></div>
+        </div>
+
+        <div class="incl-group">
+          <h3><span class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6l2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 18.6l-5.88 3.1 1.12-6.55L2.48 9.52l6.58-.96z"/></svg></span>Resources</h3>
+          <div class="incl-item"><div class="t">Sensory-friendly performances</div><div class="d">We host sensory-modified performances for families with sensory processing differences. Admission is free with an RSVP. <a href="/sensory-friendly-performances">Learn more about Sensory-Friendly Performances →</a></div></div>
+          <div class="incl-item"><div class="t">Discounts</div><div class="d">Senior, student, military, and veteran discounts are available on most productions. Ask our box office at <a href="tel:+14354140049,103">(435) 414-0049 ext. 103</a>.</div></div>
+        </div>
+
+        <div class="incl-group">
+          <h3><span class="gi" aria-hidden="true">◈</span>Transportation</h3>
+          <div class="incl-item"><div class="t">Accessible parking</div><div class="d">Accessible parking spaces are located near the Electric Theater. Refer to venue-specific parking information for details.</div></div>
+          <div class="incl-item"><div class="t">Public transit</div><div class="d">The Electric Theater is reachable via local public transit. Check with the local transit authority for schedules and routes.</div></div>
+        </div>
+
+        <div class="incl-group">
+          <h3><span class="gi" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v6"/><path d="M8.5 9.5 12 11l3.5-1.5"/><path d="m9 20 3-7 3 7"/></svg></span>Facility</h3>
+          <div class="incl-item"><div class="t">Accessible entrance</div><div class="d">The Electric Theater has accessible entrances for guests needing elevator access. Please notify us on arrival for assistance.</div></div>
+          <div class="incl-item"><div class="t">Elevator</div><div class="d">An elevator reaches the classrooms and gallery. Note: there is no elevator access to the theater itself, only the classrooms and gallery.</div></div>
+          <div class="incl-item"><div class="t">Restrooms</div><div class="d">Wheelchair-accessible restrooms are on the main floor, with baby changing stations in both restrooms. A gender-neutral bathroom is at the far end of the gallery, next to the stairs.</div></div>
+          <div class="incl-item"><div class="t">Nursing</div><div class="d">A private space for nursing is available upon request.</div></div>
+          <div class="incl-item"><div class="t">Water fountain</div><div class="d">Accessible drinking fountains are available. If assistance is needed, please ask our staff.</div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+<section style="padding-top:0;" aria-labelledby="et-h">
+    <div class="wrap">
+      <div class="et reveal">
+        <span class="pill"><span class="dot"></span>Our Home</span>
+        <h2 id="et-h">The historic <em>Electric Theater</em></h2>
+        <p>Encore Performing Arts performs regularly at the Electric Theater, an iconic venue that greatly enhances our productions. We're proud to be a frequent performer there, but we don't own the Electric Theater, and we don't handle booking or ticket sales for events other than our own.</p>
+        <div class="et-points">
+          <div class="et-point"><div class="t">Tenant status</div><p>Encore is a tenant at the Electric Theater. We rent the space for our performances and events, but we don't own or manage the theater itself.</p></div>
+          <div class="et-point"><div class="t">Event inquiries</div><p>For other events at the Electric Theater, including booking and ticket sales, please contact the theater directly. It's owned and operated by St. George City.</p></div>
+          <div class="et-point"><div class="t">Contact</div><p>Reach the Electric Theater (City of St. George) at <a href="tel:+14356274515">(435) 627-4515</a>.</p></div>
+        </div>
+        <div class="et-actions">
+          <a href="/electric-theater" class="btn btn-light">Visit our venue page →</a>
+          <a href="https://www.encorepa.org/blog/the-historic-electric-theater-in-st-george-utah" class="btn btn-ghost" style="border-color:rgba(233,228,224,.4);color:var(--cream);">Read the building's history →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
 <section class="lwt-sec" aria-labelledby="visit-h">
   <div class="wrap">
