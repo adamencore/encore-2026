@@ -649,12 +649,12 @@ html,body{overflow-x:clip;}
 .cf-head h2{font-family:var(--font-display);font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1.08;letter-spacing:-.025em;margin:0 0 12px;color:var(--cream);}
 .cf-head h2 em{font-style:italic;color:var(--nh-lav);}
 .cf-head p{font-size:17px;line-height:1.65;color:rgba(233,228,224,.82);margin:0;max-width:620px;}
-.cf-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(14px,1.8vw,26px);}
+.cf-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(12px,1.4vw,20px);}
 .cf-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;}
 .cf-photo{width:100%;aspect-ratio:1/1;border-radius:22px;overflow:hidden;background:rgba(233,228,224,.08);transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .32s;box-shadow:0 16px 34px -20px rgba(0,0,0,.65);}
 .cf-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .cf-card:hover .cf-photo{transform:translateY(-6px);box-shadow:0 26px 46px -20px rgba(0,0,0,.75);}
-.cf-title{font-family:var(--font-display);font-weight:600;font-size:clamp(15px,1.35vw,18px);line-height:1.25;letter-spacing:-.01em;margin:16px 0 5px;color:var(--cream);}
+.cf-title{font-family:var(--font-display);font-weight:600;font-size:clamp(15px,1.35vw,18px);line-height:1.25;letter-spacing:-.01em;margin:16px 0 5px;color:var(--cream);min-height:2.5em;display:flex;align-items:flex-start;}
 .cf-who{font-size:13.5px;color:var(--nh-lav);}
 .cf-when{font-size:12.5px;color:rgba(233,228,224,.6);margin-top:3px;}
 .cf-foot{margin-top:clamp(30px,3.8vw,46px);display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
@@ -795,12 +795,13 @@ html,body{overflow-x:clip;}
 <div class="wrap">
 <div class="cf-head reveal">
 <h2 id="cf-h">Learn from <em>working professionals</em>.</h2>
-<p>Five weekly classes this Fall, taught by people who do this for a living. Dance, improv and audition technique, ending together on the Electric Theater stage in December.</p>
+<p>Six weekly classes this Fall, taught by people who do this for a living. Dance, improv and audition technique, ending together on the Electric Theater stage in December.</p>
 </div>
 <div class="cf-grid">
 <a class="cf-card reveal" href="/classes/freestyle-hip-hop"><span class="cf-photo"><img src="/img/team/clayton-ashcraft-2026.webp" alt="Clayton Ashcraft, Freestyle Hip Hop" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.closest('.cf-photo').style.display='none';}else{this.dataset.fb=1;this.src='/img/team/clayton-ashcraft-2026.jpg';}"></span><span class="cf-title">Freestyle Hip Hop</span><span class="cf-who">Clayton Ashcraft</span><span class="cf-when">Wednesdays</span></a>
 <a class="cf-card reveal" href="/classes/musical-theatre-foundations"><span class="cf-photo"><img src="/img/team/haven-record.webp" alt="Haven Record, Musical Theatre Foundations" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.closest('.cf-photo').style.display='none';}else{this.dataset.fb=1;this.src='/img/team/haven-record.jpg';}"></span><span class="cf-title">Musical Theatre Foundations</span><span class="cf-who">Haven Record</span><span class="cf-when">Tuesdays</span></a>
 <a class="cf-card reveal" href="/classes/musical-theatre-jazz"><span class="cf-photo"><img src="/img/team/mattea-denney.webp" alt="Mattea Denney, Musical Theatre Jazz" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.closest('.cf-photo').style.display='none';}else{this.dataset.fb=1;this.src='/img/team/mattea-denney.jpg';}"></span><span class="cf-title">Musical Theatre Jazz</span><span class="cf-who">Mattea Denney</span><span class="cf-when">Tuesdays</span></a>
+<a class="cf-card reveal" href="/classes/finding-your-voice-in-tap"><span class="cf-photo"><img src="/img/team/anthony-savino.webp" alt="Anthony Savino, Finding Your Voice in Tap" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.closest('.cf-photo').style.display='none';}else{this.dataset.fb=1;this.src='/img/team/anthony-savino.jpg';}"></span><span class="cf-title">Finding Your Voice in Tap</span><span class="cf-who">Anthony Savino</span><span class="cf-when">Mondays</span></a>
 <a class="cf-card reveal" href="/classes/audition-workshop"><span class="cf-photo"><img src="/img/team/randy-sly.webp" alt="Randy Sly, Audition Workshop" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.closest('.cf-photo').style.display='none';}else{this.dataset.fb=1;this.src='/img/team/randy-sly.jpg';}"></span><span class="cf-title">Audition Workshop</span><span class="cf-who">Randy Sly</span><span class="cf-when">Monthly</span></a>
 <a class="cf-card reveal" href="/classes/art-of-improv"><span class="cf-photo"><img src="/img/team/jacob-merrill.webp" alt="Jacob Merrill, The Art of Improv" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.closest('.cf-photo').style.display='none';}else{this.dataset.fb=1;this.src='/img/team/jacob-merrill.jpg';}"></span><span class="cf-title">The Art of Improv</span><span class="cf-who">Jacob Merrill</span><span class="cf-when">Saturdays</span></a>
 </div>
@@ -1269,7 +1270,7 @@ html,body{overflow-x:clip;}
     <div class="cpop-body">
       <span class="cpop-kicker">Fall 2026</span>
       <h2 id="cpop-h">Classes are open for <em>registration</em></h2>
-      <p id="cpop-d">Five weekly classes in dance, improv, and audition technique, taught by working professionals and ending together on the Electric Theater stage in December.</p>
+      <p id="cpop-d">Six weekly classes in dance, improv, and audition technique, taught by working professionals and ending together on the Electric Theater stage in December.</p>
       <div class="cpop-actions">
         <a class="cpop-btn" href="/classes">Find your class today</a>
         <button class="cpop-later" type="button" data-cpop-close>Maybe later</button>
