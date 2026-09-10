@@ -466,6 +466,23 @@
     .encph-fig:hover img,.gal:hover img,.prog-photo:hover img,.tmember .photo:hover img,.post-card:hover .ph img,.post-feat:hover img,.sh-art:hover img,.access-photo:hover img,.aud-invite-photo:hover img,.intro-split .ph:hover img,.ocard:hover .mc-bg img,.event:hover .mc-bg img,.trip:hover .mc-bg img,.event-card:hover .card-img,.block:hover .card-img,.block-media:hover .card-img{transform:scale(1);}
   }
   .nav-toggle{margin-left:auto;}
+
+  /* rehearsal conflict note */
+  .conflict-note{margin:0 0 24px;background:#fdfcfa;border:1px solid rgba(50,41,73,.16);border-left:4px solid #b4553f;border-radius:var(--radius,20px);padding:clamp(20px,2.4vw,30px);}
+  .conflict-note h4{font-family:var(--font-display);font-weight:600;font-size:clamp(16px,1.9vw,20px);margin:0 0 12px;color:var(--charcoal,#322949);line-height:1.25;}
+  .conflict-note p{font-size:15px;line-height:1.68;color:#5d566f;margin:0 0 10px;}
+  .conflict-note p:last-child{margin-bottom:0;}
+  .conflict-note strong{color:var(--charcoal,#322949);}
+
+  /* single-member creative team with photo */
+  .team-grid-solo{grid-template-columns:minmax(0,520px);}
+  .member-photo{text-align:left;padding:clamp(24px,2.8vw,34px);}
+  .member-photo .mph{width:104px;height:104px;border-radius:50%;overflow:hidden;margin:0 0 18px;background:rgba(50,41,73,.06);}
+  .member-photo .mph img{width:100%;height:100%;object-fit:cover;display:block;}
+  .member-photo .nm{font-family:var(--font-display);font-weight:600;font-size:22px;color:var(--charcoal);margin-bottom:3px;}
+  .member-photo .role{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+  .member-photo .mbio{font-size:15px;line-height:1.68;color:var(--muted);margin:0;}
+  @media(max-width:560px){.team-grid-solo{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -630,16 +647,18 @@
           <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Creative Team</span>
           <h2 id="team-h">Who you'll <em>work with</em></h2>
         </div>
-        <p class="lead">Our creative team will be announced soon, an experienced group guiding every Young Artist through the production.</p>
+        <p class="lead">Randy Sly directs. The rest of the creative team will be announced soon.</p>
       </div>
-      <div class="team-grid reveal">
-        <div class="member"><div class="mono" aria-hidden="true">★</div><div class="nm">To be announced</div><div class="role">Director</div></div>
-        <div class="member"><div class="mono" aria-hidden="true">★</div><div class="nm">To be announced</div><div class="role">Choreographer</div></div>
-        <div class="member"><div class="mono" aria-hidden="true">★</div><div class="nm">To be announced</div><div class="role">Music Director</div></div>
-        <div class="member"><div class="mono" aria-hidden="true">★</div><div class="nm">To be announced</div><div class="role">Stage Manager</div></div>
+      <div class="team-grid reveal team-grid-solo">
+          <div class="member member-photo">
+            <div class="mph"><picture><source type="image/webp" srcset="/img/team/randy-sly.webp"><img src="/img/team/randy-sly.jpg" alt="Headshot of Randy Sly" loading="lazy"></picture></div>
+            <div class="nm">Randy Sly</div>
+            <div class="role">Director</div>
+            <p class="mbio">Randy is Encore&rsquo;s Director of Education. He teaches our Audition Workshop, where Young Artists learn to walk into a room with a monologue and a song they trust, and he brings that same focus to directing: clear expectations, real preparation, and room for young performers to find the choice that is theirs.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <!-- ===== REHEARSALS + PERFORMANCES ===== -->
   <section style="padding-top:0;" aria-labelledby="rp-h">
@@ -651,7 +670,12 @@
         </div>
         <p class="lead">Cast members commit to the rehearsal schedule and the full run of shows.</p>
       </div>
-      <div class="rp-grid reveal">
+      <div class="conflict-note reveal">
+<h4>You can audition for both, but you can only be cast in one</h4>
+<p>Peter Pan Jr. and A Christmas Carol rehearse over the same weeks. Both run <strong>October 5 to November 21</strong>, Monday through Thursday evenings and Saturdays. There is no version of the schedule where a Young Artist can do both.</p>
+<p>You are welcome to audition for both and see where you are cast. Just know that if you are offered a place in each, you will need to choose. If you already know which you would pick, tell us at your audition and it helps us cast well.</p>
+</div>
+        <div class="rp-grid reveal">
         <div class="rehearse">
           <h3>Rehearsals</h3>
           <div class="row"><div class="k">Dates</div><div class="vv">October 5 – November 21, 2026</div></div>
