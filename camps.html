@@ -471,15 +471,15 @@
         <div class="sec-head reveal">
           <div>
             <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Camps at Encore</span>
-            <h2 id="off-h">No camps <em>scheduled right now</em></h2>
+            <h2 id="off-h">Upcoming <em>camps</em></h2>
           </div>
-          <p class="lead">Our week-long camps for ages 5 to 12 run through the year and are announced a season ahead. Tell us you are interested and we will let you know first when the next one opens.</p>
+          <p class="lead">Week-long camp intensives for ages 7 to 11, each finishing with a performance on the Electric Theater stage.</p>
         </div>
-        <div class="grid" id="offgrid" hidden aria-hidden="true"><p class="empty" id="emptyMsg" hidden></p></div>
+        <div class="grid reveal" id="offgrid"><p class="empty" id="emptyMsg" hidden>Nothing open right now.</p></div>
         <div class="camps-form reveal">
           <div class="camps-form-head">
             <span class="camps-form-eyebrow">Join the interest list</span>
-            <h3>Hear about the next camp <em>first</em></h3>
+            <h3>Not the right week? <em>Tell us</em></h3>
             <p>Send us a note and we will be in touch as soon as dates are set. Meanwhile, <a href="/classes">weekly classes</a> run September through December, and <a href="/auditions">auditions</a> are open for our fall productions.</p>
           </div>
           <!-- Elfsight Form Builder | Encore Contact Form -->
@@ -746,8 +746,8 @@
   const TIER = "Camps";
 
   const OFFERINGS = [
-    /* No camps scheduled right now. When one is announced, add it here
-       and the grid will show it again automatically. */
+    {id:"halloween-camp-2026", title:"Halloween Junior Musical Theater Camp", type:"Camp", ages:["Camps"], status:"Open", when:"Auditions October 9", meta:"Camp · Ages 7-11", blurb:"A week-long camp building to a live performance on October 17.", link:"/halloween-junior-musical-theater-camp", logo:"", bg:"/img/camps/camps-hero-1.webp"},
+    {id:"november-camp-2026", title:"November Junior Musical Theater Camp", type:"Camp", ages:["Camps"], status:"Open", when:"Auditions October 31", meta:"Camp · Ages 7-11", blurb:"A week-long camp building to a live performance on November 7.", link:"/november-junior-musical-theater-camp", logo:"", bg:"/img/camps/camps-hero-1.webp"}
   ];
 
   const CTA = {audition:"Register to audition", class:"Browse classes", event:"See the event", workshop:"Register", camp:"Camp info"};
