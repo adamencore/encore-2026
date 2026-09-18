@@ -409,6 +409,24 @@
   .team-grid-4{grid-template-columns:repeat(4,1fr);}
   @media(max-width:900px){.team-grid-4{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:520px){.team-grid-4{grid-template-columns:1fr;}}
+
+  /* light snowfall, hero only */
+  .sh-text > .snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+  .sh-text > *:not(.snow){position:relative;z-index:1;}
+  @media (prefers-reduced-motion:reduce){.sh-text > .snow{display:none;}}
+
+  /* past production gallery */
+  .cg-sec{padding:clamp(56px,7vw,96px) 0;background:var(--paper,#fdfcfa);}
+  .cg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,1.6vw,20px);margin-top:clamp(26px,3vw,38px);}
+  .cg-item{margin:0;border-radius:18px;overflow:hidden;background:rgba(26,64,74,.06);}
+  .cg-item img{width:100%;height:100%;aspect-ratio:16/10;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.22,1,.36,1);}
+  .cg-item:hover img{transform:scale(1.03);}
+  .cg-item figcaption{font-size:13px;letter-spacing:.02em;color:var(--muted,#5d566f);padding:10px 4px 0;}
+  .cg-foot{margin:clamp(22px,2.6vw,32px) 0 0;font-size:15px;}
+  .cg-foot a{color:var(--show-bright,#1a404a);font-weight:600;border-bottom:1.5px solid rgba(26,64,74,.35);text-decoration:none;}
+  .cg-foot a:hover{border-bottom-color:var(--show-bright,#1a404a);}
+  @media(max-width:620px){.cg-grid{grid-template-columns:1fr;}}
+  @media (prefers-reduced-motion:reduce){.cg-item img{transition:none;} .cg-item:hover img{transform:none;}}
 </style>
 </head>
 <body>
@@ -466,6 +484,7 @@
     <div class="wrap">
       <div class="sh-grid reveal">
         <div class="sh-text">
+          <canvas class="snow" aria-hidden="true"></canvas>
           <span class="sh-badge"><span class="dot"></span>Now Casting · All ages</span>
           <span class="eyebrow">Encore Performing Arts presents</span>
           <h1><em>A Christmas Carol</em></h1>
@@ -727,6 +746,24 @@
 </main>
 
 <!-- ========== FOOTER ========== -->
+    <section class="cg-sec" aria-labelledby="cg-h">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="pill"><span class="dot"></span>From past seasons</span>
+          <h2 id="cg-h">This is what you&rsquo;re <em>auditioning for</em></h2>
+          <p class="lead">Encore has staged A Christmas Carol every holiday season since 2023. These are our Young Artists on the Electric Theater stage.</p>
+        </div>
+        <div class="cg-grid reveal">
+          <figure class="cg-item"><picture><source type="image/webp" srcset="/img/gallery/a-christmas-carol-ensemble.webp"><img src="/img/gallery/a-christmas-carol-ensemble.jpg" alt="The company mid-number in a past Encore production of A Christmas Carol" loading="lazy" decoding="async"></picture><figcaption>The company mid-number</figcaption></figure>
+          <figure class="cg-item"><picture><source type="image/webp" srcset="/img/gallery/a-christmas-carol-fezziwig.webp"><img src="/img/gallery/a-christmas-carol-fezziwig.jpg" alt="Fezziwig’s ball in a past Encore production of A Christmas Carol" loading="lazy" decoding="async"></picture><figcaption>Fezziwig&rsquo;s ball</figcaption></figure>
+          <figure class="cg-item"><picture><source type="image/webp" srcset="/img/gallery/a-christmas-carol-table.webp"><img src="/img/gallery/a-christmas-carol-table.jpg" alt="The Cratchits at table in a past Encore production of A Christmas Carol" loading="lazy" decoding="async"></picture><figcaption>The Cratchits at table</figcaption></figure>
+          <figure class="cg-item"><picture><source type="image/webp" srcset="/img/gallery/a-christmas-carol-tiny-tim.webp"><img src="/img/gallery/a-christmas-carol-tiny-tim.jpg" alt="Tiny Tim in a past Encore production of A Christmas Carol" loading="lazy" decoding="async"></picture><figcaption>Tiny Tim</figcaption></figure>
+        </div>
+        <p class="cg-foot reveal"><a href="/past-shows">See more past productions &rarr;</a></p>
+      </div>
+    </section>
+
+    
 <footer>
   <div class="wrap">
     <div class="foot-top">
@@ -820,6 +857,51 @@
   t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
+})();
+</script>
+<script>
+(function(){
+  var c=document.querySelector('.sh-text > .snow');
+  if(!c) return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ctx=c.getContext('2d'), flakes=[], raf=null, running=false;
+  var dpr=Math.min(window.devicePixelRatio||1,2);
+  function size(){
+    var r=c.parentNode.getBoundingClientRect();
+    if(!r.width||!r.height) return;
+    c.width=Math.round(r.width*dpr); c.height=Math.round(r.height*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.max(16,Math.min(44,Math.round(r.width/26)));
+    flakes=[];
+    for(var i=0;i<n;i++){
+      flakes.push({x:Math.random()*r.width,y:Math.random()*r.height,
+        r:0.7+Math.random()*1.6, s:0.16+Math.random()*0.38,
+        d:Math.random()*Math.PI*2, o:0.22+Math.random()*0.38});
+    }
+  }
+  function draw(){
+    var r=c.parentNode.getBoundingClientRect();
+    ctx.clearRect(0,0,r.width,r.height);
+    for(var i=0;i<flakes.length;i++){
+      var f=flakes[i];
+      f.y+=f.s; f.d+=0.008; f.x+=Math.sin(f.d)*0.2;
+      if(f.y>r.height+4){f.y=-4;f.x=Math.random()*r.width;}
+      if(f.x<-4){f.x=r.width+4;} if(f.x>r.width+4){f.x=-4;}
+      ctx.beginPath();
+      ctx.arc(f.x,f.y,f.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,'+f.o+')';
+      ctx.fill();
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  function start(){ if(!running){running=true; draw();} }
+  function stop(){ if(running){running=false; if(raf){cancelAnimationFrame(raf);}} }
+  size();
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ if(es[0].isIntersecting){start();}else{stop();} },{threshold:0.01}).observe(c);
+  } else { start(); }
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(size,180);});
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){stop();}else{start();} });
 })();
 </script>
 </body>
