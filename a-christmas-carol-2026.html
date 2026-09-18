@@ -430,8 +430,8 @@
 
   /* full width Christmas Carol banner */
   .cc-banner{position:relative;background:#0b1c21;}
-  .cc-banner-art{position:relative;width:100%;aspect-ratio:1200/750;max-height:min(64vh,560px);overflow:hidden;background:#0b1c21;}
-  .cc-banner-art img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+  .cc-banner-art{position:relative;width:100%;background:#030303;overflow:hidden;aspect-ratio:1200/750;max-height:min(58vh,540px);}
+  .cc-banner-art img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;}
   .cc-banner-art .snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;}
   .cc-banner-art::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
     background:linear-gradient(to bottom,transparent 58%,rgba(11,28,33,.5) 82%,#0b1c21 100%);}
@@ -441,10 +441,7 @@
   .cc-lead{color:rgba(233,228,224,.88);font-size:clamp(15.5px,1.7vw,17.5px);line-height:1.62;margin:0 auto 20px;max-width:620px;}
   .cc-banner-inner .sh-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-  @media(max-width:700px){
-    .cc-banner-art{aspect-ratio:4/3;max-height:46vh;}
-    .cc-banner-art img{object-position:62% center;}
-  }
+  @media(max-width:700px){.cc-banner-art{max-height:42vh;}}
   @media (prefers-reduced-motion:reduce){.cc-banner-art .snow{display:none;}}
 
   /* team cards, square photo above the name */
@@ -454,6 +451,12 @@
   .member-photo .nm{font-family:var(--font-display);font-weight:600;font-size:18px;line-height:1.2;color:var(--show-bright,#1a404a);margin:0;padding:16px 18px 0;}
   .member-photo .role{font-size:12.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted,#5d566f);margin:5px 0 0;padding:0 18px 18px;}
   .member-photo .mbio{font-size:15px;line-height:1.68;color:var(--muted,#5d566f);margin:0;padding:0 18px 20px;}
+
+  .team-grid-3{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:900px){.team-grid-3{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.team-grid-3{grid-template-columns:1fr;}}
+  .member-nophoto .mph{display:flex;align-items:center;justify-content:center;background:var(--show-mid,#132e35);}
+  .member-nophoto .mini{font-family:var(--font-display);font-weight:600;font-size:clamp(34px,4.4vw,52px);letter-spacing:.04em;color:rgba(233,228,224,.55);}
 </style>
 </head>
 <body>
@@ -625,11 +628,13 @@
         </div>
         <p class="lead">An experienced creative team guides every Young Artist, alongside professional actors Corbin Allred as Ebenezer Scrooge and Adam Cheney as Jacob Marley and the Ghost of Christmas Present.</p>
       </div>
-      <div class="team-grid reveal team-grid-4">
+      <div class="team-grid reveal team-grid-3">
           <div class="member member-photo"><div class="mph"><picture><source type="image/webp" srcset="/img/team/adam-record.webp"><img src="/img/team/adam-record.jpg" alt="Headshot of Adam Record" loading="lazy"></picture></div><div class="nm">Adam Record</div><div class="role">Director</div></div>
           <div class="member member-photo"><div class="mph"><picture><source type="image/webp" srcset="/img/team/leslie-scott.webp"><img src="/img/team/leslie-scott.jpg" alt="Headshot of Leslie Scott" loading="lazy"></picture></div><div class="nm">Leslie Scott</div><div class="role">Music Director</div></div>
           <div class="member member-photo"><div class="mph"><picture><source type="image/webp" srcset="/img/team/kelby-tyrrell.webp"><img src="/img/team/kelby-tyrrell.jpg" alt="Headshot of Kelby Tyrrell" loading="lazy"></picture></div><div class="nm">Kelby Tyrrell</div><div class="role">Choreographer</div></div>
           <div class="member member-photo"><div class="mph"><picture><source type="image/webp" srcset="/img/team/haven-record.webp"><img src="/img/team/haven-record.jpg" alt="Headshot of Haven Record" loading="lazy"></picture></div><div class="nm">Haven Record</div><div class="role">Associate Choreographer</div></div>
+          <div class="member member-photo member-nophoto"><div class="mph"><span class="mini" aria-hidden="true">CA</span></div><div class="nm">Corbin Allred</div><div class="role">Ebenezer Scrooge</div></div>
+          <div class="member member-photo member-nophoto"><div class="mph"><span class="mini" aria-hidden="true">AC</span></div><div class="nm">Adam Cheney</div><div class="role">Jacob Marley &amp; Ghost of Christmas Present</div></div>
         </div>
       </div>
     </section>
