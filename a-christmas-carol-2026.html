@@ -430,19 +430,14 @@
 
   /* full width Christmas Carol banner */
   .cc-banner{position:relative;background:#0b1c21;}
-  .cc-banner-art{position:relative;width:100%;background:#030303;overflow:hidden;aspect-ratio:1200/750;max-height:min(58vh,540px);}
-  .cc-banner-art img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;}
-  .cc-banner-art .snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;}
-  .cc-banner-art::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
-    background:linear-gradient(to bottom,transparent 58%,rgba(11,28,33,.5) 82%,#0b1c21 100%);}
   .cc-banner-body{position:relative;z-index:4;background:#0b1c21;padding:clamp(16px,2vw,24px) 0 clamp(30px,4vw,46px);}
   .cc-banner-inner{display:block;max-width:720px;margin:0 auto;text-align:center;}
   .cc-banner-inner .sh-badge{display:inline-flex;margin:0 0 16px;}
   .cc-lead{color:rgba(233,228,224,.88);font-size:clamp(15.5px,1.7vw,17.5px);line-height:1.62;margin:0 auto 20px;max-width:620px;}
   .cc-banner-inner .sh-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-  @media(max-width:700px){.cc-banner-art{max-height:42vh;}}
-  @media (prefers-reduced-motion:reduce){.cc-banner-art .snow{display:none;}}
+  @media(max-width:700px){}
+  @media (prefers-reduced-motion:reduce){}
 
   /* team cards, square photo above the name */
   .member-photo{background:var(--paper,#fdfcfa);border:1px solid rgba(26,64,74,.14);border-radius:20px;overflow:hidden;padding:0;text-align:left;}
@@ -455,8 +450,30 @@
   .team-grid-3{grid-template-columns:repeat(3,1fr);}
   @media(max-width:900px){.team-grid-3{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:520px){.team-grid-3{grid-template-columns:1fr;}}
-  .member-nophoto .mph{display:flex;align-items:center;justify-content:center;background:var(--show-mid,#132e35);}
-  .member-nophoto .mini{font-family:var(--font-display);font-weight:600;font-size:clamp(34px,4.4vw,52px);letter-spacing:.04em;color:rgba(233,228,224,.55);}
+
+  /* layered Christmas Carol banner */
+  .cc-stage{position:relative;width:100%;aspect-ratio:1920/900;max-height:min(66vh,600px);min-height:320px;overflow:hidden;background:#050505;}
+  .cc-stage .cc-bg{position:absolute;inset:0;z-index:0;}
+  .cc-stage .cc-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+  .cc-stage .snow{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;}
+  .cc-figure{position:absolute;right:2%;bottom:0;z-index:2;height:100%;display:block;}
+  .cc-figure img{height:100%;width:auto;object-fit:contain;object-position:bottom right;display:block;}
+  .cc-logo{position:absolute;left:6%;top:50%;transform:translateY(-52%);z-index:3;width:min(46%,520px);color:#f0e6d2;}
+  .cc-logo img{width:100%;height:auto;display:block;}
+  .cc-stage::after{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;
+    background:linear-gradient(to bottom,transparent 62%,rgba(11,28,33,.45) 84%,#0b1c21 100%);}
+  .cc-banner-body{position:relative;z-index:5;background:#0b1c21;padding:clamp(16px,2vw,26px) 0 clamp(30px,4vw,48px);}
+
+  @media(max-width:860px){
+    .cc-stage{aspect-ratio:4/3;max-height:52vh;}
+    .cc-logo{left:50%;top:9%;transform:translate(-50%,0);width:min(74%,420px);}
+    .cc-figure{right:50%;transform:translateX(50%);height:74%;}
+  }
+  @media(max-width:520px){
+    .cc-stage{aspect-ratio:3/4;max-height:56vh;}
+    .cc-logo{width:82%;top:7%;}
+    .cc-figure{height:66%;}
+  }
 </style>
 </head>
 <body>
@@ -511,17 +528,24 @@
 
   <!-- ===== HERO ===== -->
   <header class="cc-banner">
-  <div class="cc-banner-art">
-    <picture>
-      <source type="image/webp" srcset="/img/shows/a-christmas-carol-card.webp">
-      <img src="/img/shows/a-christmas-carol-card.jpg" alt="A Christmas Carol, A New Musical, featuring Corbin Allred as Ebenezer Scrooge" fetchpriority="high" decoding="async">
+  <div class="cc-stage">
+    <picture class="cc-bg">
+      <source type="image/webp" srcset="/img/shows/cc-bg.webp">
+      <img src="/img/shows/cc-bg.jpg" alt="" aria-hidden="true">
     </picture>
     <canvas class="snow" aria-hidden="true"></canvas>
+    <picture class="cc-figure">
+      <source type="image/webp" srcset="/img/shows/cc-scrooge.webp">
+      <img src="/img/shows/cc-scrooge.png" alt="Corbin Allred as Ebenezer Scrooge" fetchpriority="high">
+    </picture>
+    <div class="cc-logo">
+      <img src="/img/shows/cc-logo.svg" alt="A Christmas Carol, A New Musical" fetchpriority="high">
+    </div>
   </div>
   <div class="cc-banner-body">
     <div class="wrap">
       <div class="cc-banner-inner reveal">
-        <span class="sh-badge"><span class="dot"></span>Now Casting · All ages</span>
+        <span class="sh-badge"><span class="dot"></span>Now Casting &middot; All ages</span>
         <h1 class="sr-only">A Christmas Carol: A New Musical</h1>
         <p class="cc-lead">A new musical adaptation of Dickens' timeless story, featuring Corbin Allred as Ebenezer Scrooge. Audition to sing, dance, and act alongside a professional lead in Encore's holiday production.</p>
         <div class="sh-actions">
@@ -633,8 +657,8 @@
           <div class="member member-photo"><div class="mph"><picture><source type="image/webp" srcset="/img/team/leslie-scott.webp"><img src="/img/team/leslie-scott.jpg" alt="Headshot of Leslie Scott" loading="lazy"></picture></div><div class="nm">Leslie Scott</div><div class="role">Music Director</div></div>
           <div class="member member-photo"><div class="mph"><picture><source type="image/webp" srcset="/img/team/kelby-tyrrell.webp"><img src="/img/team/kelby-tyrrell.jpg" alt="Headshot of Kelby Tyrrell" loading="lazy"></picture></div><div class="nm">Kelby Tyrrell</div><div class="role">Choreographer</div></div>
           <div class="member member-photo"><div class="mph"><picture><source type="image/webp" srcset="/img/team/haven-record.webp"><img src="/img/team/haven-record.jpg" alt="Headshot of Haven Record" loading="lazy"></picture></div><div class="nm">Haven Record</div><div class="role">Associate Choreographer</div></div>
-          <div class="member member-photo member-nophoto"><div class="mph"><span class="mini" aria-hidden="true">CA</span></div><div class="nm">Corbin Allred</div><div class="role">Ebenezer Scrooge</div></div>
-          <div class="member member-photo member-nophoto"><div class="mph"><span class="mini" aria-hidden="true">AC</span></div><div class="nm">Adam Cheney</div><div class="role">Jacob Marley &amp; Ghost of Christmas Present</div></div>
+          <div class="member member-photo"><div class="mph"><picture><source type="image/webp" srcset="/img/team/corbin-allred.webp"><img src="/img/team/corbin-allred.jpg" alt="Headshot of Corbin Allred" loading="lazy"></picture></div><div class="nm">Corbin Allred</div><div class="role">Ebenezer Scrooge</div></div>
+          <div class="member member-photo"><div class="mph"><picture><source type="image/webp" srcset="/img/team/adam-cheney.webp"><img src="/img/team/adam-cheney.jpg" alt="Headshot of Adam Cheney" loading="lazy"></picture></div><div class="nm">Adam Cheney</div><div class="role">Jacob Marley &amp; Ghost of Christmas Present</div></div>
         </div>
       </div>
     </section>
@@ -887,7 +911,7 @@
 </script>
 <script>
 (function(){
-  var c=document.querySelector('.cc-banner-art .snow');
+  var c=document.querySelector('.cc-stage .snow');
   if(!c) return;
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var ctx=c.getContext('2d'), flakes=[], raf=null, running=false;
