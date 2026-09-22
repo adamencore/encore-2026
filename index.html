@@ -698,6 +698,31 @@ html,body{overflow-x:clip;}
 .evp[href="/classes"] .evp-bg img{object-position:center 52%;}
 
 .evp[href="/peter-pan-jr-2026"] .evp-bg img{object-position:72% 50%;}
+
+  /* Villains Night promo */
+  .vn-promo{position:relative;overflow:hidden;background:#0d3a44;padding:clamp(54px,7vw,92px) 0;}
+  .vn-promo .vn-bg{position:absolute;inset:0;z-index:0;}
+  .vn-promo .vn-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+  .vn-promo::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(100deg,rgba(6,38,46,.88) 0%,rgba(6,38,46,.72) 42%,rgba(6,38,46,.30) 72%,rgba(6,38,46,.12) 100%);}
+  .vn-inner{position:relative;z-index:2;}
+  .vn-copy{max-width:560px;}
+  .vn-kicker{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(233,228,224,.75);margin-bottom:16px;}
+  .vn-logo{display:block;width:min(100%,420px);margin:0 0 20px;}
+  .vn-logo img{width:100%;height:auto;display:block;}
+  .vn-lead{font-size:clamp(15.5px,1.7vw,17.5px);line-height:1.65;color:rgba(233,228,224,.9);margin:0 0 18px;}
+  .vn-when{font-size:15.5px;line-height:1.6;color:rgba(233,228,224,.82);margin:0 0 26px;}
+  .vn-when strong{color:#fff;font-size:17px;}
+  .vn-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-ghost-light{background:transparent;color:#e9e4e0;border:1.5px solid rgba(233,228,224,.45);}
+  .btn-ghost-light:hover{background:rgba(233,228,224,.12);}
+  @media(max-width:760px){
+    .vn-promo::after{background:linear-gradient(to bottom,rgba(6,38,46,.72) 0%,rgba(6,38,46,.88) 100%);}
+    .vn-copy{max-width:none;}
+    .vn-logo{width:min(100%,320px);margin-left:auto;margin-right:auto;}
+    .vn-copy{text-align:center;}
+    .vn-actions{justify-content:center;}
+  }
 </style>
 </head>
 <body>
@@ -785,6 +810,30 @@ html,body{overflow-x:clip;}
         <a href="/senior" class="nh-path" data-i="3"><span class="pn">04</span><span><h3>Signature Series</h3><span class="psub">Full mainstage &middot; ages 13&ndash;18</span></span><span class="pa">&rarr;</span></a>
         <a href="/aspire-performing-co" class="nh-path" data-i="4"><span class="pn">05</span><span><h3>Aspire Performing Co</h3><span class="psub">Audition-based touring company</span></span><span class="pa">&rarr;</span></a>
         <a href="/page-to-stage" class="nh-path" data-i="5"><span class="pn">06</span><span><h3>Page to Stage</h3><span class="psub">Field trips &amp; workshops</span></span><span class="pa">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VILLAINS NIGHT PROMO ========== -->
+<section class="vn-promo" aria-labelledby="vn-h">
+  <picture class="vn-bg">
+    <source type="image/webp" srcset="/img/shows/vn-bg.webp">
+    <img src="/img/shows/vn-bg.jpg" alt="" aria-hidden="true" loading="lazy">
+  </picture>
+  <div class="wrap vn-inner">
+    <div class="vn-copy reveal">
+      <span class="vn-kicker">Aspire Performing Co. presents</span>
+      <h2 id="vn-h" class="sr-only">Aspire: Villains Night</h2>
+      <picture class="vn-logo">
+        <source type="image/webp" srcset="/img/shows/vn-logo.webp">
+        <img src="/img/shows/vn-logo.png" alt="Villains Night" loading="lazy">
+      </picture>
+      <p class="vn-lead">One night, every villain you love to hate. Our show choir takes on musical theater&rsquo;s most iconic bad guys through bold vocals, choreography, and storytelling.</p>
+      <p class="vn-when"><strong>October 29 &amp; 30, 2026</strong><br>The Historic Electric Theater, St. George</p>
+      <div class="vn-actions">
+        <a href="https://encoreperformingarts.thundertix.com/events/272127/performances" target="_blank" rel="noopener" class="btn btn-light">Get tickets &rarr;</a>
+        <a href="/villains-night" class="btn btn-ghost-light">Show details</a>
       </div>
     </div>
   </div>
