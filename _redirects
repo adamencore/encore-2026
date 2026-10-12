@@ -51,3 +51,5 @@
 /privacy    /privacy-policy          301
 # Past-show galleries: clean URLs -> viewer
 /gallery/*    /gallery.html?show=:splat    200
+# Halloween Junior Musical Theater Camp retired 2026-10-12
+/halloween-junior-musical-theater-camp   /camps   301
