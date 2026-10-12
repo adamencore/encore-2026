@@ -134,17 +134,17 @@
 <style>
   :root{
     /* ENCORE BRAND PALETTE */
-    --teal:#5d659e;           /* primary brand teal */
-    --charcoal:#1c1f35;       /* primary (brand teal) */
-    --charcoal-2:#3c8ea1;     /* lighter teal, hovers */
-    --charcoal-soft:#358193;  /* deep teal, secondary text */
+    --teal:#2f616e;           /* primary brand teal */
+    --charcoal:#1d2f37;       /* primary (brand teal) */
+    --charcoal-2:#2f616e;     /* lighter teal, hovers */
+    --charcoal-soft:#338093;  /* deep teal, secondary text */
     --cream:#e9e4e0;          /* warm cream, surfaces */
     --cream-lite:#f6f5f3;     /* lightest, page background */
     --paper:#fdfcfa;          /* card paper */
     --accent:#e8b850;         /* gold, from the Shakespearience shirt art */
-    --accent-2:#1c1f35;       /* coral hover */
+    --accent-2:#1d2f37;       /* coral hover */
     --line:rgba(21,65,76,.16);
-    --muted:#6b7779;          /* muted teal-gray text */
+    --muted:#4f6b76;          /* muted teal-gray text */
     --radius:26px;
     --radius-lg:34px;
   }
@@ -171,7 +171,7 @@
   .btn-dark:hover{background:var(--charcoal-2);}
   .btn-ghost{background:transparent;border:1.5px solid var(--charcoal);color:var(--charcoal);}
   .btn-ghost:hover{background:var(--charcoal);color:var(--cream);}
-  .btn-light{background:var(--cream);color:#1c1f35;}
+  .btn-light{background:var(--cream);color:#1d2f37;}
 
   /* BREADCRUMB */
   .crumbs{padding:18px 0 0;}
@@ -184,7 +184,7 @@
 
   /* HERO */
   .hero{padding:14px 0 0;}
-  .hero-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;min-height:520px;background:linear-gradient(160deg,#5d659e,#464c7b 55%,#1c1f35);padding:40px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 40px 80px -40px rgba(13,39,45,.5);}
+  .hero-card{position:relative;border-radius:var(--radius-lg);overflow:hidden;min-height:520px;background:linear-gradient(160deg,#2f616e,#464c7b 55%,#1d2f37);padding:40px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 40px 80px -40px rgba(13,39,45,.5);}
   .hero-card::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
   .hero-top,.hero-bottom{position:relative;z-index:1;position:relative;z-index:2;}
   .hero-top{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;}
@@ -267,10 +267,10 @@
   .trip .go{font-weight:600;font-size:13.5px;display:inline-flex;align-items:center;gap:7px;}
   .trip:hover .go{gap:12px;}
   .t1{background:linear-gradient(150deg,#464c7b,#2c3052);}
-  .t2{background:linear-gradient(150deg,#5d659e,#464c7b);}
-  .t3{background:linear-gradient(150deg,#2c3052,#1c1f35);}
+  .t2{background:linear-gradient(150deg,#2f616e,#464c7b);}
+  .t3{background:linear-gradient(150deg,#2c3052,#1d2f37);}
   .t4{background:linear-gradient(150deg,#464c7b,#2c3052);}
-  .t5{background:linear-gradient(150deg,#5d659e,#464c7b);}
+  .t5{background:linear-gradient(150deg,#2f616e,#464c7b);}
 
   /* FAQ */
   .faq-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:50px;align-items:flex-start;}
@@ -344,7 +344,7 @@
   body.menu-open .nav-toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
   body.menu-open{overflow:hidden;}
   body.menu-open nav.site{background:transparent !important;border-color:transparent !important;box-shadow:none !important;color:var(--cream);}
-  .mobile-menu{position:fixed;inset:0;z-index:180;background:linear-gradient(165deg,#5d659e,#464c7b 55%,#1c1f35);color:var(--cream);padding:104px 32px 40px;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .32s,transform .32s,visibility .32s;overflow-y:auto;}
+  .mobile-menu{position:fixed;inset:0;z-index:180;background:linear-gradient(165deg,#2f616e,#464c7b 55%,#1d2f37);color:var(--cream);padding:104px 32px 40px;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .32s,transform .32s,visibility .32s;overflow-y:auto;}
   .mobile-menu>nav{position:static;display:flex;flex-direction:column;}
   body.menu-open .mobile-menu{opacity:1;visibility:visible;transform:none;}
   .mobile-menu a{font-family:var(--font-display);font-size:clamp(30px,7.5vw,46px);font-weight:500;letter-spacing:-.035em;color:var(--cream);padding:16px 0;border-bottom:1px solid rgba(233,228,224,.16);display:flex;justify-content:space-between;align-items:center;line-height:1;}
@@ -504,7 +504,7 @@ h2 em{color:var(--teal)}
   <!-- ========== HERO ========== -->
   <header class="hero">
     <div class="wrap">
-      <div class="hero-card reveal" style="background:linear-gradient(160deg,#5d659e,#464c7b 58%,#1c1f35);min-height:460px;">
+      <div class="hero-card reveal" style="background:linear-gradient(160deg,#2f616e,#464c7b 58%,#1d2f37);min-height:460px;">
         <img src="/img/page-to-stage/shakespearience-bust.png" alt="" aria-hidden="true" style="position:absolute;right:-30px;bottom:-20px;width:min(420px,52%);opacity:.16;pointer-events:none;z-index:0;">
         <div class="hero-top">
           <span class="hero-badge"><span class="dot"></span>Page to Stage · Festival Day</span>
@@ -532,7 +532,7 @@ h2 em{color:var(--teal)}
         </div>
         <p class="lead">Every Page to Stage trip pairs a hands-on Encore workshop with a group visit to the professional production, so our Young Artists arrive ready to watch like makers, not just spectators.</p>
       </div>
-      <div class="event reveal" style="background:linear-gradient(150deg,#464c7b,#1c1f35);">
+      <div class="event reveal" style="background:linear-gradient(150deg,#464c7b,#1d2f37);">
         <div>
           <span class="tag">Festival Day</span>
           <h3 style="font-style:italic;">Shakespearience</h3>
@@ -569,7 +569,7 @@ h2 em{color:var(--teal)}
         <p class="lead">Two productions, a Festival-led workshop, and dinner as a group, comedy and tragedy side by side in a single day.</p>
       </div>
 
-      <div class="event reveal" style="background:linear-gradient(150deg,#464c7b,#1c1f35);">
+      <div class="event reveal" style="background:linear-gradient(150deg,#464c7b,#1d2f37);">
         <div>
           <span class="tag">Itinerary</span>
           <h3 style="font-style:italic;">A full day at the Festival</h3>
@@ -627,7 +627,7 @@ h2 em{color:var(--teal)}
   <!-- ========== CTA ========== -->
   <section>
     <div class="wrap">
-      <div class="cta reveal" style="background:linear-gradient(150deg,#464c7b,#1c1f35);">
+      <div class="cta reveal" style="background:linear-gradient(150deg,#464c7b,#1d2f37);">
         <div class="cta-inner">
           <div>
             <h2>Explore the rest of the <em>season</em></h2>
