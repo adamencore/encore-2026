@@ -53,3 +53,5 @@
 /gallery/*    /gallery.html?show=:splat    200
 # Halloween Junior Musical Theater Camp retired 2026-10-12
 /halloween-junior-musical-theater-camp   /camps   301
+
+/hadestown-pro-shot    /page-to-stage/hadestown-pro-shot    301
