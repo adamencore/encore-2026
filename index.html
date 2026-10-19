@@ -704,8 +704,12 @@ html,body{overflow-x:clip;}
   .vn-promo .vn-bg img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
   .vn-promo::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
     background:linear-gradient(100deg,rgba(6,38,46,.88) 0%,rgba(6,38,46,.72) 42%,rgba(6,38,46,.30) 72%,rgba(6,38,46,.12) 100%);}
-  .vn-inner{position:relative;z-index:2;}
+  .vn-inner{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) clamp(240px,30vw,400px);gap:clamp(30px,4.5vw,66px);align-items:center;}
   .vn-copy{max-width:560px;}
+  /* Shared show-promo artwork panel (Villains Night + A Christmas Carol) */
+  .promo-art{margin:0;border-radius:20px;overflow:hidden;box-shadow:0 26px 60px rgba(0,0,0,.42);
+    outline:1px solid rgba(233,228,224,.16);outline-offset:0;}
+  .promo-art img{width:100%;height:auto;display:block;}
   .vn-kicker{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(233,228,224,.75);margin-bottom:16px;}
   .vn-logo{display:block;width:min(100%,420px);margin:0 0 20px;}
   .vn-logo img{width:100%;height:auto;display:block;}
@@ -715,12 +719,39 @@ html,body{overflow-x:clip;}
   .vn-actions{display:flex;gap:12px;flex-wrap:wrap;}
   .btn-ghost-light{background:transparent;color:#e9e4e0;border:1.5px solid rgba(233,228,224,.45);}
   .btn-ghost-light:hover{background:rgba(233,228,224,.12);}
+  @media(max-width:860px){
+    .vn-inner{grid-template-columns:1fr;gap:30px;}
+    .promo-art{max-width:360px;margin-left:auto;margin-right:auto;}
+  }
   @media(max-width:760px){
     .vn-promo::after{background:linear-gradient(to bottom,rgba(6,38,46,.72) 0%,rgba(6,38,46,.88) 100%);}
     .vn-copy{max-width:none;}
     .vn-logo{width:min(100%,320px);margin-left:auto;margin-right:auto;}
     .vn-copy{text-align:center;}
     .vn-actions{justify-content:center;}
+  }
+
+  /* A Christmas Carol promo, palette matched to the show page */
+  .cc-promo{position:relative;overflow:hidden;padding:clamp(54px,7vw,92px) 0;
+    background:linear-gradient(135deg,#1a404a 0%,#132e35 46%,#0b1c21 100%);}
+  .cc-promo::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background:radial-gradient(130% 90% at 82% 18%,rgba(240,220,194,.16) 0%,rgba(240,220,194,0) 58%);}
+  .cc-inner{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) clamp(240px,30vw,400px);
+    gap:clamp(30px,4.5vw,66px);align-items:center;}
+  .cc-copy{max-width:560px;}
+  .cc-kicker{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,220,194,.8);margin-bottom:14px;}
+  .cc-title{font-family:var(--font-display);color:#f6f2ea;font-size:clamp(30px,4.2vw,50px);line-height:1.04;margin:0 0 6px;font-weight:700;}
+  .cc-title em{font-style:italic;color:#f0dcc2;font-weight:500;display:block;font-size:.56em;margin-top:10px;letter-spacing:.01em;}
+  .cc-lead{font-size:clamp(15.5px,1.7vw,17.5px);line-height:1.65;color:rgba(246,242,234,.9);margin:18px 0;}
+  .cc-when{font-size:15.5px;line-height:1.6;color:rgba(246,242,234,.82);margin:0 0 26px;}
+  .cc-when strong{color:#fff;font-size:17px;}
+  .cc-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  @media(max-width:860px){
+    .cc-inner{grid-template-columns:1fr;gap:30px;}
+  }
+  @media(max-width:760px){
+    .cc-copy{max-width:none;text-align:center;}
+    .cc-actions{justify-content:center;}
   }
 </style>
 </head>
@@ -835,6 +866,34 @@ html,body{overflow-x:clip;}
         <a href="/villains-night" class="btn btn-ghost-light">Show details</a>
       </div>
     </div>
+    <figure class="promo-art reveal">
+      <picture>
+        <source type="image/webp" srcset="/img/shows/vn-art-sanderson.webp">
+        <img src="/img/shows/vn-art-sanderson.jpg" alt="Three Aspire performers in costume as the Sanderson sisters at Villains Night" loading="lazy" width="1000" height="1000">
+      </picture>
+    </figure>
+  </div>
+</section>
+
+<!-- ========== A CHRISTMAS CAROL PROMO ========== -->
+<section class="cc-promo" aria-labelledby="cc-promo-h">
+  <div class="wrap cc-inner">
+    <div class="cc-copy reveal">
+      <span class="cc-kicker">Encore presents &middot; a St. George holiday tradition since 2022</span>
+      <h2 id="cc-promo-h" class="cc-title">A Christmas Carol<em>A New Musical</em></h2>
+      <p class="cc-lead">Our original retelling of the Dickens classic returns, with Corbin Allred as Ebenezer Scrooge and a cast of Young Artists alongside him. Nineteen performances across three weeks.</p>
+      <p class="cc-when"><strong>November 30 &ndash; December 18, 2026</strong><br>The Historic Electric Theater, St. George &middot; Tickets $12 to $25</p>
+      <div class="cc-actions">
+        <a href="https://encoreperformingarts.thundertix.com/events/272819/performances" target="_blank" rel="noopener" class="btn btn-light">Get tickets &rarr;</a>
+        <a href="/a-christmas-carol-tickets" class="btn btn-ghost-light">Show details</a>
+      </div>
+    </div>
+    <figure class="promo-art reveal">
+      <picture>
+        <source type="image/webp" srcset="/img/shows/cc-art-poster.webp">
+        <img src="/img/shows/cc-art-poster.jpg" alt="A Christmas Carol: A New Musical, featuring Corbin Allred as Ebenezer Scrooge" loading="lazy" width="1000" height="1061">
+      </picture>
+    </figure>
   </div>
 </section>
 
