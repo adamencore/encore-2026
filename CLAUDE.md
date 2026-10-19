@@ -98,6 +98,14 @@ HTML comment. Verify a flag before reporting it.
 
 ## Third-party
 
+- **Google Analytics 4**, measurement ID `G-DV819LQ0M7`. The gtag.js
+  snippet sits in `<head>` directly after `<meta charset>` on every live
+  page. There is no shared layout, so a new page gets the tag only by
+  carrying it from the page it was cloned from. Check for it before
+  shipping a new page: `grep -L G-DV819LQ0M7 *.html */*.html` should print
+  nothing (ignore `studio/` and `_build/`, which are not live). Never add
+  it twice on one page and never add a second property or GTM container
+  without removing this one.
 - **ThunderTix** for ticketing. Current event ids: Villains Night 272127,
   Peter Pan Jr. 272824, A Christmas Carol 272819.
 - **Elfsight** for forms. Load `platform.js` once in `<head>`, not per
