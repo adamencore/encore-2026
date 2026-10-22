@@ -699,7 +699,13 @@ html,body{overflow-x:clip;}
 .evp[href="/peter-pan-jr-2026"] .evp-bg img{object-position:72% 50%;}
 
     /* ===== Show banners: alternating photo / copy, photo bleeds off the outer edge ===== */
-  .sb{position:relative;overflow:hidden;padding:0;}
+  .sb{position:relative;overflow:hidden;padding:0;isolation:isolate;}
+  .sb-tex{position:absolute;inset:0;z-index:0;pointer-events:none;}
+  .sb-tex img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sb-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;}
+  .sb-snow{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:.3;}
+  @media (prefers-reduced-motion:reduce){.sb-snow{display:none;}}
+  .sb-grid{position:relative;z-index:3;}
   .sb-grid{display:grid;align-items:stretch;gap:clamp(26px,4vw,60px);
     grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);}
   .sb-photo{margin:0;position:relative;align-self:stretch;min-height:clamp(260px,34vw,440px);}
@@ -729,17 +735,24 @@ html,body{overflow-x:clip;}
 
   /* Villains Night: dark band, the wordmark artwork is white */
   .sb-vn{background:#15333b;}
+  .sb-vn .sb-tex{opacity:.62;}
+  .sb-vn .sb-scrim{background:linear-gradient(270deg,rgba(14,42,50,.74) 0%,rgba(14,42,50,.60) 48%,rgba(14,42,50,.42) 100%);}
   .sb-vn .sb-date{color:#fff;}
   .sb-vn .sb-loc{color:rgba(233,228,224,.82);}
   .sb-vn .sb-detail{color:rgba(233,228,224,.88);}
 
-  /* A Christmas Carol: light band, palette from the show page */
-  .sb-cc{background:var(--paper);}
-  .sb-cc .sb-title{color:#132e35;}
-  .sb-cc .sb-title em{color:#2a6b7b;}
-  .sb-cc .sb-date{color:#132e35;}
-  .sb-cc .sb-loc{color:var(--muted);}
-  .sb-cc .sb-detail{color:var(--charcoal-soft);}
+  /* A Christmas Carol: dark band so the mist texture and snowfall read */
+  .sb-cc{background:#0b1c21;}
+  .sb-cc .sb-tex img{object-position:50% 86%;}
+  .sb-cc .sb-scrim{background:linear-gradient(90deg,rgba(11,28,33,.86) 0%,rgba(11,28,33,.70) 46%,rgba(11,28,33,.50) 100%);}
+  /* soft vignette under the copy so falling snow never sits bright behind text */
+  .sb-cc .sb-copy{background:radial-gradient(ellipse 78% 72% at 50% 50%,
+    rgba(11,28,33,.78) 0%, rgba(11,28,33,.62) 55%, rgba(11,28,33,0) 100%);}
+  .sb-cc .sb-title{color:#f6f2ea;}
+  .sb-cc .sb-title em{color:#f0dcc2;}
+  .sb-cc .sb-date{color:#fff;}
+  .sb-cc .sb-loc{color:rgba(246,242,234,.82);}
+  .sb-cc .sb-detail{color:rgba(246,242,234,.9);}
 
   @media(max-width:860px){
     .sb-grid{grid-template-columns:1fr;gap:0;}
@@ -842,6 +855,11 @@ html,body{overflow-x:clip;}
 <!-- ========== VILLAINS NIGHT PROMO ========== -->
 <!-- ========== VILLAINS NIGHT BANNER ========== -->
 <section class="sb sb-vn sb-left" aria-labelledby="vn-h">
+  <div class="sb-tex" aria-hidden="true"><picture>
+    <source type="image/webp" srcset="/img/shows/vn-bg.webp">
+    <img src="/img/shows/vn-bg.jpg" alt="" loading="lazy" decoding="async">
+  </picture></div>
+  <div class="sb-scrim" aria-hidden="true"></div>
   <div class="sb-grid">
     <figure class="sb-photo reveal">
       <picture>
@@ -868,6 +886,12 @@ html,body{overflow-x:clip;}
 
 <!-- ========== A CHRISTMAS CAROL BANNER ========== -->
 <section class="sb sb-cc sb-right" aria-labelledby="cc-banner-h">
+  <div class="sb-tex" aria-hidden="true"><picture>
+    <source type="image/webp" srcset="/img/shows/cc-bg.webp">
+    <img src="/img/shows/cc-bg.jpg" alt="" loading="lazy" decoding="async">
+  </picture></div>
+  <div class="sb-scrim" aria-hidden="true"></div>
+  <canvas class="sb-snow" aria-hidden="true"></canvas>
   <div class="sb-grid">
     <div class="sb-copy reveal">
       <h2 id="cc-banner-h" class="sb-title">A Christmas Carol<em>A New Musical</em></h2>
@@ -875,8 +899,8 @@ html,body{overflow-x:clip;}
       <p class="sb-loc">The Historic Electric Theater &middot; St. George</p>
       <p class="sb-detail">Our original retelling of the Dickens classic returns, with Corbin Allred as Ebenezer Scrooge and a cast of Young Artists alongside him. Nineteen performances across three weeks. Tickets $12 to $25.</p>
       <div class="sb-actions">
-        <a href="https://encoreperformingarts.thundertix.com/events/272819/performances" target="_blank" rel="noopener" class="btn btn-dark">Get tickets &rarr;</a>
-        <a href="/a-christmas-carol-tickets" class="btn btn-ghost">Show details</a>
+        <a href="https://encoreperformingarts.thundertix.com/events/272819/performances" target="_blank" rel="noopener" class="btn btn-light">Get tickets &rarr;</a>
+        <a href="/a-christmas-carol-tickets" class="btn btn-ghost-light">Show details</a>
       </div>
     </div>
     <figure class="sb-photo reveal">
@@ -1411,6 +1435,55 @@ html,body{overflow-x:clip;}
   pop.addEventListener('click', function(e){ if(e.target.closest('[data-cpop-close]')) close(); });
   // let the page settle first so it does not fight the hero loading
   setTimeout(open, 1400);
+})();
+</script>
+
+<script>
+/* Snowfall on the A Christmas Carol banner. Same implementation as the
+   show page: skipped entirely for prefers-reduced-motion, paused when
+   the band is off screen or the tab is hidden. */
+(function(){
+  var c=document.querySelector('.sb-cc .sb-snow');
+  if(!c) return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ctx=c.getContext('2d'), flakes=[], raf=null, running=false;
+  var dpr=Math.min(window.devicePixelRatio||1,2);
+  function size(){
+    var r=c.parentNode.getBoundingClientRect();
+    if(!r.width||!r.height) return;
+    c.width=Math.round(r.width*dpr); c.height=Math.round(r.height*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.max(20,Math.min(64,Math.round(r.width/20)));
+    flakes=[];
+    for(var i=0;i<n;i++){
+      flakes.push({x:Math.random()*r.width,y:Math.random()*r.height,
+        r:0.9+Math.random()*2.2, s:0.16+Math.random()*0.40,
+        d:Math.random()*Math.PI*2, o:0.5+Math.random()*0.5});
+    }
+  }
+  function draw(){
+    var r=c.parentNode.getBoundingClientRect();
+    ctx.clearRect(0,0,r.width,r.height);
+    for(var i=0;i<flakes.length;i++){
+      var f=flakes[i];
+      f.y+=f.s; f.d+=0.008; f.x+=Math.sin(f.d)*0.22;
+      if(f.y>r.height+4){f.y=-4;f.x=Math.random()*r.width;}
+      if(f.x<-4){f.x=r.width+4;} if(f.x>r.width+4){f.x=-4;}
+      ctx.beginPath();
+      ctx.arc(f.x,f.y,f.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,'+f.o+')';
+      ctx.fill();
+    }
+    raf=requestAnimationFrame(draw);
+  }
+  function start(){ if(!running){running=true; draw();} }
+  function stop(){ if(running){running=false; if(raf){cancelAnimationFrame(raf);}} }
+  size();
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ if(es[0].isIntersecting){start();}else{stop();} },{threshold:0.01}).observe(c);
+  } else { start(); }
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(size,180);});
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){stop();}else{start();} });
 })();
 </script>
 </body>
