@@ -211,17 +211,16 @@
   .nav-cta .btn-give:hover{background:var(--accent-2);}
 
   /* BREADCRUMB */
-  .crumbs{padding:18px 0 0;}
-  .crumbs ol{list-style:none;display:flex;gap:8px;font-size:13px;color:var(--muted);align-items:center;flex-wrap:wrap;}
-  .crumbs li{display:inline-flex;align-items:center;gap:8px;}
-  .crumbs li+li::before{content:'›';color:var(--muted);opacity:.6;}
-  .crumbs a:hover{color:var(--charcoal);}
-  .crumbs [aria-current="page"]{color:var(--charcoal);font-weight:600;}
 
   /* HERO + GIVE */
   .hero{padding:14px 0 0;}
   .give-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);box-shadow:0 40px 80px -40px rgba(13,39,45,.5);display:grid;grid-template-columns:1.05fr .95fr;}
   .give-wrap::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");}
+  .give-bg{position:absolute;inset:0;z-index:0;}
+  .give-bg img{width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;}
+  .give-scrim{position:absolute;inset:0;z-index:1;background:
+    linear-gradient(100deg,rgba(11,33,39,.94) 0%,rgba(11,33,39,.86) 44%,rgba(11,33,39,.62) 100%),
+    linear-gradient(180deg,rgba(11,33,39,.30),rgba(11,33,39,.55));}
   .give-intro{position:relative;z-index:2;padding:52px 44px;color:var(--cream);display:flex;flex-direction:column;justify-content:center;}
   .give-intro .eyebrow{color:rgba(233,228,224,.75);font-weight:600;letter-spacing:.04em;font-size:14px;margin-bottom:14px;}
   .give-intro h1{font-family:var(--font-display);font-weight:500;font-size:clamp(34px,4.6vw,56px);line-height:1.04;letter-spacing:-.035em;}
@@ -466,14 +465,6 @@ h2 em{color:var(--teal)}
 </div>
 
 <!-- ========== BREADCRUMB ========== -->
-<nav class="crumbs" aria-label="Breadcrumb">
-  <div class="wrap">
-    <ol>
-      <li><a href="/">Home</a></li>
-      <li aria-current="page">Donate</li>
-    </ol>
-  </div>
-</nav>
 
 <main>
 
@@ -481,6 +472,11 @@ h2 em{color:var(--teal)}
   <header class="hero">
     <div class="wrap">
       <div class="give-wrap reveal">
+        <div class="give-bg" aria-hidden="true"><picture>
+          <source type="image/webp" srcset="/img/gallery/hadestown-finale.webp">
+          <img src="/img/gallery/hadestown-finale.jpg" alt="" loading="eager" decoding="async">
+        </picture></div>
+        <div class="give-scrim" aria-hidden="true"></div>
         <div class="give-intro">
           <span class="eyebrow">Support Encore · 501(c)(3) Nonprofit</span>
           <h1>Put a young artist <em>on stage</em></h1>

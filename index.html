@@ -596,18 +596,12 @@ html,body{overflow-x:clip;}
 .nh-path:hover{padding-left:14px;}
 .nh-path:hover .pa{opacity:1;transform:none;}
 .nh-built-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+.nh-built-photo{margin:0;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;
+  box-shadow:0 30px 64px -34px rgba(20,40,48,.5);}
+.nh-built-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .nh-built h2{max-width:13ch;margin-bottom:26px;}
 .nh-built blockquote{font-size:1.3rem;line-height:1.5;color:var(--nh-purple);max-width:42ch;}
 .nh-built .qby{margin-top:18px;font-family:var(--font-display);font-weight:700;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);}
-.nh-collage{position:relative;width:100%;max-width:460px;aspect-ratio:696/663;margin:0 auto;}
-.nh-collage .cc{position:absolute;border-radius:50%;overflow:hidden;box-shadow:0 20px 44px -22px rgba(40,30,60,.5);aspect-ratio:1;}
-.nh-collage .cc img{width:100%;height:100%;object-fit:cover;}.nh-collage .cc-sm img{object-position:50% 35%;}
-.nh-collage .cc-lg{width:59.6%;left:39.3%;top:0.5%;z-index:2;}
-.nh-collage .cc-md{width:33.3%;left:0.3%;top:42.2%;z-index:2;}
-.nh-collage .cc-sm{width:19.7%;left:69.6%;top:78.8%;z-index:3;}
-.nh-collage .sq{position:absolute;width:28.7%;height:19.6%;border-radius:14%;background:var(--nh-purple);left:12.4%;top:18.2%;transform:rotate(-18deg);z-index:1;}
-.nh-collage .tri{position:absolute;width:43.7%;height:51.9%;left:34.3%;top:46%;background:var(--nh-lav);clip-path:polygon(0 0,0 100%,100% 50%);z-index:1;}
-.nh-collage .dot2{position:absolute;width:9.3%;aspect-ratio:1;border-radius:50%;background:var(--nh-lav);left:33.7%;top:10%;z-index:2;}
 .nh-ev-head{display:flex;align-items:flex-start;gap:18px;margin-bottom:12px;}
 .nh-ev-icon{flex:none;color:#b9a6e0;margin-top:2px;}
 .nh-ev-icon svg{width:46px;height:46px;}
@@ -620,7 +614,7 @@ html,body{overflow-x:clip;}
 .nh-ev-text h3{font-family:var(--font-display);font-size:1.5rem;color:var(--nh-purple);}
 .nh-ev-text p{margin:12px 0 18px;color:var(--muted);font-size:.97rem;}
 .nh-ev-text .lk{font-family:var(--font-display);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--nh-purple);}
-@media(max-width:900px){.nh-stage-grid,.nh-built-grid,.nh-ev-grid{grid-template-columns:1fr;gap:32px;}.nh-stage-photo{aspect-ratio:4/5;}.nh-collage{max-width:460px;}}
+@media(max-width:900px){.nh-stage-grid,.nh-built-grid,.nh-ev-grid{grid-template-columns:1fr;gap:32px;}.nh-stage-photo{aspect-ratio:4/5;}}
 @media(max-width:620px){.nh-ev-grid{grid-template-columns:1fr;}.nh-strip figure{width:40vw;border-radius:18px;}.nh-strip-back figure{width:40vw;border-radius:18px;}}
 
 /* case-for-the-arts on purple: light text */
@@ -937,13 +931,12 @@ html,body{overflow-x:clip;}
 <section class="nh-sec nh-built">
   <div class="wrap"><div class="nh-built-grid">
     <div class="reveal"><h2 class="nh-h2">Built by Southern Utah, for Southern Utah's Young Artists.</h2><blockquote>"My daughter walked in barely able to look an adult in the eye. Two seasons later she's leading warm-ups. Encore didn't just teach her to perform, it taught her she matters."</blockquote><div class="qby">Encore Parent</div></div>
-    <div class="nh-collage reveal" aria-hidden="true">
-      <div class="sq"></div><div class="dot2"></div>
-      <div class="cc cc-lg" style="background:#15102b url(/img/gallery/young-performer-broom.webp) 50% 0%/185% no-repeat;"></div>
-      <div class="cc cc-md" style="background:#15102b url(/img/junior/moana.jpg) 5% 64%/235% no-repeat;"></div>
-      <div class="tri"></div>
-      <div class="cc cc-sm" style="background:#15102b url(/img/gallery/a-christmas-carol-tiny-tim.jpg) 61% 8%/220% no-repeat;"></div>
-    </div>
+    <figure class="nh-built-photo reveal">
+      <picture>
+        <source type="image/webp" srcset="/img/gallery/newsies-company.webp">
+        <img src="/img/gallery/newsies-company.jpg" alt="The company of Newsies on stage at the Electric Theater" loading="lazy" decoding="async">
+      </picture>
+    </figure>
   </div></div>
 </section>
 
@@ -1284,32 +1277,6 @@ html,body{overflow-x:clip;}
 })();
 </script>
 
-<script>
-/* "Built by Southern Utah" collage, multi-speed parallax */
-(function(){
-  var collage=document.querySelector('.nh-collage'); if(!collage) return;
-  if(window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var map=[['.cc-lg',20,''],['.cc-md',36,''],['.cc-sm',54,''],['.sq',-30,'rotate(-18deg)'],['.tri',-46,''],['.dot2',64,'']];
-  var items=map.map(function(m){var el=collage.querySelector(m[0]); if(el){el.style.willChange='transform';} return {el:el,range:m[1],base:m[2]};}).filter(function(x){return x.el;});
-  var ticking=false;
-  function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(update);} }
-  function update(){
-    ticking=false;
-    var r=collage.getBoundingClientRect();
-    var vh=window.innerHeight||document.documentElement.clientHeight;
-    if(r.bottom<-240 || r.top>vh+240) return;                 /* skip when well off-screen */
-    var progress=((r.top + r.height/2) - vh/2)/(vh/2 + r.height/2);
-    progress=Math.max(-1,Math.min(1,progress));               /* -1 entering .. +1 leaving */
-    for(var i=0;i<items.length;i++){
-      var y=(progress*items[i].range).toFixed(1);
-      items[i].el.style.transform='translate3d(0,'+y+'px,0) '+items[i].base;
-    }
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',onScroll,{passive:true});
-  update();
-})();
-</script>
 
 
 <script>

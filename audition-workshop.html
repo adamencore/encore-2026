@@ -127,12 +127,6 @@
 
   /* BREADCRUMB */
   .hero .crumbs{position:absolute;top:calc(78px + 16px);left:0;right:0;z-index:3;padding:0;}
-  .crumbs ol{list-style:none;display:flex;gap:8px;font-size:13px;color:rgba(238,229,222,.85);align-items:center;flex-wrap:wrap;}
-  .crumbs li{display:inline-flex;align-items:center;gap:8px;}
-  .crumbs li+li::before{content:'›';color:rgba(238,229,222,.85);opacity:.6;}
-  .crumbs a{color:rgba(238,229,222,.85);transition:color .2s;}
-  .crumbs a:hover{color:var(--cream);}
-  .crumbs [aria-current="page"]{color:var(--cream);font-weight:600;}
   @media(max-width:560px){ .hero .crumbs{display:none;} }
 
   /* HERO */
@@ -414,11 +408,7 @@ h2 em{color:var(--teal)}
    hero, so it is returned to normal flow here and given nav clearance. */
 .hero{background:none !important;min-height:0 !important;border-radius:0 !important;display:block !important;overflow:visible !important;padding:104px 0 0 !important;}
 .hero .wrap{padding-top:0;padding-bottom:0;}
-.crumbs{position:static !important;padding:104px 0 0 !important;}
-.crumbs + .hero{padding-top:18px !important;}
 @media(max-width:760px){
-  .crumbs{display:none;}
-  .crumbs + .hero{padding-top:96px !important;}
   .hero{padding-top:96px !important;}
 }
 
@@ -514,13 +504,6 @@ h2 em{color:var(--teal)}
 <article>
 
   <!-- ========== HERO ========== -->
-  <nav class="crumbs" aria-label="Breadcrumb">
-  <div class="wrap"><ol>
-    <li><a href="/">Home</a></li>
-    <li><a href="/classes">Classes</a></li>
-    <li aria-current="page">Audition Workshop</li>
-  </ol></div>
-</nav>
 
 <header class="hero">
   <div class="wrap">

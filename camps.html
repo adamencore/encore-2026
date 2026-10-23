@@ -122,11 +122,6 @@
   .btn-ghost:hover{background:var(--charcoal);color:var(--cream);}
   .btn-light{background:var(--cream);color:var(--charcoal);}
 
-  .crumbs{padding:18px 0 0;}
-  .crumbs ol{list-style:none;display:flex;gap:8px;font-size:13px;color:var(--muted);align-items:center;flex-wrap:wrap;}
-  .crumbs li{display:inline-flex;align-items:center;gap:8px;}
-  .crumbs li+li::before{content:'›';color:var(--muted);opacity:.6;}
-  .crumbs [aria-current="page"]{color:var(--charcoal);font-weight:600;}
 
   /* HERO */
   .hero{padding:14px 0 0;}
@@ -407,11 +402,6 @@
   </nav>
 </div>
 
-<nav class="crumbs" aria-label="Breadcrumb">
-  <div class="wrap">
-    <ol><li><a href="/">Home</a></li><li aria-current="page">Camps · Ages 5–12</li></ol>
-  </div>
-</nav>
 
 <article>
 
@@ -729,7 +719,6 @@
   const TIER = "Camps";
 
   const OFFERINGS = [
-    {id:"november-camp-2026", title:"November Junior Musical Theater Camp", type:"Camp", ages:["Camps"], status:"Open", when:"Auditions October 31", meta:"Camp · Ages 7-11", blurb:"A week-long camp building to a live performance on November 7.", link:"/november-junior-musical-theater-camp", logo:"", bg:"/img/camps/camps-hero-1.webp"}
   ];
 
   const CTA = {audition:"Register to audition", class:"Browse classes", event:"See the event", workshop:"Register", camp:"Camp info"};

@@ -141,11 +141,6 @@
     <lastmod>2026-06-10</lastmod>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.encorepa.org/november-camp-2026</loc>
-    <lastmod>2026-06-09</lastmod>
-    <priority>0.7</priority>
-  </url>
   <url><loc>https://www.encorepa.org/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.encorepa.org/blog/illuminate-takes-the-stage-at-disney-california-adventure</loc><lastmod>2026-06-01</lastmod><priority>0.5</priority></url>
   <url><loc>https://www.encorepa.org/blog/matilda-jr-musical-theater-camp-kicks-off-with-energy-and-excitement</loc><lastmod>2026-04-24</lastmod><priority>0.5</priority></url>
@@ -339,12 +334,6 @@
   <url><loc>https://www.encorepa.org/blog/a-christmas-carol-workshop</loc><lastmod>2022-08-31</lastmod><priority>0.5</priority></url>
   <url><loc>https://www.encorepa.org/blog/a-christmas-carol-live-table-read</loc><lastmod>2022-08-29</lastmod><priority>0.5</priority></url>
   <url><loc>https://www.encorepa.org/blog/swiss-days-parade</loc><lastmod>2022-05-08</lastmod><priority>0.5</priority></url>
-  <url>
-    <loc>https://www.encorepa.org/november-junior-musical-theater-camp</loc>
-    <lastmod>2026-08-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
   <url>
     <loc>https://www.encorepa.org/villains-night</loc>
     <lastmod>2026-08-23</lastmod>

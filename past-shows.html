@@ -119,12 +119,6 @@
   .btn-light{background:var(--cream);color:var(--charcoal);}
 
   /* BREADCRUMB */
-  .crumbs{padding:18px 0 0;}
-  .crumbs ol{list-style:none;display:flex;gap:8px;font-size:13px;color:var(--muted);align-items:center;flex-wrap:wrap;}
-  .crumbs li{display:inline-flex;align-items:center;gap:8px;}
-  .crumbs li+li::before{content:'›';color:var(--muted);opacity:.6;}
-  .crumbs a:hover{color:var(--charcoal);}
-  .crumbs [aria-current="page"]{color:var(--charcoal);font-weight:600;}
 
   /* HERO */
   .hero{padding:14px 0 0;}
@@ -330,10 +324,6 @@
   @media(max-width:520px){.gal-grid{grid-template-columns:1fr;}}
   /* ===== Gallery viewer (masonry + lightbox) ===== */
   .gal-blurb{color:var(--muted);font-size:16.5px;max-width:640px;margin-top:14px;}
-  .crumbs{padding:0 0 18px;}
-  .crumbs ol{list-style:none;display:flex;gap:8px;font-size:13px;color:var(--muted);align-items:center;flex-wrap:wrap;padding:0;margin:0;}
-  .crumbs li+li::before{content:'›';color:var(--muted);opacity:.6;margin-right:8px;}
-  .crumbs a{color:var(--muted);}.crumbs [aria-current]{color:var(--charcoal);font-weight:600;}
   .shots{column-count:3;column-gap:14px;}
   .shots[aria-busy="true"]{min-height:240px;}
   .shots .shot{break-inside:avoid;display:block;width:100%;margin:0 0 14px;padding:0;border:0;background:#16414c;border-radius:14px;overflow:hidden;cursor:zoom-in;}
@@ -398,14 +388,6 @@ h2 em{color:var(--teal)}
 </div>
 
 <!-- ========== BREADCRUMB ========== -->
-<nav class="crumbs" aria-label="Breadcrumb">
-  <div class="wrap">
-    <ol>
-      <li><a href="/">Home</a></li>
-      <li aria-current="page">Contact</li>
-    </ol>
-  </div>
-</nav>
 
 <main>
   <header class="hero">
