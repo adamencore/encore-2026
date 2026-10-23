@@ -200,8 +200,11 @@
   .mobile-menu .mm-foot a{font-family:var(--font-display);font-size:14px;border:none;padding:0;display:inline;color:#cfc6b4;}
 
   /* HERO , full-bleed, edge to edge, under the fixed nav */
-  .hero{position:relative;min-height:92vh;min-height:92svh;overflow:hidden;display:flex;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);border-radius:0 0 var(--radius-lg) var(--radius-lg);}
-  .hero-inner{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:120px 28px 56px;display:flex;flex-direction:column;justify-content:center;gap:40px;}
+  .hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);}
+  .hero-inner{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:120px 28px 56px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:40px;}
+  .hero-mark{width:min(80vw,780px);color:#fff;}
+  .hero-mark svg{width:100%;height:auto;display:block;}
+  @media(max-width:700px){.hero-mark{width:min(86vw,470px);}}
   .hero::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
   /* HERO slideshow, stacked crossfading frames; frame 1 is the inlined LCP image */
   .hero-bgs{position:absolute;inset:0;z-index:0;overflow:hidden;}
@@ -216,7 +219,9 @@
     .hero-bg{transition:none;}
     .hero-bg.is-active,.hero-bg.is-active img{animation:none;}
   }
-  .hero-veil{position:absolute;inset:0;z-index:0;background:linear-gradient(115deg,rgba(13,39,45,.9) 0%,rgba(13,39,45,.66) 46%,rgba(13,39,45,.34) 100%),linear-gradient(0deg,rgba(13,39,45,.78),rgba(13,39,45,0) 52%),linear-gradient(180deg,rgba(13,39,45,.55),rgba(13,39,45,0) 24%);}
+  .hero-veil{position:absolute;inset:0;z-index:0;background:
+    radial-gradient(ellipse 74% 60% at 50% 48%,rgba(10,32,38,.70) 0%,rgba(10,32,38,.38) 62%,rgba(10,32,38,.10) 100%),
+    linear-gradient(180deg,rgba(10,32,38,.62) 0%,rgba(10,32,38,.26) 32%,rgba(10,32,38,.34) 66%,rgba(10,32,38,.72) 100%);}
   .hero-top,.hero-bottom{position:relative;z-index:2;}
   .hero-top{position:absolute;top:120px;right:28px;z-index:3;max-width:320px;}
   .hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(233,228,224,.12);border:1px solid rgba(233,228,224,.25);color:var(--cream);padding:9px 16px;border-radius:100px;font-size:13px;font-weight:500;backdrop-filter:blur(6px);}
@@ -414,7 +419,7 @@
     .foot-top{grid-template-columns:1fr 1fr;}
     .age{padding:42px 24px;}
     .hero-top{position:static;margin-bottom:6px;}
-    .hero-inner{justify-content:flex-end;}
+    .hero-inner{justify-content:center;}
     .spotlight{max-width:none;}
   }
   @media(max-width:560px){
@@ -798,6 +803,20 @@ html,body{overflow-x:clip;}
 </div>
 
 <!-- HERO -->
+<!-- FULL-BLEED HERO -->
+<header class="hero">
+  <div class="hero-bgs" aria-hidden="true">
+    <div class="hero-bg is-active"><picture><source type="image/webp" srcset="/img/hero/christmas-carol-2024.webp"><img src="/img/hero/christmas-carol-2024.jpg" alt="" fetchpriority="high" decoding="async"></picture></div>
+    <div class="hero-bg"><picture><source type="image/webp" srcset="/img/hero/villains.webp"><img src="/img/hero/villains.jpg" alt="" loading="lazy" decoding="async"></picture></div>
+    <div class="hero-bg"><picture><source type="image/webp" srcset="/img/hero/moana.webp"><img src="/img/hero/moana.jpg" alt="" loading="lazy" decoding="async"></picture></div>
+    <div class="hero-bg"><picture><source type="image/webp" srcset="/img/hero/seven-brides.webp"><img src="/img/hero/seven-brides.jpg" alt="" loading="lazy" decoding="async"></picture></div>
+  </div>
+  <div class="hero-veil" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-mark" role="img" aria-label="Encore Performing Arts"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></div>
+  </div>
+</header>
+
 <header class="nh-hero reveal">
   <div class="wrap">
     <h1 class="nh-h1">Teaching <span class="nh-hl">life skills</span> through stage skills.</h1>
