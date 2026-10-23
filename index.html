@@ -714,6 +714,7 @@ html,body{overflow-x:clip;}
   .sb-copy{padding:clamp(52px,6.5vw,92px) clamp(22px,3.4vw,52px);text-align:center;align-self:center;}
   .sb-logo{display:block;width:min(100%,360px);margin:0 auto 26px;}
   .sb-logo img{width:100%;height:auto;display:block;}
+  .sb-logo-cc{width:min(100%,430px);margin-bottom:22px;}
   .sb-title{font-family:var(--font-display);line-height:1.04;margin:0 auto 22px;font-weight:700;
     font-size:clamp(30px,4vw,46px);max-width:14ch;}
   .sb-title em{display:block;font-style:italic;font-weight:500;font-size:.54em;margin-top:10px;}
@@ -894,7 +895,10 @@ html,body{overflow-x:clip;}
   <canvas class="sb-snow" aria-hidden="true"></canvas>
   <div class="sb-grid">
     <div class="sb-copy reveal">
-      <h2 id="cc-banner-h" class="sb-title">A Christmas Carol<em>A New Musical</em></h2>
+      <h2 id="cc-banner-h" class="sr-only">A Christmas Carol: A New Musical</h2>
+      <picture class="sb-logo sb-logo-cc">
+        <img src="/img/shows/cc-logo.svg" alt="A Christmas Carol" width="603" height="211" decoding="async">
+      </picture>
       <p class="sb-date">November 30 &ndash; December 18, 2026</p>
       <p class="sb-loc">The Historic Electric Theater &middot; St. George</p>
       <p class="sb-detail">Our original retelling of the Dickens classic returns, with Corbin Allred as Ebenezer Scrooge and a cast of Young Artists alongside him. Nineteen performances across three weeks. Tickets $12 to $25.</p>
