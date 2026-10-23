@@ -352,6 +352,12 @@
 h2 em{color:var(--teal)}
 </style>
 <style>
+  .ps-sort{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 22px;}
+  .ps-sort button{font-family:inherit;font-size:13.5px;font-weight:600;color:var(--charcoal);
+    background:var(--paper);border:1px solid var(--line);padding:9px 17px;border-radius:100px;
+    cursor:pointer;transition:transform .2s,background .2s,color .2s;}
+  .ps-sort button:hover{transform:translateY(-1px);}
+  .ps-sort button[aria-pressed="true"]{background:var(--charcoal);color:var(--cream);border-color:var(--charcoal);}
   .ps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
   @media(max-width:900px){.ps-grid{grid-template-columns:repeat(3,1fr);gap:14px;}}
   @media(max-width:600px){.ps-grid{grid-template-columns:repeat(2,1fr);gap:12px;}}
@@ -360,11 +366,6 @@ h2 em{color:var(--teal)}
   a.ps-card[href]{cursor:pointer;}
   a.ps-card[href]:hover img{transform:scale(1.05);}
   a.ps-card[href]:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));}
-  .ps-group{grid-column:1/-1;border:1px solid var(--line);background:rgba(50,41,73,.04);border-radius:18px;padding:14px 16px 16px;}
-  .ps-group-head{margin:2px 2px 13px;}
-  .ps-group-head .lbl{font-family:var(--font-display);font-weight:600;font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);}
-  .ps-group-row{display:flex;flex-wrap:wrap;gap:14px;}
-  .ps-group-row .ps-card{flex:1 1 170px;max-width:250px;}
   .ps-head{cursor:default;}
 </style>
 </head>
@@ -416,62 +417,34 @@ h2 em{color:var(--teal)}
   </header>
   <section>
     <div class="wrap">
+      <div class="ps-sort" role="group" aria-label="Sort shows">
+        <button type="button" data-mode="featured" aria-pressed="true">Featured</button>
+        <button type="button" data-mode="new" aria-pressed="false">Newest</button>
+        <button type="button" data-mode="old" aria-pressed="false">Oldest</button>
+        <button type="button" data-mode="az" aria-pressed="false">A to Z</button>
+      </div>
       <div class="ps-grid">
-        <a class="ps-card" data-slug="frozen-kids" aria-label="Disney's Frozen Kids"><picture><source type="image/webp" srcset="/img/past-shows/frozen-kids.webp"><img src="/img/past-shows/frozen-kids.jpg" alt="Disney's Frozen Kids" loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="greatest-showman" aria-label="The Greatest Showman"><picture><source type="image/webp" srcset="/img/past-shows/greatest-showman.webp"><img src="/img/past-shows/greatest-showman.jpg" alt="The Greatest Showman" loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="hadestown-teen-edition" aria-label="Hadestown Teen Edition"><picture><source type="image/webp" srcset="/img/past-shows/hadestown-teen-edition.webp"><img src="/img/past-shows/hadestown-teen-edition.jpg" alt="Hadestown Teen Edition" loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="chitty-chitty-bang-bang" aria-label="Chitty Chitty Bang Bang"><picture><source type="image/webp" srcset="/img/past-shows/chitty-chitty-bang-bang.webp"><img src="/img/past-shows/chitty-chitty-bang-bang.jpg" alt="Chitty Chitty Bang Bang" loading="lazy"></picture></a>
-      <div class="ps-group">
-        <div class="ps-group-head"><span class="lbl">A Christmas Carol &middot; 2025 &middot; choose a cast</span></div>
-        <div class="ps-group-row">
-          <div class="ps-card ps-head" aria-label="A Christmas Carol: A New Musical (2025)"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2025.webp"><img src="/img/past-shows/a-christmas-carol-2025.jpg" alt="A Christmas Carol: A New Musical (2025)" loading="lazy"></picture></div>
-          <a class="ps-card" data-slug="a-christmas-carol-2025-ivy-cast" aria-label="A Christmas Carol 2025 — Ivy Cast"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2025-ivy-cast.webp"><img src="/img/past-shows/a-christmas-carol-2025-ivy-cast.jpg" alt="A Christmas Carol 2025 — Ivy Cast" loading="lazy"></picture></a>
-          <a class="ps-card" data-slug="a-christmas-carol-2025-holly-cast" aria-label="A Christmas Carol 2025 — Holly Cast"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2025-holly-cast.webp"><img src="/img/past-shows/a-christmas-carol-2025-holly-cast.jpg" alt="A Christmas Carol 2025 — Holly Cast" loading="lazy"></picture></a>
-        </div>
-      </div>
-      <div class="ps-group">
-        <div class="ps-group-head"><span class="lbl">Anastasia The Musical &middot; choose a cast</span></div>
-        <div class="ps-group-row">
-          <div class="ps-card ps-head" aria-label="Anastasia The Musical"><picture><source type="image/webp" srcset="/img/past-shows/anastasia.webp"><img src="/img/past-shows/anastasia.jpg" alt="Anastasia The Musical" loading="lazy"></picture></div>
-          <a class="ps-card" data-slug="anastasia-empress-cast" aria-label="Anastasia — Empress Cast"><picture><source type="image/webp" srcset="/img/past-shows/anastasia-empress-cast.webp"><img src="/img/past-shows/anastasia-empress-cast.jpg" alt="Anastasia — Empress Cast" loading="lazy"></picture></a>
-          <a class="ps-card" data-slug="anastasia-imperial-cast" aria-label="Anastasia — Imperial Cast"><picture><source type="image/webp" srcset="/img/past-shows/anastasia-imperial-cast.webp"><img src="/img/past-shows/anastasia-imperial-cast.jpg" alt="Anastasia — Imperial Cast" loading="lazy"></picture></a>
-        </div>
-      </div>
-        <a class="ps-card" data-slug="alice-in-wonderland-jr" aria-label="Disney's Alice in Wonderland Jr."><picture><source type="image/webp" srcset="/img/past-shows/alice-in-wonderland-jr.webp"><img src="/img/past-shows/alice-in-wonderland-jr.jpg" alt="Disney's Alice in Wonderland Jr." loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="aladdin-jr" aria-label="Disney's Aladdin Jr."><picture><source type="image/webp" srcset="/img/past-shows/aladdin-jr.webp"><img src="/img/past-shows/aladdin-jr.jpg" alt="Disney's Aladdin Jr." loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="a-christmas-carol-2024" aria-label="A Christmas Carol: A New Musical (2024)"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2024.webp"><img src="/img/past-shows/a-christmas-carol-2024.jpg" alt="A Christmas Carol: A New Musical (2024)" loading="lazy"></picture></a>
-      <div class="ps-group">
-        <div class="ps-group-head"><span class="lbl">A Christmas Carol &middot; 2023 &middot; choose a cast</span></div>
-        <div class="ps-group-row">
-          <a class="ps-card" data-slug="a-christmas-carol-2023-red-cast" aria-label="A Christmas Carol 2023 — Red Cast"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2023-red-cast.webp"><img src="/img/past-shows/a-christmas-carol-2023-red-cast.jpg" alt="A Christmas Carol 2023 — Red Cast" loading="lazy"></picture></a>
-          <a class="ps-card" data-slug="a-christmas-carol-2023-green-cast" aria-label="A Christmas Carol 2023 — Green Cast"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2023-green-cast.webp"><img src="/img/past-shows/a-christmas-carol-2023-green-cast.jpg" alt="A Christmas Carol 2023 — Green Cast" loading="lazy"></picture></a>
-        </div>
-      </div>
-        <a class="ps-card" data-slug="101-dalmatians" aria-label="Disney's 101 Dalmatians"><picture><source type="image/webp" srcset="/img/past-shows/101-dalmatians.webp"><img src="/img/past-shows/101-dalmatians.jpg" alt="Disney's 101 Dalmatians" loading="lazy"></picture></a>
-      <div class="ps-group">
-        <div class="ps-group-head"><span class="lbl">Matilda Jr. The Musical &middot; choose a cast</span></div>
-        <div class="ps-group-row">
-          <div class="ps-card ps-head" aria-label="Roald Dahl's Matilda Jr. The Musical"><picture><source type="image/webp" srcset="/img/past-shows/matilda-jr.webp"><img src="/img/past-shows/matilda-jr.jpg" alt="Roald Dahl's Matilda Jr. The Musical" loading="lazy"></picture></div>
-          <a class="ps-card" data-slug="matilda-jr-mayhem-cast" aria-label="Matilda Jr. — Mayhem Cast"><picture><source type="image/webp" srcset="/img/past-shows/matilda-jr-mayhem-cast.webp"><img src="/img/past-shows/matilda-jr-mayhem-cast.jpg" alt="Matilda Jr. — Mayhem Cast" loading="lazy"></picture></a>
-          <a class="ps-card" data-slug="matilda-jr-mischief-cast" aria-label="Matilda Jr. — Mischief Cast"><picture><source type="image/webp" srcset="/img/past-shows/matilda-jr-mischief-cast.webp"><img src="/img/past-shows/matilda-jr-mischief-cast.jpg" alt="Matilda Jr. — Mischief Cast" loading="lazy"></picture></a>
-        </div>
-      </div>
-      <div class="ps-group">
-        <div class="ps-group-head"><span class="lbl">Shrek The Musical Kids &middot; choose a cast</span></div>
-        <div class="ps-group-row">
-          <div class="ps-card ps-head" aria-label="Shrek The Musical Kids"><picture><source type="image/webp" srcset="/img/past-shows/shrek-kids.webp"><img src="/img/past-shows/shrek-kids.jpg" alt="Shrek The Musical Kids" loading="lazy"></picture></div>
-          <a class="ps-card" data-slug="shrek-kids-storybook-cast" aria-label="Shrek Kids — Storybook Cast"><picture><source type="image/webp" srcset="/img/past-shows/shrek-kids-storybook-cast.webp"><img src="/img/past-shows/shrek-kids-storybook-cast.jpg" alt="Shrek Kids — Storybook Cast" loading="lazy"></picture></a>
-          <a class="ps-card" data-slug="shrek-kids-fairytale-cast" aria-label="Shrek Kids — Fairytale Cast"><picture><source type="image/webp" srcset="/img/past-shows/shrek-kids-fairytale-cast.webp"><img src="/img/past-shows/shrek-kids-fairytale-cast.jpg" alt="Shrek Kids — Fairytale Cast" loading="lazy"></picture></a>
-        </div>
-      </div>
-        <a class="ps-card" data-slug="les-miserables" aria-label="Les Misérables"><picture><source type="image/webp" srcset="/img/past-shows/les-miserables.webp"><img src="/img/past-shows/les-miserables.jpg" alt="Les Misérables" loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="beauty-and-the-beast" aria-label="Disney's Beauty and the Beast"><picture><source type="image/webp" srcset="/img/past-shows/beauty-and-the-beast.webp"><img src="/img/past-shows/beauty-and-the-beast.jpg" alt="Disney's Beauty and the Beast" loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="villains-night-2023" aria-label="Villains Night 2023"><picture><source type="image/webp" srcset="/img/past-shows/villains-night-2023.webp"><img src="/img/past-shows/villains-night-2023.jpg" alt="Villains Night 2023" loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="seven-brides-for-seven-brothers" aria-label="Seven Brides for Seven Brothers"><picture><source type="image/webp" srcset="/img/past-shows/seven-brides-for-seven-brothers.webp"><img src="/img/past-shows/seven-brides-for-seven-brothers.jpg" alt="Seven Brides for Seven Brothers" loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="moana-jr" aria-label="Disney's Moana Jr."><picture><source type="image/webp" srcset="/img/past-shows/moana-jr.webp"><img src="/img/past-shows/moana-jr.jpg" alt="Disney's Moana Jr." loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="newsies" aria-label="Disney's Newsies"><picture><source type="image/webp" srcset="/img/past-shows/newsies.webp"><img src="/img/past-shows/newsies.jpg" alt="Disney's Newsies" loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="villains-night-2024" aria-label="Villains Night 2024"><picture><source type="image/webp" srcset="/img/past-shows/villains-night-2024.webp"><img src="/img/past-shows/villains-night-2024.jpg" alt="Villains Night 2024" loading="lazy"></picture></a>
-        <a class="ps-card" data-slug="finding-nemo-jr" aria-label="Disney and Pixar's Finding Nemo Jr."><picture><source type="image/webp" srcset="/img/past-shows/finding-nemo-jr.webp"><img src="/img/past-shows/finding-nemo-jr.jpg" alt="Disney and Pixar's Finding Nemo Jr." loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="frozen-kids" data-year="2024" data-title="frozen kids" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2024-Frozen/2024-Frozen-Sensory-Friendly-performance" target="_blank" rel="noopener" aria-label="Disney's Frozen Kids, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/frozen-kids.webp"><img src="/img/past-shows/frozen-kids.jpg" alt="Disney's Frozen Kids" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="greatest-showman" data-year="2024" data-title="greatest showman" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2024-Greatest-Showman" target="_blank" rel="noopener" aria-label="The Greatest Showman, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/greatest-showman.webp"><img src="/img/past-shows/greatest-showman.jpg" alt="The Greatest Showman" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="hadestown-teen-edition" data-year="2024" data-title="hadestown teen edition" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2024-Hadestown-Teen-Edition" target="_blank" rel="noopener" aria-label="Hadestown Teen Edition, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/hadestown-teen-edition.webp"><img src="/img/past-shows/hadestown-teen-edition.jpg" alt="Hadestown Teen Edition" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="chitty-chitty-bang-bang" data-year="2025" data-title="chitty chitty bang bang" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2025-Chitty-Chitty-Bang-Bang" target="_blank" rel="noopener" aria-label="Chitty Chitty Bang Bang, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/chitty-chitty-bang-bang.webp"><img src="/img/past-shows/chitty-chitty-bang-bang.jpg" alt="Chitty Chitty Bang Bang" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="a-christmas-carol-2025" data-year="2025" data-title="a christmas carol: a new musical (2025)" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2025-A-Christmas-Carol" target="_blank" rel="noopener" aria-label="A Christmas Carol: A New Musical (2025), photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2025.webp"><img src="/img/past-shows/a-christmas-carol-2025.jpg" alt="A Christmas Carol: A New Musical (2025)" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="anastasia" data-year="2026" data-title="anastasia the musical" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2026-Anastasia" target="_blank" rel="noopener" aria-label="Anastasia The Musical, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/anastasia.webp"><img src="/img/past-shows/anastasia.jpg" alt="Anastasia The Musical" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="alice-in-wonderland-jr" data-year="2025" data-title="alice in wonderland jr." href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2025-Alice-in-Wonderland-Jr" target="_blank" rel="noopener" aria-label="Disney's Alice in Wonderland Jr., photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/alice-in-wonderland-jr.webp"><img src="/img/past-shows/alice-in-wonderland-jr.jpg" alt="Disney's Alice in Wonderland Jr." loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="aladdin-jr" data-year="2024" data-title="aladdin jr." href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2024-Aladdin-Jr" target="_blank" rel="noopener" aria-label="Disney's Aladdin Jr., photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/aladdin-jr.webp"><img src="/img/past-shows/aladdin-jr.jpg" alt="Disney's Aladdin Jr." loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="a-christmas-carol-2024" data-year="2024" data-title="a christmas carol: a new musical (2024)" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2024-Christmas-Carol" target="_blank" rel="noopener" aria-label="A Christmas Carol: A New Musical (2024), photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2024.webp"><img src="/img/past-shows/a-christmas-carol-2024.jpg" alt="A Christmas Carol: A New Musical (2024)" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="a-christmas-carol-2023" data-year="2023" data-title="a christmas carol: a new musical (2023)" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2023-A-Christmas-Carol-1" target="_blank" rel="noopener" aria-label="A Christmas Carol: A New Musical (2023), photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/a-christmas-carol-2023-red-cast.webp"><img src="/img/past-shows/a-christmas-carol-2023-red-cast.jpg" alt="A Christmas Carol: A New Musical (2023)" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="101-dalmatians" data-year="2024" data-title="101 dalmatians" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2024-101-Dalmations" target="_blank" rel="noopener" aria-label="Disney's 101 Dalmatians, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/101-dalmatians.webp"><img src="/img/past-shows/101-dalmatians.jpg" alt="Disney's 101 Dalmatians" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="matilda-jr" data-year="2026" data-title="matilda jr. the musical" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2026-Matilda" target="_blank" rel="noopener" aria-label="Roald Dahl's Matilda Jr. The Musical, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/matilda-jr.webp"><img src="/img/past-shows/matilda-jr.jpg" alt="Roald Dahl's Matilda Jr. The Musical" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="shrek-kids" data-year="2026" data-title="shrek the musical kids" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2026-Shrek" target="_blank" rel="noopener" aria-label="Shrek The Musical Kids, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/shrek-kids.webp"><img src="/img/past-shows/shrek-kids.jpg" alt="Shrek The Musical Kids" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="les-miserables" data-year="2025" data-title="les misérables" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2025-Les-Miserables-rehearsal" target="_blank" rel="noopener" aria-label="Les Misérables, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/les-miserables.webp"><img src="/img/past-shows/les-miserables.jpg" alt="Les Misérables" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="beauty-and-the-beast" data-year="2024" data-title="beauty and the beast" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2024-Beauty-and-the-Beast" target="_blank" rel="noopener" aria-label="Disney's Beauty and the Beast, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/beauty-and-the-beast.webp"><img src="/img/past-shows/beauty-and-the-beast.jpg" alt="Disney's Beauty and the Beast" loading="lazy"></picture></a>
+        <div class="ps-card" data-slug="villains-night-2023" data-year="2023" data-title="villains night 2023" aria-label="Villains Night 2023"><picture><source type="image/webp" srcset="/img/past-shows/villains-night-2023.webp"><img src="/img/past-shows/villains-night-2023.jpg" alt="Villains Night 2023" loading="lazy"></picture></div>
+        <a class="ps-card" data-slug="seven-brides-for-seven-brothers" data-year="2025" data-title="seven brides for seven brothers" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2025-Seven-Brides-for-Seven-Brothers" target="_blank" rel="noopener" aria-label="Seven Brides for Seven Brothers, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/seven-brides-for-seven-brothers.webp"><img src="/img/past-shows/seven-brides-for-seven-brothers.jpg" alt="Seven Brides for Seven Brothers" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="moana-jr" data-year="2025" data-title="moana jr." href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2025-Moana-Jr" target="_blank" rel="noopener" aria-label="Disney's Moana Jr., photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/moana-jr.webp"><img src="/img/past-shows/moana-jr.jpg" alt="Disney's Moana Jr." loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="newsies" data-year="2023" data-title="newsies" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2023-Newsies-promo" target="_blank" rel="noopener" aria-label="Disney's Newsies, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/newsies.webp"><img src="/img/past-shows/newsies.jpg" alt="Disney's Newsies" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="villains-night-2024" data-year="2024" data-title="villains night 2024" href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2024-Villains-Night" target="_blank" rel="noopener" aria-label="Villains Night 2024, photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/villains-night-2024.webp"><img src="/img/past-shows/villains-night-2024.jpg" alt="Villains Night 2024" loading="lazy"></picture></a>
+        <a class="ps-card" data-slug="finding-nemo-jr" data-year="2023" data-title="finding nemo jr." href="https://www.alanholbenphoto.com/Art-Music-Theater/Theater/Encore-Performing-Arts/n-r9cRgb/2023-Nemo-Junior" target="_blank" rel="noopener" aria-label="Disney and Pixar's Finding Nemo Jr., photo gallery"><picture><source type="image/webp" srcset="/img/past-shows/finding-nemo-jr.webp"><img src="/img/past-shows/finding-nemo-jr.jpg" alt="Disney and Pixar's Finding Nemo Jr." loading="lazy"></picture></a>
       </div>
     </div>
   </section>
@@ -572,6 +545,31 @@ h2 em{color:var(--teal)}
   document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
 })();
 </script>
-<script src="/js/past-shows-links.js" defer></script>
+<script>
+/* Past Shows sort bar. Cards carry data-year and data-title; "Featured" restores document order. */
+(function(){
+  var grid=document.querySelector('.ps-grid'), bar=document.querySelector('.ps-sort');
+  if(!grid||!bar) return;
+  var original=Array.prototype.slice.call(grid.children);
+  function apply(mode){
+    var items=original.slice();
+    if(mode!=='featured'){
+      items.sort(function(a,b){
+        var ya=+a.dataset.year, yb=+b.dataset.year, ta=a.dataset.title, tb=b.dataset.title;
+        if(mode==='new') return yb-ya || (ta<tb?-1:ta>tb?1:0);
+        if(mode==='old') return ya-yb || (ta<tb?-1:ta>tb?1:0);
+        return ta<tb?-1:ta>tb?1:0;
+      });
+    }
+    items.forEach(function(el){grid.appendChild(el);});
+    bar.querySelectorAll('button').forEach(function(b){
+      b.setAttribute('aria-pressed', b.dataset.mode===mode?'true':'false');
+    });
+  }
+  bar.addEventListener('click',function(e){
+    var b=e.target.closest('button[data-mode]'); if(b) apply(b.dataset.mode);
+  });
+})();
+</script>
 </body>
 </html>
