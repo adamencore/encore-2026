@@ -312,7 +312,16 @@ h2 em{color:var(--teal)}
   .tr-help{text-align:center;padding:0 0 clamp(40px,5vw,72px);}
   .tr-help p{font-size:15.5px;line-height:1.7;color:var(--charcoal-soft);margin:0 auto;max-width:620px;}
   .tr-help a{text-decoration:underline;}
+
+  .tr-rsvp{scroll-margin-top:140px;padding-top:clamp(40px,5vw,64px);}
+  .tr-rsvp h2{font-family:var(--font-display);font-size:clamp(26px,3.4vw,34px);font-weight:700;
+    text-align:center;margin:0 0 10px;color:var(--charcoal);}
+  .tr-rsvp .lede{text-align:center;font-size:15.5px;line-height:1.7;color:var(--charcoal-soft);
+    margin:0 auto 28px;max-width:560px;}
+  .tr-form{max-width:760px;margin:0 auto;}
 </style>
+<!-- Elfsight Form Builder platform, loaded once for the page -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
 </head>
 <body>
 <!-- ========== NAV ========== -->
@@ -359,7 +368,7 @@ h2 em{color:var(--teal)}
       <p class="tr-when">Friday, November 6, 2026</p>
       <p class="tr-where">The Historic Electric Theater &middot; 68 E Tabernacle St, St. George, UT</p>
       <div class="tr-cta">
-        <a href="https://encoreperformingarts.thundertix.com/events" target="_blank" rel="noopener" class="btn btn-dark">Reserve your seat &rarr;</a>
+        <a href="#rsvp" class="btn btn-dark">Reserve your seat &rarr;</a>
         <a href="mailto:hello@encorepa.org?subject=Trolls%20The%20Musical" class="btn btn-ghost">Ask a question</a>
       </div>
     </div>
@@ -371,6 +380,17 @@ h2 em{color:var(--teal)}
         <div class="tr-fact"><div class="k">Date</div><div class="v">Friday, November 6, 2026</div></div>
         <div class="tr-fact"><div class="k">Where</div><div class="v">The Historic Electric Theater<br>St. George, Utah</div></div>
         <div class="tr-fact"><div class="k">Presented by</div><div class="v">Encore Performing Arts with Abby Lou Services</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tr-rsvp" id="rsvp" aria-labelledby="rsvp-h">
+    <div class="wrap">
+      <h2 id="rsvp-h">Reserve your seat</h2>
+      <p class="lede">Fill out the form below to reserve seats for Trolls The Musical on Friday, November 6. We will follow up by email to confirm.</p>
+      <div class="tr-form">
+        <!-- Elfsight Form Builder | Trolls RSVP -->
+        <div class="elfsight-app-1ab40f29-36f0-40b3-b2c3-bc9a225538bf" data-elfsight-app-lazy></div>
       </div>
     </div>
   </section>
