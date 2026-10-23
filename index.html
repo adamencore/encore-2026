@@ -756,6 +756,7 @@ html,body{overflow-x:clip;}
   /* A Christmas Carol: dark band so the mist texture and snowfall read */
   .sb-cc{background:#0b1c21;}
   .sb-cc .sb-tex img{object-position:50% 86%;}
+  .sb-cc .sb-grad{background:linear-gradient(180deg,rgba(4,12,15,0) 44%,rgba(4,12,15,.40) 74%,rgba(4,12,15,.82) 100%);}
   .sb-cc .sb-scrim{background:linear-gradient(90deg,rgba(11,28,33,.86) 0%,rgba(11,28,33,.70) 46%,rgba(11,28,33,.50) 100%);}
   /* soft vignette under the copy so falling snow never sits bright behind text */
   .sb-cc .sb-copy{background:radial-gradient(ellipse 78% 72% at 50% 50%,
@@ -911,6 +912,7 @@ html,body{overflow-x:clip;}
   </picture></div>
   <div class="sb-scrim" aria-hidden="true"></div>
   <canvas class="sb-snow" aria-hidden="true"></canvas>
+  <div class="sb-grad" aria-hidden="true"></div>
   <div class="sb-grid">
     <div class="sb-copy reveal">
       <h2 id="cc-banner-h" class="sr-only">A Christmas Carol: A New Musical</h2>
@@ -925,10 +927,10 @@ html,body{overflow-x:clip;}
         <a href="/a-christmas-carol-tickets" class="btn btn-ghost-light">Show details</a>
       </div>
     </div>
-    <figure class="sb-photo reveal">
+    <figure class="sb-photo sb-cutout reveal">
       <picture>
-        <source type="image/webp" srcset="/img/shows/cc-banner.webp">
-        <img src="/img/shows/cc-banner.jpg" alt="The full company of A Christmas Carol on stage at the Electric Theater" loading="lazy">
+        <source type="image/webp" srcset="/img/shows/cc-cast-cutout.webp">
+        <img src="/img/shows/cc-cast-cutout.png" alt="Corbin Allred as Ebenezer Scrooge beside the Ghost of Christmas Present" width="1440" height="1280" loading="lazy" decoding="async">
       </picture>
     </figure>
   </div>
