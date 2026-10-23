@@ -711,6 +711,9 @@ html,body{overflow-x:clip;}
   .sb-photo{margin:0;position:relative;align-self:stretch;min-height:clamp(260px,34vw,440px);}
   .sb-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
   .sb-photo picture{position:absolute;inset:0;display:block;}
+  /* cut-out artwork: fit the whole thing, never crop, let the band texture show through */
+  .sb-cutout{border-radius:0 !important;overflow:visible !important;}
+  .sb-cutout img{object-fit:contain;object-position:50% 100%;}
   .sb-copy{padding:clamp(52px,6.5vw,92px) clamp(22px,3.4vw,52px);text-align:center;align-self:center;}
   .sb-logo{display:block;width:min(100%,360px);margin:0 auto 26px;}
   .sb-logo img{width:100%;height:auto;display:block;}
@@ -759,6 +762,11 @@ html,body{overflow-x:clip;}
     .sb-grid{grid-template-columns:1fr;gap:0;}
     .sb-left .sb-photo,.sb-right .sb-photo{grid-column:1;grid-row:1;border-radius:0;
       min-height:clamp(220px,52vw,320px);}
+    .sb-left .sb-photo.sb-cutout,.sb-right .sb-photo.sb-cutout{min-height:clamp(290px,84vw,440px);}
+    /* stacked layout: the copy sits under the artwork, so soften the cut-off
+       at its base instead of leaving a straight line across the costumes */
+    .sb-cutout img{-webkit-mask-image:linear-gradient(180deg,#000 84%,transparent 100%);
+      mask-image:linear-gradient(180deg,#000 84%,transparent 100%);}
     .sb-left .sb-copy,.sb-right .sb-copy{grid-column:1;grid-row:2;}
   }
 </style>
@@ -862,10 +870,10 @@ html,body{overflow-x:clip;}
   </picture></div>
   <div class="sb-scrim" aria-hidden="true"></div>
   <div class="sb-grid">
-    <figure class="sb-photo reveal">
+    <figure class="sb-photo sb-cutout reveal">
       <picture>
-        <source type="image/webp" srcset="/img/shows/vn-banner.webp">
-        <img src="/img/shows/vn-banner.jpg" alt="Aspire Performing Co. performers in costume on stage at Villains Night" loading="lazy">
+        <source type="image/webp" srcset="/img/shows/vn-cast-cutout.webp">
+        <img src="/img/shows/vn-cast-cutout.png" alt="Aspire Performing Co. performers in costume for Villains Night" width="1440" height="1280" loading="lazy" decoding="async">
       </picture>
     </figure>
     <div class="sb-copy reveal">
