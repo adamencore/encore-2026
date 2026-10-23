@@ -202,9 +202,12 @@
   /* HERO , full-bleed, edge to edge, under the fixed nav */
   .hero{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);}
   .hero-inner{position:relative;z-index:2;width:100%;max-width:1320px;margin:0 auto;padding:120px 28px 56px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:40px;}
-  .hero-mark{width:min(80vw,780px);color:#fff;}
-  .hero-mark svg{width:100%;height:auto;display:block;}
-  @media(max-width:700px){.hero-mark{width:min(86vw,470px);}}
+  .hero-copy{text-align:center;width:100%;max-width:min(92vw,900px);}
+  .hero-h1{font-family:var(--font-display);font-weight:700;color:var(--cream);
+    font-size:clamp(2.5rem,6vw,5rem);line-height:1.04;letter-spacing:-.02em;margin:0 auto;max-width:15ch;}
+  .hero-sub{margin:22px auto 0;max-width:46ch;color:rgba(233,228,224,.92);
+    font-size:clamp(1rem,1.4vw,1.18rem);line-height:1.6;}
+  @media(max-width:700px){.hero-copy{max-width:none;}}
   .hero::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
   /* HERO slideshow, stacked crossfading frames; frame 1 is the inlined LCP image */
   .hero-bgs{position:absolute;inset:0;z-index:0;overflow:hidden;}
@@ -220,7 +223,7 @@
     .hero-bg.is-active,.hero-bg.is-active img{animation:none;}
   }
   .hero-veil{position:absolute;inset:0;z-index:0;background:
-    radial-gradient(ellipse 74% 60% at 50% 48%,rgba(10,32,38,.70) 0%,rgba(10,32,38,.38) 62%,rgba(10,32,38,.10) 100%),
+    radial-gradient(ellipse 80% 66% at 50% 48%,rgba(10,32,38,.82) 0%,rgba(10,32,38,.54) 60%,rgba(10,32,38,.18) 100%),
     linear-gradient(180deg,rgba(10,32,38,.62) 0%,rgba(10,32,38,.26) 32%,rgba(10,32,38,.34) 66%,rgba(10,32,38,.72) 100%);}
   .hero-top,.hero-bottom{position:relative;z-index:2;}
   .hero-top{position:absolute;top:120px;right:28px;z-index:3;max-width:320px;}
@@ -567,15 +570,7 @@
 .xicon{background:none!important;border:0!important;border-radius:0!important;width:auto!important;height:auto!important;padding:0!important;display:block!important;place-items:unset!important;}.xicon img{display:block;object-fit:contain;}.fyc-more .fyc-ic{width:22px;height:22px;object-fit:contain;vertical-align:middle;}
 /* ===== NEW HOMEPAGE SECTIONS (purple/green) ===== */
 html,body{overflow-x:clip;}
-.nh-hero{text-align:center;padding:130px 0 0;background:var(--cream-lite);}
-.nh-h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.6rem,6.4vw,5.2rem);line-height:1.04;letter-spacing:-.02em;color:var(--nh-purple);max-width:15ch;margin:0 auto;}
 .nh-hl{background:#338093;color:#fff;padding:0 .12em;border-radius:.1em;-webkit-box-decoration-break:clone;box-decoration-break:clone;}
-.nh-sub{margin:22px auto 0;max-width:50ch;color:var(--muted);font-size:clamp(1rem,1.4vw,1.18rem);}
-.nh-strip{margin-top:clamp(34px,4.5vw,54px);margin-bottom:clamp(20px,4vw,60px);display:flex;justify-content:center;align-items:flex-end;gap:clamp(5px,0.55vw,9px);width:100%;height:clamp(400px,50vw,605px);overflow:visible;}
-.nh-strip figure{flex:0 0 auto;width:clamp(184px,20.5vw,302px);border-radius:28px;overflow:hidden;margin:0;box-shadow:0 26px 54px -30px rgba(40,30,60,.42);will-change:transform,opacity;}
-.nh-strip figure img{width:100%;height:140%;position:relative;top:-20%;object-fit:cover;display:block;will-change:transform;}
-.nh-strip .h1{height:72%;}.nh-strip .h2{height:89%;}.nh-strip .h3{height:100%;}
-.nh-strip .h4{height:90%;}.nh-strip .h5{height:80%;}.nh-strip .h6{height:82%;}.nh-strip{position:relative;}.nh-strip figure{position:relative;z-index:1;}.nh-strip-back{position:absolute;inset:0;z-index:0;display:flex;justify-content:center;align-items:flex-end;gap:clamp(5px,0.55vw,9px);opacity:0;transform:scale(1.1);transform-origin:50% 72%;will-change:opacity,transform;pointer-events:none;}.nh-strip-back figure{flex:0 0 auto;width:clamp(184px,20.5vw,302px);position:relative;border-radius:28px;overflow:hidden;margin:0;box-shadow:0 26px 54px -30px rgba(40,30,60,.42);}.nh-strip-back .b1{height:88%;}.nh-strip-back .b2{height:72%;}.nh-strip-back .b3{height:100%;}.nh-strip-back .b4{height:80%;}.nh-strip-back .b5{height:94%;}.nh-strip-back .b6{height:74%;}.nh-strip-back figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
 .nh-sec{padding:clamp(60px,7vw,100px) 0;background:var(--cream-lite);}
 .nh-eyebrow{font-family:var(--font-display);font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--nh-purple);}
 .nh-h2{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.04;letter-spacing:-.02em;color:var(--nh-purple);}
@@ -626,7 +621,7 @@ html,body{overflow-x:clip;}
 .nh-ev-text p{margin:12px 0 18px;color:var(--muted);font-size:.97rem;}
 .nh-ev-text .lk{font-family:var(--font-display);font-weight:700;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--nh-purple);}
 @media(max-width:900px){.nh-stage-grid,.nh-built-grid,.nh-ev-grid{grid-template-columns:1fr;gap:32px;}.nh-stage-photo{aspect-ratio:4/5;}.nh-collage{max-width:460px;}}
-@media(max-width:620px){.nh-ev-grid{grid-template-columns:1fr;}.nh-strip{height:clamp(280px,64vw,380px);gap:8px;}.nh-strip figure{width:40vw;border-radius:18px;}.nh-strip-back figure{width:40vw;border-radius:18px;}}
+@media(max-width:620px){.nh-ev-grid{grid-template-columns:1fr;}.nh-strip figure{width:40vw;border-radius:18px;}.nh-strip-back figure{width:40vw;border-radius:18px;}}
 
 /* case-for-the-arts on purple: light text */
 .casearts .ca-kicker{color:var(--nh-lav);}
@@ -635,7 +630,6 @@ html,body{overflow-x:clip;}
 .casearts .ca-lead{color:rgba(255,255,255,.82);}
 .casearts .ca-note{color:rgba(255,255,255,.72);}
 
-.nh-strip .h3 img{top:-26%;object-position:42% 50%;}
 
 /* ===== CLASS FEATURETTE ===== */
 .cf-sec{padding:clamp(64px,7.5vw,100px) 0;background:var(--nh-purple);color:var(--cream);}
@@ -813,25 +807,13 @@ html,body{overflow-x:clip;}
   </div>
   <div class="hero-veil" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="hero-mark" role="img" aria-label="Encore Performing Arts"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></div>
+    <div class="hero-copy">
+      <h1 class="hero-h1">Teaching <span class="nh-hl">life skills</span> through stage skills.</h1>
+      <p class="hero-sub">Professional musical theater training for Young Artists, where confidence is rehearsed and every performer finds their stage.</p>
+    </div>
   </div>
 </header>
 
-<header class="nh-hero reveal">
-  <div class="wrap">
-    <h1 class="nh-h1">Teaching <span class="nh-hl">life skills</span> through stage skills.</h1>
-    <p class="nh-sub">Professional musical theater training for Young Artists, where confidence is rehearsed and every performer finds their stage.</p>
-  </div>
-  <div class="nh-strip" aria-hidden="true">
-    <div class="nh-strip-back" aria-hidden="true"><figure class="b1"><img src="/img/gallery/aristocats-alley-cats.jpg" alt=""></figure><figure class="b2"><img src="/img/gallery/peter-pan-wendy.jpg" alt=""></figure><figure class="b3"><img src="/img/junior/moana.jpg" alt=""></figure><figure class="b4"><img src="/img/gallery/a-christmas-carol-tiny-tim.jpg" alt=""></figure><figure class="b5"><img src="/img/gallery/peter-pan-neverland.jpg" alt=""></figure><figure class="b6"><img src="/img/gallery/alice-in-wonderland.jpg" alt=""></figure></div>
-    <figure class="h1"><img src="/img/gallery/soloist-spotlight.jpg" alt=""></figure>
-    <figure class="h2"><img src="/img/gallery/alice-in-wonderland.jpg" alt=""></figure>
-    <figure class="h3"><img src="/img/gallery/a-christmas-carol-fezziwig.jpg" alt=""></figure>
-    <figure class="h4"><img src="/img/hero/villains.jpg" alt=""></figure>
-    <figure class="h5"><img src="/img/gallery/aristocats-alley-cats.jpg" alt=""></figure>
-    <figure class="h6"><img src="/img/gallery/peter-pan-neverland.jpg" alt=""></figure>
-  </div>
-</header>
 <section class="events" id="events">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -1283,47 +1265,6 @@ html,body{overflow-x:clip;}
     // click/Enter still follow the link; just sync the frame first
     row.addEventListener('click',function(){activate(i);});
   });
-})();
-</script>
-<script>
-/* hero strip: inner parallax + slide-away on scroll */
-(function(){
-  var strip=document.querySelector('.nh-strip'); if(!strip) return;
-  if(window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var hero=document.querySelector('.nh-hero')||strip.parentNode;
-  var figs=[].slice.call(strip.querySelectorAll(':scope > figure'));
-  var imgs=figs.map(function(f){return f.querySelector('img');});
-  var back=strip.querySelector('.nh-strip-back');
-  var paraF=[0.14,0.20,0.10,0.22,0.13,0.18];   /* inner-image parallax rate per card */
-  var side=[-1,-1,-1,1,1,1];                    /* left half slides left, right half slides right */
-  var dist=[2.5,1.5,0.5,0.5,1.5,2.5];           /* distance from center -> outer travels furthest */
-  var ticking=false;
-  function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(update);} }
-  function update(){
-    ticking=false;
-    var scrolled=window.pageYOffset||document.documentElement.scrollTop||0;
-    var hH=hero.offsetHeight||700;
-    var prog=Math.min(1,Math.max(0,scrolled/(hH*0.9)));   /* 0 at top -> 1 once hero is scrolled past */
-    var top=strip.getBoundingClientRect().top;
-    for(var i=0;i<figs.length;i++){
-      if(imgs[i]){
-        var py=top*(paraF[i]||0.15); if(py>58)py=58; if(py<-58)py=-58;
-        imgs[i].style.transform='translate3d(0,'+py.toFixed(1)+'px,0)';
-      }
-      var fx=side[i]*(380+dist[i]*220)*prog;   /* part outward from the middle */
-      var sc=1+prog*0.6;                        /* cards grow as they part */
-      figs[i].style.transform='translate3d('+fx.toFixed(1)+'px,0,0) scale('+sc.toFixed(3)+')';
-    }
-    if(back){
-      var bo=Math.min(1,prog*2.2);                 /* reveal reaches full BEFORE front clears */
-      var bs=1.12-Math.min(prog,0.6)/0.6*0.12;     /* gentle zoom-settle 1.12 -> 1 */
-      back.style.opacity=bo.toFixed(3);
-      back.style.transform='scale('+bs.toFixed(3)+')';
-    }
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',onScroll,{passive:true});
-  update();
 })();
 </script>
 <script>
