@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+  TEMPORARY probe: which GiveButter widget id actually renders.
+  Unlisted, noindex, delete once the donate page is wired up.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>GiveButter widget probe</title>
+<script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=r4LTMUN6MZ570QnU&p=other"></script>
+<style>
+  body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;line-height:1.5;}
+  section{border:1px solid #ccc;border-radius:10px;padding:18px;margin:0 0 26px;}
+  h2{font-size:15px;font-family:monospace;margin:0 0 12px;color:#444;}
+  .slot{min-height:120px;border:1px dashed #ddd;border-radius:8px;padding:10px;}
+</style>
+</head>
+<body>
+<h1>GiveButter widget probe</h1>
+<p>Each box below holds one candidate id. Whichever renders a donation form is the right pattern.</p>
+
+<section>
+  <h2>A. givebutter-widget id="d54afr"</h2>
+  <div class="slot"><givebutter-widget id="d54afr"></givebutter-widget></div>
+</section>
+
+<section>
+  <h2>B. givebutter-widget id="support-encore-performing-arts-d54afr"</h2>
+  <div class="slot"><givebutter-widget id="support-encore-performing-arts-d54afr"></givebutter-widget></div>
+</section>
+
+<section>
+  <h2>C. givebutter-widget id="RgRkeL" (Giving Tuesday 2025, known code)</h2>
+  <div class="slot"><givebutter-widget id="RgRkeL"></givebutter-widget></div>
+</section>
+
+<section>
+  <h2>D. loader alone, no widget element (what was pasted)</h2>
+  <div class="slot"></div>
+</section>
+</body>
+</html>
