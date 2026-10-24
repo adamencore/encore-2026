@@ -255,6 +255,10 @@
   .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--charcoal);}
 
   /* CURRENT CAMPAIGNS */
+  .camp-slot{margin:0 0 16px;min-height:0;}
+  .camp-slot givebutter-widget{display:block;width:100%;}
+  .camp-alt{display:block;text-align:center;font-size:14px;font-weight:600;
+    color:var(--charcoal-2);text-decoration:underline;text-underline-offset:3px;margin-top:4px;}
   .camp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   .camp{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
     padding:26px 24px;display:flex;flex-direction:column;}
@@ -447,6 +451,8 @@
   .nav-toggle{margin-left:auto;}
 h2 em{color:var(--teal)}
 </style>
+<!-- Givebutter widgets platform, loaded once for the page -->
+<script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=r4LTMUN6MZ570QnU&p=other"></script>
 </head>
 <body>
 <!-- ========== NAV ========== -->
@@ -528,7 +534,8 @@ h2 em{color:var(--teal)}
           <div class="tag">Always open</div>
           <h3>General Support</h3>
           <p>Funds scholarships, production costs and our free sensory-friendly and ASL-interpreted performances across the whole season.</p>
-          <a class="btn btn-dark" href="https://givebutter.com/support-encore-performing-arts-d54afr" target="_blank" rel="noopener">Give now &rarr;</a>
+          <div class="camp-slot"><givebutter-widget id="d54afr"></givebutter-widget></div>
+          <a class="camp-alt" href="https://givebutter.com/support-encore-performing-arts-d54afr" target="_blank" rel="noopener">Open the full campaign page</a>
         </div>
       </div>
     </div>
