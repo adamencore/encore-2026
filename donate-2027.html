@@ -32,7 +32,8 @@
 .give-card .kicker{margin-left:0}
 .give-card h2{font-size:clamp(40px,4vw,58px);line-height:.88;letter-spacing:-.03em;margin-bottom:16px}
 .give-card > p{font-size:17px;line-height:1.45;font-weight:400;margin:0 0 22px}
-.gb-slot{min-height:120px;border-radius:20px;background:var(--sand);padding:8px;margin-bottom:20px}
+.gb-slot{max-height:0;overflow:hidden;border-radius:20px;background:var(--sand)}
+.gb-slot.on{max-height:none;padding:8px;margin-bottom:20px}
 .gb-slot givebutter-widget{display:block;width:100%}
 .give-card .pill{width:100%;min-width:0}
 .give-note{font-size:13px!important;color:#555;margin:16px 0 0!important;text-align:center}
@@ -176,7 +177,7 @@
       <p class="kicker">Make a gift</p>
       <h2 id="give-h">Every gift keeps the curtain rising</h2>
       <p>Give once or give often. Every dollar stays close to the stage, supporting the Young Artists we serve.</p>
-      <div class="gb-slot"><givebutter-widget id="d54afr"></givebutter-widget></div>
+      <div class="gb-slot" id="gbSlot"><givebutter-widget id="d54afr"></givebutter-widget></div>
       <a class="pill" href="https://givebutter.com/support-encore-performing-arts-d54afr" target="_blank" rel="noopener">Donate now</a>
       <p class="give-note">Encore is a 501(c)(3) nonprofit; gifts are tax-deductible. <a href="#faq">Questions?</a></p>
     </div>
@@ -278,5 +279,15 @@
 </footer>
 <script src="/js/e27.js" defer></script>
 
+<script>
+(function(){
+  // Show the Givebutter box only once the widget has drawn something; otherwise the Donate button stands alone.
+  var slot=document.getElementById('gbSlot'); if(!slot) return;
+  var w=slot.querySelector('givebutter-widget');
+  function chk(){ if(w && w.offsetHeight>20) slot.classList.add('on'); }
+  if('ResizeObserver' in window && w) new ResizeObserver(chk).observe(w);
+  setTimeout(chk,3000); setTimeout(chk,8000);
+})();
+</script>
 </body>
 </html>
