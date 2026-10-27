@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | Encore Performing Arts | 2027 Preview</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Design preview of the 2027 blog page for Encore Performing Arts. Not the live page.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<link rel="stylesheet" href="/css/e27.css">
+<style>
+/* Blog index, 2027 design. Shared styles live in /css/e27.css. */
+.sec{padding:clamp(110px,11vw,180px) 0}
+.split-head{display:grid;grid-template-columns:minmax(0,640px) minmax(0,440px);justify-content:space-between;align-items:end;gap:28px;margin-bottom:clamp(36px,4vw,54px)}
+/* Featured */
+.feat{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);background:#fff;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--ink)}
+.feat-ph{position:relative;min-height:440px;overflow:hidden}
+.feat-ph picture,.feat-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.feat:hover .feat-ph img{transform:scale(1.03)}
+.feat-b{display:flex;flex-direction:column;justify-content:center;padding:clamp(30px,4vw,60px)}
+.feat-b .kicker{margin-left:0}
+.feat-b h2{font-size:clamp(38px,3.8vw,58px);line-height:.92;letter-spacing:-.03em}
+.feat-meta{margin:18px 0 0;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-d)}
+.feat-b p.ex{font-size:18px;line-height:1.55;font-weight:400;margin:18px 0 28px}
+.feat-b .pill{align-self:flex-start;min-width:240px}
+/* Filters */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(34px,4vw,50px)}
+.chip{appearance:none;border:2px solid var(--teal);background:transparent;color:var(--teal-d);border-radius:70px;padding:10px 18px;font:700 15px var(--sans);cursor:pointer;transition:background .2s,color .2s}
+.chip b{font-weight:700;opacity:.65;margin-left:4px}
+.chip:hover{background:rgba(52,120,155,.1)}
+.chip.on{background:var(--teal);color:var(--cream)}
+.chip.on b{opacity:.85}
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pc[hidden]{display:none}
+.pc-in{display:flex;flex-direction:column;height:100%;background:#fff;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .25s,box-shadow .25s}
+.pc-in:hover{transform:translateY(-4px);box-shadow:0 26px 50px -34px rgba(17,17,17,.5)}
+.pc-ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--mist)}
+.pc-ph picture,.pc-ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.pc-in:hover .pc-ph img{transform:scale(1.04)}
+.pc-cat{position:absolute;left:14px;top:14px;background:var(--cream);color:var(--teal-d);font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:7px 13px;border-radius:70px}
+.pc-b{display:flex;flex-direction:column;flex:1;padding:22px 26px 26px}
+.pc-date{margin:0 0 10px;font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-d)}
+.pc-b h3{font-size:clamp(24px,2vw,30px);line-height:1;letter-spacing:-.03em;margin:0 0 12px}
+.pc-ex{font-size:16px;line-height:1.5;font-weight:400;margin:0 0 20px}
+.pc-go{margin-top:auto;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-d)}
+.pc-go svg{width:18px;height:18px;transition:transform .2s}
+.pc-in:hover .pc-go svg{transform:translateX(4px)}
+.more-wrap{text-align:center;margin-top:clamp(40px,4vw,60px)}
+.more-wrap p{margin:14px 0 0;font-size:15px;font-weight:400}
+/* Topics band */
+.topics{position:relative;background:var(--slate);color:var(--cream);padding:clamp(70px,7vw,110px) 0 clamp(160px,14vw,230px)}
+.topics .kicker{color:var(--sky)}
+.topics .lede{color:var(--mist)}
+.topics .wave-top{fill:var(--sand)}
+.topics .wave-bot{fill:var(--sand)}
+.tp{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tp button{appearance:none;width:100%;text-align:left;display:flex;align-items:center;gap:18px;background:rgba(251,246,242,.06);border:1px solid rgba(251,246,242,.12);border-radius:24px;padding:22px 24px;color:var(--cream);font:inherit;cursor:pointer;transition:background .2s}
+.tp button:hover{background:rgba(251,246,242,.12)}
+.tp svg{height:40px;width:auto;flex:none;color:var(--sky)}
+.tp li:nth-child(even) svg{color:var(--cream)}
+.tp b{display:block;font:400 clamp(24px,2vw,30px)/1 var(--serif);letter-spacing:-.02em}
+.tp span span{display:block;margin-top:6px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sky)}
+/* CTA */
+.cta{position:relative;color:var(--cream);overflow:hidden;isolation:isolate;background:var(--slate)}
+.cta-ph,.cta-ph picture,.cta-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,10,10,.88) 0%,rgba(10,10,10,.62) 50%,rgba(10,10,10,.25) 100%)}
+.cta-in{padding-block:clamp(160px,14vw,230px)}
+.cta h2{font-size:clamp(44px,4.8vw,70px);line-height:.85;letter-spacing:-.03em;max-width:640px}
+.cta p{font-size:18px;line-height:1.45;font-weight:400;max-width:520px;margin:22px 0 32px;color:var(--mist)}
+.cta-btns{display:flex;flex-wrap:wrap;gap:14px}
+.cta-btns .pill{min-width:240px}
+.cta .wave-bot{fill:var(--slate)}
+@media (max-width:1100px){
+  .grid{grid-template-columns:1fr 1fr}
+  .tp{grid-template-columns:1fr 1fr}
+}
+@media (max-width:980px){
+  .split-head,.feat{grid-template-columns:1fr}
+  .feat-ph{min-height:300px}
+}
+@media (max-width:680px){
+  .grid,.tp{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .feat-b .pill,.cta-btns .pill{min-width:0;width:100%}
+  .filters{flex-wrap:nowrap;overflow-x:auto;margin-inline:calc(var(--gut)*-1);padding:2px var(--gut) 8px;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-nav" id="siteNav">
+  <div class="nav-in">
+    <nav class="nav-l" aria-label="Main"><a href="/programs-2027">Programs</a><a href="/classes-2027">Classes</a><a href="/auditions-2027">Auditions</a><a href="/about-2027">About</a></nav>
+    <a href="/home-2027" class="nav-logo" aria-label="Encore Performing Arts: Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+    <div class="nav-r">
+      <a class="nav-pill" href="/tickets-2027">Tickets</a>
+      <a class="nav-pill solid" href="/donate-2027">Donate</a>
+      <button type="button" class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mmenu" id="mMenu" aria-hidden="true">
+  <div class="mm-in">
+    <svg class="mm-illo" viewBox="0 0 118.07 103.2" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M49.06,85.17l-19.37,16.75c-1.06.92-4.15,1.47-5.46,1.22s-3.02-3.28-2.69-4.65l4.22-17.71-20.62,3.16c-1.27.2-4.32-.98-4.77-2.16s.07-4.4,1.06-5.28l18.03-16.14L1.86,50.06c-1.12-.66-2.1-3.82-1.81-4.98.34-1.36,2.48-3.71,3.89-3.96l23.16-4.18-5.74-21.84c-.4-1.52.53-4.65,1.49-5.8s5.07-1.85,6.39-.95l24.75,16.95,12.36-21.9c.82-1.46,3.95-3.22,5.51-3.38,1.75-.18,5.16,2.25,5.63,4.19l5.99,24.65,26.12-6.36c1.62-.39,4.74.69,5.5,1.93s.31,4.89-.68,5.96l-16.22,17.46,17.43,8.01c1.13.52,2.42,2.88,2.44,3.96s-1.65,3.62-2.74,3.88l-21.53,5.18,5.22,14.99c.46,1.33-.06,4.15-1.03,4.97s-4.3,1.1-5.46.58l-18.13-8.17-4.28,15.98c-.35,1.3-2.32,3.26-3.52,3.55-1.4.35-4.72-.73-5.67-1.83l-11.88-13.77Z"/> </g></svg>
+    <nav aria-label="Menu"><ul class="mm-links"><li><a href="/about-2027">About<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li><li><a href="/auditions-2027">Auditions<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li><li><a href="/contact-2027">Contact<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li></ul></nav>
+    <div class="mm-cta"><a class="pill" href="/tickets-2027">Get Tickets</a><a class="pill pill-light" href="/donate-2027">Donate</a></div>
+    <p class="mm-foot">The Historic Electric Theater<br>68 E Tabernacle St, St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></p>
+  </div>
+</div>
+
+<main id="main">
+<section class="pbanner" data-par-host>
+  <div class="pb-ph" data-par="0.35" style="--pos:50% 45%"><picture><source type="image/webp" srcset="/img/gallery/ensemble-onstage-band.webp"><img src="/img/gallery/ensemble-onstage-band.jpg" alt="Encore&rsquo;s full company performing with a live on-stage band" fetchpriority="high" decoding="async"></picture></div>
+  <div class="wrap pb-in" data-par="0.14" data-par-fade>
+    <p class="kicker">The Encore blog</p>
+    <h1>Stories from the stage</h1>
+    <p class="lede">Rehearsal diaries, field trips, cast parties and the people who make it all happen. News and stories from Encore Performing Arts and our Young Artists.</p>
+    <div class="pb-acts"><a class="pill" href="#stories">Browse stories</a></div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C 360 0 760 130 1080 60 C 1240 26 1360 40 1440 52 L1440 120 L0 120 Z"/></svg>
+</section>
+
+
+<section class="sec" aria-labelledby="feat-h" style="padding-top:clamp(70px,7vw,110px);padding-bottom:0">
+  <div class="wrap">
+    <a class="feat" href="/blog/a-christmas-carol-2026-rehearsals-begin">
+      <div class="feat-ph"><picture><source type="image/webp" srcset="/img/blog/a-christmas-carol-2026-rehearsals-begin/table-read-young-artists.webp"><img src="/img/blog/a-christmas-carol-2026-rehearsals-begin/table-read-young-artists.jpg" alt="" fetchpriority="high" decoding="async"></picture></div>
+      <div class="feat-b">
+        <p class="kicker">Latest story &middot; Productions</p>
+        <h2 id="feat-h">A Christmas Carol Rehearsals Are Under Way</h2>
+        <p class="feat-meta">October 19, 2026</p>
+        <p class="ex">Rehearsals have begun for Encore&#x27;s A Christmas Carol: A New Musical, with Corbin Allred returning as Ebenezer Scrooge and Adam Cheney as Jacob Marley and the Ghost...</p>
+        <span class="pill">Read the story</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="sec" id="stories" aria-labelledby="stories-h">
+  <div class="wrap">
+    <div class="split-head">
+      <div><p class="kicker">All stories</p><h2 class="h2" id="stories-h">From the <em>archive</em></h2></div>
+      <p class="lede">102 stories since 2022. Pick a topic to narrow it down.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filter stories by topic"><button type="button" class="chip on" data-f="all" aria-pressed="true">All <b>101</b></button><button type="button" class="chip" data-f="education" aria-pressed="false">Education <b>23</b></button><button type="button" class="chip" data-f="productions" aria-pressed="false">Productions <b>20</b></button><button type="button" class="chip" data-f="page-to-stage" aria-pressed="false">Page to Stage <b>16</b></button><button type="button" class="chip" data-f="aspire" aria-pressed="false">Aspire <b>14</b></button><button type="button" class="chip" data-f="accessibility" aria-pressed="false">Accessibility <b>14</b></button><button type="button" class="chip" data-f="our-home" aria-pressed="false">Our Home <b>8</b></button><button type="button" class="chip" data-f="news" aria-pressed="false">News <b>4</b></button><button type="button" class="chip" data-f="behind-the-scenes" aria-pressed="false">Behind the Scenes <b>1</b></button><button type="button" class="chip" data-f="community" aria-pressed="false">Community <b>1</b></button></div>
+    <div class="grid" id="grid">
+<article class="pc" data-cat="behind-the-scenes">
+      <a href="/blog/building-more-than-a-set" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/building-more-than-a-set/set-build.webp"><img src="/img/blog/building-more-than-a-set/set-build.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Behind the Scenes</span></div>
+        <div class="pc-b"><p class="pc-date">August 23, 2026</p><h3>Building More Than a Set</h3><p class="pc-ex">More than twenty volunteers, staff, cast, and Young Artists who are not even in the show spent an evening assembling and painting the set for Little Women. Why we...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/little-mermaid-camp-wrap" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/little-mermaid-camp-wrap/on-stage.webp"><img src="/img/blog/little-mermaid-camp-wrap/on-stage.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">August 22, 2026</p><h3>Under the Sea and Beyond</h3><p class="pc-ex">Little Mermaid Jr. Camp wrapped with a performance at the Electric Theater. A look back at one week, a full cast of Young Artists, and the youth leaders who pulled...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/little-mermaid-camp-underway" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/little-mermaid-camp-underway/dance-class.webp"><img src="/img/blog/little-mermaid-camp-underway/dance-class.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">August 15, 2026</p><h3>New Friends, Big Dreams</h3><p class="pc-ex">Auditions are done and day one of Little Mermaid Jr. Camp is underway with a cast of more than 23 Young Artists. A look at how a room of strangers becomes a company.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/shakespearience-2026" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/shakespearience-2026/festival-group.webp"><img src="/img/blog/shakespearience-2026/festival-group.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">August 12, 2026</p><h3>Shakespearience 2026</h3><p class="pc-ex">A day of learning and theater appreciation at the Utah Shakespeare Festival in Cedar City: She Loves Me, a Festival-led workshop on character connections, the...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="community">
+      <a href="/blog/it-takes-a-pride" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/it-takes-a-pride/pride-rock-crew.webp"><img src="/img/blog/it-takes-a-pride/pride-rock-crew.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Community</span></div>
+        <div class="pc-b"><p class="pc-date">July 21, 2026</p><h3>It Takes a Pride</h3><p class="pc-ex">Bringing Disney&#x27;s The Lion King to life at the Electric Theater took a community, sewists, set builders, mask makers, face painters, and families. A thank-you to...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/a-week-in-the-pride-lands-recapping-lion-king-camp" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/lion-king-camp/cast-group.webp"><img src="/img/blog/lion-king-camp/cast-group.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">July 14, 2026</p><h3>A Week in the Pride Lands: Recapping Lion King Camp</h3><p class="pc-ex">From July 6 to July 14, 25 Young Artists stepped into the world of Disney&#x27;s The Lion King, one week of songs, choreography, and staging, ending on the Electric...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/a-magical-week-our-frozen-jr-camp" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/a-magical-week-our-frozen-jr-camp/000.webp"><img src="/img/blog/a-magical-week-our-frozen-jr-camp/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">June 15, 2026</p><h3>A Magical Week: Our Frozen Jr. Musical Theater Camp</h3><p class="pc-ex">Encore&#x27;s Frozen Jr. Musical Theater Camp brought Young Artists together for a week of music, character, and community, closing with a performance on the Electric...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/illuminate-takes-the-stage-at-disney-california-adventure" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/illuminate-takes-the-stage-at-disney-california-adventure/000.webp"><img src="/img/blog/illuminate-takes-the-stage-at-disney-california-adventure/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">June 1, 2026</p><h3>Illuminate Takes the Stage at Disney California Adventure</h3><p class="pc-ex">This month, the Illuminate Performing Company of Aspire did something few Young Artists ever get to do: they took the stage at Disney California Adventure Park....</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/aspires-spring-2026-bright-lights-of-broadway-a-spectacular-semester" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/aspires-spring-2026-bright-lights-of-broadway-a-spectacular-semester/000.webp"><img src="/img/blog/aspires-spring-2026-bright-lights-of-broadway-a-spectacular-semester/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">April 24, 2026</p><h3>Aspire’s Spring 2026 Bright Lights of Broadway - A Spectacular Semester</h3><p class="pc-ex">Aspire Performing Company’s Spring 2026 semester concludes with stunning performances of Bright Lights of Broadway, featuring Young Artists ages 7-18 in a...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/matilda-jr-musical-theater-camp-kicks-off-with-energy-and-excitement" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/matilda-camp/dance-group.webp"><img src="/img/blog/matilda-camp/dance-group.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">April 24, 2026</p><h3>Matilda Jr. Musical Theater Camp Kicks Off with Energy and Excitement</h3><p class="pc-ex">Encore&#x27;s Matilda Jr. Musical Theater Camp gives Young Artists ages 8–11 their first taste of theater, opening week, new friendships, and the April 30 showcase.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/launch-day-matilda-jr-begins" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/launch-day-matilda-jr-begins/000.webp"><img src="/img/blog/launch-day-matilda-jr-begins/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">April 6, 2026</p><h3>Launch Day: Matilda Jr. Begins</h3><p class="pc-ex">There is something electric about the first day of a new production. On Launch Day, our cast, families, and creative team came together to celebrate the beginning...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/93rlkkck5v3vffry160dzopvsu5okq" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/93rlkkck5v3vffry160dzopvsu5okq/000.webp"><img src="/img/blog/93rlkkck5v3vffry160dzopvsu5okq/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">March 30, 2026</p><h3>Hadestown Page to Stage: From Our Stage to Broadway’s Best</h3><p class="pc-ex">Over 20 Young Artists joined Encore for our latest Page to Stage adventure, traveling from St. George to Salt Lake City’s Eccles Theater to experience the...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="our-home">
+      <a href="/blog/anastasia-journey-complete" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/anastasia-journey-complete/000.webp"><img src="/img/blog/anastasia-journey-complete/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Our Home</span></div>
+        <div class="pc-b"><p class="pc-date">March 24, 2026</p><h3>Anastasia: A Journey Complete</h3><p class="pc-ex">What a magnificent run! Anastasia has closed at the Electric Theater, and we couldn’t be more proud of our Young Artists and creative team who brought this sweeping...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/journey-to-oz-a-magical-camp-experience" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/journey-to-oz-a-magical-camp-experience/000.webp"><img src="/img/blog/journey-to-oz-a-magical-camp-experience/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">March 24, 2026</p><h3>Journey to Oz: A Magical Camp Experience</h3><p class="pc-ex">Our Journey to Oz camp brought the magic of the Emerald City to life with 36 Young Artists and our incredible Youth Leadership team! Featuring music inspired by the...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/page-to-stage-pippin-at-shakespeare-festival" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/page-to-stage-pippin-at-shakespeare-festival/000.webp"><img src="/img/blog/page-to-stage-pippin-at-shakespeare-festival/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">February 2, 2026</p><h3>Page to stage Pippin at Shakespeare festival</h3><p class="pc-ex">Encore students recently had the opportunity to travel to Cedar City to see Southern Utah University’s production of Pippin, directed by Britannia Howe and...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/a-night-to-remember-our-largest-sensory-friendly-performance-yet" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/a-night-to-remember-our-largest-sensory-friendly-performance-yet/000.webp"><img src="/img/blog/a-night-to-remember-our-largest-sensory-friendly-performance-yet/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">January 31, 2026</p><h3>A Night to Remember: Our Largest Sensory-Friendly Performance Yet</h3><p class="pc-ex">Over 120 community members fill the Electric Theater for Encore Performing Arts’ largest sensory-friendly performance of Shrek the Musical Kids on January 28, 2026....</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="news">
+      <a href="/blog/creating-space-for-every-voice-inside-our-shrek-the-musical-kids-production" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/creating-space-for-every-voice-inside-our-shrek-the-musical-kids-production/000.webp"><img src="/img/blog/creating-space-for-every-voice-inside-our-shrek-the-musical-kids-production/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">News</span></div>
+        <div class="pc-b"><p class="pc-date">January 25, 2026</p><h3>Creating Space for Every Voice: Inside Our Shrek the Musical Kids Production</h3><p class="pc-ex">When we announced auditions for Shrek the Musical Kids, we knew we had something special brewing. What we didn’t expect was the overwhelming response from our...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="our-home">
+      <a href="/blog/anastasia-off-to-a-great-start" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/anastasia-off-to-a-great-start/000.webp"><img src="/img/blog/anastasia-off-to-a-great-start/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Our Home</span></div>
+        <div class="pc-b"><p class="pc-date">January 16, 2026</p><h3>Anastasia: Off to a Great Start</h3><p class="pc-ex">Encore Performing Arts is off to a great start with Anastasia! This sweeping musical adventure has assembled a great cast and an amazing team of leaders ready to...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/encore-performing-arts-2025-year-in-review" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encore-performing-arts-2025-year-in-review/000.webp"><img src="/img/blog/encore-performing-arts-2025-year-in-review/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">December 31, 2025</p><h3>Encore Performing Arts | 2025 Year in Review</h3><p class="pc-ex">2025 was a remarkable year at Encore Performing Arts, one marked by growth, creativity, and meaningful opportunities for Young Artists to learn, perform, and...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/a-christmas-carol-2025-wrap-cast-party" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/a-christmas-carol-2025-wrap-cast-party/000.webp"><img src="/img/blog/a-christmas-carol-2025-wrap-cast-party/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">December 23, 2025</p><h3>A Christmas Carol 2025 Wrap Cast Party</h3><p class="pc-ex">One of Encore’s favorite traditions is celebrating each production with a cast party. After A Christmas Carol, the cast and creative team gathered for an evening...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/a-meaningful-understudy-night-at-encore" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/a-meaningful-understudy-night-at-encore/000.webp"><img src="/img/blog/a-meaningful-understudy-night-at-encore/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">December 19, 2025</p><h3>A Meaningful Understudy Night at Encore</h3><p class="pc-ex">Understudy nights are always special, but this one carried particular significance for Encore Performing Arts. We are proud to celebrate Ava and Brayden for their...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/page-to-stage-noises-off-at-pioneer-theatre-company" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/page-to-stage-noises-off-at-pioneer-theatre-company/000.webp"><img src="/img/blog/page-to-stage-noises-off-at-pioneer-theatre-company/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">December 19, 2025</p><h3>Page to Stage: Noises Off at Pioneer Theatre Company</h3><p class="pc-ex">Encore recently traveled to Salt Lake City with a group of Young Artists for another unforgettable Page to Stage experience, this time to see Pioneer Theatre...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="our-home">
+      <a href="/blog/chitty-chitty-bang-bang-jr-was-a-hit" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/chitty-chitty-bang-bang-jr-was-a-hit/000.webp"><img src="/img/blog/chitty-chitty-bang-bang-jr-was-a-hit/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Our Home</span></div>
+        <div class="pc-b"><p class="pc-date">December 4, 2025</p><h3>Chitty Chitty Bang Bang Jr. Was a Hit!</h3><p class="pc-ex">Encore’s Chitty Chitty Bang Bang Jr. took flight this past weekend, thrilling audiences with lively performances, imaginative choreography, and heartfelt...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/page-to-stage-the-lion-kingnbspat-the-smith-center" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/page-to-stage-the-lion-kingnbspat-the-smith-center/000.webp"><img src="/img/blog/page-to-stage-the-lion-kingnbspat-the-smith-center/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">December 4, 2025</p><h3>Page to Stage:&amp;amp;nbsp;The Lion King&amp;amp;nbsp;at The Smith Center</h3><p class="pc-ex">Encore’s Page to Stage students traveled to Las Vegas to see The Lion King at The Smith Center, a day filled with music, movement, and unforgettable inspiration....</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/opening-the-story-table-work-for-a-christmas-carol-a-new-musical" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/opening-the-story-table-work-for-a-christmas-carol-a-new-musical/000.webp"><img src="/img/blog/opening-the-story-table-work-for-a-christmas-carol-a-new-musical/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">October 19, 2025</p><h3>Opening the Story: Table Work for A Christmas Carol - A New Musical</h3><p class="pc-ex">This week, our A Christmas Carol cast gathered for one of our favorite parts of the creative process, table work. Before we ever step onto the stage, we take time...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/spotlight-on-aspire-performing-cos-touring-ensemble" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/spotlight-on-aspire-performing-cos-touring-ensemble/000.webp"><img src="/img/blog/spotlight-on-aspire-performing-cos-touring-ensemble/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">October 11, 2025</p><h3>Spotlight on Aspire Performing Co.’s Touring Ensemble:</h3><p class="pc-ex">Illuminate Encore Performing Arts is proud to feature Illuminate, the touring ensemble of our Aspire Performing Company. Made up of dedicated Young Artists who...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/kicking-off-chitty-chitty-bang-bang" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/kicking-off-chitty-chitty-bang-bang/000.webp"><img src="/img/blog/kicking-off-chitty-chitty-bang-bang/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">October 8, 2025</p><h3>Kicking Off Chitty Chitty Bang Bang</h3><p class="pc-ex">What an incredible way to launch our Chitty Chitty Bang Bang journey! We gathered together for our very first meeting, and the energy in the room was electric. From...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="our-home">
+      <a href="/blog/another-night-another-show-a-review-from-paul-nickels" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/another-night-another-show-a-review-from-paul-nickels/000.webp"><img src="/img/blog/another-night-another-show-a-review-from-paul-nickels/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Our Home</span></div>
+        <div class="pc-b"><p class="pc-date">October 1, 2025</p><h3>Another Night, Another Show - a review from Paul Nickels</h3><p class="pc-ex">Had fun Friday going to see the opening night of Seven Brides for Seven Brothers at the Electric Theater. This is a stage version of the movie musical classic....</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/seven-brides-for-seven-brothers-sensory-performance" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/seven-brides-for-seven-brothers-sensory-performance/000.webp"><img src="/img/blog/seven-brides-for-seven-brothers-sensory-performance/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">October 1, 2025</p><h3>A Special Afternoon: Sensory-Friendly Seven Brides for Seven Brothers</h3><p class="pc-ex">Today at 4:00 PM, Encore Performing Arts welcomed our community to a very special performance of Seven Brides for Seven Brothers, our dedicated sensory-friendly...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/9pq3lee1h3ko2wk8oyjuy3cl1ye0gs" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/9pq3lee1h3ko2wk8oyjuy3cl1ye0gs/000.webp"><img src="/img/blog/9pq3lee1h3ko2wk8oyjuy3cl1ye0gs/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">September 18, 2025</p><h3>Intimacy Training w/ Britannia Howe</h3><p class="pc-ex">Encore recently partnered with the remarkable Britannia Howe, stage director, writer, and teaching artist, to lead intimacy training for our Seven Brides for Seven...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/shakespearience-2025" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/shakespearience-2025/000.webp"><img src="/img/blog/shakespearience-2025/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">August 13, 2025</p><h3>Shakespearience 2025</h3><p class="pc-ex">Over this last weekend, Encore had the exciting opportunity to once again visit the Utah Shakespeare Festival for a day full of learning, fun, and three incredible...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/encores-moana-jr-sensory-friendly-performance-welcomes-record-audience" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encores-moana-jr-sensory-friendly-performance-welcomes-record-audience/000.webp"><img src="/img/blog/encores-moana-jr-sensory-friendly-performance-welcomes-record-audience/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">August 10, 2025</p><h3>Encore’s Moana Jr Sensory-Friendly Performance Welcomes Record Audience</h3><p class="pc-ex">Encore Performing Arts was proud to host our largest sensory-friendly audience yet for the July 22 performance of Disney’s Moana Jr. at the Electric Theater. It was...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/encoreaspires-fun-in-the-sun-aspire-camp-2025-recap" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encoreaspires-fun-in-the-sun-aspire-camp-2025-recap/000.webp"><img src="/img/blog/encoreaspires-fun-in-the-sun-aspire-camp-2025-recap/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">August 2, 2025</p><h3>Encore/Aspire’s Fun in the Sun - Aspire Camp 2025 Recap</h3><p class="pc-ex">Encore’s Fun in the Sun - Aspire Camp brought together over 30 young performers for a week of music, movement, and mentorship. With standout solos, energetic group...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="our-home">
+      <a href="/blog/voyaging-to-victory-moana-jr-makes-waves-at-the-electric-theater" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/voyaging-to-victory-moana-jr-makes-waves-at-the-electric-theater/000.webp"><img src="/img/blog/voyaging-to-victory-moana-jr-makes-waves-at-the-electric-theater/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Our Home</span></div>
+        <div class="pc-b"><p class="pc-date">August 2, 2025</p><h3>Voyaging to Victory: Moana Jr. Makes Waves at the Electric Theater</h3><p class="pc-ex">Encore’s summer production of Moana Jr. lit up the Electric Theater with two incredible youth casts, dynamic performances, and a creative team led by former Encore...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/page-to-stage-parade-a-night-of-music-history-and-reflection" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/page-to-stage-parade-a-night-of-music-history-and-reflection/000.webp"><img src="/img/blog/page-to-stage-parade-a-night-of-music-history-and-reflection/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">June 13, 2025</p><h3>Page to Stage: Parade - A Night of Music, History, and Reflection</h3><p class="pc-ex">Encore students and families traveled to Las Vegas for a powerful night of theater, conversation, and connection at Parade, the latest Page to Stage.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/encores-youth-leadership-program-where-theater-meets-purpose" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encores-youth-leadership-program-where-theater-meets-purpose/000.webp"><img src="/img/blog/encores-youth-leadership-program-where-theater-meets-purpose/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">June 11, 2025</p><h3>Encore’s Youth Leadership Program: Where Theater Meets Purpose</h3><p class="pc-ex">At Encore Performing Arts, we believe in creating not only great theater, but great leaders. Our Youth Leadership Program was born from this belief and has grown...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/encores-illuminate-shines-at-the-utah-summer-games" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encores-illuminate-shines-at-the-utah-summer-games/000.webp"><img src="/img/blog/encores-illuminate-shines-at-the-utah-summer-games/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">June 8, 2025</p><h3>Encore’s Illuminate Shines at the Utah Summer Games</h3><p class="pc-ex">Encore’s Aspire Illuminate team took the stage at the Utah Summer Games opening ceremonies this weekend, performing a high-energy medley from The Wiz in front of...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/what-makes-a-great-ensemble-member" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/what-makes-a-great-ensemble-member/000.webp"><img src="/img/blog/what-makes-a-great-ensemble-member/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">June 5, 2025</p><h3>What Makes a Great Ensemble Member?</h3><p class="pc-ex">At Encore, we believe the ensemble is more than background, they are the heartbeat of the show. In this post, we explore the qualities that make a great ensemble...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/encores-page-to-stage-brings-hamilton-to-life-for-nearly-50-young-artists" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encores-page-to-stage-brings-hamilton-to-life-for-nearly-50-young-artists/000.webp"><img src="/img/blog/encores-page-to-stage-brings-hamilton-to-life-for-nearly-50-young-artists/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">May 29, 2025</p><h3>Encore’s Page to Stage Brings Hamilton to Life for Nearly 50 Young Artists</h3><p class="pc-ex">Nearly 50 students, families, and guests joined Encore for a Page to Stage trip to see Hamilton at the Smith Center, following a workshop led by Artistic Director...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/illuminating-california-aspires-unforgettable-disneyland-performance-trip" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/illuminating-california-aspires-unforgettable-disneyland-performance-trip/000.webp"><img src="/img/blog/illuminating-california-aspires-unforgettable-disneyland-performance-trip/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">May 28, 2025</p><h3>Illuminating California: Aspire’s Unforgettable Disneyland Performance Trip</h3><p class="pc-ex">Encore’s Aspire students traveled to California for an unforgettable weekend of performances, connection, and inspiration. From performing at Disney California...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/youth-helpers-at-les-mis" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/youth-helpers-at-les-mis/000.webp"><img src="/img/blog/youth-helpers-at-les-mis/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">May 12, 2025</p><h3>Youth helpers at Les Mis</h3><p class="pc-ex">When audiences come to see a production like Les Misérables, they’re swept up in the music, the emotion, and the unforgettable performances happening on stage. But...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/000.webp"><img src="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">May 10, 2025</p><h3>Breaking Barriers with Theater: Encore’s ASL Performance of Les Misérables</h3><p class="pc-ex">On Saturday, May 3rd, Encore Performing Arts presented a powerful ASL-interpreted performance of Les Misérables at the Electric Theater in St. George, Utah. The...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/a-performance-from-the-heart-les-misrables-sensory-friendly-experience" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/a-performance-from-the-heart-les-misrables-sensory-friendly-experience/000.webp"><img src="/img/blog/a-performance-from-the-heart-les-misrables-sensory-friendly-experience/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">May 6, 2025</p><h3>A Performance from the Heart: Les Misérables Sensory-Friendly Experience</h3><p class="pc-ex">This week, Encore Performing Arts had the privilege of sharing Les Misérables with one of our most meaningful audiences yet, families and individuals who attended...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/backstage-at-les-miserables" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/backstage-at-les-miserables/000.webp"><img src="/img/blog/backstage-at-les-miserables/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">May 3, 2025</p><h3>Backstage at Les Miserables</h3><p class="pc-ex">More Than Just a Show: Why Backstage Culture Matters at Encore At Encore Performing Arts, we believe that what happens backstage is just as important as what...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/meet-rio" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/meet-rio/000.webp"><img src="/img/blog/meet-rio/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">April 14, 2025</p><h3>Meet Rio!</h3><p class="pc-ex">What first sparked your love for theater and performing arts? My elementary school always got to see a preview of the high school’s spring musical. We got take time...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/beyond-the-spotlight-embracing-the-vital-role-of-the-ensemble-in-theater" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/beyond-the-spotlight-embracing-the-vital-role-of-the-ensemble-in-theater/000.webp"><img src="/img/blog/beyond-the-spotlight-embracing-the-vital-role-of-the-ensemble-in-theater/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">April 11, 2025</p><h3>Beyond the Spotlight: Embracing the Vital Role of the Ensemble in Theater</h3><p class="pc-ex">In the world of theater, landing a lead role is often seen as the ultimate achievement. However, this perspective can inadvertently cast a shadow over the...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/color-community-and-collaboration-encore-at-the-kayenta-fun-run" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/color-community-and-collaboration-encore-at-the-kayenta-fun-run/000.webp"><img src="/img/blog/color-community-and-collaboration-encore-at-the-kayenta-fun-run/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">April 7, 2025</p><h3>Color, Community, and Collaboration: Encore at the Kayenta Fun Run</h3><p class="pc-ex">This spring, members of the Encore Performing Arts leadership team and a group of our amazing Young Artists had the chance to participate in one of our favorite...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/a-masterclass-in-storytelling-rhett-guter-and-rio-lefevre-join-les-mis-cast-for-a-transformative-workshop" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/a-masterclass-in-storytelling-rhett-guter-and-rio-lefevre-join-les-mis-cast-for-a-transformative-workshop/000.webp"><img src="/img/blog/a-masterclass-in-storytelling-rhett-guter-and-rio-lefevre-join-les-mis-cast-for-a-transformative-workshop/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">April 2, 2025</p><h3>A Masterclass in Storytelling: Rhett Guter and Rio LeFevre Join Les Mis Cast for a Transformative Workshop</h3><p class="pc-ex">This past week, Encore Performing Arts’ Les Misérables cast stepped away from their usual rehearsal routine for something truly special, a masterclass-style...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="our-home">
+      <a href="/blog/theater-etiquette-a-guide-for-audience-members-and-performers" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/theater-etiquette-a-guide-for-audience-members-and-performers/000.webp"><img src="/img/blog/theater-etiquette-a-guide-for-audience-members-and-performers/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Our Home</span></div>
+        <div class="pc-b"><p class="pc-date">March 28, 2025</p><h3>Theater Etiquette: A Guide for Audience Members</h3><p class="pc-ex">Attending a live theater performance is an exciting experience, but knowing proper audience etiquette can make all the difference for both you and the performers....</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/encores-les-misrables-field-trip-an-unforgettable-experience" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encores-les-misrables-field-trip-an-unforgettable-experience/000.webp"><img src="/img/blog/encores-les-misrables-field-trip-an-unforgettable-experience/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">March 17, 2025</p><h3>Encore’s Les Misérables Field Trip: An Unforgettable Experience</h3><p class="pc-ex">Encore Performing Arts recently took cast members and families on an unforgettable field trip to see the Broadway touring production of Les Misérables at the Eccles...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/theater-lingo-101-terms-every-new-performer-should-know" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/theater-lingo-101-terms-every-new-performer-should-know/000.webp"><img src="/img/blog/theater-lingo-101-terms-every-new-performer-should-know/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">March 10, 2025</p><h3>Theater Lingo 101: Terms Every New Performer Should Know</h3><p class="pc-ex">New to theater? Learn key stage terms like blocking, cues, and upstaging. Master theater lingo and navigate rehearsals like a pro with this beginner’s.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/from-page-to-stage-books-that-became-musicals" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/from-page-to-stage-books-that-became-musicals/000.webp"><img src="/img/blog/from-page-to-stage-books-that-became-musicals/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">March 3, 2025</p><h3>From Page to Stage: Books That Became Musicals</h3><p class="pc-ex">Some of the most beloved musicals of all time started their journey as books, capturing readers’ imaginations before dazzling audiences on stage. From Victor Hugo’s...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/000.webp"><img src="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">February 3, 2025</p><h3>Inclusive ASL Magic at Alice in Wonderland Junior</h3><p class="pc-ex">At Encore’s recent Alice in Wonderland Junior matinee performance on Saturday, we proudly offered a truly inclusive theatrical experience that combined exceptional...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/team-alice-celebrating-the-incredible-volunteers-behind-encores-alice-in-wonderland-jr" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/team-alice-celebrating-the-incredible-volunteers-behind-encores-alice-in-wonderland-jr/000.webp"><img src="/img/blog/team-alice-celebrating-the-incredible-volunteers-behind-encores-alice-in-wonderland-jr/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">January 29, 2025</p><h3>Team Alice: Celebrating the Incredible Volunteers Behind Encore’s Alice in Wonderland Jr.</h3><p class="pc-ex">At Encore Performing Arts, every production is a labor of love, and Alice in Wonderland Jr. is no exception. While the audience sees the dazzling costumes,...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/encore-performing-arts-presents-disneys-alice-in-wonderland" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encore-performing-arts-presents-disneys-alice-in-wonderland/000.webp"><img src="/img/blog/encore-performing-arts-presents-disneys-alice-in-wonderland/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">January 21, 2025</p><h3>Encore Performing Arts Presents Disney’s Alice in Wonderland!</h3><p class="pc-ex">Encore Performing Arts is thrilled to announce our upcoming production of Disney’s Alice in Wonderland! This whimsical adaptation of the beloved classic promises to...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/a-night-to-remember-encores-2024-sensory-friendly-performance-of-a-christmas-carol" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/a-night-to-remember-encores-2024-sensory-friendly-performance-of-a-christmas-carol/000.webp"><img src="/img/blog/a-night-to-remember-encores-2024-sensory-friendly-performance-of-a-christmas-carol/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">December 19, 2024</p><h3>A Night to Remember: Encore’s 2024 Sensory-Friendly Performance of A Christmas Carol</h3><p class="pc-ex">On December 9th, 2024, Encore Performing Arts proudly presented a special sensory-friendly performance of A Christmas Carol - A New Musical at the Electric Theater....</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/meet-the-team-kameryn-helms-a-christmas-carol-stage-manager" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/meet-the-team-kameryn-helms-a-christmas-carol-stage-manager/000.webp"><img src="/img/blog/meet-the-team-kameryn-helms-a-christmas-carol-stage-manager/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">December 17, 2024</p><h3>Meet the Team: Kameryn Helms, A Christmas Carol Stage Manager</h3><p class="pc-ex">At Encore Performing Arts, our team is the heartbeat of everything we do. Today, we’re thrilled to introduce Kameryn Helms, a dedicated and passionate stage manager...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/family-theater-outings-should-be-easy" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/family-theater-outings-should-be-easy/000.webp"><img src="/img/blog/family-theater-outings-should-be-easy/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">November 13, 2024</p><h3>Family Theater Outings Should Be Easy!</h3><p class="pc-ex">In today&#x27;s fast-paced world, finding quality time to spend with the family can be a challenge. Going to the theater together is a great way to bond and make...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/hello-from-the-creators-of-a-christmas-carol" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/hello-from-the-creators-of-a-christmas-carol/000.webp"><img src="/img/blog/hello-from-the-creators-of-a-christmas-carol/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">November 6, 2024</p><h3>Hello, from the Creators of A Christmas Carol</h3><p class="pc-ex">Hello! Adam and Rhett here, saying hello, and thank you for being a part of Christmas Carol. As we prepare to mount the show for the third year, we feel we can...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/villainous-magic-returns-inside-this-years-most-wicked-halloween-spookctacular-villains-night" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/villainous-magic-returns-inside-this-years-most-wicked-halloween-spookctacular-villains-night/000.webp"><img src="/img/blog/villainous-magic-returns-inside-this-years-most-wicked-halloween-spookctacular-villains-night/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">October 22, 2024</p><h3>Villainous Magic Returns: Inside This Year&#x27;s Most Wicked Halloween Spookctacular - Villains Night</h3><p class="pc-ex">When Director Kelby Tyrrell and newly appointed Associate Director Chris Vasquez joined forces to plan this year&#x27;s Halloween production, they knew they had to raise...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/behind-the-scenes-at-encore-crafting-our-unique-vision-for-hadestown-teen-edition" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/behind-the-scenes-at-encore-crafting-our-unique-vision-for-hadestown-teen-edition/000.webp"><img src="/img/blog/behind-the-scenes-at-encore-crafting-our-unique-vision-for-hadestown-teen-edition/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">October 3, 2024</p><h3>Behind the Scenes at Encore: Crafting Our Unique Vision for Hadestown Teen Edition</h3><p class="pc-ex">At Encore Performing Arts, every show begins with a “design set hearing,” where our creative team comes together to shape the vision for the production. This...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/shakespearience-2024" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/shakespearience-2024/000.webp"><img src="/img/blog/shakespearience-2024/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">September 2, 2024</p><h3>Shakespearience 2024</h3><p class="pc-ex">Encore and a group of young performers had the joyous opportunity to travel to Cedar City last weekend to attend the Utah Shakespeare Festival for what we...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/meet-rhett-guter" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/meet-rhett-guter/000.webp"><img src="/img/blog/meet-rhett-guter/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">August 21, 2024</p><h3>Meet Rhett Guter!</h3><p class="pc-ex">Rhett Guter returns to direct and choreographer Hadestown teen edition. A regional theatre actor and director, Rhett has worked all over the country and...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/youth-director-gabbie-bowler" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/youth-director-gabbie-bowler/000.webp"><img src="/img/blog/youth-director-gabbie-bowler/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">August 19, 2024</p><h3>Youth Director - Gabbie Bowler</h3><p class="pc-ex">Director Gabbie Bowler It was a privilege to direct Encore!’s most recent theater camp - Dare to Dream. The process was one of creation, teamwork, inspiration, and...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/dare-to-dream-homeschool-musical-camp" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/dare-to-dream-homeschool-musical-camp/000.webp"><img src="/img/blog/dare-to-dream-homeschool-musical-camp/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">August 16, 2024</p><h3>Dare to Dream Homeschool Musical Camp</h3><p class="pc-ex">The Dare to Dream Camp at Encore! was an inspiring showcase of young talent, brought to life by a dedicated creative team. Under the exceptional direction of Gabbie...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/meet-vanessa" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/meet-vanessa/000.webp"><img src="/img/blog/meet-vanessa/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">August 7, 2024</p><h3>Meet Vanessa Sierra!</h3><p class="pc-ex">Discover how Encore&#x27;s Show with a Pro program brings together Broadway professionals like Vanessa Aurora Sierra and Rhett Guter to mentor Young Artists in the...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/celebrating-the-success-of-101-dalmatians-kids-at-encore-performing-arts" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/celebrating-the-success-of-101-dalmatians-kids-at-encore-performing-arts/000.webp"><img src="/img/blog/celebrating-the-success-of-101-dalmatians-kids-at-encore-performing-arts/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">July 27, 2024</p><h3>Celebrating the Success of &quot;101 Dalmatians Kids&quot; at Encore Performing Arts!</h3><p class="pc-ex">Celebrating the Success of “101 Dalmatians Kids” at Encore Performing Arts!We are thrilled to share the incredible success of our recent production, 101 Dalmatians...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/encore-performing-arts-shines-at-washington-citys-annual-pioneer-day-parade" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encore-performing-arts-shines-at-washington-citys-annual-pioneer-day-parade/000.webp"><img src="/img/blog/encore-performing-arts-shines-at-washington-citys-annual-pioneer-day-parade/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">July 25, 2024</p><h3>Encore Performing Arts Shines at Washington City&#x27;s Annual Pioneer Day Parade</h3><p class="pc-ex">Encore Performing Arts had the distinct honor of participating in Washington City&#x27;s annual 24th of July Pioneer Day Parade, an event that celebrates community...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/behind-hadestowns-rise-a-story-of-persistence-and-artistic-triumph" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/behind-hadestowns-rise-a-story-of-persistence-and-artistic-triumph/000.webp"><img src="/img/blog/behind-hadestowns-rise-a-story-of-persistence-and-artistic-triumph/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">July 19, 2024</p><h3>Behind Hadestown&#x27;s Rise: A Story of Persistence and Artistic Triumph</h3><p class="pc-ex">Stories have always been the lens through which humanity understands its world. From the small narratives we weave daily to the epic sagas that define cultures,...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/encore-and-aspires-triple-threat-audition-intensive-a-summer-success-story" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encore-and-aspires-triple-threat-audition-intensive-a-summer-success-story/000.webp"><img src="/img/blog/encore-and-aspires-triple-threat-audition-intensive-a-summer-success-story/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">July 15, 2024</p><h3>Encore and Aspire&#x27;s Triple Threat Audition Intensive: A Summer Success Story</h3><p class="pc-ex">Explore the transformative Triple Threat Audition Intensive by Encore Performing Arts Center and Aspire Theatre Company. Under expert guidance, young performers...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/encore-amp-the-st-george-city-4th-of-july-parade" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encore-amp-the-st-george-city-4th-of-july-parade/000.webp"><img src="/img/blog/encore-amp-the-st-george-city-4th-of-july-parade/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">July 10, 2024</p><h3>Encore &amp;amp;amp; the St George City 4th of July Parade</h3><p class="pc-ex">Encore Performing Arts Lights Up the 2024 4th of July Parade Encore Performing Arts was thrilled to participate in the City of St. George’s 2024 4th of July Parade,...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="our-home">
+      <a href="/blog/the-historic-electric-theater-in-st-george-utah" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/electric-theater-vintage.webp"><img src="/img/electric-theater-vintage.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Our Home</span></div>
+        <div class="pc-b"><p class="pc-date">June 27, 2024</p><h3>The Historic Electric Theater in St. George, Utah</h3><p class="pc-ex">The story of the 1911 Electric Theater, southern Utah’s first motion picture house, the first air-conditioned building in St. George, and Encore’s home since 2021.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/this-is-the-greatest-show" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/this-is-the-greatest-show/000.webp"><img src="/img/blog/this-is-the-greatest-show/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">June 18, 2024</p><h3>This is the Greatest Show!!</h3><p class="pc-ex">This summer, Encore&#x27;s Youth Leadership Program embarked on an extraordinary journey, culminating in a spectacular performance of </p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/aspire-california-trip-summer-2024" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/aspire-california-trip-summer-2024/000.webp"><img src="/img/blog/aspire-california-trip-summer-2024/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">June 16, 2024</p><h3>Aspire California Trip / Summer 2024</h3><p class="pc-ex">What a blast!! A group of young Aspire Performing Co performers packed up their bags and headed west to the great state of California to show what we can do! It was...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="our-home">
+      <a href="/blog/encore-celebrates-an-inspiring-workshop-with-juliana-keller" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encore-celebrates-an-inspiring-workshop-with-juliana-keller/000.webp"><img src="/img/blog/encore-celebrates-an-inspiring-workshop-with-juliana-keller/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Our Home</span></div>
+        <div class="pc-b"><p class="pc-date">June 10, 2024</p><h3>Encore Celebrates an Inspiring Workshop with Juliana Keller!</h3><p class="pc-ex">Unlocking Dance Potential: A Recap of Juliana Keller&#x27;s Workshop On June 8th, the Electric Theater buzzed with excitement as dancers aged 11-18 gathered for an...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/10-reasons-to-encourage-kids-to-participate-in-theatre" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/10-reasons-to-encourage-kids-to-participate-in-theatre/000.webp"><img src="/img/blog/10-reasons-to-encourage-kids-to-participate-in-theatre/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">June 3, 2024</p><h3>10 Reasons to Encourage Kids to Participate in Theatre</h3><p class="pc-ex">Getting kids involved in theatre not only provides an outlet for their creativity but also offers numerous life-changing benefits. Whether your child is naturally...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/aladdin-friends-of-theater" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/aladdin-friends-of-theater/000.webp"><img src="/img/blog/aladdin-friends-of-theater/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">May 24, 2024</p><h3>Aladdin Friends of Theater</h3><p class="pc-ex">We are overjoyed to share the wonderful success of the Aladdin Friends of Theater Camp! This unique camp provided a platform for performers with special needs to...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/beauty-and-the-beast" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/beauty-and-the-beast/000.webp"><img src="/img/blog/beauty-and-the-beast/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">May 21, 2024</p><h3>Beauty and the Beast…that’s a wrap!</h3><p class="pc-ex">We are incredibly honored to have collaborated with such talented young performers and an exceptional production team on Beauty and the Beast! The production was a...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/beauty-and-the-beast-a-powerful-message-for-todays-youth" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/beauty-and-the-beast-a-powerful-message-for-todays-youth/000.webp"><img src="/img/blog/beauty-and-the-beast-a-powerful-message-for-todays-youth/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">April 11, 2024</p><h3>Beauty and the Beast; a powerful message for today’s youth!</h3><p class="pc-ex">The theme’s in Disney&#x27;s </p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="news">
+      <a href="/blog/encore-amp-the-2024-kayenta-color-fun-run" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encore-amp-the-2024-kayenta-color-fun-run/000.webp"><img src="/img/blog/encore-amp-the-2024-kayenta-color-fun-run/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">News</span></div>
+        <div class="pc-b"><p class="pc-date">April 6, 2024</p><h3>Encore &amp;amp;amp; the 2024 Kayenta Color Fun Run.</h3><p class="pc-ex">Encore! and the Kayenta Color Fun.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/junior-theater-camps" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/junior-theater-camps/000.webp"><img src="/img/blog/junior-theater-camps/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">March 15, 2024</p><h3>Junior Theater Camps</h3><p class="pc-ex">Encore’s Junior Theater Camps are our pride and.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/the-benefits-of-acting-classes-with-encore-performing-arts" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/the-benefits-of-acting-classes-with-encore-performing-arts/000.webp"><img src="/img/blog/the-benefits-of-acting-classes-with-encore-performing-arts/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">February 19, 2024</p><h3>The Benefits of Acting Classes with Encore Performing Arts</h3><p class="pc-ex">Education is the cornerstone of Encore’s mission, we offer a variety of classes to fulfill that.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/encore-presents-disneys-frozen-kids" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/encore-presents-disneys-frozen-kids/000.webp"><img src="/img/blog/encore-presents-disneys-frozen-kids/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">February 15, 2024</p><h3>Encore presents Disney’s Frozen Kids</h3><p class="pc-ex">It’s hard to beat the energy and passion of these amazing young performers….these young performers proved that once.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/frozen-kids-sensory-friendly-performance" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/frozen-kids-sensory-friendly-performance/000.webp"><img src="/img/blog/frozen-kids-sensory-friendly-performance/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">February 3, 2024</p><h3>Frozen Kids Sensory Friendly Performance</h3><p class="pc-ex">Encore’s Sensory Friendly Performance of Disney’s Frozen.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/christmas-carol-year-2" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/christmas-carol-year-2/000.webp"><img src="/img/blog/christmas-carol-year-2/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">December 22, 2023</p><h3>Christmas Carol Year Two!</h3><p class="pc-ex">A Christmas Carol - A New Musical 2023 was a.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/aspire-and-encores-villains-night-2023" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/aspire-and-encores-villains-night-2023/000.webp"><img src="/img/blog/aspire-and-encores-villains-night-2023/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">November 1, 2023</p><h3>Aspire and Encore’s Villains Night 2023</h3><p class="pc-ex">Encore and Aspire’s annual Halloween.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="page-to-stage">
+      <a href="/blog/2023-shakespearience" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/2023-shakespearience/000.webp"><img src="/img/blog/2023-shakespearience/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Page to Stage</span></div>
+        <div class="pc-b"><p class="pc-date">October 1, 2023</p><h3>2023 Shakespearience</h3><p class="pc-ex">Encore’s 2023 Shakespearience with Rhett Guter and the Utah Shakespeare.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/disneys-newsies" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/disneys-newsies/000.webp"><img src="/img/blog/disneys-newsies/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">September 26, 2023</p><h3>Disney’s Newsies</h3><p class="pc-ex">Consider the day “seized”.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="news">
+      <a href="/blog/24th-of-july-parade-newsies" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/24th-of-july-parade-newsies/000.webp"><img src="/img/blog/24th-of-july-parade-newsies/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">News</span></div>
+        <div class="pc-b"><p class="pc-date">July 25, 2023</p><h3>24th of July Parade - Newsies</h3><p class="pc-ex">Washington City 24th of July.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="productions">
+      <a href="/blog/finding-nemo-jr" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/finding-nemo-jr/000.webp"><img src="/img/blog/finding-nemo-jr/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Productions</span></div>
+        <div class="pc-b"><p class="pc-date">July 1, 2023</p><h3>Finding Nemo Jr</h3><p class="pc-ex">Encore &amp;amp; St George Musical Theater presents Disney’s Finding Nemo.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/triple-threat-camp-2023" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/triple-threat-camp-2023/000.webp"><img src="/img/blog/triple-threat-camp-2023/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">June 5, 2023</p><h3>Triple Threat Camp 2023</h3><p class="pc-ex">Unleash Your Potential: Encore Performing Arts Triple Threat Camp Summer 2023 Are you ready to take your performing arts skills to the next level? Look no further...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/aspire-disneyland-performance-trip" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/aspire-disneyland-performance-trip/000.webp"><img src="/img/blog/aspire-disneyland-performance-trip/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">May 28, 2023</p><h3>Aspire Disneyland Performance Trip</h3><p class="pc-ex">25 young performers, 42 rides, 28 churros, 17 hours in the park, 22 fish lip selfies, 2 magic.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/bright-lights-of-broadway" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/bright-lights-of-broadway/000.webp"><img src="/img/blog/bright-lights-of-broadway/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">May 23, 2023</p><h3>Bright Lights of Broadway</h3><p class="pc-ex">Aspire Performing Co’s Bright Lights of Broadway.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/performer-spotlight-leuca" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/performer-spotlight-leuca/000.webp"><img src="/img/blog/performer-spotlight-leuca/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">May 2, 2023</p><h3>Performer Spotlight - Leuca</h3><p class="pc-ex">Meet.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/disneys-aristocats" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/disneys-aristocats/000.webp"><img src="/img/blog/disneys-aristocats/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">May 1, 2023</p><h3>Disney’s Aristocats</h3><p class="pc-ex">Unforgettable Memories: Encore Performing Arts&#x27; Aristocats Kids In the blossoming days of April 2023, Encore Performing Arts took center stage once again, weaving...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/st-george-art-festival" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/st-george-art-festival/000.webp"><img src="/img/blog/st-george-art-festival/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">April 9, 2023</p><h3>St George Art Festival</h3><p class="pc-ex">Aspire’s performance at the 2023 St George Art.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="accessibility">
+      <a href="/blog/winnie-the-pooh-a-journey-into-the-hundred-acre-woods" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/winnie-the-pooh-a-journey-into-the-hundred-acre-woods/000.webp"><img src="/img/blog/winnie-the-pooh-a-journey-into-the-hundred-acre-woods/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Accessibility</span></div>
+        <div class="pc-b"><p class="pc-date">January 30, 2023</p><h3>Winnie the Pooh! A journey into the hundred acre woods</h3><p class="pc-ex">Unveiling the Magic: Encore Performing Arts Presents </p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="aspire">
+      <a href="/blog/mentor-spotlight-meet-kiara" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/mentor-spotlight-meet-kiara/000.webp"><img src="/img/blog/mentor-spotlight-meet-kiara/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Aspire</span></div>
+        <div class="pc-b"><p class="pc-date">September 9, 2022</p><h3>Mentor Spotlight: Meet Kiara!</h3><p class="pc-ex">One of our many amazing.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/a-christmas-carol-workshop" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/a-christmas-carol-workshop/000.webp"><img src="/img/blog/a-christmas-carol-workshop/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">August 31, 2022</p><h3>A Christmas Carol Workshop</h3><p class="pc-ex">THANK YOU PAUL! For this great write up about our A Christmas Carol Workshop: ANOTHER DAY, and WHATTHEHECK? Another original musical surfacing here in St. George?...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="education">
+      <a href="/blog/a-christmas-carol-live-table-read" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/a-christmas-carol-live-table-read/000.webp"><img src="/img/blog/a-christmas-carol-live-table-read/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">Education</span></div>
+        <div class="pc-b"><p class="pc-date">August 29, 2022</p><h3>A Christmas Carol Live Table Read</h3><p class="pc-ex">A big thanks to our fellow local arts supporter and head of the Film Alliance, Adam Mast for this great write up about our A Christmas Carol live table read that...</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+<article class="pc" data-cat="news">
+      <a href="/blog/swiss-days-parade" class="pc-in">
+        <div class="pc-ph"><picture><source type="image/webp" srcset="/img/blog/swiss-days-parade/000.webp"><img src="/img/blog/swiss-days-parade/000.jpg" alt="" loading="lazy" decoding="async"></picture><span class="pc-cat">News</span></div>
+        <div class="pc-b"><p class="pc-date">May 8, 2022</p><h3>Swiss Days Parade</h3><p class="pc-ex">2022 Swiss Days.</p><span class="pc-go">Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></div>
+      </a>
+    </article>
+    </div>
+    <div class="more-wrap"><button type="button" class="pill" id="moreBtn">Load more stories</button><p id="moreCount" aria-live="polite"></p></div>
+  </div>
+</section>
+
+<section class="topics" aria-labelledby="topics-h">
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
+  <div class="wrap" style="padding-top:clamp(70px,7vw,110px)">
+    <div class="split-head">
+      <div><p class="kicker">Browse by topic</p><h2 class="h2" id="topics-h">What we write <em>about</em></h2></div>
+      <p class="lede">Productions, camps and classes, field trips, accessibility, Aspire, and our home at the Electric Theater.</p>
+    </div>
+    <ul class="tp"><li><button type="button" data-jump="education"><svg viewBox="0 0 70.47 104.63" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M37.88,101.95c-.19.7-1.69,3.06-2.23,2.63s-1.61-1.9-1.9-2.93l-7.02-25.36c-4.82-11.27-12.73-19.55-24.81-22.41l-1.85-1.81c-.52-.51,1.7-2.02,2.21-2.3,12.14-3.36,20.42-11.32,25.35-22.88l6.33-24.2c.21-.78,1.21-2.18,1.68-2.63s2.08,1.44,2.29,2.32l5.54,23.79c4.19,12.02,13.03,20.57,25.39,23.72l1.48,1.34c.48.44-.67,2.04-1.14,2.48-11.3,3.03-19.27,10.72-23.88,21.21l-7.46,27.03Z"/> </g></svg><span><b>Education</b><span>23 stories</span></span></button></li><li><button type="button" data-jump="productions"><svg viewBox="0 0 91.77 91.44" fill="currentColor" aria-hidden="true" focusable="false"><g> <g> <path d="M28.73,65.6c-1.41,2.21-5.06,3.03-6.58,2.25s-2.49-4.41-1.39-6.42C31.91,41.24,43.12,21.89,56.34,3.06c1.5-2.13,5.16-3.25,7-2.72s3.87,5.19,2.58,7.21l-37.18,58.05Z"/> <path d="M39.73,90.73c-1.64,1.26-5.25.66-6.12-.45-.99-1.27-.79-4.99.84-6.34l47.99-39.88c2.06-1.71,6.05-1.55,7.7-.28,1.86,1.44,2.43,6.23.05,8.06l-50.46,38.89Z"/> <path d="M8.92,53.81c-.26,2.13-3.19,4.42-4.66,4.57-1.66.17-4.47-2.83-4.24-5.03L5.03,4.82C5.31,2.12,8.22-.09,10.46,0c2.05.09,4.7,2.95,4.37,5.61l-5.91,48.2Z"/> </g> </g></svg><span><b>Productions</b><span>21 stories</span></span></button></li><li><button type="button" data-jump="page-to-stage"><svg viewBox="0 0 85.75 78.67" fill="currentColor" aria-hidden="true" focusable="false"><g> <g> <path d="M65.32,19.79c-8.49-12.36-24.65-14.43-36.29-5.68C10.91,27.72,8.25,52.46,8.46,74.99c.01,1.22-1.93,3.55-3.14,3.67s-3.85-.9-5.19-1.97C-.9,51.44,3.89,22.86,24.21,7.31c12.44-9.51,29.22-9.91,41.32-.24,17.34,13.86,20.25,44.91,20.22,67.58,0,1.87-2.93,3.99-4.48,3.88-2.01-.15-3.86-2.29-3.88-4.62-.19-18.32-1.76-39.12-12.06-54.12Z"/> <path d="M55.44,28.74c-6.07-7.39-16.05-7.05-22.69-.8-10.52,9.9-11.97,29.4-11.83,44.98.02,2.4-.94,4.49-2.61,5.33s-5.46-.54-5.54-2.53c-.82-20,1.76-44.81,17.6-56.22,10.97-7.9,24.96-6.01,32.81,5.16,3.88,5.53,6.93,12.47,7.46,19.48l2.26,29.74c.19,2.51-2.52,4.69-4.59,4.49-2.88-.27-3.88-2.54-3.82-5.49.32-14.84-.05-33.17-9.07-44.14Z"/> <path d="M50.86,73.95c.29-12.47-.2-34.54-7.63-35-1.92-.12-5.02,2.12-5.91,4.3-6.77,16.71-1.3,31.6-5.32,34.61-1.42,1.07-6.16-.04-6.22-1.99-.45-14.55.11-34.06,9.42-42.55,5.18-4.73,12.73-4.36,16.95,1.29,2.86,3.82,5.15,8.79,5.41,13.85l1.43,27.31c.07,1.29-3.45,2.88-4.71,2.67-1.52-.25-3.46-2.54-3.42-4.49Z"/> </g> </g></svg><span><b>Page to Stage</b><span>16 stories</span></span></button></li><li><button type="button" data-jump="aspire"><svg viewBox="0 0 166.31 116.76" fill="currentColor" aria-hidden="true" focusable="false"><g> <g> <path d="M57.26,111.54c-1.31,2.76-10.85,6.62-16,4.72l-13.96-29.95c-1.55.05-4.32.19-5.48.64-8.76,3.39-17.73-.83-20.78-9.76-1.84-5.38-1.31-10.72,2.07-16.24,2.14-3.49,7.24-6.18,12.47-7.37l3.07-2.99,18.03-7.14c18.72-10.24,35.08-23.56,50.85-37.81,2.87-2.59,5.29-5.9,10.13-2.43,2.54,1.83,5.87,5.68,7.76,9,11.42,20.03,17.84,42.24,17.55,65.43-.05,3.95-2.4,11.65-7.02,10.7-22.51-4.6-44.23-8.76-67.09-7.05l-5.12,1.05,12.85,23.86c.7,1.3,1.26,4.12.69,5.33ZM115.92,82.95c4.89-20.5-4.42-48.69-14.17-66.15-2.12-3.81-4.42-6.37-8.1-9.54-1.97,2.8-2.63,5.17-2.63,8.55,0,21.81,6.52,43.08,18.04,61.43,1.64,2.61,3.65,4.05,6.86,5.7ZM27.25,84.08l15.13-3.72c-4.89-9.25-9.92-20.06-9.19-31.98l-14.8,5.94c-.7,10.6,2.6,21.34,8.85,29.76Z"/> <path d="M134.67,26.01l-2.8,2.92c-.74.77-3.87-.13-5.01-1.39,6.64-9.2,21.7-29.83,27.1-27.33,1.1.51,1.35,4.24.41,5.23l-19.7,20.58Z"/> <path d="M139.06,43.96c-.75.18-2.71-.43-3.27-.78-.75-.47.21-3.37,1.27-3.74l24.41-8.4c1.38-.47,3.95.99,4.63,1.98.77,1.14-.58,4.54-2.33,4.96l-24.71,5.98Z"/> <path d="M160.64,65.18c1.49.6,2.56,3.92,2.06,5.01-.59,1.27-3.59,1.9-5.54.98l-21.23-10.04c-.73-.34-1.58-2.28-1.59-2.95-.02-.89,2.76-2.4,3.7-2.02l22.61,9.03Z"/> <path d="M102.52,57.02c-2.69-6.52-4.45-12.48-5.94-19.55,2.75-1.22,6.09-.63,7.87,1.51,5.23,6.28,5.6,15.92-1.94,18.04Z"/> </g> </g></svg><span><b>Aspire</b><span>14 stories</span></span></button></li><li><button type="button" data-jump="accessibility"><svg viewBox="0 0 132.51 60.47" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M98.57,10.23c-7.22-2.1-18.6,12.29-21.13,20.11-3.09,9.54-6.31,24.29-13.07,22.67s-1.28-15.2,3-24.55c2.45-5.35,2.93-12.38,1.08-18.39-.53-1.72-5.58-.74-7.04.43-7.32,5.43-12.51,12.36-16.88,20.34-1.03,11.09-5.63,28.33-13.19,27.33-1.57-.21-3.44-3.19-3.52-5.19-.32-8.5,3.06-15.01,6.65-22.53,1.94-4.08,1.31-10.44-.15-15.1-2.71-.76-6.45.4-8.71,2.52C13.86,28.91,7.18,44.2,6.55,60.43c-4.35.45-6.9-2.93-6.51-6.52C2.03,35.59,14.77,9.54,30.9,6.23c6.88-1.41,11.51,3.23,12.89,10.49,7.99-11.08,22.11-22.25,30.16-13.7,2.4,2.55,3.55,7.16,4.21,10.96,7.1-7.92,17.83-16.41,24.94-10.28,3.31,2.85,3.92,7.95,3.85,12.11,3.44-2.42,7.52-5.03,11.45-6.2,6.75-2.01,11.99,2.06,13.36,8.6,3.69,17.57-7.36,30.49-10.18,27.21-3.37-3.92,5.45-12.03,3.47-24.34-.22-1.4-1.46-3.8-2.37-4.41-2.78-1.86-13.37,5.19-16.55,11.36-3.64,7.07-7.12,17.31-12.61,16.52-1.25-.18-3.07-3.3-2.81-4.71,2.06-11.17,10.78-16.89,7.86-29.62Z"/> </g></svg><span><b>Accessibility</b><span>14 stories</span></span></button></li><li><button type="button" data-jump="our-home"><svg viewBox="0 0 118.07 103.2" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M49.06,85.17l-19.37,16.75c-1.06.92-4.15,1.47-5.46,1.22s-3.02-3.28-2.69-4.65l4.22-17.71-20.62,3.16c-1.27.2-4.32-.98-4.77-2.16s.07-4.4,1.06-5.28l18.03-16.14L1.86,50.06c-1.12-.66-2.1-3.82-1.81-4.98.34-1.36,2.48-3.71,3.89-3.96l23.16-4.18-5.74-21.84c-.4-1.52.53-4.65,1.49-5.8s5.07-1.85,6.39-.95l24.75,16.95,12.36-21.9c.82-1.46,3.95-3.22,5.51-3.38,1.75-.18,5.16,2.25,5.63,4.19l5.99,24.65,26.12-6.36c1.62-.39,4.74.69,5.5,1.93s.31,4.89-.68,5.96l-16.22,17.46,17.43,8.01c1.13.52,2.42,2.88,2.44,3.96s-1.65,3.62-2.74,3.88l-21.53,5.18,5.22,14.99c.46,1.33-.06,4.15-1.03,4.97s-4.3,1.1-5.46.58l-18.13-8.17-4.28,15.98c-.35,1.3-2.32,3.26-3.52,3.55-1.4.35-4.72-.73-5.67-1.83l-11.88-13.77Z"/> </g></svg><span><b>Our Home</b><span>8 stories</span></span></button></li><li><button type="button" data-jump="news"><svg viewBox="0 0 74.26 66.34" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M15.29,66.34c-1.62-2.88-2.57-6.06-3.33-9.3C8.47,41.19,2.75,26.98,0,9.92l22.55,25.48L33.16,1.69l2.01-1.61c.52-.42,2.21.86,2.41,1.53l9.81,33.34c9.51-9.52,15.34-20.94,26.87-30.46l-11.69,61.66c-16.11-1.55-30.49-3.23-47.27.2ZM57.8,54.14l4.83-25.88-12.3,13.78c-.97.87-3.11,2.04-4.31,2.03-1-.01-3.21-1.65-3.7-3.02l-7.34-20.65-7.6,21.44c-.34.96-1.93,2.58-2.84,2.81s-3.01-.64-3.69-1.34l-7.66-7.9,5.42,18.99c13.85-2.56,25.54-2.36,39.19-.27Z"/> </g></svg><span><b>News</b><span>4 stories</span></span></button></li><li><button type="button" data-jump="behind-the-scenes"><svg viewBox="0 0 74.62 100.59" fill="currentColor" aria-hidden="true" focusable="false"><g> <g> <path d="M27.62,74.23l-8.28-3.71-3.55,9.59c-.22.59-1.57,1.74-2.1,1.97-.72.31-2.18-1.69-2.21-2.51l-.6-12.53-8.47-2.37c-.62-.17-1.85-1.02-2.3-1.42s.66-2.4,1.24-2.68l9.64-4.76.39-12.69c.02-.64.99-2.12,1.42-2.54s2.5.68,2.75,1.25l4.79,10.75,6.15-2.39c.48-.19,2.15-.11,2.63.09.63.27.8,2.31.41,2.91l-4.88,7.56,5.01,9.52,1.08,2.04c.33.63-2.39,2.24-3.11,1.92Z"/> <path d="M60.63,91.75l-5.13,7.16c-.49.68-1.97,1.5-2.67,1.67s-1.71-2.2-1.57-3.03l1.72-10.81-7.17-4.67c-.75-.49-1.88-1.94-1.98-2.77s2.06-1.86,2.94-1.97l7.95-.93,2.28-10.46c.11-.48,1.34-1.73,1.73-2.04s1.84,1.24,2,1.76l3.27,10.8c4.62-.16,5.98-.44,10.63.95l-7.66,8,3.16,8.51c.26.71.09,2.45-.34,3.04s-2.67-.02-3.31-.53l-5.84-4.68Z"/> <path d="M64.73,13.8c-.42-.65-2.59-1.13-3.47-.86l-12.12,3.82-6.25-15.4c-.27-.66-2.24-1.71-2.77-1.26-.53.46-2.01,2.32-2.04,3.04l-.77,17.96-15.23,6.14c-.8.32-2.1,2.28-2,3.04.09.76,1.63,2.19,2.44,2.38l14.88,3.42,1.02,16.37c.06.95,1.57,2.75,2.36,2.65.79-.1,2.52-1.3,2.85-2.04l5.89-13.36,9.72,3.17c.95.31,3.2-.15,3.65-.86.34-.54.19-2.38-.22-3.01l-6.57-10.28,8.31-11.64c.51-.71.75-2.63.34-3.27Z"/> </g> </g></svg><span><b>Behind the Scenes</b><span>1 story</span></span></button></li><li><button type="button" data-jump="community"><svg viewBox="0 0 87.38 96.43" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M49.2,90.84c-.23,3.67-4.15,5.81-6.98,5.57s-5.32-3.15-5.52-6.55l-1.45-23.94-15.45,15.32c-1.32,1.31-5.58,1.22-6.98.16s-2.12-5.52-.94-7.02l14.07-17.81-20.32.68c-2.4.08-5.29-2.9-5.59-4.93-.37-2.54,1.8-5.85,4.77-6.3l21.79-3.31-14.57-15.93c-1.22-1.33-.43-5.74.71-6.9,1.24-1.27,4.77-2.14,6.59-.74l15.39,11.87.73-25.1c.06-2.08,2.64-4.96,4.23-5.67,1.93-.86,6.57.38,6.85,3.01l2.86,26.24,16.2-16.66c1.9-1.95,6.47-1.73,8.03-.24,1.64,1.58,2.55,5.96.9,8.07l-14.93,19.04,21.13-.61c3.32-.1,6.24,2.9,6.6,5.82.33,2.66-1.93,6.97-5.37,7.39l-22.27,2.76,14.8,17.34c1.8,2.11.52,6.46-.97,7.94-2.32,2.3-6.25,2-8.79-.29l-14.07-12.62-1.47,23.38Z"/> </g></svg><span><b>Community</b><span>1 story</span></span></button></li></ul>
+  </div>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
+</section>
+
+<section class="cta" aria-labelledby="cta-h">
+  <div class="cta-ph"><picture><source type="image/webp" srcset="/img/gallery/shrek-finale.webp"><img src="/img/gallery/shrek-finale.jpg" alt="" loading="lazy" decoding="async"></picture></div>
+  <div class="wrap cta-in">
+    <h2 id="cta-h">Come be part of the next story</h2>
+    <p>See a show, join a class, or audition for the next production.</p>
+    <div class="cta-btns"><a class="pill" href="/tickets-2027">See what&rsquo;s on</a><a class="pill pill-light" href="/auditions-2027">Auditions</a></div>
+  </div>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a href="/home-2027" class="logo" aria-label="Encore Performing Arts: Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+        <p>The Historic Electric Theater<br>68 E Tabernacle St, St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></p>
+      </div>
+      <div class="ft-col"><h5>Explore</h5><a href="/calendar">What&rsquo;s On</a><a href="/programs-2027">Programs by Age</a><a href="/auditions-2027">Auditions</a><a href="/classes-2027">Classes</a><a href="/past-shows-2027">Past Shows</a><a href="/blog-2027">Blog</a></div>
+      <div class="ft-col"><h5>Visit</h5><a href="/tickets-2027">Tickets</a><a href="/sensory-friendly-performances-2027">Sensory Friendly</a><a href="/asl-interpreted-performances">ASL Interpreted</a><a href="/electric-theater">The Electric Theater</a><a href="/about-2027">About</a></div>
+      <div class="ft-col"><h5>Support</h5><a href="/donate-2027">Donate</a><a href="/core-community-2027">Join The Core</a><a href="/encore-scholarship-application">Scholarships</a><a href="/contact-2027">Contact Us</a></div>
+    </div>
+    <div class="fb">
+      <span>&copy; 2026 Encore Performing Arts &middot; A 501(c)(3) nonprofit</span>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/encorestg" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+        <a href="https://www.facebook.com/encorestg" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCBqCS2LKe-5UHp7osQFA-fg" rel="noopener" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/js/e27.js" defer></script>
+
+<script>
+(function(){
+  var PAGE=12, shown=PAGE, filter='all';
+  var cards=[].slice.call(document.querySelectorAll('#grid .pc'));
+  var chips=[].slice.call(document.querySelectorAll('.chip'));
+  var btn=document.getElementById('moreBtn'), cnt=document.getElementById('moreCount');
+  function render(){
+    var match=cards.filter(function(c){ return filter==='all'||c.dataset.cat===filter; });
+    cards.forEach(function(c){ c.hidden=true; });
+    match.forEach(function(c,i){ c.hidden=i>=shown; });
+    var vis=Math.min(shown,match.length);
+    btn.hidden=vis>=match.length;
+    cnt.textContent='Showing '+vis+' of '+match.length+' stories';
+  }
+  function setFilter(f){
+    filter=f; shown=PAGE;
+    chips.forEach(function(c){ var on=c.dataset.f===f; c.classList.toggle('on',on); c.setAttribute('aria-pressed',on?'true':'false'); });
+    render();
+  }
+  chips.forEach(function(c){ c.addEventListener('click',function(){ setFilter(c.dataset.f); }); });
+  document.querySelectorAll('[data-jump]').forEach(function(b){ b.addEventListener('click',function(){
+    setFilter(b.dataset.jump); document.getElementById('stories').scrollIntoView({behavior:'smooth'});
+  }); });
+  btn.addEventListener('click',function(){ shown+=PAGE; render(); });
+  render();
+})();
+</script>
+</body>
+</html>
