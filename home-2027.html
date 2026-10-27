@@ -13,10 +13,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/fonts/mikado.css">
 <style>
-/* Encore 2027 homepage preview, built from Figma "Encore 2027 Home SLIDE 1" (node 14:194). */
+/* Encore 2027 homepage preview, built from Figma "Encore 2027 Home SLIDE 1" (node 14:194), rev 2. */
 :root{
-  --teal:#007a9e; --orange:#f65524; --cream:#fbf6f2; --sand:#faf5f0; --sky:#7dcbdd;
-  --mist:#e5e6db; --ink:#111; --slate:#22353d; --slate-2:#1a2a30;
+  --teal:#34789b; --teal-d:#2a6584; --cream:#fbf6f2; --sand:#faf6f2; --sky:#7dcbdd;
+  --mist:#e5e6db; --ink:#111; --slate:#22353d; --slate-2:#1a2a30; --chip:#e4e2de;
   --serif:"Instrument Serif",Georgia,serif; --sans:"Mikado",system-ui,sans-serif;
   --r:30px; --max:1232px; --gut:clamp(20px,7.2vw,104px);
 }
@@ -25,17 +25,22 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--sans);font-weight:500;overflow-x:clip}
 img,picture{display:block;max-width:100%}
 a{color:inherit}
-.wrap{width:100%;max-width:calc(var(--max) + 2*var(--gut));margin:0 auto;padding:0 var(--gut)}
-h1,h2{font-family:var(--serif);font-weight:400;margin:0}
+.wrap{width:100%;max-width:calc(var(--max) + 2*var(--gut));margin:0 auto;padding-inline:var(--gut)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0}
 .h2{font-size:clamp(44px,4.6vw,66px);line-height:.85;letter-spacing:-.03em}
-.kicker{display:flex;align-items:center;gap:12px;color:var(--teal);font-size:16px;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 22px 4px}
+.kicker{display:flex;align-items:center;gap:12px;color:var(--teal);font-size:16px;letter-spacing:-.03em;text-transform:uppercase;margin:0 0 22px 4px;position:relative}
 .lede{font-size:clamp(18px,1.6vw,22px);line-height:25px;letter-spacing:-.03em;margin:0}
-.pill{display:inline-flex;align-items:center;justify-content:center;min-width:302px;height:53px;padding:0 28px;border-radius:70px;background:var(--teal);color:var(--cream);font-weight:700;font-size:14.6px;letter-spacing:.03em;text-decoration:none;transition:transform .2s,background .2s}
-.pill:hover{background:#006a89;transform:translateY(-2px)}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-width:302px;height:53px;padding:0 28px;border-radius:70px;background:var(--teal);color:var(--cream);font-weight:700;font-size:14.6px;letter-spacing:.03em;text-decoration:none;border:2px solid var(--teal);transition:transform .2s,background .2s,color .2s}
+.pill:hover{background:var(--teal-d);border-color:var(--teal-d);transform:translateY(-2px)}
+.pill-o{background:transparent;color:var(--teal)}
+.pill-o:hover{background:var(--teal);color:var(--cream)}
 .pill:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
 .circ{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;border:2px solid currentColor;transition:transform .2s}
 .circ svg{width:22px;height:22px}
-.wave{position:absolute;left:0;width:100%;height:clamp(50px,8vw,120px);display:block}
+.wave{position:absolute;left:0;width:100%;height:clamp(40px,6vw,90px);display:block;z-index:2}
+.burst{width:40px;height:40px;color:var(--sky)}
+.star8{width:40px;height:40px;color:var(--sky)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* TOP BAR */
 .top{position:absolute;inset:0 0 auto;z-index:5;padding:59px var(--gut) 0;display:flex;justify-content:center;align-items:flex-start}
@@ -48,94 +53,152 @@ h1,h2{font-family:var(--serif);font-weight:400;margin:0}
 /* HERO */
 .hero{position:relative;min-height:clamp(620px,61vw,880px);color:var(--cream);overflow:hidden;isolation:isolate}
 .hero-ph,.hero-ph picture,.hero-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 30%;z-index:-2}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,4,4,.75) 0%,rgba(5,4,4,.75) 24%,rgba(5,4,4,0) 56%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,4,4,.9) 0%,rgba(5,4,4,.8) 26%,rgba(5,4,4,0) 58%)}
 .hero-in{padding-top:clamp(190px,21.6vw,311px);padding-bottom:180px}
 .hero h1{font-size:clamp(54px,6.67vw,96px);line-height:.865;letter-spacing:-.03em;max-width:793px}
 .hero p{color:var(--mist);max-width:566px;margin:34px 0 46px}
-.hero .wave{bottom:-1px;fill:var(--sand)}
+.hero .wave{bottom:-1px;fill:var(--sand);height:clamp(50px,8vw,120px)}
 
 /* WHAT'S COMING UP */
 .coming{padding:clamp(28px,4vw,44px) 0 clamp(70px,7vw,100px);text-align:center}
 .coming .h2{margin-bottom:46px}
-.ev-panel{background:#e7ebe6;border-radius:var(--r);padding:clamp(18px,3vw,40px) clamp(14px,4vw,64px) 32px;max-width:1312px;margin:0 auto}
-.ev-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px;text-align:left;margin-bottom:28px}
-.ev{min-width:0;display:flex;align-items:center;gap:16px;padding:10px 12px 10px 10px;border-radius:70px;background:var(--slate);color:var(--cream);text-decoration:none;transition:background .2s}
-.ev:hover{background:var(--slate-2)}
+.ev-panel{background:#f3efea;border-radius:var(--r);padding:clamp(16px,2vw,24px) clamp(12px,2vw,30px) 28px;max-width:1312px;margin:0 auto}
+.ev-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;text-align:left;margin-bottom:24px}
+.ev{position:relative;isolation:isolate;overflow:hidden;min-width:0;display:flex;align-items:center;gap:16px;min-height:84px;padding:12px 14px 12px 14px;border-radius:70px;background:var(--slate);color:var(--cream);text-decoration:none;box-shadow:0 10px 24px -16px rgba(0,0,0,.6)}
+.ev-bg{position:absolute;inset:0;z-index:-2}
+.ev-bg picture,.ev-bg img{width:100%;height:100%;object-fit:cover;object-position:center 35%;transition:transform .5s}
+.ev::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,42,48,.97) 0%,rgba(26,42,48,.9) 45%,rgba(26,42,48,.6) 100%)}
+.ev:hover .ev-bg img{transform:scale(1.05)}
 .ev:hover .ev-go{transform:translateX(3px)}
-.ev-thumb{flex:none;width:52px;height:52px;border-radius:50%;overflow:hidden}
-.ev-thumb img{width:100%;height:100%;object-fit:cover}
-.ev-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
-.ev-when{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--sky)}
-.ev-name{font-weight:700;font-size:clamp(16px,1.5vw,20px);letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ev-go{flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--teal);transition:transform .2s}
+.ev-e{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--cream);color:var(--slate);font:400 30px/1 var(--serif);padding-bottom:4px}
+.ev-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.ev-st{font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.ev-name{font-weight:700;font-size:clamp(17px,1.5vw,21px);letter-spacing:-.02em;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev-when{font-size:12px;color:var(--mist);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ev-go{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(251,246,242,.7);transition:transform .2s}
 .ev-go svg{width:18px;height:18px}
 
 /* PROGRAMS */
-.programs{padding:20px 0 clamp(90px,9vw,140px)}
-.split-head{display:grid;grid-template-columns:minmax(0,500px) minmax(0,566px);justify-content:space-between;align-items:end;gap:28px;margin-bottom:73px}
+.programs{padding:20px 0 clamp(90px,9vw,130px)}
+.split-head{display:grid;grid-template-columns:minmax(0,500px) minmax(0,566px);justify-content:space-between;align-items:end;gap:28px;margin-bottom:64px}
 .prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:35px 28px}
 .prog{display:flex;flex-direction:column;text-decoration:none;color:var(--cream);border-radius:var(--r);overflow:hidden;transition:transform .25s}
 .prog-ph{aspect-ratio:392/312;overflow:hidden}
 .prog-ph picture{height:100%}
 .prog-ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.prog-bar{background:var(--orange);min-height:104px;padding:18px 22px 18px 42px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.prog-bar{background:var(--teal);min-height:104px;padding:18px 22px 18px 42px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .prog-name{display:block;font-weight:700;font-size:32px;letter-spacing:-.03em;line-height:1.15}
 .prog-age{display:block;font-size:16px;letter-spacing:-.03em;text-transform:uppercase;margin-top:4px}
 .prog:hover{transform:translateY(-4px)}
 .prog:hover img{transform:scale(1.04)}
 .prog:hover .circ{transform:translateX(3px)}
 
-/* DARK BANDS */
-.band{position:relative;background:var(--slate);color:var(--cream);overflow:hidden;isolation:isolate}
-.band-ph{position:absolute;inset:0 0 0 auto;width:62%;z-index:-2}
-.band-ph picture,.band-ph img{width:100%;height:100%;object-fit:cover}
-.band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,var(--slate) 0%,var(--slate) 38%,rgba(34,53,61,.55) 58%,rgba(34,53,61,.1) 100%)}
+/* PHOTO BANDS (full bleed, wavy edges) */
+.band{position:relative;color:var(--cream);overflow:hidden;isolation:isolate;background:var(--slate)}
+.band-ph,.band-ph picture,.band-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,14,16,.82) 0%,rgba(10,14,16,.6) 45%,rgba(10,14,16,.2) 100%)}
 .band .wave{fill:var(--sand)}
 .band .wave-top{top:-1px}
 .band .wave-bot{bottom:-1px}
-.built-in{padding-block:clamp(140px,13vw,190px) clamp(150px,14vw,200px)}
-.built h2{max-width:623px;font-size:clamp(40px,4.6vw,66px);line-height:.85;letter-spacing:-.03em}
-.built blockquote{margin:42px 0 0;max-width:566px}
-.built blockquote p{margin:0}
-.built cite{display:block;font-style:normal;text-transform:uppercase;font-size:16px;letter-spacing:-.03em;text-align:right;margin-top:14px;color:var(--sky)}
+.built-in{padding-block:clamp(130px,11vw,170px) clamp(130px,11vw,170px)}
+.built h2{max-width:640px;font-size:clamp(40px,4.6vw,66px);line-height:.85;letter-spacing:-.03em}
+.built blockquote{margin:30px 0 0;max-width:566px}
+.built blockquote p{margin:0;font-size:clamp(16px,1.4vw,19px);line-height:1.3}
+.built cite{display:block;font-style:normal;text-transform:uppercase;font-size:14px;letter-spacing:-.01em;text-align:right;margin-top:12px}
 
 /* INCLUSIVE */
-.incl{padding:clamp(100px,10vw,150px) 0 clamp(100px,10vw,160px)}
+.incl{padding:clamp(100px,10vw,140px) 0 clamp(100px,10vw,150px)}
 .incl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,392px) minmax(0,392px);gap:28px;align-items:start}
 .incl .h2{font-size:clamp(44px,4.3vw,62px)}
-.incl .lede{color:var(--teal);font-weight:400;max-width:370px;margin-top:34px}
-.kicker img{width:66px;height:66px}
+.incl .lede{color:var(--teal);font-weight:400;font-size:18px;max-width:370px;margin-top:34px}
+.incl .kicker .burst{position:absolute;left:280px;top:-24px}
 .icard{position:relative;display:block;aspect-ratio:392/383;border-radius:var(--r);overflow:hidden;color:var(--cream);text-decoration:none}
 .icard picture,.icard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.icard .cw{position:absolute;left:0;bottom:0;width:100%;height:136px;fill:var(--teal)}
+.icard .cw,.scard .cw{position:absolute;left:0;bottom:0;width:100%;height:136px;fill:var(--teal)}
 .icard-t{position:absolute;left:30px;right:24px;bottom:28px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
 .icard-t span:first-child{font-weight:700;font-size:24px;line-height:21px;letter-spacing:-.03em;max-width:268px}
-.icard:hover img{transform:scale(1.04)}
-.icard:hover .circ{transform:translateX(3px)}
+.icard:hover img,.scard:hover img{transform:scale(1.04)}
+.icard:hover .circ,.scard:hover .circ{transform:translateX(3px)}
 
 /* NEWSLETTER */
-.news-in{padding-block:clamp(140px,12vw,170px) clamp(130px,12vw,170px);display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
-.news-copy{max-width:404px;padding-left:clamp(0px,9.4vw,136px)}
-.news h2{font-size:clamp(44px,4.6vw,66px);line-height:.85;letter-spacing:-.03em}
-.news p{font-weight:400;font-size:18px;line-height:25px;letter-spacing:-.03em;max-width:370px;margin:20px 0 0}
+.news::before{background:linear-gradient(90deg,rgba(10,14,30,.85) 0%,rgba(10,14,30,.55) 50%,rgba(10,14,30,.35) 100%)}
+.news-in{padding-block:clamp(110px,10vw,140px) clamp(110px,10vw,140px);display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap}
+.news-copy{max-width:430px;padding-left:clamp(0px,6vw,90px)}
+.news h2{font-size:clamp(40px,4.4vw,62px);line-height:.85;letter-spacing:-.03em}
+.news p{font-weight:400;font-size:16px;line-height:22px;max-width:370px;margin:16px 0 0}
 .news-wrap{width:min(452px,100%);margin:0}
 .news-form{display:flex;align-items:center;width:100%;height:65px;padding:0 11px 0 32px;border-radius:var(--r);background:var(--cream)}
 .news-form input{flex:1;min-width:0;border:0;background:none;font:400 18px var(--sans);letter-spacing:-.03em;color:var(--ink);height:100%}
 .news-form input::placeholder{color:#3f6f7c}
 .news-form input:focus-visible{outline:none}
 .news-form:focus-within{box-shadow:0 0 0 3px var(--sky)}
-.news-form button{flex:none;width:165px;height:43px;border:0;border-radius:var(--r);background:var(--teal);color:var(--cream);font:700 18px var(--sans);letter-spacing:-.03em;cursor:pointer}
-.news-form button:hover{background:#006a89}
+.news-form button{flex:none;width:165px;height:43px;border:0;border-radius:var(--r);background:var(--teal);color:var(--cream);font:700 16px var(--sans);letter-spacing:.02em;cursor:pointer}
+.news-form button:hover{background:var(--teal-d)}
 .news-ok{width:100%;text-align:right;font-size:14px;color:var(--sky);min-height:20px;margin:8px 0 0}
 
 /* CASE FOR THE ARTS */
-.case{padding:clamp(100px,10vw,150px) 0 clamp(90px,9vw,130px)}
-.case .split-head{grid-template-columns:minmax(0,468px) minmax(0,693px);margin-bottom:62px}
+.case{padding:clamp(90px,9vw,130px) 0 clamp(60px,6vw,90px)}
+.case .lede{max-width:640px;margin:26px 0 56px;font-size:clamp(17px,1.4vw,19px)}
 .stats{background:#fff;border-radius:var(--r);display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding:48px 40px 56px 53px}
-.stat svg{width:62px;height:62px;color:var(--teal)}
-.stat-n{font-family:var(--serif);font-size:66px;line-height:56px;letter-spacing:-.03em;margin:18px 0 12px}
-.stat p{font-size:clamp(17px,1.5vw,22px);line-height:25px;letter-spacing:-.03em;margin:0;max-width:265px}
-.case-note{font-size:13px;color:#555;margin:18px 4px 0;font-weight:400}
+.stat svg{width:56px;height:56px}
+.stat-n{font-family:var(--serif);font-size:66px;line-height:56px;letter-spacing:-.03em;margin:12px 0 14px}
+.stat p{font-size:clamp(16px,1.3vw,18px);line-height:22px;letter-spacing:-.02em;margin:0;max-width:240px}
+
+/* ELECTRIC THEATER */
+.venue{padding:clamp(60px,6vw,90px) 0 clamp(100px,10vw,150px)}
+.venue .lede{max-width:640px;margin:26px 0 64px;font-size:clamp(17px,1.4vw,19px)}
+.venue-grid{display:grid;grid-template-columns:minmax(0,612px) minmax(0,1fr);gap:clamp(28px,3vw,48px);align-items:start}
+.then-now{position:relative;aspect-ratio:612/750;border-radius:var(--r);overflow:hidden;background:#333;color:var(--cream)}
+.then-now picture,.then-now img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.then-now .now{opacity:0;transition:opacity .8s}
+.then-now.is-now .now{opacity:1}
+.then-now .vint img{filter:grayscale(1) contrast(1.05)}
+.then-now::after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.85))}
+.tn-label{position:absolute;left:clamp(20px,3vw,44px);bottom:clamp(20px,3vw,40px);z-index:2;font:400 clamp(40px,4.2vw,60px)/1 var(--serif);letter-spacing:-.03em}
+.tn-toggle{position:absolute;right:20px;bottom:clamp(20px,3vw,40px);z-index:2;display:flex;background:rgba(251,246,242,.16);backdrop-filter:blur(6px);border-radius:70px;padding:4px}
+.tn-toggle button{border:0;background:none;color:var(--cream);font:700 13px var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:70px;cursor:pointer}
+.tn-toggle button[aria-pressed="true"]{background:var(--cream);color:var(--ink)}
+.venue-copy h3{font-size:clamp(38px,4vw,58px);line-height:.88;letter-spacing:-.03em;margin-bottom:28px}
+.venue-copy p{font-size:17px;line-height:1.4;margin:0 0 20px;max-width:540px;font-weight:400}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,170px));gap:16px 28px;margin:6px 0 24px;padding:0;list-style:none}
+.facts li{background:var(--chip);border-radius:16px;padding:14px 16px}
+.facts b{display:block;font-size:26px;letter-spacing:-.02em}
+.facts span{font-size:12px}
+.addr{font-size:15px;margin:0 0 24px}
+.venue-btns{display:flex;flex-wrap:wrap;gap:14px}
+.venue-btns .pill{min-width:0;width:270px;max-width:100%}
+.fine{font-size:13px!important;font-style:italic;color:#666;margin-top:16px!important}
+
+/* SPOTLIGHT BAND */
+.spot{position:relative;background:linear-gradient(90deg,#b2c9cf 0%,#cddbdc 45%,#f1f0ec 100%);text-align:center;padding:clamp(80px,8vw,110px) var(--gut)}
+.spot .wave{fill:var(--sand)}
+.spot .wave-top{top:-1px}
+.spot .wave-bot{bottom:-1px}
+.spot h2{font-size:clamp(40px,4.4vw,62px);line-height:.85;letter-spacing:-.03em;max-width:460px;margin:0 auto}
+
+/* JOIN */
+.join{padding:clamp(90px,9vw,130px) 0 clamp(120px,11vw,170px)}
+.join-grid{display:grid;grid-template-columns:minmax(0,612px) minmax(0,1fr);gap:clamp(28px,3vw,48px);align-items:center}
+.join-ph{border-radius:var(--r);overflow:hidden;aspect-ratio:612/400}
+.join-ph picture,.join-ph img{width:100%;height:100%;object-fit:cover}
+.join h2{font-size:clamp(40px,4.4vw,62px);line-height:.85;letter-spacing:-.03em;display:inline-flex;align-items:flex-start;gap:10px;max-width:440px}
+.join h2 .star8{width:56px;height:56px;margin-top:-10px;flex:none}
+.join p{font-size:18px;line-height:1.35;font-weight:400;max-width:470px;margin:24px 0 26px}
+.join .pill{min-width:270px}
+
+/* SUPPORT */
+.support{position:relative;background:#fff;padding:clamp(100px,9vw,130px) 0 clamp(110px,10vw,150px)}
+.support .wave{fill:var(--sand)}
+.support .wave-top{top:-1px}
+.support .wave-bot{bottom:-1px}
+.support .h2{margin-bottom:46px}
+.sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.scard{position:relative;display:block;aspect-ratio:392/400;border-radius:var(--r) var(--r) 0 0;overflow:hidden;color:var(--cream);text-decoration:none}
+.scard picture,.scard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.scard .cw{height:150px}
+.scard-t{position:absolute;left:26px;right:22px;bottom:22px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.scard-h{display:block;font:400 clamp(34px,3vw,44px)/1 var(--serif);letter-spacing:-.03em}
+.scard-p{display:block;font-size:14px;line-height:1.25;margin-top:6px;max-width:240px}
 
 /* FOOTER */
 footer{background:var(--slate);color:var(--cream);padding:72px 0 36px}
@@ -157,29 +220,35 @@ footer{background:var(--slate);color:var(--cream);padding:72px 0 36px}
   .incl-copy{grid-column:1/-1}
 }
 @media (max-width:980px){
-  .split-head,.case .split-head{grid-template-columns:1fr;margin-bottom:44px}
-  .prog-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .split-head{grid-template-columns:1fr;margin-bottom:44px}
+  .prog-grid,.sup-grid{grid-template-columns:1fr 1fr;gap:24px}
   .stats{grid-template-columns:1fr 1fr;padding:40px 32px}
   .ev-grid{grid-template-columns:1fr}
-  .band-ph{width:100%}
-  .band::before{background:linear-gradient(90deg,rgba(34,53,61,.94) 0%,rgba(34,53,61,.8) 55%,rgba(34,53,61,.55) 100%)}
+  .venue-grid,.join-grid{grid-template-columns:1fr}
+  .then-now{aspect-ratio:4/3.4}
   .ft{grid-template-columns:1fr 1fr}
   .top-act{display:none}
+  .band::before{background:linear-gradient(90deg,rgba(10,14,16,.85),rgba(10,14,16,.6))}
 }
 @media (max-width:560px){
   .top{padding-top:32px}
   .hero-in{padding-bottom:120px}
-  .hero::before{background:linear-gradient(180deg,rgba(5,4,4,.35) 0%,rgba(5,4,4,.8) 70%)}
-  .pill{min-width:0;width:100%}
-  .prog-grid,.incl-grid,.stats,.ft{grid-template-columns:1fr}
+  .hero::before{background:linear-gradient(180deg,rgba(5,4,4,.35) 0%,rgba(5,4,4,.82) 70%)}
+  .pill,.venue-btns .pill,.join .pill{min-width:0;width:100%}
+  .prog-grid,.incl-grid,.stats,.ft,.sup-grid{grid-template-columns:1fr}
   .prog-bar{padding-left:24px;min-height:92px}
   .prog-name{font-size:28px}
-  .ev-when{font-size:11px}
-  .news-form{padding-left:20px}
-  .news-form button{width:100px;font-size:16px}
-  .news-form{padding-left:18px;padding-right:8px}
+  .ev{padding:10px;gap:12px}
+  .ev-e{width:42px;height:42px;font-size:26px}
+  .ev-go{width:36px;height:36px}
   .ev-panel{padding-left:10px;padding-right:10px}
+  .news-form{padding-left:18px;padding-right:8px}
+  .news-form button{width:100px;font-size:15px}
   .stats{padding:32px 24px}
+  .facts{grid-template-columns:1fr 1fr;gap:12px}
+  .incl .kicker .burst{left:auto;right:0}
+  .tn-label{font-size:36px}
+  .tn-toggle{top:16px;bottom:auto;right:16px}
 }
 </style>
 </head>
@@ -204,7 +273,7 @@ footer{background:var(--slate);color:var(--cream);padding:72px 0 36px}
   <div class="wrap">
     <h2 class="h2" id="coming-h">What&rsquo;s coming up</h2>
     <div class="ev-panel">
-      <div class="ev-grid"><a class="ev" href="/classes"><span class="ev-thumb"><picture><source type="image/webp" srcset="/img/blog/little-mermaid-camp-underway/dance-class.webp"><img src="/img/blog/little-mermaid-camp-underway/dance-class.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-txt"><span class="ev-when">Now enrolling</span><span class="ev-name">Classes &amp; Workshops</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a><a class="ev" href="/peter-pan-jr-tickets"><span class="ev-thumb"><picture><source type="image/webp" srcset="/img/shows/peter-pan-jr/card.webp"><img src="/img/shows/peter-pan-jr/card.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-txt"><span class="ev-when">Nov 19&ndash;21</span><span class="ev-name">Peter Pan Jr.</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a><a class="ev" href="/villains-night"><span class="ev-thumb"><picture><source type="image/webp" srcset="/img/shows/villains-night.webp"><img src="/img/shows/villains-night.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-txt"><span class="ev-when">Oct 29&ndash;30</span><span class="ev-name">Villains Night</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a><a class="ev" href="/a-christmas-carol-tickets"><span class="ev-thumb"><picture><source type="image/webp" srcset="/img/shows/a-christmas-carol-card.webp"><img src="/img/shows/a-christmas-carol-card.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-txt"><span class="ev-when">Nov 30 &ndash; Dec 18</span><span class="ev-name">A Christmas Carol</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></a></div>
+      <div class="ev-grid"><a class="ev" href="/classes"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/blog/little-mermaid-camp-underway/dance-class.webp"><img src="/img/blog/little-mermaid-camp-underway/dance-class.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Now enrolling</span><span class="ev-name">Classes &amp; Workshops</span><span class="ev-when">Fall 2026 &middot; ages 7&ndash;18</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="ev" href="/peter-pan-jr-tickets"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/shows/peter-pan-jr/card.webp"><img src="/img/shows/peter-pan-jr/card.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Tickets on sale</span><span class="ev-name">Peter Pan Jr.</span><span class="ev-when">Nov 19&ndash;21 &middot; The Electric Theater</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="ev" href="/villains-night"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/shows/villains-night.webp"><img src="/img/shows/villains-night.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Tickets on sale</span><span class="ev-name">Villains Night</span><span class="ev-when">Oct 29&ndash;30 &middot; The Electric Theater</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="ev" href="/a-christmas-carol-tickets"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/shows/a-christmas-carol-card.webp"><img src="/img/shows/a-christmas-carol-card.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Tickets on sale</span><span class="ev-name">A Christmas Carol</span><span class="ev-when">Nov 30 &ndash; Dec 18 &middot; The Electric Theater</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a></div>
       <a class="pill" href="/calendar">SEE ALL UPCOMING EVENTS</a>
     </div>
   </div>
@@ -216,27 +285,27 @@ footer{background:var(--slate);color:var(--cream);padding:72px 0 36px}
       <div><p class="kicker">Our programs</p><h2 class="h2" id="prog-h">A place for<br>every performer</h2></div>
       <p class="lede">Professional musical theater training for Young Artists, where confidence is rehearsed and every performer finds their stage.</p>
     </div>
-    <div class="prog-grid"><a class="prog" href="/junior"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/junior.webp"><img src="/img/programs/junior.jpg" alt="Young Artists in a Junior Series production" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Junior</span><span class="prog-age">Ages 7&ndash;13</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="prog" href="/emerging-artists"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/emerging-artists.webp"><img src="/img/programs/emerging-artists.jpg" alt="Emerging Artists performers on stage" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Emerging</span><span class="prog-age">Ages 12&ndash;14</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="prog" href="/senior"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/signature-shows.webp"><img src="/img/programs/signature-shows.jpg" alt="Senior performers in a Signature Series show" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Senior</span><span class="prog-age">Ages 13&ndash;18</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="prog" href="/camps"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/musical-theater-camps.webp"><img src="/img/programs/musical-theater-camps.jpg" alt="Young Artists at an Encore musical theater camp" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Camps</span><span class="prog-age">Ages 5&ndash;12</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="prog" href="/page-to-stage"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/page-to-stage.webp"><img src="/img/programs/page-to-stage.jpg" alt="A Page to Stage performance" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Page to Stage</span><span class="prog-age">Ages 8&ndash;18</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="prog" href="/aspire-performing-co"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/aspire.webp"><img src="/img/programs/aspire.jpg" alt="Aspire Performing Co. show choir" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Aspire</span><span class="prog-age">Ages 5&ndash;18</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a></div>
+    <div class="prog-grid"><a class="prog" href="/junior"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/junior.webp"><img src="/img/programs/junior.jpg" alt="Young Artists in a Junior Series production" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Junior</span><span class="prog-age">Ages 7&ndash;13</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="prog" href="/emerging-artists"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/emerging-artists.webp"><img src="/img/programs/emerging-artists.jpg" alt="Emerging Artists performers on stage" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Emerging</span><span class="prog-age">Ages 12&ndash;14</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="prog" href="/senior"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/signature-shows.webp"><img src="/img/programs/signature-shows.jpg" alt="Senior performers in a Signature Series show" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Senior</span><span class="prog-age">Ages 13&ndash;18</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="prog" href="/camps"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/musical-theater-camps.webp"><img src="/img/programs/musical-theater-camps.jpg" alt="Young Artists at an Encore musical theater camp" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Camps</span><span class="prog-age">Ages 5&ndash;12</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="prog" href="/page-to-stage"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/page-to-stage.webp"><img src="/img/programs/page-to-stage.jpg" alt="Young Artists at a Page to Stage performance" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Page to Stage</span><span class="prog-age">Ages 8&ndash;18</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="prog" href="/aspire-performing-co"><span class="prog-ph"><picture><source type="image/webp" srcset="/img/programs/aspire.webp"><img src="/img/programs/aspire.jpg" alt="Aspire Performing Co. show choir" loading="lazy" decoding="async"></picture></span><span class="prog-bar"><span><span class="prog-name">Aspire</span><span class="prog-age">Ages 5&ndash;18</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a></div>
   </div>
 </section>
 
 <section class="band built" aria-labelledby="built-h">
-  <svg class="wave wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 40 C 1100 120 700 10 380 70 C 220 98 90 80 0 60 Z"/></svg>
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
   <div class="band-ph"><picture><source type="image/webp" srcset="/img/gallery/newsies-company.webp"><img src="/img/gallery/newsies-company.jpg" alt="" loading="lazy" decoding="async"></picture></div>
   <div class="wrap built-in">
     <h2 id="built-h">Built by Southern Utah, for Southern Utah&rsquo;s Young Artists.</h2>
     <blockquote>
-      <p class="lede">&ldquo;My daughter walked in barely able to look an adult in the eye. Two seasons later she&rsquo;s leading warm-ups. Encore didn&rsquo;t just teach her to perform, it taught her she matters.&rdquo;</p>
+      <p>&ldquo;My daughter walked in barely able to look an adult in the eye. Two seasons later she&rsquo;s leading warm-ups. Encore didn&rsquo;t just teach her to perform, it taught her she matters.&rdquo;</p>
       <cite>Encore Parent</cite>
     </blockquote>
   </div>
-  <svg class="wave wave-bot" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120 L0 74 C 300 20 640 112 980 70 C 1200 42 1340 30 1440 44 L1440 120 Z"/></svg>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
 </section>
 
 <section class="incl" aria-labelledby="incl-h">
   <div class="wrap incl-grid">
     <div class="incl-copy">
-      <p class="kicker">Inclusive arts</p>
+      <p class="kicker">Inclusive arts <svg class="burst" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M10 4l4 12"/><path d="M22 2l-2 13"/><path d="M34 10L23 19"/></svg></p>
       <h2 class="h2" id="incl-h">Performances<br>that welcome all</h2>
       <p class="lede">We believe live theater should be open to every audience, so we build experiences that make sure of it.</p>
     </div>
@@ -246,8 +315,8 @@ footer{background:var(--slate);color:var(--cream);padding:72px 0 36px}
 </section>
 
 <section class="band news" id="newsletter" aria-labelledby="news-h">
-  <svg class="wave wave-top" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 40 C 1100 120 700 10 380 70 C 220 98 90 80 0 60 Z"/></svg>
-  <div class="band-ph"><picture><source type="image/webp" srcset="/img/gallery/hadestown-company.webp"><img src="/img/gallery/hadestown-company.jpg" alt="" loading="lazy" decoding="async"></picture></div>
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
+  <div class="band-ph"><picture><source type="image/webp" srcset="/img/gallery/aristocats-company.webp"><img src="/img/gallery/aristocats-company.jpg" alt="" loading="lazy" decoding="async"></picture></div>
   <div class="wrap news-in">
     <div class="news-copy">
       <h2 id="news-h">Never miss an audition or show</h2>
@@ -255,24 +324,85 @@ footer{background:var(--slate);color:var(--cream);padding:72px 0 36px}
     </div>
     <form class="news-wrap" id="newsForm" novalidate>
       <div class="news-form">
-        <label for="newsEmail" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label>
+        <label for="newsEmail" class="sr">Email address</label>
         <input type="email" id="newsEmail" name="email" placeholder="Your email address" autocomplete="email" required>
         <button type="submit">SIGN UP</button>
       </div>
       <p class="news-ok" id="newsMsg" role="status"></p>
     </form>
   </div>
-  <svg class="wave wave-bot" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120 L0 74 C 300 20 640 112 980 70 C 1200 42 1340 30 1440 44 L1440 120 Z"/></svg>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
 </section>
 
 <section class="case" aria-labelledby="case-h">
   <div class="wrap">
-    <div class="split-head">
-      <div><p class="kicker">The case for the arts</p><h2 class="h2" id="case-h">The arts aren&rsquo;t extra. They&rsquo;re essential.</h2></div>
-      <p class="lede">Decades of research say what every Encore parent already feels: Young Artists who do theater grow in ways that reach far past the stage.</p>
-    </div>
-    <div class="stats"><div class="stat"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M32 6l7.6 15.4 17 2.5-12.3 12 2.9 16.9L32 44.8l-15.2 8 2.9-16.9-12.3-12 17-2.5z"/></svg><div class="stat-n">4X</div><p>more likely to be recognized for academic achievement</p></div><div class="stat"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M32 54S8 40 8 23a12 12 0 0124-5 12 12 0 0124 5c0 17-24 31-24 31z"/></svg><div class="stat-n">2X</div><p>more likely to volunteer and stay civically engaged</p></div><div class="stat"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><circle cx="22" cy="24" r="9"/><circle cx="44" cy="24" r="9"/><path d="M6 54c2-10 9-15 16-15s10 3 10 3 3-3 12-3 14 5 16 15"/></svg><div class="stat-n">+13%</div><p>higher growth in empathy and emotional skills</p></div><div class="stat"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><circle cx="32" cy="32" r="24"/><path d="M32 8v24l18 14"/></svg><div class="stat-n">&lt;2%</div><p>of school budgets go to the arts, community programs fill the gap</p></div></div>
+    <p class="kicker">The case for the arts</p>
+    <h2 class="h2" id="case-h">The arts aren&rsquo;t extra.<br>They&rsquo;re essential.</h2>
+    <p class="lede">Decades of research say what every Encore parent already feels: Young Artists who do theater grow in ways that reach far past the stage.</p>
+    <div class="stats"><div class="stat"><svg viewBox="0 0 64 64" fill="none" stroke="#34789b" stroke-width="5" stroke-linecap="round" aria-hidden="true"><path d="M8 58V34a24 24 0 0148 0v24"/><path d="M18 58V34a14 14 0 0128 0v24"/><path d="M28 58V34a4 4 0 018 0v24"/></svg><div class="stat-n">4X</div><p>more likely to be recognized for academic achievement</p></div><div class="stat"><svg viewBox="0 0 64 64" aria-hidden="true" style="color:#7dcbdd"><path fill="currentColor" d="M32 2l6 14 14-6-6 14 14 6-14 6 6 14-14-6-6 14-6-14-14 6 6-14-14-6 14-6-6-14 14 6z"/></svg><div class="stat-n">2X</div><p>more likely to volunteer and stay civically engaged</p></div><div class="stat"><svg viewBox="0 0 64 64" fill="none" stroke="#34789b" stroke-width="5" stroke-linejoin="round" aria-hidden="true"><path d="M8 18l12 12 12-20 12 20 12-12-4 34H12z"/><path d="M14 52h36"/></svg><div class="stat-n">+13%</div><p>higher growth in empathy and emotional skills</p></div><div class="stat"><svg viewBox="0 0 64 64" fill="none" stroke="#7dcbdd" stroke-width="5" stroke-linecap="round" aria-hidden="true"><path d="M4 50c4-14 8-22 12-22s2 22 6 22 6-24 12-24 2 24 6 24 6-24 12-24 4 14 6 18"/></svg><div class="stat-n">&lt;2%</div><p>of school budgets go to the arts, community programs fill the gap</p></div></div>
   </div>
+</section>
+
+<section class="venue" aria-labelledby="venue-h">
+  <div class="wrap">
+    <p class="kicker">Our home away from home</p>
+    <h2 class="h2" id="venue-h">Performing at the<br>historic Electric Theater</h2>
+    <p class="lede">Since 2021, Encore has called one of southern Utah&rsquo;s most storied venues home, a downtown St. George landmark built in 1911.</p>
+    <div class="venue-grid">
+      <div class="then-now" id="thenNow">
+        <picture class="vint"><source type="image/webp" srcset="/img/electric-theater-vintage.webp"><img src="/img/electric-theater-vintage.jpg" alt="The Electric Theater in its early years, with a crowd gathered out front" loading="lazy" decoding="async"></picture>
+        <picture class="now"><source type="image/webp" srcset="/img/electric-theater-exterior.webp"><img src="/img/electric-theater-exterior.jpg" alt="The restored Electric Theater at dusk with its marquee lit" loading="lazy" decoding="async"></picture>
+        <span class="tn-label" aria-hidden="true">Then &amp; now</span>
+        <div class="tn-toggle" role="group" aria-label="Show the theater then or now">
+          <button type="button" data-v="then" aria-pressed="true">Then</button>
+          <button type="button" data-v="now" aria-pressed="false">Now</button>
+        </div>
+      </div>
+      <div class="venue-copy">
+        <h3>A century-old stage, still telling stories</h3>
+        <p>Built in 1911 with three-foot-thick adobe walls, the Electric Theater was the first motion picture theater in southern Utah, and the first air-conditioned building in St. George. After a full restoration completed in 2015, the city reopened it as the anchor of downtown&rsquo;s arts district. We&rsquo;ve been honored to call it home ever since.</p>
+        <ul class="facts">
+          <li><b>1911</b><span>Original construction</span></li>
+          <li><b>3 ft</b><span>Adobe wall thickness</span></li>
+          <li><b>2015</b><span>City restoration complete</span></li>
+          <li><b>2021</b><span>Encore&rsquo;s home since</span></li>
+        </ul>
+        <p class="addr">68 E Tabernacle Street, St. George, UT 84770</p>
+        <div class="venue-btns">
+          <a class="pill" href="/electric-theater">VISIT THE THEATER</a>
+          <a class="pill pill-o" href="/tickets">SEE WHAT&rsquo;S PLAYING</a>
+        </div>
+        <p class="fine">Encore is a tenant performing at the Electric Theater. The venue itself is owned and operated by the City of St. George.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="spot" aria-label="Where young performers find their spotlight">
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
+  <h2>Where young performers find their spotlight</h2>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
+</section>
+
+<section class="join" aria-labelledby="join-h">
+  <div class="wrap join-grid">
+    <div class="join-ph"><picture><source type="image/webp" srcset="/img/gallery/music-man-liberty.webp"><img src="/img/gallery/music-man-liberty.jpg" alt="A performer dressed as the Statue of Liberty in Encore's The Music Man" loading="lazy" decoding="async"></picture></div>
+    <div>
+      <h2 id="join-h"><span>Join the Encore community</span><svg class="star8" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M32 2l6 14 14-6-6 14 14 6-14 6 6 14-14-6-6 14-6-14-14 6 6-14-14-6 14-6-6-14 14 6z"/></svg></h2>
+      <p>Encore is a 501(c)(3) nonprofit. For as little as $25 a month, you can make a real difference for hundreds of talented young performers, giving them arts education and a place to shine on stage.</p>
+      <a class="pill" href="/core-community">JOIN THE CORE</a>
+    </div>
+  </div>
+</section>
+
+<section class="support" aria-labelledby="sup-h">
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
+  <div class="wrap">
+    <p class="kicker">Support Encore</p>
+    <h2 class="h2" id="sup-h">Support, history &amp;<br>stories</h2>
+    <div class="sup-grid"><a class="scard" href="/donate"><picture><source type="image/webp" srcset="/img/gallery/beauty-and-the-beast-tavern.webp"><img src="/img/gallery/beauty-and-the-beast-tavern.jpg" alt="Encore performers in a tavern scene from Beauty and the Beast" loading="lazy" decoding="async"></picture><svg class="cw" viewBox="0 0 396 136" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 110 0 230 70 396 22 L396 136 L0 136 Z"/></svg><span class="scard-t"><span><span class="scard-h">Donate</span><span class="scard-p">Invest in brighter futures for young performers.</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="scard" href="/about"><picture><source type="image/webp" srcset="/img/gallery/shrek-finale.webp"><img src="/img/gallery/shrek-finale.jpg" alt="The company of Shrek in colorful costumes during the finale" loading="lazy" decoding="async"></picture><svg class="cw" viewBox="0 0 396 136" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 110 0 230 70 396 22 L396 136 L0 136 Z"/></svg><span class="scard-t"><span><span class="scard-h">Our History</span><span class="scard-p">Meet the people and the story behind Encore.</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a><a class="scard" href="/blog"><picture><source type="image/webp" srcset="/img/blog/backstage-at-les-miserables/001.webp"><img src="/img/blog/backstage-at-les-miserables/001.jpg" alt="Les Miserables cast members backstage" loading="lazy" decoding="async"></picture><svg class="cw" viewBox="0 0 396 136" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 110 0 230 70 396 22 L396 136 L0 136 Z"/></svg><span class="scard-t"><span><span class="scard-h">the Blog</span><span class="scard-p">Stories from rehearsals, shows and our Young Artists.</span></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></span></a></div>
+  </div>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
 </section>
 </main>
 
@@ -300,13 +430,27 @@ footer{background:var(--slate);color:var(--cream);padding:72px 0 36px}
 
 <script>
 (function(){
-  var f=document.getElementById('newsForm'); if(!f) return;
-  var e=document.getElementById('newsEmail'), m=document.getElementById('newsMsg');
-  f.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    if(!e.value || !e.checkValidity()){ m.textContent='Please enter a valid email address.'; e.focus(); return; }
-    m.textContent='Preview only: signup is not connected on this page yet.';
-  });
+  var f=document.getElementById('newsForm');
+  if(f){
+    var e=document.getElementById('newsEmail'), m=document.getElementById('newsMsg');
+    f.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      if(!e.value || !e.checkValidity()){ m.textContent='Please enter a valid email address.'; e.focus(); return; }
+      m.textContent='Preview only: signup is not connected on this page yet.';
+    });
+  }
+  var tn=document.getElementById('thenNow');
+  if(tn){
+    var bs=tn.querySelectorAll('.tn-toggle button'), auto=null;
+    function set(v){ tn.classList.toggle('is-now',v==='now'); bs.forEach(function(b){ b.setAttribute('aria-pressed',b.dataset.v===v?'true':'false'); }); }
+    bs.forEach(function(b){ b.addEventListener('click',function(){ if(auto){clearInterval(auto);auto=null;} set(b.dataset.v); }); });
+    var rm=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!rm && 'IntersectionObserver' in window){
+      new IntersectionObserver(function(es){ es.forEach(function(x){
+        if(x.isIntersecting && !auto && !tn.dataset.done){ var n=0; auto=setInterval(function(){ n++; set(n%2?'now':'then'); if(n>=4){clearInterval(auto);auto=null;tn.dataset.done=1;} },2600); }
+      }); },{threshold:.5}).observe(tn);
+    }
+  }
 })();
 </script>
 </body>
