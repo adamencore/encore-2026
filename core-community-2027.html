@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join The Core | Monthly Giving | Encore Performing Arts | 2027 Preview</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Design preview of the 2027 Join The Core page for Encore Performing Arts. Not the live page.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<link rel="stylesheet" href="/css/e27.css">
+<style>
+/* Join The Core page, 2027 design. Shared styles live in /css/e27.css. */
+.sec{padding:clamp(110px,11vw,180px) 0}
+.split-head{display:grid;grid-template-columns:minmax(0,640px) minmax(0,440px);justify-content:space-between;align-items:end;gap:28px;margin-bottom:clamp(44px,4.5vw,64px)}
+/* Intro */
+.intro-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.state{font:400 clamp(34px,3.6vw,54px)/1 var(--serif);letter-spacing:-.025em;margin:0}
+.state em{color:var(--teal);font-style:italic}
+.intro-copy{font-size:18px;line-height:1.55;font-weight:400;margin:24px 0 0;max-width:560px}
+.price{position:relative;background:var(--teal);color:var(--cream);border-radius:var(--r);padding:clamp(34px,4vw,56px);overflow:hidden}
+.price-illo{position:absolute;right:-20px;top:-16px;width:170px;color:rgba(251,246,242,.12)}
+.price .kicker{color:var(--sky);margin-left:0}
+.price-amt{display:flex;align-items:baseline;gap:10px;margin:0}
+.price-amt b{font:400 clamp(90px,10vw,150px)/.8 var(--serif);letter-spacing:-.05em}
+.price-amt span{font-size:20px;font-weight:700}
+.price p{font-size:18px;line-height:1.45;font-weight:400;margin:22px 0 28px;color:#e8f3f6;max-width:340px}
+.price .pill{background:var(--cream);border-color:var(--cream);color:var(--teal-d);min-width:0;width:100%}
+.price .pill:hover{background:#fff;border-color:#fff}
+/* Uses */
+.uses{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.use{background:#fff;border-radius:var(--r);overflow:hidden}
+.use-ph{aspect-ratio:4/3;overflow:hidden}
+.use-ph picture,.use-ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.use:hover .use-ph img{transform:scale(1.04)}
+.use-b{padding:24px 26px 28px}
+.use-b h3{font-size:clamp(28px,2.4vw,36px);line-height:.98;letter-spacing:-.03em;margin:0 0 10px}
+.use-b p{font-size:17px;line-height:1.5;font-weight:400;margin:0}
+/* Perks */
+.perks-band{position:relative;background:var(--slate);color:var(--cream);padding:clamp(70px,7vw,110px) 0 clamp(160px,14vw,230px)}
+.perks-band .kicker{color:var(--sky)}
+.perks-band .lede{color:var(--mist)}
+.perks-band .wave-top{fill:var(--sand)}
+.perks-band .wave-bot{fill:var(--sand)}
+.perks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.perk{background:rgba(251,246,242,.06);border:1px solid rgba(251,246,242,.12);border-radius:var(--r);padding:30px 30px 32px}
+.perk svg{height:44px;width:auto;color:var(--sky);margin-bottom:20px}
+.perk:nth-child(even) svg{color:var(--cream)}
+.perk h3{font-size:clamp(26px,2.2vw,32px);line-height:1;letter-spacing:-.03em;margin:0 0 10px}
+.perk p{font-size:17px;line-height:1.5;font-weight:400;margin:0;color:var(--mist)}
+/* Steps */
+.join-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(40px,6vw,96px);align-items:center}
+.join-ph{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/4.4}
+.join-ph picture,.join-ph img{width:100%;height:100%;object-fit:cover}
+.steps{list-style:none;margin:0 0 32px;padding:0;display:flex;flex-direction:column;gap:14px}
+.step{display:grid;grid-template-columns:80px 1fr;column-gap:20px;background:#fff;border-radius:24px;padding:24px 28px}
+.step-n{grid-row:span 2;font:400 64px/.85 var(--serif);color:var(--teal);letter-spacing:-.04em}
+.step:nth-child(2) .step-n{color:var(--teal-d)}
+.step h3{font-size:clamp(24px,2vw,30px);line-height:1;letter-spacing:-.03em;margin:0 0 8px}
+.step p{font-size:17px;line-height:1.5;font-weight:400;margin:0}
+.join-btns{display:flex;flex-wrap:wrap;gap:14px}
+.join-btns .pill{min-width:240px}
+.fine{margin:22px 0 0;font-size:15px;font-weight:400;color:#4a4a4a}
+.fine a{color:var(--teal-d);font-weight:700}
+/* CTA */
+.cta{position:relative;color:var(--cream);overflow:hidden;isolation:isolate;background:var(--slate)}
+.cta-ph,.cta-ph picture,.cta-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,10,10,.88) 0%,rgba(10,10,10,.62) 50%,rgba(10,10,10,.25) 100%)}
+.cta-in{padding-block:clamp(160px,14vw,230px)}
+.cta h2{font-size:clamp(44px,4.8vw,70px);line-height:.85;letter-spacing:-.03em;max-width:640px}
+.cta p{font-size:18px;line-height:1.45;font-weight:400;max-width:520px;margin:22px 0 32px;color:var(--mist)}
+.cta-btns{display:flex;flex-wrap:wrap;gap:14px}
+.cta-btns .pill{min-width:240px}
+.cta .wave-bot{fill:var(--slate)}
+@media (max-width:980px){
+  .split-head,.intro-grid,.join-grid{grid-template-columns:1fr}
+  .uses,.perks{grid-template-columns:1fr 1fr}
+  .join-ph{aspect-ratio:16/10}
+}
+@media (max-width:640px){
+  .uses,.perks{grid-template-columns:1fr}
+  .step{grid-template-columns:56px 1fr;column-gap:14px;padding:22px}
+  .step-n{font-size:48px}
+}
+@media (max-width:560px){
+  .cta-btns .pill,.join-btns .pill{min-width:0;width:100%}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-nav" id="siteNav">
+  <div class="nav-in">
+    <nav class="nav-l" aria-label="Main"><a href="/programs-2027">Programs</a><a href="/classes-2027">Classes</a><a href="/auditions-2027">Auditions</a><a href="/about-2027">About</a></nav>
+    <a href="/home-2027" class="nav-logo" aria-label="Encore Performing Arts: Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+    <div class="nav-r">
+      <a class="nav-pill" href="/tickets-2027">Tickets</a>
+      <a class="nav-pill solid" href="/donate-2027">Donate</a>
+      <button type="button" class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mmenu" id="mMenu" aria-hidden="true">
+  <div class="mm-in">
+    <svg class="mm-illo" viewBox="0 0 118.07 103.2" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M49.06,85.17l-19.37,16.75c-1.06.92-4.15,1.47-5.46,1.22s-3.02-3.28-2.69-4.65l4.22-17.71-20.62,3.16c-1.27.2-4.32-.98-4.77-2.16s.07-4.4,1.06-5.28l18.03-16.14L1.86,50.06c-1.12-.66-2.1-3.82-1.81-4.98.34-1.36,2.48-3.71,3.89-3.96l23.16-4.18-5.74-21.84c-.4-1.52.53-4.65,1.49-5.8s5.07-1.85,6.39-.95l24.75,16.95,12.36-21.9c.82-1.46,3.95-3.22,5.51-3.38,1.75-.18,5.16,2.25,5.63,4.19l5.99,24.65,26.12-6.36c1.62-.39,4.74.69,5.5,1.93s.31,4.89-.68,5.96l-16.22,17.46,17.43,8.01c1.13.52,2.42,2.88,2.44,3.96s-1.65,3.62-2.74,3.88l-21.53,5.18,5.22,14.99c.46,1.33-.06,4.15-1.03,4.97s-4.3,1.1-5.46.58l-18.13-8.17-4.28,15.98c-.35,1.3-2.32,3.26-3.52,3.55-1.4.35-4.72-.73-5.67-1.83l-11.88-13.77Z"/> </g></svg>
+    <nav aria-label="Menu"><ul class="mm-links"><li><a href="/about-2027">About<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li><li><a href="/auditions-2027">Auditions<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li><li><a href="/contact-2027">Contact<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li></ul></nav>
+    <div class="mm-cta"><a class="pill" href="/tickets-2027">Get Tickets</a><a class="pill pill-light" href="/donate-2027">Donate</a></div>
+    <p class="mm-foot">The Historic Electric Theater<br>68 E Tabernacle St, St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></p>
+  </div>
+</div>
+
+<main id="main">
+<section class="pbanner" data-par-host>
+  <div class="pb-ph" data-par="0.35" style="--pos:50% 30%"><picture><source type="image/webp" srcset="/img/gallery/aristocats-company.webp"><img src="/img/gallery/aristocats-company.jpg" alt="The cast of The Aristocats gathered on stage" fetchpriority="high" decoding="async"></picture></div>
+  <div class="wrap pb-in" data-par="0.14" data-par-fade>
+    <p class="kicker">Monthly giving &middot; The Core</p>
+    <h1>Become part of The Core</h1>
+    <p class="lede">The Core is Encore&rsquo;s community of supporters who give small, regular monthly donations: the steady support that keeps our programs strong and growing.</p>
+    <div class="pb-acts"><a class="pill" href="https://givebutter.com/support-encore-performing-arts-d54afr" target="_blank" rel="noopener">Join The Core</a><a class="pill pill-light" href="/donate-2027">Other ways to give</a></div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C 360 0 760 130 1080 60 C 1240 26 1360 40 1440 52 L1440 120 L0 120 Z"/></svg>
+</section>
+
+
+<section class="sec" aria-labelledby="intro-h">
+  <div class="wrap intro-grid">
+    <div>
+      <p class="kicker">Why monthly matters</p>
+      <h2 class="state" id="intro-h">Small gifts, a world of <em>difference</em>.</h2>
+      <p class="intro-copy">Monthly gifts of any size add up to real impact for hundreds of young performers, funding arts education, scholarships, and a place to shine on stage.</p>
+      <p class="intro-copy">Steady support lets us plan the season ahead with confidence, from the first rehearsal to the final bow.</p>
+    </div>
+    <aside class="price" aria-label="Suggested monthly gift">
+      <svg class="price-illo" viewBox="0 0 118.24 74.12" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M88.99,67.31l-56.01,5.6-17.23,1.18c-6.87.47-11.81-5.46-13.05-12.13C.06,47.92-.59,33.71.51,19.42,1.15,11.22,6.94,5.63,14.8,3.97,30.5.64,46.42-.61,62.59.28l36.9,2.02c8.12.44,14.31,7.17,15.72,14.82,2.11,11.44,3.37,22.6,2.94,34.16-.54,14.59-16.1,14.73-29.17,16.04Z"/> </g></svg>
+      <p class="kicker">Most members start here</p>
+      <p class="price-amt"><b>$25</b><span>/ month</span></p>
+      <p>For the price of a night at the movies, you keep the lights on for Young Artists all year.</p>
+      <a class="pill" href="https://givebutter.com/support-encore-performing-arts-d54afr" target="_blank" rel="noopener">Join The Core</a>
+    </aside>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="uses-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="split-head">
+      <div><p class="kicker">Where it goes</p><h2 class="h2" id="uses-h">What your gift <em>makes possible</em></h2></div>
+      <p class="lede">Every monthly gift goes to work in three places.</p>
+    </div>
+    <div class="uses"><article class="use"><div class="use-ph"><picture><source type="image/webp" srcset="/img/camps/camp-workshop.webp"><img src="/img/camps/camp-workshop.jpg" alt="Young Artists gathered at an Encore theater camp" loading="lazy" decoding="async"></picture></div><div class="use-b"><h3>Arts education</h3><p>Classes, camps and productions taught by working theater professionals.</p></div></article><article class="use"><div class="use-ph"><picture><source type="image/webp" srcset="/img/gallery/young-performer-broom.webp"><img src="/img/gallery/young-performer-broom.jpg" alt="A young performer with a broom singing in an Encore production" loading="lazy" decoding="async"></picture></div><div class="use-b"><h3>Scholarships</h3><p>So cost is never the reason a Young Artist misses the stage.</p></div></article><article class="use"><div class="use-ph"><picture><source type="image/webp" srcset="/img/gallery/music-man-liberty.webp"><img src="/img/gallery/music-man-liberty.jpg" alt="A performer as Lady Liberty in Encore&rsquo;s The Music Man" loading="lazy" decoding="async"></picture></div><div class="use-b"><h3>A place to shine</h3><p>A real stage, real lights and a real audience at the historic Electric Theater.</p></div></article></div>
+  </div>
+</section>
+
+<section class="perks-band" aria-labelledby="perks-h">
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
+  <div class="wrap" style="padding-top:clamp(70px,7vw,110px)">
+    <div class="split-head">
+      <div><p class="kicker">Member thank-yous</p><h2 class="h2" id="perks-h">What members <em>receive</em></h2></div>
+      <p class="lede">As a thank-you for your ongoing support, members of The Core enjoy:</p>
+    </div>
+    <ul class="perks"><li class="perk"><svg viewBox="0 0 91.77 91.44" fill="currentColor" aria-hidden="true" focusable="false"><g> <g> <path d="M28.73,65.6c-1.41,2.21-5.06,3.03-6.58,2.25s-2.49-4.41-1.39-6.42C31.91,41.24,43.12,21.89,56.34,3.06c1.5-2.13,5.16-3.25,7-2.72s3.87,5.19,2.58,7.21l-37.18,58.05Z"/> <path d="M39.73,90.73c-1.64,1.26-5.25.66-6.12-.45-.99-1.27-.79-4.99.84-6.34l47.99-39.88c2.06-1.71,6.05-1.55,7.7-.28,1.86,1.44,2.43,6.23.05,8.06l-50.46,38.89Z"/> <path d="M8.92,53.81c-.26,2.13-3.19,4.42-4.66,4.57-1.66.17-4.47-2.83-4.24-5.03L5.03,4.82C5.31,2.12,8.22-.09,10.46,0c2.05.09,4.7,2.95,4.37,5.61l-5.91,48.2Z"/> </g> </g></svg><h3>Opening night receptions</h3><p>Join us at opening night receptions, and bring a guest.</p></li><li class="perk"><svg viewBox="0 0 74.26 66.34" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M15.29,66.34c-1.62-2.88-2.57-6.06-3.33-9.3C8.47,41.19,2.75,26.98,0,9.92l22.55,25.48L33.16,1.69l2.01-1.61c.52-.42,2.21.86,2.41,1.53l9.81,33.34c9.51-9.52,15.34-20.94,26.87-30.46l-11.69,61.66c-16.11-1.55-30.49-3.23-47.27.2ZM57.8,54.14l4.83-25.88-12.3,13.78c-.97.87-3.11,2.04-4.31,2.03-1-.01-3.21-1.65-3.7-3.02l-7.34-20.65-7.6,21.44c-.34.96-1.93,2.58-2.84,2.81s-3.01-.64-3.69-1.34l-7.66-7.9,5.42,18.99c13.85-2.56,25.54-2.36,39.19-.27Z"/> </g></svg><h3>Production Prologue</h3><p>An invitation to Encore&rsquo;s Production Prologue: a cast meet and greet before the show.</p></li><li class="perk"><svg viewBox="0 0 132.51 60.47" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M98.57,10.23c-7.22-2.1-18.6,12.29-21.13,20.11-3.09,9.54-6.31,24.29-13.07,22.67s-1.28-15.2,3-24.55c2.45-5.35,2.93-12.38,1.08-18.39-.53-1.72-5.58-.74-7.04.43-7.32,5.43-12.51,12.36-16.88,20.34-1.03,11.09-5.63,28.33-13.19,27.33-1.57-.21-3.44-3.19-3.52-5.19-.32-8.5,3.06-15.01,6.65-22.53,1.94-4.08,1.31-10.44-.15-15.1-2.71-.76-6.45.4-8.71,2.52C13.86,28.91,7.18,44.2,6.55,60.43c-4.35.45-6.9-2.93-6.51-6.52C2.03,35.59,14.77,9.54,30.9,6.23c6.88-1.41,11.51,3.23,12.89,10.49,7.99-11.08,22.11-22.25,30.16-13.7,2.4,2.55,3.55,7.16,4.21,10.96,7.1-7.92,17.83-16.41,24.94-10.28,3.31,2.85,3.92,7.95,3.85,12.11,3.44-2.42,7.52-5.03,11.45-6.2,6.75-2.01,11.99,2.06,13.36,8.6,3.69,17.57-7.36,30.49-10.18,27.21-3.37-3.92,5.45-12.03,3.47-24.34-.22-1.4-1.46-3.8-2.37-4.41-2.78-1.86-13.37,5.19-16.55,11.36-3.64,7.07-7.12,17.31-12.61,16.52-1.25-.18-3.07-3.3-2.81-4.71,2.06-11.17,10.78-16.89,7.86-29.62Z"/> </g></svg><h3>Impact newsletter</h3><p>Our monthly newsletter with updates on the difference your gift is making.</p></li><li class="perk"><svg viewBox="0 0 166.31 116.76" fill="currentColor" aria-hidden="true" focusable="false"><g> <g> <path d="M57.26,111.54c-1.31,2.76-10.85,6.62-16,4.72l-13.96-29.95c-1.55.05-4.32.19-5.48.64-8.76,3.39-17.73-.83-20.78-9.76-1.84-5.38-1.31-10.72,2.07-16.24,2.14-3.49,7.24-6.18,12.47-7.37l3.07-2.99,18.03-7.14c18.72-10.24,35.08-23.56,50.85-37.81,2.87-2.59,5.29-5.9,10.13-2.43,2.54,1.83,5.87,5.68,7.76,9,11.42,20.03,17.84,42.24,17.55,65.43-.05,3.95-2.4,11.65-7.02,10.7-22.51-4.6-44.23-8.76-67.09-7.05l-5.12,1.05,12.85,23.86c.7,1.3,1.26,4.12.69,5.33ZM115.92,82.95c4.89-20.5-4.42-48.69-14.17-66.15-2.12-3.81-4.42-6.37-8.1-9.54-1.97,2.8-2.63,5.17-2.63,8.55,0,21.81,6.52,43.08,18.04,61.43,1.64,2.61,3.65,4.05,6.86,5.7ZM27.25,84.08l15.13-3.72c-4.89-9.25-9.92-20.06-9.19-31.98l-14.8,5.94c-.7,10.6,2.6,21.34,8.85,29.76Z"/> <path d="M134.67,26.01l-2.8,2.92c-.74.77-3.87-.13-5.01-1.39,6.64-9.2,21.7-29.83,27.1-27.33,1.1.51,1.35,4.24.41,5.23l-19.7,20.58Z"/> <path d="M139.06,43.96c-.75.18-2.71-.43-3.27-.78-.75-.47.21-3.37,1.27-3.74l24.41-8.4c1.38-.47,3.95.99,4.63,1.98.77,1.14-.58,4.54-2.33,4.96l-24.71,5.98Z"/> <path d="M160.64,65.18c1.49.6,2.56,3.92,2.06,5.01-.59,1.27-3.59,1.9-5.54.98l-21.23-10.04c-.73-.34-1.58-2.28-1.59-2.95-.02-.89,2.76-2.4,3.7-2.02l22.61,9.03Z"/> <path d="M102.52,57.02c-2.69-6.52-4.45-12.48-5.94-19.55,2.75-1.22,6.09-.63,7.87,1.51,5.23,6.28,5.6,15.92-1.94,18.04Z"/> </g> </g></svg><h3>Listed in playbills</h3><p>Your name listed in our program playbills as part of The Core.</p></li><li class="perk"><svg viewBox="0 0 118.07 103.2" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M49.06,85.17l-19.37,16.75c-1.06.92-4.15,1.47-5.46,1.22s-3.02-3.28-2.69-4.65l4.22-17.71-20.62,3.16c-1.27.2-4.32-.98-4.77-2.16s.07-4.4,1.06-5.28l18.03-16.14L1.86,50.06c-1.12-.66-2.1-3.82-1.81-4.98.34-1.36,2.48-3.71,3.89-3.96l23.16-4.18-5.74-21.84c-.4-1.52.53-4.65,1.49-5.8s5.07-1.85,6.39-.95l24.75,16.95,12.36-21.9c.82-1.46,3.95-3.22,5.51-3.38,1.75-.18,5.16,2.25,5.63,4.19l5.99,24.65,26.12-6.36c1.62-.39,4.74.69,5.5,1.93s.31,4.89-.68,5.96l-16.22,17.46,17.43,8.01c1.13.52,2.42,2.88,2.44,3.96s-1.65,3.62-2.74,3.88l-21.53,5.18,5.22,14.99c.46,1.33-.06,4.15-1.03,4.97s-4.3,1.1-5.46.58l-18.13-8.17-4.28,15.98c-.35,1.3-2.32,3.26-3.52,3.55-1.4.35-4.72-.73-5.67-1.83l-11.88-13.77Z"/> </g></svg><h3>Tax receipt</h3><p>A charitable contribution tax receipt. Encore is a registered 501(c)(3).</p></li><li class="perk"><svg viewBox="0 0 70.47 104.63" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M37.88,101.95c-.19.7-1.69,3.06-2.23,2.63s-1.61-1.9-1.9-2.93l-7.02-25.36c-4.82-11.27-12.73-19.55-24.81-22.41l-1.85-1.81c-.52-.51,1.7-2.02,2.21-2.3,12.14-3.36,20.42-11.32,25.35-22.88l6.33-24.2c.21-.78,1.21-2.18,1.68-2.63s2.08,1.44,2.29,2.32l5.54,23.79c4.19,12.02,13.03,20.57,25.39,23.72l1.48,1.34c.48.44-.67,2.04-1.14,2.48-11.3,3.03-19.27,10.72-23.88,21.21l-7.46,27.03Z"/> </g></svg><h3>Lasting impact</h3><p>You become an ongoing, integral part of Encore&rsquo;s success and growth.</p></li></ul>
+  </div>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
+</section>
+
+<section class="sec" id="join" aria-labelledby="join-h">
+  <div class="wrap join-grid">
+    <div class="join-ph"><picture><source type="image/webp" srcset="/img/gallery/ensemble-onstage-band.webp"><img src="/img/gallery/ensemble-onstage-band.jpg" alt="Encore&rsquo;s full company performing with a live on-stage band" loading="lazy" decoding="async"></picture></div>
+    <div>
+      <p class="kicker">How to join</p>
+      <h2 class="h2" id="join-h">Three steps, <em>about a minute</em></h2>
+      <ol class="steps" style="margin-top:36px"><li class="step"><span class="step-n">01</span><h3>Click Join The Core</h3><p>The button opens Encore&rsquo;s secure Givebutter donation page in a new tab.</p></li><li class="step"><span class="step-n">02</span><h3>Choose Monthly Payments</h3><p>In the frequency dropdown, select Monthly Payments.</p></li><li class="step"><span class="step-n">03</span><h3>Pick your amount</h3><p>Any amount counts. $25 a month is about the price of a night at the movies.</p></li></ol>
+      <div class="join-btns"><a class="pill" href="https://givebutter.com/support-encore-performing-arts-d54afr" target="_blank" rel="noopener">Join The Core</a><a class="pill pill-o" href="/donate-2027">Give once instead</a></div>
+      <p class="fine">Encore is a registered 501(c)(3) nonprofit. Donations are tax-deductible as allowed by law. Questions? <a href="/contact-2027">Contact us</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="cta-h">
+  <div class="cta-ph"><picture><source type="image/webp" srcset="/img/gallery/music-man-storefront.webp"><img src="/img/gallery/music-man-storefront.jpg" alt="" loading="lazy" decoding="async"></picture></div>
+  <div class="wrap cta-in">
+    <h2 id="cta-h">Ready to join?</h2>
+    <p>Click below, then select Monthly Payments in the dropdown to become part of The Core.</p>
+    <div class="cta-btns"><a class="pill" href="https://givebutter.com/support-encore-performing-arts-d54afr" target="_blank" rel="noopener">Join The Core</a><a class="pill pill-light" href="/donate-2027">Other ways to give</a></div>
+  </div>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a href="/home-2027" class="logo" aria-label="Encore Performing Arts: Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+        <p>The Historic Electric Theater<br>68 E Tabernacle St, St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></p>
+      </div>
+      <div class="ft-col"><h5>Explore</h5><a href="/calendar">What&rsquo;s On</a><a href="/programs-2027">Programs by Age</a><a href="/auditions-2027">Auditions</a><a href="/classes-2027">Classes</a><a href="/past-shows-2027">Past Shows</a><a href="/blog">Blog</a></div>
+      <div class="ft-col"><h5>Visit</h5><a href="/tickets-2027">Tickets</a><a href="/sensory-friendly-performances-2027">Sensory Friendly</a><a href="/asl-interpreted-performances">ASL Interpreted</a><a href="/electric-theater">The Electric Theater</a><a href="/about-2027">About</a></div>
+      <div class="ft-col"><h5>Support</h5><a href="/donate-2027">Donate</a><a href="/core-community-2027">Join The Core</a><a href="/encore-scholarship-application">Scholarships</a><a href="/contact-2027">Contact Us</a></div>
+    </div>
+    <div class="fb">
+      <span>&copy; 2026 Encore Performing Arts &middot; A 501(c)(3) nonprofit</span>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/encorestg" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+        <a href="https://www.facebook.com/encorestg" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCBqCS2LKe-5UHp7osQFA-fg" rel="noopener" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/js/e27.js" defer></script>
+
+</body>
+</html>
