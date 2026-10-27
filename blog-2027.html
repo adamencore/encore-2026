@@ -30,11 +30,12 @@
 .feat-b .pill{align-self:flex-start;min-width:240px}
 /* Filters */
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(34px,4vw,50px)}
-.chip{appearance:none;border:2px solid var(--teal);background:transparent;color:var(--teal-d);border-radius:70px;padding:10px 18px;font:700 15px var(--sans);cursor:pointer;transition:background .2s,color .2s}
-.chip b{font-weight:700;opacity:.65;margin-left:4px}
-.chip:hover{background:rgba(52,120,155,.1)}
-.chip.on{background:var(--teal);color:var(--cream)}
-.chip.on b{opacity:.85}
+.chip{appearance:none;border:0;background:#efedea;color:#5f5f5f;border-radius:70px;padding:7px 14px;font:400 14px var(--sans);letter-spacing:0;cursor:pointer;transition:background .2s,color .2s}
+.chip b{font-weight:400;color:#8a8a8a;margin-left:3px}
+.chip:hover{background:#e4e1dd;color:#333}
+.chip.on{background:#d9d5d0;color:#222}
+.chip.on b{color:#555}
+.filters{gap:8px}
 /* Grid */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .pc[hidden]{display:none}
@@ -149,7 +150,6 @@
   <div class="wrap">
     <div class="split-head">
       <div><p class="kicker">All stories</p><h2 class="h2" id="stories-h">From the <em>archive</em></h2></div>
-      <p class="lede">102 stories since 2022. Pick a topic to narrow it down.</p>
     </div>
     <div class="filters" role="group" aria-label="Filter stories by topic"><button type="button" class="chip on" data-f="all" aria-pressed="true">All <b>101</b></button><button type="button" class="chip" data-f="education" aria-pressed="false">Education <b>23</b></button><button type="button" class="chip" data-f="productions" aria-pressed="false">Productions <b>20</b></button><button type="button" class="chip" data-f="page-to-stage" aria-pressed="false">Page to Stage <b>16</b></button><button type="button" class="chip" data-f="aspire" aria-pressed="false">Aspire <b>14</b></button><button type="button" class="chip" data-f="accessibility" aria-pressed="false">Accessibility <b>14</b></button><button type="button" class="chip" data-f="our-home" aria-pressed="false">Our Home <b>8</b></button><button type="button" class="chip" data-f="news" aria-pressed="false">News <b>4</b></button><button type="button" class="chip" data-f="behind-the-scenes" aria-pressed="false">Behind the Scenes <b>1</b></button><button type="button" class="chip" data-f="community" aria-pressed="false">Community <b>1</b></button></div>
     <div class="grid" id="grid">
