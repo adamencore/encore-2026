@@ -33,8 +33,8 @@
 .row-main picture,.row-main img,.row-inset picture,.row-inset img{width:100%;height:100%;object-fit:cover}
 .row-main img{transition:transform .8s}
 .row:hover .row-main img{transform:scale(1.03)}
-.row-inset{position:absolute;right:-18px;bottom:0;width:44%;aspect-ratio:4/3;border-radius:24px;overflow:hidden;border:8px solid var(--sand);box-shadow:0 24px 50px -30px rgba(34,53,61,.6)}
-.row.flip .row-inset{right:auto;left:-18px}
+.row-inset{position:absolute;right:clamp(-64px,-4vw,-36px);bottom:0;width:44%;aspect-ratio:4/3;border-radius:24px;overflow:hidden;border:8px solid var(--sand);box-shadow:0 24px 50px -30px rgba(34,53,61,.6)}
+.row.flip .row-inset{right:auto;left:clamp(-64px,-4vw,-36px)}
 .row-num{position:absolute;left:24px;top:18px;font:400 clamp(60px,6vw,96px)/1 var(--serif);color:var(--cream);letter-spacing:-.04em;text-shadow:0 4px 30px rgba(0,0,0,.45)}
 .row.flip .row-num{left:auto;right:24px}
 .row-b .kicker{margin-left:0}
@@ -77,16 +77,16 @@
 @media (max-width:980px){
   .split-head,.row{grid-template-columns:1fr}
   .row.flip .row-ph{order:0}
-  .row-inset{right:-8px;width:42%}
-  .row.flip .row-inset{left:auto;right:-8px}
+  .row-inset{right:-28px;width:42%}
+  .row.flip .row-inset{left:auto;right:-28px}
   .row.flip .row-num{right:auto;left:24px}
   .ac a{grid-template-columns:1fr;gap:6px}
   .ac-scale{margin-left:0}
 }
 @media (max-width:560px){
   .jump{grid-template-columns:repeat(2,1fr)}
-  .row-inset{width:50%;border-width:6px;right:-4px}
-  .row.flip .row-inset{right:-4px}
+  .row-inset{width:50%;border-width:6px;right:-14px}
+  .row.flip .row-inset{right:-14px}
   .row-b .pill,.cta-btns .pill{min-width:0;width:100%}
   .ac-scale span:nth-child(even){display:none}
   .ac-bar{min-width:84px;padding:0 12px}
