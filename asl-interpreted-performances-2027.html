@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASL-Interpreted Performances | Encore Performing Arts | 2027 Preview</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Design preview of the 2027 ASL-interpreted performances page for Encore Performing Arts. Not the live page.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<link rel="stylesheet" href="/css/e27.css">
+<style>
+/* Sensory-friendly page, 2027 design. Shared styles live in /css/e27.css. */
+.sec{padding:clamp(110px,11vw,180px) 0}
+.split-head{display:grid;grid-template-columns:minmax(0,620px) minmax(0,460px);justify-content:space-between;align-items:end;gap:28px;margin-bottom:44px}
+/* Intro */
+.intro{padding-top:clamp(40px,5vw,70px)}
+.intro-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:center}
+.intro .state{font:400 clamp(24px,2.4vw,34px)/1.12 var(--serif);letter-spacing:-.015em;margin:0}
+.intro .state em{color:var(--teal);font-style:italic}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+.fact{background:#fff;border-radius:24px;padding:24px 24px 26px}
+.fact svg{height:40px;width:auto;color:var(--teal);margin-bottom:14px}
+.fact:nth-child(2) svg{color:var(--sky)}
+.fact h3{font-size:clamp(28px,2.4vw,36px);letter-spacing:-.03em;line-height:1;margin-bottom:8px}
+.fact p{margin:0;font-size:15.5px;line-height:1.45;font-weight:400}
+.intro-ph{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3.4}
+.intro-ph picture,.intro-ph img{width:100%;height:100%;object-fit:cover}
+.intro-ph .tag{position:absolute;left:18px;bottom:18px;background:var(--cream);border-radius:18px;padding:12px 16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;box-shadow:0 12px 30px -16px rgba(0,0,0,.5)}
+.intro-ph .tag svg{width:30px;color:var(--teal)}
+/* Upcoming */
+.sf-list{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.sf{display:flex;flex-direction:column;background:#fff;border-radius:var(--r);overflow:hidden}
+.sf-ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--slate)}
+.sf-ph picture,.sf-ph img{width:100%;height:100%;object-fit:cover}
+.sf-date{position:absolute;left:16px;top:16px;background:var(--cream);color:var(--ink);border-radius:18px;padding:10px 14px;text-align:center;line-height:1;min-width:66px}
+.sf-date small{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.sf-date b{display:block;font:400 38px/1 var(--serif);letter-spacing:-.03em;margin:2px 0}
+.sf-b{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.sf-chips{display:flex;gap:6px;margin-bottom:12px}
+.sf-chips span{background:var(--teal);color:var(--cream);font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:6px 11px;border-radius:70px}
+.sf-chips span+span{background:var(--chip);color:var(--ink)}
+.sf-b h3{font-size:clamp(30px,2.6vw,40px);line-height:.92;letter-spacing:-.03em;margin-bottom:10px}
+.sf-b h3 a{text-decoration:none}
+.sf-meta{font-size:17px;font-weight:400;margin:0 0 22px}
+.sf-b .pill{margin-top:auto;min-width:0;width:100%}
+.sf-empty{background:#fff;border-radius:var(--r);padding:48px 28px;text-align:center}
+.sf-empty h3{font-size:clamp(30px,2.8vw,42px);letter-spacing:-.03em;margin-bottom:10px}
+.sf-empty p{font-size:19px;font-weight:400;margin:0 0 22px}
+.sf-note{font-size:15px;font-weight:400;color:#555;margin:18px 4px 0}
+/* Videos */
+.vband{position:relative;background:var(--slate);color:var(--cream);padding:clamp(120px,10vw,160px) 0}
+.vband .kicker{color:var(--sky)}
+.vband .lede{color:var(--mist)}
+.vids{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.vid h3{font:700 20px/1.25 var(--sans);letter-spacing:-.01em;margin:16px 4px 0}
+.video{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;background:#000}
+.video button{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:none;color:var(--cream)}
+.video button picture,.video button img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.video button::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.55))}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;display:grid;place-items:center;width:clamp(64px,7vw,88px);height:clamp(64px,7vw,88px);border-radius:50%;background:var(--teal);box-shadow:0 0 0 10px rgba(251,246,242,.18);transition:transform .25s}
+.video button:hover .play{transform:translate(-50%,-50%) scale(1.07)}
+.play svg{width:38%;height:38%;margin-left:6%}
+.v-label{position:absolute;left:22px;bottom:18px;z-index:2;font:400 clamp(22px,2vw,30px)/1 var(--serif);letter-spacing:-.02em;text-align:left}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vband .wave{fill:var(--sand)}
+/* Email list */
+.list{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);background:var(--teal);color:var(--cream);border-radius:var(--r);overflow:hidden}
+.list-ph{position:relative;min-height:360px}
+.list-ph picture,.list-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.list-b{padding:clamp(30px,4vw,56px);position:relative}
+.list-b .kicker{color:var(--sky);margin-left:0}
+.list-b h2{font-size:clamp(38px,3.8vw,56px);line-height:.88;letter-spacing:-.03em}
+.list-b > p{font-size:19px;line-height:1.45;font-weight:400;margin:16px 0 24px;max-width:480px}
+.list-illo{position:absolute;right:30px;top:28px;width:50px;color:var(--sky)}
+.sform .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.sform label{display:block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px 4px}
+.sform input{width:100%;height:54px;border:0;border-radius:18px;padding:0 18px;font:400 19px var(--sans);color:var(--ink);background:var(--cream)}
+.sform input:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.sform button{width:100%;height:54px;border:2px solid var(--cream);border-radius:70px;background:var(--cream);color:var(--teal-d);font:700 17px var(--sans);letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.sform button:hover{background:#fff}
+.sform button:disabled{opacity:.7;cursor:default}
+.fine{font-size:14px;font-weight:400;margin:12px 0 0;color:#e8f3f6}
+.s-err{display:none;font-size:15px;margin:12px 0 0;background:rgba(0,0,0,.2);padding:10px 14px;border-radius:12px}
+.s-err a{color:var(--cream);font-weight:700}
+.s-ok{display:none;align-items:center;gap:14px;background:rgba(251,246,242,.12);border-radius:20px;padding:22px}
+.s-ok.show{display:flex}
+.s-ok .chk{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--cream);color:var(--teal);font-size:22px;font-weight:700}
+.s-ok p{margin:0;font-size:19px;line-height:1.4}
+.hp{position:absolute;left:-9999px}
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(28px,4vw,60px);align-items:start}
+.faq-side p{font-size:19px;line-height:1.45;font-weight:400;margin:20px 0 0}
+.faq-side a{color:var(--teal-d);font-weight:700}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq{background:#fff;border-radius:22px;overflow:hidden}
+.faq summary{cursor:pointer;list-style:none;padding:22px 26px;display:flex;justify-content:space-between;gap:16px;align-items:center;font-weight:700;font-size:20px;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--sand);color:var(--teal);font-size:22px;font-weight:400;transition:transform .25s}
+.faq[open] summary::after{transform:rotate(45deg)}
+.faq .ans{padding:0 26px 24px;font-size:18px;line-height:1.55;font-weight:400}
+.faq .ans a{color:var(--teal-d);font-weight:700}
+/* Mission band */
+.mission{position:relative;background:linear-gradient(90deg,#b2c9cf 0%,#cddbdc 45%,#f1f0ec 100%);text-align:center;padding:clamp(100px,9vw,140px) var(--gut)}
+.mission .kicker{justify-content:center;margin-left:0}
+.mission p.big{font:400 clamp(30px,3.4vw,48px)/1.06 var(--serif);letter-spacing:-.025em;max-width:980px;margin:0 auto}
+.mission p.big em{font-style:italic}
+/* How we build it */
+.how{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.howc{background:#fff;border-radius:var(--r);padding:clamp(28px,3vw,44px)}
+.howc .n{display:block;font:400 88px/.8 var(--serif);color:var(--teal);letter-spacing:-.04em;margin-bottom:20px}
+.howc:nth-child(2) .n{color:var(--sky)}
+.howc h3{font-size:clamp(32px,2.8vw,42px);line-height:.95;letter-spacing:-.03em;margin-bottom:16px}
+.howc p{font-size:18px;line-height:1.55;font-weight:400;margin:0 0 14px}
+.tags{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.tags li{background:var(--chip);border-radius:70px;padding:9px 15px;font-size:15px;font-weight:700}
+/* Quotes */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.quote{margin:0;position:relative;background:var(--slate);color:var(--cream);border-radius:var(--r);padding:clamp(34px,4vw,54px);overflow:hidden}
+.quote .qm{display:block;font:400 120px/.6 var(--serif);color:var(--sky);height:50px}
+.quote blockquote{margin:0}
+.quote blockquote p{font:400 clamp(22px,2vw,28px)/1.25 var(--serif);letter-spacing:-.01em;margin:0}
+.quote figcaption{margin-top:22px;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sky)}
+/* Gallery */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,16vw,240px);gap:14px}
+.gal figure{position:relative;margin:0;border-radius:24px;overflow:hidden}
+.gal picture,.gal img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gal figure:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:12px;bottom:12px;background:rgba(17,17,17,.82);color:var(--cream);font-size:13px;font-weight:700;padding:6px 12px;border-radius:70px}
+.gal .g0{grid-column:span 2;grid-row:span 2}
+/* CTA */
+.cta{position:relative;color:var(--cream);overflow:hidden;isolation:isolate;background:var(--slate)}
+.cta-ph,.cta-ph picture,.cta-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,10,10,.88) 0%,rgba(10,10,10,.62) 50%,rgba(10,10,10,.25) 100%)}
+.cta-in{padding-block:clamp(130px,11vw,170px)}
+.cta h2{font-size:clamp(44px,4.8vw,70px);line-height:.85;letter-spacing:-.03em;max-width:620px}
+.cta p{font-size:20px;line-height:1.4;font-weight:400;max-width:520px;margin:22px 0 32px;color:var(--mist)}
+.cta-btns{display:flex;flex-wrap:wrap;gap:14px}
+.cta-btns .pill{min-width:260px}
+.cta .wave-bot{fill:var(--slate)}
+@media (max-width:1100px){
+  .sf-list{grid-template-columns:1fr 1fr}
+}
+@media (max-width:980px){
+  .split-head,.intro-grid,.list,.faq-grid,.how,.quotes,.vids{grid-template-columns:1fr}
+  .gal{grid-template-columns:repeat(2,1fr)}
+  .list-ph{min-height:260px}
+}
+@media (max-width:640px){
+  .sf-list,.facts,.sform .row{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .cta-btns .pill{min-width:0;width:100%}
+  .faq summary{font-size:18px;padding:18px 20px}
+  .faq .ans{padding:0 20px 20px}
+  .gal{grid-auto-rows:150px;gap:10px}
+}
+/* ASL page additions */
+.sf-note-c{font-size:15px;font-weight:400;line-height:1.45;margin:0 0 20px;color:#4a4a4a}
+.sf-note-c a{color:var(--teal-d);font-weight:700}
+.stories{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);background:#fff;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .25s}
+.story:hover{transform:translateY(-4px)}
+.story-ph{position:relative;min-height:260px}
+.story-ph picture,.story-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.story-b{display:flex;flex-direction:column;padding:26px 28px 28px}
+.story-b small{font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-d);margin-bottom:10px}
+.story-b b{font:400 clamp(24px,2.1vw,32px)/1 var(--serif);letter-spacing:-.025em;margin-bottom:12px}
+.story-b > span{font-size:16px;line-height:1.5;font-weight:400;margin-bottom:18px}
+.story-b em{margin-top:auto;font-style:normal;display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-d)}
+.story-b em svg{width:18px;height:18px}
+.interp{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 40px;margin-top:22px;background:#fff;border-radius:var(--r);padding:clamp(26px,3vw,40px)}
+.interp > div{display:flex;align-items:center;gap:20px;flex:1 1 320px;min-width:0;max-width:760px}
+.interp > div > div{flex:1;min-width:0}
+.interp svg{height:52px;width:auto;flex:none;color:var(--teal)}
+.interp h3{font-size:clamp(28px,2.4vw,36px);line-height:1;letter-spacing:-.03em;margin:0 0 8px}
+.interp p{margin:0;font-size:17px;line-height:1.5;font-weight:400}
+@media (max-width:980px){ .stories,.story{grid-template-columns:1fr} .story-ph{min-height:220px} }
+@media (max-width:560px){ .interp > div{flex-direction:column;align-items:flex-start} .interp .pill{width:100%;min-width:0} }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-nav" id="siteNav">
+  <div class="nav-in">
+    <nav class="nav-l" aria-label="Main"><a href="/programs-2027">Programs</a><a href="/classes-2027">Classes</a><a href="/auditions-2027">Auditions</a><a href="/about-2027">About</a></nav>
+    <a href="/home-2027" class="nav-logo" aria-label="Encore Performing Arts: Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+    <div class="nav-r">
+      <a class="nav-pill" href="/tickets-2027">Tickets</a>
+      <a class="nav-pill solid" href="/donate-2027">Donate</a>
+      <button type="button" class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mmenu" id="mMenu" aria-hidden="true">
+  <div class="mm-in">
+    <svg class="mm-illo" viewBox="0 0 118.07 103.2" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M49.06,85.17l-19.37,16.75c-1.06.92-4.15,1.47-5.46,1.22s-3.02-3.28-2.69-4.65l4.22-17.71-20.62,3.16c-1.27.2-4.32-.98-4.77-2.16s.07-4.4,1.06-5.28l18.03-16.14L1.86,50.06c-1.12-.66-2.1-3.82-1.81-4.98.34-1.36,2.48-3.71,3.89-3.96l23.16-4.18-5.74-21.84c-.4-1.52.53-4.65,1.49-5.8s5.07-1.85,6.39-.95l24.75,16.95,12.36-21.9c.82-1.46,3.95-3.22,5.51-3.38,1.75-.18,5.16,2.25,5.63,4.19l5.99,24.65,26.12-6.36c1.62-.39,4.74.69,5.5,1.93s.31,4.89-.68,5.96l-16.22,17.46,17.43,8.01c1.13.52,2.42,2.88,2.44,3.96s-1.65,3.62-2.74,3.88l-21.53,5.18,5.22,14.99c.46,1.33-.06,4.15-1.03,4.97s-4.3,1.1-5.46.58l-18.13-8.17-4.28,15.98c-.35,1.3-2.32,3.26-3.52,3.55-1.4.35-4.72-.73-5.67-1.83l-11.88-13.77Z"/> </g></svg>
+    <nav aria-label="Menu"><ul class="mm-links"><li><a href="/about-2027">About<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li><li><a href="/auditions-2027">Auditions<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li><li><a href="/contact-2027">Contact<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li></ul></nav>
+    <div class="mm-cta"><a class="pill" href="/tickets-2027">Get Tickets</a><a class="pill pill-light" href="/donate-2027">Donate</a></div>
+    <p class="mm-foot">The Historic Electric Theater<br>68 E Tabernacle St, St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></p>
+  </div>
+</div>
+
+<main id="main">
+<section class="pbanner" data-par-host>
+  <div class="pb-ph" data-par="0.35" style="--pos:50% 62%"><picture><source type="image/webp" srcset="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/000.webp"><img src="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/000.jpg" alt="ASL interpreters signing in front of the stage during Encore&rsquo;s Les Mis&eacute;rables" fetchpriority="high" decoding="async"></picture></div>
+  <div class="wrap pb-in" data-par="0.14" data-par-fade>
+    <p class="kicker">Accessibility &middot; Theater for everyone</p>
+    <h1>ASL-interpreted performances</h1>
+    <p class="lede">We want every story on our stage to reach every person in the room. On select performances, Encore provides American Sign Language interpretation so our Deaf and hard-of-hearing patrons can share fully in the magic of live theater.</p>
+    <div class="pb-acts"><a class="pill" href="#upcoming">See interpreted dates</a><a class="pill pill-light" href="#asl-list">Join the email list</a></div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C 360 0 760 130 1080 60 C 1240 26 1360 40 1440 52 L1440 120 L0 120 Z"/></svg>
+</section>
+
+
+<section class="sec intro" aria-labelledby="intro-h">
+  <div class="wrap intro-grid">
+    <div>
+      <p class="kicker" id="intro-h">Theater everyone can follow</p>
+      <p class="state">At an ASL-interpreted performance, qualified interpreters sign the show live, in view of the audience, as it unfolds on stage. The dialogue, the lyrics, and the feeling of the moment all come through, so Deaf and hard-of-hearing patrons experience <em>the same story, at the same time,</em> alongside everyone else.</p>
+      <div class="facts">
+        <div class="fact"><svg viewBox="0 0 132.51 60.47" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M98.57,10.23c-7.22-2.1-18.6,12.29-21.13,20.11-3.09,9.54-6.31,24.29-13.07,22.67s-1.28-15.2,3-24.55c2.45-5.35,2.93-12.38,1.08-18.39-.53-1.72-5.58-.74-7.04.43-7.32,5.43-12.51,12.36-16.88,20.34-1.03,11.09-5.63,28.33-13.19,27.33-1.57-.21-3.44-3.19-3.52-5.19-.32-8.5,3.06-15.01,6.65-22.53,1.94-4.08,1.31-10.44-.15-15.1-2.71-.76-6.45.4-8.71,2.52C13.86,28.91,7.18,44.2,6.55,60.43c-4.35.45-6.9-2.93-6.51-6.52C2.03,35.59,14.77,9.54,30.9,6.23c6.88-1.41,11.51,3.23,12.89,10.49,7.99-11.08,22.11-22.25,30.16-13.7,2.4,2.55,3.55,7.16,4.21,10.96,7.1-7.92,17.83-16.41,24.94-10.28,3.31,2.85,3.92,7.95,3.85,12.11,3.44-2.42,7.52-5.03,11.45-6.2,6.75-2.01,11.99,2.06,13.36,8.6,3.69,17.57-7.36,30.49-10.18,27.21-3.37-3.92,5.45-12.03,3.47-24.34-.22-1.4-1.46-3.8-2.37-4.41-2.78-1.86-13.37,5.19-16.55,11.36-3.64,7.07-7.12,17.31-12.61,16.52-1.25-.18-3.07-3.3-2.81-4.71,2.06-11.17,10.78-16.89,7.86-29.62Z"/> </g></svg><h3>Live interpretation</h3><p>Qualified ASL interpreters sign the performance as it happens.</p></div>
+        <div class="fact"><svg viewBox="0 0 70.47 104.63" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M37.88,101.95c-.19.7-1.69,3.06-2.23,2.63s-1.61-1.9-1.9-2.93l-7.02-25.36c-4.82-11.27-12.73-19.55-24.81-22.41l-1.85-1.81c-.52-.51,1.7-2.02,2.21-2.3,12.14-3.36,20.42-11.32,25.35-22.88l6.33-24.2c.21-.78,1.21-2.18,1.68-2.63s2.08,1.44,2.29,2.32l5.54,23.79c4.19,12.02,13.03,20.57,25.39,23.72l1.48,1.34c.48.44-.67,2.04-1.14,2.48-11.3,3.03-19.27,10.72-23.88,21.21l-7.46,27.03Z"/> </g></svg><h3>Select dates</h3><p>We schedule interpreted dates on chosen productions and announce them ahead of time.</p></div>
+      </div>
+    </div>
+    <div class="intro-ph"><picture><source type="image/webp" srcset="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/004.webp"><img src="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/004.jpg" alt="Two ASL interpreters signing below the stage during Alice in Wonderland Jr." loading="lazy" decoding="async"></picture>
+      <span class="tag"><svg viewBox="0 0 118.07 103.2" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M49.06,85.17l-19.37,16.75c-1.06.92-4.15,1.47-5.46,1.22s-3.02-3.28-2.69-4.65l4.22-17.71-20.62,3.16c-1.27.2-4.32-.98-4.77-2.16s.07-4.4,1.06-5.28l18.03-16.14L1.86,50.06c-1.12-.66-2.1-3.82-1.81-4.98.34-1.36,2.48-3.71,3.89-3.96l23.16-4.18-5.74-21.84c-.4-1.52.53-4.65,1.49-5.8s5.07-1.85,6.39-.95l24.75,16.95,12.36-21.9c.82-1.46,3.95-3.22,5.51-3.38,1.75-.18,5.16,2.25,5.63,4.19l5.99,24.65,26.12-6.36c1.62-.39,4.74.69,5.5,1.93s.31,4.89-.68,5.96l-16.22,17.46,17.43,8.01c1.13.52,2.42,2.88,2.44,3.96s-1.65,3.62-2.74,3.88l-21.53,5.18,5.22,14.99c.46,1.33-.06,4.15-1.03,4.97s-4.3,1.1-5.46.58l-18.13-8.17-4.28,15.98c-.35,1.3-2.32,3.26-3.52,3.55-1.4.35-4.72-.73-5.67-1.83l-11.88-13.77Z"/> </g></svg>Deaf &amp; hard-of-hearing welcome</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="upcoming" aria-labelledby="up-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="split-head">
+      <div><p class="kicker">Upcoming</p><h2 class="h2" id="up-h">Upcoming interpreted performances</h2></div>
+      <p class="lede">Book through the show&rsquo;s ticket page, and tell us you&rsquo;d like a seat with a clear view of the interpreters.</p>
+    </div>
+    <div class="sf-list" id="aslList"></div>
+    <p class="sf-note">Need interpretation for a different performance? Email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> or call <a href="tel:+14354140049">(435) 414-0049</a> as early as you can.</p>
+  </div>
+</section>
+
+<section class="mission" aria-label="Why we do this">
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
+  <p class="kicker">Why we do this</p>
+  <p class="big">We believe live theater belongs to everyone. Access isn&rsquo;t an add-on at Encore, it&rsquo;s part of how we tell a story well. Offering ASL-interpreted performances is one of the ways we keep our doors, and <em>our stage, open to the whole community.</em></p>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
+</section>
+
+<section class="sec" aria-labelledby="st-h">
+  <div class="wrap">
+    <div class="split-head">
+      <div><p class="kicker">From the blog</p><h2 class="h2" id="st-h">Interpreted performances we&rsquo;ve loved</h2></div>
+      <p class="lede">If interpretation would make a performance work for you or your family, we want to hear from you. It helps us decide where to offer it next.</p>
+    </div>
+    <div class="stories"><a class="story" href="/blog-2027/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables">
+        <span class="story-ph"><picture><source type="image/webp" srcset="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/000.webp"><img src="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/000.jpg" alt="" loading="lazy" decoding="async"></picture></span>
+        <span class="story-b"><small>May 10, 2025</small><b>Breaking Barriers with Theater: Encore&rsquo;s ASL Performance of Les Mis&eacute;rables</b><span>A sold-out interpreted performance, with professional interpreters woven into the flow of the show.</span><em>Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></em></span>
+      </a><a class="story" href="/blog-2027/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior">
+        <span class="story-ph"><picture><source type="image/webp" srcset="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/001.webp"><img src="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/001.jpg" alt="" loading="lazy" decoding="async"></picture></span>
+        <span class="story-b"><small>February 3, 2025</small><b>Inclusive ASL Magic at Alice in Wonderland Junior</b><span>Two ASL interpreters from Utah Tech University brought our Alice in Wonderland Jr. matinee to every guest.</span><em>Read the story <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></em></span>
+      </a></div>
+  </div>
+</section>
+
+<section class="sec" id="asl-list" aria-labelledby="list-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="list">
+      <div class="list-ph"><picture><source type="image/webp" srcset="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/004.webp"><img src="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/004.jpg" alt="An ASL interpreter signing for audience members in the reserved section" loading="lazy" decoding="async"></picture></div>
+      <div class="list-b">
+        <svg class="list-illo" viewBox="0 0 91.77 91.44" fill="currentColor" aria-hidden="true" focusable="false"><g> <g> <path d="M28.73,65.6c-1.41,2.21-5.06,3.03-6.58,2.25s-2.49-4.41-1.39-6.42C31.91,41.24,43.12,21.89,56.34,3.06c1.5-2.13,5.16-3.25,7-2.72s3.87,5.19,2.58,7.21l-37.18,58.05Z"/> <path d="M39.73,90.73c-1.64,1.26-5.25.66-6.12-.45-.99-1.27-.79-4.99.84-6.34l47.99-39.88c2.06-1.71,6.05-1.55,7.7-.28,1.86,1.44,2.43,6.23.05,8.06l-50.46,38.89Z"/> <path d="M8.92,53.81c-.26,2.13-3.19,4.42-4.66,4.57-1.66.17-4.47-2.83-4.24-5.03L5.03,4.82C5.31,2.12,8.22-.09,10.46,0c2.05.09,4.7,2.95,4.37,5.61l-5.91,48.2Z"/> </g> </g></svg>
+        <p class="kicker">Stay in the loop</p>
+        <h2 id="list-h">Hear about interpreted dates</h2>
+        <p>Join the list and we&rsquo;ll let you know which shows are interpreted, with time to plan your visit.</p>
+        <!-- Netlify Forms: same form name as the live page, so sign-ups land in the same list. -->
+        <form name="asl-interest-list" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/asl-interpreted-performances-2027?subscribed=1" class="sform" id="aslForm">
+          <input type="hidden" name="form-name" value="asl-interest-list">
+          <p class="hp" aria-hidden="true"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="row">
+            <div><label for="a-name">Name</label><input id="a-name" name="name" type="text" autocomplete="name" placeholder="Your name"></div>
+            <div><label for="a-email">Email</label><input id="a-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+          </div>
+          <button type="submit">Join the list</button>
+          <p class="fine">We&rsquo;ll only email you about ASL-interpreted performances. Unsubscribe anytime.</p>
+          <p class="s-err" id="signupError" role="alert">Something went wrong. Please email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> and we&rsquo;ll add you.</p>
+        </form>
+        <div class="s-ok" id="signupSuccess" role="status"><span class="chk" aria-hidden="true">&#10003;</span><p>You&rsquo;re on the list. We&rsquo;ll be in touch when the next ASL-interpreted performance is announced.</p></div>
+      </div>
+    </div>
+    <div class="interp">
+      <div><svg viewBox="0 0 166.31 116.76" fill="currentColor" aria-hidden="true" focusable="false"><g> <g> <path d="M57.26,111.54c-1.31,2.76-10.85,6.62-16,4.72l-13.96-29.95c-1.55.05-4.32.19-5.48.64-8.76,3.39-17.73-.83-20.78-9.76-1.84-5.38-1.31-10.72,2.07-16.24,2.14-3.49,7.24-6.18,12.47-7.37l3.07-2.99,18.03-7.14c18.72-10.24,35.08-23.56,50.85-37.81,2.87-2.59,5.29-5.9,10.13-2.43,2.54,1.83,5.87,5.68,7.76,9,11.42,20.03,17.84,42.24,17.55,65.43-.05,3.95-2.4,11.65-7.02,10.7-22.51-4.6-44.23-8.76-67.09-7.05l-5.12,1.05,12.85,23.86c.7,1.3,1.26,4.12.69,5.33ZM115.92,82.95c4.89-20.5-4.42-48.69-14.17-66.15-2.12-3.81-4.42-6.37-8.1-9.54-1.97,2.8-2.63,5.17-2.63,8.55,0,21.81,6.52,43.08,18.04,61.43,1.64,2.61,3.65,4.05,6.86,5.7ZM27.25,84.08l15.13-3.72c-4.89-9.25-9.92-20.06-9.19-31.98l-14.8,5.94c-.7,10.6,2.6,21.34,8.85,29.76Z"/> <path d="M134.67,26.01l-2.8,2.92c-.74.77-3.87-.13-5.01-1.39,6.64-9.2,21.7-29.83,27.1-27.33,1.1.51,1.35,4.24.41,5.23l-19.7,20.58Z"/> <path d="M139.06,43.96c-.75.18-2.71-.43-3.27-.78-.75-.47.21-3.37,1.27-3.74l24.41-8.4c1.38-.47,3.95.99,4.63,1.98.77,1.14-.58,4.54-2.33,4.96l-24.71,5.98Z"/> <path d="M160.64,65.18c1.49.6,2.56,3.92,2.06,5.01-.59,1.27-3.59,1.9-5.54.98l-21.23-10.04c-.73-.34-1.58-2.28-1.59-2.95-.02-.89,2.76-2.4,3.7-2.02l22.61,9.03Z"/> <path d="M102.52,57.02c-2.69-6.52-4.45-12.48-5.94-19.55,2.75-1.22,6.09-.63,7.87,1.51,5.23,6.28,5.6,15.92-1.94,18.04Z"/> </g> </g></svg><div><h3>Are you an ASL interpreter?</h3><p>We&rsquo;re always glad to connect with qualified interpreters interested in working with us on interpreted performances. Reach out and introduce yourself.</p></div></div>
+      <a class="pill pill-o" href="mailto:hello@encorepa.org?subject=ASL%20interpreting%20with%20Encore">Email us</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq" aria-labelledby="faq-h" style="padding-top:0">
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <p class="kicker">FAQ</p>
+      <h2 class="h2" id="faq-h">ASL questions</h2>
+      <p>Don&rsquo;t see what you&rsquo;re looking for? Call <a href="tel:+14354140049">(435) 414-0049</a> or <a href="/contact-2027">send a note</a> and we&rsquo;ll help.</p>
+    </div>
+    <div class="faq-list"><details class="faq" open><summary>What is an ASL-interpreted performance?</summary><div class="ans">It&rsquo;s a regular Encore performance with qualified American Sign Language interpreters signing the show live, in view of the audience, so Deaf and hard-of-hearing patrons can follow the dialogue, lyrics, and story as it happens.</div></details><details class="faq"><summary>Is every show interpreted?</summary><div class="ans">Not every show. We schedule ASL interpretation on select performances and announce those dates ahead of time. Join the email list and we&rsquo;ll let you know when one is coming up.</div></details><details class="faq"><summary>How do I request interpretation for a show?</summary><div class="ans">Email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> or call <a href="tel:+14354140049">(435) 414-0049</a> as early as you can. The more notice we have, the better we can arrange it.</div></details><details class="faq"><summary>Where do interpreted seats sit?</summary><div class="ans">We seat guests who want a clear view of the interpreter together in a reserved area. Let us know when you book and we&rsquo;ll take care of it.</div></details><details class="faq"><summary>I&rsquo;m an interpreter. Can I work with Encore?</summary><div class="ans">Yes, please reach out. Email <a href="mailto:hello@encorepa.org?subject=ASL%20interpreting%20with%20Encore">hello@encorepa.org</a> and tell us a little about your experience.</div></details></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="gal-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="split-head">
+      <div><p class="kicker">Gallery</p><h2 class="h2" id="gal-h">Our stage, open to all</h2></div>
+      <p class="lede">A look at our interpreted performances and the welcoming space we build together.</p>
+    </div>
+    <div class="gal"><figure class="g0"><picture><source type="image/webp" srcset="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/001.webp"><img src="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/001.jpg" alt="ASL interpreters signing in front of the stage during Encore&rsquo;s Les Mis&eacute;rables" loading="lazy" decoding="async"></picture><figcaption>Les Mis&eacute;rables</figcaption></figure><figure class="g1"><picture><source type="image/webp" srcset="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/000.webp"><img src="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/000.jpg" alt="Two ASL interpreters signing below the stage during Alice in Wonderland Jr." loading="lazy" decoding="async"></picture><figcaption>Alice in Wonderland Jr.</figcaption></figure><figure class="g2"><picture><source type="image/webp" srcset="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/002.webp"><img src="/img/blog/breaking-barriers-with-theater-encores-asl-performance-of-les-misrables/002.jpg" alt="An ASL interpreter signing for audience members seated in the reserved section" loading="lazy" decoding="async"></picture><figcaption>The interpreted section</figcaption></figure><figure class="g3"><picture><source type="image/webp" srcset="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/003.webp"><img src="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/003.jpg" alt="The cast of Alice in Wonderland Jr. on stage at an interpreted performance" loading="lazy" decoding="async"></picture><figcaption>Curtain call</figcaption></figure><figure class="g4"><picture><source type="image/webp" srcset="/img/gallery/asl-young-guest.webp"><img src="/img/gallery/asl-young-guest.jpg" alt="A young guest applauding in the audience at the Electric Theater" loading="lazy" decoding="async"></picture><figcaption>In the audience</figcaption></figure></div>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="cta-h">
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
+  <div class="cta-ph"><picture><source type="image/webp" srcset="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/003.webp"><img src="/img/blog/celebrating-inclusivity-a-magical-asl-performance-at-alice-in-wonderland-junior/003.jpg" alt="" loading="lazy" decoding="async"></picture></div>
+  <div class="wrap cta-in">
+    <h2 id="cta-h">Questions before you come?</h2>
+    <p>We&rsquo;re glad to talk through accommodations and help you plan a comfortable visit. We also offer free sensory-friendly performances.</p>
+    <div class="cta-btns"><a class="pill" href="/contact-2027">Contact us</a><a class="pill pill-light" href="/sensory-friendly-performances-2027">Sensory-friendly shows</a></div>
+  </div>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a href="/home-2027" class="logo" aria-label="Encore Performing Arts: Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+        <p>The Historic Electric Theater<br>68 E Tabernacle St, St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></p>
+      </div>
+      <div class="ft-col"><h5>Explore</h5><a href="/calendar">What&rsquo;s On</a><a href="/programs-2027">Programs by Age</a><a href="/auditions-2027">Auditions</a><a href="/classes-2027">Classes</a><a href="/past-shows-2027">Past Shows</a><a href="/blog-2027">Blog</a></div>
+      <div class="ft-col"><h5>Visit</h5><a href="/tickets-2027">Tickets</a><a href="/sensory-friendly-performances-2027">Sensory Friendly</a><a href="/asl-interpreted-performances-2027">ASL Interpreted</a><a href="/electric-theater">The Electric Theater</a><a href="/about-2027">About</a></div>
+      <div class="ft-col"><h5>Support</h5><a href="/donate-2027">Donate</a><a href="/core-community-2027">Join The Core</a><a href="/encore-scholarship-application">Scholarships</a><a href="/contact-2027">Contact Us</a></div>
+    </div>
+    <div class="fb">
+      <span>&copy; 2026 Encore Performing Arts &middot; A 501(c)(3) nonprofit</span>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/encorestg" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+        <a href="https://www.facebook.com/encorestg" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCBqCS2LKe-5UHp7osQFA-fg" rel="noopener" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/js/e27.js" defer></script>
+
+<script>
+/* ASL_PERFS: one object per ASL-interpreted performance. Cards sort by date and hide
+   automatically the day after "date". Empty list shows a join-the-list message. */
+const ASL_PERFS = [
+ {
+  "show": "Disney&rsquo;s Peter Pan Jr.",
+  "date": "2026-11-21",
+  "time": "2:00 PM matinee",
+  "href": "/peter-pan-jr-tickets-2027",
+  "img": "/img/shows/peter-pan-jr/card",
+  "note": "Acorn Cast. Let us know when you book and we&rsquo;ll seat you with a clear view of the interpreters."
+ },
+ {
+  "show": "A Christmas Carol",
+  "date": "2026-12-12",
+  "time": "2:00 PM matinee",
+  "href": "/a-christmas-carol-tickets-2027",
+  "img": "/img/shows/a-christmas-carol-card",
+  "note": "For seats in the interpreted section, email <a href=\"mailto:hello@encorepa.org\">hello@encorepa.org</a>."
+ }
+];
+(function(){
+  var list=document.getElementById('aslList');
+  if(list){
+    var today=new Date(); today.setHours(0,0,0,0);
+    var MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var up=ASL_PERFS.filter(function(s){ var p=s.date.split('-').map(Number); return new Date(p[0],p[1]-1,p[2],23,59,59)>=today; })
+      .sort(function(a,b){ return a.date.localeCompare(b.date); });
+    list.innerHTML=up.map(function(s){
+      var p=s.date.split('-').map(Number);
+      return '<article class="sf"><div class="sf-ph"><picture><source type="image/webp" srcset="'+s.img+'.webp"><img src="'+s.img+'.jpg" alt="" loading="lazy" decoding="async"></picture>'+
+        '<span class="sf-date"><small>'+MO[p[1]-1]+'</small><b>'+p[2]+'</b><small>'+p[0]+'</small></span></div>'+
+        '<div class="sf-b"><div class="sf-chips"><span>ASL interpreted</span><span>Matinee</span></div>'+
+        '<h3><a href="'+s.href+'">'+s.show+'</a></h3><p class="sf-meta">'+s.time+' &middot; Electric Theater, St. George</p>'+
+        '<p class="sf-note-c">'+s.note+'</p><a class="pill" href="'+s.href+'">Get tickets</a></div></article>';
+    }).join('');
+    if(!up.length){
+      list.style.display='block';
+      list.innerHTML='<div class="sf-empty"><h3>No interpreted performances are scheduled right now</h3><p>Join the email list and we&rsquo;ll let you know as soon as the next one is announced.</p><a class="pill" href="#asl-list">Join the email list</a></div>';
+    }
+  }
+  var f=document.getElementById('aslForm'), ok=document.getElementById('signupSuccess'), err=document.getElementById('signupError');
+  if(location.search.indexOf('subscribed=1')>-1 && f && ok){ f.style.display='none'; ok.classList.add('show'); }
+  if(f) f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){ f.reportValidity(); return; }
+    err.style.display='none';
+    var btn=f.querySelector('button[type=submit]');
+    btn.disabled=true; btn.textContent='Joining...';
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()})
+      .then(function(r){ if(!r.ok) throw new Error(); f.style.display='none'; ok.classList.add('show'); })
+      .catch(function(){ btn.disabled=false; btn.textContent='Join the list'; err.style.display='block'; });
+  });
+})();
+</script>
+</body>
+</html>
