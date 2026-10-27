@@ -36,21 +36,28 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 [id]{scroll-margin-top:140px}
 
 /* ---------- NAV ---------- */
-.site-nav{position:fixed;inset:0 0 auto;z-index:90;color:var(--cream);transition:background .35s,box-shadow .35s,padding .35s;padding:clamp(18px,3vw,40px) 0}
-.site-nav.scrolled{background:rgba(26,42,48,.96);box-shadow:0 10px 30px -18px rgba(0,0,0,.6);padding:12px 0}
+.site-nav{position:fixed;inset:0 0 auto;z-index:90;color:var(--cream);transition:background .35s,box-shadow .35s,padding .35s,color .35s;padding:clamp(18px,3vw,40px) 0}
+.site-nav.scrolled{background:#fff;color:var(--teal);box-shadow:0 10px 30px -20px rgba(34,53,61,.45);padding:22px 0}
+.site-nav.scrolled .nav-logo{color:var(--teal)}
+.site-nav.scrolled .nav-l a:hover,.site-nav.scrolled .nav-l a[aria-current="page"]{border-color:var(--teal)}
+.site-nav.scrolled .nav-pill{color:var(--teal);border-color:var(--teal)}
+.site-nav.scrolled .nav-pill:hover{background:var(--teal);color:#fff}
+.site-nav.scrolled .nav-pill.solid{color:#fff}
+.site-nav.scrolled .nav-pill.solid:hover{background:var(--teal-d);border-color:var(--teal-d)}
+.site-nav.scrolled .nav-burger{color:var(--teal);border-color:var(--teal);background:transparent}
 .nav-in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding-inline:var(--gut);max-width:1600px;margin:0 auto}
 .nav-l{display:flex;gap:clamp(14px,2vw,30px)}
 .nav-l a{text-decoration:none;font-weight:700;font-size:15px;letter-spacing:-.01em;padding:6px 0;border-bottom:2px solid transparent;transition:border-color .2s}
 .nav-l a:hover,.nav-l a[aria-current="page"]{border-color:var(--sky)}
-.nav-logo{display:block;line-height:0;color:var(--cream);width:clamp(150px,17vw,250px);transition:width .35s}
-.site-nav.scrolled .nav-logo{width:150px}
+.nav-logo{display:block;line-height:0;color:var(--cream);width:clamp(150px,17vw,250px);transition:width .35s,color .35s}
+.site-nav.scrolled .nav-logo{width:170px}
 .nav-logo svg{width:100%;height:auto}
 .nav-r{display:flex;justify-content:flex-end;align-items:center;gap:10px}
-.nav-pill{color:var(--cream);text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.05em;text-transform:uppercase;padding:10px 18px;border-radius:70px;border:1.5px solid rgba(251,246,242,.6);transition:background .2s,color .2s}
+.nav-pill{display:inline-flex;align-items:center;justify-content:center;min-width:132px;color:var(--cream);text-decoration:none;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:12px 26px;border-radius:70px;border:1.5px solid rgba(251,246,242,.6);transition:background .2s,color .2s,border-color .2s}
 .nav-pill:hover{background:rgba(251,246,242,.14)}
 .nav-pill.solid{background:var(--teal);border-color:var(--teal)}
 .nav-pill.solid:hover{background:var(--teal-d);border-color:var(--teal-d)}
-.nav-burger{display:none;position:relative;z-index:120;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(251,246,242,.6);background:rgba(0,0,0,.2);color:var(--cream);cursor:pointer;padding:0}
+.nav-burger{display:none;position:relative;z-index:120;width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(251,246,242,.6);background:rgba(0,0,0,.2);color:var(--cream);cursor:pointer;padding:0;transition:color .35s,border-color .35s,background .35s}
 .nav-burger span{position:absolute;left:14px;right:14px;height:2px;background:currentColor;border-radius:2px;transition:transform .3s,opacity .2s,top .3s}
 .nav-burger span:nth-child(1){top:16px}
 .nav-burger span:nth-child(2){top:23px}
@@ -58,7 +65,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .nav-burger[aria-expanded="true"] span:nth-child(1){top:23px;transform:rotate(45deg)}
 .nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
 .nav-burger[aria-expanded="true"] span:nth-child(3){top:23px;transform:rotate(-45deg)}
-body.menu-open .site-nav{z-index:120;background:transparent;box-shadow:none}
+body.menu-open .site-nav{z-index:120;background:transparent;box-shadow:none;color:var(--cream)}
+body.menu-open .site-nav .nav-logo{color:var(--cream)}
+body.menu-open .site-nav .nav-burger{color:var(--cream);border-color:rgba(251,246,242,.6)}
 
 /* ---------- MOBILE MENU ---------- */
 .mmenu{position:fixed;inset:0;z-index:110;background:var(--slate);color:var(--cream);overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(-12px);transition:opacity .3s,transform .3s,visibility 0s .3s}
