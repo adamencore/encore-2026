@@ -2,7 +2,7 @@
    Used by the 2027 preview pages (home-2027, about-2027). Page-specific styles stay inline. */
 :root{
   --teal:#34789b; --teal-d:#2a6584; --cream:#fbf6f2; --sand:#faf6f2; --sky:#7dcbdd;
-  --mist:#e5e6db; --ink:#111; --slate:#22353d; --slate-2:#1a2a30; --chip:#e4e2de;
+  --mist:#e5e6db; --ink:#111; --slate:#111111; --slate-2:#000000; --chip:#e4e2de;
   --serif:"Instrument Serif",Georgia,serif; --sans:"Mikado",system-ui,sans-serif;
   --r:30px; --max:1232px; --gut:clamp(20px,7.2vw,104px);
 }
