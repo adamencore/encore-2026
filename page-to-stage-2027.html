@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page to Stage | Encore Performing Arts | 2027 Preview</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Design preview of the 2027 Page to Stage page for Encore Performing Arts. Not the live page.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<link rel="stylesheet" href="/css/e27.css">
+<style>
+/* Page to Stage, 2027 design. Shared styles live in /css/e27.css. */
+.sec{padding:clamp(80px,8vw,120px) 0}
+.split-head{display:grid;grid-template-columns:minmax(0,620px) minmax(0,460px);justify-content:space-between;align-items:end;gap:28px;margin-bottom:44px}
+img{max-width:100%}
+.pb-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 40%)}
+/* Intro */
+.intro{padding-top:clamp(40px,5vw,70px)}
+.intro-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(28px,4vw,64px);align-items:center}
+.intro .state{font:400 clamp(26px,2.6vw,38px)/1.1 var(--serif);letter-spacing:-.015em;margin:0}
+.intro .state em{color:var(--teal);font-style:italic}
+.intro p.sub{font-size:17px;line-height:1.5;font-weight:400;margin:24px 0 0;max-width:560px}
+.pillars{list-style:none;margin:30px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pillars li{background:var(--chip);border-radius:70px;padding:9px 15px;font-size:14px;font-weight:700}
+.intro-ph{position:relative;padding-bottom:60px}
+.intro-ph .a{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3.2}
+.intro-ph .b{position:absolute;left:-28px;bottom:0;width:46%;aspect-ratio:3/4;border-radius:22px;overflow:hidden;border:8px solid var(--sand);box-shadow:0 24px 50px -30px rgba(17,17,17,.6)}
+.intro-ph img{width:100%;height:100%;object-fit:cover}
+/* Upcoming */
+.trip-list{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ev{display:flex;flex-direction:column;background:#fff;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .25s,box-shadow .25s}
+.ev:hover{transform:translateY(-4px);box-shadow:0 26px 54px -36px rgba(17,17,17,.5)}
+.ev-ph{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--slate)}
+.ev-ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.ev:hover .ev-ph img{transform:scale(1.04)}
+.ev-tag{position:absolute;left:16px;top:16px;background:var(--cream);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border-radius:70px}
+.ev-b{padding:24px 26px 26px;display:flex;flex-direction:column;flex:1}
+.ev-when{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+.ev h3{font-size:clamp(32px,2.7vw,42px);line-height:.92;letter-spacing:-.03em;margin-bottom:10px}
+.ev-where{font-size:15px;font-weight:400;margin:0 0 18px}
+.ev-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:16px;border-top:1px solid rgba(17,17,17,.08)}
+.ev-fee{font-weight:700;font-size:15px}
+.ev-fee small{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#555;font-weight:700}
+.ev .circ{color:var(--teal);width:42px;height:42px}
+.up-note{font-size:14px;font-weight:400;color:#555;margin:22px 4px 0}
+.up-note a{color:var(--teal-d);font-weight:700}
+.up-empty{grid-column:1/-1;background:#fff;border-radius:var(--r);padding:48px 28px;text-align:center}
+.up-empty h3{font-size:clamp(30px,2.8vw,42px);letter-spacing:-.03em;margin-bottom:10px}
+.up-empty p{font-size:17px;font-weight:400;margin:0 0 22px}
+/* Pro Shot */
+.pro{position:relative;color:var(--cream);overflow:hidden;isolation:isolate;background:var(--slate)}
+.pro-ph,.pro-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.pro::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,10,10,.92) 0%,rgba(10,10,10,.75) 50%,rgba(10,10,10,.45) 100%)}
+.pro-in{padding-block:clamp(130px,11vw,170px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,4vw,60px);align-items:center}
+.pro .kicker{color:var(--sky)}
+.pro .k-illo{height:28px;width:auto;color:var(--sky)}
+.pro h2{font-size:clamp(44px,4.8vw,70px);line-height:.85;letter-spacing:-.03em}
+.pro p.lead{font-size:18px;line-height:1.5;font-weight:400;color:var(--mist);margin:22px 0 0;max-width:560px}
+.pro-card{background:rgba(251,246,242,.08);border:1px solid rgba(251,246,242,.18);border-radius:var(--r);padding:clamp(26px,3vw,40px);backdrop-filter:blur(6px)}
+.pro-card small{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);margin-bottom:10px}
+.pro-card h3{font-size:clamp(40px,4vw,58px);font-style:italic;letter-spacing:-.03em;line-height:.9;margin-bottom:14px}
+.pro-card p{font-size:16px;line-height:1.5;font-weight:400;margin:0 0 20px}
+.pro-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 24px}
+.pro-facts div{background:rgba(251,246,242,.08);border-radius:16px;padding:12px 14px}
+.pro-facts b{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);margin-bottom:4px}
+.pro-facts span{font-size:15px;font-weight:700}
+.pro-card .pill{width:100%;min-width:0}
+.pro .wave{fill:var(--sand)}
+/* How */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.step{background:#fff;border-radius:var(--r);padding:32px 28px 34px}
+.step .n{display:block;font:400 92px/.8 var(--serif);letter-spacing:-.04em;color:var(--teal);margin-bottom:22px}
+.step:nth-child(2) .n{color:var(--sky)}
+.step h3{font:700 21px/1.15 var(--sans);letter-spacing:-.02em;margin:0 0 10px}
+.step p{margin:0;font-size:15.5px;line-height:1.5;font-weight:400}
+.step a{color:var(--teal-d);font-weight:700}
+.steps-note{font-size:14px;font-weight:400;color:#555;margin:20px 4px 0}
+.steps-note a{color:var(--teal-d);font-weight:700}
+/* Past trips */
+.trips{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.trip{position:relative;display:block;aspect-ratio:4/3.3;border-radius:var(--r);overflow:hidden;color:var(--cream);text-decoration:none;isolation:isolate}
+.trip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s}
+.trip::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(17,17,17,0) 35%,rgba(17,17,17,.88) 100%)}
+.trip:hover img{transform:scale(1.05)}
+.trip-b{position:absolute;left:24px;right:20px;bottom:22px}
+.trip-b small{display:block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);margin-bottom:6px}
+.trip-b h3{font-size:clamp(32px,2.8vw,42px);line-height:.9;letter-spacing:-.03em;margin-bottom:10px}
+.trip-go{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.trip-go svg{width:16px;height:16px}
+/* Gallery band */
+.galband{position:relative;background:linear-gradient(90deg,#b2c9cf 0%,#cddbdc 45%,#f1f0ec 100%);padding:clamp(110px,9vw,150px) 0}
+.galband .wave{fill:var(--sand)}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,15vw,230px);gap:14px}
+.gal figure{position:relative;margin:0;border-radius:24px;overflow:hidden}
+.gal img{width:100%;height:100%;object-fit:cover}
+.gal figcaption{position:absolute;left:12px;bottom:12px;background:rgba(17,17,17,.82);color:var(--cream);font-size:12px;font-weight:700;padding:6px 12px;border-radius:70px}
+.gal .g0{grid-column:span 2;grid-row:span 2}
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(28px,4vw,60px);align-items:start}
+.faq-side p{font-size:17px;line-height:1.45;font-weight:400;margin:20px 0 0}
+.faq-side a{color:var(--teal-d);font-weight:700}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq{background:#fff;border-radius:22px;overflow:hidden}
+.faq summary{cursor:pointer;list-style:none;padding:22px 26px;display:flex;justify-content:space-between;gap:16px;align-items:center;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--sand);color:var(--teal);font-size:22px;font-weight:400;transition:transform .25s}
+.faq[open] summary::after{transform:rotate(45deg)}
+.faq .ans{padding:0 26px 24px;font-size:16px;line-height:1.55;font-weight:400}
+.faq .ans a{color:var(--teal-d);font-weight:700}
+/* CTA */
+.cta{position:relative;color:var(--cream);overflow:hidden;isolation:isolate;background:var(--slate)}
+.cta-ph,.cta-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(10,10,10,.88) 0%,rgba(10,10,10,.62) 50%,rgba(10,10,10,.25) 100%)}
+.cta-in{padding-block:clamp(130px,11vw,170px)}
+.cta h2{font-size:clamp(44px,4.8vw,70px);line-height:.85;letter-spacing:-.03em;max-width:620px}
+.cta p{font-size:18px;line-height:1.4;font-weight:400;max-width:480px;margin:22px 0 32px;color:var(--mist)}
+.cta-btns{display:flex;flex-wrap:wrap;gap:14px}
+.cta-btns .pill{min-width:240px}
+.cta .wave-bot{fill:var(--slate)}
+@media (max-width:1100px){
+  .trip-list,.trips{grid-template-columns:1fr 1fr}
+}
+@media (max-width:980px){
+  .split-head,.intro-grid,.pro-in,.faq-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .gal{grid-template-columns:repeat(2,1fr)}
+  .intro-ph .b{left:-12px}
+}
+@media (max-width:640px){
+  .trip-list,.trips{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .cta-btns .pill{min-width:0;width:100%}
+  .faq summary{font-size:16px;padding:18px 20px}
+  .faq .ans{padding:0 20px 20px}
+  .gal{grid-auto-rows:150px;gap:10px}
+  .pro-facts{grid-template-columns:1fr}
+  .intro-ph .b{left:-8px;border-width:6px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-nav" id="siteNav">
+  <div class="nav-in">
+    <nav class="nav-l" aria-label="Main"><a href="/programs-2027">Programs</a><a href="/classes-2027">Classes</a><a href="/auditions-2027">Auditions</a><a href="/about-2027">About</a></nav>
+    <a href="/home-2027" class="nav-logo" aria-label="Encore Performing Arts: Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+    <div class="nav-r">
+      <a class="nav-pill" href="/tickets-2027">Tickets</a>
+      <a class="nav-pill solid" href="/donate-2027">Donate</a>
+      <button type="button" class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mmenu" id="mMenu" aria-hidden="true">
+  <div class="mm-in">
+    <svg class="mm-illo" viewBox="0 0 118.07 103.2" fill="currentColor" aria-hidden="true" focusable="false"><g> <path d="M49.06,85.17l-19.37,16.75c-1.06.92-4.15,1.47-5.46,1.22s-3.02-3.28-2.69-4.65l4.22-17.71-20.62,3.16c-1.27.2-4.32-.98-4.77-2.16s.07-4.4,1.06-5.28l18.03-16.14L1.86,50.06c-1.12-.66-2.1-3.82-1.81-4.98.34-1.36,2.48-3.71,3.89-3.96l23.16-4.18-5.74-21.84c-.4-1.52.53-4.65,1.49-5.8s5.07-1.85,6.39-.95l24.75,16.95,12.36-21.9c.82-1.46,3.95-3.22,5.51-3.38,1.75-.18,5.16,2.25,5.63,4.19l5.99,24.65,26.12-6.36c1.62-.39,4.74.69,5.5,1.93s.31,4.89-.68,5.96l-16.22,17.46,17.43,8.01c1.13.52,2.42,2.88,2.44,3.96s-1.65,3.62-2.74,3.88l-21.53,5.18,5.22,14.99c.46,1.33-.06,4.15-1.03,4.97s-4.3,1.1-5.46.58l-18.13-8.17-4.28,15.98c-.35,1.3-2.32,3.26-3.52,3.55-1.4.35-4.72-.73-5.67-1.83l-11.88-13.77Z"/> </g></svg>
+    <nav aria-label="Menu"><ul class="mm-links"><li><a href="/about-2027">About<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li><li><a href="/auditions-2027">Auditions<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li><li><a href="/contact">Contact<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a></li></ul></nav>
+    <div class="mm-cta"><a class="pill" href="/tickets-2027">Get Tickets</a><a class="pill pill-light" href="/donate-2027">Donate</a></div>
+    <p class="mm-foot">The Historic Electric Theater<br>68 E Tabernacle St, St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></p>
+  </div>
+</div>
+
+<main id="main">
+<section class="pbanner" data-par-host>
+  <div class="pb-ph" data-par="0.35" style="--pos:50% 40%"><img src="/img/page-to-stage/hero-audience.webp" alt="Encore Young Artists gathered for a Page to Stage live-theater outing" fetchpriority="high" decoding="async"></div>
+  <div class="wrap pb-in" data-par="0.14" data-par-fade>
+    <p class="kicker">Workshops + live theater &middot; Southern Utah</p>
+    <h1>Page to Stage</h1>
+    <p class="lede">Educational workshops paired with group trips to professional productions, for students and community members who want to see, study, and understand how a story travels from the page to the stage.</p>
+    <div class="pb-acts"><a class="pill" href="#next">See the next trip</a><a class="pill pill-light" href="#how">How it works</a></div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C 360 0 760 130 1080 60 C 1240 26 1360 40 1440 52 L1440 120 L0 120 Z"/></svg>
+</section>
+
+<section class="sec intro" aria-labelledby="intro-h">
+  <div class="wrap intro-grid">
+    <div>
+      <p class="kicker" id="intro-h">More than a night at the theater</p>
+      <p class="state">Page to Stage pairs educational workshops with group trips to professional productions, exploring musicals and plays through the lens of storytelling, history, culture, and performance. A <em>front-row education</em>.</p>
+      <p class="sub">Each trip is a single event with limited seating. Reserve a spot, and we&rsquo;ll send a secure link to pay and confirm: simple, with no hoops to jump through.</p>
+      <ul class="pillars"><li>Storytelling</li><li>History</li><li>Culture</li><li>Performance</li></ul>
+    </div>
+    <div class="intro-ph">
+      <div class="a"><img src="/img/page-to-stage/spotlight-3.webp" alt="Encore Young Artists on a Page to Stage trip" loading="lazy" decoding="async"></div>
+      <div class="b"><img src="/img/page-to-stage/spotlight-5.webp" alt="Two Young Artists before the show" loading="lazy" decoding="async"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="next" aria-labelledby="next-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="split-head">
+      <div><p class="kicker">2026 season</p><h2 class="h2" id="next-h">Upcoming opportunities</h2></div>
+      <p class="lede">Workshops paired with live professional theater, in date order. Seating on each trip is limited and tends to go quickly, so reserve early.</p>
+    </div>
+    <div class="trip-list" id="upList"></div>
+    <p class="up-note">Dates, venues, and fees for the season are being finalized, and a few are still to be announced. <a href="/page-to-stage-registration">Reserve your interest</a> and we&rsquo;ll confirm details as they lock in.</p>
+  </div>
+</section>
+
+<section class="pro" id="pro-shot" aria-labelledby="ps-h">
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
+  <div class="pro-ph"><picture><source type="image/webp" srcset="/img/gallery/hadestown-finale.webp"><img src="/img/gallery/hadestown-finale.jpg" alt="" loading="lazy" decoding="async"></picture></div>
+  <div class="wrap pro-in">
+    <div>
+      <p class="kicker">New format <svg class="k-illo" viewBox="0 0 166.31 116.76" fill="currentColor" aria-hidden="true" focusable="false"><g> <g> <path d="M57.26,111.54c-1.31,2.76-10.85,6.62-16,4.72l-13.96-29.95c-1.55.05-4.32.19-5.48.64-8.76,3.39-17.73-.83-20.78-9.76-1.84-5.38-1.31-10.72,2.07-16.24,2.14-3.49,7.24-6.18,12.47-7.37l3.07-2.99,18.03-7.14c18.72-10.24,35.08-23.56,50.85-37.81,2.87-2.59,5.29-5.9,10.13-2.43,2.54,1.83,5.87,5.68,7.76,9,11.42,20.03,17.84,42.24,17.55,65.43-.05,3.95-2.4,11.65-7.02,10.7-22.51-4.6-44.23-8.76-67.09-7.05l-5.12,1.05,12.85,23.86c.7,1.3,1.26,4.12.69,5.33ZM115.92,82.95c4.89-20.5-4.42-48.69-14.17-66.15-2.12-3.81-4.42-6.37-8.1-9.54-1.97,2.8-2.63,5.17-2.63,8.55,0,21.81,6.52,43.08,18.04,61.43,1.64,2.61,3.65,4.05,6.86,5.7ZM27.25,84.08l15.13-3.72c-4.89-9.25-9.92-20.06-9.19-31.98l-14.8,5.94c-.7,10.6,2.6,21.34,8.85,29.76Z"/> <path d="M134.67,26.01l-2.8,2.92c-.74.77-3.87-.13-5.01-1.39,6.64-9.2,21.7-29.83,27.1-27.33,1.1.51,1.35,4.24.41,5.23l-19.7,20.58Z"/> <path d="M139.06,43.96c-.75.18-2.71-.43-3.27-.78-.75-.47.21-3.37,1.27-3.74l24.41-8.4c1.38-.47,3.95.99,4.63,1.98.77,1.14-.58,4.54-2.33,4.96l-24.71,5.98Z"/> <path d="M160.64,65.18c1.49.6,2.56,3.92,2.06,5.01-.59,1.27-3.59,1.9-5.54.98l-21.23-10.04c-.73-.34-1.58-2.28-1.59-2.95-.02-.89,2.76-2.4,3.7-2.02l22.61,9.03Z"/> <path d="M102.52,57.02c-2.69-6.52-4.45-12.48-5.94-19.55,2.75-1.22,6.09-.63,7.87,1.51,5.23,6.28,5.6,15.92-1.94,18.04Z"/> </g> </g></svg></p>
+      <h2 id="ps-h">Page to Stage Pro Shot Edition</h2>
+      <p class="lead">We love taking families on the road to see live theater, and we also bring Broadway home. In Pro Shot Edition, we show a licensed, professionally filmed Broadway performance on the Electric Theater&rsquo;s big screen, paired with the same Page to Stage workshop on the story, characters, and themes behind the show. It&rsquo;s the same learning, with no road trip required.</p>
+    </div>
+    <div class="pro-card" id="proCard"></div>
+  </div>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
+</section>
+
+<section class="sec" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="split-head">
+      <div><p class="kicker">How registration works</p><h2 class="h2" id="how-h">Reserve, pay, you&rsquo;re in</h2></div>
+      <p class="lede">A simple process, the same way we handle auditions. No online cart or checkout.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="n">1</span><h3>Reserve your spot</h3><p>Fill out the quick <a href="/page-to-stage-registration">registration form</a> for the trip. It takes a couple of minutes and holds your interest while seats remain.</p></li>
+      <li class="step"><span class="n">2</span><h3>Get a secure payment link</h3><p>Encore emails you a secure link to pay. Payment is handled by a trusted processor; your card details never touch our website.</p></li>
+      <li class="step"><span class="n">3</span><h3>You&rsquo;re confirmed</h3><p>Once payment is complete, your spot is locked in. We&rsquo;ll follow up with trip details, timing, and anything to bring.</p></li>
+    </ol>
+    <p class="steps-note">Questions before you register? Call <a href="tel:+14354140049">(435) 414-0049</a> or email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a>.</p>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="past-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="split-head">
+      <div><p class="kicker">Where we&rsquo;ve been</p><h2 class="h2" id="past-h">Past Page to Stage experiences</h2></div>
+      <p class="lede">A look back at the productions our Young Artists have studied up close.</p>
+    </div>
+    <div class="trips"><a class="trip" href="/blog/93rlkkck5v3vffry160dzopvsu5okq"><img src="/img/page-to-stage/spotlight-3.webp" alt="Young Artists on a Page to Stage trip to see Hadestown" loading="lazy" decoding="async"><span class="trip-b"><small>Page to Stage</small><h3>Hadestown</h3><span class="trip-go">Read the recap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="trip" href="/blog/page-to-stage-the-lion-kingnbspat-the-smith-center"><img src="/img/page-to-stage/spotlight-6.webp" alt="Young Artists on a Page to Stage trip to see The Lion King" loading="lazy" decoding="async"><span class="trip-b"><small>At the Smith Center</small><h3>The Lion King</h3><span class="trip-go">Read the recap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="trip" href="/blog/page-to-stage-pippin-at-shakespeare-festival"><img src="/img/page-to-stage/spotlight-8.webp" alt="Young Artists gathered outside on a Page to Stage trip" loading="lazy" decoding="async"><span class="trip-b"><small>At the Shakespeare Festival</small><h3>Pippin</h3><span class="trip-go">Read the recap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="trip" href="/blog/page-to-stage-noises-off-at-pioneer-theatre-company"><img src="/img/page-to-stage/spotlight-10.webp" alt="Young Artists in the audience at a professional production" loading="lazy" decoding="async"><span class="trip-b"><small>At Pioneer Theatre Company</small><h3>Noises Off</h3><span class="trip-go">Read the recap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="trip" href="/blog/spotlight-on-aspire-performing-cos-touring-ensemble"><img src="/img/page-to-stage/spotlight-7.webp" alt="Young Artists at the stage door after seeing Parade" loading="lazy" decoding="async"><span class="trip-b"><small>Aspire touring ensemble</small><h3>Parade</h3><span class="trip-go">Read the recap <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a><a class="trip" href="/blog"><img src="/img/page-to-stage/spotlight-1.webp" alt="Young Artists at the stage door holding programs" loading="lazy" decoding="async"><span class="trip-b"><small>More on the blog</small><h3>All recaps</h3><span class="trip-go">Visit the blog <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></span></a></div>
+  </div>
+</section>
+
+<section class="galband" aria-labelledby="gal-h">
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
+  <div class="wrap">
+    <div class="split-head">
+      <div><p class="kicker">Page to Stage</p><h2 class="h2" id="gal-h">From script to spotlight</h2></div>
+      <p class="lede">Our Young Artists experiencing professional theater up close, from workshops to the best seats in the house.</p>
+    </div>
+    <div class="gal"><figure class="g0"><img src="/img/page-to-stage/spotlight-1.webp" alt="Encore Young Artists on a Page to Stage outing" loading="lazy" decoding="async"><figcaption>At the stage door</figcaption></figure><figure class="g1"><img src="/img/page-to-stage/spotlight-2.webp" alt="Encore Young Artists on a Page to Stage outing" loading="lazy" decoding="async"><figcaption>At Tuacahn</figcaption></figure><figure class="g2"><img src="/img/page-to-stage/spotlight-4.webp" alt="Encore Young Artists on a Page to Stage outing" loading="lazy" decoding="async"><figcaption>In the workshop</figcaption></figure><figure class="g3"><img src="/img/page-to-stage/spotlight-5.webp" alt="Encore Young Artists on a Page to Stage outing" loading="lazy" decoding="async"><figcaption>Before the show</figcaption></figure><figure class="g4"><img src="/img/page-to-stage/spotlight-9.webp" alt="Encore Young Artists on a Page to Stage outing" loading="lazy" decoding="async"><figcaption>The crew</figcaption></figure></div>
+  </div>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
+</section>
+
+<section class="sec" id="faq" aria-labelledby="faq-h">
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <p class="kicker">FAQ</p>
+      <h2 class="h2" id="faq-h">Questions about Page to Stage</h2>
+      <p>Don&rsquo;t see your question? Call <a href="tel:+14354140049">(435) 414-0049</a> or email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a>.</p>
+    </div>
+    <div class="faq-list"><details class="faq" open><summary>What is Page to Stage?</summary><div class="ans">Page to Stage is a field-trip program that pairs educational workshops with group trips to professional productions. Open to students and community members, it explores popular musicals and plays through the lens of storytelling, history, culture, and performance, moving beyond surface-level entertainment to the creative process and purpose behind the art.</div></details><details class="faq"><summary>How do I register and pay?</summary><div class="ans">Reserve your spot through the registration form. Because seating is limited, payment is handled separately: after you register, we email you a secure payment link to confirm your place. There&rsquo;s no checkout on the website itself.</div></details><details class="faq"><summary>Who can take part?</summary><div class="ans">Page to Stage is open to students and community members. Specific age ranges and any prerequisites are listed on each event. Questions? Call <a href="tel:+14354140049">(435) 414-0049</a>.</div></details><details class="faq"><summary>Is seating limited?</summary><div class="ans">Yes, these events have limited seating and tend to fill quickly, so register early. Your spot is confirmed once payment is complete.</div></details><details class="faq"><summary>What&rsquo;s included in the fee?</summary><div class="ans">The fee covers the live show experience and Encore&rsquo;s accompanying workshop. What each event includes is listed on the event itself.</div></details><details class="faq"><summary>What is Pro Shot Edition?</summary><div class="ans">A licensed, professionally filmed Broadway performance shown on the Electric Theater&rsquo;s big screen, paired with the same Page to Stage workshop. Same learning, no road trip required.</div></details></div>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="cta-h">
+  <svg class="wave wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L1440 0 L1440 14 C 1100 50 760 6 420 30 C 240 42 100 36 0 22 Z"/></svg>
+  <div class="cta-ph"><img src="/img/page-to-stage/spotlight-9.webp" alt="" loading="lazy" decoding="async"></div>
+  <div class="wrap cta-in">
+    <h2 id="cta-h">Don&rsquo;t miss the next trip</h2>
+    <p>Seating is limited. Reserve a spot now and we&rsquo;ll send a secure link to confirm.</p>
+    <div class="cta-btns"><a class="pill" href="/page-to-stage-registration">Register now</a><a class="pill pill-light" href="#how">How it works</a></div>
+  </div>
+  <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="ft">
+      <div>
+        <a href="/home-2027" class="logo" aria-label="Encore Performing Arts: Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
+        <p>The Historic Electric Theater<br>68 E Tabernacle St, St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></p>
+      </div>
+      <div class="ft-col"><h5>Explore</h5><a href="/calendar">What&rsquo;s On</a><a href="/programs-2027">Programs by Age</a><a href="/auditions-2027">Auditions</a><a href="/classes-2027">Classes</a><a href="/past-shows-2027">Past Shows</a><a href="/blog">Blog</a></div>
+      <div class="ft-col"><h5>Visit</h5><a href="/tickets-2027">Tickets</a><a href="/sensory-friendly-performances-2027">Sensory Friendly</a><a href="/asl-interpreted-performances">ASL Interpreted</a><a href="/electric-theater">The Electric Theater</a><a href="/about-2027">About</a></div>
+      <div class="ft-col"><h5>Support</h5><a href="/donate-2027">Donate</a><a href="/core-community">Join The Core</a><a href="/encore-scholarship-application">Scholarships</a><a href="/contact">Contact Us</a></div>
+    </div>
+    <div class="fb">
+      <span>&copy; 2026 Encore Performing Arts &middot; A 501(c)(3) nonprofit</span>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/encorestg" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+        <a href="https://www.facebook.com/encorestg" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCBqCS2LKe-5UHp7osQFA-fg" rel="noopener" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.1 24.1 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.6 49.6 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.1 24.1 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.6 49.6 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/js/e27.js" defer></script>
+
+<script>
+/* TRIPS: one object per upcoming trip. "ends" is the performance date (YYYY-MM-DD);
+   a trip hides the day after. Leave "ends" empty for TBA trips (they always show, last).
+   Same trips, dates, venues and fees as the live page. */
+const TRIPS = [
+  {title:"The Phantom of the Opera", when:"Oct 31, 2026", ends:"2026-10-31", where:"The Smith Center &middot; Las Vegas", fee:"$95&ndash;110", href:"/page-to-stage/phantom-of-the-opera", img:"/img/page-to-stage/phantom-of-the-opera.webp"},
+  {title:"Anastasia", when:"Late 2026", ends:"", where:"Hale Center Theater", fee:"$95&ndash;110", href:"/page-to-stage/anastasia", img:"/img/page-to-stage/anastasia.webp"},
+  {title:"The Outsiders", when:"Jan 2027", ends:"", where:"The Smith Center &middot; Las Vegas", fee:"$95&ndash;110", href:"/page-to-stage/the-outsiders", img:"/img/page-to-stage/the-outsiders.webp"}
+];
+/* PRO SHOT: the current or most recent Pro Shot Edition. After "date" it switches to a
+   "screened" note until the next one is added here. */
+const PRO_SHOT = {title:"Hadestown", date:"2026-10-16", dateLabel:"Friday, October 16, 2026", time:"7:30 PM", run:"About 2 hr 50 min", where:"Electric Theater &middot; St. George", price:"Free", href:"/page-to-stage/hadestown-pro-shot"};
+(function(){
+  var today=new Date(); today.setHours(0,0,0,0);
+  function past(d){ if(!d) return false; var p=d.split('-').map(Number); return new Date(p[0],p[1]-1,p[2],23,59,59)<today; }
+  var up=document.getElementById('upList');
+  var CH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+  var live=TRIPS.filter(function(t){ return !past(t.ends); });
+  up.innerHTML=live.map(function(t){
+    return '<a class="ev" href="'+t.href+'"><span class="ev-ph"><img src="'+t.img+'" alt="" loading="lazy" decoding="async"><span class="ev-tag">Live show</span></span>'+
+      '<span class="ev-b"><span class="ev-when">'+t.when+'</span><h3>'+t.title+'</h3><p class="ev-where">'+t.where+'</p>'+
+      '<span class="ev-foot"><span class="ev-fee"><small>Fee</small>'+t.fee+'</span><span class="circ">'+CH+'</span></span></span></a>';
+  }).join('');
+  if(!live.length) up.innerHTML='<div class="up-empty"><h3>The next season is being planned</h3><p>Reserve your interest and we&rsquo;ll let you know as trips are announced.</p><a class="pill" href="/page-to-stage-registration">Reserve your interest</a></div>';
+  var pc=document.getElementById('proCard'), P=PRO_SHOT;
+  if(pc){
+    if(!past(P.date)){
+      pc.innerHTML='<small>Next Pro Shot Edition &middot; free</small><h3>'+P.title+'</h3><p>Free to the public, all ages welcome. A licensed, professionally filmed Broadway performance on the big screen, paired with a Page to Stage workshop.</p>'+
+        '<div class="pro-facts"><div><b>Date</b><span>'+P.dateLabel+'</span></div><div><b>Time</b><span>'+P.time+'</span></div><div><b>Run time</b><span>'+P.run+'</span></div><div><b>Price</b><span>'+P.price+'</span></div></div>'+
+        '<a class="pill" href="'+P.href+'">Learn more and register free</a>';
+    } else {
+      pc.innerHTML='<small>Recently screened</small><h3>'+P.title+'</h3><p>Our first Pro Shot Edition screened '+P.dateLabel.replace(/^\w+, /,'')+' at the Electric Theater, free to the public. The next Pro Shot Edition will be announced here.</p>'+
+        '<a class="pill" href="/page-to-stage-registration">Get notified</a>';
+    }
+  }
+})();
+</script>
+</body>
+</html>
