@@ -29,6 +29,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(-
 .wave{position:absolute;left:0;width:100%;height:clamp(40px,6vw,90px);display:block;z-index:2;fill:var(--sand)}
 .wave-top{top:-1px}
 .wave-bot{bottom:-1px}
+[hidden]{display:none!important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:16px;top:-60px;z-index:200;background:var(--cream);color:var(--ink);padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none}
 .skip:focus{top:12px}
