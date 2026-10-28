@@ -10,7 +10,7 @@
 
 
 <title>Villains Night 2026: Online Program | Encore Performing Arts</title>
-<meta name="description" content="The online program for Aspire Performing Co.’s Villains Night, October 29 and 30, 2026 at the Historic Electric Theater. The company, the team, our donors and what is coming next at Encore Performing Arts.">
+<meta name="description" content="The online program for Aspire Performing Co.’s Villains Night, October 29 and 30, 2026 at the Historic Electric Theater. The running order, featured roles, the company, the team and our donors.">
 <link rel="canonical" href="https://www.encorepa.org/villains-night-program">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#061d33">
@@ -315,7 +315,7 @@ h2 em{color:var(--teal)}
     radial-gradient(ellipse 120% 70% at 50% 8%,rgba(19,159,170,.24) 0%,rgba(11,54,95,0) 62%),
     linear-gradient(180deg,rgba(5,25,44,.66) 0%,rgba(5,25,44,.46) 38%,rgba(5,25,44,.78) 78%,var(--vn-ink) 100%);}
   .vn-mist{position:absolute;inset:0;width:100%;height:100%;z-index:2;
-    pointer-events:none;opacity:.42;}
+    pointer-events:none;opacity:.36;}
   /* The cut-out is 1440x1280, so its height is width x 0.8889. The hero copy
      reserves exactly that much space below itself, because cream button text
      over the cast's lit hair measured 1.20:1. Derive, never eyeball. */
@@ -328,6 +328,14 @@ h2 em{color:var(--teal)}
   .vn-cast img{width:100%;height:auto;display:block;}
   .vn-hero-in{position:relative;z-index:4;width:100%;max-width:920px;margin:0 auto;
     padding:120px 20px 0;text-align:center;}
+  /* The spark canvas seeds particle positions randomly on every load, so the
+     hero backdrop is not the same twice and a measurement of one load can miss
+     the worst case. This scrim rides in .vn-hero-in's own stacking context, so
+     it sits above both the sparks and the cast and below the text, which puts a
+     floor under the copy that does not depend on where the sparks land. */
+  .vn-hero-in::before{content:"";position:absolute;inset:-5% -14% 0;z-index:-1;
+    pointer-events:none;background:radial-gradient(ellipse 74% 60% at 50% 44%,
+      rgba(5,22,40,.74) 0%,rgba(5,22,40,.46) 58%,rgba(5,22,40,0) 100%);}
   .vn-present{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
     font-weight:700;color:var(--vn-amber-hi);margin-bottom:18px;}
   .vn-logo{width:min(86%,520px);margin:0 auto 22px;
@@ -389,6 +397,32 @@ h2 em{color:var(--teal)}
   .vn-names{position:relative;list-style:none;display:grid;
     grid-template-columns:1fr 1fr;gap:6px 18px;}
   .vn-names li{font-size:.94rem;line-height:1.5;color:var(--vn-cream);}
+
+  /* ---------- the running order ---------- */
+  .vn-songs{list-style:none;counter-reset:song;}
+  .vn-song{counter-increment:song;display:grid;grid-template-columns:40px 1fr;
+    gap:0 14px;padding:18px 0;border-bottom:1px solid rgba(135,196,210,.13);}
+  .vn-song:last-child{border-bottom:0;}
+  .vn-song::before{content:counter(song,decimal-leading-zero);
+    font-family:var(--font-display);font-size:.9rem;font-weight:700;
+    color:var(--vn-amber);letter-spacing:.04em;padding-top:4px;}
+  .vn-songtitle{font-family:var(--font-display);font-size:1.16rem;font-weight:700;
+    color:var(--vn-cream);line-height:1.22;margin-bottom:7px;}
+  .vn-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+  .vn-chip{font-size:.69rem;letter-spacing:.11em;text-transform:uppercase;font-weight:700;
+    color:var(--vn-amber-hi);background:rgba(243,184,92,.13);
+    border:1px solid rgba(243,184,92,.34);border-radius:999px;padding:4px 10px;}
+  .vn-solo{font-size:.93rem;line-height:1.55;color:var(--vn-mist);}
+  .vn-solo b{color:var(--vn-cream);font-weight:600;}
+
+  /* ---------- featured roles ---------- */
+  .vn-feat{list-style:none;display:grid;grid-template-columns:1fr;gap:0;}
+  .vn-feat li{display:grid;grid-template-columns:1fr;gap:2px;padding:11px 0;
+    border-bottom:1px solid rgba(135,196,210,.13);}
+  .vn-feat li:last-child{border-bottom:0;}
+  .vn-char{font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;
+    font-weight:700;color:var(--vn-amber);}
+  .vn-actor{font-size:1rem;line-height:1.5;color:var(--vn-cream);font-weight:600;}
 
   /* ---------- team ---------- */
   .vn-two{display:grid;grid-template-columns:1fr;gap:38px;}
@@ -467,6 +501,8 @@ h2 em{color:var(--teal)}
     .vn-hero{--cast-w:min(84vw,520px);}
     .vn-roles li{grid-template-columns:205px 1fr;gap:16px;align-items:baseline;}
     .vn-role{padding-top:3px;}
+    .vn-song{grid-template-columns:52px 1fr;}
+    .vn-feat{grid-template-columns:1fr 1fr;gap:0 34px;}
     .vn-tier ul{grid-template-columns:1fr 1fr;gap:7px 20px;}
     .vn-skills{grid-template-columns:1fr 1fr;gap:12px 22px;}
     .vn-next{grid-template-columns:1fr 1fr;}
@@ -519,7 +555,7 @@ h2 em{color:var(--teal)}
       <p class="vn-venue">The Historic Electric Theater &middot; 118 Young Artists</p>
     </div>
     <div class="vn-acts">
-      <a class="vn-btn" href="#company">Meet the company</a>
+      <a class="vn-btn" href="#songs">Tonight&rsquo;s lineup</a>
       <a class="vn-btn ghost" href="https://encoreperformingarts.thundertix.com/events/272127/performances" target="_blank" rel="noopener">Tickets</a>
     </div>
   </div>
@@ -527,6 +563,8 @@ h2 em{color:var(--teal)}
 
 <div class="vn-jump" aria-label="Jump to a section">
   <div class="vn-jump-in">
+    <a href="#songs">The Show</a>
+    <a href="#roles">Featured Roles</a>
     <a href="#company">The Company</a>
     <a href="#team">The Team</a>
     <a href="#thanks">Special Thanks</a>
@@ -537,6 +575,197 @@ h2 em{color:var(--teal)}
 </div>
 
 <main>
+
+<section class="vn-sec" id="songs" aria-labelledby="songs-h">
+  <div class="vn-wrap">
+    <p class="vn-eyebrow">Tonight&rsquo;s running order</p>
+    <h2 class="vn-h2" id="songs-h">The Show</h2>
+    <div class="vn-rule"></div>
+    <p class="vn-lede">22 numbers, in the order you will hear them.</p>
+    <ol class="vn-songs">
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Maidens of Midnight</p>
+        <p class="vn-solo">Featuring <b>Kara Guglietti, Kassie Nielson, Ell Mitchell</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">This is Halloween</p>
+        <div class="vn-chips"><span class="vn-chip">Spark</span><span class="vn-chip">Ignite</span><span class="vn-chip">Ember</span><span class="vn-chip">Inferno</span><span class="vn-chip">Blaze</span><span class="vn-chip">Rise</span></div>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Sally's Song</p>
+        <p class="vn-solo">Featuring <b>Scout Fielding</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Oogie Boogie Song</p>
+        <div class="vn-chips"><span class="vn-chip">Illuminate</span></div>
+        <p class="vn-solo">Featuring <b>Daniel Ottesen</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Pirate Medley</p>
+        <div class="vn-chips"><span class="vn-chip">Ember</span></div>
+        <p class="vn-solo">Featuring <b>Andrew Orton</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Sweet Child</p>
+        <p class="vn-solo">Featuring <b>Rylee Popkes, Norah Hafen, Addy Popkes</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Poor Unfortunate Souls</p>
+        <p class="vn-solo">Featuring <b>Emma Schmitt, Addy Popkes</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Les Poissons</p>
+        <div class="vn-chips"><span class="vn-chip">Inferno</span></div>
+        <p class="vn-solo">Featuring <b>Callie Nelson</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">I've Got a Dream</p>
+        <div class="vn-chips"><span class="vn-chip">Blaze</span></div>
+        <p class="vn-solo">Featuring <b>Blake Nelson, Parker De Rurange, Chase Stocks, James Hendlemen, Evan Rider, Malia Hardy</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Trust in Me</p>
+        <div class="vn-chips"><span class="vn-chip">Ignite</span></div>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">All is Fair</p>
+        <div class="vn-chips"><span class="vn-chip">Illuminate</span></div>
+        <p class="vn-solo">Featuring <b>Aubree Ottesen</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Grim Grinning Ghosts</p>
+        <div class="vn-chips"><span class="vn-chip">Inferno</span></div>
+        <p class="vn-solo">Featuring <b>Andrew Orton, Daniel Ottesen, Malakai Naivalu, Noah Sorenson</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Cruella's Plan</p>
+        <p class="vn-solo">Featuring <b>Harper Hatch, Noah Sorenson, Jefferson Thomas</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Cruella De Vil</p>
+        <div class="vn-chips"><span class="vn-chip">Spark</span><span class="vn-chip">Ignite</span></div>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Gaston</p>
+        <div class="vn-chips"><span class="vn-chip">Blaze</span></div>
+        <p class="vn-solo">Featuring <b>Evan Rider and Noah Sorenson</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Number 2</p>
+        <p class="vn-solo">Featuring <b>Evan Rider, Parker De Rurange, Noah Sorenson, Jefferson Thomas</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Heffalumps and Woozles</p>
+        <div class="vn-chips"><span class="vn-chip">Spark</span></div>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Friends on the Other Side</p>
+        <div class="vn-chips"><span class="vn-chip">Rise</span></div>
+        <p class="vn-solo">Featuring <b>Malakai Naivalu</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Off With Their Heads</p>
+        <div class="vn-chips"><span class="vn-chip">Illuminate</span></div>
+        <p class="vn-solo">Featuring <b>Paige Dickerson</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Be Prepared</p>
+        <div class="vn-chips"><span class="vn-chip">Rise</span></div>
+        <p class="vn-solo">Featuring <b>Embry Ward</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">Come Little Children</p>
+        <p class="vn-solo">Featuring <b>Emalie Hoopes, Jenna Nielson</b></p>
+        </div>
+      </li>
+      <li class="vn-song">
+        <div>
+        <p class="vn-songtitle">I Put a Spell on You</p>
+        <p class="vn-solo">Featuring <b>Sophie Martin, Emalie Hoopes, Jenna Nielson</b></p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="vn-sec" id="roles" aria-labelledby="roles-h">
+  <div class="vn-wrap">
+    <p class="vn-eyebrow">Who you will see</p>
+    <h2 class="vn-h2" id="roles-h">Featured Roles</h2>
+    <div class="vn-rule"></div>
+    <ul class="vn-feat">
+      <li><span class="vn-char">Young Winnie</span><span class="vn-actor">Kara Guglietti</span></li>
+      <li><span class="vn-char">Young Mary</span><span class="vn-actor">Kassie Nielson</span></li>
+      <li><span class="vn-char">Young Sarah</span><span class="vn-actor">Ell Mitchell</span></li>
+      <li><span class="vn-char">Sally</span><span class="vn-actor">Scout Fielding</span></li>
+      <li><span class="vn-char">Oogie Boogie</span><span class="vn-actor">Daniel Ottesen</span></li>
+      <li><span class="vn-char">Captain Hook</span><span class="vn-actor">Andrew Orton</span></li>
+      <li><span class="vn-char">Flotsam</span><span class="vn-actor">Rylee Popkes</span></li>
+      <li><span class="vn-char">Jetsam</span><span class="vn-actor">Norah Hafen</span></li>
+      <li><span class="vn-char">Ariel</span><span class="vn-actor">Addy Popkes</span></li>
+      <li><span class="vn-char">Ursula</span><span class="vn-actor">Emma Schmitt</span></li>
+      <li><span class="vn-char">Head Chef</span><span class="vn-actor">Callie Nelson</span></li>
+      <li><span class="vn-char">Thugs</span><span class="vn-actor">Blake Nelson, Parker De Rurange, James Hendlemen, Evan Rider</span></li>
+      <li><span class="vn-char">Flynn</span><span class="vn-actor">Chase Stocks</span></li>
+      <li><span class="vn-char">Rapunzel</span><span class="vn-actor">Malia Hardy</span></li>
+      <li><span class="vn-char">Evil Queen</span><span class="vn-actor">Aubree Ottesen</span></li>
+      <li><span class="vn-char">Dapper Dans</span><span class="vn-actor">Andrew Orton, Daniel Ottesen, Malakai Naivalu, Noah Sorenson</span></li>
+      <li><span class="vn-char">Cruella De Vil</span><span class="vn-actor">Harper Hatch</span></li>
+      <li><span class="vn-char">Jasper</span><span class="vn-actor">Noah Sorenson</span></li>
+      <li><span class="vn-char">Horace</span><span class="vn-actor">Jefferson Thomas</span></li>
+      <li><span class="vn-char">LeFou</span><span class="vn-actor">Evan Rider</span></li>
+      <li><span class="vn-char">Gaston</span><span class="vn-actor">Noah Sorenson</span></li>
+      <li><span class="vn-char">Smee</span><span class="vn-actor">Parker De Rurange</span></li>
+      <li><span class="vn-char">Dr. Facillier</span><span class="vn-actor">Malakai Naivalu</span></li>
+      <li><span class="vn-char">Queen of Hearts</span><span class="vn-actor">Paige Dickerson</span></li>
+      <li><span class="vn-char">Scar</span><span class="vn-actor">Embry Ward</span></li>
+      <li><span class="vn-char">Mary Sanderson</span><span class="vn-actor">Emalie Hoopes</span></li>
+      <li><span class="vn-char">Sarah Sanderson</span><span class="vn-actor">Jenna Nielson</span></li>
+      <li><span class="vn-char">Winnifred Sanderson</span><span class="vn-actor">Sophie Martin</span></li>
+    </ul>
+  </div>
+</section>
 
 <section class="vn-sec" id="company" aria-labelledby="company-h">
   <div class="vn-wrap">
@@ -719,7 +948,7 @@ h2 em{color:var(--teal)}
           <li><span class="vn-role">Assistant Choreographer</span><span class="vn-who">Haven Record</span></li>
           <li><span class="vn-role">Stage Manager</span><span class="vn-who">Shannon Martin</span></li>
           <li><span class="vn-role">Assistant Stage Manager</span><span class="vn-who">Nevaeh Ward</span></li>
-          <li><span class="vn-role">Ambassadors</span><span class="vn-who">Emma Schmitt, Skylar Allred, Emalie Hoopes, Jea Nielson, Emma Roberts</span></li>
+          <li><span class="vn-role">Ambassadors</span><span class="vn-who">Emma Schmitt, Skylar Allred, Emalie Hoopes, Jenna Nielson, Emma Roberts</span></li>
           <li><span class="vn-role">Assistant Ambassador</span><span class="vn-who">Paige Dickerson</span></li>
         </ul>
       </div>
@@ -750,7 +979,12 @@ h2 em{color:var(--teal)}
     <p class="vn-eyebrow">With gratitude</p>
     <h2 class="vn-h2" id="thanks-h">Special Thanks</h2>
     <div class="vn-rule"></div>
-    <p class="vn-note">The Fielding Family, the Campbell Family, the Encore Friends painting team, Clint and Angela Hoopes, Bridget Arias Cunningham, Nicole Ram, and every volunteer and family who gave their time to this show.</p>
+    <p class="vn-lede" style="margin-bottom:20px;">This show does not happen without them.</p>
+    <ul class="vn-skills">
+      <li>Utah Tech Lacrosse Team</li>
+      <li>Brian Tyrrell</li>
+      <li>Our amazing volunteers and families</li>
+    </ul>
   </div>
 </section>
 
