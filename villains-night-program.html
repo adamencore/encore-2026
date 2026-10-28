@@ -13,7 +13,7 @@
 <meta name="description" content="The online program for Aspire Performing Co.’s Villains Night, October 29 and 30, 2026 at the Historic Electric Theater. The company, the team, our donors and what is coming next at Encore Performing Arts.">
 <link rel="canonical" href="https://www.encorepa.org/villains-night-program">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#338093">
+<meta name="theme-color" content="#061d33">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -269,132 +269,218 @@ h2 em{color:var(--teal)}
 <style>
   /* ============================================================
      VILLAINS NIGHT 2026: ONLINE PROGRAM
-     Content transcribed from the printed program
-     ("Villains Night 26 Program", pages 1, 3 and 4).
-     Rosters live in this markup, not in a JS array.
+     Content transcribed from the printed program, pages 1, 3 and 4.
+
+     The palette is sampled from the show's own key art
+     (img/shows/villains-night.jpg): deep navy #0b365f, mid teal
+     #165f7d, the brand teal #318496, bright mist #139faa, cream
+     #f4efe4. The amber is the lantern and rim light on the cast
+     cut-out, which is why warm sits against cool here.
+
+     Every colour pairing in this block was measured against the
+     rendered page, not picked by eye.
      ============================================================ */
-  /* The shared .lwt-veil is a 104deg gradient, heavy on the left and thin on the
-     right. On this page the hero copy runs the full width, so on a phone it sits
-     over the thin side and measured 2.73:1. The flat colour layer below (painted
-     under the gradients but over the photo) puts a floor under every hero pixel.
-     Measured after, at 390px: eyebrow 4.82, h1 5.61, sub 5.87. */
-  .lwt-veil{background:
-    linear-gradient(104deg,rgba(28,24,48,.90) 0%,rgba(28,24,48,.62) 52%,rgba(28,24,48,.34) 100%),
-    linear-gradient(to top,rgba(28,24,48,.86),rgba(28,24,48,0) 62%),
-    rgba(8,16,24,.42);}
-  @media (min-width:900px){ .lwt-veil{background:
-    linear-gradient(104deg,rgba(28,24,48,.90) 0%,rgba(28,24,48,.62) 52%,rgba(28,24,48,.34) 100%),
-    linear-gradient(to top,rgba(28,24,48,.86),rgba(28,24,48,0) 62%),
-    rgba(8,16,24,.26);} }
+  :root{
+    --vn-ink:#05192c;        /* page ground, deepest */
+    --vn-deep:#0b365f;       /* navy from the art */
+    --vn-panel:#0d2c4a;      /* card ground */
+    --vn-panel-2:#113553;
+    --vn-line:rgba(135,196,210,.22);
+    --vn-teal:#2d8698;
+    --vn-mist:#9fd3dc;       /* secondary text on dark */
+    --vn-cream:#f4efe4;      /* primary text on dark */
+    --vn-amber:#f3b85c;      /* lantern accent */
+    --vn-amber-hi:#ffd98a;
+  }
+  body{background:var(--vn-ink);color:var(--vn-cream);}
 
-  .pg-wrap{max-width:900px;margin:0 auto;padding:0 20px;}
-  .pg-sec{padding:52px 0;scroll-margin-top:140px;}
-  .pg-sec + .pg-sec{border-top:1px solid var(--line);}
-  .pg-eyebrow{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
-    font-weight:700;color:var(--muted);margin-bottom:10px;}
-  .pg-h2{font-family:var(--font-display);font-weight:700;color:var(--charcoal);
-    font-size:clamp(1.55rem,5.2vw,2.1rem);line-height:1.12;letter-spacing:-.01em;margin-bottom:8px;}
-  .pg-lede{color:var(--muted);font-size:1rem;line-height:1.65;max-width:56ch;margin-bottom:26px;}
+  /* the nav ships light; this page is dark */
+  nav.site{background:rgba(5,25,44,.82);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--vn-line);}
+  nav.site .logo{color:var(--vn-cream);}
+  nav.site .nav-cta a{color:var(--vn-cream);}
+  footer{background:#041423;}
 
-  /* jump bar */
-  .pg-jump{position:sticky;top:74px;z-index:60;background:rgba(246,245,243,.94);
-    backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
-  .pg-jump-in{display:flex;gap:8px;overflow-x:auto;padding:12px 20px;
-    max-width:900px;margin:0 auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-  .pg-jump-in::-webkit-scrollbar{display:none;}
-  .pg-jump a{flex:0 0 auto;font-size:.84rem;font-weight:700;text-decoration:none;
-    color:var(--charcoal);background:var(--paper);border:1px solid var(--line);
-    border-radius:999px;padding:8px 15px;white-space:nowrap;}
-  .pg-jump a:hover,.pg-jump a:focus-visible{background:var(--charcoal);color:var(--cream-lite);}
+  .vn-wrap{max-width:920px;margin:0 auto;padding:0 20px;}
 
-  /* company rosters */
-  .pg-groups{display:grid;grid-template-columns:1fr;gap:14px;}
-  .pg-group{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 22px;}
-  /* --accent-2 not --charcoal-soft: the brand teal measures 4.40:1 on paper at this
-     size and weight, which is under AA. #2a6b7b measures 5.87:1. */
-  .pg-group h3{font-family:var(--font-display);font-size:1.02rem;font-weight:700;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:12px;}
-  .pg-group h3 .pg-count{font-size:.74rem;letter-spacing:.04em;color:var(--muted);
-    font-weight:600;text-transform:none;margin-left:8px;}
-  .pg-names{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:5px 18px;}
-  .pg-names li{font-size:.93rem;line-height:1.45;color:var(--charcoal);}
+  /* ---------- hero ---------- */
+  .vn-hero{position:relative;overflow:hidden;isolation:isolate;
+    min-height:100svh;display:flex;flex-direction:column;
+    justify-content:flex-end;background:#0b2c45;}
+  .vn-hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    object-position:center 30%;z-index:0;}
+  /* the .30 mid-stop left the hero backdrop at 4.15:1 behind the copy; .46 is
+     what the measurement needed. See the contrast note at the top. */
+  .vn-hero-wash{position:absolute;inset:0;z-index:1;pointer-events:none;background:
+    radial-gradient(ellipse 120% 70% at 50% 8%,rgba(19,159,170,.24) 0%,rgba(11,54,95,0) 62%),
+    linear-gradient(180deg,rgba(5,25,44,.66) 0%,rgba(5,25,44,.46) 38%,rgba(5,25,44,.78) 78%,var(--vn-ink) 100%);}
+  .vn-mist{position:absolute;inset:0;width:100%;height:100%;z-index:2;
+    pointer-events:none;opacity:.42;}
+  /* The cut-out is 1440x1280, so its height is width x 0.8889. The hero copy
+     reserves exactly that much space below itself, because cream button text
+     over the cast's lit hair measured 1.20:1. Derive, never eyeball. */
+  .vn-hero{--cast-w:min(104vw,560px);--cast-h:calc(var(--cast-w) * 0.8889);}
+  .vn-cast{position:absolute;z-index:3;pointer-events:none;
+    right:50%;transform:translateX(50%);bottom:0;width:var(--cast-w);
+    opacity:.95;
+    -webkit-mask-image:linear-gradient(180deg,#000 82%,transparent 100%);
+    mask-image:linear-gradient(180deg,#000 82%,transparent 100%);}
+  .vn-cast img{width:100%;height:auto;display:block;}
+  .vn-hero-in{position:relative;z-index:4;width:100%;max-width:920px;margin:0 auto;
+    padding:120px 20px 0;text-align:center;}
+  .vn-present{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
+    font-weight:700;color:var(--vn-amber-hi);margin-bottom:18px;}
+  .vn-logo{width:min(86%,520px);margin:0 auto 22px;
+    filter:drop-shadow(0 0 34px rgba(19,159,170,.55)) drop-shadow(0 6px 18px rgba(0,0,0,.45));}
+  .vn-logo img{width:100%;height:auto;display:block;}
+  .vn-tag{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:700;color:var(--vn-cream);margin-bottom:26px;}
+  .vn-meta{display:flex;flex-direction:column;align-items:center;gap:5px;margin-bottom:26px;}
+  .vn-date{font-family:var(--font-display);font-weight:700;color:var(--vn-cream);
+    font-size:clamp(1.5rem,6vw,2.3rem);line-height:1.08;letter-spacing:-.01em;}
+  /* cream, not mist: mist on the hero's teal measured 4.15:1 */
+  .vn-venue{font-size:.98rem;color:var(--vn-cream);}
+  .vn-acts{display:flex;flex-wrap:wrap;gap:11px;justify-content:center;
+    padding-bottom:calc(var(--cast-h) + 22px);}
+  .vn-btn{display:inline-block;font-weight:700;font-size:.97rem;text-decoration:none;
+    border-radius:999px;padding:14px 27px;background:var(--vn-amber-hi);color:#3a2308;
+    border:1px solid var(--vn-amber-hi);}
+  .vn-btn:hover,.vn-btn:focus-visible{background:#fff0cc;border-color:#fff0cc;}
+  .vn-btn.ghost{background:transparent;color:var(--vn-cream);border-color:rgba(244,239,228,.52);}
+  .vn-btn.ghost:hover,.vn-btn.ghost:focus-visible{background:rgba(244,239,228,.13);
+    border-color:var(--vn-cream);}
 
-  /* role lists */
-  .pg-roles{list-style:none;display:grid;grid-template-columns:1fr;gap:0;}
-  .pg-roles li{display:grid;grid-template-columns:1fr;gap:1px;
-    padding:11px 0;border-bottom:1px solid var(--line);}
-  .pg-roles li:last-child{border-bottom:0;}
-  .pg-role{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;
-    font-weight:700;color:var(--muted);}
-  .pg-who{font-size:1rem;line-height:1.5;color:var(--charcoal);font-weight:600;}
-  .pg-two{display:grid;grid-template-columns:1fr;gap:34px;}
-  .pg-sub{font-family:var(--font-display);font-size:1.02rem;font-weight:700;
-    letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px;}
+  /* ---------- jump bar ---------- */
+  .vn-jump{position:sticky;top:74px;z-index:60;background:rgba(5,25,44,.92);
+    backdrop-filter:blur(12px);border-bottom:1px solid var(--vn-line);}
+  .vn-jump-in{display:flex;gap:8px;overflow-x:auto;padding:12px 20px;
+    max-width:920px;margin:0 auto;scrollbar-width:none;}
+  .vn-jump-in::-webkit-scrollbar{display:none;}
+  .vn-jump a{flex:0 0 auto;font-size:.84rem;font-weight:700;text-decoration:none;
+    color:var(--vn-cream);background:rgba(159,211,220,.11);
+    border:1px solid var(--vn-line);border-radius:999px;padding:8px 15px;white-space:nowrap;}
+  .vn-jump a:hover,.vn-jump a:focus-visible{background:var(--vn-amber-hi);color:#3a2308;
+    border-color:var(--vn-amber-hi);}
 
-  /* donors */
-  .pg-tiers{display:grid;grid-template-columns:1fr;gap:14px;}
-  .pg-tier{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 22px;}
-  .pg-tier h3{font-family:var(--font-display);font-size:1.12rem;font-weight:700;
-    color:var(--charcoal);margin-bottom:12px;}
-  .pg-tier ul{list-style:none;display:grid;grid-template-columns:1fr;gap:5px;}
-  .pg-tier li{font-size:.95rem;line-height:1.5;color:var(--charcoal);}
+  /* ---------- sections ---------- */
+  .vn-sec{padding:62px 0;scroll-margin-top:148px;position:relative;}
+  .vn-sec + .vn-sec{border-top:1px solid rgba(135,196,210,.14);}
+  .vn-eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:700;color:var(--vn-amber);margin-bottom:12px;}
+  .vn-h2{font-family:var(--font-display);font-weight:700;color:var(--vn-cream);
+    font-size:clamp(1.7rem,6vw,2.5rem);line-height:1.08;letter-spacing:-.015em;margin-bottom:10px;}
+  .vn-lede{color:var(--vn-mist);font-size:1.02rem;line-height:1.68;max-width:54ch;margin-bottom:30px;}
+  .vn-rule{width:62px;height:2px;background:var(--vn-amber);border-radius:2px;margin-bottom:22px;}
 
-  /* core call-out */
-  .pg-core{background:var(--charcoal);color:var(--cream);border-radius:22px;
-    padding:28px 24px;margin-top:22px;}
-  .pg-core h3{font-family:var(--font-display);font-size:1.25rem;font-weight:700;margin-bottom:8px;}
-  .pg-core p{font-size:.97rem;line-height:1.6;color:rgba(233,228,224,.92);margin-bottom:18px;}
-  .pg-core a{display:inline-block;background:var(--cream-lite);color:var(--charcoal);
-    font-weight:700;font-size:.95rem;text-decoration:none;border-radius:999px;padding:13px 24px;}
-  .pg-core a:hover,.pg-core a:focus-visible{background:#fff;}
+  /* ---------- company ---------- */
+  .vn-groups{display:grid;grid-template-columns:1fr;gap:16px;}
+  .vn-group{position:relative;background:linear-gradient(180deg,var(--vn-panel-2),var(--vn-panel));
+    border:1px solid var(--vn-line);border-radius:20px;padding:24px 22px;overflow:hidden;}
+  .vn-group::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--lantern),transparent);}
+  .vn-group::after{content:"";position:absolute;top:-70px;left:50%;transform:translateX(-50%);
+    width:230px;height:150px;border-radius:50%;background:var(--lantern);
+    opacity:.16;filter:blur(42px);pointer-events:none;}
+  .vn-ghead{position:relative;display:flex;align-items:baseline;gap:10px;
+    flex-wrap:wrap;margin-bottom:15px;}
+  .vn-gname{font-family:var(--font-display);font-size:1.16rem;font-weight:700;
+    letter-spacing:.17em;text-transform:uppercase;color:var(--lantern);}
+  .vn-gcount{font-size:.76rem;letter-spacing:.04em;color:var(--vn-mist);font-weight:600;}
+  .vn-names{position:relative;list-style:none;display:grid;
+    grid-template-columns:1fr 1fr;gap:6px 18px;}
+  .vn-names li{font-size:.94rem;line-height:1.5;color:var(--vn-cream);}
 
-  /* thanks + mission */
-  .pg-note{background:var(--paper);border:1px solid var(--line);border-radius:18px;
-    padding:22px 24px;font-size:1rem;line-height:1.7;color:var(--charcoal);}
-  .pg-skills{list-style:none;display:grid;grid-template-columns:1fr;gap:9px;margin-top:18px;}
-  .pg-skills li{position:relative;padding-left:22px;font-size:.97rem;
-    line-height:1.5;color:var(--charcoal);}
-  .pg-skills li::before{content:"";position:absolute;left:0;top:.52em;width:9px;height:9px;
-    border-radius:50%;background:var(--accent-2);}
+  /* ---------- team ---------- */
+  .vn-two{display:grid;grid-template-columns:1fr;gap:38px;}
+  .vn-sub{font-family:var(--font-display);font-size:1.02rem;font-weight:700;
+    letter-spacing:.17em;text-transform:uppercase;color:var(--vn-amber);margin-bottom:10px;}
+  .vn-roles{list-style:none;}
+  .vn-roles li{display:grid;grid-template-columns:1fr;gap:2px;padding:12px 0;
+    border-bottom:1px solid rgba(135,196,210,.13);}
+  .vn-roles li:last-child{border-bottom:0;}
+  .vn-role{font-size:.74rem;letter-spacing:.11em;text-transform:uppercase;
+    font-weight:700;color:var(--vn-mist);}
+  .vn-who{font-size:1rem;line-height:1.5;color:var(--vn-cream);font-weight:600;}
 
-  /* what's next */
-  .pg-next{display:grid;grid-template-columns:1fr;gap:16px;}
-  .pg-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;
-    padding:24px;display:flex;flex-direction:column;}
-  .pg-card h3{font-family:var(--font-display);font-size:1.3rem;font-weight:700;
-    color:var(--charcoal);line-height:1.15;margin-bottom:6px;}
-  .pg-card p{font-size:.95rem;line-height:1.6;color:var(--muted);margin-bottom:18px;}
-  /* after .pg-card p, so the date line wins the cascade rather than inheriting muted */
-  .pg-card p.pg-when{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
-    font-weight:700;color:var(--accent-2);margin-bottom:12px;}
-  .pg-card .pg-go{margin-top:auto;align-self:flex-start;background:var(--charcoal);
-    color:var(--cream-lite);font-weight:700;font-size:.92rem;text-decoration:none;
-    border-radius:999px;padding:12px 22px;}
-  .pg-card .pg-go:hover,.pg-card .pg-go:focus-visible{background:var(--charcoal-2);}
+  /* ---------- panels ---------- */
+  .vn-note{background:linear-gradient(180deg,var(--vn-panel-2),var(--vn-panel));
+    border:1px solid var(--vn-line);border-left:3px solid var(--vn-amber);
+    border-radius:16px;padding:24px 26px;font-size:1.02rem;line-height:1.72;
+    color:var(--vn-cream);}
 
-  /* sponsors */
-  .pg-spon{display:grid;grid-template-columns:1fr;gap:14px;}
-  .pg-spon div{background:var(--paper);border:1px solid var(--line);
-    border-radius:18px;padding:20px 22px;}
-  .pg-spon strong{display:block;font-family:var(--font-display);font-size:1.08rem;
-    color:var(--charcoal);margin-bottom:5px;}
-  .pg-spon p{font-size:.93rem;line-height:1.55;color:var(--muted);margin-bottom:10px;}
-  .pg-spon a{font-weight:700;font-size:.9rem;color:var(--charcoal);
+  /* ---------- donors ---------- */
+  .vn-tiers{display:grid;grid-template-columns:1fr;gap:16px;}
+  .vn-tier{background:linear-gradient(180deg,var(--vn-panel-2),var(--vn-panel));
+    border:1px solid var(--vn-line);border-radius:20px;padding:24px 22px;}
+  .vn-tier h3{font-family:var(--font-display);font-size:1.16rem;font-weight:700;
+    color:var(--vn-amber-hi);margin-bottom:6px;}
+  .vn-tier .vn-trule{width:40px;height:2px;background:var(--vn-line);
+    border-radius:2px;margin-bottom:15px;}
+  .vn-tier ul{list-style:none;display:grid;grid-template-columns:1fr;gap:6px;}
+  .vn-tier li{font-size:.96rem;line-height:1.5;color:var(--vn-cream);}
+
+  .vn-core{position:relative;overflow:hidden;background:linear-gradient(135deg,#ffdf9c,#f3b85c);
+    color:#3a2308;border-radius:24px;padding:32px 26px;margin-top:24px;}
+  .vn-core h3{font-family:var(--font-display);font-size:1.4rem;font-weight:700;margin-bottom:10px;}
+  .vn-core p{font-size:1rem;line-height:1.65;margin-bottom:22px;color:#4a2f0c;}
+  .vn-core a{display:inline-block;background:#2a1a05;color:#ffe9bd;font-weight:700;
+    font-size:.96rem;text-decoration:none;border-radius:999px;padding:14px 26px;}
+  .vn-core a:hover,.vn-core a:focus-visible{background:#120b02;}
+
+  /* ---------- mission ---------- */
+  .vn-skills{list-style:none;display:grid;grid-template-columns:1fr;gap:11px;margin-top:22px;}
+  .vn-skills li{position:relative;padding-left:24px;font-size:1rem;line-height:1.5;
+    color:var(--vn-cream);}
+  .vn-skills li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;
+    border-radius:50%;background:var(--vn-amber);box-shadow:0 0 11px rgba(243,184,92,.75);}
+
+  /* ---------- what's next ---------- */
+  .vn-next{display:grid;grid-template-columns:1fr;gap:18px;}
+  .vn-card{position:relative;overflow:hidden;border-radius:22px;
+    border:1px solid var(--vn-line);background:var(--vn-panel);
+    display:flex;flex-direction:column;}
+  .vn-card-art{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0b2c45;}
+  .vn-card-art img{width:100%;height:100%;object-fit:cover;display:block;}
+  .vn-card-art::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(5,25,44,0) 46%,rgba(13,44,74,.92) 100%);}
+  .vn-card-body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1;}
+  .vn-card h3{font-family:var(--font-display);font-size:1.36rem;font-weight:700;
+    color:var(--vn-cream);line-height:1.14;margin-bottom:7px;}
+  .vn-when{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;
+    font-weight:700;color:var(--vn-amber);margin-bottom:13px;}
+  .vn-card p.vn-blurb{font-size:.96rem;line-height:1.62;color:var(--vn-mist);margin-bottom:20px;}
+  .vn-go{margin-top:auto;align-self:flex-start;background:var(--vn-amber-hi);color:#3a2308;
+    font-weight:700;font-size:.93rem;text-decoration:none;border-radius:999px;padding:13px 23px;}
+  .vn-go:hover,.vn-go:focus-visible{background:#fff0cc;}
+
+  /* ---------- sponsors ---------- */
+  .vn-spon{display:grid;grid-template-columns:1fr;gap:16px;}
+  .vn-spon div{background:linear-gradient(180deg,var(--vn-panel-2),var(--vn-panel));
+    border:1px solid var(--vn-line);border-radius:20px;padding:24px 22px;}
+  .vn-spon strong{display:block;font-family:var(--font-display);font-size:1.12rem;
+    color:var(--vn-amber-hi);margin-bottom:7px;}
+  .vn-spon p{font-size:.95rem;line-height:1.6;color:var(--vn-mist);margin-bottom:13px;}
+  .vn-spon a{font-weight:700;font-size:.92rem;color:var(--vn-cream);
     text-decoration:underline;text-underline-offset:3px;}
 
-  @media (min-width:560px){
-    .pg-sec{padding:62px 0;}
-    .pg-roles li{grid-template-columns:200px 1fr;gap:16px;align-items:baseline;}
-    .pg-role{padding-top:2px;}
-    .pg-tier ul{grid-template-columns:1fr 1fr;gap:6px 20px;}
-    .pg-skills{grid-template-columns:1fr 1fr;gap:10px 22px;}
-    .pg-next{grid-template-columns:1fr 1fr;}
-    .pg-spon{grid-template-columns:1fr 1fr;}
+  @media (min-width:600px){
+    .vn-hero{--cast-w:min(84vw,520px);}
+    .vn-roles li{grid-template-columns:205px 1fr;gap:16px;align-items:baseline;}
+    .vn-role{padding-top:3px;}
+    .vn-tier ul{grid-template-columns:1fr 1fr;gap:7px 20px;}
+    .vn-skills{grid-template-columns:1fr 1fr;gap:12px 22px;}
+    .vn-next{grid-template-columns:1fr 1fr;}
+    .vn-spon{grid-template-columns:1fr 1fr;}
   }
-  @media (min-width:900px){
-    .pg-groups{grid-template-columns:1fr 1fr;}
-    .pg-two{grid-template-columns:1fr 1fr;gap:48px;}
-    .pg-names{gap:5px 24px;}
+  @media (min-width:920px){
+    .vn-sec{padding:84px 0;}
+    .vn-groups{grid-template-columns:1fr 1fr;}
+    .vn-two{grid-template-columns:1fr 1fr;gap:52px;}
+    .vn-hero{--cast-w:560px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .vn-mist{display:none;}
+    html{scroll-behavior:auto;}
   }
 </style>
 
@@ -406,26 +492,41 @@ h2 em{color:var(--teal)}
   </div>
 </nav>
 
-<header class="lwt-hero">
+<header class="vn-hero">
   <picture>
-    <source type="image/webp" srcset="/img/shows/villains-night.webp">
-    <img class="lwt-hero-bg" src="/img/shows/villains-night.jpg" alt="" fetchpriority="high" decoding="async">
+    <source type="image/webp" srcset="/img/shows/vn-bg.webp">
+    <img class="vn-hero-bg" src="/img/shows/vn-bg.jpg" alt="" fetchpriority="high" decoding="async">
   </picture>
-  <span class="lwt-veil" aria-hidden="true"></span>
-  <div class="lwt-hero-in">
-    <span class="lwt-eyebrow">Online Program &middot; Aspire Performing Co.</span>
-    <h1><em>Villains Night</em></h1>
-    <p class="lwt-sub">October 29 and 30, 2026 at the Historic Electric Theater, with a free
-      sensory-friendly performance on October 28. 118 Young Artists across seven Aspire groups.</p>
-    <div class="lwt-actions">
-      <a class="lwt-btn" href="https://encoreperformingarts.thundertix.com/events/272127/performances" target="_blank" rel="noopener">Buy tickets &rarr;</a>
-      <a class="lwt-btn ghost" href="/aspire-performing-co">About Aspire</a>
+  <span class="vn-hero-wash" aria-hidden="true"></span>
+  <canvas class="vn-mist" aria-hidden="true"></canvas>
+  <div class="vn-cast" aria-hidden="true">
+    <picture>
+      <source type="image/webp" srcset="/img/shows/vn-cast-cutout.webp">
+      <img src="/img/shows/vn-cast-cutout.png" alt="" decoding="async">
+    </picture>
+  </div>
+  <div class="vn-hero-in">
+    <p class="vn-present">Aspire Performing Co. and Encore present</p>
+    <h1 class="vn-logo">
+      <picture>
+        <source type="image/webp" srcset="/img/shows/vn-logo.webp">
+        <img src="/img/shows/vn-logo.png" alt="Villains Night" decoding="async">
+      </picture>
+    </h1>
+    <p class="vn-tag">Our annual Halloween spooktacular</p>
+    <div class="vn-meta">
+      <p class="vn-date">October 29 and 30, 2026</p>
+      <p class="vn-venue">The Historic Electric Theater &middot; 118 Young Artists</p>
+    </div>
+    <div class="vn-acts">
+      <a class="vn-btn" href="#company">Meet the company</a>
+      <a class="vn-btn ghost" href="https://encoreperformingarts.thundertix.com/events/272127/performances" target="_blank" rel="noopener">Tickets</a>
     </div>
   </div>
 </header>
 
-<div class="pg-jump" aria-label="Jump to a section">
-  <div class="pg-jump-in">
+<div class="vn-jump" aria-label="Jump to a section">
+  <div class="vn-jump-in">
     <a href="#company">The Company</a>
     <a href="#team">The Team</a>
     <a href="#thanks">Special Thanks</a>
@@ -437,303 +538,312 @@ h2 em{color:var(--teal)}
 
 <main>
 
-<section class="pg-sec" id="company" aria-labelledby="company-h">
-  <div class="pg-wrap">
-    <p class="pg-eyebrow">The Company</p>
-    <h2 class="pg-h2" id="company-h">Aspire Performing Co.</h2>
-    <p class="pg-lede">118 Young Artists, in seven groups by age and experience. Every one of them
-      is on that stage tonight.</p>
-    <div class="pg-groups">
-    <div class="pg-group">
-      <h3>Spark<span class="pg-count">12 Young Artists</span></h3>
-      <ul class="pg-names">
-        <li>Capri McGee</li>
-        <li>Cecelia Ream</li>
-        <li>Emma Miller</li>
-        <li>Hazel Bingham</li>
-        <li>Jacob Hackett</li>
-        <li>Karsen Clark</li>
-        <li>Lucy Larsen</li>
-        <li>Matthew Brooksby</li>
-        <li>Parker Beckstead</li>
-        <li>Pepper Hafen</li>
-        <li>Raelee Tyrrell</li>
-        <li>Sierra Adams</li>
-      </ul>
-    </div>
-    <div class="pg-group">
-      <h3>Ignite<span class="pg-count">13 Young Artists</span></h3>
-      <ul class="pg-names">
-        <li>Brookley Bladen</li>
-        <li>Brooklyn Tracy</li>
-        <li>Brooks Young</li>
-        <li>Charlotte Hull</li>
-        <li>Claire Robinson</li>
-        <li>Elle Miller</li>
-        <li>Ethan Popkes</li>
-        <li>Isabelle Attridge</li>
-        <li>Jade Goodell</li>
-        <li>Margot Tatton</li>
-        <li>Millie Hackett</li>
-        <li>Piper Schoney</li>
-        <li>Stone Gonzalez</li>
-      </ul>
-    </div>
-    <div class="pg-group">
-      <h3>Ember<span class="pg-count">19 Young Artists</span></h3>
-      <ul class="pg-names">
-        <li>Addie Tatton</li>
-        <li>Ainsley Stiggins</li>
-        <li>Anylah Reign Wiberg</li>
-        <li>Audrey Thomas</li>
-        <li>Claire Hull</li>
-        <li>Henry Olsen</li>
-        <li>Julia Bingham</li>
-        <li>Kezia Todd</li>
-        <li>Lainee Hatch</li>
-        <li>Lily Hendlemen</li>
-        <li>Lisa Cutler</li>
-        <li>Lydia Miller</li>
-        <li>Mackenzie Hyde</li>
-        <li>Max Ottesen</li>
-        <li>Mayzie Larsen</li>
-        <li>Naomi Haleck</li>
-        <li>Olivia Brooksby</li>
-        <li>Whitney Jamison</li>
-        <li>Willa Yeck</li>
-      </ul>
-    </div>
-    <div class="pg-group">
-      <h3>Inferno<span class="pg-count">16 Young Artists</span></h3>
-      <ul class="pg-names">
-        <li>Abbey Robinson</li>
-        <li>Adeline Myers</li>
-        <li>Arlo Jaros</li>
-        <li>Avery Ward</li>
-        <li>Brooklyn Florence</li>
-        <li>Callie Nelson</li>
-        <li>Cozi Graft</li>
-        <li>Ellie Skousen</li>
-        <li>Emma Mason</li>
-        <li>Evie Allred</li>
-        <li>Grant Dickerson</li>
-        <li>Kollins Wood</li>
-        <li>Livy Bergeson</li>
-        <li>Lydia Brinton</li>
-        <li>Sierryn Swope</li>
-        <li>Tessa Warren</li>
-      </ul>
-    </div>
-    <div class="pg-group">
-      <h3>Blaze<span class="pg-count">22 Young Artists</span></h3>
-      <ul class="pg-names">
-        <li>Avarie Densley</li>
-        <li>Blake Nelson</li>
-        <li>Chase Stocks</li>
-        <li>Chloe Bingham</li>
-        <li>Claire Adams</li>
-        <li>Ell Mitchell</li>
-        <li>Evan Rider</li>
-        <li>Ivy Edmunds</li>
-        <li>James Hendlemen</li>
-        <li>Kara Guglietti</li>
-        <li>Kassie Nielson</li>
-        <li>Livia Warren</li>
-        <li>Malia Hardy</li>
-        <li>Mia Chong</li>
-        <li>Norah Hafen</li>
-        <li>Olivia Hill</li>
-        <li>Parker De Rurange</li>
-        <li>Piper Hackett</li>
-        <li>Rowen Stucki</li>
-        <li>Rylee Popkes</li>
-        <li>Sophia Heppler</li>
-        <li>Noah Record</li>
-      </ul>
-    </div>
-    <div class="pg-group">
-      <h3>Rise<span class="pg-count">16 Young Artists</span></h3>
-      <ul class="pg-names">
-        <li>Brielle Stiggins</li>
-        <li>Grace Hendelmen</li>
-        <li>Kalani Stiggins</li>
-        <li>Kolin Baguley</li>
-        <li>Lauren Stoddard</li>
-        <li>Lily Allred</li>
-        <li>Livi Paxman</li>
-        <li>Makenzi Shackle</li>
-        <li>Malayna Stiggins</li>
-        <li>Mia Furniss</li>
-        <li>Olivia Bingham</li>
-        <li>Paisley Talbot</li>
-        <li>Reagan Beckstead</li>
-        <li>Spencer Hull</li>
-        <li>Yan Sasso Firme</li>
-        <li>Zoey Scott</li>
-      </ul>
-    </div>
-    <div class="pg-group">
-      <h3>Illuminate<span class="pg-count">20 Young Artists</span></h3>
-      <ul class="pg-names">
-        <li>Addy Popkes</li>
-        <li>Ashton Tallman</li>
-        <li>Aubree Ottesen</li>
-        <li>Daniel Ottesen</li>
-        <li>Emalie Hoopes</li>
-        <li>Embry Ward</li>
-        <li>Emma Schmitt</li>
-        <li>Harper Hatch</li>
-        <li>Jefferson Thomas</li>
-        <li>Jenna Nielson</li>
-        <li>Kaylee Beal</li>
-        <li>Lilly Cox</li>
-        <li>Lilly Pearson</li>
-        <li>Malakai Naivalu</li>
-        <li>Malia Wilkinson</li>
-        <li>Noah Sorenson</li>
-        <li>Paige Dickerson</li>
-        <li>Scout Fielding</li>
-        <li>Sophie Martin</li>
-        <li>Taylor Terry</li>
-      </ul>
-    </div>
-    </div>
-  </div>
-</section>
-
-<section class="pg-sec" id="team" aria-labelledby="team-h">
-  <div class="pg-wrap">
-    <p class="pg-eyebrow">Behind the show</p>
-    <h2 class="pg-h2" id="team-h">The Team</h2>
-    <p class="pg-lede">The people who built this show, on stage and off.</p>
-    <div class="pg-two">
-      <div>
-        <p class="pg-sub">Creative Team</p>
-        <ul class="pg-roles">
-      <li><span class="pg-role">Director</span><span class="pg-who">Kelby Tyrrell</span></li>
-      <li><span class="pg-role">Music Director</span><span class="pg-who">Leslie Scott</span></li>
-      <li><span class="pg-role">Choreographer</span><span class="pg-who">Kelby Tyrrell</span></li>
-      <li><span class="pg-role">Assistant Choreographer</span><span class="pg-who">Haven Record</span></li>
-      <li><span class="pg-role">Stage Manager</span><span class="pg-who">Shannon Martin</span></li>
-      <li><span class="pg-role">Assistant Stage Manager</span><span class="pg-who">Nevaeh Ward</span></li>
-      <li><span class="pg-role">Ambassadors</span><span class="pg-who">Emma Schmitt, Skylar Allred, Emalie Hoopes, Jea Nielson, Emma Roberts</span></li>
-      <li><span class="pg-role">Assistant Ambassador</span><span class="pg-who">Paige Dickerson</span></li>
+<section class="vn-sec" id="company" aria-labelledby="company-h">
+  <div class="vn-wrap">
+    <p class="vn-eyebrow">On stage tonight</p>
+    <h2 class="vn-h2" id="company-h">The Company</h2>
+    <div class="vn-rule"></div>
+    <p class="vn-lede">118 Young Artists, in seven groups by age and experience.
+      Every one of them is up there tonight.</p>
+    <div class="vn-groups">
+      <div class="vn-group" style="--lantern:#ffd98a;">
+        <div class="vn-ghead"><span class="vn-gname">Spark</span><span class="vn-gcount">12 Young Artists</span></div>
+        <ul class="vn-names">
+          <li>Capri McGee</li>
+          <li>Cecelia Ream</li>
+          <li>Emma Miller</li>
+          <li>Hazel Bingham</li>
+          <li>Jacob Hackett</li>
+          <li>Karsen Clark</li>
+          <li>Lucy Larsen</li>
+          <li>Matthew Brooksby</li>
+          <li>Parker Beckstead</li>
+          <li>Pepper Hafen</li>
+          <li>Raelee Tyrrell</li>
+          <li>Sierra Adams</li>
         </ul>
       </div>
-      <div>
-        <p class="pg-sub">Production Team</p>
-        <ul class="pg-roles">
-      <li><span class="pg-role">Executive Director</span><span class="pg-who">Adam Record</span></li>
-      <li><span class="pg-role">Artistic Director</span><span class="pg-who">Rhett Guter</span></li>
-      <li><span class="pg-role">Production Manager</span><span class="pg-who">Randy Jo Sly</span></li>
-      <li><span class="pg-role">Lighting Designer</span><span class="pg-who">Wren Woodbury</span></li>
-      <li><span class="pg-role">Lighting Operator</span><span class="pg-who">Wren Woodbury</span></li>
-      <li><span class="pg-role">Sound Designer</span><span class="pg-who">Kimball Willard</span></li>
-      <li><span class="pg-role">Sound Operator</span><span class="pg-who">Hali Hoopes</span></li>
-      <li><span class="pg-role">Set Build Team</span><span class="pg-who">Wren Woodbury, Orval Barlow, Randy Jo Sly</span></li>
-      <li><span class="pg-role">Set Painter</span><span class="pg-who">Erin Hafen</span></li>
-      <li><span class="pg-role">Props Master</span><span class="pg-who">Amy Childress</span></li>
-      <li><span class="pg-role">Wardrobe Manager</span><span class="pg-who">Makayla Jarros</span></li>
-      <li><span class="pg-role">Wardrobe Team</span><span class="pg-who">Christina Dickerson, Heidi Adams, Stefanie Brooksby, Rhanda Todd, Chelsea Baguley, Laura Cabellero</span></li>
-      <li><span class="pg-role">Hair and Makeup Team</span><span class="pg-who">Kelby Tyrrell, Hali Hoopes, Brie Bergeson</span></li>
+      <div class="vn-group" style="--lantern:#ffc76b;">
+        <div class="vn-ghead"><span class="vn-gname">Ignite</span><span class="vn-gcount">13 Young Artists</span></div>
+        <ul class="vn-names">
+          <li>Brookley Bladen</li>
+          <li>Brooklyn Tracy</li>
+          <li>Brooks Young</li>
+          <li>Charlotte Hull</li>
+          <li>Claire Robinson</li>
+          <li>Elle Miller</li>
+          <li>Ethan Popkes</li>
+          <li>Isabelle Attridge</li>
+          <li>Jade Goodell</li>
+          <li>Margot Tatton</li>
+          <li>Millie Hackett</li>
+          <li>Piper Schoney</li>
+          <li>Stone Gonzalez</li>
+        </ul>
+      </div>
+      <div class="vn-group" style="--lantern:#f8ae52;">
+        <div class="vn-ghead"><span class="vn-gname">Ember</span><span class="vn-gcount">19 Young Artists</span></div>
+        <ul class="vn-names">
+          <li>Addie Tatton</li>
+          <li>Ainsley Stiggins</li>
+          <li>Anylah Reign Wiberg</li>
+          <li>Audrey Thomas</li>
+          <li>Claire Hull</li>
+          <li>Henry Olsen</li>
+          <li>Julia Bingham</li>
+          <li>Kezia Todd</li>
+          <li>Lainee Hatch</li>
+          <li>Lily Hendlemen</li>
+          <li>Lisa Cutler</li>
+          <li>Lydia Miller</li>
+          <li>Mackenzie Hyde</li>
+          <li>Max Ottesen</li>
+          <li>Mayzie Larsen</li>
+          <li>Naomi Haleck</li>
+          <li>Olivia Brooksby</li>
+          <li>Whitney Jamison</li>
+          <li>Willa Yeck</li>
+        </ul>
+      </div>
+      <div class="vn-group" style="--lantern:#f89b60;">
+        <div class="vn-ghead"><span class="vn-gname">Inferno</span><span class="vn-gcount">16 Young Artists</span></div>
+        <ul class="vn-names">
+          <li>Abbey Robinson</li>
+          <li>Adeline Myers</li>
+          <li>Arlo Jaros</li>
+          <li>Avery Ward</li>
+          <li>Brooklyn Florence</li>
+          <li>Callie Nelson</li>
+          <li>Cozi Graft</li>
+          <li>Ellie Skousen</li>
+          <li>Emma Mason</li>
+          <li>Evie Allred</li>
+          <li>Grant Dickerson</li>
+          <li>Kollins Wood</li>
+          <li>Livy Bergeson</li>
+          <li>Lydia Brinton</li>
+          <li>Sierryn Swope</li>
+          <li>Tessa Warren</li>
+        </ul>
+      </div>
+      <div class="vn-group" style="--lantern:#fbad66;">
+        <div class="vn-ghead"><span class="vn-gname">Blaze</span><span class="vn-gcount">22 Young Artists</span></div>
+        <ul class="vn-names">
+          <li>Avarie Densley</li>
+          <li>Blake Nelson</li>
+          <li>Chase Stocks</li>
+          <li>Chloe Bingham</li>
+          <li>Claire Adams</li>
+          <li>Ell Mitchell</li>
+          <li>Evan Rider</li>
+          <li>Ivy Edmunds</li>
+          <li>James Hendlemen</li>
+          <li>Kara Guglietti</li>
+          <li>Kassie Nielson</li>
+          <li>Livia Warren</li>
+          <li>Malia Hardy</li>
+          <li>Mia Chong</li>
+          <li>Norah Hafen</li>
+          <li>Olivia Hill</li>
+          <li>Parker De Rurange</li>
+          <li>Piper Hackett</li>
+          <li>Rowen Stucki</li>
+          <li>Rylee Popkes</li>
+          <li>Sophia Heppler</li>
+          <li>Noah Record</li>
+        </ul>
+      </div>
+      <div class="vn-group" style="--lantern:#fbc06a;">
+        <div class="vn-ghead"><span class="vn-gname">Rise</span><span class="vn-gcount">16 Young Artists</span></div>
+        <ul class="vn-names">
+          <li>Brielle Stiggins</li>
+          <li>Grace Hendelmen</li>
+          <li>Kalani Stiggins</li>
+          <li>Kolin Baguley</li>
+          <li>Lauren Stoddard</li>
+          <li>Lily Allred</li>
+          <li>Livi Paxman</li>
+          <li>Makenzi Shackle</li>
+          <li>Malayna Stiggins</li>
+          <li>Mia Furniss</li>
+          <li>Olivia Bingham</li>
+          <li>Paisley Talbot</li>
+          <li>Reagan Beckstead</li>
+          <li>Spencer Hull</li>
+          <li>Yan Sasso Firme</li>
+          <li>Zoey Scott</li>
+        </ul>
+      </div>
+      <div class="vn-group" style="--lantern:#ffe3a6;">
+        <div class="vn-ghead"><span class="vn-gname">Illuminate</span><span class="vn-gcount">20 Young Artists</span></div>
+        <ul class="vn-names">
+          <li>Addy Popkes</li>
+          <li>Ashton Tallman</li>
+          <li>Aubree Ottesen</li>
+          <li>Daniel Ottesen</li>
+          <li>Emalie Hoopes</li>
+          <li>Embry Ward</li>
+          <li>Emma Schmitt</li>
+          <li>Harper Hatch</li>
+          <li>Jefferson Thomas</li>
+          <li>Jenna Nielson</li>
+          <li>Kaylee Beal</li>
+          <li>Lilly Cox</li>
+          <li>Lilly Pearson</li>
+          <li>Malakai Naivalu</li>
+          <li>Malia Wilkinson</li>
+          <li>Noah Sorenson</li>
+          <li>Paige Dickerson</li>
+          <li>Scout Fielding</li>
+          <li>Sophie Martin</li>
+          <li>Taylor Terry</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pg-sec" id="thanks" aria-labelledby="thanks-h">
-  <div class="pg-wrap">
-    <p class="pg-eyebrow">With gratitude</p>
-    <h2 class="pg-h2" id="thanks-h">Special Thanks</h2>
-    <p class="pg-note">The Fielding Family, the Campbell Family, the Encore Friends painting team, Clint and Angela Hoopes, Bridget Arias Cunningham, Nicole Ram, and every volunteer and family who gave their time to this show.</p>
+<section class="vn-sec" id="team" aria-labelledby="team-h">
+  <div class="vn-wrap">
+    <p class="vn-eyebrow">Behind the curtain</p>
+    <h2 class="vn-h2" id="team-h">The Team</h2>
+    <div class="vn-rule"></div>
+    <p class="vn-lede">The people who built this show, on stage and off.</p>
+    <div class="vn-two">
+      <div>
+        <p class="vn-sub">Creative Team</p>
+        <ul class="vn-roles">
+          <li><span class="vn-role">Director</span><span class="vn-who">Kelby Tyrrell</span></li>
+          <li><span class="vn-role">Music Director</span><span class="vn-who">Leslie Scott</span></li>
+          <li><span class="vn-role">Choreographer</span><span class="vn-who">Kelby Tyrrell</span></li>
+          <li><span class="vn-role">Assistant Choreographer</span><span class="vn-who">Haven Record</span></li>
+          <li><span class="vn-role">Stage Manager</span><span class="vn-who">Shannon Martin</span></li>
+          <li><span class="vn-role">Assistant Stage Manager</span><span class="vn-who">Nevaeh Ward</span></li>
+          <li><span class="vn-role">Ambassadors</span><span class="vn-who">Emma Schmitt, Skylar Allred, Emalie Hoopes, Jea Nielson, Emma Roberts</span></li>
+          <li><span class="vn-role">Assistant Ambassador</span><span class="vn-who">Paige Dickerson</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="vn-sub">Production Team</p>
+        <ul class="vn-roles">
+          <li><span class="vn-role">Executive Director</span><span class="vn-who">Adam Record</span></li>
+          <li><span class="vn-role">Artistic Director</span><span class="vn-who">Rhett Guter</span></li>
+          <li><span class="vn-role">Production Manager</span><span class="vn-who">Randy Jo Sly</span></li>
+          <li><span class="vn-role">Lighting Designer</span><span class="vn-who">Wren Woodbury</span></li>
+          <li><span class="vn-role">Lighting Operator</span><span class="vn-who">Wren Woodbury</span></li>
+          <li><span class="vn-role">Sound Designer</span><span class="vn-who">Kimball Willard</span></li>
+          <li><span class="vn-role">Sound Operator</span><span class="vn-who">Hali Hoopes</span></li>
+          <li><span class="vn-role">Set Build Team</span><span class="vn-who">Wren Woodbury, Orval Barlow, Randy Jo Sly</span></li>
+          <li><span class="vn-role">Set Painter</span><span class="vn-who">Erin Hafen</span></li>
+          <li><span class="vn-role">Props Master</span><span class="vn-who">Amy Childress</span></li>
+          <li><span class="vn-role">Wardrobe Manager</span><span class="vn-who">Makayla Jarros</span></li>
+          <li><span class="vn-role">Wardrobe Team</span><span class="vn-who">Christina Dickerson, Heidi Adams, Stefanie Brooksby, Rhanda Todd, Chelsea Baguley, Laura Cabellero</span></li>
+          <li><span class="vn-role">Hair and Makeup Team</span><span class="vn-who">Kelby Tyrrell, Hali Hoopes, Brie Bergeson</span></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="pg-sec" id="donors" aria-labelledby="donors-h">
-  <div class="pg-wrap">
-    <p class="pg-eyebrow">Thank you</p>
-    <h2 class="pg-h2" id="donors-h">Our Generous Donors</h2>
-    <p class="pg-lede">Encore is a 501(c)(3) nonprofit. Ticket sales cover only part of what it costs
-      to put a show on this stage. These donors cover the rest.</p>
-    <div class="pg-tiers">
-    <div class="pg-tier">
-      <h3>$10,000 and above</h3>
-      <ul>
-        <li>Jeremy &amp; Amy Hanks</li>
-        <li>Robert &amp; Shirley Kramer</li>
-        <li>Sorenson Legacy Foundation</li>
-        <li>Donn Jersey</li>
-        <li>Bryan Watabe</li>
-      </ul>
+<section class="vn-sec" id="thanks" aria-labelledby="thanks-h">
+  <div class="vn-wrap">
+    <p class="vn-eyebrow">With gratitude</p>
+    <h2 class="vn-h2" id="thanks-h">Special Thanks</h2>
+    <div class="vn-rule"></div>
+    <p class="vn-note">The Fielding Family, the Campbell Family, the Encore Friends painting team, Clint and Angela Hoopes, Bridget Arias Cunningham, Nicole Ram, and every volunteer and family who gave their time to this show.</p>
+  </div>
+</section>
+
+<section class="vn-sec" id="donors" aria-labelledby="donors-h">
+  <div class="vn-wrap">
+    <p class="vn-eyebrow">Thank you</p>
+    <h2 class="vn-h2" id="donors-h">Our Generous Donors</h2>
+    <div class="vn-rule"></div>
+    <p class="vn-lede">Encore is a 501(c)(3) nonprofit. Ticket sales cover only part of what it
+      costs to put a show on this stage. These donors cover the rest.</p>
+    <div class="vn-tiers">
+      <div class="vn-tier">
+        <h3>$10,000 and above</h3>
+        <div class="vn-trule"></div>
+        <ul>
+          <li>Jeremy &amp; Amy Hanks</li>
+          <li>Robert &amp; Shirley Kramer</li>
+          <li>Sorenson Legacy Foundation</li>
+          <li>Donn Jersey</li>
+          <li>Bryan Watabe</li>
+        </ul>
+      </div>
+      <div class="vn-tier">
+        <h3>$5,000 and above</h3>
+        <div class="vn-trule"></div>
+        <ul>
+          <li>Dickerson Family</li>
+          <li>Kevin Bradburn</li>
+          <li>Taylor Garrett</li>
+          <li>Cheryl Mansfield</li>
+          <li>SunPro</li>
+        </ul>
+      </div>
+      <div class="vn-tier">
+        <h3>$1,000 and above</h3>
+        <div class="vn-trule"></div>
+        <ul>
+          <li>John Nichols</li>
+          <li>Ed Ofori</li>
+          <li>Corbin Allred</li>
+          <li>Terry &amp; Vicky Dickens</li>
+          <li>Brandie Sanders</li>
+          <li>Perry Myers</li>
+          <li>Summit HH&amp;H</li>
+          <li>Andrew Judkins</li>
+          <li>Bradley Family</li>
+          <li>Amy &amp; Darrell Childress</li>
+          <li>Saysha Nielson &amp; Family</li>
+          <li>Jenelle Young</li>
+          <li>Corey Wilhelmsen</li>
+          <li>Robert Simmons</li>
+          <li>Southwest Emergency</li>
+          <li>Marilyn Marshall</li>
+          <li>Kaleb Judkins</li>
+          <li>Victor &amp; Rachel Sparling</li>
+          <li>Ryan &amp; Katie Millar</li>
+          <li>Skywest Airlines</li>
+          <li>State Bank of Southern Utah</li>
+        </ul>
+      </div>
+      <div class="vn-tier">
+        <h3>$500 and above</h3>
+        <div class="vn-trule"></div>
+        <ul>
+          <li>John Marsh</li>
+          <li>Red Rock Realty</li>
+          <li>Alumni Creamery</li>
+          <li>Trisha Jensen</li>
+          <li>Catherine Larson</li>
+          <li>Jimmy Sorenson</li>
+          <li>Jennifer Shakespeare</li>
+          <li>Robert Stoeckig</li>
+        </ul>
+      </div>
     </div>
-    <div class="pg-tier">
-      <h3>$5,000 and above</h3>
-      <ul>
-        <li>Dickerson Family</li>
-        <li>Kevin Bradburn</li>
-        <li>Taylor Garrett</li>
-        <li>Cheryl Mansfield</li>
-        <li>SunPro</li>
-      </ul>
-    </div>
-    <div class="pg-tier">
-      <h3>$1,000 and above</h3>
-      <ul>
-        <li>John Nichols</li>
-        <li>Ed Ofori</li>
-        <li>Corbin Allred</li>
-        <li>Terry &amp; Vicky Dickens</li>
-        <li>Brandie Sanders</li>
-        <li>Perry Myers</li>
-        <li>Summit HH&amp;H</li>
-        <li>Andrew Judkins</li>
-        <li>Bradley Family</li>
-        <li>Amy &amp; Darrell Childress</li>
-        <li>Saysha Nielson &amp; Family</li>
-        <li>Jenelle Young</li>
-        <li>Corey Wilhelmsen</li>
-        <li>Robert Simmons</li>
-        <li>Southwest Emergency</li>
-        <li>Marilyn Marshall</li>
-        <li>Kaleb Judkins</li>
-        <li>Victor &amp; Rachel Sparling</li>
-        <li>Ryan &amp; Katie Millar</li>
-        <li>Skywest Airlines</li>
-        <li>State Bank of Southern Utah</li>
-      </ul>
-    </div>
-    <div class="pg-tier">
-      <h3>$500 and above</h3>
-      <ul>
-        <li>John Marsh</li>
-        <li>Red Rock Realty</li>
-        <li>Alumni Creamery</li>
-        <li>Trisha Jensen</li>
-        <li>Catherine Larson</li>
-        <li>Jimmy Sorenson</li>
-        <li>Jennifer Shakespeare</li>
-        <li>Robert Stoeckig</li>
-      </ul>
-    </div>
-    </div>
-    <div class="pg-core">
+    <div class="vn-core">
       <h3>And our amazing Core members</h3>
-      <p>The Core is our monthly giving community. It is the steadiest support Encore has, and it is
-        what keeps scholarships, sensory-friendly performances and ASL interpretation possible.</p>
+      <p>The Core is our monthly giving community. It is the steadiest support Encore has, and it
+        is what keeps scholarships, sensory-friendly performances and ASL interpretation possible.</p>
       <a href="/core-community">Join The Core &rarr;</a>
     </div>
   </div>
 </section>
 
-<section class="pg-sec" id="mission" aria-labelledby="mission-h">
-  <div class="pg-wrap">
-    <p class="pg-eyebrow">Why we do this</p>
-    <h2 class="pg-h2" id="mission-h">Our Mission</h2>
-    <p class="pg-note">Encore Performing Arts inspires and empowers young artists to discover and develop important life skills through unparalleled arts education, mentorship and extraordinary theater experiences.</p>
-    <p class="pg-lede" style="margin-top:24px;margin-bottom:0;">Through acting, storytelling and
-      theater-making, we help Young Artists build:</p>
-    <ul class="pg-skills">
+<section class="vn-sec" id="mission" aria-labelledby="mission-h">
+  <div class="vn-wrap">
+    <p class="vn-eyebrow">Why we do this</p>
+    <h2 class="vn-h2" id="mission-h">Our Mission</h2>
+    <div class="vn-rule"></div>
+    <p class="vn-note">Encore Performing Arts inspires and empowers young artists to discover and develop important life skills through unparalleled arts education, mentorship and extraordinary theater experiences.</p>
+    <p class="vn-lede" style="margin:26px 0 0;">Through acting, storytelling and theater-making,
+      we help Young Artists build:</p>
+    <ul class="vn-skills">
       <li>Collaboration and teamwork</li>
       <li>Critical thinking and complex problem-solving</li>
       <li>Giving and receiving constructive criticism</li>
@@ -744,36 +854,56 @@ h2 em{color:var(--teal)}
   </div>
 </section>
 
-<section class="pg-sec" id="next" aria-labelledby="next-h">
-  <div class="pg-wrap">
-    <p class="pg-eyebrow">Coming up</p>
-    <h2 class="pg-h2" id="next-h">What&rsquo;s Next at Encore</h2>
-    <p class="pg-lede">Two more shows at the Electric Theater before the year is out.</p>
-    <div class="pg-next">
-      <div class="pg-card">
-        <h3>Peter Pan Jr.</h3>
-        <p class="pg-when">November 19 to 21, 2026</p>
-        <p>Our Emerging Artists take on Neverland. Five performances, with a sensory-friendly
-          performance on November 19 and an ASL-interpreted performance on November 21.</p>
-        <a class="pg-go" href="/peter-pan-jr-tickets">Tickets and times</a>
+<section class="vn-sec" id="next" aria-labelledby="next-h">
+  <div class="vn-wrap">
+    <p class="vn-eyebrow">Coming up</p>
+    <h2 class="vn-h2" id="next-h">What&rsquo;s Next at Encore</h2>
+    <div class="vn-rule"></div>
+    <p class="vn-lede">Two more shows at the Electric Theater before the year is out.</p>
+    <div class="vn-next">
+      <div class="vn-card">
+        <div class="vn-card-art">
+          <picture>
+            <source type="image/webp" srcset="/img/shows/peter-pan-jr/card.webp">
+            <img src="/img/shows/peter-pan-jr/card.jpg" alt="Peter Pan Jr." loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="vn-card-body">
+          <h3>Peter Pan Jr.</h3>
+          <p class="vn-when">November 19 to 21, 2026</p>
+          <p class="vn-blurb">Our Emerging Artists take on Neverland. Five performances, with a
+            sensory-friendly performance on November 19 and an ASL-interpreted performance on
+            November 21.</p>
+          <a class="vn-go" href="/peter-pan-jr-tickets">Tickets and times</a>
+        </div>
       </div>
-      <div class="pg-card">
-        <h3>A Christmas Carol, a New Musical</h3>
-        <p class="pg-when">November 30 to December 18, 2026</p>
-        <p>Our fifth year of Carol, with Corbin Allred as Ebenezer Scrooge. A sensory-friendly
-          performance on December 1 and an ASL-interpreted performance on December 12.</p>
-        <a class="pg-go" href="/a-christmas-carol-tickets">Tickets and times</a>
+      <div class="vn-card">
+        <div class="vn-card-art">
+          <picture>
+            <source type="image/webp" srcset="/img/shows/a-christmas-carol-card.webp">
+            <img src="/img/shows/a-christmas-carol-card.jpg" alt="A Christmas Carol, a New Musical" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="vn-card-body">
+          <h3>A Christmas Carol, a New Musical</h3>
+          <p class="vn-when">November 30 to December 18, 2026</p>
+          <p class="vn-blurb">Our fifth year of Carol, with Corbin Allred as Ebenezer Scrooge.
+            A sensory-friendly performance on December 1 and an ASL-interpreted performance on
+            December 12.</p>
+          <a class="vn-go" href="/a-christmas-carol-tickets">Tickets and times</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pg-sec" id="sponsors" aria-labelledby="spon-h">
-  <div class="pg-wrap">
-    <p class="pg-eyebrow">Program sponsors</p>
-    <h2 class="pg-h2" id="spon-h">Thank You to Our Sponsors</h2>
-    <p class="pg-lede">Their support puts this program in your hands.</p>
-    <div class="pg-spon">
+<section class="vn-sec" id="sponsors" aria-labelledby="spon-h">
+  <div class="vn-wrap">
+    <p class="vn-eyebrow">Program sponsors</p>
+    <h2 class="vn-h2" id="spon-h">Thank You to Our Sponsors</h2>
+    <div class="vn-rule"></div>
+    <p class="vn-lede">Their support puts this program in your hands.</p>
+    <div class="vn-spon">
       <div>
         <strong>St. George Academy</strong>
         <p>Tuition-free, grades 7 through 12. Pathways in aerospace engineering, computer science,
@@ -872,6 +1002,72 @@ h2 em{color:var(--teal)}
     </div>
   </div>
 </footer>
+
+<script>
+/* Drifting lantern sparks and mist over the hero. The canvas is capped by CSS
+   opacity, so no amount of particle overlap can push the hero backdrop lighter
+   than the contrast measurement assumed. */
+(function(){
+  var c = document.querySelector('.vn-mist');
+  if (!c) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ctx = c.getContext('2d'), parts = [], raf = null, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var TONES = [[255,217,138],[243,184,92],[159,211,220],[120,196,208]];
+  function sprite(rgb){
+    var s = document.createElement('canvas'), r = 26;
+    s.width = s.height = r * 2;
+    var g = s.getContext('2d').createRadialGradient(r, r, 0, r, r, r);
+    g.addColorStop(0, 'rgba(' + rgb + ',1)');
+    g.addColorStop(0.3, 'rgba(' + rgb + ',0.86)');
+    g.addColorStop(0.58, 'rgba(' + rgb + ',0.3)');
+    g.addColorStop(1, 'rgba(' + rgb + ',0)');
+    var sc = s.getContext('2d'); sc.fillStyle = g; sc.fillRect(0, 0, r * 2, r * 2);
+    return s;
+  }
+  var SPR = TONES.map(function(t){ return sprite(t.join(',')); });
+  function build(){
+    var r = c.getBoundingClientRect();
+    c.width = Math.max(1, Math.round(r.width * dpr));
+    c.height = Math.max(1, Math.round(r.height * dpr));
+    var n = Math.max(18, Math.min(46, Math.round(r.width / 26)));
+    parts = [];
+    for (var i = 0; i < n; i++){
+      parts.push({
+        x: Math.random() * r.width, y: Math.random() * r.height,
+        rad: 2.5 + Math.random() * 8,
+        vy: -(0.10 + Math.random() * 0.34),
+        vx: (Math.random() - 0.5) * 0.22,
+        a: 0.35 + Math.random() * 0.5,
+        ph: Math.random() * Math.PI * 2,
+        sp: SPR[(Math.random() * SPR.length) | 0]
+      });
+    }
+  }
+  function frame(t){
+    var r = c.getBoundingClientRect();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, r.width, r.height);
+    for (var i = 0; i < parts.length; i++){
+      var p = parts[i];
+      p.y += p.vy; p.x += p.vx + Math.sin((t / 1800) + p.ph) * 0.16;
+      if (p.y < -p.rad * 2){ p.y = r.height + p.rad; p.x = Math.random() * r.width; }
+      if (p.x < -40) p.x = r.width + 20; else if (p.x > r.width + 40) p.x = -20;
+      ctx.globalAlpha = p.a * (0.68 + 0.32 * Math.sin((t / 1500) + p.ph));
+      ctx.drawImage(p.sp, p.x - p.rad, p.y - p.rad, p.rad * 2, p.rad * 2);
+    }
+    ctx.globalAlpha = 1;
+    raf = requestAnimationFrame(frame);
+  }
+  function start(){ if (!raf) raf = requestAnimationFrame(frame); }
+  function stop(){ if (raf){ cancelAnimationFrame(raf); raf = null; } }
+  build(); start();
+  addEventListener('resize', function(){ build(); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(e){ e[0].isIntersecting ? start() : stop(); })
+      .observe(c);
+  }
+})();
+</script>
 
 </body>
 </html>
