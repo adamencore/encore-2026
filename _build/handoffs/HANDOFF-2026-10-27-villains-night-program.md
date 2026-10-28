@@ -189,6 +189,57 @@ Suggested URL pattern: `/<show>-program`.
 
 ---
 
+## Redesign, 2026-10-28: dress it in the show (`c1f8c1c`)
+
+Adam: "make this look much more inviting and exciting but on brand with the
+show." The first build was correct but read like a nonprofit handout.
+
+**The palette was sampled, not invented.** Quantising the show's own key art
+`img/shows/villains-night.jpg` gives deep navy `#0b365f`, mid teal `#165f7d`,
+`#318496` (which is the Encore brand teal, already in the art), bright mist
+`#139faa` and cream `#f4efe4`. So the show's brand and Encore's brand already
+agree, and there was no need to reach for Halloween purple and orange.
+
+The warm amber accent comes from the lantern and rim light on the cast cut-out.
+That is why warm sits against cool on this page, and it is also why the Aspire
+group names work as a device: Spark, Ignite, Ember, Inferno, Blaze, Rise,
+Illuminate is a light ladder, so each group card carries its own lantern tone,
+palest at Spark through hottest at Inferno and brightest at Illuminate.
+
+Built on: `vn-bg` as the hero ground, `vn-logo` as the real title, the
+`vn-cast-cutout` bleeding off the base, a drifting lantern-spark canvas that
+respects `prefers-reduced-motion`, an amber Join The Core block, and the real
+Peter Pan and Carol key art on the What's Next cards.
+
+### Three contrast failures the measurement caught
+
+Measured across **four animation frames**, because the spark canvas lightens the
+hero and a single plate would have missed the worst case.
+
+1. **The ghost button measured 1.20:1.** Its cream text sat over the lit blonde
+   hair in the cast cut-out. Fixed structurally, not by nudging: the cut-out is
+   1440x1280, so the hero copy now reserves `calc(var(--cast-w) * 0.8889)` below
+   itself and the two cannot overlap at any width. **Derive the clearance from
+   the asset's own aspect ratio rather than guessing a padding value.**
+2. **The venue line measured 4.15:1**, mist `#9fd3dc` on the hero's teal. Now
+   cream.
+3. **The eyebrow measured 4.26:1.** Hero wash mid-stop moved from `.30` to `.46`.
+
+Zero failures at 390 and 1200 afterwards, tightest margin 4.93:1. Inferno and
+Blaze were lightened slightly because they first landed at 4.54:1, which passes
+but is too thin to survive antialiasing.
+
+### Two flags verified before being believed
+
+- `vn-cast` reports as overflowing the viewport at 320 and 390. That is the
+  intended full-bleed, `scrollWidth` equals `clientWidth`, and `.vn-hero` clips
+  it. Not a bug.
+- Two images report `naturalWidth: 0` in a full-page screenshot. They are
+  `loading="lazy"` below the fold. Confirmed loading on scroll before dismissing
+  it, rather than assuming. All five images resolve.
+
+---
+
 ## Open
 
 - **Sponsor artwork.** The two ads on page 2 are rendered as text. Canva's export
