@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<!-- Encore PNG to WebP converter. Internal team tool, public URL /png, noindex. Runs fully in the browser: images are never uploaded. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>PNG to WebP | Encore Performing Arts</title>
+<meta name="description" content="Convert PNG images to WebP in your browser. Nothing is uploaded.">
+<meta name="theme-color" content="#22353d">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<style>
+  :root{
+    --purple:#22353d;--purple2:#2f616e;--cream-lite:#f5f1ec;--paper:#fffdf9;
+    --coral-2:#fbaca8;--coral-4:#e8716b;--coral-ink:#b8443e;--muted:#4f6b76;--line:rgba(32,65,74,.16);
+    --good:#2a7040;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  [hidden]{display:none!important}
+  body{font-family:'Mikado',system-ui,sans-serif;background:var(--cream-lite);color:var(--purple);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:clip}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+  .topbar{background:var(--paper);border-bottom:1px solid var(--line)}
+  .topbar-in{max-width:880px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .topbar .brandmark{height:24px;color:var(--purple);display:block}
+  .tb-right{display:flex;align-items:center;gap:14px}
+  .tb-badge{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--purple);border-radius:100px;padding:6px 12px}
+  .tb-link{font-size:13.5px;color:var(--muted);font-weight:500}
+  .tb-link:hover{color:var(--purple)}
+
+  .hero{background:radial-gradient(120% 130% at 20% 0%,var(--purple2),var(--purple) 62%);color:#fff}
+  .hero-in{max-width:880px;margin:0 auto;padding:44px 20px 40px}
+  .hero .k{font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:11.5px;color:var(--coral-2)}
+  .hero h1{font-weight:500;font-size:clamp(34px,7vw,52px);line-height:1;margin-top:12px}
+  .hero p{margin-top:14px;max-width:560px;color:rgba(255,255,255,.86);font-size:16px}
+  .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;list-style:none}
+  .badges li{font-size:12.5px;font-weight:500;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:4px 12px;color:rgba(255,255,255,.9)}
+
+  main.wrap{padding-top:30px;padding-bottom:10px}
+  .notice{border:1px solid var(--coral-4);color:var(--coral-ink);border-radius:14px;padding:12px 14px;margin:0 0 16px;font-size:14px;background:var(--paper)}
+
+  .drop{position:relative;display:block;border:2px dashed var(--line);border-radius:18px;background:var(--paper);padding:44px 20px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s}
+  .drop:hover,.drop.over{border-color:var(--coral-4)}
+  .drop.over{background:#fff4f2}
+  .drop strong{display:block;font-size:20px;font-weight:600;margin-bottom:4px}
+  .drop small{color:var(--muted);font-size:14px}
+  .drop input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+  .drop:focus-within{outline:3px solid var(--coral-2);outline-offset:3px}
+
+  .controls{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+  .ctl{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 18px}
+  .ctl label{display:flex;justify-content:space-between;font-weight:600;font-size:14px;margin-bottom:8px}
+  .ctl label output,.ctl label em{font-style:normal;color:var(--muted);font-weight:500}
+  .ctl input[type=range]{width:100%;accent-color:var(--purple)}
+  .ctl input[type=number]{width:100%;padding:9px 12px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--purple);font:inherit}
+  .ctl input[type=number]:focus{outline:2px solid var(--purple2);border-color:transparent}
+  .ctl .hint{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+
+  .bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin:24px 0 12px}
+  .summary{color:var(--muted);font-size:14px}
+  .summary b{color:var(--good);font-weight:600}
+  .btns{display:flex;gap:8px;flex-wrap:wrap}
+  button,.btn{font:inherit;font-weight:600;font-size:14px;border-radius:999px;padding:9px 16px;border:1px solid var(--line);background:var(--paper);color:var(--purple);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+  button:hover:not(:disabled),.btn:hover{border-color:var(--purple)}
+  button.primary{background:var(--purple);color:#fff;border-color:var(--purple)}
+  button.primary:hover:not(:disabled){background:var(--purple2);border-color:var(--purple2)}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  button:focus-visible,.btn:focus-visible{outline:3px solid var(--coral-2);outline-offset:2px}
+
+  .list{list-style:none;display:grid;gap:10px}
+  .item{display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:10px 12px}
+  .thumb{width:56px;height:56px;border-radius:10px;object-fit:cover;background:repeating-conic-gradient(#e6e0d8 0 25%,transparent 0 50%) 0 0/12px 12px}
+  .meta{min-width:0}
+  .name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .stats{font-size:13px;color:var(--muted)}
+  .stats .save{color:var(--good);font-weight:600}
+  .stats .grow,.stats .err{color:var(--coral-ink);font-weight:600}
+  .item .btn{padding:7px 14px}
+
+  .help{margin-top:30px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+  .help h2{font-size:17px;font-weight:600;margin-bottom:8px}
+  .help ul{padding-left:18px;color:var(--muted);font-size:14px;display:grid;gap:4px}
+
+  footer{margin-top:34px;background:var(--purple);color:rgba(255,255,255,.75);text-align:center;padding:26px 20px}
+  footer .brandmark{height:20px;color:#fff;opacity:.9}
+  footer p{font-size:12.5px;margin-top:10px}
+
+  @media(max-width:560px){
+    .hero-in{padding:36px 16px 32px}.wrap,.topbar-in{padding-left:16px;padding-right:16px}
+    .controls{grid-template-columns:1fr}
+    .item{grid-template-columns:44px 1fr}.thumb{width:44px;height:44px}
+    .item .btn{grid-column:1/-1;justify-content:center}
+    .tb-badge{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="topbar-in">
+  <a href="/" aria-label="Encore Performing Arts"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true"><g><path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/><path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/><polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/><path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/><path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/><path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/><path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/><path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/><path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/></g></svg></a>
+  <div class="tb-right">
+    <span class="tb-badge">Team Tool</span>
+    <a class="tb-link" href="/team/">Team Hub</a>
+  </div>
+</div></div>
+
+<header class="hero"><div class="hero-in">
+  <div class="k">Encore Performing Arts</div>
+  <h1>PNG to WebP</h1>
+  <p>Drop in PNGs and get back smaller WebP files for the website. Everything happens on your device, so images never leave your computer.</p>
+  <ul class="badges"><li>No uploads</li><li>Batch + ZIP</li><li>Works offline</li></ul>
+</div></header>
+
+<main class="wrap">
+  <div class="notice" id="notice" role="status" hidden></div>
+
+  <label class="drop" id="drop" for="file">
+    <input type="file" id="file" accept="image/png,image/jpeg,image/gif,image/bmp" multiple>
+    <strong>Drop PNGs here</strong>
+    <small>or click to choose files. You can also paste an image.</small>
+  </label>
+
+  <div class="controls">
+    <div class="ctl">
+      <label for="quality">Quality <output id="qOut">82</output></label>
+      <input type="range" id="quality" min="1" max="100" value="82">
+      <div class="hint">80 to 85 is the sweet spot for most web images. 100 is near lossless.</div>
+    </div>
+    <div class="ctl">
+      <label for="maxw">Max width <em>optional, px</em></label>
+      <input type="number" id="maxw" min="16" max="16384" step="1" placeholder="Keep original size">
+      <div class="hint">Resizes larger images down. 1600 is the site standard for full-width photos.</div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="summary" id="summary">No files yet.</div>
+    <div class="btns">
+      <button id="reconvert" disabled>Reconvert with new settings</button>
+      <button id="zip" class="primary" disabled>Download all (.zip)</button>
+      <button id="clear" disabled>Clear</button>
+    </div>
+  </div>
+
+  <ul class="list" id="list"></ul>
+
+  <section class="help">
+    <h2>Good to know</h2>
+    <ul>
+      <li>Works in Chrome, Edge and Firefox. Older Safari cannot make WebP files and will show a message.</li>
+      <li>Converted files drop camera and location data automatically.</li>
+      <li>When replacing an image on the site, give the new file a new name so browsers pick it up.</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true"><g><path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/><path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/><path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/><path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/><path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/><path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/><path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/><path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/></g></svg>
+  <p>Encore Performing Arts · Internal team tools</p>
+</footer>
+
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const fileInput = $('file'), drop = $('drop'), list = $('list');
+  const quality = $('quality'), qOut = $('qOut'), maxw = $('maxw');
+  const zipBtn = $('zip'), clearBtn = $('clear'), reBtn = $('reconvert');
+  const summary = $('summary'), notice = $('notice');
+
+  // items: {id, file, name, origSize, blob, url, thumbUrl, status, error, li}
+  let items = [];
+  let nextId = 1;
+  let webpSupported = null;
+
+  // ---------- capability check ----------
+  function checkWebp() {
+    return new Promise(res => {
+      const c = document.createElement('canvas');
+      c.width = c.height = 2;
+      if (!c.toBlob) return res(false);
+      c.toBlob(b => res(!!b && b.type === 'image/webp'), 'image/webp', 0.8);
+    });
+  }
+
+  function showNotice(msg) { notice.textContent = msg; notice.hidden = false; }
+
+  // ---------- helpers ----------
+  const fmt = n => n < 1024 ? n + ' B' : n < 1048576 ? (n / 1024).toFixed(1) + ' KB' : (n / 1048576).toFixed(2) + ' MB';
+  const outName = name => name.replace(/\.[^.]+$/, '') + '.webp';
+
+  function uniqueName(name, used) {
+    if (!used.has(name)) { used.add(name); return name; }
+    const base = name.replace(/\.webp$/, '');
+    let i = 2;
+    while (used.has(`${base}-${i}.webp`)) i++;
+    const n = `${base}-${i}.webp`; used.add(n); return n;
+  }
+
+  async function decode(file) {
+    if ('createImageBitmap' in window) {
+      try { return await createImageBitmap(file); } catch (e) { /* fall back */ }
+    }
+    return new Promise((res, rej) => {
+      const img = new Image();
+      const u = URL.createObjectURL(file);
+      img.onload = () => { URL.revokeObjectURL(u); res(img); };
+      img.onerror = () => { URL.revokeObjectURL(u); rej(new Error('Could not read this image')); };
+      img.src = u;
+    });
+  }
+
+  async function convert(file) {
+    const src = await decode(file);
+    const sw = src.width, sh = src.height;
+    let w = sw, h = sh;
+    const limit = parseInt(maxw.value, 10);
+    if (limit > 0 && sw > limit) { w = limit; h = Math.max(1, Math.round(sh * limit / sw)); }
+    const c = document.createElement('canvas');
+    c.width = w; c.height = h;
+    const ctx = c.getContext('2d');
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(src, 0, 0, w, h);
+    if (src.close) src.close();
+    const q = Math.min(1, Math.max(0.01, quality.value / 100));
+    const blob = await new Promise(res => c.toBlob(res, 'image/webp', q));
+    c.width = c.height = 0; // free memory
+    if (!blob) throw new Error('Encoder returned nothing');
+    if (blob.type !== 'image/webp') throw new Error('This browser cannot encode WebP');
+    return { blob, w, h };
+  }
+
+  // ---------- rendering ----------
+  function render(item) {
+    if (!item.li) {
+      item.li = document.createElement('li');
+      item.li.className = 'item';
+      list.appendChild(item.li);
+    }
+    const thumb = item.thumbUrl ? `<img class="thumb" src="${item.thumbUrl}" alt="">` : `<div class="thumb"></div>`;
+    let stats, action = '';
+    if (item.status === 'queued') {
+      stats = `${fmt(item.origSize)} &rarr; waiting...`;
+    } else if (item.status === 'working') {
+      stats = `${fmt(item.origSize)} &rarr; converting...`;
+    } else if (item.status === 'error') {
+      stats = `<span class="err">${escapeHtml(item.error)}</span>`;
+    } else {
+      const diff = 1 - item.blob.size / item.origSize;
+      const pct = Math.round(Math.abs(diff) * 100);
+      const tag = diff >= 0 ? `<span class="save">${pct}% smaller</span>` : `<span class="grow">${pct}% larger</span>`;
+      stats = `${fmt(item.origSize)} &rarr; ${fmt(item.blob.size)} &middot; ${tag} &middot; ${item.w}&times;${item.h}`;
+      action = `<a class="btn" href="${item.url}" download="${escapeAttr(item.outName)}">Download</a>`;
+    }
+    item.li.innerHTML = `${thumb}<div class="meta"><div class="name" title="${escapeAttr(item.name)}">${escapeHtml(item.name)}</div><div class="stats">${stats}</div></div>${action}`;
+  }
+
+  function escapeHtml(s) { return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  const escapeAttr = escapeHtml;
+
+  function updateSummary() {
+    const done = items.filter(i => i.status === 'done');
+    const working = items.some(i => i.status === 'working');
+    zipBtn.disabled = working || done.length === 0;
+    reBtn.disabled = working || items.length === 0;
+    clearBtn.disabled = working || items.length === 0;
+    if (!items.length) { summary.textContent = 'No files yet.'; return; }
+    const before = done.reduce((a, i) => a + i.origSize, 0);
+    const after = done.reduce((a, i) => a + i.blob.size, 0);
+    const pct = before ? Math.round((1 - after / before) * 100) : 0;
+    const errs = items.filter(i => i.status === 'error').length;
+    summary.innerHTML = `${done.length} of ${items.length} converted` +
+      (done.length ? ` &middot; ${fmt(before)} &rarr; ${fmt(after)} &middot; <b>${pct >= 0 ? pct + '% saved' : Math.abs(pct) + '% larger'}</b>` : '') +
+      (errs ? ` &middot; ${errs} failed` : '') + (working ? ' &middot; working...' : '');
+  }
+
+  // ---------- queue (one at a time keeps memory low on big batches) ----------
+  let running = false;
+  async function runQueue() {
+    if (running) return;
+    running = true;
+    for (const item of items) {
+      if (item.status !== 'queued') continue;
+      item.status = 'working'; render(item); updateSummary();
+      try {
+        const { blob, w, h } = await convert(item.file);
+        if (item.url) URL.revokeObjectURL(item.url);
+        item.blob = blob; item.w = w; item.h = h;
+        item.url = URL.createObjectURL(blob);
+        item.status = 'done';
+      } catch (e) {
+        item.status = 'error'; item.error = e.message || 'Conversion failed';
+      }
+      if (!items.includes(item)) continue; // cleared mid-run
+      render(item); updateSummary();
+    }
+    running = false;
+    if (items.some(i => i.status === 'queued')) runQueue();
+    updateSummary();
+  }
+
+  function addFiles(fileList) {
+    if (webpSupported === false) return;
+    const files = [...fileList].filter(f => /^image\//.test(f.type) || /\.(png|jpe?g|gif|bmp)$/i.test(f.name));
+    if (!files.length) { showNotice('Those files are not images this tool can read. Try PNG or JPG.'); return; }
+    for (const f of files) {
+      const item = { id: nextId++, file: f, name: f.name || 'pasted-image.png', origSize: f.size, status: 'queued', thumbUrl: URL.createObjectURL(f) };
+      item.outName = outName(item.name);
+      items.push(item); render(item);
+    }
+    updateSummary(); runQueue();
+  }
+
+  // ---------- ZIP (store method, no library) ----------
+  const CRC_TABLE = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+  function crc32(buf) { let c = 0xFFFFFFFF; for (let i = 0; i < buf.length; i++) c = CRC_TABLE[(c ^ buf[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+
+  async function buildZip(entries) {
+    const enc = new TextEncoder();
+    const parts = [], central = [];
+    let offset = 0;
+    const d = new Date();
+    const dosTime = (d.getHours() << 11) | (d.getMinutes() << 5) | (d.getSeconds() >> 1);
+    const dosDate = ((d.getFullYear() - 1980) << 9) | ((d.getMonth() + 1) << 5) | d.getDate();
+    for (const { name, blob } of entries) {
+      const data = new Uint8Array(await blob.arrayBuffer());
+      const nameBytes = enc.encode(name);
+      const crc = crc32(data);
+      const lh = new DataView(new ArrayBuffer(30));
+      lh.setUint32(0, 0x04034b50, true); lh.setUint16(4, 20, true); lh.setUint16(6, 0x0800, true);
+      lh.setUint16(8, 0, true); lh.setUint16(10, dosTime, true); lh.setUint16(12, dosDate, true);
+      lh.setUint32(14, crc, true); lh.setUint32(18, data.length, true); lh.setUint32(22, data.length, true);
+      lh.setUint16(26, nameBytes.length, true); lh.setUint16(28, 0, true);
+      parts.push(lh.buffer, nameBytes, data);
+      const ch = new DataView(new ArrayBuffer(46));
+      ch.setUint32(0, 0x02014b50, true); ch.setUint16(4, 20, true); ch.setUint16(6, 20, true); ch.setUint16(8, 0x0800, true);
+      ch.setUint16(10, 0, true); ch.setUint16(12, dosTime, true); ch.setUint16(14, dosDate, true);
+      ch.setUint32(16, crc, true); ch.setUint32(20, data.length, true); ch.setUint32(24, data.length, true);
+      ch.setUint16(28, nameBytes.length, true); ch.setUint32(42, offset, true);
+      central.push(ch.buffer, nameBytes);
+      offset += 30 + nameBytes.length + data.length;
+    }
+    const cdSize = central.reduce((a, p) => a + (p.byteLength ?? p.length), 0);
+    const end = new DataView(new ArrayBuffer(22));
+    end.setUint32(0, 0x06054b50, true); end.setUint16(8, entries.length, true); end.setUint16(10, entries.length, true);
+    end.setUint32(12, cdSize, true); end.setUint32(16, offset, true);
+    return new Blob([...parts, ...central, end.buffer], { type: 'application/zip' });
+  }
+
+  // ---------- events ----------
+  fileInput.addEventListener('change', e => { addFiles(e.target.files); fileInput.value = ''; });
+  ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => addFiles(e.dataTransfer.files));
+  // Stop a missed drop from navigating away from the page
+  window.addEventListener('dragover', e => e.preventDefault());
+  window.addEventListener('drop', e => e.preventDefault());
+  window.addEventListener('paste', e => {
+    const files = [...(e.clipboardData?.items || [])].filter(i => i.kind === 'file').map(i => i.getAsFile()).filter(Boolean);
+    if (files.length) addFiles(files);
+  });
+
+  quality.addEventListener('input', () => { qOut.textContent = quality.value; });
+
+  reBtn.addEventListener('click', () => {
+    items.forEach(i => { i.status = 'queued'; render(i); });
+    updateSummary(); runQueue();
+  });
+
+  zipBtn.addEventListener('click', async () => {
+    const done = items.filter(i => i.status === 'done');
+    if (!done.length) return;
+    zipBtn.disabled = true; const label = zipBtn.textContent; zipBtn.textContent = 'Zipping...';
+    try {
+      const used = new Set();
+      const zip = await buildZip(done.map(i => ({ name: uniqueName(i.outName, used), blob: i.blob })));
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(zip); a.download = 'webp-images.zip';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    } finally { zipBtn.textContent = label; updateSummary(); }
+  });
+
+  clearBtn.addEventListener('click', () => {
+    items.forEach(i => { if (i.url) URL.revokeObjectURL(i.url); if (i.thumbUrl) URL.revokeObjectURL(i.thumbUrl); });
+    items = []; list.innerHTML = ''; updateSummary();
+  });
+
+  checkWebp().then(ok => {
+    webpSupported = ok;
+    if (!ok) {
+      showNotice('This browser cannot create WebP files (older Safari is the usual culprit). Open this page in Chrome, Edge, or Firefox and it will work.');
+      drop.style.opacity = .5; drop.style.pointerEvents = 'none'; fileInput.disabled = true;
+    }
+  });
+
+})();
+</script>
+</body>
+</html>
