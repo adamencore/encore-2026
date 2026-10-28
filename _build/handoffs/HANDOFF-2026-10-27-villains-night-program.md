@@ -240,6 +240,66 @@ but is too thin to survive antialiasing.
 
 ---
 
+## The production sheet, 2026-10-28 (`4fde5eb`)
+
+Adam pointed at a second sheet, **"Aspire Villains Night Production Sheet 2026"**,
+id `15PCwoIR8oAe6hxBEToKuR-8c8EVLsqp9x5pvE5SvL1c`, tab **Program Information**.
+This is a different sheet from the "2026 Schedule Source of Truth" and it is the
+better source for program content. 33 tabs; the program one is index 0.
+
+Its column layout: A and B hold the team, E and F hold the cast by group, G and
+H hold featured roles and who plays them, and J, K and L hold Special Thanks at
+the top and then the running order, the groups in each number, and the solos.
+
+Added from it: **The Show**, all 22 numbers in order with group chips and solo
+credits, and **Featured Roles**, 28 roles. The page had been missing the show
+itself, which is the main thing a program is for.
+
+### Conflicts and corrections, all needing Adam's eye
+
+1. **Special Thanks is entirely different between the two sources.** The sheet
+   says Utah Tech Lacrosse Team, Brian Tyrrell, and our amazing volunteers and
+   families. The Canva program said the Fielding Family, the Campbell Family,
+   the Encore Friends painting team, Clint and Angela Hoopes, Bridget Arias
+   Cunningham and Nicole Ram. **No names in common.** The Canva list looks
+   carried over from the Little Women program, which fits its truncated trailing
+   comma. The page now uses the sheet. Ask whether the Canva names belong too.
+2. **"Jea Nielson" was a typo for Jenna Nielson**, confirmed because the sheet
+   says Jenna and Jenna Nielson is in the Illuminate roster. Fixed.
+3. **Andrew Orton plays Captain Hook, sings in the Pirate Medley and is a Dapper
+   Dan, but is in none of the seven group rosters.** Either he is a guest or
+   staff performer, or a roster is missing him.
+4. **Lilly Pearson** is in the Canva program's Illuminate but not the sheet's.
+   The page keeps her, since the printed program is what the audience holds.
+5. **Malia Wilkinson appears in both Rise and Illuminate** in the sheet.
+6. Sheet typos normalised against the sheet's own roster spellings: Kara
+   Gugliettei, Elle Mitchell, Parker DeRurange, Evan Ride.
+7. Character spellings left exactly as the sheet has them, but two look wrong:
+   **Dr. Facillier** (Disney spells it Facilier) and **Winnifred Sanderson**
+   (Hocus Pocus spells it Winifred). Deliberately not corrected. Adam's call.
+8. Blank in the sheet, so not shown: Company Manager, Music Operator, Set
+   Designer/Styler, Set Assistant, Technical Director, Costume Designer,
+   Rehearsal Coordinator and Assistant.
+
+### The randomised-backdrop problem, worth keeping
+
+The spark canvas seeds particle positions randomly on every load, so **the hero
+backdrop is never the same twice and one measurement run can pass a page that
+would fail on the next load.** Two hero elements duly failed on a reseed, at
+3.84:1 and 4.36:1, after passing cleanly before.
+
+Nudging the wash would only have moved the odds. The fix is structural: a scrim
+on `.vn-hero-in::before` at `z-index:-1`, which rides inside that element's own
+stacking context and therefore sits above both the spark canvas and the cast
+cut-out but below the text. The floor no longer depends on where sparks land.
+
+**Verification rule this gives: for anything with a randomised or animated
+backdrop, measure across several independent page loads, not several frames of
+one load, and treat stable numbers run to run as the evidence the fix worked.**
+Three loads at 390 and 1200 now return identical lowest values.
+
+---
+
 ## Open
 
 - **Sponsor artwork.** The two ads on page 2 are rendered as text. Canva's export
