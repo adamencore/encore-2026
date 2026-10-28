@@ -145,6 +145,50 @@ pushed clean. Worth knowing that two tracks are now live in this repo at once.
 
 ---
 
+## QR code and box office sign (built same day)
+
+Adam's goal, stated by voice: a repeatable system for mobile programs, so guests
+scan at the box office instead of taking a printed one. Especially for latecomers
+when the printed programs run out, and to cut paper and print cost.
+
+Built and delivered, not in the repo (they are print assets, not site files):
+
+- `villains-night-program-qr.svg`, vector, transparent, `#22353d`
+- `villains-night-program-qr.png`, 1800px, white background
+- `villains-night-box-office-sign.pdf`, letter size, portrait, real Mikado via
+  the repo's own `/fonts/mikado.css`, rendered through Chromium
+
+QR is version 5 at error correction H, which tolerates about 30 percent damage.
+
+### A real bug this caught, worth remembering
+
+**segno writes SVGs with `width`/`height` but no `viewBox`.** Sizing one with CSS
+shrinks the viewport without scaling the path, so the code gets cropped. The
+first sign rendered with only one of its three finder squares, and would not have
+scanned. It looked plausible enough at a glance.
+
+It was caught by decoding the QR off the rendered sign with OpenCV, not by
+looking at it. Fix is to inject `viewBox="0 0 540 540"` into the SVG. The
+delivered SVG has it.
+
+**The rule this suggests: never ship a QR that has not been decoded from the
+final rendered artifact.** Decoding the source PNG is not enough, since the bug
+was introduced downstream of it. Verified after the fix at 1200, 800, 600 and
+420px wide, with gaussian blur, and rotated 7 degrees. All decode to
+`https://encorepa.org/villains-night-program`.
+
+### Making this a system
+
+The page is a template now. For the next show, the pieces that change are the
+hero image and copy, the rosters, the team, and the What's Next cards. Donors,
+mission and sponsors carry over. The builder script used for this one is at
+`/tmp/.../scratchpad/build_program.py` for this session only, so the next one
+should either copy `villains-night-program.html` directly or rebuild from it.
+
+Suggested URL pattern: `/<show>-program`.
+
+---
+
 ## Open
 
 - **Sponsor artwork.** The two ads on page 2 are rendered as text. Canva's export
