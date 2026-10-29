@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- Encore PNG to WebP converter. Internal team tool, public URL /png, noindex. Runs fully in the browser: images are never uploaded. -->
+<!-- Encore PNG + HEIC to WebP converter. Internal team tool, public URL /png, noindex. Runs fully in the browser: images are never uploaded. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<title>PNG to WebP | Encore Performing Arts</title>
-<meta name="description" content="Convert PNG images to WebP in your browser. Nothing is uploaded.">
+<title>PNG + HEIC to WebP | Encore Performing Arts</title>
+<meta name="description" content="Convert PNG and iPhone HEIC images to WebP in your browser. Nothing is uploaded.">
 <meta name="theme-color" content="#22353d">
 <link rel="stylesheet" href="/fonts/mikado.css">
 <style>
@@ -109,17 +109,17 @@
 
 <header class="hero"><div class="hero-in">
   <div class="k">Encore Performing Arts</div>
-  <h1>PNG to WebP</h1>
-  <p>Drop in PNGs and get back smaller WebP files for the website. Everything happens on your device, so images never leave your computer.</p>
-  <ul class="badges"><li>No uploads</li><li>Batch + ZIP</li><li>Works offline</li></ul>
+  <h1>PNG + HEIC to WebP</h1>
+  <p>Drop in PNGs or iPhone photos (HEIC) and get back smaller WebP files for the website. Everything happens on your device, so images never leave your computer.</p>
+  <ul class="badges"><li>PNG + HEIC</li><li>No uploads</li><li>Batch + ZIP</li><li>Works offline</li></ul>
 </div></header>
 
 <main class="wrap">
   <div class="notice" id="notice" role="status" hidden></div>
 
   <label class="drop" id="drop" for="file">
-    <input type="file" id="file" accept="image/png,image/jpeg,image/gif,image/bmp" multiple>
-    <strong>Drop PNGs here</strong>
+    <input type="file" id="file" accept="image/png,image/jpeg,image/gif,image/bmp,image/heic,image/heif,.heic,.heif" multiple>
+    <strong>Drop PNGs or HEIC photos here</strong>
     <small>or click to choose files. You can also paste an image.</small>
   </label>
 
@@ -132,7 +132,7 @@
     <div class="ctl">
       <label for="maxw">Max width <em>optional, px</em></label>
       <input type="number" id="maxw" min="16" max="16384" step="1" placeholder="Keep original size">
-      <div class="hint">Resizes larger images down. 1600 is the site standard for full-width photos.</div>
+      <div class="hint">Resizes larger images down. 1600 is the site standard for full-width photos. iPhone photos are about 4000 wide, so set this for those.</div>
     </div>
   </div>
 
@@ -151,7 +151,8 @@
     <h2>Good to know</h2>
     <ul>
       <li>Works in Chrome, Edge and Firefox. Older Safari cannot make WebP files and will show a message.</li>
-      <li>Converted files drop camera and location data automatically.</li>
+      <li>HEIC is the iPhone photo format. The first HEIC you add loads a one-time photo reader (about 800 KB), then it is instant.</li>
+      <li>Converted files drop camera and location data automatically, including GPS on iPhone photos.</li>
       <li>When replacing an image on the site, give the new file a new name so browsers pick it up.</li>
     </ul>
   </section>
@@ -200,7 +201,40 @@
     const n = `${base}-${i}.webp`; used.add(n); return n;
   }
 
+  // ---------- HEIC (iPhone photos) ----------
+  // Chrome, Edge and Firefox cannot read HEIC, so a self-hosted libheif decoder
+  // (/js/heic-to-1.6.6.js, LGPL, license file beside it) is loaded the first time one is added.
+  const HEIC_SRC = '/js/heic-to-1.6.6.js';
+  const isHeicName = f => /\.(heic|heif)$/i.test(f.name || '') || /^image\/hei[cf]/i.test(f.type || '');
+  async function sniffHeic(file) {
+    try {
+      const b = new Uint8Array(await file.slice(0, 12).arrayBuffer());
+      const tag = String.fromCharCode(...b.slice(4, 12));
+      return /^ftyp(heic|heix|hevc|hevx|heim|heis|hevm|hevs|mif1|msf1)$/.test(tag);
+    } catch (e) { return false; }
+  }
+  let heicLoader = null;
+  function loadHeic() {
+    if (typeof window.HeicTo === 'function') return Promise.resolve(window.HeicTo);
+    if (!heicLoader) {
+      heicLoader = new Promise((res, rej) => {
+        const s = document.createElement('script');
+        s.src = HEIC_SRC; s.async = true;
+        s.onload = () => typeof window.HeicTo === 'function' ? res(window.HeicTo) : rej(new Error('HEIC reader failed to start'));
+        s.onerror = () => { heicLoader = null; s.remove(); rej(new Error('Could not load the HEIC reader. Check your connection and try again.')); };
+        document.head.appendChild(s);
+      });
+    }
+    return heicLoader;
+  }
+
   async function decode(file) {
+    if (isHeicName(file) || await sniffHeic(file)) {
+      const H = await loadHeic();
+      // The IIFE build exposes the converter itself as window.HeicTo (with .isHeic attached).
+      try { return await H({ blob: file, type: 'bitmap' }); }
+      catch (e) { throw new Error('Could not read this HEIC photo'); }
+    }
     if ('createImageBitmap' in window) {
       try { return await createImageBitmap(file); } catch (e) { /* fall back */ }
     }
@@ -241,12 +275,13 @@
       item.li.className = 'item';
       list.appendChild(item.li);
     }
-    const thumb = item.thumbUrl ? `<img class="thumb" src="${item.thumbUrl}" alt="">` : `<div class="thumb"></div>`;
+    const thumbSrc = item.thumbUrl || (item.status === 'done' ? item.url : '');
+    const thumb = thumbSrc ? `<img class="thumb" src="${thumbSrc}" alt="">` : `<div class="thumb"></div>`;
     let stats, action = '';
     if (item.status === 'queued') {
       stats = `${fmt(item.origSize)} &rarr; waiting...`;
     } else if (item.status === 'working') {
-      stats = `${fmt(item.origSize)} &rarr; converting...`;
+      stats = `${fmt(item.origSize)} &rarr; ${item.heic && !window.HeicTo ? 'loading HEIC reader (first time only)...' : 'converting...'}`;
     } else if (item.status === 'error') {
       stats = `<span class="err">${escapeHtml(item.error)}</span>`;
     } else {
@@ -305,10 +340,13 @@
 
   function addFiles(fileList) {
     if (webpSupported === false) return;
-    const files = [...fileList].filter(f => /^image\//.test(f.type) || /\.(png|jpe?g|gif|bmp)$/i.test(f.name));
-    if (!files.length) { showNotice('Those files are not images this tool can read. Try PNG or JPG.'); return; }
+    const files = [...fileList].filter(f => /^image\//.test(f.type) || /\.(png|jpe?g|gif|bmp|heic|heif)$/i.test(f.name));
+    if (!files.length) { showNotice('Those files are not images this tool can read. Try PNG, JPG or HEIC.'); return; }
+    notice.hidden = true;
     for (const f of files) {
-      const item = { id: nextId++, file: f, name: f.name || 'pasted-image.png', origSize: f.size, status: 'queued', thumbUrl: URL.createObjectURL(f) };
+      const heic = isHeicName(f);
+      // Browsers other than Safari cannot preview HEIC, so its thumbnail waits for the converted WebP.
+      const item = { id: nextId++, file: f, name: f.name || 'pasted-image.png', origSize: f.size, status: 'queued', heic, thumbUrl: heic ? null : URL.createObjectURL(f) };
       item.outName = outName(item.name);
       items.push(item); render(item);
     }
