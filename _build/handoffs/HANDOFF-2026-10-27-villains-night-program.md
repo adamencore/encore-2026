@@ -338,6 +338,45 @@ for the order and Program Information for the people.
 
 ---
 
+## The script is the order of record (`b466c3a`)
+
+Adam photographed the running order out of the show binder, **"Villains Night
+Script 2026"**. It is 22 numbers and it disagrees with both sheet tabs.
+
+**Source precedence, settled: script, then Show outline, then Program
+Information.** Three sources, three different orders, and the only one that is
+the show is the binder.
+
+Moves from the Show outline order: Trust in Me and Be Prepared jump up to 6 and
+7, I've Got a Dream drops to 19, the Cruella's Plan through Number 2 run moves
+up, Grim Grinning Ghosts drops to 18, Friends on the Other Side and Heffalumps
+move up.
+
+The script also keeps the **Pirate Medley as one number with three parts**
+(Yo Ho, The Elegant Captain Hook, Hook's Waltz) and **Grim Grinning Ghosts as
+one with a continuation**, so it is 22 numbers, not the 25 that splitting them
+produced. The page shows the parts as a line under the number's title, which
+matches how the binder reads.
+
+Performer credits carried over unchanged, matched by title. Verified title for
+title against the photo: 22 for 22, same order.
+
+### The sheet was updated too, as asked
+
+`Program Information!J13:L34` rewritten to the script's order, 66 cells. Special
+Thanks in rows 2 to 4 and the header in row 12 were not touched, and nothing
+below row 34 was touched. Read back after writing to confirm.
+
+That write also cleared three things that were wrong in the sheet: the Blaze
+list that had landed on Les Poissons, and the "Evan Ride", "Parker DeRurange"
+and "Elle Mitchell" spellings.
+
+**`Show outline` is now out of order relative to the script and was deliberately
+left alone**, because it carries the set, costume and prop notes and reordering
+it would risk separating a note from its number. Worth fixing by hand.
+
+---
+
 ## Open
 
 - **Sponsor artwork.** The two ads on page 2 are rendered as text. Canva's export
