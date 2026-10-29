@@ -300,6 +300,44 @@ Three loads at 390 and 1200 now return identical lowest values.
 
 ---
 
+## The running order was coming from the wrong tab (`81843ca`)
+
+Adam: "it's not showing all the songs, particularly it missed All is Fair."
+
+**Nothing was broken.** All 22 rendered, All is Fair included, visible at 123px
+in the DOM at both 390 and 1200. Checked that first, before touching anything,
+because "it's missing X" and "X is on the page but the list is short" need
+opposite fixes. The source was wrong, not the page.
+
+**`Program Information` is a condensed list. `Show outline` is the order of
+record.** Program Information folds the Pirate Medley into one entry and Grim
+Grinning Ghosts into one, giving 22 where the show runs 25. Show outline carries
+set, costume and prop notes against each number, which is what makes it the
+production document.
+
+- Pirate Medley is three numbers: Yo Ho, The Elegant Captain Hook, Hook's Waltz.
+  Andrew Orton's Captain Hook solo belongs to the waltz.
+- Grim Grinning Ghosts is two: the Dapper Dans Quartet, then Part 2 with Inferno.
+
+**The two tabs are complementary, not rival.** Show outline names the ROLES in
+each number, Program Information names the PEOPLE, and the Featured Role columns
+G and H map between them. Joining all three is what lets the page read "Aubree
+Ottesen as the Evil Queen" instead of a bare name. The tabs agree on every
+number, which is the evidence that the join is sound.
+
+Verified row by row against Show outline: 25 for 25, same order, only wording
+difference being "pt. 2" tidied to "Part 2".
+
+**One thing to check:** Show outline says "All groups" for This is Halloween,
+while Program Information names six and leaves Illuminate out. The page uses the
+six, since the specific list beats the general one, but Illuminate may belong.
+
+**Rule for next time: when a show's numbers look short, check `Show outline`
+before `Program Information`.** For the next show's program, read Show outline
+for the order and Program Information for the people.
+
+---
+
 ## Open
 
 - **Sponsor artwork.** The two ads on page 2 are rendered as text. Canva's export
