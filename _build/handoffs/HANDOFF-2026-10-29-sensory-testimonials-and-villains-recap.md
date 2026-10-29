@@ -122,3 +122,58 @@ clean.
 - 26 em dashes still in `sensory-friendly-performances.html` body copy.
 - `-2027` preview pages still list the Oct 28 sensory performance.
 - The other feedback columns have good lines in them if Adam asks those families.
+
+---
+
+## 4. Villains Night 2026 gallery on Past Shows (`c2c90ba`)
+
+**URL:** `/past-shows/villains-night-2026`. Card added to `/past-shows`, now 31.
+
+51 production photos by **Alan Holben**, delivered as a zip at 2048px, already
+EXIF free.
+
+### A structural decision worth knowing about
+
+**Every other Past Shows card links out to Alan's SmugMug.** There is no 2026
+gallery there yet and the files came directly, so this one is **hosted on site**
+and its card links internally, with no `target="_blank"` or `rel="noopener"`,
+unlike the other 30. If Alan posts a SmugMug gallery later, the card can be
+repointed and this page retired, or kept as the faster option.
+
+The photos carry Alan's watermark. He is credited on the page and as
+`copyrightHolder` in the `ImageGallery` JSON-LD. **Check with Adam before
+reusing these anywhere else.**
+
+### Build notes
+
+- Images rebuilt from raw pixels, zero EXIF asserted on all 155 outputs.
+- Thumbnails 700px with a jpg fallback, matching the site's `<picture>`
+  convention. **The 1600px lightbox versions are webp only**, deliberately: 51
+  jpg fallbacks would near enough double the repo weight for no browser in use.
+  10.4 MB in total.
+- Layout is **CSS columns, not grid**. The set is 36 landscape and 15 portrait,
+  and columns let each photo keep its aspect ratio instead of being cropped into
+  a uniform cell. Reflows 4 / 3 / 1.
+- Card thumbnail is an 800x800 square crop to match the other 30, taken with an
+  upward bias so faces survive the crop.
+
+### The lightbox was exercised, not just rendered
+
+Opens on click, focus moves to Close, arrows navigate and wrap at both ends, Tab
+is trapped inside the dialog, Escape closes, focus returns to the originating
+thumbnail, body scroll is restored. Thumbnails are `<button>` elements so the
+grid is keyboard reachable.
+
+### Two flags checked and dismissed
+
+- One zero-width image on the gallery at every width: it is `#vgImg`, the
+  lightbox placeholder with an empty `src`, by design. All 51 thumbs load.
+- 7 to 11 broken card images on `/past-shows`: lazy loading below the fold.
+  Forcing eager plus a scroll gives 31 of 31.
+
+### A build bug worth remembering
+
+Slicing the template head at the last `</style>` **drops the `</head>`**, because
+the base closes head after that. The first build nested `<body>` inside `<head>`
+and the tag checker caught it as `unclosed=['html','head']`. The builder now
+asserts each of the six document tags appears exactly once.
