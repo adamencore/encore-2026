@@ -456,7 +456,9 @@ h2 em{color:var(--teal)}
 </style>
 <style>
   /* TESTIMONIALS */
-  .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  /* auto-fit, not a fixed 1fr 1fr: with three quotes a fixed two-column grid
+     strands the third alone at half width. This reflows 3 / 2 / 1 on its own. */
+  .quote-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;}
   .quote{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:40px;display:flex;flex-direction:column;}
   .quote .qmark{font-family:var(--font-display);font-size:52px;line-height:.6;color:var(--accent);opacity:.28;margin-bottom:20px;}
   .quote blockquote p{font-size:16.5px;line-height:1.75;color:var(--charcoal-soft);margin-bottom:14px;}
@@ -725,14 +727,21 @@ h2 em{color:var(--teal)}
           <blockquote>
             <p>Encore really takes the time to make sure they are accommodating everyone. They spend some time before the performance to give plenty of information and involve the audience. They really care about individuals and the group experience. Our group loves going to their performances and we are never disappointed!</p>
           </blockquote>
-          <figcaption>&mdash; A sensory-friendly performance guest</figcaption>
+          <figcaption>A sensory-friendly performance guest</figcaption>
         </figure>
         <figure class="quote">
           <div class="qmark" aria-hidden="true">&ldquo;</div>
           <blockquote>
             <p>With over half of our children being autistic, it felt impossible to attend a show or performance of any kind, at any venue. Now we&rsquo;ve been attending Encore sensory performances for over a year and all 5 of our children have come to expect a good time, and to feel safe. Felt-safety for our family is truly priceless. Thank you for your commitment to inclusion. It&rsquo;s making a difference to us.</p>
           </blockquote>
-          <figcaption>&mdash; An Encore sensory-friendly family</figcaption>
+          <figcaption>An Encore sensory-friendly family</figcaption>
+        </figure>
+        <figure class="quote">
+          <div class="qmark" aria-hidden="true">&ldquo;</div>
+          <blockquote>
+            <p>My young kids had a blast at Moana and loved seeing other children perform!</p>
+          </blockquote>
+          <figcaption>A parent at our Moana sensory-friendly performance</figcaption>
         </figure>
       </div>
     </div>
