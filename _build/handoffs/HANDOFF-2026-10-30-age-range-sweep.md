@@ -119,8 +119,14 @@ style change. Four grammars are still in use site-wide: "Ages 7–13", "ages 7 t
    29–30".** Correct today, stale tomorrow. `tickets.html` retires itself via
    `ends: 2026-10-30`; `senior.html`'s `OFFERINGS` array has no such mechanism,
    so it needs a hand. Worth giving that array an `ends` field.
-3. **The 2027 sheet Ages column is still 15 of 17 blank**, and the one tier age
-   it carries, 7–12, disagrees with the Junior ruling of 7–13.
+3. ~~The 2027 sheet Ages column is still 15 of 17 blank.~~ **Filled the same
+   day**, `2027 Show Information!B4:R4`, all 17 shows from the program bands.
+   The two cells that already held 7-12 were overwritten: Little Mermaid or
+   Annie to 7-13, Jan Camp to 6-11. **One cell to confirm: Christmas Carol,
+   written as 7-18 by inference**, since "Show with a Pro" has no band of its
+   own and the 2026 production ran two registration bands, 7 to 12 and 13 to 18.
+   The sheet's Program column still says "Apprentice Series (Junior Series)" on
+   two shows; worth renaming to "Junior Series" so the phrase stops resurfacing.
 4. **Is tier overlap intentional?** Junior 7–13 now overlaps Emerging 12–14 at
    ages 12 and 13. A 13 year old qualifies for three tiers.
 5. **The homepage "Shop by age" band gives no age for Camps, Aspire or Page to

@@ -132,19 +132,38 @@ pages excluded), and the "2026/2027 Schedule Source of Truth" sheet, tabs
 
 ---
 
-## 4. Why the 2027 sheet cannot settle it yet
+## 4. Why the 2027 sheet could not settle it
 
-**The Ages row in `2027 Show Information` is empty except for two cells.** Of
-the 17 shows listed, only two carry an age:
+**RESOLVED 2026-10-30: the Ages row is now filled in, all 17 shows.**
 
-- Little Mermaid or Annie, Apprentice Series: **7-12**
-- Jan Camp, Camp: **7-12**
+As found, the Ages row in `2027 Show Information` was empty except for two
+cells, both of which disagreed with the rulings:
 
-Fifteen are blank, including both Aspire seasons, both Signature Series titles,
-both Emerging Artists titles and the Christmas Carol.
+- Little Mermaid or Annie, Apprentice Series: **7-12**, now **7-13**
+- Jan Camp, Camp: **7-12**, now **6-11**
 
-And the one tier age it does give, **Apprentice Series 7-12**, matches neither
-of the site's two answers for Junior, which are 7–11 and 7–13.
+Fifteen were blank, including both Aspire seasons, both Signature Series titles,
+both Emerging Artists titles and the Christmas Carol. Row 4, `B4:R4`, now reads:
+
+| Program on the sheet | Ages written | Shows |
+|---|---|---|
+| Apprentice Series (Junior Series) | 7-13 | Little Mermaid or Annie, Annie/Little Mermaid |
+| Camp | 6-11 | Jan, March, May, June, July, August, October, November |
+| Emerging Artists | 12-14 | Charlie and the Chocolate Factory, Finding Nemo |
+| Signature Series | 13-18 | Little Shop, Addams Family |
+| Aspire | 6-18 | Spring Aspire, Fall Aspire |
+| Show with a Pro | **7-18, inferred** | Christmas Carol |
+
+**Christmas Carol is the one cell not derived from a ruling.** "Show with a Pro"
+has no page on the site and no band of its own. The 2026 sheet recorded Carol
+2026 as 13-18, but the site ran two separate registration pages for it, 7 to 12
+and 13 to 18, so the production actually cast both. 7-18 is written on that
+basis. Confirm it, or split it into two rows.
+
+**The sheet's Program column still reads "Apprentice Series (Junior Series)"**
+on two shows. That label is what produced the withdrawn conflict 8 below, so it
+is worth renaming to "Junior Series" in the sheet to stop it leaking again.
+Left alone for now, since staff may be filtering on it.
 
 ---
 
@@ -169,9 +188,8 @@ Still open:
    12 and 13, and Emerging overlaps Signature at 13. A 13 year old now qualifies
    for three tiers. If that is deliberate, the site should say so; it currently
    reads as a mistake.
-6. **Fill in the 2027 Ages column** before the 2027 pages are built, or the same
-   drift repeats. Note the one tier age it does carry, 7 to 12, does not match
-   the ruling of 7 to 13 for Junior.
+6. ~~Fill in the 2027 Ages column~~ **Done, all 17 shows, see section 4.** One
+   cell to confirm: Christmas Carol, written as 7-18 by inference.
 
 Program naming is settled and off this list: the site's names are right, the
 sheet's Program column is internal shorthand.
