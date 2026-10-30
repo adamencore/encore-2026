@@ -6,6 +6,39 @@ participant ages, and does it agree with the source of truth sheet?
 Answer: **no. There are nine distinct conflicts, and the 2027 sheet cannot
 settle them because its Ages column is almost entirely empty.**
 
+---
+
+## RESOLVED, 2026-10-30
+
+Adam set the program-level ranges:
+
+| Program | Ruling |
+|---|---|
+| Musical Theater Camps | **6 to 11** |
+| Junior | **7 to 13** |
+| Aspire Performing Co. | **6 to 18** |
+| Emerging Artists | 12 to 14, unchanged |
+| Signature Shows | 13 to 18, unchanged |
+
+Also ruled: **"Apprentice Series" is not Encore vocabulary** (see 8 below).
+
+Two things follow and were applied with those rulings:
+
+- **The organisation-wide range becomes 6 to 18, not 7 to 18.** It is a
+  consequence of Camps and Aspire both starting at 6, not a separate decision,
+  so it is the one number here Adam did not state outright. Worth a glance.
+- **Signature Shows gets an age on its `/programs` card.** It was the one card
+  carrying only "Advanced" while its own page, title, meta, breadcrumb and
+  JSON-LD all say 13 to 18.
+
+Swept site-wide the same day: see
+`HANDOFF-2026-10-30-age-range-sweep.md`. **Per-show and per-class ages were
+deliberately left alone**, because conflict 9 below, whether a band belongs to
+the tier or to the individual show, is still open. The list of what that leaves
+disagreeing is in the handoff.
+
+The sections below are the original audit, kept as the record of what was found.
+
 Sources: every live `.html` page in the repo (blog archive and `-2027` preview
 pages excluded), and the "2026/2027 Schedule Source of Truth" sheet, tabs
 `Show Information` (2026) and `2027 Show Information`.
@@ -56,23 +89,28 @@ pages excluded), and the "2026/2027 Schedule Source of Truth" sheet, tabs
 
 ## 3. Conflicts between the website and the sheet
 
-8. **The 2027 sheet renames Junior.** Its Program column reads
-   **"Apprentice Series (Junior Series)"**. The website says "Junior"
-   everywhere, in page titles, URLs, nav and body copy. If Apprentice is the new
-   name, nothing on the site reflects it yet, and `/junior` would want a
-   redirect.
+8. ~~The 2027 sheet renames Junior to "Apprentice Series".~~ **Withdrawn.**
+   Adam, 2026-10-30: **"Apprentice series is just our junior series and that is
+   not a phrase we use."**
 
-   Other vocabulary drift between the two:
+   **"Apprentice Series" is not Encore vocabulary.** The sheet's Program column
+   is internal shorthand, not a naming source, and the site's "Junior" is
+   correct and stays. Do not propagate "Apprentice" to any page, and treat the
+   rest of that column the same way unless Adam says otherwise:
 
-   | Sheet | Website |
-   |---|---|
-   | Apprentice Series (Junior Series) | Junior |
-   | Signature Series | Signature Shows |
-   | Camp | Musical Theater Camps |
-   | Emerging Artists | Emerging Artists (agrees) |
-   | Aspire | Aspire Performing Co. |
-   | Show with a Pro | no equivalent anywhere on the site |
-   | no equivalent | Page to Stage |
+   | Sheet label | Website name | Status |
+   |---|---|---|
+   | Apprentice Series (Junior Series) | Junior | sheet shorthand, site is right |
+   | Signature Series | Signature Shows | probably the same, unconfirmed |
+   | Camp | Musical Theater Camps | probably the same, unconfirmed |
+   | Emerging Artists | Emerging Artists | agrees |
+   | Aspire | Aspire Performing Co. | agrees |
+   | Show with a Pro | no equivalent on the site | worth asking |
+   | no equivalent | Page to Stage | sheet tracks it on its own tab |
+
+   **The lesson: the sheet's Program column names things for internal
+   scheduling, not for families. It is authoritative for dates, times, prices
+   and ages. It is not authoritative for what a program is called.**
 
 9. **The sheet records ages per show, the website states them per program, and
    the two cross.** From the 2026 tab, where the Ages column is filled in:
@@ -112,20 +150,34 @@ of the site's two answers for Junior, which are 7–11 and 7–13.
 
 ## 5. What needs deciding, in order
 
-1. **Are age bands a property of the tier or of the individual show?** Everything
-   else follows from this. If the tier, the per-show ages in the sheet need to
-   come into line. If the show, the website must stop stating a single range per
-   program and state it per show instead.
-2. **Is Junior becoming Apprentice Series?** If yes, that is a rename across
-   titles, URLs, nav, meta and a redirect from `/junior`.
-3. **Does Aspire start at 5 or at 8?** This one is worth doing first regardless:
-   it is wrong on 199 pages either way, and it is the only conflict currently
-   telling a five year old's family both yes and no.
-4. **Does the organisation say 5–18 or 7–18?**
-5. **Is tier overlap intentional?** If a 13 year old may choose Emerging or
-   Signature, say so; it reads as a mistake at the moment.
-6. **Fill in the 2027 Ages column** before the 2027 pages are built, or the same
-   drift repeats.
+1. ~~Does Aspire start at 5 or at 8?~~ **Answered: 6 to 18.**
+2. ~~Does the organisation say 5–18 or 7–18?~~ **Applied as 6 to 18**, as a
+   consequence of Camps and Aspire both starting at 6 rather than a stated
+   ruling. Flagged for a look.
+3. ~~Is Junior becoming Apprentice Series?~~ **Withdrawn, it was a misread.**
 
-Once 1 through 5 are answered, the site-wide sweep is mechanical and small: one
-phrasing standard, applied to roughly a dozen pages plus the shared footer.
+Still open:
+
+4. **Are age bands a property of the tier or of the individual show?** This is
+   now the only structural question left, and it is what blocks the remaining
+   disagreements. Camps is 6 to 11, but the Lion King Kids camp page says 7 to
+   11 and the Little Mermaid camp page says 5 to 12. Emerging Artists is 12 to
+   14, but Peter Pan Jr. cast 7 to 14. If the band belongs to the tier, those
+   pages and the sheet need to come into line. If it belongs to the show, the
+   site should stop stating one range per program and state it per show.
+5. **Is tier overlap intentional?** Junior 7 to 13 overlaps Emerging 12 to 14 at
+   12 and 13, and Emerging overlaps Signature at 13. A 13 year old now qualifies
+   for three tiers. If that is deliberate, the site should say so; it currently
+   reads as a mistake.
+6. **Fill in the 2027 Ages column** before the 2027 pages are built, or the same
+   drift repeats. Note the one tier age it does carry, 7 to 12, does not match
+   the ruling of 7 to 13 for Junior.
+
+Program naming is settled and off this list: the site's names are right, the
+sheet's Program column is internal shorthand.
+
+The phrasing standard is also still unaddressed. Four grammars remain in use
+("Ages 7–13", "ages 7 to 11", "ages 6 through high school senior", "Ages 7+").
+This sweep kept each location's existing grammar and changed only the numbers,
+deliberately, so the diff stays readable and the numbers can be checked without
+also reviewing a style change.
