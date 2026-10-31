@@ -84,6 +84,47 @@ pages.
    performance-level label. If families need a roster, that is a separate page
    or a program insert.
 
+## Follow-up the same day: the December 4 registration does not exist yet
+
+Adam: there is no registration link for the December 4 show, and Joyce builds
+one Monday. Two corrections followed.
+
+1. **The December 4 row no longer carries a button.** It announces the date,
+   time and cast, and shows a non-interactive `Reservations open soon` pill:
+   dashed border, muted, deliberately not button-shaped so nobody taps a CTA
+   that leads nowhere. A line under the list says the date and time are final
+   and the booking link will be added.
+2. **The December 1 link was put back to `?performance=A+Christmas+Carol`.**
+   Earlier the same day it was changed to carry the date, so that two sensory
+   shows could be told apart in the form responses. That was the right idea at
+   the wrong moment: Joyce's existing form expects the bare show name and that
+   reservation flow is live now. **When she builds the December 4 link on
+   Monday, both will need distinguishing**, by date or by cast, and the form
+   needs a matching value. Flipping the pill to a live button is a one-line
+   change here.
+
+### A layout bug this introduced, caught and fixed
+
+The new pill pushed the page **37px past the viewport at 320px**. Confirmed as
+mine, not pre-existing, by rendering `git show HEAD:` of the same file side by
+side: HEAD was clean at 320, 360 and 390; the working tree overflowed only at
+320.
+
+The cause was not the pill's own width. At `max-width:980px` the row collapses
+to `grid-template-columns:auto 1fr` and `.show-row .btn` is given
+`grid-column:1 / -1` so the button takes its own full-width line. **The pill is
+not a `.btn`**, so it stayed in column 1, forced that auto column to 162px and
+squeezed the title column to 45px, which the 110px show-title link then
+overflowed.
+
+Fixed by giving the pill the same placement as the button,
+`.show-row .btn,.show-row .show-soon{grid-column:1 / -1;...}`, plus
+`.show-main{min-width:0}` as a safety net, since a grid item defaults to
+`min-width:auto` and refuses to shrink below its content.
+
+**Worth remembering: anything standing in for `.btn` in a `.show-row` needs the
+same responsive grid placement, or it breaks the row below 980px.**
+
 ## Verification
 
 - Every JSON-LD block parses on all three pages, `node --check` passes on every
