@@ -116,11 +116,12 @@ where there is one, and ticket prices.
    ran and zero EXIF is asserted on all twelve outputs. Do not assume uploads
    arrive clean.
 
-   **Still on stand-ins:** Little Shop of Horrors, Charlie and the Chocolate
-   Factory Jr. and Annie Jr. Each hero is a neutral Encore production photo from
-   `img/gallery/` with alt text that describes the photograph honestly and does
-   not claim it is the show, and their OG image is that same photo rather than a
-   1200x630 crop.
+   Little Shop of Horrors followed on the same day, same recipe, EXIF 5 to 0.
+
+   **Still on stand-ins:** Charlie and the Chocolate Factory Jr. and Annie Jr.
+   Each hero is a neutral Encore production photo from `img/gallery/` with alt
+   text that describes the photograph honestly and does not claim it is the
+   show, and their OG image is that same photo rather than a 1200x630 crop.
 3. **The Elfsight registration embeds.** Adam is supplying these. Until then every
    "Register to audition" button points at the existing generic
    `/audition-registration`. When the embeds arrive, each show gets its own
@@ -184,8 +185,54 @@ padding whose box overlaps the cream "MERMAID" lettering. Measuring the inked
 glyph run alone, via a Range over the text node, gives **16.67:1 at 390px and
 17.58:1 at 1200px**. The caption is fine; the element box is not the text.
 
-Most of the 42 remaining failures are inherited from the template and are
+Most of the remaining failures are inherited from the template and are
 present on all seven pages. Worth a separate pass, not a palette change.
+
+## Little Shop of Horrors: a monochrome palette
+
+Key art is cracked black with cream dripping lettering. Two colours, no hue
+to borrow, so this palette is monochrome on purpose.
+
+| Variable | Value | Source |
+|---|---|---|
+| `--show-deep` | `#060708` | the cracked black, 19.0% of the image, most dominant |
+| `--show-mid` | `#202122` | the lifted grey in the texture, 6.9%. Body text at 15.73:1 on paper |
+| `--show-tint` | `#f0ede5` | the dripping lettering, 14.2%. 17.23:1 on deep |
+| `--show-bright` | `#333538` | **interpolated, not sampled**, so the hero gradient has a visible light end. Carries cream at 9.75:1 |
+
+**Dropping hue was checked first, not assumed safe.** In-body links are marked
+by `font-weight: 600` plus a `border-bottom`, and already take `var(--charcoal)`,
+so they never relied on colour to read as links. A monochrome palette costs no
+link affordance here. Had links been colour-only, this palette would have needed
+an accent that is not in the art.
+
+Result against the `annie` control: **24 flagged elements versus 32, zero new
+failures, 8 improved and 8 gone entirely.**
+
+### Three bugs in the measuring script, all of which invented failures
+
+Worth knowing, because the same script will be used on the remaining pages.
+
+1. **`getComputedStyle` can return `color(srgb 0.10 0.10 0.11)`**, not just
+   `rgb(26, 26, 27)`. Reading those 0-to-1 floats as 0-to-255 turned every such
+   colour into near-black and produced a page full of phantom failures.
+2. **`locator.screenshot()` scrolls the element to the top of the viewport**,
+   parking it under the sticky nav, which then reads as the backdrop. Fixed by
+   hiding `position: fixed` overlays and unsticking `position: sticky` chrome.
+   Note the first attempt at this set the fixed mobile menu to `static`, which
+   dropped a full-height dark panel into the document flow and made things
+   worse.
+3. **Worst-pixel-in-box counts decorative dark marks inside the text box.**
+   The two surviving "failures" on this page are `.pill` at 1.00 and `.faq .ans`
+   at 1.08. Both are artifacts: the pill's own 7px bullet dot is `--charcoal`,
+   the same colour as the pill's text, and the FAQ answer contains a link with a
+   `--charcoal` bottom border. The method finds those and calls them the
+   backdrop. Rendered, the pill is charcoal on cream at roughly 14:1 and the FAQ
+   answers are dark on white. Both artifacts appear on the control too.
+
+**The lesson for the next page: a contrast number that looks catastrophic
+(1.00, "X on X") is almost always the method, not the page. Screenshot the
+element and look before changing anything.**
 
 ## The template-residue guard, and the two bugs it caught
 
