@@ -131,6 +131,62 @@ where there is one, and ticket prices.
    is what the sheet lists for all seven. The two Aspire shows use
    `randy@encorepa.org`, worth knowing when those get built.
 
+## Per-show palette, and how it was checked
+
+The template drives the whole page from four custom properties, and
+`little-mermaid` is the first page to override them, sampled from its key art:
+
+| Variable | Was | Now | What it drives |
+|---|---|---|---|
+| `--show-mid` | `#36575c` | **`#1e4876`** | `--charcoal` (body text), `--accent`, `--teal` |
+| `--show-deep` | `#1f3a3e` | **`#081d36`** | `--accent-2`, the hero art backdrop |
+| `--show-bright` | `#4f8278` | **`#2e669d`** | `--charcoal-2` (background only), gradient light end |
+| `--show-tint` | `#cfe1dd` | **`#b1dbee`** | pale highlight, the h1 `<em>` |
+
+Sampled by median-cut quantize plus region averages, never by eye.
+`#1e4876` is 7.4% of the image, `#081d36` is the single most dominant at
+13.4%, `#b1dbee` is the pale highlight at 3.9%.
+
+**The obvious pick for `--show-bright` was wrong.** The top light ray,
+`#53a5da` at 9.2% of the image, is the colour that makes the art feel like
+the art. But `--show-bright` is the light end of the hero gradient, and
+cream tagline text over `#53a5da` measures **2.14:1**. `#2e669d` is the
+lightest of the art's own blues that still carries cream at 4.75:1 and the
+tint h1 at 4.06:1. The ray colour stays where it belongs, in the key art
+beside the text.
+
+`--show-mid` doubles as body text, so it had to be dark: it measures
+**9.13:1** on paper, better than the 7.66:1 of the slate it replaced.
+
+### Measuring it
+
+Contrast was measured on the rendered page, not computed from the
+stylesheet, with two refinements that matter:
+
+1. **`color: transparent`, not `visibility: hidden`.** Hiding an element
+   also hides its own background, so dark pill buttons measure against
+   whatever is behind them instead of against themselves. Transparent text
+   removes the glyphs and leaves every background, gradient and image intact.
+2. **Per-element screenshots, not crops from a full-page shot.** A `fullPage`
+   capture grows the viewport to the document height, which re-lays-out the
+   sticky nav and every `min-height` block, so boxes measured beforehand point
+   at the wrong pixels. The first run produced 54 nonsense failures that way,
+   with backdrops reading back as the text colour itself.
+
+**A control run matters more than the raw count.** Measured against `annie`,
+which still has the template palette: 46 failures there, and the Little
+Mermaid palette introduced 5 new ones plus 4 made worse, all of them in the
+hero. Darkening `--show-bright` fixed the h1 and the tagline at both widths.
+
+**The one remaining non-control failure is a verified false positive.** The
+date caption over the art reported 1.09:1, because `.cap` carries 48px of top
+padding whose box overlaps the cream "MERMAID" lettering. Measuring the inked
+glyph run alone, via a Range over the text node, gives **16.67:1 at 390px and
+17.58:1 at 1200px**. The caption is fine; the element box is not the text.
+
+Most of the 42 remaining failures are inherited from the template and are
+present on all seven pages. Worth a separate pass, not a palette change.
+
 ## The template-residue guard, and the two bugs it caught
 
 New pages from this template are exactly where the Villains Night bug came from,
