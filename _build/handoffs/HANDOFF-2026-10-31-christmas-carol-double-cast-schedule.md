@@ -125,6 +125,52 @@ Fixed by giving the pill the same placement as the button,
 **Worth remembering: anything standing in for `.btn` in a `.show-row` needs the
 same responsive grid placement, or it breaks the row below 980px.**
 
+## The cast list, added under the show dates
+
+Source: the **FINAL CAST GROUPS** tab of
+`1wzJLo2l7pCWxt-BNz5CeUiFCeqiNZOoM9_y0nwpzBLI`, read 2026-10-31. This is a
+different spreadsheet from the season source of truth.
+
+New `#cast` section on `a-christmas-carol-tickets.html`, placed between the
+performance calendar and the creative team, which is where Adam asked for it.
+Section order is now `about > performances > cast > team > pricing`.
+
+**Rendered as one table of Role / Figgy / Plum, not two lists.** Both casts
+carry the same 28 role slots in the same order, so a family looking for their
+performer finds the row once and reads across to see which cast it is. Two
+separate lists would make them search twice.
+
+**Ensemble 1 through 7 are collapsed into a single Ensemble row per cast**,
+which is how a printed program credits an ensemble; the numbering is internal
+tracking and means nothing to a reader. Every other numbered part, the three
+Bookkeepers and the two Charity Collectors, stays as its own credited role.
+That gives 21 named roles plus one Ensemble row, 22 rows, 56 cast slots.
+
+**Names are reproduced exactly as the sheet has them**, first name plus last
+initial, and in several cases a first name alone. For a company of minors that
+is the right level of detail to publish, so nothing was expanded or tidied.
+
+### What the data checks turned up
+
+- 28 unique performers in each cast, and **no performer is cast twice within
+  the same cast**, which was asserted rather than assumed.
+- **Four Young Artists appear in both casts in different roles**: Andrew O
+  (Dickens in Figgy, Pa Fezziwig in Plum), Cooper C (Apprentice Scrooge in
+  Figgy, Bob Cratchit in Plum), Gunnar (Pa Fezziwig in Figgy, Apprentice
+  Scrooge in Plum) and Noah S (Bob Cratchit in Figgy, Dickens in Plum). That
+  means those four perform every night of the run. Worth knowing, and worth
+  confirming it is intentional.
+- **Scrooge and Marley are not in the sheet.** They are the professionals, and
+  the creative team section directly below already credits Corbin Allred as
+  Scrooge and Adam Cheney as Marley and the Ghost of Christmas Present. A cast
+  list that silently omitted the title character would read as an error, so the
+  section lead names them both and points up to the calendar for cast dates.
+
+Contrast on the new table measured 13.1 to 15.6:1 for every cell and 5.23:1 for
+the footnote and its link, all above AA. Clean at 320, 360, 390, 560, 768, 1200
+and 1600, including the three-column table at 320px, where the type and padding
+tighten and the cast dots drop out.
+
 ## Verification
 
 - Every JSON-LD block parses on all three pages, `node --check` passes on every

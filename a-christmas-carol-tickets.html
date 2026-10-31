@@ -1013,6 +1013,35 @@
     .cc-logo{width:82%;top:7%;}
     .cc-figure{height:66%;}
   }
+
+  /* CAST TABLE */
+  .cast-wrap{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:8px 10px;overflow:hidden;}
+  .cast-table{width:100%;border-collapse:collapse;font-size:15px;}
+  .cast-table th,.cast-table td{text-align:left;padding:12px 14px;vertical-align:top;}
+  .cast-table thead th{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--charcoal);border-bottom:2px solid var(--line);white-space:nowrap;}
+  .cast-table tbody th{font-family:var(--font-display);font-size:15.5px;font-weight:600;color:var(--charcoal);width:38%;}
+  .cast-table tbody td{color:var(--charcoal-soft);width:31%;}
+  .cast-table tbody tr+tr{border-top:1px solid var(--line);}
+  .cast-table tbody tr:nth-child(odd){background:var(--cream-lite);}
+  .cast-table tr.cast-ens td,.cast-table tr.cast-ens th{line-height:1.55;}
+  .cast-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;vertical-align:middle;}
+  .cast-dot.figgy{background:var(--accent);}
+  .cast-dot.plum{background:var(--charcoal);}
+  .cast-note{margin-top:16px;font-size:13.5px;color:var(--muted);line-height:1.6;max-width:70ch;}
+  #cast{scroll-margin-top:140px;}
+  @media(max-width:620px){
+    .cast-table{font-size:13.5px;}
+    .cast-table th,.cast-table td{padding:10px 8px;}
+    .cast-table tbody th{font-size:14px;width:36%;}
+    .cast-table thead th{font-size:10px;letter-spacing:.06em;}
+    .cast-wrap{padding:4px 2px;}
+  }
+  @media(max-width:380px){
+    .cast-table{font-size:12.5px;}
+    .cast-table th,.cast-table td{padding:9px 6px;}
+    .cast-table thead th{font-size:9.5px;white-space:normal;}
+    .cast-dot{display:none;}
+  }
 </style>
 </head>
 <body>
@@ -1126,6 +1155,53 @@
         </div>
         <p class="ccal-note">There are no performances on December 9, 14 or 15. All performances are at the historic Electric Theater, 68 E Tabernacle St, St. George. Doors open thirty minutes before curtain. Tickets are sold through ThunderTix, our ticketing partner. For ASL-interpreted section seating on December 12, email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a>.</p>
       </div>
+    </div>
+  </section>
+
+
+  <!-- ===== CAST ===== -->
+  <section style="padding-top:0;" id="cast" aria-labelledby="cast-h">
+    <div class="wrap">
+      <div class="sec-head reveal" style="margin-bottom:28px;">
+        <div>
+          <span class="pill" style="margin-bottom:16px;"><span class="dot"></span>The Company</span>
+          <h2 id="cast-h">Meet the <em>cast</em></h2>
+          <p class="lead">Our Young Artists perform in two casts, Figgy and Plum. Check the calendar above to see which cast is on the night you are booking. Corbin Allred plays Ebenezer Scrooge and Adam Cheney plays Jacob Marley and the Ghost of Christmas Present.</p>
+        </div>
+      </div>
+      <div class="cast-wrap reveal">
+        <table class="cast-table">
+          <caption class="sr-only">A Christmas Carol 2026 cast, by role, for the Figgy cast and the Plum cast</caption>
+          <thead>
+            <tr><th scope="col">Role</th><th scope="col"><span class="cast-dot figgy"></span>Figgy cast</th><th scope="col"><span class="cast-dot plum"></span>Plum cast</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Dickens</th><td>Andrew O</td><td>Noah S</td></tr>
+            <tr><th scope="row">The Boy / Tiny Tim</th><td>Hudson G</td><td>Emma M</td></tr>
+            <tr><th scope="row">Bob Cratchit</th><td>Noah S</td><td>Cooper C</td></tr>
+            <tr><th scope="row">Mrs Cratchit</th><td>Addie D</td><td>Emma R</td></tr>
+            <tr><th scope="row">Bookkeeper 1</th><td>Sophie M</td><td>Felicity T</td></tr>
+            <tr><th scope="row">Bookkeeper 2</th><td>Ashton T</td><td>Harper H</td></tr>
+            <tr><th scope="row">Bookkeeper 3</th><td>Paige D</td><td>Norah H</td></tr>
+            <tr><th scope="row">Fred</th><td>Foster B</td><td>Parker T</td></tr>
+            <tr><th scope="row">Charity Collector 1</th><td>Malakai N</td><td>Parker D</td></tr>
+            <tr><th scope="row">Charity Collector 2</th><td>Embry W</td><td>Blake N</td></tr>
+            <tr><th scope="row">Clara</th><td>Nevaeh W</td><td>Tessa S</td></tr>
+            <tr><th scope="row">Martha</th><td>Malia H</td><td>Lucy D</td></tr>
+            <tr><th scope="row">Belinda</th><td>Edie C</td><td>Emery G</td></tr>
+            <tr><th scope="row">Peter</th><td>Carter H</td><td>Chase S</td></tr>
+            <tr><th scope="row">Fan</th><td>Scout F</td><td>Callie N</td></tr>
+            <tr><th scope="row">Apprentice Scrooge</th><td>Cooper C</td><td>Gunnar</td></tr>
+            <tr><th scope="row">Belle</th><td>Emma S</td><td>Aubree O</td></tr>
+            <tr><th scope="row">Christmas Past</th><td>Avery W</td><td>Lily C</td></tr>
+            <tr><th scope="row">Small Caroler</th><td>Grant D</td><td>Abbey R</td></tr>
+            <tr><th scope="row">Pa Fezziwig</th><td>Gunnar</td><td>Andrew O</td></tr>
+            <tr><th scope="row">Ma Fezziwig</th><td>Kierstyn J</td><td>Emalie H</td></tr>
+            <tr class="cast-ens"><th scope="row">Ensemble</th><td>Beth V, Taylor, Everett, Delilah, Spencer, Claire H, Ethan</td><td>Cadence, Claire A, Elise, Mayli, Lauren, Olivia, Yan S</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cast-note">Casting is final. If you spot an error in a name or a role, email <a href="mailto:production@encorepa.org">production@encorepa.org</a> and we will fix it.</p>
     </div>
   </section>
 
