@@ -111,6 +111,11 @@ style change. Four grammars are still in use site-wide: "Ages 7–13", "ages 7 t
   `OFFERINGS` array and no `#offgrid` at all, contrary to the note in
   `CLAUDE.md`, and its only change was the footer line. Not a regression.
 
+## Related
+
+The 2027 season audition pages built the same day state these program bands.
+See `HANDOFF-2026-10-30-2027-season-audition-pages.md`.
+
 ## Open
 
 1. **Conflict 9 is the only structural question left**: does a band belong to the

@@ -14,7 +14,7 @@ one live is a one-line robots change plus a sitemap entry.
 
 | URL | Title as built | Program | Ages | Auditions | Performances | Tickets |
 |---|---|---|---|---|---|---|
-| `/little-mermaid` | The Little Mermaid Jr. | Junior Series | 7 to 13 | Dec 14, 2026 | Feb 3 to 6, 2027 | $15 |
+| `/little-mermaid` | The Little Mermaid | Junior Series | 7 to 13 | Dec 14, 2026 | Feb 3 to 6, 2027 | $15 |
 | `/little-shop` | Little Shop of Horrors | Signature Series | 13 to 18 | Jan 9, 2027 | Mar 18 to 22, 2027 | $12 to $25 |
 | `/charlie-and-the-chocolate-factory` | Charlie and the Chocolate Factory Jr. | Emerging Artists | 12 to 14 | Feb 20, 2027 | May 5 to 8, 2027 | $15 |
 | `/finding-nemo` | Finding Nemo Jr. | Emerging Artists | 12 to 14 | May 15, 2027 | Jul 17 to 24, 2027 | $12 to $25 |
@@ -93,11 +93,34 @@ where there is one, and ticket prices.
    "Charlie and the Chocolate Factory" became *Charlie and the Chocolate Factory
    Jr.* These appear in the title tag, h1, meta, JSON-LD and FAQ, so a correction
    is a regeneration, not a hand edit.
-2. **Key art.** There is none for any 2027 show. Each hero uses a neutral Encore
-   production photo from `img/gallery/` with alt text that describes the
-   photograph honestly and does not claim it is the show. A Christmas Carol is
-   the exception and uses the real `img/shows/cc-banner.jpg`. Every page needs
-   its own key art and an OG image at 1200x630.
+
+   **Two are now settled by the key art**, which is the better authority than my
+   guess: the Finding Nemo art carries "JR" so that page keeps *Finding Nemo
+   Jr.*, and the Addams art carries no suffix so that page keeps *The Addams
+   Family*.
+
+   **One changed because of it.** The Little Mermaid art reads "encore!
+   presents / Disney / THE LITTLE MERMAID" with **no JR**, so that page was
+   regenerated from *The Little Mermaid Jr.* to **The Little Mermaid**. Worth a
+   second look: a Junior Series show for ages 7 to 13 would normally license the
+   JR edition, so if the art simply drops the suffix for design reasons while
+   the licensed title keeps it, that page needs reverting. It is a one-word
+   change in the generator.
+2. **Key art. Three of seven now have it**, supplied by Adam on 2026-10-30:
+   The Addams Family, Finding Nemo Jr. and The Little Mermaid, each installed at
+   `/img/shows/<slug>/band.jpg` plus `.webp` and a 1200x630 `og.jpg` plus
+   `.webp`. A Christmas Carol uses the existing `img/shows/cc-banner.jpg`.
+
+   **The three sources still carried EXIF**, 7, 7 and 7 entries, so the chat
+   upload did not strip it this time. The full rebuild-from-raw-pixels recipe
+   ran and zero EXIF is asserted on all twelve outputs. Do not assume uploads
+   arrive clean.
+
+   **Still on stand-ins:** Little Shop of Horrors, Charlie and the Chocolate
+   Factory Jr. and Annie Jr. Each hero is a neutral Encore production photo from
+   `img/gallery/` with alt text that describes the photograph honestly and does
+   not claim it is the show, and their OG image is that same photo rather than a
+   1200x630 crop.
 3. **The Elfsight registration embeds.** Adam is supplying these. Until then every
    "Register to audition" button points at the existing generic
    `/audition-registration`. When the embeds arrive, each show gets its own
