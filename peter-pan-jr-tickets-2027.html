@@ -41,6 +41,24 @@
 .pf-tags span.hl{background:var(--sky);color:var(--ink)}
 .pf .pill{grid-column:1/-1;min-width:0;width:100%;height:46px;margin-top:10px}
 .pf .pill.pill-o{color:var(--teal-d)}
+.pf-soon{grid-column:1/-1;display:flex;align-items:center;justify-content:center;height:46px;margin-top:10px;border:1.5px dashed #c9c4bd;border-radius:70px;color:#5f5f5f;font-size:14px;font-weight:500}
+.pf-castchip{display:inline-flex;align-items:center;gap:6px}
+.pf-castchip::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--teal)}
+.pf-castchip.plum::before{background:#7a4b8c}
+/* Cast table */
+.cast-wrap{background:#fff;border-radius:var(--r);overflow:hidden;overflow-x:auto}
+.cast-table{width:100%;border-collapse:collapse;font-size:17px;font-weight:400}
+.cast-table caption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.cast-table th,.cast-table td{text-align:left;padding:14px 22px;border-bottom:1px solid #ece8e3;vertical-align:top}
+.cast-table thead th{background:var(--slate);color:var(--cream);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.cast-table thead th span{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;background:var(--sky)}
+.cast-table thead th span.plum{background:#c9a3d8}
+.cast-table tbody th{font-weight:700;width:34%}
+.cast-table tbody tr:nth-child(even){background:#faf8f5}
+.cast-table tbody tr:last-child th,.cast-table tbody tr:last-child td{border-bottom:0}
+.cast-note{margin:18px 4px 0;font-size:15px;font-weight:400;color:#4a4a4a}
+.cast-note a{color:var(--teal-d);font-weight:700}
+@media (max-width:560px){.cast-table{font-size:15px}.cast-table th,.cast-table td{padding:11px 12px}.cast-table thead th span{display:none}}
 .perf-note{margin:28px 0 0;font-size:17px;line-height:1.55;font-weight:400;max-width:860px}
 .perf-note a{color:var(--teal-d);font-weight:700}
 .closed{background:#fff;border-radius:var(--r);padding:clamp(30px,4vw,50px);text-align:center}
@@ -206,6 +224,7 @@
   </div>
 </section>
 
+
 <section class="sec" aria-labelledby="about-h" style="padding-top:0">
   <div class="wrap about-grid">
     <div>
@@ -342,9 +361,9 @@ window.SHOW = {tix:"https://encoreperformingarts.thundertix.com/events/272824/pe
     list.innerHTML=up.map(function(p){
       var d=new Date(p.start);
       var tags=(p.tags||[]).map(function(t){ return '<span'+(/Sensory|ASL|Free/.test(t)?' class="hl"':'')+'>'+t+'</span>'; }).join('');
-      var btn=p.free?'<a class="pill pill-o" href="'+p.link+'">Reserve free seats</a>':'<a class="pill" href="'+SHOW.tix+'" target="_blank" rel="noopener">Tickets</a>';
+      var btn=p.free?(p.link?'<a class="pill pill-o" href="'+p.link+'">Reserve free seats</a>':'<span class="pf-soon">Reservations open soon</span>'):'<a class="pill" href="'+SHOW.tix+'" target="_blank" rel="noopener">Tickets</a>';
       return '<li class="pf'+(p.free?' free':'')+'"><span class="pf-date"><small>'+MO[d.getMonth()]+'</small><b>'+d.getDate()+'</b><small>'+DW[d.getDay()]+'</small></span>'+
-        '<span class="pf-when">'+p.time+'</span><span class="pf-cast">'+(p.cast||'&nbsp;')+'</span><span class="pf-tags">'+tags+'</span>'+btn+'</li>';
+        '<span class="pf-when">'+p.time+'</span><span class="pf-cast">'+(p.cast?'<span class="pf-castchip'+(/Plum/.test(p.cast)?' plum':'')+'">'+p.cast+'</span>':'&nbsp;')+'</span><span class="pf-tags">'+tags+'</span>'+btn+'</li>';
     }).join('');
     if(!up.length){
       list.style.display='block';

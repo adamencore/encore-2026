@@ -51,6 +51,7 @@
 .sf-empty{background:#fff;border-radius:var(--r);padding:48px 28px;text-align:center}
 .sf-empty h3{font-size:clamp(30px,2.8vw,42px);letter-spacing:-.03em;margin-bottom:10px}
 .sf-empty p{font-size:19px;font-weight:400;margin:0 0 22px}
+.sf-soon{margin-top:auto;display:flex;align-items:center;justify-content:center;height:53px;border:1.5px dashed #c9c4bd;border-radius:70px;color:#5f5f5f;font-size:15px;font-weight:500}
 .sf-note{font-size:15px;font-weight:400;color:#555;margin:18px 4px 0}
 /* Videos */
 .vband{position:relative;background:var(--slate);color:var(--cream);padding:clamp(120px,10vw,160px) 0}
@@ -119,7 +120,7 @@
 .tags{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .tags li{background:var(--chip);border-radius:70px;padding:9px 15px;font-size:15px;font-weight:700}
 /* Quotes */
-.quotes{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
 .quote{margin:0;position:relative;background:var(--slate);color:var(--cream);border-radius:var(--r);padding:clamp(34px,4vw,54px);overflow:hidden}
 .quote .qm{display:block;font:400 120px/.6 var(--serif);color:var(--sky);height:50px}
 .quote blockquote{margin:0}
@@ -219,7 +220,7 @@
       <p class="lede">Reserve free tickets in advance. Walk-ins can&rsquo;t be accommodated at this time.</p>
     </div>
     <div class="sf-list" id="sfList"></div>
-    <p class="sf-note">Questions about a performance? Call <a href="tel:+14354140049">(435) 414-0049</a>.</p>
+    <p class="sf-note">Reservations for the December 4 performance are not open yet. The date and time are final, and the booking link will be added as soon as it is ready. Questions about a performance? Call <a href="tel:+14354140049">(435) 414-0049</a>.</p>
   </div>
 </section>
 
@@ -325,6 +326,7 @@
     <div class="quotes">
       <figure class="quote"><span class="qm" aria-hidden="true">&ldquo;</span><blockquote><p>Encore really takes the time to make sure they are accommodating everyone. They spend some time before the performance to give plenty of information and involve the audience. They really care about individuals and the group experience. Our group loves going to their performances and we are never disappointed!</p></blockquote><figcaption>A sensory-friendly performance guest</figcaption></figure>
       <figure class="quote"><span class="qm" aria-hidden="true">&ldquo;</span><blockquote><p>With over half of our children being autistic, it felt impossible to attend a show or performance of any kind, at any venue. Now we&rsquo;ve been attending Encore sensory performances for over a year and all 5 of our children have come to expect a good time, and to feel safe. Felt-safety for our family is truly priceless. Thank you for your commitment to inclusion. It&rsquo;s making a difference to us.</p></blockquote><figcaption>An Encore sensory-friendly family</figcaption></figure>
+      <figure class="quote"><span class="qm" aria-hidden="true">&ldquo;</span><blockquote><p>My young kids had a blast at Moana and loved seeing other children perform!</p></blockquote><figcaption>A parent at our Moana sensory-friendly performance</figcaption></figure>
     </div>
   </div>
 </section>
@@ -378,9 +380,9 @@
    automatically the day after "date". Empty list shows a join-the-list message.
    Same performances, dates and times as the live page. */
 const SENSORY = [
-  {show:"Aspire: Villains Night", date:"2026-10-28", time:"5:00 PM", href:"/villains-night-2027", reserve:"/sensory-friendly-registration?performance=Villains+Night", img:"/img/shows/villains-night"},
   {show:"Peter Pan Jr.", date:"2026-11-19", time:"5:00 PM", href:"/peter-pan-jr-tickets-2027", reserve:"/sensory-friendly-registration?performance=Peter+Pan+Jr.", img:"/img/shows/peter-pan-jr/card"},
-  {show:"A Christmas Carol", date:"2026-12-01", time:"5:00 PM", href:"/a-christmas-carol-tickets-2027", reserve:"/sensory-friendly-registration?performance=A+Christmas+Carol", img:"/img/shows/a-christmas-carol-card"}
+  {show:"A Christmas Carol", date:"2026-12-01", time:"5:00 PM", cast:"Figgy Cast", href:"/a-christmas-carol-tickets-2027", reserve:"/sensory-friendly-registration?performance=A+Christmas+Carol", img:"/img/shows/a-christmas-carol-card"},
+  {show:"A Christmas Carol", date:"2026-12-04", time:"5:00 PM", cast:"Plum Cast", href:"/a-christmas-carol-tickets-2027", reserve:"", img:"/img/shows/a-christmas-carol-card"}
 ];
 (function(){
   var list=document.getElementById('sfList');
@@ -394,8 +396,8 @@ const SENSORY = [
       return '<article class="sf"><div class="sf-ph"><picture><source type="image/webp" srcset="'+s.img+'.webp"><img src="'+s.img+'.jpg" alt="" loading="lazy" decoding="async"></picture>'+
         '<span class="sf-date"><small>'+MO[p[1]-1]+'</small><b>'+p[2]+'</b><small>'+p[0]+'</small></span></div>'+
         '<div class="sf-b"><div class="sf-chips"><span>Sensory-friendly</span><span>Free</span></div>'+
-        '<h3><a href="'+s.href+'">'+s.show+'</a></h3><p class="sf-meta">'+s.time+' &middot; Electric Theater, St. George</p>'+
-        '<a class="pill" href="'+s.reserve+'">Reserve free tickets</a></div></article>';
+        '<h3><a href="'+s.href+'">'+s.show+'</a></h3><p class="sf-meta">'+(s.cast?s.cast+' &middot; ':'')+s.time+' &middot; Electric Theater, St. George</p>'+
+        (s.reserve?'<a class="pill" href="'+s.reserve+'">Reserve free tickets</a>':'<span class="sf-soon">Reservations open soon</span>')+'</div></article>';
     }).join('');
     if(!up.length){
       list.style.display='block';

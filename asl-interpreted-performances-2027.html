@@ -51,6 +51,7 @@
 .sf-empty{background:#fff;border-radius:var(--r);padding:48px 28px;text-align:center}
 .sf-empty h3{font-size:clamp(30px,2.8vw,42px);letter-spacing:-.03em;margin-bottom:10px}
 .sf-empty p{font-size:19px;font-weight:400;margin:0 0 22px}
+.sf-soon{margin-top:auto;display:flex;align-items:center;justify-content:center;height:53px;border:1.5px dashed #c9c4bd;border-radius:70px;color:#5f5f5f;font-size:15px;font-weight:500}
 .sf-note{font-size:15px;font-weight:400;color:#555;margin:18px 4px 0}
 /* Videos */
 .vband{position:relative;background:var(--slate);color:var(--cream);padding:clamp(120px,10vw,160px) 0}
@@ -119,7 +120,7 @@
 .tags{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
 .tags li{background:var(--chip);border-radius:70px;padding:9px 15px;font-size:15px;font-weight:700}
 /* Quotes */
-.quotes{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
 .quote{margin:0;position:relative;background:var(--slate);color:var(--cream);border-radius:var(--r);padding:clamp(34px,4vw,54px);overflow:hidden}
 .quote .qm{display:block;font:400 120px/.6 var(--serif);color:var(--sky);height:50px}
 .quote blockquote{margin:0}
