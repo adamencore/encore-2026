@@ -78,6 +78,14 @@ export default async (request, context) => {
     return context.next();
   }
 
+  // Team API calls (e.g. the photo library) get a plain 401, never the HTML sign-in page.
+  if (url.pathname.startsWith("/team/api/")) {
+    return new Response(JSON.stringify({ ok: false, error: "signed-out" }), {
+      status: 401,
+      headers: { "content-type": "application/json", "cache-control": "no-store" },
+    });
+  }
+
   // Handle a sign-in submission.
   if (request.method === "POST") {
     const form = await request.formData();

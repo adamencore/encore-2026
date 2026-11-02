@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<!-- Encore Photo Library: internal. Protected server-side by netlify/edge-functions/team-gate.js (/team/*).
+     Backend: netlify/functions/photos.mjs (/team/api/photos/*). Catalog lives in a Google Sheet. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Photo Library | Encore Team Hub</title>
+<meta name="theme-color" content="#22353d">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<style>
+  :root{
+    --purple:#22353d;--purple2:#2f616e;--cream:#eee5de;--cream-lite:#f5f1ec;--paper:#fffdf9;
+    --coral-2:#fbaca8;--coral-4:#e8716b;--coral-ink:#b84a44;--muted:#4f6b76;--line:rgba(32,65,74,.16);
+    --sel:#2f616e;
+  }
+  [hidden]{display:none!important}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Mikado',system-ui,sans-serif;background:var(--cream-lite);color:var(--purple);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:clip}
+  a{color:inherit}
+  button,input,select{font:inherit;color:inherit}
+  button{cursor:pointer}
+  .wrap{max-width:1400px;margin:0 auto;padding:0 20px}
+
+  /* top bar (matches Team Hub) */
+  .topbar{background:var(--paper);border-bottom:1px solid var(--line)}
+  .topbar-in{max-width:1400px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .topbar .brandmark{height:24px;color:var(--purple);display:block}
+  .tb-right{display:flex;align-items:center;gap:14px}
+  .tb-badge{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--purple);border-radius:100px;padding:6px 12px;text-decoration:none}
+  .tb-link{font-size:13.5px;color:var(--muted);font-weight:500;text-decoration:none}
+  .tb-link:hover{color:var(--purple)}
+
+  /* header */
+  .hero{background:radial-gradient(120% 130% at 20% 0%,var(--purple2),var(--purple) 62%);color:#fff}
+  .hero-in{max-width:1400px;margin:0 auto;padding:30px 20px 26px;display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .hero .k{font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:11.5px;color:var(--coral-2)}
+  .hero h1{font-weight:500;font-size:clamp(30px,5.5vw,44px);line-height:1;margin-top:10px}
+  .hero p{margin-top:10px;color:rgba(255,255,255,.86);font-size:15px}
+  .hero-actions{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--paper);color:var(--purple);border-radius:12px;padding:9px 14px;font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap}
+  .btn:hover{border-color:var(--purple2)}
+  .btn.dark{background:var(--purple);border-color:var(--purple);color:#fff}
+  .btn.dark:hover{background:var(--purple2)}
+  .btn.ghost-light{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.28);color:#fff}
+  .btn.ghost-light:hover{background:rgba(255,255,255,.18)}
+  .btn svg{width:16px;height:16px;flex:none}
+  .btn[disabled]{opacity:.5;cursor:default}
+
+  /* search + filters */
+  .controls{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--cream-lite) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .controls-in{max-width:1400px;margin:0 auto;padding:14px 20px 12px}
+  .search{position:relative}
+  .search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted)}
+  .search input{width:100%;font-size:16px;padding:13px 44px 13px 44px;border:1px solid var(--line);border-radius:14px;background:#fff}
+  .search input:focus{outline:2px solid var(--purple2);border-color:transparent}
+  .search .clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);border:0;background:none;width:32px;height:32px;border-radius:8px;color:var(--muted);font-size:20px;line-height:1}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
+  .filters select{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 10px;font-size:13.5px;max-width:100%}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+  .chip{border:1px solid var(--line);background:#fff;border-radius:100px;padding:5px 11px;font-size:13px;font-weight:500;color:var(--purple)}
+  .chip:hover{border-color:var(--purple2)}
+  .chip[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+  .chip .n{opacity:.65;font-weight:400;margin-left:4px}
+  .chip.special{border-style:dashed}
+
+  .resultbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:16px 0 12px}
+  .resultbar .count{font-size:14px;color:var(--muted)}
+  .resultbar .count b{color:var(--purple)}
+  .resultbar .right{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .resultbar select{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 10px;font-size:13.5px}
+
+  /* grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+  .tile{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--cream);border:0;padding:0;display:block;width:100%}
+  .tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}
+  .tile:hover img{transform:scale(1.03)}
+  .tile .meta{position:absolute;left:0;right:0;bottom:0;padding:22px 9px 7px;background:linear-gradient(transparent,rgba(20,32,38,.82));color:#fff;font-size:11.5px;text-align:left;line-height:1.3;pointer-events:none}
+  .tile .meta b{display:block;font-weight:600;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tile .check{position:absolute;top:7px;left:7px;width:26px;height:26px;border-radius:50%;border:2px solid #fff;background:rgba(20,32,38,.35);display:grid;place-items:center;opacity:0;transition:opacity .15s}
+  .tile .check::before{content:"";position:absolute;inset:-10px}
+  .tile:hover .check,.selecting .tile .check{opacity:1}
+  .tile.sel{outline:4px solid var(--sel);outline-offset:-4px}
+  .tile.sel .check{opacity:1;background:var(--sel);border-color:#fff}
+  .tile.sel .check::after{content:"";width:10px;height:6px;border:2.5px solid #fff;border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+  .tile .badge{position:absolute;top:8px;right:8px;background:rgba(255,253,249,.92);color:var(--purple);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:3px 6px}
+  .tile .broken{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:12px;padding:10px;text-align:center}
+  .sentinel{height:40px}
+
+  .empty{background:var(--paper);border:1px dashed var(--line);border-radius:18px;padding:36px 26px;text-align:center;margin:20px 0}
+  .empty h2{font-size:20px;font-weight:600}
+  .empty p{color:var(--muted);margin-top:8px;max-width:560px;margin-inline:auto}
+  .empty .btn{margin-top:16px}
+
+  /* bulk bar */
+  .bulk{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:40;width:min(980px,calc(100% - 24px));background:var(--purple);color:#fff;border-radius:18px;padding:12px 14px;box-shadow:0 22px 50px -18px rgba(0,0,0,.55)}
+  .bulk-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .bulk-top b{font-size:15px}
+  .bulk-top .links{display:flex;gap:12px}
+  .bulk-top button{background:none;border:0;color:var(--coral-2);font-weight:600;font-size:13.5px}
+  .bulk-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;align-items:center}
+  .bulk .qt{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:100px;padding:5px 11px;font-size:13px;font-weight:500}
+  .bulk .qt:hover{background:rgba(255,255,255,.22)}
+  .bulk input,.bulk select{background:#fff;color:var(--purple);border:0;border-radius:10px;padding:7px 10px;font-size:13.5px;min-width:0}
+  .bulk .apply{background:var(--coral-2);color:var(--purple);border:0;border-radius:10px;padding:7px 12px;font-weight:700;font-size:13.5px}
+  .bulk .lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-right:2px}
+  .bulk form{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:60;background:rgba(14,22,26,.94);display:grid;grid-template-columns:1fr 360px}
+  .lb-stage{position:relative;display:grid;place-items:center;min-height:0;padding:20px}
+  .lb-stage img{max-width:100%;max-height:calc(100vh - 40px);object-fit:contain;border-radius:6px}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:24px}
+  .lb-nav:hover{background:rgba(255,255,255,.24)}
+  .lb-prev{left:14px}.lb-next{right:14px}
+  .lb-side{background:var(--paper);overflow-y:auto;padding:22px 20px 30px;display:flex;flex-direction:column;gap:16px}
+  .lb-close{align-self:flex-end;border:0;background:var(--cream);width:36px;height:36px;border-radius:10px;font-size:20px}
+  .lb-side h2{font-size:18px;font-weight:600;word-break:break-word}
+  .lb-side .sub{color:var(--muted);font-size:13px;margin-top:4px;word-break:break-word}
+  .field label{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .field input{width:100%;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff;font-size:14px}
+  .row2{display:grid;grid-template-columns:1fr 100px;gap:10px}
+  .taglist{display:flex;gap:6px;flex-wrap:wrap}
+  .tg{display:inline-flex;align-items:center;gap:4px;border-radius:100px;padding:4px 6px 4px 11px;font-size:13px;font-weight:500;background:var(--purple);color:#fff}
+  .tg button{border:0;background:rgba(255,255,255,.18);color:#fff;width:20px;height:20px;border-radius:50%;font-size:13px;line-height:1;display:grid;place-items:center}
+  .tg.auto{background:#fff;color:var(--purple2);border:1.5px dashed var(--purple2)}
+  .tg.auto button{background:var(--cream);color:var(--purple)}
+  .hint{font-size:12.5px;color:var(--muted)}
+  .quick{display:flex;gap:6px;flex-wrap:wrap}
+  .quick button{border:1px solid var(--line);background:#fff;border-radius:100px;padding:4px 10px;font-size:12.5px}
+  .quick button[aria-pressed="true"]{background:var(--purple);color:#fff;border-color:var(--purple)}
+  .addtag{display:flex;gap:6px}
+  .addtag input{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff;font-size:14px}
+
+  /* modal + drawer */
+  .modal{position:fixed;inset:0;z-index:70;background:rgba(14,22,26,.55);display:grid;place-items:center;padding:16px}
+  .modal-card{background:var(--paper);border-radius:20px;width:min(640px,100%);max-height:calc(100vh - 32px);overflow-y:auto;padding:24px 22px;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+  .modal-card h2{font-size:21px;font-weight:600}
+  .modal-card h3{font-size:15px;font-weight:600;margin-top:20px}
+  .modal-card p,.modal-card li{font-size:14px;color:var(--muted);margin-top:8px}
+  .modal-card ol{padding-left:20px}
+  .modal-card code{background:var(--cream);border-radius:6px;padding:1px 6px;font-size:12.5px;word-break:break-all;color:var(--purple)}
+  .modal-foot{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:20px}
+  .status-list{list-style:none;padding:0}
+  .status-list li{display:flex;gap:10px;align-items:flex-start;color:var(--purple)}
+  .dot{width:10px;height:10px;border-radius:50%;margin-top:6px;flex:none;background:#c64d46}
+  .dot.ok{background:#2e7d4f}
+  .src{display:grid;grid-template-columns:110px 1fr 1fr 34px;gap:6px;margin-top:8px;align-items:center}
+  .src select,.src input{border:1px solid var(--line);border-radius:10px;padding:7px 9px;background:#fff;font-size:13.5px;min-width:0;width:100%}
+  .src .x{border:0;background:var(--cream);border-radius:8px;height:34px;font-size:18px}
+  .src-head{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .bar{height:10px;border-radius:10px;background:var(--cream);overflow:hidden;margin-top:14px}
+  .bar i{display:block;height:100%;width:0;background:var(--purple2);transition:width .3s}
+  .log{margin-top:12px;font-size:12.5px;color:var(--muted);max-height:140px;overflow-y:auto;white-space:pre-wrap}
+
+  .toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:90;background:var(--purple);color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;box-shadow:0 12px 30px -12px rgba(0,0,0,.5);max-width:calc(100% - 32px)}
+  .toast.err{background:#a63a34}
+  .loading{display:grid;place-items:center;padding:70px 0;color:var(--muted)}
+
+  @media(max-width:900px){
+    .lb{grid-template-columns:1fr;grid-template-rows:55vh 1fr}
+    .lb-stage img{max-height:calc(55vh - 30px)}
+  }
+  @media(max-width:560px){
+    .wrap,.controls-in,.hero-in,.topbar-in{padding-left:16px;padding-right:16px}
+    .controls{position:static}
+    .grid{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:6px}
+    .tile .meta{display:none}
+    .tile .check{opacity:1}
+    .src{grid-template-columns:1fr 34px}
+    .src select{grid-column:1 / -1}
+    .src .ref{grid-column:1 / 2}
+    .src .lab{grid-column:1 / 2}
+    .src .x{grid-column:2;grid-row:2 / 4;height:100%}
+    .src-head{display:none}
+    .bulk{bottom:8px;padding:10px}
+    #bulkQuick{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
+    #bulkQuick .qt{flex:none}
+  }
+  @media(prefers-reduced-motion:reduce){.tile img{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="topbar-in">
+  <a href="/team/" aria-label="Back to Team Hub"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true"><g><path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/><path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/><polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/><path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/><path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/><path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/><path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/><path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/><path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/></g></svg></a>
+  <div class="tb-right">
+    <a class="tb-link" href="/team/">&larr; Team Hub</a>
+    <span class="tb-badge">Photos</span>
+  </div>
+</div></div>
+
+<header class="hero"><div class="hero-in">
+  <div>
+    <div class="k">Encore Team Hub</div>
+    <h1>Photo Library</h1>
+    <p id="heroCount">Every Encore photo from Drive and SmugMug, searchable in one place.</p>
+  </div>
+  <div class="hero-actions">
+    <button class="btn ghost-light" id="btnSync" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Find new photos</button>
+    <button class="btn ghost-light" id="btnAuto" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>Auto-tag</button>
+    <button class="btn ghost-light" id="btnSetup" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Setup</button>
+  </div>
+</div></header>
+
+<div class="controls"><div class="controls-in">
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input id="q" type="search" placeholder="Try: peter pan girl on stage, little women 2025 audience, headshot" aria-label="Search photos" autocomplete="off">
+    <button class="clear" id="qClear" type="button" aria-label="Clear search" hidden>&times;</button>
+  </div>
+  <div class="filters">
+    <select id="fShow" aria-label="Show"><option value="">All shows</option></select>
+    <select id="fYear" aria-label="Year"><option value="">All years</option></select>
+    <select id="fSource" aria-label="Source"><option value="">Drive and SmugMug</option><option value="drive">Google Drive</option><option value="smugmug">SmugMug</option></select>
+  </div>
+  <div class="chips" id="chips"></div>
+</div></div>
+
+<main class="wrap">
+  <div class="resultbar">
+    <div class="count" id="count"></div>
+    <div class="right">
+      <select id="sort" aria-label="Sort">
+        <option value="new">Newest first</option>
+        <option value="old">Oldest first</option>
+        <option value="show">By show</option>
+        <option value="name">By file name</option>
+      </select>
+      <button class="btn" id="btnSelectAll" type="button">Select all shown</button>
+    </div>
+  </div>
+  <div id="loading" class="loading">Loading the photo library...</div>
+  <div id="emptyState" hidden></div>
+  <div class="grid" id="grid"></div>
+  <div class="sentinel" id="sentinel"></div>
+  <div style="height:120px"></div>
+</main>
+
+<!-- bulk tagging bar -->
+<div class="bulk" id="bulk" hidden>
+  <div class="bulk-top">
+    <b id="bulkCount">0 selected</b>
+    <div class="links"><button type="button" id="bulkNone">Clear selection</button></div>
+  </div>
+  <div class="bulk-row" id="bulkQuick"><span class="lbl">Add tag</span></div>
+  <div class="bulk-row">
+    <form id="bulkTagForm"><input id="bulkTag" list="dlTags" placeholder="Any tag, e.g. finale" aria-label="Tag to add" size="16"><button class="apply" type="submit">Add</button></form>
+    <form id="bulkRemoveForm"><select id="bulkRemove" aria-label="Tag to remove"><option value="">Remove a tag...</option></select><button class="apply" type="submit">Remove</button></form>
+  </div>
+  <div class="bulk-row">
+    <form id="bulkShowForm"><input id="bulkShow" list="dlShows" placeholder="Set show" aria-label="Set show" size="18"><button class="apply" type="submit">Set</button></form>
+    <form id="bulkYearForm"><input id="bulkYear" inputmode="numeric" maxlength="4" placeholder="Year" aria-label="Set year" size="5"><button class="apply" type="submit">Set</button></form>
+  </div>
+</div>
+
+<!-- lightbox -->
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo details">
+  <div class="lb-stage">
+    <img id="lbImg" alt="">
+    <button class="lb-nav lb-prev" id="lbPrev" type="button" aria-label="Previous photo">&#8249;</button>
+    <button class="lb-nav lb-next" id="lbNext" type="button" aria-label="Next photo">&#8250;</button>
+  </div>
+  <aside class="lb-side">
+    <button class="lb-close" id="lbClose" type="button" aria-label="Close">&times;</button>
+    <div><h2 id="lbName"></h2><div class="sub" id="lbFolder"></div></div>
+    <div class="row2">
+      <div class="field"><label for="lbShow">Show</label><input id="lbShow" list="dlShows"></div>
+      <div class="field"><label for="lbYear">Year</label><input id="lbYear" inputmode="numeric" maxlength="4"></div>
+    </div>
+    <div class="field"><label>Tags</label><div class="taglist" id="lbTags"></div>
+      <p class="hint" id="lbAutoHint" hidden>Dashed tags are guesses from Auto-tag. Tap the check to keep one, or the &times; to drop it.</p></div>
+    <div class="field"><label>Quick tags</label><div class="quick" id="lbQuick"></div></div>
+    <form class="addtag" id="lbAddForm"><input id="lbAdd" list="dlTags" placeholder="Add a tag" aria-label="Add a tag"><button class="btn dark" type="submit">Add</button></form>
+    <a class="btn" id="lbOpen" target="_blank" rel="noopener">Open original</a>
+    <p class="hint" id="lbDate"></p>
+  </aside>
+</div>
+
+<!-- setup -->
+<div class="modal" id="setup" hidden role="dialog" aria-modal="true" aria-labelledby="setupTitle">
+  <div class="modal-card">
+    <h2 id="setupTitle">Setup</h2>
+    <ul class="status-list" id="statusList"></ul>
+    <div id="setupHelp"></div>
+    <h3>Where the photos are</h3>
+    <p>Add each top-level photo folder or SmugMug account once. Subfolders are included. The first folder level under a source becomes the show, so a folder named "Peter Pan Jr 2026" files its photos under that show. Fill in "Show" only if a whole source belongs to one show.</p>
+    <div class="src src-head"><span>Type</span><span>Drive folder link or SmugMug name</span><span>Show (optional)</span><span></span></div>
+    <div id="srcRows"></div>
+    <div class="modal-foot" style="justify-content:space-between">
+      <button class="btn" id="srcAdd" type="button">+ Add a source</button>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <a class="btn" id="sheetLink" target="_blank" rel="noopener" hidden>Open catalog sheet</a>
+        <button class="btn" id="setupClose" type="button">Close</button>
+        <button class="btn dark" id="srcSave" type="button">Save sources</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- sync / auto-tag progress -->
+<div class="modal" id="job" hidden role="dialog" aria-modal="true" aria-labelledby="jobTitle">
+  <div class="modal-card">
+    <h2 id="jobTitle"></h2>
+    <div id="jobBody"></div>
+    <div class="bar"><i id="jobBar"></i></div>
+    <p id="jobStatus"></p>
+    <div class="log" id="jobLog"></div>
+    <div class="modal-foot">
+      <button class="btn" id="jobStop" type="button">Stop</button>
+      <button class="btn dark" id="jobGo" type="button">Start</button>
+    </div>
+  </div>
+</div>
+
+<datalist id="dlTags"></datalist>
+<datalist id="dlShows"></datalist>
+
+<script>
+(() => {
+  "use strict";
+  const API = "/team/api/photos/";
+  const PAGE = 120;
+
+  // Quick tags offered everywhere. Order is the order of the chips.
+  const QUICK = ["boy","girl","group","solo","on stage","rehearsal","backstage","audience","headshot","cast photo","dance","costume","makeup","set","props","poster"];
+  const SYN = {boys:"boy",girls:"girl",kids:"young artists",groups:"group",audiences:"audience",headshots:"headshot",costumes:"costume",dancing:"dance",dancer:"dance",dancers:"dance",stage:"on stage",performance:"on stage",crowd:"audience",props:"props",sets:"set"};
+
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const tagsOf = (s) => String(s || "").split(",").map((t) => t.trim().toLowerCase()).filter(Boolean);
+
+  const state = { photos: [], byId: new Map(), sources: [], filtered: [], shown: 0, sel: new Set(), lastClick: null, chips: new Set(), special: "", lbIndex: -1, configured: null, serviceEmail: "", sheetUrl: "" };
+
+  /* ---------- API ---------- */
+  async function api(action, body) {
+    const opts = body === undefined ? {} : { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) };
+    const res = await fetch(API + action, { credentials: "same-origin", ...opts });
+    if (res.status === 401) { location.href = "/team/"; throw new Error("signed out"); }
+    const data = await res.json().catch(() => ({ ok: false, error: "Unexpected reply (" + res.status + ")" }));
+    if (!data.ok && data.error !== "not-configured") throw new Error(data.error || "Something went wrong");
+    return data;
+  }
+
+  function toast(msg, isErr) {
+    const t = document.createElement("div");
+    t.className = "toast" + (isErr ? " err" : "");
+    t.textContent = msg;
+    t.setAttribute("role", "status");
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), isErr ? 5200 : 2600);
+  }
+
+  /* ---------- data ---------- */
+  function hydrate(p) {
+    p.tagsArr = tagsOf(p.tags);
+    p.autoArr = tagsOf(p.autoTags).filter((t) => !p.tagsArr.includes(t));
+    p.hay = [p.name, p.folder, p.show, p.year, p.tagsArr.join(" "), p.autoArr.join(" ")].join(" ").toLowerCase();
+    return p;
+  }
+  function setPhotos(list) {
+    state.photos = list.map(hydrate);
+    state.byId = new Map(state.photos.map((p) => [p.id, p]));
+  }
+  function mergeUpdated(list) {
+    for (const u of list || []) {
+      const p = state.byId.get(u.id);
+      if (p) { Object.assign(p, u); hydrate(p); }
+      else { const h = hydrate(u); state.photos.push(h); state.byId.set(h.id, h); }
+    }
+  }
+
+  function thumbUrl(p, big) {
+    if (p.source === "drive") return API + "thumb?id=" + encodeURIComponent(p.fileId) + "&s=" + (big ? 1600 : 400);
+    if (!p.thumb) return "";
+    if (p.smallOnly && !big) return p.thumb;
+    // SmugMug size codes: Th thumb, M medium, L large
+    const size = big ? "L" : "M";
+    return p.thumb.replace(/\/Th\//, "/" + size + "/").replace(/-Th(\.\w+)$/, "-" + size + "$1");
+  }
+
+  /* ---------- search ---------- */
+  function parseQuery(q) {
+    const out = [];
+    const re = /"([^"]+)"|(\S+)/g;
+    let m;
+    while ((m = re.exec(q.toLowerCase()))) out.push((m[1] || m[2]).trim());
+    return out.filter(Boolean);
+  }
+  // Multi-word quick tags ("on stage", "cast photo") match as a phrase even when typed unquoted.
+  function joinPhrases(tokens) {
+    const phrases = QUICK.filter((t) => t.includes(" "));
+    const out = [];
+    for (let i = 0; i < tokens.length; i++) {
+      const two = tokens[i] + " " + (tokens[i + 1] || "");
+      if (phrases.includes(two)) { out.push(two); i++; } else out.push(tokens[i]);
+    }
+    return out;
+  }
+  function tokenMatches(p, tok) {
+    const alt = SYN[tok];
+    if (tok === "boy" || tok === "girl" || alt === "boy" || alt === "girl") {
+      // gender words must be real tags, otherwise "girl" would match "Girl Scouts" folders and file names
+      const t = alt || tok;
+      return p.tagsArr.includes(t) || p.autoArr.includes(t);
+    }
+    if (p.hay.includes(tok)) return true;
+    if (alt && p.hay.includes(alt)) return true;
+    if (tok.length > 3 && tok.endsWith("s") && p.hay.includes(tok.slice(0, -1))) return true;
+    return false;
+  }
+
+  function applyFilters() {
+    const tokens = joinPhrases(parseQuery($("q").value));
+    const show = $("fShow").value, year = $("fYear").value, src = $("fSource").value;
+    const chips = [...state.chips];
+    state.filtered = state.photos.filter((p) => {
+      if (show && p.show !== show) return false;
+      if (year && p.year !== year) return false;
+      if (src && p.source !== src) return false;
+      if (state.special === "untagged" && (p.tagsArr.length || p.autoArr.length)) return false;
+      if (state.special === "noshow" && p.show) return false;
+      if (state.special === "guesses" && !p.autoArr.length) return false;
+      for (const c of chips) if (!p.tagsArr.includes(c) && !p.autoArr.includes(c)) return false;
+      for (const t of tokens) if (!tokenMatches(p, t)) return false;
+      return true;
+    });
+    const sort = $("sort").value;
+    const key = (p) => p.date || p.year || p.added || "";
+    state.filtered.sort((a, b) => {
+      if (sort === "old") return key(a).localeCompare(key(b));
+      if (sort === "show") return (a.show || "~").localeCompare(b.show || "~") || key(b).localeCompare(key(a));
+      if (sort === "name") return a.name.localeCompare(b.name, undefined, { numeric: true });
+      return key(b).localeCompare(key(a));
+    });
+    $("qClear").hidden = !$("q").value;
+    renderGrid(true);
+  }
+
+  /* ---------- rendering ---------- */
+  function fillSelect(sel, values, label) {
+    const cur = sel.value;
+    sel.innerHTML = `<option value="">${label}</option>` + values.map(([v, n]) => `<option value="${esc(v)}">${esc(v)} (${n})</option>`).join("");
+    if (values.some(([v]) => v === cur)) sel.value = cur;
+  }
+  function countBy(fn) {
+    const m = new Map();
+    for (const p of state.photos) for (const v of [].concat(fn(p))) if (v) m.set(v, (m.get(v) || 0) + 1);
+    return m;
+  }
+  function renderFacets() {
+    const shows = [...countBy((p) => p.show)].sort((a, b) => a[0].localeCompare(b[0]));
+    fillSelect($("fShow"), shows, "All shows");
+    const years = [...countBy((p) => p.year)].sort((a, b) => b[0].localeCompare(a[0]));
+    fillSelect($("fYear"), years, "All years");
+    const tagCounts = countBy((p) => p.tagsArr.concat(p.autoArr));
+    const extra = [...tagCounts].filter(([t]) => !QUICK.includes(t)).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([t]) => t);
+    const chips = QUICK.concat(extra);
+    const untagged = state.photos.filter((p) => !p.tagsArr.length && !p.autoArr.length).length;
+    const noshow = state.photos.filter((p) => !p.show).length;
+    const guesses = state.photos.filter((p) => p.autoArr.length).length;
+    $("chips").innerHTML =
+      chips.map((t) => `<button type="button" class="chip" data-chip="${esc(t)}" aria-pressed="${state.chips.has(t)}">${esc(t)}<span class="n">${tagCounts.get(t) || 0}</span></button>`).join("") +
+      `<button type="button" class="chip special" data-special="untagged" aria-pressed="${state.special === "untagged"}">Not tagged yet<span class="n">${untagged}</span></button>` +
+      `<button type="button" class="chip special" data-special="noshow" aria-pressed="${state.special === "noshow"}">No show set<span class="n">${noshow}</span></button>` +
+      `<button type="button" class="chip special" data-special="guesses" aria-pressed="${state.special === "guesses"}">Has auto-tag guesses<span class="n">${guesses}</span></button>`;
+    const allTags = [...new Set(QUICK.concat([...tagCounts.keys()]))].sort();
+    $("dlTags").innerHTML = allTags.map((t) => `<option value="${esc(t)}">`).join("");
+    $("dlShows").innerHTML = shows.map(([s]) => `<option value="${esc(s)}">`).join("");
+    $("heroCount").textContent = state.photos.length
+      ? `${state.photos.length.toLocaleString()} photos across ${shows.length} show${shows.length === 1 ? "" : "s"}.`
+      : "Every Encore photo from Drive and SmugMug, searchable in one place.";
+  }
+
+  function tileHtml(p) {
+    const url = thumbUrl(p);
+    const tags = p.tagsArr.concat(p.autoArr).slice(0, 4).join(", ");
+    return `<button type="button" class="tile${state.sel.has(p.id) ? " sel" : ""}" data-id="${esc(p.id)}" aria-label="${esc(p.name)}${p.show ? ", " + esc(p.show) : ""}">
+      ${url ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async">` : `<span class="broken">No preview</span>`}
+      <span class="check" aria-hidden="true"></span>
+      ${p.source === "smugmug" ? `<span class="badge">SmugMug</span>` : ""}
+      <span class="meta"><b>${esc(p.show || "No show set")}${p.year && !String(p.show).includes(p.year) ? " · " + esc(p.year) : ""}</b>${esc(tags)}</span>
+    </button>`;
+  }
+
+  function renderGrid(reset) {
+    const grid = $("grid");
+    if (reset) { grid.innerHTML = ""; state.shown = 0; }
+    const next = state.filtered.slice(state.shown, state.shown + PAGE);
+    grid.insertAdjacentHTML("beforeend", next.map(tileHtml).join(""));
+    grid.querySelectorAll("img:not([data-w])").forEach((img) => {
+      img.dataset.w = "1";
+      img.addEventListener("error", () => {
+        const p = state.byId.get(img.closest(".tile").dataset.id);
+        // SmugMug medium size missing: fall back to the original thumbnail once
+        if (p && p.source === "smugmug" && p.thumb && img.src !== p.thumb) { p.smallOnly = true; img.src = p.thumb; return; }
+        img.replaceWith(Object.assign(document.createElement("span"), { className: "broken", textContent: "Preview not available" }));
+      }, { once: false });
+    });
+    state.shown += next.length;
+    const n = state.filtered.length;
+    $("count").innerHTML = state.photos.length ? `<b>${n.toLocaleString()}</b> of ${state.photos.length.toLocaleString()} photos` : "";
+    $("btnSelectAll").hidden = !n;
+    $("emptyState").hidden = !!n || !state.photos.length;
+    if (!n && state.photos.length) {
+      $("emptyState").className = "empty";
+      $("emptyState").innerHTML = `<h2>No photos match</h2><p>Try fewer words, or clear a filter. Tags like boy, girl and audience only find photos someone has tagged (or Auto-tag has guessed).</p><button class="btn" type="button" id="resetAll">Clear search and filters</button>`;
+      $("resetAll").onclick = resetFilters;
+    }
+  }
+
+  function resetFilters() {
+    $("q").value = ""; $("fShow").value = ""; $("fYear").value = ""; $("fSource").value = "";
+    state.chips.clear(); state.special = "";
+    renderFacets(); applyFilters();
+  }
+
+  /* ---------- selection + bulk ---------- */
+  function updateSelUI() {
+    const n = state.sel.size;
+    $("bulk").hidden = !n;
+    document.body.classList.toggle("selecting", n > 0);
+    $("bulkCount").textContent = n + " selected";
+    document.querySelectorAll(".tile").forEach((t) => t.classList.toggle("sel", state.sel.has(t.dataset.id)));
+    if (n) {
+      const present = new Set();
+      for (const id of state.sel) { const p = state.byId.get(id); if (p) p.tagsArr.concat(p.autoArr).forEach((t) => present.add(t)); }
+      $("bulkRemove").innerHTML = `<option value="">Remove a tag...</option>` + [...present].sort().map((t) => `<option>${esc(t)}</option>`).join("");
+    }
+  }
+
+  async function saveTags(ids, change, label) {
+    // optimistic: apply locally, then save, roll back on failure
+    const before = ids.map((id) => { const p = state.byId.get(id); return p && { id, tags: p.tags, autoTags: p.autoTags, show: p.show, year: p.year }; }).filter(Boolean);
+    for (const id of ids) {
+      const p = state.byId.get(id); if (!p) continue;
+      const rem = new Set(change.remove || []);
+      const tags = p.tagsArr.filter((t) => !rem.has(t)).concat(change.add || []);
+      p.tags = [...new Set(tags)].join(", ");
+      p.autoTags = p.autoArr.filter((t) => !rem.has(t) && !tags.includes(t)).join(", ");
+      if (typeof change.show === "string") p.show = change.show;
+      if (typeof change.year === "string") p.year = change.year;
+      hydrate(p);
+    }
+    refreshAfterEdit();
+    try {
+      const res = await api("tags", { ids, ...change });
+      mergeUpdated(res.updated);
+      refreshAfterEdit();
+      if (label) toast(label);
+    } catch (e) {
+      mergeUpdated(before);
+      refreshAfterEdit();
+      toast("Couldn't save: " + e.message, true);
+    }
+  }
+
+  function refreshAfterEdit() {
+    const y = window.scrollY, shown = state.shown;
+    renderFacets();
+    applyFilters();
+    while (state.shown < shown && state.shown < state.filtered.length) renderGrid(false);
+    window.scrollTo(0, y);
+    updateSelUI();
+    if (!$("lb").hidden) renderLightbox();
+  }
+
+  /* ---------- lightbox ---------- */
+  function openLightbox(id) {
+    state.lbIndex = state.filtered.findIndex((p) => p.id === id);
+    if (state.lbIndex < 0) return;
+    $("lb").hidden = false;
+    document.body.style.overflow = "hidden";
+    renderLightbox();
+    $("lbClose").focus();
+  }
+  function closeLightbox() {
+    $("lb").hidden = true;
+    document.body.style.overflow = "";
+    const t = document.querySelector(`.tile[data-id="${CSS.escape(state.filtered[state.lbIndex]?.id || "")}"]`);
+    if (t) t.focus();
+  }
+  function renderLightbox() {
+    const p = state.filtered[state.lbIndex];
+    if (!p) return closeLightbox();
+    const img = $("lbImg");
+    const src = thumbUrl(p, true);
+    if (img.dataset.for !== p.id) { img.src = src; img.dataset.for = p.id; img.onerror = () => { if (p.thumb && img.src !== p.thumb) img.src = p.thumb; }; }
+    img.alt = p.name;
+    $("lbName").textContent = p.name;
+    $("lbFolder").textContent = p.folder;
+    $("lbShow").value = p.show;
+    $("lbYear").value = p.year;
+    $("lbTags").innerHTML =
+      p.tagsArr.map((t) => `<span class="tg">${esc(t)}<button type="button" data-rm="${esc(t)}" aria-label="Remove ${esc(t)}">&times;</button></span>`).join("") +
+      p.autoArr.map((t) => `<span class="tg auto">${esc(t)}<button type="button" data-keep="${esc(t)}" aria-label="Keep ${esc(t)}">&#10003;</button><button type="button" data-rm="${esc(t)}" aria-label="Drop ${esc(t)}">&times;</button></span>`).join("") ||
+      `<span class="hint">No tags yet.</span>`;
+    $("lbAutoHint").hidden = !p.autoArr.length;
+    $("lbQuick").innerHTML = QUICK.map((t) => `<button type="button" data-q="${esc(t)}" aria-pressed="${p.tagsArr.includes(t)}">${esc(t)}</button>`).join("");
+    $("lbOpen").href = p.link || "#";
+    $("lbOpen").textContent = p.source === "smugmug" ? "Open in SmugMug" : "Open in Google Drive";
+    $("lbDate").textContent = [p.date && "Taken or added " + p.date, p.source === "drive" ? "Google Drive" : "SmugMug"].filter(Boolean).join(" · ");
+    $("lbPrev").disabled = state.lbIndex <= 0;
+    $("lbNext").disabled = state.lbIndex >= state.filtered.length - 1;
+  }
+  function lbStep(d) {
+    const i = state.lbIndex + d;
+    if (i < 0 || i >= state.filtered.length) return;
+    state.lbIndex = i;
+    renderLightbox();
+  }
+
+  /* ---------- setup ---------- */
+  function renderSetup() {
+    const c = state.configured || {};
+    const item = (ok, html) => `<li><span class="dot${ok ? " ok" : ""}"></span><span>${html}</span></li>`;
+    $("statusList").innerHTML =
+      item(c.google, c.google ? `Google service account connected${state.serviceEmail ? `: <code>${esc(state.serviceEmail)}</code>` : ""}` : "Google service account key is not set in Netlify (<code>GOOGLE_SERVICE_ACCOUNT_KEY</code>).") +
+      item(c.sheet, c.sheet ? "Catalog sheet connected." : "Catalog sheet ID is not set in Netlify (<code>PHOTO_LIBRARY_SHEET_ID</code>).") +
+      item(c.smugmug, c.smugmug ? "SmugMug API key set." : "SmugMug API key not set (<code>SMUGMUG_API_KEY</code>). Only needed for SmugMug galleries.");
+    $("setupHelp").innerHTML = state.serviceEmail
+      ? `<p>Share each Drive folder (and the catalog sheet, as Editor) with <code>${esc(state.serviceEmail)}</code> so the library can see them. For a shared drive, add that address as a member instead.</p>`
+      : `<p>The full setup steps are in the handoff notes for this tool.</p>`;
+    $("sheetLink").hidden = !state.sheetUrl;
+    if (state.sheetUrl) $("sheetLink").href = state.sheetUrl;
+    const rows = state.sources.length ? state.sources : [{ type: "drive", ref: "", label: "" }];
+    $("srcRows").innerHTML = rows.map(srcRow).join("");
+  }
+  function srcRow(s) {
+    return `<div class="src">
+      <select aria-label="Source type"><option value="drive"${s.type === "drive" ? " selected" : ""}>Google Drive</option><option value="smugmug"${s.type === "smugmug" ? " selected" : ""}>SmugMug</option></select>
+      <input class="ref" value="${esc(s.ref)}" placeholder="Paste a Drive folder link or a SmugMug name" aria-label="Folder link or SmugMug name">
+      <input class="lab" value="${esc(s.label)}" placeholder="Show (optional)" aria-label="Show for this source">
+      <button type="button" class="x" aria-label="Remove source">&times;</button>
+    </div>`;
+  }
+  function readSources() {
+    return [...document.querySelectorAll("#srcRows .src")].map((r) => ({
+      type: r.querySelector("select").value, ref: r.querySelector(".ref").value.trim(), label: r.querySelector(".lab").value.trim(),
+    })).filter((s) => s.ref);
+  }
+
+  /* ---------- jobs (sync and auto-tag) ---------- */
+  const job = { running: false, stop: false };
+  function openJob(title, bodyHtml, onStart) {
+    $("jobTitle").textContent = title;
+    $("jobBody").innerHTML = bodyHtml;
+    $("jobBar").style.width = "0";
+    $("jobStatus").textContent = "";
+    $("jobLog").textContent = "";
+    $("jobGo").hidden = false;
+    $("jobGo").disabled = false;
+    $("jobGo").textContent = "Start";
+    $("jobStop").textContent = "Close";
+    $("jobGo").onclick = async () => {
+      job.running = true; job.stop = false;
+      $("jobGo").disabled = true;
+      $("jobStop").textContent = "Stop";
+      try { await onStart(); } catch (e) { logLine("Stopped: " + e.message); }
+      job.running = false;
+      $("jobGo").hidden = true;
+      $("jobStop").textContent = "Done";
+    };
+    $("job").hidden = false;
+  }
+  const logLine = (s) => { const l = $("jobLog"); l.textContent += (l.textContent ? "\n" : "") + s; l.scrollTop = l.scrollHeight; };
+
+  async function runSync() {
+    let st = null, total = 0, steps = 0;
+    do {
+      const res = await api("sync", { state: st });
+      if (res.ok === false) throw new Error(res.error);
+      (res.log || []).forEach(logLine);
+      mergeUpdated(res.added);
+      total += (res.added || []).length;
+      st = res.state;
+      steps++;
+      const left = res.remaining || 0;
+      $("jobBar").style.width = res.done ? "100%" : Math.min(95, (steps / (steps + left)) * 100) + "%";
+      $("jobStatus").textContent = res.done
+        ? `Finished. ${total.toLocaleString()} new photo${total === 1 ? "" : "s"} added.`
+        : `Scanning... ${total.toLocaleString()} new so far, ${left} folder page${left === 1 ? "" : "s"} left.`;
+      if (job.stop) { $("jobStatus").textContent += " Stopped. Run it again to pick up the rest."; break; }
+    } while (st);
+    renderFacets(); applyFilters();
+  }
+
+  /* Auto-tag runs in this browser with an open image model (CLIP).
+     Photos are read from our own thumbnail endpoint and never sent anywhere else.
+     The model files download once (about 90 MB) and the browser caches them. */
+  const AUTO_GROUPS = [
+    { name: "content", min: 0.5, labels: {
+      "people": "a photo of people",
+      "set": "a photo of an empty theater stage set with no people",
+      "props": "a photo of theater props laid out on a table",
+      "poster": "a graphic design poster or flyer with large text",
+      "makeup": "a close-up photo of stage makeup being applied to a face" } },
+    { name: "setting", when: "people", min: 0.42, labels: {
+      "on stage": "a photo of performers on a theater stage under bright stage lights",
+      "rehearsal": "a photo of a theater rehearsal in a plain room, actors in everyday clothes",
+      "backstage": "a photo of performers backstage in a dressing room or wings",
+      "audience": "a photo of an audience seated in a theater",
+      "outdoors": "a photo of people outdoors" } },
+    { name: "framing", when: "people", min: 0.42, labels: {
+      "headshot": "a close-up headshot portrait of one person looking at the camera",
+      "solo": "a photo of one performer on stage",
+      "duet": "a photo of two performers together",
+      "group": "a photo of a large group of performers",
+      "cast photo": "a posed cast photo of a big group smiling at the camera" } },
+    { name: "costume", when: "people", min: 0.62, labels: {
+      "costume": "people wearing elaborate theatrical costumes",
+      "-": "people wearing ordinary everyday clothes" } },
+    { name: "dance", when: "people", min: 0.62, labels: {
+      "dance": "performers dancing in motion",
+      "-": "people standing still or sitting" } },
+  ];
+
+  let clip = null;
+  async function loadClip(status) {
+    if (window.__photoTestClassifier) return window.__photoTestClassifier; // used by automated tests only
+    if (clip) return clip;
+    status("Downloading the image model (first time only, about 90 MB)...");
+    const T = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2/dist/transformers.web.min.js");
+    const id = "Xenova/clip-vit-base-patch32";
+    const opts = { dtype: "q8" };
+    const [tok, textModel, proc, visModel] = await Promise.all([
+      T.AutoTokenizer.from_pretrained(id),
+      T.CLIPTextModelWithProjection.from_pretrained(id, opts),
+      T.AutoProcessor.from_pretrained(id),
+      T.CLIPVisionModelWithProjection.from_pretrained(id, opts),
+    ]);
+    const prompts = [], slots = [];
+    AUTO_GROUPS.forEach((g, gi) => Object.entries(g.labels).forEach(([tag, prompt]) => { prompts.push(prompt); slots.push([gi, tag]); }));
+    const tOut = await textModel(tok(prompts, { padding: true, truncation: true }));
+    const tEmb = norm2d(tOut.text_embeds ?? Object.values(tOut)[0]);
+    clip = async (url) => {
+      const image = await T.RawImage.read(url);
+      const vOut = await visModel(await proc(image));
+      const v = norm2d(vOut.image_embeds ?? Object.values(vOut)[0])[0];
+      const sims = tEmb.map((t) => 100 * t.reduce((s, x, i) => s + x * v[i], 0));
+      const scores = {};
+      AUTO_GROUPS.forEach((g, gi) => {
+        const idx = slots.map((s, i) => (s[0] === gi ? i : -1)).filter((i) => i >= 0);
+        const mx = Math.max(...idx.map((i) => sims[i]));
+        const ex = idx.map((i) => Math.exp(sims[i] - mx));
+        const sum = ex.reduce((a, b) => a + b, 0);
+        scores[g.name] = Object.fromEntries(idx.map((i, k) => [slots[i][1], ex[k] / sum]));
+      });
+      return scores;
+    };
+    return clip;
+  }
+  function norm2d(t) {
+    const [n, d] = t.dims;
+    const data = t.data;
+    const rows = [];
+    for (let r = 0; r < n; r++) {
+      const row = Array.from(data.slice(r * d, (r + 1) * d));
+      const len = Math.hypot(...row) || 1;
+      rows.push(row.map((x) => x / len));
+    }
+    return rows;
+  }
+  function pickTags(scores) {
+    const out = [];
+    const top = (g) => Object.entries(scores[g.name] || {}).sort((a, b) => b[1] - a[1])[0];
+    const content = top(AUTO_GROUPS[0]);
+    const isPeople = content && content[0] === "people";
+    for (const g of AUTO_GROUPS) {
+      if (g.when === "people" && !isPeople) continue;
+      const t = top(g);
+      if (!t || t[1] < g.min || t[0] === "-" || t[0] === "people") continue;
+      out.push(t[0]);
+    }
+    return out;
+  }
+
+  async function runAutoTag(onlyIds) {
+    const queue = (onlyIds ? onlyIds.map((id) => state.byId.get(id)).filter(Boolean) : state.photos.filter((p) => p.autoTagged !== "1"));
+    if (!queue.length) { $("jobStatus").textContent = "Everything has been auto-tagged already."; return; }
+    const classify = await loadClip((s) => ($("jobStatus").textContent = s));
+    let done = 0, batch = [];
+    const flush = async () => {
+      if (!batch.length) return;
+      const send = batch; batch = [];
+      const res = await api("autotags", { updates: send });
+      mergeUpdated(res.updated);
+    };
+    for (const p of queue) {
+      if (job.stop) break;
+      try {
+        let scores;
+        try { scores = await classify(thumbUrl(p)); }
+        catch (first) { if (p.source === "smugmug" && p.thumb) { p.smallOnly = true; scores = await classify(p.thumb); } else throw first; }
+        batch.push({ id: p.id, tags: pickTags(scores) });
+      } catch (e) {
+        logLine(`Skipped ${p.name}: ${e.message}`);
+        batch.push({ id: p.id, tags: [] });
+      }
+      done++;
+      $("jobBar").style.width = (done / queue.length) * 100 + "%";
+      $("jobStatus").textContent = `Tagged ${done.toLocaleString()} of ${queue.length.toLocaleString()}.`;
+      if (batch.length >= 20) await flush();
+    }
+    await flush();
+    $("jobStatus").textContent = job.stop ? `Stopped after ${done}. Run it again to continue.` : `Finished. ${done.toLocaleString()} photos tagged.`;
+    renderFacets(); applyFilters();
+  }
+
+  /* ---------- events ---------- */
+  let qTimer;
+  $("q").addEventListener("input", () => { clearTimeout(qTimer); qTimer = setTimeout(applyFilters, 120); });
+  $("qClear").addEventListener("click", () => { $("q").value = ""; applyFilters(); $("q").focus(); });
+  ["fShow", "fYear", "fSource", "sort"].forEach((id) => $(id).addEventListener("change", applyFilters));
+  $("chips").addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    if (b.dataset.special) state.special = state.special === b.dataset.special ? "" : b.dataset.special;
+    else { const t = b.dataset.chip; state.chips.has(t) ? state.chips.delete(t) : state.chips.add(t); }
+    renderFacets(); applyFilters();
+  });
+
+  $("grid").addEventListener("click", (e) => {
+    const tile = e.target.closest(".tile"); if (!tile) return;
+    const id = tile.dataset.id;
+    const onCheck = e.target.closest(".check");
+    if (onCheck || state.sel.size || e.shiftKey || e.metaKey || e.ctrlKey) {
+      if (e.shiftKey && state.lastClick) {
+        const ids = state.filtered.map((p) => p.id);
+        const a = ids.indexOf(state.lastClick), b = ids.indexOf(id);
+        if (a >= 0 && b >= 0) ids.slice(Math.min(a, b), Math.max(a, b) + 1).forEach((x) => state.sel.add(x));
+      } else if (state.sel.has(id)) state.sel.delete(id);
+      else state.sel.add(id);
+      state.lastClick = id;
+      updateSelUI();
+      return;
+    }
+    openLightbox(id);
+  });
+  $("btnSelectAll").addEventListener("click", () => { state.filtered.forEach((p) => state.sel.add(p.id)); updateSelUI(); });
+  $("bulkNone").addEventListener("click", () => { state.sel.clear(); updateSelUI(); });
+  $("bulkQuick").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-q]"); if (!b) return;
+    saveTags([...state.sel], { add: [b.dataset.q] }, `Tagged ${state.sel.size} "${b.dataset.q}"`);
+  });
+  $("bulkTagForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const t = $("bulkTag").value.trim().toLowerCase(); if (!t) return;
+    saveTags([...state.sel], { add: t.split(",").map((x) => x.trim()).filter(Boolean) }, `Tagged ${state.sel.size} "${t}"`);
+    $("bulkTag").value = "";
+  });
+  $("bulkRemoveForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const t = $("bulkRemove").value; if (!t) return;
+    saveTags([...state.sel], { remove: [t] }, `Removed "${t}" from ${state.sel.size}`);
+  });
+  $("bulkShowForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const s = $("bulkShow").value.trim(); if (!s) return;
+    saveTags([...state.sel], { show: s }, `Set show on ${state.sel.size}`);
+    $("bulkShow").value = "";
+  });
+  $("bulkYearForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const y = $("bulkYear").value.trim(); if (!/^\d{4}$/.test(y)) return toast("Year needs four digits, like 2025", true);
+    saveTags([...state.sel], { year: y }, `Set year on ${state.sel.size}`);
+    $("bulkYear").value = "";
+  });
+
+  // lightbox
+  $("lbClose").addEventListener("click", closeLightbox);
+  $("lbPrev").addEventListener("click", () => lbStep(-1));
+  $("lbNext").addEventListener("click", () => lbStep(1));
+  $("lb").addEventListener("click", (e) => { if (e.target.classList.contains("lb-stage")) closeLightbox(); });
+  const lbCurrent = () => state.filtered[state.lbIndex];
+  $("lbTags").addEventListener("click", (e) => {
+    const p = lbCurrent(); if (!p) return;
+    const rm = e.target.closest("[data-rm]"), keep = e.target.closest("[data-keep]");
+    if (rm) saveTags([p.id], { remove: [rm.dataset.rm] });
+    if (keep) saveTags([p.id], { add: [keep.dataset.keep] });
+  });
+  $("lbQuick").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-q]"); const p = lbCurrent(); if (!b || !p) return;
+    const t = b.dataset.q;
+    saveTags([p.id], p.tagsArr.includes(t) ? { remove: [t] } : { add: [t] });
+  });
+  $("lbAddForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const p = lbCurrent(); const t = $("lbAdd").value.trim().toLowerCase(); if (!p || !t) return;
+    saveTags([p.id], { add: t.split(",").map((x) => x.trim()).filter(Boolean) });
+    $("lbAdd").value = "";
+  });
+  $("lbShow").addEventListener("change", () => { const p = lbCurrent(); if (p) saveTags([p.id], { show: $("lbShow").value.trim() }); });
+  $("lbYear").addEventListener("change", () => {
+    const p = lbCurrent(); const y = $("lbYear").value.trim();
+    if (!p) return; if (y && !/^\d{4}$/.test(y)) return toast("Year needs four digits", true);
+    saveTags([p.id], { year: y });
+  });
+  document.addEventListener("keydown", (e) => {
+    if (!$("job").hidden && e.key === "Escape" && !job.running) { $("job").hidden = true; return; }
+    if (!$("setup").hidden && e.key === "Escape") { $("setup").hidden = true; return; }
+    if ($("lb").hidden) {
+      if (e.key === "Escape" && state.sel.size) { state.sel.clear(); updateSelUI(); }
+      return;
+    }
+    if (e.key === "Escape") { if (e.target.matches("input")) e.target.blur(); closeLightbox(); return; }
+    if (e.target.matches("input")) return;
+    if (e.key === "ArrowLeft") lbStep(-1);
+    if (e.key === "ArrowRight") lbStep(1);
+  });
+
+  // setup
+  $("btnSetup").addEventListener("click", () => { renderSetup(); $("setup").hidden = false; });
+  $("setupClose").addEventListener("click", () => ($("setup").hidden = true));
+  $("srcAdd").addEventListener("click", () => $("srcRows").insertAdjacentHTML("beforeend", srcRow({ type: "drive", ref: "", label: "" })));
+  $("srcRows").addEventListener("click", (e) => { if (e.target.closest(".x")) e.target.closest(".src").remove(); });
+  $("srcSave").addEventListener("click", async () => {
+    try {
+      const res = await api("sources", { sources: readSources() });
+      state.sources = res.sources;
+      renderSetup();
+      toast("Sources saved. Click Find new photos to scan them.");
+    } catch (e) { toast("Couldn't save sources: " + e.message, true); }
+  });
+
+  // jobs
+  $("btnSync").addEventListener("click", () => openJob("Find new photos",
+    `<p>Scans every source in Setup for photos that aren't in the library yet. Tags you've added are never touched. Big folders can take a few minutes; you can stop and resume any time.</p>`, runSync));
+  $("btnAuto").addEventListener("click", () => {
+    const pending = state.photos.filter((p) => p.autoTagged !== "1").length;
+    const selIds = [...state.sel];
+    openJob("Auto-tag",
+      `<p>Looks at each photo and suggests tags like on stage, rehearsal, audience, group, solo, headshot, costume, dance, set and props. Suggestions show as dashed tags you can keep or drop.</p>
+       <p>It runs on this computer. The photos are not sent to any outside service. The first run downloads an image model (about 90 MB), then it's cached.</p>
+       <p>Boy and girl are not guessed. Costumes, wigs and stage makeup make that unreliable, and a wrong tag on a Young Artist is worse than none. Tag those by hand: select a batch, then tap boy or girl.</p>
+       <p><b>${selIds.length ? selIds.length + " selected photos" : pending.toLocaleString() + " photos"}</b> will be tagged.</p>`,
+      () => runAutoTag(selIds.length ? selIds : null));
+  });
+  $("jobStop").addEventListener("click", () => { if (job.running) job.stop = true; else $("job").hidden = true; });
+
+  // infinite scroll
+  new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && state.shown < state.filtered.length) renderGrid(false);
+  }, { rootMargin: "800px" }).observe($("sentinel"));
+
+  /* ---------- boot ---------- */
+  $("bulkQuick").insertAdjacentHTML("beforeend", QUICK.map((t) => `<button type="button" class="qt" data-q="${esc(t)}">${esc(t)}</button>`).join(""));
+
+  (async function boot() {
+    try {
+      const st = await api("status");
+      state.configured = st.configured; state.serviceEmail = st.serviceEmail || ""; state.sheetUrl = st.sheetUrl || "";
+      if (!st.configured.google || !st.configured.sheet) {
+        $("loading").hidden = true;
+        $("emptyState").hidden = false;
+        $("emptyState").className = "empty";
+        $("emptyState").innerHTML = `<h2>Almost ready</h2><p>The photo library needs two settings in Netlify before it can read Drive: a Google service account key and the ID of the catalog sheet. Open Setup to see what's missing.</p><button class="btn dark" type="button" id="openSetup2">Open Setup</button>`;
+        $("openSetup2").onclick = () => $("btnSetup").click();
+        $("btnSync").disabled = $("btnAuto").disabled = true;
+        return;
+      }
+      const cat = await api("catalog");
+      setPhotos(cat.photos || []);
+      state.sources = cat.sources || [];
+      $("loading").hidden = true;
+      renderFacets();
+      applyFilters();
+      if (!state.photos.length) {
+        $("emptyState").hidden = false;
+        $("emptyState").className = "empty";
+        $("emptyState").innerHTML = state.sources.length
+          ? `<h2>No photos yet</h2><p>Your sources are saved. Click Find new photos to scan them.</p><button class="btn dark" type="button" id="goSync">Find new photos</button>`
+          : `<h2>Add your first photo folder</h2><p>Open Setup, paste a Google Drive folder link or a SmugMug name, then click Find new photos.</p><button class="btn dark" type="button" id="goSetup">Open Setup</button>`;
+        const g = $("goSync") || $("goSetup");
+        g.onclick = () => ($("goSync") ? $("btnSync") : $("btnSetup")).click();
+      }
+    } catch (e) {
+      $("loading").textContent = "Couldn't load the library: " + e.message;
+    }
+  })();
+})();
+</script>
+</body>
+</html>

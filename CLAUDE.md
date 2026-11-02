@@ -27,6 +27,18 @@ parked and not live.
 Images live under `img/` by kind: `img/shows/`, `img/team/`, `img/gallery/`,
 `img/hero/`, `img/blog/<post-slug>/`.
 
+**Team Hub gate.** Everything under `/team/*` is password protected by
+`netlify/edge-functions/team-gate.js` (env var `PROTECTED_PAGE_PASSWORD`).
+It must live in `netlify/edge-functions/`: until 2026-11-02 it sat at the
+repo root, Netlify never deployed it, and `/team` was open. After any
+deploy, the Netlify deploy summary should list one edge function.
+
+**Photo Library** (`/team/photos`). Page `team/photos.html`, backend
+`netlify/functions/photos.mjs` (served at `/team/api/photos/*`, inside the
+gate). The catalog lives in a Google Sheet, never in this public repo.
+Env vars: `GOOGLE_SERVICE_ACCOUNT_KEY`, `PHOTO_LIBRARY_SHEET_ID`,
+optional `SMUGMUG_API_KEY`. Never commit photos of Young Artists here.
+
 ## Page conventions
 
 **Catalogue-driven pages.** Several pages hold their content in a JS array
