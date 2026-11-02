@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- Encore PNG + HEIC to WebP converter. Internal team tool, public URL /png, noindex. Runs fully in the browser: images are never uploaded. -->
+<!-- Encore PNG / JPG / HEIC to WebP converter. Internal team tool, public URL /png, noindex. Runs fully in the browser: images are never uploaded. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<title>PNG + HEIC to WebP | Encore Performing Arts</title>
-<meta name="description" content="Convert PNG and iPhone HEIC images to WebP in your browser. Nothing is uploaded.">
+<title>Image to WebP | Encore Performing Arts</title>
+<meta name="description" content="Convert PNG, JPG and iPhone HEIC images to WebP in your browser. Nothing is uploaded.">
 <meta name="theme-color" content="#22353d">
 <link rel="stylesheet" href="/fonts/mikado.css">
 <style>
@@ -109,17 +109,17 @@
 
 <header class="hero"><div class="hero-in">
   <div class="k">Encore Performing Arts</div>
-  <h1>PNG + HEIC to WebP</h1>
-  <p>Drop in PNGs or iPhone photos (HEIC) and get back smaller WebP files for the website. Everything happens on your device, so images never leave your computer.</p>
-  <ul class="badges"><li>PNG + HEIC</li><li>No uploads</li><li>Batch + ZIP</li><li>Works offline</li></ul>
+  <h1>Image to WebP</h1>
+  <p>Drop in PNGs, JPGs or iPhone photos (HEIC) and get back smaller WebP files for the website. Everything happens on your device, so images never leave your computer.</p>
+  <ul class="badges"><li>PNG, JPG + HEIC</li><li>No uploads</li><li>Batch + ZIP</li><li>Works offline</li></ul>
 </div></header>
 
 <main class="wrap">
   <div class="notice" id="notice" role="status" hidden></div>
 
   <label class="drop" id="drop" for="file">
-    <input type="file" id="file" accept="image/png,image/jpeg,image/gif,image/bmp,image/heic,image/heif,.heic,.heif" multiple>
-    <strong>Drop PNGs or HEIC photos here</strong>
+    <input type="file" id="file" accept="image/png,image/jpeg,.jpg,.jpeg,image/gif,image/bmp,image/heic,image/heif,.heic,.heif" multiple>
+    <strong>Drop PNG, JPG or HEIC images here</strong>
     <small>or click to choose files. You can also paste an image.</small>
   </label>
 
@@ -152,7 +152,8 @@
     <ul>
       <li>Works in Chrome, Edge and Firefox. Older Safari cannot make WebP files and will show a message.</li>
       <li>HEIC is the iPhone photo format. The first HEIC you add loads a one-time photo reader (about 800 KB), then it is instant.</li>
-      <li>Converted files drop camera and location data automatically, including GPS on iPhone photos.</li>
+      <li>Converted files drop camera and location data automatically, including GPS on phone photos.</li>
+      <li>JPGs are already compressed, so savings are smaller than with PNGs. If a file shows "larger" in orange, lower the quality a little or keep the original.</li>
       <li>When replacing an image on the site, give the new file a new name so browsers pick it up.</li>
     </ul>
   </section>
