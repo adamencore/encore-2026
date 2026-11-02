@@ -45,31 +45,65 @@ it can be pointed at, and deliberately not phrased as a legal notice.
 ## Verification
 
 Renders clean at 320, 390, 560, 768, 1200 and 1600: no horizontal scroll, no
-JavaScript errors. Contrast measured on the rendered page: heading 13.11:1,
-body 14.64:1, links 13.11:1, all well above AA. Zero em dashes, and the copy was
-asserted free of "kid", "child" and "children", with Young Artists capitalised.
+JavaScript errors. Zero em dashes, and the copy was asserted free of "kid",
+"child" and "children", with Young Artists capitalised.
+
+Contrast was measured on each rendered page rather than read from the
+stylesheet, which is what caught the body-colour bug described below. After the
+fix the worst reading across all five pages is **11.72:1**, against a 4.5:1
+requirement.
+
+## Rolled out to every ticketing page, same day
+
+Adam: put it on the general ticketing page and all show ticket pages, now and
+moving forward. Done, on five pages, byte-identical on all of them because the
+block and its CSS were lifted from the Carol page rather than retyped:
+
+| Page | |
+|---|---|
+| `tickets.html` | the general ticketing page |
+| `a-christmas-carol-tickets.html` | |
+| `little-women-tickets.html` | **also the template new ticket pages are built from** |
+| `peter-pan-jr-tickets.html` | |
+| `villains-night.html` | |
+
+**"Moving forward" is handled two ways.** The block now lives in
+`little-women-tickets.html`, which `CLAUDE.md` names as the template for new
+ticketing pages, so new pages inherit it. And `CLAUDE.md` gained a
+**Page conventions** entry naming the block, its placement, all five pages, and
+a warning not to strip it along with the template residue.
+
+### A real contrast bug this rollout exposed
+
+The block used `var(--charcoal-soft)` for body copy, which measured 14.64:1 on
+the Carol page. **On three of the other four it measured 4.15:1 and failed AA.**
+
+`--charcoal-soft` is not one colour. The Carol page computes it from its show
+palette, `color-mix(in srgb, var(--show-mid) 80%, #000)`, giving `#0f252a`.
+But `little-women-tickets`, `peter-pan-jr-tickets` and `villains-night` all
+define it as the **brand teal `#338093`**, which is 4.15:1 on cream-lite. That
+is the same number, and the same colour, as the `.post-foot a` failure found on
+the blog template earlier in the week.
+
+The block now uses `var(--charcoal)`, which measures 11.72:1 or better on all
+five. Verified by rendering each page and measuring, not by reading the
+stylesheet.
+
+**Worth a separate look: `#338093` is this site's brand teal, and wherever it
+is used as small text on a light background it fails AA.** It is `--charcoal-soft`
+on at least three ticket pages and `--accent` on the blog template. A proper
+sweep would find every place it carries body text.
 
 ## Open
 
-**This is on the Christmas Carol ticket page only, which is what Adam asked
-for.** The policy applies to every performance Encore stages, and **five other
-pages carry the same Inclusivity and accessibility block** and would take the
-same insert with no other change:
-
-- `peter-pan-jr-tickets.html`
-- `little-women-tickets.html`
-- `villains-night.html`
-- `villains-night-program.html`
-- `tickets.html`
-
-Held back on purpose: a conduct policy is the kind of copy an Executive Director
-should read before it appears in six places. Say the word and it goes out to all
-five in one pass.
-
-Also worth considering, though not asked for: a short version of this in the
-terms page as a sibling to section 5, so the full policy has one canonical home
-and the ticket pages can link to it rather than repeat it.
-
-**Unrelated, noticed in passing:** `tolerance-at-encore.html` uses `&mdash;`
-em dashes and the word "children" in its body copy, both against the house
-style. Not touched, since it was out of scope here.
+- **`villains-night-program.html` does not have the Inclusivity block**, so it
+  took no insert. It is the online program people read at the venue, where a
+  welcoming-house note arguably belongs most. It would need its own placement.
+- **The `-2027` redesign previews have a different CSS architecture** and none
+  of the tokens the block uses. They will need their own version before that
+  track goes live.
+- Still worth considering: a canonical copy in `terms-and-conditions.html` as a
+  sibling to its participant code of conduct, with the five ticket pages linking
+  to it rather than each holding the text. Five copies is five things to edit.
+- **Unrelated, noticed in passing:** `tolerance-at-encore.html` uses em dashes
+  and the word "children" in its body copy, both against the house style.

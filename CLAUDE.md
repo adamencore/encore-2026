@@ -59,6 +59,19 @@ that, strip the template residue. A Villains Night page shipped live with
 Little Women's subtitle, its double-cast paragraph, and its ThunderTix
 event id on the Buy tickets button.
 
+**Audience code of conduct.** Every ticketing page carries the
+`.house-note` block, "A welcoming house", at the top of the Inclusivity and
+accessibility section, immediately above `.incl-groups`. It states that Encore
+reserves the right to refuse admission or ask a guest to leave for behavior
+toward the company, volunteers, staff or other guests. It is on
+`tickets.html`, `a-christmas-carol-tickets.html`, `little-women-tickets.html`,
+`peter-pan-jr-tickets.html` and `villains-night.html`, byte-identical on all
+five. **New ticketing pages inherit it from the `little-women-tickets.html`
+template, so do not strip it along with the template residue.** If the wording
+changes, change it on all five. It is the audience counterpart to the
+participant code of conduct in section 5 of `terms-and-conditions.html`, so the
+two should keep agreeing.
+
 **Announcement bar.** Most pages carry a sticky `.annc` bar with a single
 `.annc-link`. It is per-page, not shared, so changing it means touching
 every page. It had drifted to seven different messages, several months

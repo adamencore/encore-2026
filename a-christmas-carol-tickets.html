@@ -1049,7 +1049,11 @@
      counterpart. Deliberately a warm callout rather than fine print. */
   .house-note{background:var(--cream-lite);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:var(--radius);padding:26px 30px;margin:0 0 26px;}
   .house-note h3{font-family:var(--font-display);font-size:21px;font-weight:600;color:var(--charcoal);margin-bottom:12px;letter-spacing:-.01em;}
-  .house-note p{color:var(--charcoal-soft);font-size:15.5px;line-height:1.7;max-width:76ch;}
+  /* Body colour is the full charcoal on purpose. The softer token resolves
+     to the brand teal on three of these five pages, which measures 4.15:1
+     on cream-lite and fails AA. Charcoal measures 11.72:1 or better on
+     all five. */
+  .house-note p{color:var(--charcoal);font-size:15.5px;line-height:1.7;max-width:76ch;}
   .house-note p+p{margin-top:12px;}
   .house-note a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
   @media(max-width:560px){.house-note{padding:22px 20px;}.house-note p{font-size:15px;}}
