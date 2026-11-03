@@ -93,6 +93,23 @@ stale, before the last sweep.
 media queries when porting a footer; omitting the 560px one stopped the
 footer stacking on phones.
 
+**Google tag and the ThunderTix conversion.** Every served page carries two
+snippets, and like the nav and the footer they are per-page, not shared:
+the gtag.js loader plus `gtag('config')` for GA4 `G-3D0B1Z5QPP` and Google
+Ads `AW-17423659350` in `<head>`, and a delegated click listener before
+`</body>` that fires conversion `AW-17423659350/8INxCOv7_bAdENbin_RA` on any
+link to a `thundertix.com` host. **A new page built from scratch will not
+have them, and the Ad Grant needs at least one conversion a month**, so copy
+both from `little-women-tickets.html`. On 344 pages as of 2026-11-02, all
+but `team/` (behind the gate, deliberately untagged) and parked folders.
+
+The head snippet goes **immediately after `<meta charset>`, not immediately
+after `<head>`**. Browsers only sniff the first 1024 bytes for the encoding
+declaration, and the template banner comment above `<html>` already pushes
+that meta to byte 1018 on `little-women-2026.html`. Inserting in front of it
+pushes the declaration out of the window on 22 pages and risks mojibake in
+copy that uses middle dots and en dashes.
+
 ## Site-wide sweep rule
 
 A fact that appears on one page almost always appears on several, plus in
