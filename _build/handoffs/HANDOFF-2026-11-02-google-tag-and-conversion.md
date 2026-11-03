@@ -119,10 +119,44 @@ hop.
   tag. **Pre-existing, confirmed against HEAD**, and valid HTML, since the body
   start tag is optional. Not worth fixing, but now written down.
 
+## Live verification on encorepa.org, after deploy
+
+Done in a real browser against the live site, since the build sandbox cannot
+reach .
+
+**All four pages from the handoff's Step 6 serve the right thing:** ,
+,  and  each carry
+GA4 x2, Ads x3,  x2 and the listener x1, with the tag directly after
+the charset meta, which lands at byte 62, 514, 874 and 62 respectively, all
+comfortably inside the 1024 byte window.
+
+**Google's own library really loaded**, not just our snippet: ,
+ and  all exist on the page, and those are created
+by gtag.js, not by anything in this repo.
+
+**A real Buy tickets click sends a real conversion.** Resource timing showed
+these appear on the click, which is the hit itself rather than a dataLayer push:
+
+- 
+- 
+- 
+
+GA4 page views are landing too, at .
+
+**Tickets still open normally.** A probe on the anchor itself, which runs after
+the site's capture phase listener, reported . The
+listener does not cancel navigation. All 19 ThunderTix links on the Carol page
+are .
+
+**Three test conversions were fired during this check**, from one browser on
+2026-11-02 around 7:10pm. They will appear in Google Ads. They are real, so
+the grant's one conversion a month requirement is already satisfied for
+November, but discount them when reading early numbers.
+
 ## Deploy
 
-Commit `ddb6231`, message `Add Google tag (GA4 + Ads) and ThunderTix click
-conversion`, pushed to `main`. Netlify project `encore-2026`, production,
+Commits `ddb6231` (pages) and `aee06f7` (this doc plus CLAUDE.md), message `Add Google tag (GA4 + Ads) and ThunderTix click
+conversion`, pushed to `main`. Deploy `6ae940d2`, ready, published 2026-11-02 7:03pm Mountain, 22 second build, 344 generated pages uploaded, edge function still deployed, secret scan clean. Netlify project `encore-2026`, production,
 `https://encorepa.org`.
 
 ## Open items
