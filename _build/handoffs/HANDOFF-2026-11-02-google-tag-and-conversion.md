@@ -103,10 +103,9 @@ everything below was measured in a real browser over HTTP, not from source.
   into `dataLayer`, which is the precise hand off gtag.js reads to send the hit.
   The gtag.js loader request was confirmed firing with the right GA4 id.
 
-Google's own domains are not reachable from the build sandbox, so the hit could
-not be watched leaving the machine. The dataLayer push is the part this repo
-controls and it is correct. Tag Assistant is the right place to confirm the last
-hop.
+Google's own domains are not reachable from the build sandbox, so that stage
+could only prove the dataLayer hand off. The hit leaving the browser was
+confirmed separately against the live site, below.
 
 ### Two flags raised by the checkers, both verified as false alarms
 
@@ -122,31 +121,37 @@ hop.
 ## Live verification on encorepa.org, after deploy
 
 Done in a real browser against the live site, since the build sandbox cannot
-reach .
+reach `encorepa.org`.
 
-**All four pages from the handoff's Step 6 serve the right thing:** ,
-,  and  each carry
-GA4 x2, Ads x3,  x2 and the listener x1, with the tag directly after
-the charset meta, which lands at byte 62, 514, 874 and 62 respectively, all
+**All four pages from the handoff's Step 6 serve the right thing:** `/`,
+`/tickets`, `/a-christmas-carol-tickets` and `/peter-pan-jr-tickets` each carry
+GA4 x2, Ads x3, `send_to` x2 and the listener x1, with the tag directly after
+the charset meta. That meta ends at byte 62, 514, 874 and 62 respectively, all
 comfortably inside the 1024 byte window.
 
-**Google's own library really loaded**, not just our snippet: ,
- and  all exist on the page, and those are created
+**Google's own library really loaded**, not just our snippet: `google_tag_data`,
+`google_tag_manager` and `gaGlobal` all exist on the page, and those are created
 by gtag.js, not by anything in this repo.
 
 **A real Buy tickets click sends a real conversion.** Resource timing showed
-these appear on the click, which is the hit itself rather than a dataLayer push:
+these appear on the click. These are the hit itself, not a dataLayer push:
 
-- 
-- 
-- 
+- `googleadservices.com/pagead/conversion/17423659350/?...&en=conversion`
+- `googleadservices.com/ccm/conversion/17423659350/?...&en=conversion`
+- `googleads.g.doubleclick.net/pagead/viewthroughconversion/17423659350/`
 
-GA4 page views are landing too, at .
+GA4 page views are landing too, at
+`analytics.google.com/g/collect?v=2&tid=G-3D0B1Z5QPP`.
 
-**Tickets still open normally.** A probe on the anchor itself, which runs after
-the site's capture phase listener, reported . The
+**Tickets still open normally.** A probe bound to the anchor itself, which runs
+after the site's capture phase listener, reported `defaultPrevented: false`. The
 listener does not cancel navigation. All 19 ThunderTix links on the Carol page
-are .
+are `target="_blank"`.
+
+**Three test conversions were fired during this check**, from one browser on
+2026-11-02 around 7:10pm Mountain. They are real and will appear in Google Ads.
+That means the grant's one conversion a month requirement is already satisfied
+for November, but discount them when reading the first few days of data.
 
 **Three test conversions were fired during this check**, from one browser on
 2026-11-02 around 7:10pm. They will appear in Google Ads. They are real, so
@@ -155,9 +160,19 @@ November, but discount them when reading early numbers.
 
 ## Deploy
 
-Commits `ddb6231` (pages) and `aee06f7` (this doc plus CLAUDE.md), message `Add Google tag (GA4 + Ads) and ThunderTix click
-conversion`, pushed to `main`. Deploy `6ae940d2`, ready, published 2026-11-02 7:03pm Mountain, 22 second build, 344 generated pages uploaded, edge function still deployed, secret scan clean. Netlify project `encore-2026`, production,
-`https://encorepa.org`.
+Netlify project `encore-2026`, production, `https://encorepa.org`.
+
+| | |
+|---|---|
+| Commit | `ddb6231`, "Add Google tag (GA4 + Ads) and ThunderTix click conversion" |
+| Follow-up commits | `aee06f7` and one more, this doc plus the CLAUDE.md note |
+| Deploy | `6ae940d2`, state ready |
+| Published | 2026-11-02, 7:03pm Mountain |
+| Build time | 22 seconds |
+| Deploy summary | 344 generated pages uploaded, 28 redirect rules, 2 header rules, 3 functions, 1 edge function, secret scan clean |
+
+The edge function line matters: it confirms the `/team` gate is still deployed,
+which is the thing that silently broke once before.
 
 ## Open items
 
