@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3D0B1Z5QPP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3D0B1Z5QPP');
+  gtag('config', 'AW-17423659350');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Disney's The Lion King JR. — Cast | Encore Performing Arts</title>
 <meta name="description" content="Meet the Young Artists of Encore Performing Arts' production of Disney's The Lion King JR., performed by two casts — Pridelands and Grasslands — at the historic Electric Theater in St. George, Utah.">
@@ -142,5 +151,34 @@ footer{text-align:center;padding:42px 22px 60px;color:#6b7c80;font-size:.9rem;}
   Encore Performing Arts &middot; The Historic Electric Theater &middot; St. George, Utah
 </footer>
 
+<script>
+(function () {
+  function isThunderTix(a) {
+    try { return new URL(a.href, location.href).hostname.endsWith('thundertix.com'); }
+    catch (e) { return false; }
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || !isThunderTix(a) || typeof gtag !== 'function') return;
+    var newTab = a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1;
+    if (newTab) {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17423659350/8INxCOv7_bAdENbin_RA',
+        'transport_type': 'beacon'
+      });
+      return;
+    }
+    e.preventDefault();
+    var url = a.href, done = false;
+    function go() { if (!done) { done = true; window.location = url; } }
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17423659350/8INxCOv7_bAdENbin_RA',
+      'transport_type': 'beacon',
+      'event_callback': go
+    });
+    setTimeout(go, 1000);
+  }, true);
+})();
+</script>
 </body>
 </html>

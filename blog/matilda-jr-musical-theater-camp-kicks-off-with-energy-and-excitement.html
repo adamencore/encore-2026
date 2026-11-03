@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3D0B1Z5QPP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3D0B1Z5QPP');
+  gtag('config', 'AW-17423659350');
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
@@ -472,6 +481,35 @@ h2 em{color:var(--teal)}
   t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
+})();
+</script>
+<script>
+(function () {
+  function isThunderTix(a) {
+    try { return new URL(a.href, location.href).hostname.endsWith('thundertix.com'); }
+    catch (e) { return false; }
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || !isThunderTix(a) || typeof gtag !== 'function') return;
+    var newTab = a.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1;
+    if (newTab) {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17423659350/8INxCOv7_bAdENbin_RA',
+        'transport_type': 'beacon'
+      });
+      return;
+    }
+    e.preventDefault();
+    var url = a.href, done = false;
+    function go() { if (!done) { done = true; window.location = url; } }
+    gtag('event', 'conversion', {
+      'send_to': 'AW-17423659350/8INxCOv7_bAdENbin_RA',
+      'transport_type': 'beacon',
+      'event_callback': go
+    });
+    setTimeout(go, 1000);
+  }, true);
 })();
 </script>
 </body></html>
