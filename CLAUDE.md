@@ -110,6 +110,34 @@ that meta to byte 1018 on `little-women-2026.html`. Inserting in front of it
 pushes the declaration out of the window on 22 pages and risks mojibake in
 copy that uses middle dots and en dashes.
 
+**Note for sweeps:** that conversion script puts the string `thundertix.com`
+on every page, so `grep -rl thundertix` now matches all 344. To find pages
+that actually sell tickets, grep for a real `href="https://...thundertix` or
+`ticketUrl:"https://...thundertix`. That returns 14.
+
+**Primary seller statement.** Every show and ticket page carries
+`<p class="seller-note">`: "Encore Performing Arts produces this show.
+Tickets are sold only through our box office, at face value." (`tickets.html`
+and `tickets-2027.html` say "these shows".) It is required on the page for
+Google Ads event ticket seller certification, it is per-page like everything
+else here, and **new ticketing pages inherit it from the
+`little-women-tickets.html` template, so do not strip it as template
+residue.** On 12 pages as of 2026-11-02. `index.html` and
+`villains-night-program.html` do not have it. Never use the word "official"
+in this copy.
+
+On heroes that are a photograph or a palette-built gradient, the line carries
+a translucent plate (`background:rgba(10,14,18,.58)` on white) because no text
+colour clears AA against a highlight: both camp pages and the three
+`.pbanner` previews. The `lwt-hero` and `cc-banner` ticket pages pass on
+colour alone and have no plate.
+
+**Three pages also say tickets are "sold through our ticketing partner"**
+(`tickets.html`, `tickets-2027.html`, `peter-pan-jr-2026.html`). That sits
+awkwardly beside "sold only through our box office" for a certification
+reviewer. Left alone deliberately; see the 2026-11-02 seller statement
+handoff.
+
 ## Site-wide sweep rule
 
 A fact that appears on one page almost always appears on several, plus in
