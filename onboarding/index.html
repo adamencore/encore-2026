@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     CONTRACTOR ONBOARDING PORTAL
+     Sits behind netlify/edge-functions/onboarding-gate.js, which is a
+     SEPARATE password from the Team Hub on purpose: a new contractor needs
+     this on day one, before their background check clears, and the Team Hub
+     password also unlocks the Young Artist photo library.
+
+     Saves to a private Google Sheet through /onboarding/api/save, served by
+     netlify/functions/onboarding.mjs. No third party form widget.
+
+     Tax IDs and bank details are never collected here. Those live in
+     QuickBooks only, and the server refuses to store anything shaped like one.
+     ============================================================ -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Contractor Onboarding | Encore Performing Arts</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<style>
+  :root{
+    --guava:#1a404a; --guava-deep:#142f37; --berry:#338093;
+    --cream:#faf7f2; --cream-dark:#f3efe8; --paper:#fffdf9;
+    --ink:#1a1a2e; --muted:#53646b; --line:rgba(26,64,74,.16);
+    --tint:#deedf0; --ok:#2e7d32; --ok-bg:#e8f5e9;
+    --warn:#8a5a00; --warn-bg:#fdf3e0; --coral:#b4463f;
+    --radius:14px; --radius-lg:20px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Mikado',system-ui,-apple-system,sans-serif;
+    background:var(--cream); color:var(--ink);
+    font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 20px}
+
+  /* ---------- top bar ---------- */
+  .top{position:sticky;top:0;z-index:40;background:var(--guava);color:#fff}
+  .top-in{max-width:860px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:14px}
+  .mark{font-weight:900;letter-spacing:-.03em;font-size:19px;color:#fff}
+  .top-label{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.78);flex:1;min-width:0}
+  .top a{color:rgba(255,255,255,.82);font-size:12.5px;font-weight:600;text-decoration:none;white-space:nowrap}
+  .top a:hover{color:#fff;text-decoration:underline}
+  .bar{height:4px;background:rgba(255,255,255,.17)}
+  .bar span{display:block;height:100%;width:0;background:var(--berry);transition:width .45s cubic-bezier(.2,.7,.3,1)}
+
+  /* ---------- hero ---------- */
+  .hero{background:var(--guava);color:#fff;padding:34px 0 40px}
+  .hero h1{font-size:clamp(27px,4.6vw,38px);font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+  .hero p{color:rgba(240,236,232,.93);max-width:60ch;font-size:15.5px}
+  .kicker{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9fd2de;margin-bottom:12px;display:block}
+
+  /* ---------- path choice ---------- */
+  .paths{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+  .path{appearance:none;text-align:left;font:inherit;cursor:pointer;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.3);border-radius:var(--radius);padding:18px;color:#fff;transition:background .18s,border-color .18s,transform .18s}
+  .path:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
+  /* The selected state uses a deeper teal than Berry. Cream at 90 percent on
+     Berry measures 3.42:1, and even pure white on Berry is only 4.52:1, which
+     leaves no margin at this text size. This shade gives 5.39:1. */
+  .path[aria-pressed="true"]{background:#2d7284;border-color:#2d7284}
+  .path[aria-pressed="true"] span{color:#fff}
+  .path b{display:block;font-size:16.5px;font-weight:700;margin-bottom:4px}
+  .path span{font-size:13.5px;color:rgba(240,236,232,.9);line-height:1.5}
+
+  /* ---------- progress summary ---------- */
+  .summary{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:20px 22px;margin:-22px auto 26px;max-width:820px;position:relative;z-index:5;box-shadow:0 18px 40px -28px rgba(20,47,55,.5);display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .ring{width:58px;height:58px;flex:none;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14.5px;color:var(--guava);background:conic-gradient(var(--berry) 0deg,var(--cream-dark) 0deg);transition:background .5s}
+  .ring i{width:44px;height:44px;border-radius:50%;background:var(--paper);display:grid;place-items:center;font-style:normal}
+  .summary-txt{flex:1;min-width:180px}
+  .summary-txt b{display:block;font-size:16px;font-weight:700;color:var(--guava)}
+  .summary-txt span{font-size:13.5px;color:var(--muted)}
+  .save-state{font-size:12.5px;color:var(--muted);font-weight:600}
+  .save-state.ok{color:var(--ok)}
+  .save-state.err{color:var(--coral)}
+
+  /* ---------- steps ---------- */
+  .steps{padding-bottom:60px}
+  .step{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);margin-bottom:12px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+  .step.done{border-color:rgba(46,125,50,.4)}
+  .step.open{box-shadow:0 16px 36px -26px rgba(20,47,55,.55)}
+  .step-head{width:100%;appearance:none;background:none;border:0;font:inherit;text-align:left;cursor:pointer;padding:17px 20px;display:flex;align-items:center;gap:14px}
+  .step-head:focus-visible{outline:3px solid var(--berry);outline-offset:-3px}
+  .num{width:30px;height:30px;flex:none;border-radius:50%;background:var(--cream-dark);color:var(--guava);display:grid;place-items:center;font-weight:700;font-size:13.5px}
+  .step.done .num{background:var(--ok-bg);color:var(--ok)}
+  .step-title{flex:1;min-width:0}
+  .step-title b{display:block;font-size:16px;font-weight:700;color:var(--guava);letter-spacing:-.01em}
+  .step-title span{display:block;font-size:13.5px;color:var(--muted);margin-top:2px}
+  .pill{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--cream-dark);color:var(--muted);white-space:nowrap}
+  .pill.done{background:var(--ok-bg);color:var(--ok)}
+  .pill.wait{background:var(--warn-bg);color:var(--warn)}
+  .chev{flex:none;width:11px;height:11px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .22s;margin-left:2px}
+  .step.open .chev{transform:rotate(-135deg)}
+  .step-body{display:none;padding:2px 20px 22px;border-top:1px solid var(--line);margin-top:0}
+  .step.open .step-body{display:block;animation:drop .28s ease}
+  @keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .step-body > p{margin:16px 0 0;color:var(--ink);max-width:62ch}
+  .step-body > p.sub{color:var(--muted);font-size:14px}
+
+  /* ---------- form bits ---------- */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+  .f{display:flex;flex-direction:column;gap:5px;min-width:0}
+  .f.wide{grid-column:1 / -1}
+  .f label{font-size:12.5px;font-weight:700;color:var(--guava);letter-spacing:.02em}
+  .f label i{font-style:normal;font-weight:600;color:var(--muted)}
+  .f input,.f select,.f textarea{font:inherit;font-size:14.5px;padding:11px 13px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink);width:100%}
+  .f textarea{min-height:92px;resize:vertical;line-height:1.5}
+  .f input:focus,.f select:focus,.f textarea:focus{outline:2px solid var(--berry);outline-offset:-1px;border-color:transparent}
+  .hint{font-size:12.5px;color:var(--muted);line-height:1.45}
+
+  .check{display:flex;gap:11px;align-items:flex-start;margin-top:16px;padding:14px 15px;background:var(--cream-dark);border-radius:12px;cursor:pointer}
+  .check input{margin-top:2px;width:18px;height:18px;flex:none;accent-color:var(--berry);cursor:pointer}
+  .check span{font-size:14.5px;line-height:1.5}
+  .check:has(input:focus-visible){outline:2px solid var(--berry)}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:600;font-size:14.5px;padding:11px 18px;border:0;border-radius:11px;background:var(--guava);color:#fff;cursor:pointer;text-decoration:none;transition:background .18s,transform .18s}
+  .btn:hover{background:#2d7284;transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--guava);border:1.5px solid var(--line)}
+  .btn.ghost:hover{background:var(--cream-dark);color:var(--guava)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center}
+
+  .note{margin-top:16px;padding:13px 15px;border-radius:12px;background:var(--tint);border-left:4px solid var(--berry);font-size:14px;line-height:1.55}
+  .note b{color:var(--guava)}
+  .note.warn{background:var(--warn-bg);border-left-color:#c08a2e}
+  .todo{margin-top:16px;padding:14px 16px;border:1.5px dashed var(--berry);border-radius:12px;background:#fff}
+  .todo .lab{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--guava);display:block;margin-bottom:6px}
+  .todo p{font-size:14px;color:var(--muted);line-height:1.5}
+
+  ul.plain{margin:14px 0 0;padding-left:20px}
+  ul.plain li{margin-bottom:7px;font-size:14.5px}
+
+  /* ---------- finish ---------- */
+  .finish{background:var(--guava);color:#fff;border-radius:var(--radius-lg);padding:28px 26px;margin-top:20px}
+  .finish h2{font-size:22px;font-weight:800;margin-bottom:8px}
+  .finish p{color:rgba(240,236,232,.92);font-size:14.5px;max-width:60ch}
+  .finish .btn{background:#2d7284;margin-top:18px}
+  .finish .btn:hover{background:#25616f}
+  .outstanding{margin-top:16px;padding:14px 16px;background:rgba(255,255,255,.1);border-radius:12px}
+  .outstanding b{display:block;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:#9fd2de;margin-bottom:7px}
+  .outstanding li{font-size:14px;color:rgba(240,236,232,.95);margin-bottom:4px;margin-left:18px}
+
+  .privacy{margin:28px 0 10px;font-size:13px;color:var(--muted);line-height:1.6;max-width:66ch}
+  .privacy b{color:var(--guava)}
+
+  @media(max-width:620px){
+    .paths{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr}
+    .summary{margin-left:16px;margin-right:16px}
+    .step-head{padding:15px 16px;gap:11px}
+    .step-body{padding:2px 16px 20px}
+    .pill{display:none}
+    .hero{padding:28px 0 36px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <span class="mark">encore!</span>
+    <span class="top-label">Contractor Onboarding</span>
+    <a href="/onboarding/?logout=1">Sign out</a>
+  </div>
+  <div class="bar"><span id="bar"></span></div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">Welcome to the company</span>
+    <h1>Let's get you set up</h1>
+    <p>We are a Utah youth theater nonprofit, and we are glad you are joining us. This walks you through everything we need before your first rehearsal. Most steps take a few minutes, and you do not have to finish in one sitting: your place is saved as you go.</p>
+    <div class="paths" role="group" aria-label="Choose your path">
+      <button class="path" type="button" id="pathNew" aria-pressed="false">
+        <b>I am new to Encore</b>
+        <span>First time working with us. The full set of steps.</span>
+      </button>
+      <button class="path" type="button" id="pathReturning" aria-pressed="false">
+        <b>I have worked here before</b>
+        <span>Returning for another production. A shorter list.</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="summary" id="summary" hidden>
+  <div class="ring" id="ring"><i id="ringTxt">0%</i></div>
+  <div class="summary-txt">
+    <b id="sumHead">Nothing started yet</b>
+    <span id="sumSub">Pick a path above to begin.</span>
+  </div>
+  <span class="save-state" id="saveState"></span>
+</div>
+
+<main class="wrap steps" id="steps" hidden></main>
+
+<div class="wrap" id="finishWrap" hidden>
+  <div class="finish">
+    <h2>Finish up</h2>
+    <p>When everything above is done, send it to us. Kristen Stocks, our Production Manager, gets your details and will follow up about your contract, your calendar and your Slack invite.</p>
+    <div class="outstanding" id="outstanding" hidden>
+      <b>Still outstanding</b>
+      <ul id="outstandingList"></ul>
+    </div>
+    <button class="btn" type="button" id="submitBtn">Send my onboarding to Encore</button>
+  </div>
+  <p class="privacy">
+    <b>What we do and do not collect.</b> This form stores your contact details, emergency contact, and any allergy, dietary or accessibility needs you tell us, in a private Encore spreadsheet that only staff can open. We use it to keep you safe and fed at rehearsal.
+    <b>We never collect your Social Security number, taxpayer ID or bank details on this website.</b> Those go into QuickBooks only, through the invite you receive by email. If you type something that looks like one into a box here, the system will refuse to save it and ask you to put it in QuickBooks instead.
+  </p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------- storage helpers, safe in private windows ------------- */
+  var LS_DATA = "encore_onboarding_data";
+  var LS_PROFILE = "encore_onboarding_profile";
+  var LS_TRAINING = "encore_onboarding_training";
+
+  function lsGet(k) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : null; } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage blocked */ } }
+
+  var data = lsGet(LS_DATA) || { path: "", fields: {}, done: {}, open: "" };
+  if (!data.fields) data.fields = {};
+  if (!data.done) data.done = {};
+
+  /* ---------------- step definitions ------------------------------------ */
+  // kind: form | ack | external | training | finishNote
+  var ALL_STEPS = [
+    {
+      id: "details", kind: "form", both: true,
+      title: "Your details",
+      sub: "So we know who you are and how to reach you.",
+      intro: "Your email is how we match everything up, so please use the one Kristen wrote to.",
+      fields: [
+        { k: "legalName", l: "Full legal name", req: true },
+        { k: "preferredName", l: "Preferred name", hint: "What we should call you" },
+        { k: "pronouns", l: "Pronouns", hint: "Optional" },
+        { k: "email", l: "Email", type: "email", req: true },
+        { k: "phone", l: "Mobile phone", type: "tel", req: true },
+        { k: "role", l: "Your role", hint: "For example Stage Director" },
+        { k: "production", l: "Production", hint: "Which show you are joining", wide: true }
+      ]
+    },
+    {
+      id: "mission", kind: "ack", newOnly: true,
+      title: "Our mission",
+      sub: "One paragraph. It is why we do all of this.",
+      body: "mission",
+      ackLabel: "I have read Encore's mission."
+    },
+    {
+      id: "agreements", kind: "ack", both: true,
+      title: "The Ten Agreements",
+      sub: "The shared commitments every Encore team member makes.",
+      body: "agreements",
+      ackLabel: "I have read and agree to the Ten Agreements."
+    },
+    {
+      id: "quickbooks", kind: "external", newOnly: true,
+      title: "QuickBooks and your W-9",
+      sub: "Tax and payment details, handled securely by Intuit.",
+      body: "quickbooks",
+      link: "", linkLabel: "Open QuickBooks",
+      linkNote: "Watch for an email invite from QuickBooks. It comes from Intuit, not from us.",
+      confirmLabel: "I accepted the QuickBooks invite and completed my W-9."
+    },
+    {
+      id: "contract", kind: "external", both: true,
+      title: "Your contractor agreement",
+      sub: "Kristen issues this for your role and production.",
+      body: "contract",
+      confirmLabel: "I have read and signed my contractor agreement."
+    },
+    {
+      id: "background", kind: "external", newOnly: true,
+      title: "Background check",
+      sub: "Required for anyone working with young artists.",
+      body: "background",
+      link: "", linkLabel: "Start my background check",
+      confirmLabel: "I completed my background check.",
+      dateField: { k: "backgroundDate", l: "Date you completed it", type: "date" }
+    },
+    {
+      id: "training", kind: "training", both: true,
+      title: "Child safety training",
+      sub: "Scenario based, about 20 minutes, with a short test at the end.",
+      body: "training"
+    },
+    {
+      id: "headshot", kind: "form", both: true,
+      title: "Headshot and bio",
+      sub: "For the show program.",
+      body: "headshot",
+      fields: [
+        { k: "bio", l: "Your bio", type: "textarea", hint: "75 to 100 words, written in third person", wide: true, req: true }
+      ]
+    },
+    {
+      id: "questionnaire", kind: "form", both: true,
+      title: "Contractor questionnaire",
+      sub: "Emergency contact and anything we should know to look after you.",
+      fields: [
+        { k: "emergencyName", l: "Emergency contact name", req: true },
+        { k: "emergencyRelationship", l: "Relationship to you" },
+        { k: "emergencyPhone", l: "Emergency contact phone", type: "tel", req: true },
+        { k: "shirt", l: "Shirt size", type: "select", options: ["", "XS", "S", "M", "L", "XL", "2XL", "3XL"] },
+        { k: "allergies", l: "Allergies", hint: "Food, environmental or medication. Write none if that is simpler.", wide: true },
+        { k: "dietary", l: "Dietary needs", wide: true },
+        { k: "accessibility", l: "Accessibility needs or accommodations", hint: "Anything that would make rehearsal work better for you", wide: true },
+        { k: "conflicts", l: "Known conflicts during the production calendar", type: "textarea", wide: true },
+        { k: "anything", l: "Anything else you would like us to know", type: "textarea", wide: true }
+      ]
+    },
+    {
+      id: "release", kind: "ack", both: true,
+      title: "Photo and media release",
+      sub: "Permission to use photos or video that include you.",
+      body: "release",
+      ackLabel: "I agree to the photo and media release."
+    },
+    {
+      id: "insurance", kind: "external", both: true, optional: true,
+      title: "Proof of insurance",
+      sub: "Only some roles need this. Kristen will tell you.",
+      body: "insurance",
+      confirmLabel: "I have sent my certificate of liability insurance.",
+      skipLabel: "This does not apply to my role."
+    }
+  ];
+
+  function activeSteps() {
+    if (data.path === "returning") return ALL_STEPS.filter(function (s) { return s.both; });
+    return ALL_STEPS.filter(function (s) { return s.both || s.newOnly; });
+  }
+
+  /* ---------------- step body copy -------------------------------------- */
+  var BODIES = {
+    mission:
+      '<p>"Encore Performing Arts inspires and empowers young artists to discover and develop important life skills through unparalleled arts education, mentorship, and extraordinary theater experiences."</p>' +
+      '<p class="sub">Everything in this packet exists to protect that, and to protect the Young Artists you are about to work with.</p>',
+    agreements:
+      '<div class="todo"><span class="lab">Needs content</span>' +
+      '<p>The full Ten Agreements text has not been added yet. It lives in Encore A to Z and needs to be pasted in here before a real contractor sees this page. One is known: <b>No. 7, Safety Over Sequins</b>, no stunt or choreography is worth risking a Young Artist\'s wellbeing.</p></div>' +
+      '<p class="sub">Note for staff: some older contracts still say "Ten Commandments". That wording should be updated to "Ten Agreements" everywhere.</p>',
+    quickbooks:
+      '<p>Encore pays you as an independent contractor, on a 1099. We do not withhold taxes, so you are responsible for your own income and self-employment taxes.</p>' +
+      '<div class="note warn"><b>Do not email us your tax information, and do not type it into this website.</b> Your legal name, address, taxpayer ID and payment details go into QuickBooks only. That is Intuit\'s secure system, and Encore never handles those numbers directly.</div>' +
+      '<ul class="plain">' +
+      '<li>If we do not have a valid taxpayer ID on file, the IRS requires Encore to hold back 24 percent of your payments. Completing the W-9 promptly avoids that.</li>' +
+      '<li>For payments made in 2026 the 1099-NEC reporting threshold rises from $600 to $2,000. Confirm with Encore\'s CPA before relying on that.</li>' +
+      '</ul>',
+    contract:
+      '<p>Kristen Stocks, our Production Manager, issues your contract for your role and production. It describes your scope, dates, pay and termination terms.</p>' +
+      '<p class="sub">Please read it fully, ask questions, and sign by the date shown on it. If it has not reached you yet, mark this step once it does.</p>',
+    background:
+      '<p>A background check is required for anyone working with young artists, and required by some of our grants. It must clear before you work with Young Artists.</p>' +
+      '<div class="todo"><span class="lab">Needs content</span><p>The background check vendor and link have not been chosen yet, and it is not settled who pays. Add the vendor link here, and confirm in writing that Encore covers the cost, before sending this to a contractor.</p></div>',
+    training:
+      '<p>This is a scenario based training covering abuse and warning signs, the Two-Adult Rule, safe touch, digital communication, responding to a disclosure, your reporting obligations, and harm between students.</p>' +
+      '<p class="sub">It ends with a 20 question test. You need 16 correct to pass, and you can retake the test without redoing the training. Your result comes back here automatically.</p>',
+    headshot:
+      '<p>Your bio goes in the show program. Write it in third person, 75 to 100 words. Mention your role, relevant experience, and something personal if you like.</p>' +
+      '<div class="todo"><span class="lab">Needs content</span><p>The headshot upload destination has not been set up yet. For now, email your headshot to Kristen: color, JPG or PNG, at least 1200px on the short side, recent, shoulders up, plain background preferred.</p></div>',
+    release:
+      '<p>Encore photographs and films rehearsals and performances for programs, our website and social media. This gives us permission to use images and video that include you.</p>' +
+      '<p class="sub">If you would rather not appear, tell Kristen. It will not affect your work with us.</p>',
+    insurance:
+      '<p>Some roles, for example set construction, rigging, or outside vendors, need a certificate of liability insurance. Kristen will tell you if this applies to you.</p>'
+  };
+
+  /* ---------------- rendering ------------------------------------------- */
+  var stepsEl = document.getElementById("steps");
+
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function fieldHtml(f) {
+    var v = data.fields[f.k] || "";
+    var id = "f_" + f.k;
+    var inner;
+    if (f.type === "textarea") {
+      inner = '<textarea id="' + id + '" data-k="' + f.k + '">' + esc(v) + "</textarea>";
+    } else if (f.type === "select") {
+      inner = '<select id="' + id + '" data-k="' + f.k + '">' +
+        f.options.map(function (o) {
+          return '<option value="' + esc(o) + '"' + (o === v ? " selected" : "") + ">" + (o || "Choose one") + "</option>";
+        }).join("") + "</select>";
+    } else {
+      inner = '<input id="' + id + '" data-k="' + f.k + '" type="' + (f.type || "text") + '" value="' + esc(v) + '">';
+    }
+    return '<div class="f' + (f.wide ? " wide" : "") + '">' +
+      '<label for="' + id + '">' + esc(f.l) + (f.req ? "" : ' <i>(optional)</i>') + "</label>" +
+      inner +
+      (f.hint ? '<span class="hint">' + esc(f.hint) + "</span>" : "") +
+      "</div>";
+  }
+
+  function stepBodyHtml(s) {
+    var h = "";
+    if (s.intro) h += "<p>" + esc(s.intro) + "</p>";
+    if (s.body && BODIES[s.body]) h += BODIES[s.body];
+
+    if (s.fields) h += '<div class="grid">' + s.fields.map(fieldHtml).join("") + "</div>";
+
+    if (s.kind === "ack") {
+      h += '<label class="check"><input type="checkbox" data-ack="' + s.id + '"' + (data.done[s.id] ? " checked" : "") + ">" +
+        "<span>" + esc(s.ackLabel) + "</span></label>";
+    }
+
+    if (s.kind === "external") {
+      if (s.link) {
+        h += '<div class="btn-row"><a class="btn" href="' + esc(s.link) + '" target="_blank" rel="noopener">' + esc(s.linkLabel) + "</a></div>";
+      }
+      if (s.linkNote) h += '<p class="sub">' + esc(s.linkNote) + "</p>";
+      if (s.dateField) h += '<div class="grid">' + fieldHtml(s.dateField) + "</div>";
+      h += '<label class="check"><input type="checkbox" data-ack="' + s.id + '"' + (data.done[s.id] ? " checked" : "") + ">" +
+        "<span>" + esc(s.confirmLabel) + "</span></label>";
+      if (s.skipLabel) {
+        h += '<label class="check"><input type="checkbox" data-skip="' + s.id + '"' + (data.done[s.id] === "skipped" ? " checked" : "") + ">" +
+          "<span>" + esc(s.skipLabel) + "</span></label>";
+      }
+    }
+
+    if (s.kind === "training") {
+      var t = lsGet(LS_TRAINING);
+      if (t && t.passed) {
+        h += '<div class="note"><b>Completed.</b> You scored ' + esc(t.score) + " out of " + esc(t.total) +
+          ", " + esc(t.percent) + " percent, on " + esc(new Date(t.completedAt).toLocaleDateString()) + ".</div>";
+        h += '<div class="btn-row"><a class="btn ghost" href="/onboarding/training">Review the training</a></div>';
+      } else if (t && !t.passed) {
+        h += '<div class="note warn"><b>Not passed yet.</b> You scored ' + esc(t.percent) + " percent and need 80. You can retake the test without redoing the training.</div>";
+        h += '<div class="btn-row"><a class="btn" href="/onboarding/training">Retake the test</a></div>';
+      } else {
+        h += '<div class="btn-row"><a class="btn" href="/onboarding/training">Start the training</a></div>';
+      }
+    }
+
+    if (s.kind !== "ack" && s.kind !== "external" && s.kind !== "training") {
+      h += '<div class="btn-row"><button class="btn ghost" type="button" data-mark="' + s.id + '">' +
+        (data.done[s.id] ? "Mark as not done" : "Mark this step complete") + "</button></div>";
+    }
+    return h;
+  }
+
+  function render() {
+    var steps = activeSteps();
+    stepsEl.innerHTML = steps.map(function (s, i) {
+      var done = !!data.done[s.id];
+      var skipped = data.done[s.id] === "skipped";
+      var open = data.open === s.id;
+      var pillTxt = skipped ? "Not needed" : done ? "Done" : s.optional ? "If it applies" : "To do";
+      var pillCls = done ? "done" : s.optional ? "wait" : "";
+      return '<section class="step' + (done ? " done" : "") + (open ? " open" : "") + '" data-step="' + s.id + '">' +
+        '<button class="step-head" type="button" data-toggle="' + s.id + '" aria-expanded="' + open + '">' +
+        '<span class="num">' + (done ? "&#10003;" : i + 1) + "</span>" +
+        '<span class="step-title"><b>' + esc(s.title) + "</b><span>" + esc(s.sub) + "</span></span>" +
+        '<span class="pill ' + pillCls + '">' + pillTxt + "</span>" +
+        '<span class="chev"></span>' +
+        "</button>" +
+        '<div class="step-body">' + stepBodyHtml(s) + "</div>" +
+        "</section>";
+    }).join("");
+    updateProgress();
+  }
+
+  function requiredSteps() {
+    return activeSteps().filter(function (s) { return !s.optional; });
+  }
+
+  function updateProgress() {
+    var req = requiredSteps();
+    var doneCount = req.filter(function (s) { return !!data.done[s.id]; }).length;
+    var pct = req.length ? Math.round((doneCount / req.length) * 100) : 0;
+    document.getElementById("bar").style.width = pct + "%";
+    var ring = document.getElementById("ring");
+    ring.style.background = "conic-gradient(var(--berry) " + (pct * 3.6) + "deg, var(--cream-dark) 0deg)";
+    document.getElementById("ringTxt").textContent = pct + "%";
+    document.getElementById("sumHead").textContent =
+      doneCount === req.length ? "Everything is done" : doneCount + " of " + req.length + " steps complete";
+    document.getElementById("sumSub").textContent =
+      doneCount === req.length ? "Send it to us at the bottom of the page." : "Your place is saved as you go. You can close this and come back.";
+
+    var missing = req.filter(function (s) { return !data.done[s.id]; });
+    var box = document.getElementById("outstanding");
+    var list = document.getElementById("outstandingList");
+    if (missing.length) {
+      box.hidden = false;
+      list.innerHTML = missing.map(function (s) { return "<li>" + esc(s.title) + "</li>"; }).join("");
+    } else {
+      box.hidden = true;
+    }
+  }
+
+  /* ---------------- saving ---------------------------------------------- */
+  var saveTimer = null, saveEl = document.getElementById("saveState");
+
+  function setSave(msg, cls) {
+    saveEl.textContent = msg;
+    saveEl.className = "save-state" + (cls ? " " + cls : "");
+  }
+
+  function payload(status) {
+    var p = { status: status || "In progress", path: data.path === "returning" ? "Returning" : "New" };
+    Object.keys(data.fields).forEach(function (k) { p[k] = data.fields[k]; });
+    p.missionRead = data.done.mission ? "Yes" : "";
+    p.agreementsAgreed = data.done.agreements ? "Yes" : "";
+    p.photoRelease = data.done.release ? "Yes" : "";
+    p.quickbooks = data.done.quickbooks ? "Yes" : "";
+    p.contract = data.done.contract ? "Yes" : "";
+    p.background = data.done.background ? "Yes" : "";
+    p.insuranceRequired = data.done.insurance === "skipped" ? "No" : (data.done.insurance ? "Yes" : "");
+    p.insuranceSent = data.done.insurance === true ? "Yes" : "";
+    var t = lsGet(LS_TRAINING);
+    if (t) {
+      p.trainingScore = t.score + "/" + t.total;
+      p.trainingPassed = t.passed ? "PASS" : "FAIL";
+      p.trainingCompleted = t.completedAt;
+    }
+    return p;
+  }
+
+  function persistLocal() {
+    lsSet(LS_DATA, data);
+    if (data.fields.email) {
+      lsSet(LS_PROFILE, {
+        name: data.fields.preferredName || data.fields.legalName || "",
+        role: data.fields.role || "",
+        email: data.fields.email
+      });
+    }
+  }
+
+  function save(status) {
+    persistLocal();
+    if (!data.fields.email) { setSave("Saved on this device", ""); return Promise.resolve(false); }
+    setSave("Saving", "");
+    return fetch("/onboarding/api/save", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(payload(status))
+    }).then(function (r) { return r.json().then(function (j) { return { r: r, j: j }; }); })
+      .then(function (res) {
+        if (res.j && res.j.ok) { setSave("Saved", "ok"); return true; }
+        if (res.j && res.j.error === "sensitive") {
+          setSave("Not saved", "err");
+          window.alert(res.j.message);
+          return false;
+        }
+        setSave("Saved on this device only", "err");
+        return false;
+      })
+      .catch(function () { setSave("Saved on this device only", "err"); return false; });
+  }
+
+  function queueSave() {
+    persistLocal();
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () { save(); }, 1200);
+  }
+
+  /* ---------------- events ---------------------------------------------- */
+  function choosePath(p) {
+    data.path = p;
+    document.getElementById("pathNew").setAttribute("aria-pressed", String(p === "new"));
+    document.getElementById("pathReturning").setAttribute("aria-pressed", String(p === "returning"));
+    document.getElementById("summary").hidden = false;
+    stepsEl.hidden = false;
+    document.getElementById("finishWrap").hidden = false;
+    if (!data.open) data.open = "details";
+    render();
+    persistLocal();
+  }
+
+  document.getElementById("pathNew").addEventListener("click", function () { choosePath("new"); });
+  document.getElementById("pathReturning").addEventListener("click", function () { choosePath("returning"); });
+
+  stepsEl.addEventListener("click", function (e) {
+    var head = e.target.closest("[data-toggle]");
+    if (head) {
+      var id = head.getAttribute("data-toggle");
+      data.open = data.open === id ? "" : id;
+      render();
+      persistLocal();
+      return;
+    }
+    var mark = e.target.closest("[data-mark]");
+    if (mark) {
+      var mid = mark.getAttribute("data-mark");
+      data.done[mid] = !data.done[mid];
+      render();
+      save();
+    }
+  });
+
+  stepsEl.addEventListener("change", function (e) {
+    var t = e.target;
+    if (t.hasAttribute("data-ack")) {
+      data.done[t.getAttribute("data-ack")] = t.checked;
+      render();
+      save();
+      return;
+    }
+    if (t.hasAttribute("data-skip")) {
+      data.done[t.getAttribute("data-skip")] = t.checked ? "skipped" : false;
+      render();
+      save();
+      return;
+    }
+    if (t.hasAttribute("data-k")) { onFieldEdit(t); }
+  });
+
+  stepsEl.addEventListener("input", function (e) {
+    if (e.target.hasAttribute("data-k")) { onFieldEdit(e.target); }
+  });
+
+  // A form step counts as done once its required fields are filled. This runs on
+  // input as well as change: a contractor who types their last field and goes
+  // straight to the send button never fires a change event on it.
+  function onFieldEdit(t) {
+    data.fields[t.getAttribute("data-k")] = t.value;
+    var sec = t.closest("[data-step]");
+    if (sec) {
+      var sid = sec.getAttribute("data-step");
+      var def = ALL_STEPS.filter(function (s) { return s.id === sid; })[0];
+      if (def && def.fields) {
+        var reqs = def.fields.filter(function (f) { return f.req; });
+        var ok = reqs.length > 0 && reqs.every(function (f) { return String(data.fields[f.k] || "").trim(); });
+        if (ok !== !!data.done[sid]) {
+          data.done[sid] = ok;
+          // Repaint the header pill and tick without collapsing the open step.
+          var headNum = sec.querySelector(".num");
+          var headPill = sec.querySelector(".pill");
+          sec.classList.toggle("done", ok);
+          if (headNum) headNum.innerHTML = ok ? "&#10003;" : String(activeSteps().map(function (s) { return s.id; }).indexOf(sid) + 1);
+          if (headPill) { headPill.textContent = ok ? "Done" : "To do"; headPill.className = "pill" + (ok ? " done" : ""); }
+          updateProgress();
+        }
+      }
+    }
+    queueSave();
+  }
+
+  document.getElementById("submitBtn").addEventListener("click", function () {
+    var btn = this;
+    if (!data.fields.email) {
+      window.alert("Please fill in your details at the top first. We match everything up by your email address.");
+      return;
+    }
+    btn.disabled = true;
+    btn.textContent = "Sending";
+    save("Submitted").then(function (ok) {
+      btn.disabled = false;
+      if (ok) {
+        btn.textContent = "Sent, thank you";
+        setSave("Submitted", "ok");
+        window.alert("Thank you. Your onboarding has been sent to Encore. Kristen will follow up about your contract, calendar and Slack invite.");
+      } else {
+        btn.textContent = "Try sending again";
+      }
+    });
+  });
+
+  /* ---------------- boot ------------------------------------------------- */
+  // Coming back from the training marks that step automatically.
+  var tr = lsGet(LS_TRAINING);
+  if (tr && tr.passed) data.done.training = true;
+
+  if (data.path) {
+    choosePath(data.path);
+  } else {
+    document.getElementById("summary").hidden = true;
+  }
+})();
+</script>
+</body>
+</html>
