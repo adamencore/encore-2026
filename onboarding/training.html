@@ -321,9 +321,115 @@ tbody td{padding:13px 14px;vertical-align:top;color:var(--text);font-weight:500;
   .preview{background:#fdf3e0;border-bottom:1px solid #e3c78d;color:#5c3d00;font-size:13.5px;line-height:1.5;padding:11px 20px;max-width:860px;margin:0 auto;text-align:center}
   .preview b{color:#5c3d00;font-weight:700}
   @media(max-width:560px){.preview{font-size:12.5px;padding:10px 16px;text-align:left}}
+
+  /* =====================================================================
+     STAGE THE TRAINING
+     Seven sections are seven scenes, each lit with its own gel. Light is
+     the one bold device: a wash behind the slide that picks up the gel of
+     the section you are in. Everything else stays quiet.
+     ===================================================================== */
+  :root{
+    --gel:#4a7a8c;
+    --warm:#f6e3c0;
+  }
+  .gel-1{--gel:#4a7a8c}  /* steel  : understanding abuse */
+  .gel-2{--gel:#338093}  /* berry  : the two-adult rule  */
+  .gel-3{--gel:#e8716b}  /* coral  : safe touch          */
+  .gel-4{--gel:#5e7fa8}  /* dusk   : digital             */
+  .gel-5{--gel:#c98a4b}  /* amber  : disclosure          */
+  .gel-6{--gel:#b4463f}  /* signal : reporting           */
+  .gel-7{--gel:#4f8278}  /* sage   : peer harm           */
+
+  /* the wash. one element, fixed behind everything, recoloured per scene. */
+  .wash{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60% 45% at 50% -8%, color-mix(in srgb, var(--gel) 52%, transparent), transparent 70%),
+      radial-gradient(45% 40% at 88% 102%, color-mix(in srgb, var(--gel) 26%, transparent), transparent 72%);
+    transition:background .7s ease}
+  .topbar,.bar,main,.nav{position:relative;z-index:1}
+  .bar-fill{background:var(--gel);transition:width .45s ease, background .7s ease}
+
+  /* scene art */
+  .scene{width:100%;height:auto;display:block;color:var(--gel)}
+  .scene-wrap{border-radius:14px;overflow:hidden;background:color-mix(in srgb, var(--gel) 16%, #0f252b)}
+
+  /* ---- section intro: the scene card -------------------------------- */
+  .scn{display:grid;grid-template-columns:1.05fr .95fr;gap:0;border-radius:20px;overflow:hidden;
+    background:#17353d;box-shadow:0 30px 70px -40px rgba(0,0,0,.75)}
+  .scn-art{background:color-mix(in srgb, var(--gel) 20%, #0f252b);display:flex;align-items:center;padding:26px}
+  .scn-body{padding:34px 32px}
+  .scn-no{font-size:4.4rem;line-height:.82;font-weight:900;letter-spacing:-.04em;color:var(--gel)}
+  .scn-of{font-size:.82rem;font-weight:600;color:#9fb6bd;margin:8px 0 16px}
+  .scn-title{font-size:1.62rem;line-height:1.16;font-weight:800;letter-spacing:-.02em;color:#fff;margin-bottom:18px}
+  .scn-list{list-style:none;display:grid;gap:12px}
+  .scn-list li{display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:start;
+    font-size:.95rem;line-height:1.55;color:#dfe8ea}
+  .scn-list .tick{width:7px;height:7px;border-radius:50%;background:var(--gel);margin-top:8px}
+
+  /* ---- content: a lit band over the paper ---------------------------- */
+  .band{height:8px;background:var(--gel);border-radius:20px 20px 0 0}
+  .card.has-band{border-radius:0 0 20px 20px;margin-top:0}
+  /* The gel is a fill colour, not a text colour. These two labels sit on dark
+     surfaces, where every one of the seven gels fails AA as small text, so
+     they carry a lightened tint of the gel instead: the section still reads
+     as its own colour, and the text stays legible. */
+  .tag{color:color-mix(in srgb, var(--gel) 38%, #f2f6f7)}
+  .spot-kick{color:color-mix(in srgb, var(--gel) 38%, #f2f6f7)}
+
+  /* ---- scenario: the spotlight --------------------------------------- */
+  .spot{border-radius:20px;overflow:hidden;background:#17353d;
+    box-shadow:0 30px 70px -40px rgba(0,0,0,.75)}
+  .spot-top{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;
+    padding:24px 28px;background:color-mix(in srgb, var(--gel) 18%, #0f252b)}
+  .spot-top .scene{max-width:150px}
+  .spot-kick{font-size:.8rem;font-weight:700;margin-bottom:8px}
+  .spot-scen{font-size:1.02rem;line-height:1.55;color:#eaf1f2;font-style:italic}
+  .spot-body{padding:24px 28px 28px}
+
+  @media(max-width:720px){
+    .scn{grid-template-columns:1fr}
+    .scn-art{padding:18px 18px 0;justify-content:center}
+    .scn-art .scene{max-width:300px}
+    .scn-body{padding:22px 20px 26px}
+    .scn-no{font-size:3.4rem}
+    .scn-title{font-size:1.34rem}
+    .spot-top{grid-template-columns:1fr;gap:14px;padding:18px 18px}
+    .spot-top .scene{max-width:220px;margin:0 auto}
+    .spot-body{padding:18px 18px 22px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .wash,.bar-fill{transition:none}
+  }
+
+  /* The scenario body sits on the dark card, so its type must be light.
+     The old .q colour was written for a paper surface and fell through. */
+  .spot-body{background:#17353d}
+  .spot-body .q{color:#fff;font-size:1.22rem;line-height:1.3;font-weight:800;
+    letter-spacing:-.015em;margin-bottom:18px}
+
+  /* Let the art fill its panel instead of floating in it. */
+  .scn-art{min-height:270px}
+  .scn-art .scene{max-width:none;width:100%}
+  .spot-top{grid-template-columns:186px 1fr;gap:26px}
+  .spot-top .scene{max-width:none;width:100%}
+
+  /* A stronger wash, and a floor so a short slide does not leave the page
+     half empty. */
+  .wash{background:
+      radial-gradient(62% 48% at 50% -10%, color-mix(in srgb, var(--gel) 70%, transparent), transparent 72%),
+      radial-gradient(48% 44% at 90% 104%, color-mix(in srgb, var(--gel) 34%, transparent), transparent 74%)}
+  main{min-height:0}
+  .slide{display:flex;flex-direction:column;justify-content:center}
+
+  @media(max-width:720px){
+    .scn-art{min-height:0}
+    .spot-top{grid-template-columns:1fr}
+  }
 </style>
 </head>
 <body>
+
+<div class="wash" id="wash" aria-hidden="true"></div>
 
 <div class="topbar"><div class="topbar-in">
   <span class="wordmark">Encore!</span>
@@ -698,6 +804,18 @@ var TEST = [
 /* Build the full 44 slide deck. */
 var SLIDES = [];
 SLIDES.push({ type:"cover" });
+/* Stamp each training slide with the scene it belongs to, so the gel and the
+   scene art follow you through a section. Intros already carry sec; content
+   and scenario slides inherit the one most recently opened. */
+(function(){
+  var cur = 0, scn = 0;
+  for (var i=0;i<TRAINING.length;i++){
+    var t = TRAINING[i];
+    if (t.type === "intro") cur = t.sec;
+    else t.sec = cur;
+    if (t.type === "scenario") t.scn = scn++;
+  }
+})();
 for (var ti=0; ti<TRAINING.length; ti++) SLIDES.push(TRAINING[ti]);
 SLIDES.push({ type:"testintro" });
 for (var qi=0; qi<TEST.length; qi++) SLIDES.push({ type:"question", qi:qi });
@@ -916,6 +1034,137 @@ var navEl = document.getElementById("nav");
 
 function sectionsLabel(i){ return "Section " + SECTIONS[i].n; }
 
+/* ---- scene art: places and objects, never people ---------------------- */
+var ART = {};
+
+ART.stage =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<defs><linearGradient id="gBeam" x1="0" y1="0" x2="0" y2="1">' +
+  '<stop offset="0" stop-color="currentColor" stop-opacity=".55"/>' +
+  '<stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient></defs>' +
+  '<path d="M160 6 L252 150 L68 150 Z" fill="url(#gBeam)"/>' +
+  '<rect x="0" y="150" width="320" height="30" fill="currentColor" opacity=".22"/>' +
+  '<path d="M0 0h58l-6 26 8 24-10 26 6 28-8 26 4 20H0z" fill="currentColor" opacity=".75"/>' +
+  '<path d="M320 0h-58l6 26-8 24 10 26-6 28 8 26-4 20h52z" fill="currentColor" opacity=".75"/>' +
+  '<circle cx="160" cy="10" r="7" fill="#f6e3c0"/>' +
+  '<path d="M96 150h128" stroke="currentColor" stroke-width="2" opacity=".5"/>' +
+  '</svg>';
+
+ART.spotchair =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<defs><linearGradient id="gCone" x1="0" y1="0" x2="0" y2="1">' +
+  '<stop offset="0" stop-color="#f6e3c0" stop-opacity=".6"/>' +
+  '<stop offset="1" stop-color="#f6e3c0" stop-opacity="0"/></linearGradient></defs>' +
+  '<rect x="0" y="146" width="320" height="34" fill="currentColor" opacity=".22"/>' +
+  '<path d="M160 0 L232 150 L88 150 Z" fill="url(#gCone)"/>' +
+  '<g fill="#f6e3c0" opacity=".95">' +
+  '<rect x="150" y="62" width="12" height="56" rx="5"/><rect x="134" y="108" width="52" height="11" rx="5"/>' +
+  '<rect x="138" y="118" width="9" height="32" rx="4"/><rect x="174" y="118" width="9" height="32" rx="4"/></g>' +
+  '<g fill="currentColor" opacity=".45">' +
+  '<rect x="38" y="80" width="10" height="40" rx="4"/><rect x="26" y="112" width="40" height="9" rx="4"/>' +
+  '<rect x="266" y="80" width="10" height="40" rx="4"/><rect x="258" y="112" width="40" height="9" rx="4"/></g>' +
+  '</svg>';
+
+ART.lobby =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<rect x="0" y="152" width="320" height="28" fill="currentColor" opacity=".2"/>' +
+  '<rect x="34" y="40" width="74" height="112" rx="3" fill="currentColor" opacity=".3"/>' +
+  '<path d="M44 50h54v92H44z" fill="#f6e3c0" opacity=".9"/>' +
+  '<rect x="196" y="110" width="88" height="10" rx="4" fill="currentColor" opacity=".75"/>' +
+  '<rect x="202" y="120" width="8" height="32" rx="3" fill="currentColor" opacity=".55"/>' +
+  '<rect x="270" y="120" width="8" height="32" rx="3" fill="currentColor" opacity=".55"/>' +
+  '<circle cx="240" cy="54" r="19" fill="none" stroke="currentColor" stroke-width="3" opacity=".7"/>' +
+  '<path d="M240 44v11l8 5" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/>' +
+  '</svg>';
+
+ART.door =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<path d="M150 26 L300 6 L300 174 L150 154 Z" fill="#f6e3c0" opacity=".85"/>' +
+  '<rect x="60" y="20" width="92" height="140" rx="3" fill="currentColor" opacity=".8"/>' +
+  '<circle cx="142" cy="92" r="5" fill="#f6e3c0"/>' +
+  '<rect x="0" y="160" width="320" height="20" fill="currentColor" opacity=".22"/>' +
+  '</svg>';
+
+ART.marks =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<rect x="0" y="0" width="320" height="180" fill="currentColor" opacity=".14"/>' +
+  '<path d="M0 60h320M0 120h320" stroke="currentColor" stroke-width="1.5" opacity=".3"/>' +
+  '<path d="M86 74v32M70 90h32" stroke="#f6e3c0" stroke-width="7" stroke-linecap="round"/>' +
+  '<path d="M234 74v32M218 90h32" stroke="#f6e3c0" stroke-width="7" stroke-linecap="round"/>' +
+  '<path d="M118 90h84" stroke="currentColor" stroke-width="3" stroke-dasharray="7 9" opacity=".85" stroke-linecap="round"/>' +
+  '</svg>';
+
+ART.phone =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<rect x="104" y="18" width="78" height="144" rx="12" fill="currentColor" opacity=".8"/>' +
+  '<rect x="112" y="30" width="62" height="118" rx="5" fill="#f6e3c0" opacity=".9"/>' +
+  '<rect x="120" y="44" width="38" height="9" rx="4" fill="currentColor" opacity=".45"/>' +
+  '<rect x="120" y="60" width="46" height="9" rx="4" fill="currentColor" opacity=".3"/>' +
+  '<path d="M196 56h96a8 8 0 0 1 8 8v34a8 8 0 0 1-8 8h-74l-16 14v-14h-6a8 8 0 0 1-8-8V64a8 8 0 0 1 8-8z" fill="currentColor" opacity=".75"/>' +
+  '<path d="M214 78h60M214 92h38" stroke="#f6e3c0" stroke-width="5" stroke-linecap="round" opacity=".85"/>' +
+  '</svg>';
+
+ART.chairs =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<rect x="0" y="150" width="320" height="30" fill="currentColor" opacity=".2"/>' +
+  '<g fill="currentColor" opacity=".8">' +
+  '<rect x="52" y="52" width="12" height="62" rx="5"/><rect x="52" y="104" width="62" height="11" rx="5"/>' +
+  '<rect x="58" y="114" width="9" height="36" rx="4"/><rect x="104" y="114" width="9" height="36" rx="4"/></g>' +
+  '<g fill="currentColor" opacity=".55">' +
+  '<rect x="256" y="52" width="12" height="62" rx="5"/><rect x="206" y="104" width="62" height="11" rx="5"/>' +
+  '<rect x="253" y="114" width="9" height="36" rx="4"/><rect x="207" y="114" width="9" height="36" rx="4"/></g>' +
+  '<path d="M132 92c20-14 36-14 56 0" stroke="#f6e3c0" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-dasharray="6 8"/>' +
+  '</svg>';
+
+ART.callboard =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<rect x="30" y="18" width="148" height="144" rx="6" fill="currentColor" opacity=".75"/>' +
+  '<rect x="44" y="34" width="54" height="46" rx="3" fill="#f6e3c0" opacity=".9"/>' +
+  '<rect x="110" y="34" width="54" height="46" rx="3" fill="#f6e3c0" opacity=".6"/>' +
+  '<rect x="44" y="94" width="120" height="50" rx="3" fill="#f6e3c0" opacity=".75"/>' +
+  '<path d="M214 52c0-8 7-14 15-14h10l10 24-12 10c6 14 16 24 30 30l10-12 24 10v10c0 8-6 15-14 15-36 0-73-38-73-73z" fill="currentColor" opacity=".85"/>' +
+  '</svg>';
+
+ART.ensemble =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<rect x="0" y="146" width="320" height="34" fill="currentColor" opacity=".2"/>' +
+  '<circle cx="68" cy="92" r="22" fill="currentColor" opacity=".8"/>' +
+  '<circle cx="120" cy="92" r="22" fill="currentColor" opacity=".8"/>' +
+  '<circle cx="172" cy="92" r="22" fill="currentColor" opacity=".8"/>' +
+  '<circle cx="272" cy="92" r="22" fill="none" stroke="#f6e3c0" stroke-width="4" opacity=".95"/>' +
+  '<path d="M204 92h32" stroke="currentColor" stroke-width="3" stroke-dasharray="6 8" opacity=".6" stroke-linecap="round"/>' +
+  '</svg>';
+
+ART.clipboard =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<rect x="96" y="16" width="128" height="150" rx="8" fill="currentColor" opacity=".8"/>' +
+  '<rect x="108" y="32" width="104" height="120" rx="4" fill="#f6e3c0" opacity=".92"/>' +
+  '<rect x="138" y="8" width="44" height="18" rx="6" fill="currentColor"/>' +
+  '<path d="M124 60l9 9 17-19M124 94l9 9 17-19M124 128l9 9 17-19" stroke="currentColor" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>' +
+  '<path d="M162 62h38M162 96h38M162 130h26" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" opacity=".4"/>' +
+  '</svg>';
+
+ART.curtain =
+  '<svg viewBox="0 0 320 180" class="scene" aria-hidden="true">' +
+  '<defs><linearGradient id="gGlow" x1="0" y1="0" x2="0" y2="1">' +
+  '<stop offset="0" stop-color="#f6e3c0" stop-opacity=".85"/>' +
+  '<stop offset="1" stop-color="#f6e3c0" stop-opacity="0"/></linearGradient></defs>' +
+  '<path d="M160 20 L246 160 L74 160 Z" fill="url(#gGlow)"/>' +
+  '<path d="M0 0h84l-10 30 12 28-14 30 10 32-12 30 6 30H0z" fill="currentColor" opacity=".85"/>' +
+  '<path d="M320 0h-84l10 30-12 28 14 30-10 32 12 30-6 30h76z" fill="currentColor" opacity=".85"/>' +
+  '<rect x="0" y="160" width="320" height="20" fill="currentColor" opacity=".3"/>' +
+  '</svg>';
+
+/* which scene each section and scenario is lit with */
+/* 1 warning signs: one chair lit, the others dark. 2 the two-adult rule: an
+   open door. 3 safe touch: stage marks and the gap between them. 4 digital.
+   5 disclosure: two chairs turned toward each other. 6 reporting: the
+   callboard and the phone. 7 peer harm: the ensemble, with one set apart. */
+var SEC_ART = ["spotchair","door","marks","phone","chairs","callboard","ensemble"];
+var SCEN_ART = ["lobby","marks","phone","chairs","callboard","ensemble"];
+
+function gelFor(i){ return "gel-" + ((i % 7) + 1); }
+
 function renderCover(){
   var h = '<div class="card cover">';
   h += '<div class="mark">Encore! Performing Arts</div>';
@@ -946,22 +1195,24 @@ function renderCover(){
 
 function renderIntro(s){
   var sec = SECTIONS[s.sec];
-  var h = '<div class="card-dark">';
-  h += '<div class="sec-num" aria-hidden="true">' + sec.n + '</div>';
-  h += '<div class="sec-kicker">Section ' + sec.n + ' of 7</div>';
-  h += '<h2 class="sec-title" id="slideHead" tabindex="-1">' + sec.title + '</h2>';
-  h += '<ul class="sec-bullets">';
+  var h = '<div class="scn">';
+  h += '<div class="scn-art">' + (ART[SEC_ART[s.sec]] || ART.stage) + '</div>';
+  h += '<div class="scn-body">';
+  h += '<div class="scn-no" aria-hidden="true">' + sec.n + '</div>';
+  h += '<div class="scn-of">Scene ' + sec.n + ' of 7</div>';
+  h += '<h2 class="scn-title" id="slideHead" tabindex="-1">' + sec.title + '</h2>';
+  h += '<ul class="scn-list">';
   for (var i=0;i<sec.bullets.length;i++){
-    h += '<li><span class="dot" aria-hidden="true"></span><span>' + esc(sec.bullets[i]) + '</span></li>';
+    h += '<li><span class="tick" aria-hidden="true"></span><span>' + esc(sec.bullets[i]) + '</span></li>';
   }
-  h += '</ul></div>';
+  h += '</ul></div></div>';
   slideEl.innerHTML = h;
   nextBtn.textContent = "Continue";
   nextBtn.disabled = false;
 }
 
 function renderContent(s){
-  var h = '<div class="card">';
+  var h = '<div class="band" aria-hidden="true"></div><div class="card has-band">';
   h += '<span class="tag">' + esc(s.tag) + '</span>';
   h += '<h2 class="title" id="slideHead" tabindex="-1">' + esc(s.title) + '</h2>';
   if (s.body) h += '<p class="body-p">' + esc(s.body) + '</p>';
@@ -978,9 +1229,12 @@ function renderScenario(s, idx){
   var picked = state.scen.hasOwnProperty(idx) ? state.scen[idx] : null;
   var opts = [{ text:s.a, correct:true }, { text:s.b, correct:false }];
   var letters = ["A","B"];
-  var h = '<div class="card-dark">';
-  h += '<div class="q-kicker">Scenario</div>';
-  h += '<p class="scen">' + esc(s.scen) + '</p>';
+  var art = ART[SCEN_ART[s.scn] || "stage"] || ART.stage;
+  var h = '<div class="spot">';
+  h += '<div class="spot-top"><div>' + art + '</div><div>';
+  h += '<div class="spot-kick">The scene</div>';
+  h += '<p class="spot-scen">' + esc(s.scen) + '</p>';
+  h += '</div></div><div class="spot-body">';
   h += '<h2 class="q" id="slideHead" tabindex="-1">' + esc(s.q) + '</h2>';
   h += '<div class="opts" role="group" aria-label="Answer options">';
   for (var i=0;i<opts.length;i++){
@@ -995,7 +1249,7 @@ function renderScenario(s, idx){
   if (picked !== null){
     h += '<div class="explain"><div class="k">Correct Answer</div><p>' + esc(s.exp) + '</p></div>';
   }
-  h += '</div>';
+  h += '</div></div>';
   slideEl.innerHTML = h;
 
   var btns = slideEl.querySelectorAll(".opt");
@@ -1267,8 +1521,22 @@ function announce(msg){
   window.setTimeout(function(){ liveEl.textContent = msg; }, 40);
 }
 
+
+/* Light the slide with its section's gel. The cover, test and completion keep
+   the house gel so the seven scenes stand out as the body of the work. */
+function applyGel(s){
+  var sec = null;
+  if (s.type === "intro" || s.type === "content") sec = s.sec;
+  else if (s.type === "scenario") sec = s.sec;
+  var cls = (sec === null || sec === undefined) ? "gel-2" : gelFor(sec);
+  var el = document.documentElement;
+  el.className = el.className.replace(/\bgel-\d\b/g, "").trim();
+  el.classList.add(cls);
+}
+
 function render(keepScroll){
   var s = SLIDES[state.idx];
+  applyGel(s);
   switch (s.type){
     case "cover":     renderCover(); break;
     case "intro":     renderIntro(s); break;
