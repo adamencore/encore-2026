@@ -12,7 +12,7 @@
 <style>
 :root{
   --guava:#1a404a;
-  --berry:#338093;
+  --berry:#10789c;
   --berry-deep:#2a6b7b;
   --cream:#FAF7F2;
   --cream-dark:#F3EFE8;
@@ -332,13 +332,21 @@ tbody td{padding:13px 14px;vertical-align:top;color:var(--text);font-weight:500;
     --gel:#4a7a8c;
     --warm:#f6e3c0;
   }
-  .gel-1{--gel:#4a7a8c}  /* steel  : understanding abuse */
-  .gel-2{--gel:#338093}  /* berry  : the two-adult rule  */
-  .gel-3{--gel:#e8716b}  /* coral  : safe touch          */
-  .gel-4{--gel:#5e7fa8}  /* dusk   : digital             */
-  .gel-5{--gel:#c98a4b}  /* amber  : disclosure          */
-  .gel-6{--gel:#b4463f}  /* signal : reporting           */
-  .gel-7{--gel:#4f8278}  /* sage   : peer harm           */
+  /* Encore's brand is two colours, teal and coral, sampled from the logo
+     artwork in the 2026 Brand Proposal: #10789c and #e46038, over a warm
+     near-black #282420. Seven invented hues would dilute a two-colour
+     identity, so the gels ramp through the two brand families instead.
+
+     The split carries meaning. Scenes 1 to 4 are understanding and
+     prevention, lit cool. Scenes 5 to 7 are what you do when something has
+     already happened, lit warm. */
+  .gel-1{--gel:#0d6480}  /* deep teal   : understanding abuse */
+  .gel-2{--gel:#10789c}  /* BRAND teal  : the two-adult rule  */
+  .gel-3{--gel:#3c92ae}  /* lifted teal : safe touch          */
+  .gel-4{--gel:#6aa8bd}  /* pale teal   : digital             */
+  .gel-5{--gel:#e8906a}  /* light coral : disclosure          */
+  .gel-6{--gel:#e46038}  /* BRAND coral : reporting           */
+  .gel-7{--gel:#c04a28}  /* deep coral  : peer harm           */
 
   /* the wash. one element, fixed behind everything, recoloured per scene. */
   .wash{position:fixed;inset:0;z-index:0;pointer-events:none;

@@ -220,6 +220,31 @@ sensory or ASL performances. It is authoritative for intent but can lag
 reality: ThunderTix governs what is actually purchasable, and the two have
 disagreed. When they conflict, say so rather than picking one silently.
 
+## Brand palette
+
+**The site's CSS has drifted from the actual brand.** Measured 2026-11-04 by
+exporting the "Encore 2026 Brand Proposal" from Canva and sampling the logo
+artwork:
+
+| | Brand (canonical) | What the site CSS says |
+|---|---|---|
+| Teal | `#10789c` | `#338093` |
+| Coral | `#e46038` | `#e8716b` |
+| Neutral | `#282420` warm near-black | `#22353d` cool slate |
+
+**Coral is a co-primary, not an accent.** In the logo artwork it carries the
+same pixel weight as teal, and the proposal shows the wordmark reversed out of
+teal, near-black and coral as three equal fields. The site barely uses it.
+
+`onboarding/training.html` is built on the canonical values. The rest of the
+site is not, and `#338093` is also the colour behind four separate AA contrast
+failures on this project. A palette reconciliation is worth doing as its own
+pass; it has not been done.
+
+Canva also holds an "Encore Brand Kit" (`kAExu-Sz5YA`). The connector lists
+brand kits but does not expose their colour values, so exporting a design and
+sampling it is the way to read the brand.
+
 ## Writing style
 
 No em dashes and no emojis anywhere in page copy. Use commas, colons or a
