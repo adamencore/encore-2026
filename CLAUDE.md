@@ -43,6 +43,16 @@ optional `SMUGMUG_API_KEY`. Never commit photos of Young Artists here.
 `onboarding/index.html` and `onboarding/training.html`, backend
 `netlify/functions/onboarding.mjs` at `/onboarding/api/*`.
 
+**OPEN PREVIEW as of 2026-11-04.** `PREVIEW_OPEN = true` in BOTH
+`netlify/edge-functions/onboarding-gate.js` and
+`netlify/functions/onboarding.mjs`, at Adam's request, so the portal can be
+walked through without a password while it is being built. While that is
+true, both pages are reachable by anyone with the URL and
+`/onboarding/api/save` accepts unauthenticated writes. **To go live: set both
+constants to false and delete the `.preview` banner block and its CSS from
+`onboarding/index.html` and `onboarding/training.html`.** All four changes go
+together.
+
 **It has its own gate and its own password, and that is deliberate.**
 `netlify/edge-functions/onboarding-gate.js` reads `ONBOARDING_PASSWORD`
 (cookie `onboarding_auth`, 14 day session) and falls back to

@@ -15,6 +15,21 @@
 // be tested, and says so on the sign-in screen. Set the separate password before
 // sending the link to anyone outside the team.
 
+// ===========================================================================
+// PREVIEW_OPEN: temporary, set 2026-11-04 at Adam's request so the portal can
+// be walked through without a password while it is still being built.
+//
+// While this is true, /onboarding and /onboarding/training are reachable by
+// anyone who has the URL, and /onboarding/api/save accepts writes from anyone.
+// The pages are noindex and linked only from the gated Team Hub, so they are
+// unlikely to be found, but they are not protected.
+//
+// TO GO LIVE: set this to false AND set PREVIEW_OPEN to false in
+// netlify/functions/onboarding.mjs. Both must change together. The preview
+// banner on both pages disappears on its own once they do.
+// ===========================================================================
+const PREVIEW_OPEN = true;
+
 const COOKIE = "onboarding_auth";
 const MAX_AGE = 60 * 60 * 24 * 14; // 14 days: onboarding is done over several sittings
 
@@ -70,6 +85,9 @@ function loginPage(showError, usingFallback) {
 }
 
 export default async (request, context) => {
+  // Open preview: no password asked for, every request passes straight through.
+  if (PREVIEW_OPEN) return context.next();
+
   const url = new URL(request.url);
   const own = Netlify.env.get("ONBOARDING_PASSWORD");
   const PASSWORD = own || Netlify.env.get("PROTECTED_PAGE_PASSWORD");

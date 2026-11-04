@@ -316,6 +316,11 @@ tbody td{padding:13px 14px;vertical-align:top;color:var(--text);font-weight:500;
   .ring-wrap{page-break-inside:avoid}
   .record{background:#fff;border:1px solid #777}
 }
+
+  /* PREVIEW BANNER: delete when PREVIEW_OPEN goes false. */
+  .preview{background:#fdf3e0;border-bottom:1px solid #e3c78d;color:#5c3d00;font-size:13.5px;line-height:1.5;padding:11px 20px;max-width:860px;margin:0 auto;text-align:center}
+  .preview b{color:#5c3d00;font-weight:700}
+  @media(max-width:560px){.preview{font-size:12.5px;padding:10px 16px;text-align:left}}
 </style>
 </head>
 <body>
@@ -332,6 +337,13 @@ tbody td{padding:13px 14px;vertical-align:top;color:var(--text);font-weight:500;
   </div>
 </div></div>
 <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+
+<!-- PREVIEW BANNER: remove this block and its .preview rules when PREVIEW_OPEN
+     goes false in netlify/edge-functions/onboarding-gate.js and
+     netlify/functions/onboarding.mjs. -->
+<div class="preview" role="status">
+  <b>Preview.</b> This training is still being built and is not password protected yet. Completions recorded now are test data and will be cleared before we go live.
+</div>
 
 <main id="main">
   <div class="slide" id="slide" tabindex="-1"></div>

@@ -24,6 +24,14 @@
 
 import { createHash, createSign } from "node:crypto";
 
+// ===========================================================================
+// PREVIEW_OPEN: temporary, set 2026-11-04. Must stay in step with the same
+// constant in netlify/edge-functions/onboarding-gate.js. While it is true this
+// endpoint accepts writes from anyone who has the URL, with no sign-in.
+// TO GO LIVE: set both to false.
+// ===========================================================================
+const PREVIEW_OPEN = true;
+
 /* ---------- auth: recheck the onboarding cookie ourselves ---------- */
 
 function cookieValue(req, name) {
@@ -36,6 +44,7 @@ function cookieValue(req, name) {
 }
 
 function signedIn(req) {
+  if (PREVIEW_OPEN) return true;
   const pw = process.env.ONBOARDING_PASSWORD || process.env.PROTECTED_PAGE_PASSWORD;
   if (!pw) return false;
   const expected = createHash("sha256").update("encore-onboarding::" + pw).digest("hex");
