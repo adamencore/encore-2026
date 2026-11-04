@@ -39,6 +39,29 @@ gate). The catalog lives in a Google Sheet, never in this public repo.
 Env vars: `GOOGLE_SERVICE_ACCOUNT_KEY`, `PHOTO_LIBRARY_SHEET_ID`,
 optional `SMUGMUG_API_KEY`. Never commit photos of Young Artists here.
 
+**Onboarding portal** (`/onboarding`, `/onboarding/training`). Pages
+`onboarding/index.html` and `onboarding/training.html`, backend
+`netlify/functions/onboarding.mjs` at `/onboarding/api/*`.
+
+**It has its own gate and its own password, and that is deliberate.**
+`netlify/edge-functions/onboarding-gate.js` reads `ONBOARDING_PASSWORD`
+(cookie `onboarding_auth`, 14 day session) and falls back to
+`PROTECTED_PAGE_PASSWORD` when that is unset. Do not move onboarding under
+`/team/*`: a new contractor needs it on day one, and the Team Hub password
+also unlocks the Young Artist photo library, which an unscreened person must
+not reach before their background check clears.
+
+Responses go to a private Google Sheet (`ONBOARDING_SHEET_ID`), which must be
+shared as Editor with the service account's `client_email`. Rows are keyed on
+lowercased email and upserted: an empty incoming field keeps whatever an
+earlier save stored, so partial progress is never wiped.
+
+**Tax IDs and bank details are never collected here.** The packet puts those in
+QuickBooks only, and the function enforces it: free text fields are screened
+for SSN shapes, long digit runs and named terms, and a match is refused with a
+message pointing at QuickBooks. Phone fields are not screened. If you add a
+field, decide whether it belongs in that screened list.
+
 ## Page conventions
 
 **Catalogue-driven pages.** Several pages hold their content in a JS array
@@ -101,7 +124,9 @@ Ads `AW-17423659350` in `<head>`, and a delegated click listener before
 link to a `thundertix.com` host. **A new page built from scratch will not
 have them, and the Ad Grant needs at least one conversion a month**, so copy
 both from `little-women-tickets.html`. On 344 pages as of 2026-11-02, all
-but `team/` (behind the gate, deliberately untagged) and parked folders.
+but `team/` and `onboarding/` (both behind gates, deliberately untagged, so
+staff and contractor activity stays out of the public GA property) and
+parked folders.
 
 The head snippet goes **immediately after `<meta charset>`, not immediately
 after `<head>`**. Browsers only sniff the first 1024 bytes for the encoding

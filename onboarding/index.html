@@ -676,6 +676,15 @@
   var tr = lsGet(LS_TRAINING);
   if (tr && tr.passed) data.done.training = true;
 
+  // Re-derive completion for every form step from the stored field values, so a
+  // restored session can never show filled-in required fields as still to do.
+  ALL_STEPS.forEach(function (s) {
+    if (!s.fields) return;
+    var reqs = s.fields.filter(function (f) { return f.req; });
+    if (!reqs.length) return;
+    data.done[s.id] = reqs.every(function (f) { return String(data.fields[f.k] || "").trim(); });
+  });
+
   if (data.path) {
     choosePath(data.path);
   } else {

@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<!-- Encore Child Safety Training. Internal onboarding module. Self-contained single file. -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Child Safety Training | Encore Performing Arts</title>
+<meta name="theme-color" content="#142f37">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<style>
+:root{
+  --guava:#1a404a;
+  --berry:#338093;
+  --berry-deep:#2a6b7b;
+  --cream:#FAF7F2;
+  --cream-dark:#F3EFE8;
+  --page-bg:#142f37;
+  --tint:#deedf0;
+  --tint-2:#cde5ea;
+  --border-soft:#d8d2c8;
+  --correct:#2E7D32;
+  --correct-fill:#E8F5E9;
+  --wrong:#C62828;
+  --wrong-fill:#FDECEA;
+  --text:#1A1A2E;
+  --text-mid:#555555;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Mikado',system-ui,-apple-system,sans-serif;
+  background:var(--page-bg);
+  color:var(--text);
+  font-size:15px;
+  line-height:1.5;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+button{font-family:inherit;font-size:inherit;line-height:inherit;cursor:pointer}
+/* Two-tone focus ring: the cream line reads on dark cards, the Guava halo reads on cream cards. */
+:focus-visible{outline:3px solid var(--cream);outline-offset:2px;box-shadow:0 0 0 6px var(--guava)}
+/* The slide heading takes focus programmatically on every slide change so screen
+   readers land on it. It is not in the tab order, so it shows no ring. */
+#slideHead:focus,#slideHead:focus-visible{outline:none;box-shadow:none}
+.tnum{font-variant-numeric:tabular-nums}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:40;background:var(--guava);color:var(--cream)}
+.topbar-in{max-width:1000px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;gap:12px}
+.wordmark{font-weight:900;letter-spacing:-.03em;font-size:17px;color:#fff;white-space:nowrap}
+.tb-label{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:10.5px;color:var(--tint-2);flex:1;text-align:center;min-width:0}
+.tb-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.tb-count{font-weight:600;font-size:12px;color:var(--tint);white-space:nowrap}
+.aloud{
+  display:inline-flex;align-items:center;gap:7px;background:transparent;color:var(--tint);
+  border:1.5px solid rgba(222,237,240,.5);border-radius:100px;padding:6px 11px;
+  font-weight:600;font-size:12px;transition:background .18s,border-color .18s,color .18s;
+  min-height:34px;
+}
+.aloud:hover{background:rgba(222,237,240,.14);border-color:var(--tint);color:#fff}
+.aloud[aria-pressed="true"]{background:var(--berry);border-color:var(--berry);color:#fff}
+.aloud .ic{width:15px;height:15px;flex:none;display:block}
+.aloud[hidden]{display:none}
+
+.bar{height:5px;background:rgba(222,237,240,.22);position:sticky;top:0;z-index:39}
+.bar-fill{height:100%;width:0;background:var(--berry);transition:width .45s cubic-bezier(.22,.7,.3,1)}
+
+/* ---------- shell ---------- */
+main{flex:1;width:100%;max-width:860px;margin:0 auto;padding:26px 16px 10px}
+.slide{animation:rise .4s cubic-bezier(.22,.7,.3,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+h1,h2,h3{letter-spacing:-.02em;line-height:1.18}
+.card{background:var(--cream);border-radius:20px;padding:28px;box-shadow:0 22px 50px -30px rgba(0,0,0,.65)}
+.card-dark{background:var(--guava);color:var(--cream);border-radius:20px;padding:28px;box-shadow:0 22px 50px -30px rgba(0,0,0,.65)}
+.card-dark h2,.card-dark h3{color:#fff}
+
+/* ---------- cover ---------- */
+.cover{text-align:center;padding:40px 28px}
+.cover .mark{font-weight:900;letter-spacing:.1em;text-transform:uppercase;font-size:11.5px;color:var(--guava)}
+.cover h1{font-weight:900;letter-spacing:-.03em;font-size:clamp(2rem,5vw,3.2rem);margin:14px 0 0;color:var(--guava)}
+.cover .sub{font-weight:500;color:var(--text-mid);max-width:50ch;margin:14px auto 0}
+.cover .rule{height:3px;width:64px;background:var(--berry);border-radius:3px;margin:24px auto}
+.ident{max-width:420px;margin:0 auto;text-align:left}
+.ident label{display:block;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:10.5px;color:var(--guava);margin:16px 0 6px}
+.ident input{
+  width:100%;font-family:inherit;font-size:16px;font-weight:500;color:var(--text);
+  background:var(--cream-dark);border:1.5px solid var(--border-soft);border-radius:12px;padding:13px 14px;min-height:48px;
+}
+.ident input:focus{border-color:var(--berry)}
+.known{
+  background:var(--tint);border-radius:14px;padding:16px 18px;max-width:420px;margin:0 auto;text-align:left;
+}
+.known .k{font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:10.5px;color:var(--guava)}
+.known .n{font-weight:700;font-size:20px;color:var(--guava);margin-top:5px;letter-spacing:-.02em}
+.known .r{font-weight:500;color:var(--text);margin-top:2px}
+.known .chg{
+  margin-top:10px;background:none;border:none;padding:0;font-weight:600;font-size:13px;color:var(--guava);
+  text-decoration:underline;text-underline-offset:3px;
+}
+
+/* ---------- section intro ---------- */
+.sec-num{
+  width:56px;height:56px;border-radius:50%;background:var(--berry);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px;letter-spacing:-.02em;
+}
+.sec-kicker{font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:10.5px;color:var(--tint-2);margin-top:18px}
+.card-dark h2.sec-title{font-weight:800;font-size:1.65rem;margin-top:8px}
+.sec-bullets{list-style:none;margin-top:22px;display:grid;gap:14px}
+.sec-bullets li{display:flex;gap:12px;align-items:flex-start;color:var(--tint);font-weight:500}
+.sec-bullets li .dot{width:8px;height:8px;border-radius:50%;background:var(--berry);flex:none;margin-top:8px}
+.sec-bullets li b{color:#fff;font-weight:700}
+
+/* ---------- content ---------- */
+.tag{
+  display:inline-block;background:var(--guava);color:var(--tint-2);
+  font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;
+  padding:7px 13px;border-radius:100px;
+}
+.card h2.title{font-weight:800;font-size:1.45rem;color:var(--guava);margin-top:14px}
+.body-p{color:var(--text-mid);font-weight:500;margin-top:12px;max-width:66ch}
+
+.policy{background:var(--tint);border-top:4px solid var(--berry);border-radius:4px 4px 14px 14px;padding:20px;margin-top:22px}
+.policy .k{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:var(--guava)}
+.policy h3{font-weight:700;font-size:1.1rem;color:var(--guava);margin-top:7px;letter-spacing:-.01em}
+.policy p{margin-top:9px;color:var(--text);font-weight:500}
+.policy ol{margin:12px 0 0 0;padding-left:22px;display:grid;gap:9px}
+.policy ol li{color:var(--text);font-weight:500}
+.placeholder{
+  margin-top:14px;border:2px dashed var(--berry);border-radius:12px;padding:14px 16px;background:var(--cream);
+}
+.placeholder .ph-k{font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:10px;color:var(--guava)}
+.placeholder p{margin-top:6px;color:var(--text);font-weight:500;font-size:14px}
+
+.tbl-wrap{margin-top:22px;border:1px solid var(--border-soft);border-radius:14px;overflow:hidden}
+table{width:100%;border-collapse:collapse;text-align:left}
+thead th{background:var(--berry);color:#fff;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:10.5px;padding:11px 14px}
+tbody th{background:var(--cream-dark);color:var(--guava);font-weight:700;font-size:14px;padding:13px 14px;vertical-align:top;width:27%;border-top:1px solid var(--border-soft)}
+tbody td{padding:13px 14px;vertical-align:top;color:var(--text);font-weight:500;font-size:14px;border-top:1px solid var(--border-soft)}
+
+.lst{margin-top:22px}
+.lst h3{font-weight:700;font-size:1.02rem;color:var(--guava);letter-spacing:-.01em}
+.lst ul{list-style:none;margin-top:11px;display:grid;gap:10px}
+.lst li{display:flex;gap:11px;align-items:flex-start;color:var(--text);font-weight:500}
+.lst li .mk{flex:none;margin-top:3px;width:17px;height:17px}
+.lst.neg li .mk{color:var(--wrong)}
+.lst.pos li .mk{color:var(--correct)}
+.lst.plain li .mk{color:var(--berry)}
+
+/* ---------- scenario and questions ---------- */
+.q-kicker{font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:10.5px;color:var(--tint-2)}
+.scen{font-style:italic;color:var(--tint);font-weight:500;margin-top:12px;font-size:1.02rem}
+.card-dark h2.q{font-weight:700;font-size:1.2rem;letter-spacing:-.01em;margin-top:18px}
+.card h2.q{font-weight:700;font-size:1.2rem;letter-spacing:-.01em;color:var(--guava);margin-top:14px}
+.opts{margin-top:20px;display:grid;gap:12px}
+.opt{
+  display:flex;gap:13px;align-items:flex-start;text-align:left;width:100%;
+  background:var(--cream-dark);color:var(--text);border:2px solid transparent;border-radius:14px;
+  padding:16px 17px;min-height:56px;font-weight:500;
+  transition:transform .16s,border-color .16s,background .16s,box-shadow .16s;
+}
+.opt:hover:not(:disabled){transform:translateY(-2px);border-color:var(--berry);box-shadow:0 10px 22px -14px rgba(0,0,0,.6)}
+.opt:disabled{cursor:default}
+.opt .ltr{
+  flex:none;width:26px;height:26px;border-radius:50%;background:var(--guava);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;
+}
+.opt.is-correct{background:var(--correct-fill);border-color:var(--correct)}
+.opt.is-correct .ltr{background:var(--correct)}
+.opt.is-wrong{background:var(--wrong-fill);border-color:var(--wrong)}
+.opt.is-wrong .ltr{background:var(--wrong)}
+.opt.tf{justify-content:center;align-items:center;font-weight:700;font-size:1.05rem}
+.opt.tf .ltr{display:none}
+
+.explain{
+  margin-top:18px;background:var(--correct-fill);border-left:5px solid var(--correct);
+  border-radius:4px 14px 14px 4px;padding:17px 18px;animation:rise .35s cubic-bezier(.22,.7,.3,1) both;
+}
+.explain .k{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:var(--correct)}
+.explain p{margin-top:7px;color:var(--text);font-weight:500}
+.fb{
+  margin-top:18px;border-radius:14px;padding:15px 17px;font-weight:500;
+  animation:rise .35s cubic-bezier(.22,.7,.3,1) both;
+}
+.fb.ok{background:var(--correct-fill);border-left:5px solid var(--correct)}
+.fb.no{background:var(--wrong-fill);border-left:5px solid var(--wrong)}
+.fb .k{font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:10.5px}
+.fb.ok .k{color:var(--correct)}
+.fb.no .k{color:var(--wrong)}
+.fb p{margin-top:6px;color:var(--text)}
+
+.qhead{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between}
+.qhead .qn{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:var(--tint-2)}
+.qhead .qt{font-weight:600;font-size:11.5px;color:var(--tint);background:rgba(222,237,240,.16);border-radius:100px;padding:5px 11px}
+
+/* ---------- test intro ---------- */
+.ti-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(160px,100%),1fr));gap:12px;margin-top:22px}
+.ti-stat{background:var(--cream-dark);border-radius:14px;padding:16px}
+.ti-stat .n{font-weight:900;font-size:1.7rem;color:var(--guava);letter-spacing:-.03em}
+.ti-stat .l{font-weight:600;font-size:12.5px;color:var(--text);margin-top:3px}
+
+/* ---------- completion ---------- */
+.done{text-align:center}
+.ring-wrap{position:relative;width:170px;height:170px;margin:4px auto 0}
+.ring{transform:rotate(-90deg);display:block}
+.ring .track{fill:none;stroke:var(--cream-dark);stroke-width:14}
+.ring .prog{fill:none;stroke-width:14;stroke-linecap:round;transition:stroke-dashoffset 1.1s cubic-bezier(.22,.7,.3,1)}
+.ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring-txt .pct{font-weight:900;font-size:2.45rem;letter-spacing:-.03em;color:var(--guava);line-height:1}
+.ring-txt .of{font-weight:600;font-size:12.5px;color:var(--text-mid);margin-top:3px}
+.done h2{font-weight:800;font-size:1.8rem;margin-top:20px}
+.done h2.pass{color:var(--correct)}
+.done h2.fail{color:var(--wrong)}
+.done .msg{color:var(--text);font-weight:500;margin-top:10px;max-width:56ch;margin-left:auto;margin-right:auto}
+.record{
+  text-align:left;margin-top:26px;background:var(--cream-dark);border:1px solid var(--border-soft);border-radius:16px;padding:20px;
+}
+.record .k{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;color:var(--guava)}
+.rec-rows{margin-top:12px;display:grid;gap:0}
+.rec-row{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border-soft)}
+.rec-row:first-child{border-top:none}
+.rec-row .rl{font-weight:600;color:var(--text-mid);font-size:13.5px}
+.rec-row .rv{font-weight:700;color:var(--text)}
+.sig{margin-top:16px;padding-top:16px;border-top:1px solid var(--border-soft)}
+.sig .sl{font-weight:600;font-size:12.5px;color:var(--text-mid)}
+.sig .line{margin-top:22px;border-bottom:1.5px solid var(--guava)}
+.note{
+  margin-top:18px;text-align:left;background:var(--wrong-fill);border-left:5px solid var(--wrong);
+  border-radius:4px 14px 14px 4px;padding:15px 17px;
+}
+.note .k{font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:10.5px;color:var(--wrong)}
+.note p{margin-top:6px;color:var(--text);font-weight:500;font-size:14px}
+.review{text-align:left;margin-top:26px}
+.review h3{font-weight:700;font-size:1.05rem;color:var(--guava)}
+.review ol{list-style:none;margin-top:12px;display:grid;gap:10px}
+.review li{display:flex;gap:12px;align-items:flex-start;padding-bottom:10px;border-bottom:1px solid var(--border-soft)}
+.review li:last-child{border-bottom:none}
+.review .pip{
+  flex:none;width:24px;height:24px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;
+}
+.review .pip svg{width:14px;height:14px;display:block}
+.review .pip.ok{background:var(--correct)}
+.review .pip.no{background:var(--wrong)}
+.review .rq{font-weight:600;color:var(--text);font-size:14px}
+.review .ra{font-weight:500;color:var(--text-mid);font-size:13.5px;margin-top:3px}
+.done-actions{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+/* ---------- buttons and nav ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border:none;border-radius:100px;padding:14px 26px;min-height:50px;
+  font-weight:700;letter-spacing:.01em;transition:transform .16s,background .16s,box-shadow .16s,color .16s;
+}
+.btn-primary{background:var(--berry);color:#fff}
+.btn-primary:hover:not(:disabled){background:var(--berry-deep);transform:translateY(-2px);box-shadow:0 12px 26px -14px rgba(0,0,0,.7)}
+.btn-primary:disabled{background:var(--border-soft);color:#4a4740;cursor:not-allowed}
+.btn-ghost{background:transparent;color:var(--tint);border:2px solid rgba(222,237,240,.45)}
+.btn-ghost:hover{background:rgba(222,237,240,.14);color:#fff;border-color:var(--tint)}
+.btn-dark{background:var(--guava);color:#fff}
+.btn-dark:hover{background:#15353e;transform:translateY(-2px)}
+.btn-lg{font-size:1.02rem;padding:16px 32px;min-height:56px}
+
+.nav{
+  max-width:860px;margin:0 auto;padding:16px 16px 30px;display:flex;align-items:center;gap:12px;
+}
+.nav .spacer{flex:1}
+.nav .counter{font-weight:600;font-size:12.5px;color:var(--tint);white-space:nowrap}
+
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- responsive ---------- */
+@media(max-width:700px){
+  .card,.card-dark{padding:22px 18px;border-radius:16px}
+  .cover{padding:30px 18px}
+  .tb-label{display:none}
+  .topbar-in{gap:10px}
+  .nav{padding:14px 16px 26px}
+  .btn{padding:13px 20px}
+  .btn-lg{padding:14px 22px;font-size:1rem}
+}
+@media(max-width:560px){
+  .tbl-wrap{border-radius:14px}
+  table,thead,tbody,tr,th,td{display:block;width:100%}
+  thead{display:none}
+  tbody tr{border-top:1px solid var(--border-soft)}
+  tbody tr:first-child{border-top:none}
+  tbody th{width:100%;border-top:none;padding:13px 14px 2px;background:transparent}
+  tbody td{border-top:none;padding:0 14px 14px}
+  .ring-wrap{width:150px;height:150px}
+  .ring-txt .pct{font-size:2.1rem}
+  .done-actions .btn{width:100%}
+}
+@media(max-width:380px){
+  .wordmark{font-size:15px}
+  .tb-count{font-size:11px}
+  .aloud{padding:6px 9px}
+  .aloud .lbl{display:none}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0s !important;animation-delay:0s !important;transition-duration:0s !important}
+  .slide{animation:none}
+  .opt:hover:not(:disabled),.btn-primary:hover:not(:disabled),.btn-dark:hover{transform:none}
+}
+
+@media print{
+  body{background:#fff;color:#000}
+  .topbar,.bar,.nav,.done-actions,.review{display:none !important}
+  main{max-width:100%;padding:0}
+  .card{box-shadow:none;border-radius:0;background:#fff;padding:0}
+  .ring-wrap{page-break-inside:avoid}
+  .record{background:#fff;border:1px solid #777}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="topbar-in">
+  <span class="wordmark">Encore!</span>
+  <span class="tb-label">Child Safety Training</span>
+  <div class="tb-right">
+    <button class="aloud" id="aloudBtn" type="button" aria-pressed="false" hidden>
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg>
+      <span class="lbl" id="aloudLbl">Read aloud</span>
+    </button>
+    <span class="tb-count tnum" id="tbCount">Slide 1 of 44</span>
+  </div>
+</div></div>
+<div class="bar"><div class="bar-fill" id="barFill"></div></div>
+
+<main id="main">
+  <div class="slide" id="slide" tabindex="-1"></div>
+</main>
+
+<div class="nav" id="nav">
+  <button class="btn btn-ghost" id="backBtn" type="button">Back</button>
+  <span class="spacer"></span>
+  <span class="counter tnum" id="counter">1 of 44</span>
+  <span class="spacer"></span>
+  <button class="btn btn-primary" id="nextBtn" type="button">Continue</button>
+</div>
+
+<div class="sr" id="live" aria-live="polite" role="status"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   1. CONTENT. All text below comes from the training handoff.
+   ============================================================ */
+
+var SECTIONS = [
+  {
+    n:1,
+    title:"Understanding Abuse, Types and Warning Signs",
+    bullets:[
+      "Abuse can take many forms. Abusers are most often known to their victims: a trusted adult, a peer, or someone in a position of authority.",
+      "At Encore!, that includes people like us. Every staff member must be able to recognize abuse and respond.",
+      "You do not need proof to report. Reasonable cause to suspect is enough."
+    ]
+  },
+  {
+    n:2,
+    title:"The Two-Adult Rule &amp; Supervision",
+    bullets:[
+      "The single most effective protective measure is simple: never be alone with a single student.",
+      "This is not a guideline. It is Encore! policy, and it protects both students and staff.",
+      "When in doubt: open the door, move to a visible space, or invite another adult into the conversation."
+    ]
+  },
+  {
+    n:3,
+    title:"Physical Boundaries &amp; Safe Touch",
+    bullets:[
+      "Physical contact in performing arts can be appropriate, but it must always be intentional, visible, and welcome.",
+      "The test: would you be comfortable if this moment were recorded and shown to the student's parents?",
+      "When in doubt, step back. Words and presence are almost always enough."
+    ]
+  },
+  {
+    n:4,
+    title:"Digital Communication &amp; Social Media",
+    bullets:[
+      "Grooming increasingly begins online. Extended one-on-one digital contact between an adult and a child is a major warning sign.",
+      "This is true regardless of content. Even innocent messages create a private channel outside organizational oversight.",
+      "Our policy protects both students and staff. Follow it without exception."
+    ]
+  },
+  {
+    n:5,
+    title:"When a Student Discloses Abuse",
+    bullets:[
+      "Stay calm. Listen without interrupting. Take what they say seriously.",
+      "Do not promise confidentiality. You are a mandatory reporter and cannot keep this secret.",
+      "Do not confront the suspected abuser. Do not investigate. Listen, respond with compassion, and report."
+    ]
+  },
+  {
+    n:6,
+    title:"Reporting, Your Legal Obligation",
+    bullets:[
+      "Utah law designates individuals who regularly work with minors as mandatory reporters. This includes all Encore! staff and volunteers.",
+      "Failure to report is a Class B misdemeanor. You do not need proof. Reasonable cause is enough.",
+      "Encore! strictly prohibits retaliation against any staff member who makes a good-faith report."
+    ]
+  },
+  {
+    n:7,
+    title:"Peer-to-Peer Harm",
+    bullets:[
+      "Harm does not only come from adults. Encore! staff must recognize and address harm between students too.",
+      "Bullying, harassment, and teasing that continues after a student has asked it to stop all require staff action.",
+      "Dismissing peer harm as “just kids being kids” is not acceptable at Encore!."
+    ]
+  }
+];
+
+var TRAINING = [
+  /* ---- Section 1 ---- */
+  { type:"intro", sec:0 },
+  {
+    type:"content", tag:"Section 1, Types of Abuse", title:"Recognizing Abuse",
+    body:"At Encore! we work with Young Artists ages 8 to 18. Understanding the forms abuse can take is the first step to protecting them.",
+    table:{
+      head:["Type","Definition"],
+      rows:[
+        ["Sexual","Any sexual activity involving a child, including inappropriate touching, exposure to sexual content, or conduct by anyone in a position of power or trust."],
+        ["Physical","Intentional injury: striking, kicking, beating, or any action causing physical pain or harm. Physical discipline such as hitting or yelling can rise to reportable abuse."],
+        ["Emotional / Verbal","Constant criticism, belittling, rejection, or withholding support that attacks a child's self-worth. Persistent teasing the target has asked to stop is harassment."],
+        ["Neglect","Failing to meet basic needs: food, shelter, medical care, supervision, or emotional safety."],
+        ["Grooming","Building emotional attachment to enable future abuse. Signs: gifts, requests for time alone, sharing secrets, and extended one-on-one digital contact."],
+        ["Bullying / Harassment","Intentional, repeated behavior causing injury or discomfort (physical, verbal, or subtle) that creates a hostile environment."]
+      ]
+    }
+  },
+  {
+    type:"content", tag:"Section 1, Warning Signs", title:"What to Watch For",
+    body:"No single sign is conclusive. But these patterns warrant attention, documentation, and in many cases a report.",
+    lists:[{
+      kind:"plain", title:"Warning signs in Young Artists",
+      items:[
+        "Sudden or dramatic change in behavior, mood, or participation",
+        "Withdrawal from peers, activities, or roles they previously enjoyed",
+        "Unexplained bruising, injuries, or inappropriate dress for the weather",
+        "Strong aversion to or fear of a specific adult",
+        "Age-inappropriate sexual knowledge or behavior",
+        "Reluctance or refusal to go home after rehearsal",
+        "Unexplained gifts, money, or special attention from an adult",
+        "Consistently arriving hungry, exhausted, or poorly cared for"
+      ]
+    }]
+  },
+
+  /* ---- Section 2 ---- */
+  { type:"intro", sec:1 },
+  {
+    type:"content", tag:"Section 2, Policy", title:"The Two-Adult Rule",
+    policy:{
+      title:"The Two-Adult Rule",
+      text:"No staff member, director, teaching artist, or volunteer should ever be alone with a single student in a closed or isolated space. At least two responsible adults must be present or clearly visible at all times when working with youth. This applies regardless of age, gender, or relationship."
+    },
+    lists:[{
+      kind:"plain", title:"This rule applies specifically to",
+      items:[
+        "One-on-one coaching, direction, or feedback sessions",
+        "Dressing room assistance (same-gender staff only, door open, never one-on-one)",
+        "Rides to or from rehearsal, performances, or events",
+        "Backstage, hallway, or lobby conversations beyond a brief exchange",
+        "Any digital or phone communication with a student (parent or guardian must be copied)"
+      ]
+    }]
+  },
+  {
+    type:"scenario",
+    scen:"It is 15 minutes after rehearsal ends. Most students have been picked up. One student is still waiting in the lobby. You are the only staff member left in the building.",
+    q:"What is the correct action?",
+    a:"Stay with the student in an open visible area of the lobby, contact their parent immediately, and notify another staff member or the ED.",
+    b:"Wait quietly with them in a back room since it will only be a few minutes.",
+    exp:"Never be alone with a single student in a closed or private space. Stay visible, contact the parent, and loop in another adult. The Two-Adult Rule applies even in brief, well-intentioned situations."
+  },
+
+  /* ---- Section 3 ---- */
+  { type:"intro", sec:2 },
+  {
+    type:"content", tag:"Section 3, Policy", title:"Safe Touch at Encore!",
+    policy:{
+      title:"Safe Touch Policy",
+      text:"All physical contact must be appropriate, visible to others, and student-initiated when possible. Touching a student in a way that causes discomfort, or that could be interpreted as sexual, is never acceptable under any circumstance."
+    },
+    lists:[
+      {
+        kind:"pos", title:"Appropriate contact",
+        items:[
+          "A brief, visible pat on the shoulder or upper back in affirmation",
+          "High-fives, fist bumps, or handshakes",
+          "A brief side-by-side hug initiated by the student, not prolonged",
+          "Hands-on staging correction only when clearly explained beforehand"
+        ]
+      },
+      {
+        kind:"neg", title:"Never appropriate",
+        items:[
+          "Hugs or physical contact initiated by the adult",
+          "Any contact with private areas of the body",
+          "Tickling, roughhousing, or sustained physical play",
+          "Any touch that causes discomfort, fear, or protest",
+          "Physical discipline of any kind"
+        ]
+      }
+    ]
+  },
+  {
+    type:"scenario",
+    scen:"During a note session, a 16-year-old student is visibly upset about a mistake. You want to be supportive. She has not initiated any physical contact.",
+    q:"What is the most appropriate way to offer support?",
+    a:"Sit nearby, make eye contact, speak with warmth and encouragement, and let her lead any physical expression of comfort.",
+    b:"Put your arm around her shoulder. A brief gesture shows students you genuinely care.",
+    exp:"Emotional support does not require physical contact. Let students lead. Initiating touch with an upset student, even with good intentions, crosses a boundary. Words and presence are enough."
+  },
+
+  /* ---- Section 4 ---- */
+  { type:"intro", sec:3 },
+  {
+    type:"content", tag:"Section 4, Policy", title:"Digital Communication Policy",
+    body:"Any communication that goes through a private channel, even about the production, creates a situation that is difficult to verify and easy to misuse. Parents should always be included.",
+    policy:{
+      title:"Digital Communication",
+      text:"All digital communication with students must go through Encore's official channels, or include a parent or guardian copied. Direct messaging students via personal social media is prohibited. Staff must not accept student follow requests on personal accounts."
+    }
+  },
+  {
+    type:"scenario",
+    scen:"A student you direct sends you a follow request on your personal Instagram with a message: “Can we talk privately about the show? I don't want to use the group chat.”",
+    q:"What should you do?",
+    a:"Decline the follow request. Respond through an official Encore! channel with a parent or guardian copied, and explain that all communication must go through approved channels.",
+    b:"Accept the request since it's about the production, and remind them to keep it professional.",
+    exp:"Accepting creates a private channel outside of Encore! oversight. Even well-intentioned one-on-one digital contact with students is prohibited. Route everything through official channels with parents included."
+  },
+
+  /* ---- Section 5 ---- */
+  { type:"intro", sec:4 },
+  {
+    type:"content", tag:"Section 5, Responding to Disclosure", title:"What to Say and Do",
+    body:"How you respond in the first moments of a disclosure matters enormously. A calm, believing response can be the difference between a student getting help and suffering in silence.",
+    lists:[{
+      kind:"plain", title:"In the moment",
+      items:[
+        "“I believe you. This is not your fault. I'm going to help you.”",
+        "Do not promise secrecy: “I care about you too much to keep this to myself.”",
+        "Do not ask leading questions or push for details beyond what they volunteer",
+        "Remain calm. Your reaction determines whether they continue to trust adults",
+        "Write down exactly what was said, in the student's own words, as soon as possible"
+      ]
+    }]
+  },
+  {
+    type:"scenario",
+    scen:"During a break, a 13-year-old student pulls you aside. She starts crying and says someone at home has been hurting her. She asks you not to tell anyone: “Please, it will just make things worse.”",
+    q:"What is the correct response?",
+    a:"Tell her you believe her, that this is not her fault, and that you care too much to keep this secret, then immediately follow Encore!'s reporting chain.",
+    b:"Promise not to tell anyone for now so she keeps talking. You can decide whether to report once you have more information.",
+    exp:"Promising confidentiality is never appropriate, because you cannot keep it. Tell her the truth with compassion, then report. Your mandatory reporter obligation does not require her permission."
+  },
+
+  /* ---- Section 6 ---- */
+  { type:"intro", sec:5 },
+  {
+    type:"content", tag:"Section 6, How to Report", title:"The Reporting Chain",
+    policy:{
+      title:"Encore! Reporting Chain",
+      steps:[
+        "Call the Utah Child Abuse Hotline at 1-855-323-3237 (24/7), or 911 if a child is in immediate danger.",
+        "Immediately notify the Executive Director (Adam Record).",
+        "If the suspected abuser IS a staff member, bypass the ED and report directly to the Board Chair.",
+        "Submit written documentation to the Administrative Coordinator within 24 hours."
+      ],
+      placeholder:"Board Chair name and contact method for step 3."
+    },
+    lists:[{
+      kind:"plain", title:"After you report",
+      items:[
+        "Document everything: dates, times, exact words used, what you observed",
+        "Do not discuss the report with other staff, cast members, or parents",
+        "Cooperate fully with any investigation",
+        "Encore! strictly prohibits retaliation against any staff who makes a good-faith report"
+      ]
+    }]
+  },
+  {
+    type:"scenario",
+    scen:"A 15-year-old cast member has been unusually withdrawn for two weeks. A parent mentions the student seems scared and doesn't want to come to rehearsal. You recall seeing the student flinch when a specific staff member raised their voice.",
+    q:"What should you do?",
+    a:"Document your specific observations, share your concern with the ED (or directly with the Board if the staff member is involved), and call the Hotline if you have reasonable cause.",
+    b:"Wait and gather more information before escalating. You don't have enough to be certain yet.",
+    exp:"You do not need certainty to report. Behavioral withdrawal, fear of a specific adult, and a parent's concern together constitute reasonable cause. Waiting allows potential harm to continue."
+  },
+
+  /* ---- Section 7 ---- */
+  { type:"intro", sec:6 },
+  {
+    type:"content", tag:"Section 7, Peer Harm", title:"What Happens Between Students",
+    body:"Grooming, coercion, harassment, and bullying between students are all forms of harm Encore! staff must address. Your responsibility is to intervene, not to wait and see.",
+    lists:[{
+      kind:"plain", title:"When you observe or learn about peer harm",
+      items:[
+        "Do not dismiss it as “just kids being kids.” Persistent teasing is harassment",
+        "Intervene immediately and separate students if needed",
+        "Notify the Executive Director and parents of all students involved",
+        "Actively supervise the students in future interactions",
+        "Never allow photos or videos of students to be taken or shared without permission"
+      ]
+    }]
+  },
+  {
+    type:"scenario",
+    scen:"A student tells you that two cast members have been making fun of her appearance at every rehearsal for three weeks. She has asked them to stop. They laugh and continue.",
+    q:"How should you respond?",
+    a:"Take it seriously, intervene to stop the behavior immediately, notify the Executive Director, and contact the parents of all students involved.",
+    b:"Talk to the students privately and ask them not to do it again. Escalating to parents seems excessive for social conflict.",
+    exp:"This is harassment: repeated, unwanted behavior the target has asked to stop. Encore! staff are obligated to intervene, escalate to leadership, and involve parents. An informal conversation is not sufficient."
+  }
+];
+
+var TEST = [
+  /* Section A: True / False */
+  { kind:"tf", q:"As a mandatory reporter in Utah, you must have confirmed evidence before filing a report with DCFS or law enforcement.", answer:false },
+  { kind:"tf", q:"The Two-Adult Rule applies in all settings, including after rehearsal, in dressing rooms, and during digital communication.", answer:true },
+  { kind:"tf", q:"If a student asks you to keep a disclosure confidential, you may honor that request if the abuse happened at home.", answer:false },
+  { kind:"tf", q:"Grooming can include giving gifts, requesting time alone, and extended one-on-one digital contact with a student.", answer:true },
+  { kind:"tf", q:"A student who becomes withdrawn, loses enthusiasm, and flinches around a specific adult is not showing warning signs worth documenting.", answer:false },
+  { kind:"tf", q:"All physical contact should be student-led when possible. Staff should never initiate touch with a student.", answer:true },
+  { kind:"tf", q:"Persistent teasing that a student has asked to stop multiple times rises to harassment and must be escalated to leadership.", answer:true },
+  { kind:"tf", q:"If the suspected abuser is a fellow staff member, you should speak to them privately before filing a report.", answer:false },
+  { kind:"tf", q:"Encore! prohibits retaliation against any staff member who makes a good-faith report of suspected abuse.", answer:true },
+  { kind:"tf", q:"Direct private messaging with a student on your personal social media is acceptable as long as the content is about the production.", answer:false },
+
+  /* Section B: choose one */
+  { kind:"ab",
+    q:"After a Saturday rehearsal, you are the only adult remaining with one student whose ride is late. What do you do?",
+    right:"Stay in a visible open area, contact the student's parent immediately, and inform another staff member or the ED.",
+    wrong:"Wait in a back room so you're out of the way until the parent arrives." },
+  { kind:"ab",
+    q:"A student sends you a private Instagram message asking for feedback on their audition video. What is the correct response?",
+    right:"Respond through an official Encore! channel with a parent or guardian copied.",
+    wrong:"Reply privately. It's a quick production-related message, just keep it professional." },
+  { kind:"ab",
+    q:"At pickup you notice a student looking frightened and her father is speaking to her aggressively. What should you do?",
+    right:"Document what you observed and report your concern to the ED, calling the Hotline if you have reasonable cause.",
+    wrong:"Wait to see if it happens again at future pickups before raising a concern." },
+  { kind:"ab",
+    q:"A student tells you that a fellow director has been texting them privately and asking to meet one-on-one after rehearsals.",
+    right:"Report this immediately to the ED, or directly to the Board if the ED is involved, and document everything.",
+    wrong:"Talk to the director privately first to give them a chance to explain." },
+  { kind:"ab",
+    q:"During a costume fitting a staff member adjusts a student's costume without warning. The student becomes visibly uncomfortable. What is correct?",
+    right:"Stop, check in with the student, ensure all future contact is explained first, and have a second adult present.",
+    wrong:"Continue. Adjusting costumes is normal and the student will get used to it." },
+  { kind:"ab",
+    q:"A student says “something happened to me but please don't tell anyone.” How do you respond?",
+    right:"Tell them you believe them and care, but explain you cannot promise confidentiality, then follow Encore!'s reporting chain.",
+    wrong:"Promise not to tell anyone so they feel safe enough to share more, then decide whether to report later." },
+  { kind:"ab",
+    q:"You are coaching a student alone in a side room when another staff member closes the door as they pass. What do you do?",
+    right:"Open the door immediately and ensure the session is visible, or relocate to a shared space.",
+    wrong:"Continue. It's fine as long as you know nothing inappropriate is happening." },
+  { kind:"ab",
+    q:"Two cast members repeatedly exclude a third student and make comments about their weight. The targeted student has started missing rehearsals.",
+    right:"Intervene immediately, document the behavior, notify the ED, and contact parents of all students involved.",
+    wrong:"Address it informally by reminding the group to be kind. Escalating to parents seems excessive." },
+  { kind:"ab",
+    q:"After calling the Utah Child Abuse Hotline, what is your next step?",
+    right:"Immediately notify the ED (or the Board if the ED is suspected) and submit written documentation within 24 hours.",
+    wrong:"Wait to see if DCFS contacts you before telling anyone at Encore! what happened." },
+  { kind:"ab",
+    q:"A student who previously loved performing has become withdrawn, reluctant to attend, and flinches around a specific staff member.",
+    right:"Document specific observations with dates, share your concern with the ED, and call the Hotline if you have reasonable cause.",
+    wrong:"Assume it is normal teenage behavior and continue monitoring before raising a concern." }
+];
+
+/* Build the full 44 slide deck. */
+var SLIDES = [];
+SLIDES.push({ type:"cover" });
+for (var ti=0; ti<TRAINING.length; ti++) SLIDES.push(TRAINING[ti]);
+SLIDES.push({ type:"testintro" });
+for (var qi=0; qi<TEST.length; qi++) SLIDES.push({ type:"question", qi:qi });
+SLIDES.push({ type:"done" });
+
+var TOTAL = SLIDES.length;
+var TEST_START = 1 + TRAINING.length + 1;
+var TEST_COUNT = TEST.length;
+var PASS_MARK = 16;
+var VERSION = "2026-11";
+var PROFILE_KEY = "encore_onboarding_profile";
+var RESULT_KEY = "encore_onboarding_training";
+var PROGRESS_KEY = "encore_onboarding_training_progress";
+var ALOUD_KEY = "encore_onboarding_training_readaloud";
+var POST_URL = "/onboarding/api/training";
+
+/* ============================================================
+   2. Storage helpers. Storage can throw in private windows.
+   ============================================================ */
+
+function lsGet(key){
+  try { return window.localStorage.getItem(key); } catch(e){ return null; }
+}
+function lsSet(key,val){
+  try { window.localStorage.setItem(key,val); return true; } catch(e){ return false; }
+}
+function lsDel(key){
+  try { window.localStorage.removeItem(key); } catch(e){}
+}
+function jsonParse(str){
+  if (!str) return null;
+  try { return JSON.parse(str); } catch(e){ return null; }
+}
+
+/* ============================================================
+   3. State
+   ============================================================ */
+
+var state = {
+  idx:0,
+  name:"",
+  role:"",
+  email:"",
+  identityFromHost:false,
+  showInputs:false,
+  scen:{},     /* training slide index to picked option (0 or 1) */
+  answers:{},  /* question index to picked rendered option index */
+  order:{},    /* question index to rendered option array */
+  saveFailed:false,
+  saveAttempted:false
+};
+
+function shuffle2(a,b){
+  return Math.random() < 0.5 ? [a,b] : [b,a];
+}
+
+/* Build a fresh randomised option order for every test question. */
+function buildOrder(){
+  var out = {};
+  for (var i=0; i<TEST.length; i++){
+    var t = TEST[i];
+    if (t.kind === "tf"){
+      var pair = shuffle2(
+        { text:"True",  correct:t.answer === true },
+        { text:"False", correct:t.answer === false }
+      );
+      out[i] = pair;
+    } else {
+      out[i] = shuffle2(
+        { text:t.right, correct:true },
+        { text:t.wrong, correct:false }
+      );
+    }
+  }
+  return out;
+}
+
+/* Rebuild one question's option order if restored state is missing or malformed. */
+function ensureOrder(qi){
+  var o = state.order ? state.order[qi] : null;
+  var good = o && o.length === 2 && o[0] && o[1] &&
+             typeof o[0].text === "string" && typeof o[1].text === "string" &&
+             (o[0].correct !== o[1].correct);
+  if (good) return;
+  var t = TEST[qi];
+  if (!state.order) state.order = {};
+  if (t.kind === "tf"){
+    state.order[qi] = shuffle2(
+      { text:"True",  correct:t.answer === true },
+      { text:"False", correct:t.answer === false }
+    );
+  } else {
+    state.order[qi] = shuffle2({ text:t.right, correct:true }, { text:t.wrong, correct:false });
+  }
+}
+
+function readIdentity(){
+  var qs = null;
+  try { qs = new URLSearchParams(window.location.search); } catch(e){ qs = null; }
+  var n = qs ? (qs.get("name") || "") : "";
+  var r = qs ? (qs.get("role") || "") : "";
+  var e = qs ? (qs.get("email") || "") : "";
+  if (n || r){
+    state.name = n.trim(); state.role = r.trim(); state.email = e.trim();
+    state.identityFromHost = true;
+    return;
+  }
+  var p = jsonParse(lsGet(PROFILE_KEY));
+  if (p && (p.name || p.role)){
+    state.name = (p.name || "").trim();
+    state.role = (p.role || "").trim();
+    state.email = (p.email || e || "").trim();
+    state.identityFromHost = true;
+    return;
+  }
+  state.email = e.trim();
+  state.showInputs = true;
+}
+
+function saveProgress(){
+  lsSet(PROGRESS_KEY, JSON.stringify({
+    idx:state.idx, name:state.name, role:state.role, email:state.email,
+    scen:state.scen, answers:state.answers, order:state.order, version:VERSION
+  }));
+}
+
+function loadProgress(){
+  var p = jsonParse(lsGet(PROGRESS_KEY));
+  if (!p || p.version !== VERSION) return false;
+  if (typeof p.idx === "number" && p.idx > 0 && p.idx < TOTAL) state.idx = p.idx;
+  if (p.scen) state.scen = p.scen;
+  if (p.answers) state.answers = p.answers;
+  if (p.order && p.order[0] && p.order[0].length === 2) state.order = p.order;
+  if (!state.identityFromHost){
+    if (p.name) state.name = p.name;
+    if (p.role) state.role = p.role;
+    if (p.email) state.email = p.email;
+    if (state.name || state.role) state.showInputs = false;
+  }
+  return true;
+}
+
+/* ============================================================
+   4. Small DOM helpers
+   ============================================================ */
+
+function esc(s){
+  return String(s)
+    .replace(/&(?!(amp|lt|gt|quot|#\d+|nbsp|rsquo|ldquo|rdquo);)/g,"&amp;")
+    .replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+var CHECK = '<svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+var CROSS = '<svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+var DASH  = '<svg class="mk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg>';
+var PIP_OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+var PIP_NO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
+
+function markFor(kind){
+  if (kind === "pos") return CHECK;
+  if (kind === "neg") return CROSS;
+  return DASH;
+}
+
+function listHTML(l){
+  var h = '<div class="lst ' + l.kind + '">';
+  if (l.title) h += '<h3>' + esc(l.title) + '</h3>';
+  h += '<ul>';
+  for (var i=0;i<l.items.length;i++){
+    h += '<li>' + markFor(l.kind) + '<span>' + esc(l.items[i]) + '</span></li>';
+  }
+  h += '</ul></div>';
+  return h;
+}
+
+function tableHTML(t){
+  var h = '<div class="tbl-wrap"><table><thead><tr>';
+  for (var i=0;i<t.head.length;i++) h += '<th scope="col">' + esc(t.head[i]) + '</th>';
+  h += '</tr></thead><tbody>';
+  for (var r=0;r<t.rows.length;r++){
+    h += '<tr><th scope="row">' + esc(t.rows[r][0]) + '</th><td>' + esc(t.rows[r][1]) + '</td></tr>';
+  }
+  h += '</tbody></table></div>';
+  return h;
+}
+
+/* The slide title and the policy card title are the same string on the Two-Adult Rule
+   slide. Render the card heading only when it adds something the slide title did not. */
+function policyHTML(p, slideTitle){
+  var h = '<div class="policy"><div class="k">Encore! Policy</div>';
+  if (p.title && p.title !== slideTitle) h += '<h3>' + esc(p.title) + '</h3>';
+  if (p.text) h += '<p>' + esc(p.text) + '</p>';
+  if (p.steps){
+    h += '<ol>';
+    for (var i=0;i<p.steps.length;i++) h += '<li>' + esc(p.steps[i]) + '</li>';
+    h += '</ol>';
+  }
+  if (p.placeholder){
+    h += '<div class="placeholder"><div class="ph-k">Needs content</div><p>' + esc(p.placeholder) + '</p></div>';
+  }
+  h += '</div>';
+  return h;
+}
+
+/* ============================================================
+   5. Slide rendering
+   ============================================================ */
+
+var slideEl = document.getElementById("slide");
+var liveEl = document.getElementById("live");
+var backBtn = document.getElementById("backBtn");
+var nextBtn = document.getElementById("nextBtn");
+var counterEl = document.getElementById("counter");
+var tbCountEl = document.getElementById("tbCount");
+var barFill = document.getElementById("barFill");
+var navEl = document.getElementById("nav");
+
+function sectionsLabel(i){ return "Section " + SECTIONS[i].n; }
+
+function renderCover(){
+  var h = '<div class="card cover">';
+  h += '<div class="mark">Encore! Performing Arts</div>';
+  h += '<h1 id="slideHead" tabindex="-1">Child Safety Training &amp; Certification</h1>';
+  h += '<p class="sub">Scenario-Based Learning. Required for all staff, directors, volunteers, and teaching artists.</p>';
+  h += '<div class="rule" aria-hidden="true"></div>';
+  if (state.showInputs){
+    h += '<div class="ident">';
+    h += '<label for="fName">Your Name</label><input id="fName" type="text" autocomplete="name" value="' + esc(state.name) + '">';
+    h += '<label for="fRole">Your Role</label><input id="fRole" type="text" placeholder="Stage Director" autocomplete="organization-title" value="' + esc(state.role) + '">';
+    h += '</div>';
+  } else {
+    h += '<div class="known"><div class="k">Completing as</div>';
+    h += '<div class="n">' + esc(state.name || "Name not provided") + '</div>';
+    h += '<div class="r">' + esc(state.role || "Role not provided") + '</div>';
+    h += '<button class="chg no-speak" id="chgBtn" type="button">Not you? Enter your name and role</button>';
+    h += '</div>';
+  }
+  h += '</div>';
+  slideEl.innerHTML = h;
+  var chg = document.getElementById("chgBtn");
+  if (chg) chg.addEventListener("click", function(){
+    state.showInputs = true; state.identityFromHost = false; render();
+  });
+  nextBtn.textContent = "Start Training";
+  nextBtn.disabled = false;
+}
+
+function renderIntro(s){
+  var sec = SECTIONS[s.sec];
+  var h = '<div class="card-dark">';
+  h += '<div class="sec-num" aria-hidden="true">' + sec.n + '</div>';
+  h += '<div class="sec-kicker">Section ' + sec.n + ' of 7</div>';
+  h += '<h2 class="sec-title" id="slideHead" tabindex="-1">' + sec.title + '</h2>';
+  h += '<ul class="sec-bullets">';
+  for (var i=0;i<sec.bullets.length;i++){
+    h += '<li><span class="dot" aria-hidden="true"></span><span>' + esc(sec.bullets[i]) + '</span></li>';
+  }
+  h += '</ul></div>';
+  slideEl.innerHTML = h;
+  nextBtn.textContent = "Continue";
+  nextBtn.disabled = false;
+}
+
+function renderContent(s){
+  var h = '<div class="card">';
+  h += '<span class="tag">' + esc(s.tag) + '</span>';
+  h += '<h2 class="title" id="slideHead" tabindex="-1">' + esc(s.title) + '</h2>';
+  if (s.body) h += '<p class="body-p">' + esc(s.body) + '</p>';
+  if (s.policy) h += policyHTML(s.policy, s.title);
+  if (s.table) h += tableHTML(s.table);
+  if (s.lists) for (var i=0;i<s.lists.length;i++) h += listHTML(s.lists[i]);
+  h += '</div>';
+  slideEl.innerHTML = h;
+  nextBtn.textContent = "Continue";
+  nextBtn.disabled = false;
+}
+
+function renderScenario(s, idx){
+  var picked = state.scen.hasOwnProperty(idx) ? state.scen[idx] : null;
+  var opts = [{ text:s.a, correct:true }, { text:s.b, correct:false }];
+  var letters = ["A","B"];
+  var h = '<div class="card-dark">';
+  h += '<div class="q-kicker">Scenario</div>';
+  h += '<p class="scen">' + esc(s.scen) + '</p>';
+  h += '<h2 class="q" id="slideHead" tabindex="-1">' + esc(s.q) + '</h2>';
+  h += '<div class="opts" role="group" aria-label="Answer options">';
+  for (var i=0;i<opts.length;i++){
+    var cls = "opt";
+    if (picked !== null){
+      cls += opts[i].correct ? " is-correct" : (picked === i ? " is-wrong" : "");
+    }
+    h += '<button class="' + cls + '" type="button" data-opt="' + i + '"' + (picked !== null ? ' disabled' : '') + '>';
+    h += '<span class="ltr" aria-hidden="true">' + letters[i] + '</span><span>' + esc(opts[i].text) + '</span></button>';
+  }
+  h += '</div>';
+  if (picked !== null){
+    h += '<div class="explain"><div class="k">Correct Answer</div><p>' + esc(s.exp) + '</p></div>';
+  }
+  h += '</div>';
+  slideEl.innerHTML = h;
+
+  var btns = slideEl.querySelectorAll(".opt");
+  for (var b=0;b<btns.length;b++){
+    btns[b].addEventListener("click", function(){
+      var pick = parseInt(this.getAttribute("data-opt"),10);
+      state.scen[idx] = pick;
+      saveProgress();
+      announce(opts[pick].correct ? "Correct. The explanation is shown below." : "Not correct. The correct answer and explanation are shown below.");
+      render(true);
+    });
+  }
+  nextBtn.textContent = "Continue";
+  nextBtn.disabled = (picked === null);
+}
+
+function answeredCount(){
+  var n = 0;
+  for (var k in state.answers){ if (state.answers.hasOwnProperty(k)) n++; }
+  return n;
+}
+
+function renderQuestion(qi){
+  var t = TEST[qi];
+  ensureOrder(qi);
+  var opts = state.order[qi];
+  var picked = state.answers.hasOwnProperty(qi) ? state.answers[qi] : null;
+  var letters = ["A","B"];
+  var typeLabel = (t.kind === "tf") ? "True / False" : "Choose One";
+
+  var h = '<div class="card-dark">';
+  h += '<div class="qhead"><span class="qn">Question ' + (qi+1) + ' of ' + TEST_COUNT + '</span>';
+  h += '<span class="qt">' + typeLabel + '. ' + answeredCount() + ' of ' + TEST_COUNT + ' answered</span></div>';
+  h += '<h2 class="q" id="slideHead" tabindex="-1">' + esc(t.q) + '</h2>';
+  h += '<div class="opts" role="group" aria-label="Answer options">';
+  for (var i=0;i<opts.length;i++){
+    var cls = "opt" + (t.kind === "tf" ? " tf" : "");
+    if (picked !== null){
+      cls += opts[i].correct ? " is-correct" : (picked === i ? " is-wrong" : "");
+    }
+    h += '<button class="' + cls + '" type="button" data-opt="' + i + '"' + (picked !== null ? ' disabled' : '') + '>';
+    if (t.kind !== "tf") h += '<span class="ltr" aria-hidden="true">' + letters[i] + '</span>';
+    h += '<span>' + esc(opts[i].text) + '</span></button>';
+  }
+  h += '</div>';
+  if (picked !== null){
+    var wasRight = opts[picked].correct;
+    var correctText = opts[0].correct ? opts[0].text : opts[1].text;
+    h += '<div class="fb ' + (wasRight ? "ok" : "no") + '"><div class="k">' + (wasRight ? "Correct" : "Incorrect") + '</div>';
+    h += '<p>' + (wasRight ? "That is the correct answer." : "The correct answer is: " + esc(correctText)) + '</p></div>';
+  }
+  h += '</div>';
+  slideEl.innerHTML = h;
+
+  var btns = slideEl.querySelectorAll(".opt");
+  for (var b=0;b<btns.length;b++){
+    btns[b].addEventListener("click", function(){
+      var pick = parseInt(this.getAttribute("data-opt"),10);
+      state.answers[qi] = pick;
+      saveProgress();
+      announce(opts[pick].correct ? "Correct." : "Incorrect. The correct answer is shown below.");
+      render(true);
+    });
+  }
+  nextBtn.textContent = (qi === TEST_COUNT - 1) ? "See Results" : "Continue";
+  nextBtn.disabled = (picked === null);
+}
+
+function renderTestIntro(){
+  var h = '<div class="card">';
+  h += '<span class="tag">Certification Test</span>';
+  h += '<h2 class="title" id="slideHead" tabindex="-1">Time to test your knowledge</h2>';
+  h += '<p class="body-p">You have completed all 7 training sections. Now it is time to test your knowledge.</p>';
+  h += '<div class="ti-stats">';
+  h += '<div class="ti-stat"><div class="n tnum">20</div><div class="l">Questions total: 10 True/False, 10 Scenario questions</div></div>';
+  h += '<div class="ti-stat"><div class="n tnum">80%</div><div class="l">Passing score: 80 percent, 16 of 20 correct</div></div>';
+  h += '</div>';
+  h += '<p class="body-p">Answer each question before moving to the next. Take your time.</p>';
+  h += '</div>';
+  slideEl.innerHTML = h;
+  nextBtn.textContent = "Begin Test";
+  nextBtn.disabled = false;
+}
+
+function scoreNow(){
+  var correct = 0;
+  for (var i=0;i<TEST_COUNT;i++){
+    if (!state.answers.hasOwnProperty(i)) continue;
+    var opts = state.order[i];
+    if (opts && opts[state.answers[i]] && opts[state.answers[i]].correct) correct++;
+  }
+  return correct;
+}
+
+function todayLong(){
+  var d = new Date();
+  var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  return months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+}
+
+function renderDone(){
+  var score = scoreNow();
+  var pct = Math.round((score / TEST_COUNT) * 100);
+  var passed = score >= PASS_MARK;
+  var ringColor = passed ? "var(--correct)" : "var(--wrong)";
+  var C = 2 * Math.PI * 70;
+
+  var h = '<div class="card done">';
+  h += '<div class="ring-wrap"><svg class="ring" width="170" height="170" viewBox="0 0 170 170" aria-hidden="true">';
+  h += '<circle class="track" cx="85" cy="85" r="70"></circle>';
+  h += '<circle class="prog" id="ringProg" cx="85" cy="85" r="70" stroke="' + ringColor + '" stroke-dasharray="' + C.toFixed(1) + '" stroke-dashoffset="' + C.toFixed(1) + '"></circle>';
+  h += '</svg><div class="ring-txt"><div class="pct tnum" id="pctNum">0%</div><div class="of tnum">' + score + ' of ' + TEST_COUNT + '</div></div></div>';
+
+  h += '<h2 class="' + (passed ? "pass" : "fail") + '" id="slideHead" tabindex="-1">' + (passed ? "Training Complete!" : "Please Retake") + '</h2>';
+  if (passed){
+    h += '<p class="msg">You passed with ' + pct + ' percent. Sign below and return this to Jill Record.</p>';
+  } else {
+    h += '<p class="msg">You scored ' + pct + ' percent. A passing score is 80 percent. Please review the training content and speak with your supervisor.</p>';
+  }
+
+  h += '<div class="record"><div class="k">Completion Record</div><div class="rec-rows">';
+  h += '<div class="rec-row"><span class="rl">Staff Member Name</span><span class="rv">' + esc(state.name || "Not provided") + '</span></div>';
+  h += '<div class="rec-row"><span class="rl">Role</span><span class="rv">' + esc(state.role || "Not provided") + '</span></div>';
+  h += '<div class="rec-row"><span class="rl">Date Completed</span><span class="rv">' + todayLong() + '</span></div>';
+  h += '<div class="rec-row"><span class="rl">Score</span><span class="rv tnum">' + score + '/' + TEST_COUNT + ', ' + pct + ' percent, ' + (passed ? "PASS" : "NOT PASSED") + '</span></div>';
+  h += '<div class="rec-row"><span class="rl">Training Version</span><span class="rv">' + VERSION + '</span></div>';
+  h += '</div>';
+  h += '<div class="sig"><div class="sl">Signature</div><div class="line" aria-hidden="true"></div></div>';
+  h += '</div>';
+
+  h += '<div id="saveNote"></div>';
+
+  h += '<div class="done-actions no-speak">';
+  if (passed){
+    h += '<button class="btn btn-dark" id="printBtn" type="button">Print Completion Record</button>';
+    h += '<a class="btn btn-primary" href="/onboarding">Return to onboarding</a>';
+  } else {
+    h += '<button class="btn btn-primary" id="retakeBtn" type="button">Retake Test</button>';
+  }
+  h += '</div>';
+
+  h += '<div class="review"><h3>Question review</h3><ol>';
+  for (var i=0;i<TEST_COUNT;i++){
+    var opts = state.order[i] || [];
+    var pick = state.answers.hasOwnProperty(i) ? state.answers[i] : null;
+    var ok = pick !== null && opts[pick] && opts[pick].correct;
+    var correctText = "";
+    for (var o=0;o<opts.length;o++){ if (opts[o].correct) correctText = opts[o].text; }
+    h += '<li><span class="pip ' + (ok ? "ok" : "no") + '" aria-hidden="true">' + (ok ? PIP_OK : PIP_NO) + '</span><div>';
+    h += '<div class="rq">' + (i+1) + '. ' + esc(TEST[i].q) + '</div>';
+    h += '<div class="ra">' + (ok ? "Answered correctly" : "Correct answer: " + esc(correctText)) + '</div>';
+    h += '</div></li>';
+  }
+  h += '</ol></div>';
+  h += '</div>';
+
+  slideEl.innerHTML = h;
+
+  var printBtn = document.getElementById("printBtn");
+  if (printBtn) printBtn.addEventListener("click", function(){ window.print(); });
+  var retakeBtn = document.getElementById("retakeBtn");
+  if (retakeBtn) retakeBtn.addEventListener("click", retakeTest);
+
+  /* animate the ring and count the score up */
+  var reduce = false;
+  try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch(e){}
+  var ring = document.getElementById("ringProg");
+  var pctNum = document.getElementById("pctNum");
+  var target = C * (1 - (score / TEST_COUNT));
+  if (reduce){
+    if (ring) ring.setAttribute("stroke-dashoffset", target.toFixed(1));
+    if (pctNum) pctNum.textContent = pct + "%";
+  } else {
+    window.setTimeout(function(){ if (ring) ring.setAttribute("stroke-dashoffset", target.toFixed(1)); }, 60);
+    var start = null, dur = 1100;
+    function step(ts){
+      if (start === null) start = ts;
+      var p = Math.min(1, (ts - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      if (pctNum) pctNum.textContent = Math.round(pct * eased) + "%";
+      if (p < 1) window.requestAnimationFrame(step);
+    }
+    window.requestAnimationFrame(step);
+  }
+
+  announce((passed ? "Training complete. You passed with " : "Not passed. You scored ") + pct + " percent, " + score + " of " + TEST_COUNT + " correct.");
+
+  nextBtn.textContent = "Continue";
+  nextBtn.disabled = true;
+
+  if (!state.saveAttempted) recordCompletion(score, pct, passed);
+  else paintSaveNote();
+}
+
+function paintSaveNote(){
+  var box = document.getElementById("saveNote");
+  if (!box) return;
+  if (state.saveFailed){
+    box.innerHTML = '<div class="note"><div class="k">Saved on this device only</div><p>Your result could not be sent to the Encore server. It is recorded in this browser. Please tell Kristen Stocks so your completion can be logged by hand.</p></div>';
+  } else {
+    box.innerHTML = "";
+  }
+}
+
+function recordCompletion(score, pct, passed){
+  state.saveAttempted = true;
+  var payload = {
+    name: state.name,
+    role: state.role,
+    email: state.email,
+    score: score,
+    total: TEST_COUNT,
+    percent: pct,
+    passed: passed,
+    completedAt: new Date().toISOString(),
+    version: VERSION
+  };
+  var wroteLocal = lsSet(RESULT_KEY, JSON.stringify(payload));
+
+  /* The server function also records a per-question column when the POST carries
+     an answers array, so send one alongside the fields above. */
+  var sent = {};
+  for (var k in payload){ if (payload.hasOwnProperty(k)) sent[k] = payload[k]; }
+  sent.answers = [];
+  for (var i=0;i<TEST_COUNT;i++){
+    var o = state.order[i];
+    var p = state.answers.hasOwnProperty(i) ? state.answers[i] : null;
+    sent.answers.push({ correct: !!(p !== null && o && o[p] && o[p].correct) });
+  }
+
+  var posted = false;
+  try {
+    window.fetch(POST_URL, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify(sent)
+    }).then(function(res){
+      state.saveFailed = !(res && res.ok);
+      paintSaveNote();
+    }).catch(function(){
+      state.saveFailed = true;
+      paintSaveNote();
+    });
+    posted = true;
+  } catch(e){
+    state.saveFailed = true;
+  }
+  if (!posted || !wroteLocal) paintSaveNote();
+}
+
+function retakeTest(){
+  state.answers = {};
+  state.order = buildOrder();
+  state.saveAttempted = false;
+  state.saveFailed = false;
+  lsDel(RESULT_KEY);
+  state.idx = TEST_START - 1;
+  saveProgress();
+  announce("Test cleared. Returning to the test instructions.");
+  render();
+}
+
+/* ============================================================
+   6. Shell: nav, focus, progress, read aloud
+   ============================================================ */
+
+function announce(msg){
+  liveEl.textContent = "";
+  window.setTimeout(function(){ liveEl.textContent = msg; }, 40);
+}
+
+function render(keepScroll){
+  var s = SLIDES[state.idx];
+  switch (s.type){
+    case "cover":     renderCover(); break;
+    case "intro":     renderIntro(s); break;
+    case "content":   renderContent(s); break;
+    case "scenario":  renderScenario(s, state.idx); break;
+    case "testintro": renderTestIntro(); break;
+    case "question":  renderQuestion(s.qi); break;
+    case "done":      renderDone(); break;
+  }
+
+  /* Back stays available on every slide after the cover, the completion screen included. */
+  backBtn.style.visibility = (state.idx === 0) ? "hidden" : "visible";
+  nextBtn.style.visibility = (s.type === "done") ? "hidden" : "visible";
+  counterEl.textContent = (state.idx + 1) + " of " + TOTAL;
+  tbCountEl.textContent = "Slide " + (state.idx + 1) + " of " + TOTAL;
+  barFill.style.width = (((state.idx + 1) / TOTAL) * 100) + "%";
+
+  if (!keepScroll){
+    try { window.scrollTo({ top:0, behavior:"auto" }); } catch(e){ window.scrollTo(0,0); }
+    var head = document.getElementById("slideHead");
+    if (head) { try { head.focus({ preventScroll:true }); } catch(e){ head.focus(); } }
+  }
+  saveProgress();
+  if (aloudOn) speakSlide();
+}
+
+function captureIdentityFromInputs(){
+  var n = document.getElementById("fName");
+  var r = document.getElementById("fRole");
+  if (n) state.name = n.value.trim();
+  if (r) state.role = r.value.trim();
+}
+
+nextBtn.addEventListener("click", function(){
+  if (nextBtn.disabled) return;
+  if (SLIDES[state.idx].type === "cover") captureIdentityFromInputs();
+  if (state.idx < TOTAL - 1){ state.idx++; render(); }
+});
+backBtn.addEventListener("click", function(){
+  if (SLIDES[state.idx].type === "cover") return;
+  if (state.idx > 0){ state.idx--; render(); }
+});
+
+/* ---- read aloud ---- */
+var synth = (typeof window.speechSynthesis !== "undefined") ? window.speechSynthesis : null;
+var aloudBtn = document.getElementById("aloudBtn");
+var aloudLbl = document.getElementById("aloudLbl");
+var aloudOn = false;
+
+function collectSpeech(root){
+  var parts = [];
+  (function walk(node){
+    if (node.nodeType === 3){
+      var t = node.nodeValue.replace(/\s+/g," ").trim();
+      if (t) parts.push(t);
+      return;
+    }
+    if (node.nodeType !== 1) return;
+    if (node.classList && node.classList.contains("no-speak")) return;
+    if (node.getAttribute && node.getAttribute("aria-hidden") === "true") return;
+    for (var i=0;i<node.childNodes.length;i++) walk(node.childNodes[i]);
+  })(root);
+  return parts.join(". ").replace(/\.\s*\./g,".");
+}
+
+function stopSpeech(){
+  if (!synth) return;
+  try { synth.cancel(); } catch(e){}
+}
+
+function speakSlide(){
+  if (!synth || !aloudOn) return;
+  stopSpeech();
+  var text = collectSpeech(slideEl);
+  if (!text) return;
+  try {
+    var u = new window.SpeechSynthesisUtterance(text);
+    u.rate = 0.98;
+    u.pitch = 1;
+    u.lang = "en-US";
+    synth.speak(u);
+  } catch(e){}
+}
+
+function setAloud(on, speakNow){
+  aloudOn = !!on;
+  aloudBtn.setAttribute("aria-pressed", aloudOn ? "true" : "false");
+  aloudLbl.textContent = aloudOn ? "Reading aloud" : "Read aloud";
+  aloudBtn.setAttribute("aria-label", aloudOn ? "Turn off read aloud" : "Read this slide aloud");
+  lsSet(ALOUD_KEY, aloudOn ? "1" : "0");
+  if (!aloudOn) stopSpeech();
+  else if (speakNow) speakSlide();
+}
+
+if (synth && typeof window.SpeechSynthesisUtterance !== "undefined"){
+  aloudBtn.hidden = false;
+  aloudBtn.addEventListener("click", function(){ setAloud(!aloudOn, true); });
+  window.addEventListener("beforeunload", stopSpeech);
+} else {
+  aloudBtn.hidden = true;
+}
+
+/* ============================================================
+   7. Boot
+   ============================================================ */
+
+readIdentity();
+state.order = buildOrder();
+loadProgress();
+if (!state.order || !state.order[0]) state.order = buildOrder();
+render();
+if (synth && lsGet(ALOUD_KEY) === "1") setAloud(true, true);
+
+})();
+</script>
+</body>
+</html>
