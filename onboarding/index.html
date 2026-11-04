@@ -131,6 +131,11 @@
   .todo p{font-size:14px;color:var(--muted);line-height:1.5}
 
   ul.plain{margin:14px 0 0;padding-left:20px}
+  ol.agreements{margin:16px 0 0;padding-left:22px;counter-reset:none}
+  ol.agreements li{margin-bottom:11px;font-size:14.5px;line-height:1.55;padding-left:4px}
+  ol.agreements li::marker{color:var(--berry);font-weight:700}
+  ol.agreements b{color:var(--guava)}
+
   ul.plain li{margin-bottom:7px;font-size:14.5px}
 
   /* ---------- finish ---------- */
@@ -349,9 +354,20 @@
       '<p>"Encore Performing Arts inspires and empowers young artists to discover and develop important life skills through unparalleled arts education, mentorship, and extraordinary theater experiences."</p>' +
       '<p class="sub">Everything in this packet exists to protect that, and to protect the Young Artists you are about to work with.</p>',
     agreements:
-      '<div class="todo"><span class="lab">Needs content</span>' +
-      '<p>The full Ten Agreements text has not been added yet. It lives in Encore A to Z and needs to be pasted in here before a real contractor sees this page. One is known: <b>No. 7, Safety Over Sequins</b>, no stunt or choreography is worth risking a Young Artist\'s wellbeing.</p></div>' +
-      '<p class="sub">Note for staff: some older contracts still say "Ten Commandments". That wording should be updated to "Ten Agreements" everywhere.</p>',
+      '<p>These are the cultural agreements every Encore team member makes: staff, volunteers, guest artists and leadership. More than rules, they are the values that create the environment where stage skills become life skills.</p>' +
+      '<ol class="agreements">' +
+      '<li><b>Teach!</b> Treat inexperience as a chance for mentorship, not a flaw. Our Young Artists are here to learn and grow. When they do not know something, celebrate the opportunity to guide them.</li>' +
+      '<li><b>They’re Artists.</b> We refer to our youth as "young artists." It is not just semantics, it is about recognizing their discipline and potential.</li>' +
+      '<li><b>Heart Over Art.</b> Nurture and teach emotional intelligence. While we love putting on a great show, the professional theater experience is the cherry on top.</li>' +
+      '<li><b>Build Up.</b> Treat everyone with respect: artists, technicians, and each other. No yelling, snapping or condescending tones. We are here to build each other up, not break each other down.</li>' +
+      '<li><b>Trust the Team.</b> Stay in your lane of expertise and respect others in theirs. Speak positively about fellow collaborators and Young Artists’ work. Theater is a team sport.</li>' +
+      '<li><b>Seen and Heard.</b> Ensure young performers are seen and heard, literally and figuratively. That means proper lighting and working mics, but also attentively listening to their concerns and watching for any signs of distress.</li>' +
+      '<li><b>Safety Over Sequins.</b> No stunt or choreography is worth risking a young performer’s wellbeing. When in doubt, prioritize safety over showmanship.</li>' +
+      '<li><b>Collaboration is Communication.</b> Communicate expectations clearly and up front. Do not assume, articulate. Effective communication goes beyond mere mention. Use appropriate channels and meetings so we are all on the same page. This is the Purple Box Rule.</li>' +
+      '<li><b>Keep it Light.</b> Maintain an upbeat, professional environment. Keep real life drama off stage and approach challenges with a calm, solution oriented mindset. Take sensitive conversations to the appropriate place.</li>' +
+      '<li><b>Words Matter.</b> Use appropriate language and behavior around Young Artists and families. Keep conversations professional and age appropriate. Save adult topics, profanity and gossip for outside of Encore.</li>' +
+      '</ol>' +
+      '<div class="note"><b>Want the detail?</b> Each agreement has a "In Practice" section in Encore A to Z, our internal handbook. Read the full version at <a href="https://encore-a-z.pages.dev/00_About-Encore/Ten-Agreements" target="_blank" rel="noopener">Encore A to Z</a>.</div>',
     quickbooks:
       '<p>Encore pays you as an independent contractor, on a 1099. We do not withhold taxes, so you are responsible for your own income and self-employment taxes.</p>' +
       '<div class="note warn"><b>Do not email us your tax information, and do not type it into this website.</b> Your legal name, address, taxpayer ID and payment details go into QuickBooks only. That is Intuit\'s secure system, and Encore never handles those numbers directly.</div>' +
