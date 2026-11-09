@@ -27,11 +27,22 @@ parked and not live.
 Images live under `img/` by kind: `img/shows/`, `img/team/`, `img/gallery/`,
 `img/hero/`, `img/blog/<post-slug>/`.
 
-**Team Hub gate.** Everything under `/team/*` is password protected by
-`netlify/edge-functions/team-gate.js` (env var `PROTECTED_PAGE_PASSWORD`).
-It must live in `netlify/edge-functions/`: until 2026-11-02 it sat at the
-repo root, Netlify never deployed it, and `/team` was open. After any
-deploy, the Netlify deploy summary should list one edge function.
+**Team Hub gate.** `netlify/edge-functions/team-gate.js` (env var
+`PROTECTED_PAGE_PASSWORD`). It must live in `netlify/edge-functions/`: until
+2026-11-02 it sat at the repo root, Netlify never deployed it, and `/team` was
+open. After any deploy, the Netlify deploy summary should list one edge
+function.
+
+**As of 2026-11-08 the gate covers only `/team/photos` and `/team/api/*`.**
+Adam asked for the Team Hub to be opened, so the hub and the three request
+forms are public. They are `noindex` and hold no personal data. The Photo
+Library is still gated and is enforced twice, by this edge function and again
+by the cookie check inside `netlify/functions/photos.mjs`. Opening it means
+changing both, and the second one is the one that actually exposes the photos.
+
+**Team Hub page** (`team/index.html`) is a dashboard, not a link list. See the
+catalogue note below: it is driven by two arrays and it carries a copy of the
+season schedule.
 
 **Photo Library** (`/team/photos`). Page `team/photos.html`, backend
 `netlify/functions/photos.mjs` (served at `/team/api/photos/*`, inside the
@@ -80,6 +91,10 @@ near the bottom rather than in markup:
   `ends` date auto-retires a show from the list.
 - Program pages (`junior.html`, `emerging-artists.html`, `senior.html`,
   `classes.html`) hold `const OFFERINGS = [...]`.
+- `team/index.html` holds `const SHOWS = [...]` (the productions board) and
+  `const LINKS = [...]` (every form, resource and tool tile). A show drops off
+  the board on its own once its last phase has passed, the same way
+  `tickets.html` retires on `ends`, so SHOWS only ever needs adding to.
 
 Edit the array, not the rendered markup. These pages render nothing useful
 to a plain HTTP fetch, so verify them in a real browser.
@@ -182,6 +197,13 @@ and for the old value, and state which pages were searched and which
 changed. This rule exists because a Carol date change was applied to one
 page and missed on `tickets.html`, and because Peter Pan ages were swept
 site-wide while Carol ages were not.
+
+**Since 2026-11-08 `team/index.html` is one of those places.** Its `SHOWS`
+array carries audition, rehearsal, tech, performance, sensory and ASL dates
+copied out of the source of truth sheet on that date, so a schedule change has
+to be made there too. It is behind no gate but it is `noindex`, so a stale date
+there misleads staff rather than the public. The page prints the date it was
+last read from the sheet, so the staleness is at least visible.
 
 ## Verification before shipping
 
