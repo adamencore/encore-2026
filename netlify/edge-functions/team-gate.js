@@ -104,4 +104,17 @@ export default async (request, context) => {
   return loginPage(false);
 };
 
-export const config = { path: ["/team", "/team/*"] };
+// Opened 2026-11-08 at Adam's request. The Team Hub and the three request
+// forms are now public: they hold no personal data, only internal links and
+// blank forms.
+//
+// The Photo Library stays gated for now. It is a searchable collection of
+// photographs of Young Artists, and opening it cannot be taken back once
+// anything has been copied. Adam has asked for it to be opened and has been
+// asked to confirm that in writing first.
+//
+// To open it later: put "/team/photos" back behind nothing by widening the
+// path below, AND disable the cookie check inside
+// netlify/functions/photos.mjs, which enforces the password itself. Both are
+// needed, and the second one is the one that actually exposes the photos.
+export const config = { path: ["/team/photos", "/team/api/*"] };
