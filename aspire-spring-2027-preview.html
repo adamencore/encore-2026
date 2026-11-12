@@ -550,6 +550,86 @@
   .prevbar strong{color:#f08255;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:12px;margin-right:8px;}
   .prevbar a{color:#f3efe9;text-decoration:underline;text-underline-offset:2px;}
   /* ===== END PREVIEW BANNER ===== */
+  /* ===== ASPIRE AUDITIONS, sub-brand treatment ===== */
+  #auditions.asp{scroll-margin-top:140px;--asp-teal:#2e5059;--asp-teal-d:#24424a;--asp-coral:#e8706b;
+    --asp-coral-t:#f29384;--asp-coral-s:#f7a898;--asp-cream:#fbf4df;--asp-ink:#282420;}
+  #auditions.asp .asp-panel{position:relative;overflow:hidden;border-radius:var(--radius-lg,26px);
+    background:var(--asp-teal);color:var(--asp-cream);isolation:isolate;}
+  /* paper grain, same speckle as the Canva artwork */
+  #auditions.asp .asp-panel::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity:.18;mix-blend-mode:overlay;}
+  #auditions.asp .asp-photo{position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:url('/img/aspire/aspire-11.webp') right center / cover no-repeat;
+    filter:grayscale(1) contrast(1.2) brightness(.95);opacity:.5;mix-blend-mode:luminosity;
+    -webkit-mask-image:linear-gradient(100deg,transparent 0 44%,rgba(0,0,0,.45) 60%,#000 82%);
+    mask-image:linear-gradient(100deg,transparent 0 44%,rgba(0,0,0,.45) 60%,#000 82%);}
+  #auditions.asp .asp-inner{position:relative;z-index:2;padding:clamp(30px,4.4vw,60px);}
+
+  #auditions.asp .asp-pill{display:flex;width:max-content;align-items:center;gap:9px;background:rgba(251,244,223,.12);
+    border:1px solid rgba(251,244,223,.3);border-radius:100px;padding:7px 16px;font-size:12px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--asp-cream);margin-bottom:22px;}
+  #auditions.asp .asp-dot{width:9px;height:9px;border-radius:50%;background:var(--asp-coral);
+    box-shadow:0 0 0 4px rgba(232,112,107,.28);}
+
+  /* the stacked SPRING / 2027 / auditions lockup from the artwork */
+  #auditions.asp .asp-stack{position:relative;display:inline-block;line-height:.82;margin-bottom:26px;}
+  #auditions.asp .asp-stack span{display:block;font-family:var(--font-display);}
+  #auditions.asp .asp-l1{font-size:clamp(34px,5.6vw,66px);font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--asp-cream);}
+  #auditions.asp .asp-l2{font-size:clamp(76px,13.5vw,164px);font-weight:700;letter-spacing:-.03em;
+    color:var(--asp-coral-t);margin:2px 0 0;}
+  #auditions.asp .asp-l3{font-size:clamp(28px,4.6vw,56px);font-weight:400;font-style:italic;
+    letter-spacing:.01em;color:var(--asp-cream);margin-top:-4px;}
+  #auditions.asp .asp-scribble{position:absolute;right:-96px;top:30%;width:104px;height:auto;
+    color:var(--asp-coral);opacity:.9;pointer-events:none;}
+
+  #auditions.asp h2{font-family:var(--font-display);font-weight:600;font-style:italic;
+    font-size:clamp(23px,3vw,34px);line-height:1.12;color:var(--asp-cream);margin:0 0 12px;max-width:16ch;}
+  #auditions.asp .asp-lead{font-size:16px;line-height:1.62;color:rgba(251,244,223,.88);
+    margin:0 0 30px;max-width:52ch;}
+
+  #auditions.asp .asp-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:12px;margin-bottom:26px;}
+  #auditions.asp .asp-fact{background:rgba(36,66,74,.82);border:1px solid rgba(251,244,223,.22);
+    border-radius:16px;padding:16px 18px;backdrop-filter:blur(3px);}
+  #auditions.asp .asp-fact .k{display:block;font-size:11px;font-weight:700;letter-spacing:.15em;
+    text-transform:uppercase;color:var(--asp-coral-s);margin-bottom:8px;}
+  #auditions.asp .asp-fact strong{display:block;font-family:var(--font-display);font-size:20px;
+    font-weight:700;line-height:1.15;color:var(--asp-cream);}
+  #auditions.asp .asp-fact .t{display:block;font-size:13px;color:rgba(251,244,223,.85);margin-top:4px;}
+
+  #auditions.asp .asp-foot{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);
+    gap:30px;background:rgba(36,66,74,.72);border:1px solid rgba(251,244,223,.16);
+    border-radius:20px;padding:26px 28px;backdrop-filter:blur(3px);}
+  #auditions.asp .asp-foot h3{font-family:var(--font-display);font-size:17px;font-weight:700;
+    color:var(--asp-cream);margin:0 0 8px;}
+  #auditions.asp .asp-foot h3+p{margin:0 0 18px;}
+  #auditions.asp .asp-foot p{font-size:14.5px;line-height:1.6;color:rgba(251,244,223,.88);margin:0;}
+  #auditions.asp .asp-foot p a{color:var(--asp-cream);text-decoration:underline;text-underline-offset:2px;}
+  #auditions.asp .asp-act{display:flex;flex-direction:column;align-items:flex-start;gap:10px;}
+  #auditions.asp .asp-btn{display:inline-block;background:var(--asp-coral);color:var(--asp-ink);
+    font-weight:700;font-size:14.5px;letter-spacing:.07em;text-transform:uppercase;padding:14px 24px;
+    border-radius:100px;text-decoration:none;transition:transform .16s,background .16s;}
+  #auditions.asp .asp-btn:hover{background:#f0867f;transform:translateY(-2px);}
+  #auditions.asp .asp-btn2{display:inline-block;border:1px solid rgba(251,244,223,.45);
+    color:var(--asp-cream);font-weight:600;font-size:14px;padding:12px 20px;border-radius:100px;
+    text-decoration:none;transition:background .16s;}
+  #auditions.asp .asp-btn2:hover{background:rgba(251,244,223,.12);}
+  #auditions.asp .asp-fine{font-size:12.5px;line-height:1.55;color:rgba(251,244,223,.85);margin-top:4px;}
+
+  @media(max-width:860px){
+    #auditions.asp .asp-foot{grid-template-columns:1fr;gap:22px;}
+    #auditions.asp .asp-photo{opacity:.28;
+      -webkit-mask-image:linear-gradient(180deg,transparent 0 48%,#000 100%);
+      mask-image:linear-gradient(180deg,transparent 0 48%,#000 100%);}
+    #auditions.asp .asp-scribble{display:none;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    #auditions.asp .asp-btn{transition:none;}
+    #auditions.asp .asp-btn:hover{transform:none;}
+  }
+  /* ===== END ASPIRE AUDITIONS ===== */
 </style>
 <style>
   /* Aspire logo (hero wordmark) */
@@ -690,36 +770,45 @@
   </section>
 
   <!-- ========== AUDITIONS (Spring 2027, Bright Lights of Broadway) ========== -->
-  <section id="auditions" aria-labelledby="aud-h">
+  <section id="auditions" class="asp" aria-labelledby="aud-h">
     <div class="wrap">
-      <div class="aud reveal">
-        <div class="sec-head">
-          <div>
-            <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Auditions Open</span>
-            <h2 id="aud-h">Audition for <em>Bright Lights of Broadway</em></h2>
-          </div>
-          <p class="lead">Aspire's Spring 2027 semester is a celebration of the Broadway stage, sung and danced by the whole company, ages 6 through high school senior. Auditions are two afternoons in December, and the cast rehearses Thursdays through the spring.</p>
-        </div>
+      <div class="asp-panel reveal">
+        <div class="asp-photo" role="presentation"></div>
+        <div class="asp-inner">
 
-        <div class="aud-grid">
-          <div class="aud-fact"><div class="k">Vocal audition</div><div class="v">Mon, Dec 14<small>4:00 &ndash; 8:00 PM</small></div></div>
-          <div class="aud-fact"><div class="k">Dance call</div><div class="v">Tue, Dec 15<small>4:00 &ndash; 7:00 PM</small></div></div>
-          <div class="aud-fact"><div class="k">Location</div><div class="v">Electric Theater<small>68 E Tabernacle St</small></div></div>
-          <div class="aud-fact"><div class="k">Performances</div><div class="v">Apr 21&ndash;24<small>7:00 PM</small></div></div>
-        </div>
+          <span class="asp-pill"><span class="asp-dot"></span>Auditions Open</span>
 
-        <div class="aud-prep">
-          <div>
-            <h3>What to bring</h3>
-            <p style="margin:0 0 14px;font-size:14.5px;color:rgba(233,228,224,.85);line-height:1.6;">A song you love and know well, and clothes you can move in for the dance call. Nothing else to prepare. The full rundown of <a href="/auditions" style="color:var(--cream);text-decoration:underline;">how an Encore audition works</a> walks through the day step by step.</p>
-            <h3 style="margin-top:24px;">The semester at a glance</h3>
-            <p style="margin:0;font-size:14.5px;color:rgba(233,228,224,.85);line-height:1.6;">The season launches Thursday, January 14 at 6:00 PM. The company rehearses Thursdays from 4:00 to 8:00 PM through April 15, all at the Electric Theater. Bright Lights of Broadway takes the stage April 21 to 24, with a sensory friendly performance on April 21 at 5:00 PM.</p>
+          <div class="asp-stack">
+            <span class="asp-l1">Spring</span>
+            <span class="asp-l2">2027</span>
+            <span class="asp-l3">auditions</span>
+            <svg class="asp-scribble" viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M8 54c14-26 34-42 54-38 16 3 22 18 12 28-9 9-26 6-28-6-2-14 14-26 32-24 14 2 24 11 28 22"/><path d="M96 38l12 4-8 9"/></svg>
           </div>
-          <div class="act">
-            <a href="/audition-registration?production=Bright+Lights+of+Broadway" class="btn btn-light">Register to audition &rarr;</a>
-            <a href="/auditions" class="btn btn-ghost" style="border-color:rgba(233,228,224,.4);color:var(--cream);">How an audition works &rarr;</a>
-            <p style="margin:13px 0 0;font-size:.8rem;opacity:.78;line-height:1.5;">Cannot make it in person? Send a vocal and dance video to <a href="mailto:randy@encorepa.org" style="color:var(--cream);text-decoration:underline;">randy@encorepa.org</a> before December 14.</p>
+
+          <h2 id="aud-h">Bright Lights of Broadway</h2>
+          <p class="asp-lead">Aspire's spring semester is a celebration of the Broadway stage, sung and danced by the whole company, ages 6 through high school senior. Auditions are two afternoons in December, and the cast rehearses Thursdays through the spring.</p>
+
+          <div class="asp-facts">
+            <div class="asp-fact"><span class="k">Vocal audition</span><strong>Mon, Dec 14</strong><span class="t">4:00 &ndash; 8:00 PM</span></div>
+            <div class="asp-fact"><span class="k">Dance call</span><strong>Tue, Dec 15</strong><span class="t">4:00 &ndash; 7:00 PM</span></div>
+            <div class="asp-fact"><span class="k">Location</span><strong>Electric Theater</strong><span class="t">68 E Tabernacle St</span></div>
+            <div class="asp-fact"><span class="k">On stage</span><strong>Apr 21 &ndash; 24</strong><span class="t">7:00 PM</span></div>
           </div>
+
+          <div class="asp-foot">
+            <div>
+              <h3>What to bring</h3>
+              <p>A song you love and know well, and clothes you can move in for the dance call. Nothing else to prepare. The full rundown of <a href="/auditions">how an Encore audition works</a> walks through the day step by step.</p>
+              <h3>The semester at a glance</h3>
+              <p>The season launches Thursday, January 14 at 6:00 PM. The company rehearses Thursdays from 4:00 to 8:00 PM through April 15, all at the Electric Theater. Bright Lights of Broadway takes the stage April 21 to 24, with a sensory friendly performance on April 21 at 5:00 PM.</p>
+            </div>
+            <div class="asp-act">
+              <a href="/audition-registration?production=Bright+Lights+of+Broadway" class="asp-btn">Register today</a>
+              <a href="/auditions" class="asp-btn2">How an audition works &rarr;</a>
+              <p class="asp-fine">Cannot make it in person? Send a vocal and dance video to <a href="mailto:randy@encorepa.org">randy@encorepa.org</a> before December 14.</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
