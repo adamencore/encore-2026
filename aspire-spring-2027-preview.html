@@ -312,6 +312,9 @@
   .hero-inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:120px 28px 56px;display:flex;flex-direction:column;justify-content:flex-end;gap:0;}
   .hero-top{margin-bottom:16px;}
   .hero-top,.hero-bottom{position:relative;z-index:2;}
+  /* Composition swapped: photo on the left, so the words move right. Text
+     stays left aligned inside its own column, which reads better. */
+  .hero-top,.hero-bottom{max-width:600px;margin-left:auto;}
   .hero-eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(251,244,223,.14);border:1px solid rgba(251,244,223,.32);color:var(--cream);padding:9px 16px;border-radius:100px;font-size:13px;font-weight:500;}
   .hero h1{font-family:var(--font-display);color:var(--coral-dk);font-weight:700;font-size:clamp(46px,7.4vw,96px);line-height:.92;letter-spacing:-.035em;text-wrap:balance;}
   .hero h1 em{font-style:italic;color:var(--cream);}
@@ -474,8 +477,17 @@
     .hero-inner{padding:104px 18px 44px;}
     .cta{padding:34px 24px;}
   }
-  .hero .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;filter:grayscale(1) contrast(1.3) brightness(1);mix-blend-mode:luminosity;opacity:.68;-webkit-mask-image:linear-gradient(100deg,transparent 0 30%,rgba(0,0,0,.5) 52%,#000 78%);mask-image:linear-gradient(100deg,transparent 0 22%,rgba(0,0,0,.55) 46%,#000 72%);}
-  .hero .hero-scrim{position:absolute;inset:0;z-index:0;background:linear-gradient(100deg,var(--asp-teal) 0 34%,rgba(46,80,89,.78) 56%,rgba(46,80,89,.35) 100%),linear-gradient(0deg,rgba(36,66,74,.85),rgba(36,66,74,0) 48%);}
+  .hero .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:20% 12%;z-index:0;filter:grayscale(1) contrast(1.3) brightness(1);mix-blend-mode:luminosity;opacity:.72;-webkit-mask-image:linear-gradient(260deg,transparent 0 24%,rgba(0,0,0,.55) 48%,#000 74%);mask-image:linear-gradient(260deg,transparent 0 24%,rgba(0,0,0,.55) 48%,#000 74%);}
+  /* On a narrow screen the horizontal mask crops to her hair and nothing else
+     reads. Fade from the top instead, the way the auditions panel does, so the
+     raised arm shows above the copy. */
+  @media(max-width:860px){
+    .hero .hero-bg{object-position:42% 8%;opacity:.5;
+      -webkit-mask-image:linear-gradient(180deg,#000 0 38%,rgba(0,0,0,.3) 68%,transparent 100%);
+      mask-image:linear-gradient(180deg,#000 0 38%,rgba(0,0,0,.3) 68%,transparent 100%);}
+    .hero-top,.hero-bottom{max-width:none;margin-left:0;}
+  }
+  .hero .hero-scrim{position:absolute;inset:0;z-index:0;background:linear-gradient(260deg,var(--asp-teal) 0 34%,rgba(46,80,89,.78) 56%,rgba(46,80,89,.35) 100%),linear-gradient(0deg,rgba(36,66,74,.85),rgba(36,66,74,0) 48%),linear-gradient(180deg,rgba(32,58,66,.8),rgba(32,58,66,0) 28%);}
   .gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
 
   /* HAMBURGER + MOBILE MENU (site-wide) */
