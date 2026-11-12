@@ -242,10 +242,15 @@
     --charcoal-2:#2f616e;     /* mid teal, hovers */
     --charcoal-soft:#304a54;  /* secondary text */
     --cream:#eee5de;          /* warm cream, surfaces */
-    --cream-lite:#f5f1ec;     /* lightest, page background */
-    --paper:#fffdf9;          /* card paper */
-    --accent:#22353d;         /* Aspire coral accent (deepest coral) */
-    --accent-2:#1d2f37;       /* coral hover/light */
+    --cream-lite:#fbf4df;     /* warm Canva cream, page background */
+    --paper:#fffdf4;          /* card paper, warmed to match */
+    /* These two said "coral" in the comment and held navy, which is why
+       nothing on this page looked coral. Now they are actually coral. */
+    --accent:#c0432c;         /* ink coral, safe as text on cream, 4.68:1 */
+    --accent-2:#a33420;       /* ink coral, hover */
+    --coral:#e8706b;          /* Aspire coral as sampled, fills and decor only */
+    --coral-dk:#f29384;       /* coral on the deep teal, 3.85:1 */
+    --asp-teal:#2e5059;       /* Aspire deep teal, sampled */
     --coral-1:#fecece;        /* coral tints for gradients/decor */
     --coral-2:#fbaca8;
     --coral-3:#f8918c;
@@ -287,6 +292,8 @@
   .btn-dark:hover{background:var(--charcoal-2);}
   .btn-ghost{background:transparent;border:1.5px solid var(--charcoal);color:var(--charcoal);}
   .btn-ghost:hover{background:var(--charcoal);color:var(--cream);}
+  .btn-accent{background:var(--coral);color:#282420;font-weight:700;}
+  .btn-accent:hover{background:#f0867f;transform:translateY(-2px);}
   .btn-light{background:var(--cream);color:var(--charcoal);}
 
   /* BREADCRUMB , overlaid near the top of the full-bleed hero */
@@ -300,31 +307,37 @@
   .crumbs [aria-current="page"]{color:var(--charcoal);font-weight:600;}
 
   /* HERO , full-bleed banner (matches homepage) */
-  .hero{position:relative;min-height:88vh;min-height:88svh;overflow:hidden;display:flex;background:linear-gradient(160deg,#1d4f5a,#15414c 60%,#0d272d);border-radius:0 0 var(--radius-lg) var(--radius-lg);}
+  .hero{position:relative;min-height:88vh;min-height:88svh;overflow:hidden;display:flex;background:var(--asp-teal);border-radius:0 0 var(--radius-lg) var(--radius-lg);}
   .hero::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");}
   .hero-inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;padding:120px 28px 56px;display:flex;flex-direction:column;justify-content:flex-end;gap:0;}
   .hero-top{margin-bottom:16px;}
   .hero-top,.hero-bottom{position:relative;z-index:2;}
-  .hero-eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(233,228,224,.12);border:1px solid rgba(233,228,224,.25);color:var(--cream);padding:9px 16px;border-radius:100px;font-size:13px;font-weight:500;}
-  .hero h1{font-family:var(--font-display);color:var(--cream);font-weight:500;font-size:clamp(40px,6vw,78px);line-height:1.0;letter-spacing:-.04em;}
-  .hero h1 em{font-style:italic;color:#cfc6b4;}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(251,244,223,.14);border:1px solid rgba(251,244,223,.32);color:var(--cream);padding:9px 16px;border-radius:100px;font-size:13px;font-weight:500;}
+  .hero h1{font-family:var(--font-display);color:var(--coral-dk);font-weight:700;font-size:clamp(46px,7.4vw,96px);line-height:.92;letter-spacing:-.035em;text-wrap:balance;}
+  .hero h1 em{font-style:italic;color:var(--cream);}
   .hero-bottom .sub{color:rgba(233,228,224,.8);max-width:560px;margin:22px 0 28px;font-size:17px;line-height:1.6;}
   .hero-actions{display:flex;gap:13px;flex-wrap:wrap;}
 
   /* STATS */
   .stats{padding:38px 0 0;}
   .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
-  .stat{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;}
-  .stat .n{font-family:var(--font-display);font-size:30px;font-weight:600;color:var(--charcoal);line-height:1;letter-spacing:-.02em;}
-  .stat .l{color:var(--muted);font-size:13.5px;margin-top:7px;line-height:1.45;}
+  .stat{background:var(--asp-teal);border:1px solid rgba(251,244,223,.16);border-radius:var(--radius);padding:24px 26px;position:relative;overflow:hidden;}
+  .stat::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:.14;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");}
+  .stat>*{position:relative;z-index:1;}
+  .stat .n{font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--coral-dk);line-height:1;letter-spacing:-.02em;}
+  .stat .l{color:rgba(251,244,223,.88);font-size:13.5px;margin-top:8px;line-height:1.45;}
 
   /* SECTION SCAFFOLD */
   section{padding:80px 0;}
   .pill{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--line);color:var(--charcoal);padding:9px 18px;border-radius:100px;font-size:13px;font-weight:600;letter-spacing:.04em;}
-  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--charcoal);}
+  .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 3px rgba(232,112,107,.22);}
   .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:38px;flex-wrap:wrap;}
   .sec-head h2{font-family:var(--font-display);font-weight:500;font-size:clamp(28px,3.6vw,44px);line-height:1.05;letter-spacing:-.035em;color:var(--charcoal);max-width:580px;}
-  .sec-head h2 em{font-style:italic;}
+  .sec-head h2 em{font-style:italic;color:var(--accent);}
+  /* Every heading on this page italicises a word. Coral makes that
+     emphasis actually read, on light panels and on dark ones. */
+  h2 em{color:var(--accent);}
+  .cta h2 em,#auditions h2 em,.hero h2 em{color:var(--coral-dk);}
   .sec-head .lead{max-width:380px;color:var(--muted);font-size:15.5px;line-height:1.6;}
 
   /* INTRO */
@@ -426,7 +439,7 @@
   .foot-tag .hl{font-style:italic;color:#cfc6b4;}
   .foot-loc{color:rgba(233,228,224,.6);font-size:14px;line-height:1.65;}
   .foot-loc strong{color:var(--cream);font-weight:600;display:block;margin-bottom:4px;}
-  .foot-col h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,228,224,.5);margin-bottom:16px;}
+  .foot-col h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,228,224,.72);margin-bottom:16px;}
   .foot-col a{display:block;color:rgba(233,228,224,.85);font-size:14.5px;margin-bottom:10px;}
   .foot-col a:hover{color:#fff;}
   .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;gap:20px;flex-wrap:wrap;}
@@ -461,8 +474,8 @@
     .hero-inner{padding:104px 18px 44px;}
     .cta{padding:34px 24px;}
   }
-  .hero .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;}
-  .hero .hero-scrim{position:absolute;inset:0;z-index:0;background:linear-gradient(115deg,rgba(13,39,45,.92),rgba(13,39,45,.6) 58%,rgba(13,39,45,.42)),linear-gradient(0deg,rgba(13,39,45,.7),rgba(13,39,45,0) 50%);}
+  .hero .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;filter:grayscale(1) contrast(1.3) brightness(1);mix-blend-mode:luminosity;opacity:.68;-webkit-mask-image:linear-gradient(100deg,transparent 0 30%,rgba(0,0,0,.5) 52%,#000 78%);mask-image:linear-gradient(100deg,transparent 0 22%,rgba(0,0,0,.55) 46%,#000 72%);}
+  .hero .hero-scrim{position:absolute;inset:0;z-index:0;background:linear-gradient(100deg,var(--asp-teal) 0 34%,rgba(46,80,89,.78) 56%,rgba(46,80,89,.35) 100%),linear-gradient(0deg,rgba(36,66,74,.85),rgba(36,66,74,0) 48%);}
   .gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
 
   /* HAMBURGER + MOBILE MENU (site-wide) */
@@ -493,7 +506,7 @@
   .foot-tag .hl{font-style:italic;color:#cfc6b4;}
   .foot-loc{color:rgba(233,228,224,.6);font-size:14px;line-height:1.6;}
   .foot-loc strong{color:var(--cream);font-weight:600;display:block;margin-bottom:4px;}
-  .foot-col h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,228,224,.5);margin-bottom:18px;}
+  .foot-col h5{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,228,224,.72);margin-bottom:18px;}
   .foot-col a{display:block;color:rgba(233,228,224,.85);font-size:14.5px;margin-bottom:11px;transition:color .2s;}
   .foot-col a:hover{color:#fff;}
   .foot-aspire{background:rgba(233,228,224,.08);border:1px solid rgba(233,228,224,.16);border-radius:18px;padding:20px;margin-top:6px;}
@@ -634,7 +647,7 @@
 <style>
   /* Aspire logo (hero wordmark) */
   .aspire-wordmark{margin:0 0 4px;line-height:0;}
-  .aspire-wordmark .asp-logo-svg{width:clamp(230px,40vw,430px);height:auto;display:block;color:var(--cream);}
+  .aspire-wordmark .asp-logo-svg{width:clamp(250px,44vw,470px);height:auto;display:block;color:var(--coral-dk);}
   @media(max-width:560px){.aspire-wordmark .asp-logo-svg{width:min(74vw,320px);}}
 
 /* ===== ASPIRE WAITLIST ===== */
@@ -760,9 +773,9 @@
   <!-- ========== TRADITIONS ANNOUNCEMENT ========== -->
   <section aria-labelledby="trad-h">
     <div class="wrap">
-      <a class="reveal" href="/aspire-traditions" style="display:block;background:var(--charcoal-2);color:var(--cream);border-radius:var(--radius-lg);padding:38px 40px;text-decoration:none;">
+      <a class="reveal" href="/aspire-traditions" style="display:block;background:var(--asp-teal);color:var(--cream);border-radius:var(--radius-lg);padding:38px 40px;text-decoration:none;">
         <span class="pill" style="margin-bottom:16px;"><span class="dot"></span>New program &middot; Cast and rehearsing</span>
-        <h2 id="trad-h" style="font-family:var(--font-display);font-weight:600;font-size:clamp(26px,3.6vw,40px);line-height:1.08;letter-spacing:-.02em;margin:0 0 12px;">Introducing <em>Aspire: Traditions</em></h2>
+        <h2 id="trad-h" style="font-family:var(--font-display);font-weight:600;font-size:clamp(26px,3.6vw,40px);line-height:1.08;letter-spacing:-.02em;margin:0 0 12px;">Introducing <em style="color:var(--coral-dk);">Aspire: Traditions</em></h2>
         <p style="margin:0 0 18px;max-width:640px;font-size:16.5px;line-height:1.6;color:rgba(233,228,224,.88);">A new travel performance program for Young Artists ages 12&ndash;18. A year of Friday rehearsals that ends on a Disney stage at the Disneyland Resort in March 2027. This group is cast and rehearsing.</p>
         <span class="btn btn-light">See the program &amp; audition &rarr;</span>
       </a>
