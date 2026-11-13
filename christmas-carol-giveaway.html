@@ -55,7 +55,9 @@
 <meta property="og:url" content="https://www.encorepa.org/christmas-carol-giveaway">
 <meta property="og:title" content="Win 4 Tickets to A Christmas Carol | Encore Performing Arts">
 <meta property="og:description" content="Enter to win four tickets to A Christmas Carol: A New Musical at the historic Electric Theater in St. George, Utah, plus a Bah Hum Mug. One entry per household.">
-<meta property="og:image" content="https://www.encorepa.org/img/giveaway/carol-giveaway-2026.jpg">
+<meta property="og:image" content="https://www.encorepa.org/img/giveaway/carol-giveaway-og-2026.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="A Christmas Carol giveaway: a Bah Hum Mug and four tickets, November 30 through December 18 at the Electric Theater">
 <meta property="og:locale" content="en_US">
 
@@ -63,7 +65,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Win 4 Tickets to A Christmas Carol">
 <meta name="twitter:description" content="Enter to win four tickets to A Christmas Carol: A New Musical at the historic Electric Theater in St. George, Utah, plus a Bah Hum Mug. One entry per household.">
-<meta name="twitter:image" content="https://www.encorepa.org/img/giveaway/carol-giveaway-2026.jpg">
+<meta name="twitter:image" content="https://www.encorepa.org/img/giveaway/carol-giveaway-og-2026.jpg">
 
 <style>
   :root{
@@ -655,7 +657,6 @@
     min-height:0;max-height:none;}
   .gv-hero .cc-stage .cc-bg img{height:100%;object-position:center 42%;}
   .gv-hero-inner{position:relative;z-index:4;max-width:760px;margin:0 auto;padding:0 28px;}
-  .gv-showmark{width:clamp(190px,26vw,290px);height:auto;margin:0 auto 20px;opacity:.95;}
   .gv-eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(240,220,194,.14);
     border:1px solid rgba(240,220,194,.34);color:#f6efe4;padding:8px 16px;border-radius:100px;
     font-size:12.5px;font-weight:700;letter-spacing:.05em;margin-bottom:16px;}
@@ -668,10 +669,13 @@
 
   /* Prize and form, side by side, so the form is on the first screen. */
   .gv-main{padding:clamp(34px,4.5vw,56px) 0 clamp(44px,5vw,72px);}
-  .gv-split{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);
+  .gv-split{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);
     gap:clamp(28px,4vw,54px);align-items:start;}
-  .gv-poster{border-radius:var(--radius);overflow:hidden;line-height:0;background:var(--paper);
-    box-shadow:0 26px 60px -34px rgba(11,28,33,.5);}
+  /* The art is a die cut with real transparency, so it sits on the page
+     rather than inside a card. drop-shadow follows the cut, box-shadow would
+     draw a rectangle around it. 9:16 is far taller than the old 3:4 flyer, so
+     the column is narrower to keep it from dwarfing the form. */
+  .gv-poster{line-height:0;filter:drop-shadow(0 20px 30px rgba(11,28,33,.2));}
   .gv-poster img{width:100%;height:auto;}
   .gv-prize{list-style:none;margin:22px 0 0;display:grid;gap:12px;}
   .gv-prize li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.55;}
@@ -710,11 +714,11 @@
        the poster reinforces it rather than introducing it. */
     .gv-formcard{order:1;}
     .gv-side{order:2;}
-    .gv-poster{max-width:330px;margin:0 auto;}
+    .gv-poster{max-width:300px;margin:0 auto;}
   }
   @media(max-width:560px){
     .gv-hero{padding:24px 0 28px;}
-    .gv-poster{max-width:262px;}
+    .gv-poster{max-width:244px;}
     .gv-embed{min-height:600px;}
   }
 </style>
@@ -743,7 +747,8 @@
       <canvas class="snow"></canvas>
     </div>
     <div class="gv-hero-inner">
-      <img class="gv-showmark" src="/img/shows/cc-logo.svg" alt="A Christmas Carol, A New Musical" width="290" height="100" fetchpriority="high">
+      <!-- No show logo here on purpose: the giveaway art below prints it,
+           along with the offer and the dates. It was saying all three twice. -->
       <!-- Swapped for the group's own name when the link carries ?group= -->
       <span class="gv-eyebrow" id="gvEyebrow"><span class="dot" aria-hidden="true"></span>Community giveaway</span>
       <h1>Win 4 tickets and a <em>Bah Hum Mug</em></h1>
@@ -758,14 +763,13 @@
       <div class="gv-side">
         <figure class="gv-poster">
           <picture>
-            <source type="image/webp" srcset="/img/giveaway/carol-giveaway-2026.webp">
-            <img src="/img/giveaway/carol-giveaway-2026.jpg" alt="A Christmas Carol: A New Musical giveaway. A red Bah Hum Mug and four tickets. November 30 through December 18 at the Electric Theater." width="951" height="1200" fetchpriority="high" decoding="async">
+            <source type="image/webp" srcset="/img/giveaway/carol-giveaway-story-2026.webp">
+            <img src="/img/giveaway/carol-giveaway-story-2026.png" alt="Encore presents A Christmas Carol: A New Musical giveaway. Four tickets plus a red Bah Hum Mug. November 30 through December 18 at the Electric Theater." width="675" height="1200" fetchpriority="high" decoding="async">
           </picture>
         </figure>
         <ul class="gv-prize">
           <li><span class="tick" aria-hidden="true">&#10003;</span><span><strong>Four tickets</strong> to any performance in the run</span></li>
           <li><span class="tick" aria-hidden="true">&#10003;</span><span><strong>One Bah Hum Mug</strong>, waiting at the box office</span></li>
-          <li><span class="tick" aria-hidden="true">&#10003;</span><span>Sixteen performances, November 30 to December 18</span></li>
         </ul>
       </div>
 
