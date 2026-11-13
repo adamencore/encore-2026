@@ -60,7 +60,9 @@
 
 # --- Giveaway partner links -------------------------------------------------
 # A clean link per community partner, all serving ONE file. 200 is a rewrite,
-# so the URL stays /sunriver in the address bar. Add a line here and a matching
-# entry in the GROUPS array in christmas-carol-giveaway.html. Do not fork the
-# page per group.
-/sunriver    /christmas-carol-giveaway?group=sunriver    200
+# so the partner's own URL stays in the address bar. Add a line here, and add
+# that path to the matching group's `paths` in the GROUPS array in
+# christmas-carol-giveaway.html, or the page will not greet them by name.
+# Do not fork the page per group.
+/sunriver-promo    /christmas-carol-giveaway?group=sunriver    200
+/sunriver          /christmas-carol-giveaway?group=sunriver    200
