@@ -1270,31 +1270,9 @@ html,body{overflow-x:clip;}
 
 
 
-<script>
-/* gentle global horizontal parallax, content drifts right -> left as it passes up the viewport
-   (starts slightly RIGHT on entry, natural position mid-screen, slightly LEFT on exit) */
-(function(){
-  if(window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  var els=[].slice.call(document.querySelectorAll('.wrap:not(.nav-inner)'));
-  if(!els.length) return;
-  var DRIFT=48, START=24;                 /* faster: +24px (right) -> 0 -> -24px (left) */
-  for(var i=0;i<els.length;i++){ els[i].style.willChange='transform'; }
-  var vh=window.innerHeight||document.documentElement.clientHeight, ticking=false;
-  function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(update);} }
-  function update(){
-    ticking=false;
-    for(var i=0;i<els.length;i++){
-      var r=els[i].getBoundingClientRect();
-      if(r.bottom<-120 || r.top>vh+120) continue;
-      var p=(vh-(r.top+r.height/2))/vh; if(p<0)p=0; else if(p>1)p=1;   /* 0 entering (bottom) -> 1 leaving (top) */
-      els[i].style.transform='translate3d('+(START-p*DRIFT).toFixed(1)+'px,0,0)';
-    }
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',function(){vh=window.innerHeight;onScroll();},{passive:true});
-  update();
-})();
-</script>
+<!-- Removed 2026-11-12: a global horizontal parallax translated every
+     .wrap from +24px to -24px on scroll, which read as the page sliding
+     sideways. Nothing else depended on it. -->
 
 
 <!-- ========== CLASSES POPUP (homepage, first visit) ========== -->
