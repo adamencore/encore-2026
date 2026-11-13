@@ -680,10 +680,6 @@
 
   .gv-formcard{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
     padding:clamp(22px,3vw,34px);}
-  .gv-formcard h2{font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;
-    letter-spacing:-.03em;margin-bottom:9px;}
-  .gv-formcard h2 em{font-style:italic;}
-  .gv-formcard .gv-intro{color:var(--muted);font-size:15.5px;line-height:1.6;margin-bottom:22px;}
   /* Elfsight renders into this div after the page paints. The min-height keeps
      the rules below from jumping up the page while it loads. */
   .gv-embed{min-height:520px;}
@@ -774,10 +770,12 @@
       </div>
 
       <div class="gv-formcard">
-        <h2 id="enter-h">Enter the <em>giveaway</em></h2>
-        <p class="gv-intro">One entry per household. It takes about thirty seconds.</p>
+        <h2 id="enter-h" class="sr-only">Enter the giveaway</h2>
         <!-- Elfsight Form Builder | Christmas Carol Giveaway Entry.
-             platform.js is loaded once in the head, not here. -->
+             platform.js is loaded once in the head, not here.
+             The form renders its own heading and intro inside a shadow root,
+             so this card deliberately adds no heading of its own: two stacked
+             headlines is what made the first version feel cluttered. -->
         <div class="gv-embed elfsight-app-ca9f4999-1a74-4902-9a2b-b1abf64cb715" data-elfsight-app-lazy></div>
       </div>
 
@@ -982,9 +980,16 @@ const GROUPS = [
 (function(){
   var eyebrow = document.getElementById('gvEyebrow');
   if(!eyebrow) return;
+  /* Two ways in, and the clean URL is the one that actually gets shared:
+     /sunriver is a 200 rewrite, so the address bar keeps no query string and
+     location.search is empty. Match the path segment as well. */
   var param = '';
-  try { param = (new URLSearchParams(location.search).get('group') || '').toLowerCase().trim(); }
-  catch(e){ return; }
+  try {
+    param = (new URLSearchParams(location.search).get('group') || '').toLowerCase().trim();
+    if(!param){
+      param = (location.pathname.replace(/^\/+|\/+$/g, '').split('/').pop() || '').toLowerCase();
+    }
+  } catch(e){ return; }
   var match = GROUPS.filter(function(g){ return g.value === param; })[0];
   if(!match) return;
   /* textContent, not innerHTML: the label is ours, but the dot stays a node. */
