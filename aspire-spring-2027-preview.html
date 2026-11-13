@@ -14,9 +14,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PREVIEW &middot; Aspire Performing Co. | Spring 2027: Bright Lights of Broadway</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..900,0..100,0..1;1,9..144,400..900,0..100,0..1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/mikado.css">
 <style>
 :root{
   --teal:#31525b;
@@ -28,8 +26,9 @@
   --cream:#f3e9d2;
   --ink:#22201d;
   --muted:#b9c7c6;
-  --display:"Fraunces", Georgia, serif;
-  --sans:"Outfit", system-ui, sans-serif;
+  /* Mikado is the site's only typeface. Both roles route through it. */
+  --display:'Mikado', system-ui, -apple-system, sans-serif;
+  --sans:'Mikado', system-ui, -apple-system, sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;overflow-x:clip}
@@ -63,7 +62,7 @@ body::before{
   background-size:520px 520px;}
 a{color:inherit}
 .wrap{width:min(1180px,92vw);margin:0 auto}
-.display{font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:700;letter-spacing:.01em;line-height:.92}
+.display{font-family:var(--display);font-weight:700;letter-spacing:.01em;line-height:.92}
 .eyebrow{font-family:var(--sans);font-weight:600;text-transform:uppercase;letter-spacing:.22em;font-size:.78rem;color:var(--salmon-sm)}
 .btn{display:inline-flex;align-items:center;gap:.6em;background:var(--coral);color:var(--ink);text-decoration:none;
   font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.85rem;padding:1.05em 2.1em;border-radius:999px;
@@ -79,7 +78,7 @@ nav.scrolled{background:#243f46ee;backdrop-filter:blur(10px);padding:12px 0;box-
 nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .brand .badge-sm{width:48px;height:48px}
-.brand b{font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-size:1.25rem;color:var(--salmon);font-weight:700;line-height:1}
+.brand b{font-family:var(--display);font-size:1.25rem;color:var(--salmon);font-weight:700;line-height:1}
 .brand small{display:block;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:3px}
 .navlinks{display:flex;gap:28px;align-items:center}
 .navlinks a{text-decoration:none;font-size:.9rem;color:#f3e9d2cc;transition:color .2s}
@@ -93,14 +92,14 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px
 .hero-inner{position:relative;z-index:2;max-width:640px}
 .badge{width:120px;height:120px;margin:0 0 22px;animation:spin 26s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.hero h1{font-size:clamp(3rem,7vw,6.4rem);color:var(--salmon);text-transform:uppercase}
+.hero h1{font-size:clamp(3rem,7vw,6.4rem);color:var(--salmon);text-transform:uppercase;letter-spacing:-.02em}
 .hero h1 .co{display:block;text-transform:none;font-size:.82em;margin-top:.06em}
 .aud-block{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;margin-top:38px}
 .aud-stack{text-align:center;padding-right:30px;border-right:2px solid #f4a29b88}
 .aud-stack .season{font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:1.9rem;line-height:1}
 .aud-stack .year{font-weight:600;font-size:3.6rem;line-height:.95}
 .aud-stack .aud{font-weight:500;font-size:1.55rem;line-height:1}
-.aud-info .show{font-family:var(--display);font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1;color:var(--salmon);font-size:clamp(1.5rem,2.4vw,2rem);font-weight:600;line-height:1.05}
+.aud-info .show{font-family:var(--display);font-style:italic;color:var(--salmon);font-size:clamp(1.5rem,2.4vw,2rem);font-weight:600;line-height:1.05}
 .aud-info .when{font-weight:600;font-size:1.1rem;margin-top:10px}
 .aud-info .where{font-size:.95rem;color:#f3e9d2ed}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
@@ -123,7 +122,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px
 /* MARQUEE */
 .marquee{background:var(--salmon);color:var(--teal-ink);overflow:hidden;white-space:nowrap;padding:18px 0;transform:rotate(-1.4deg);margin:-14px -2vw 0;position:relative;z-index:5;box-shadow:0 20px 40px -24px #0008}
 .marquee .track{display:inline-flex;gap:0;animation:scroll 32s linear infinite}
-.marquee span{font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:700;font-size:1.7rem;text-transform:uppercase;padding:0 26px;display:inline-flex;align-items:center;gap:52px}
+.marquee span{font-family:var(--display);font-weight:700;font-size:1.7rem;text-transform:uppercase;padding:0 26px;display:inline-flex;align-items:center;gap:52px}
 .marquee span::after{content:"";width:14px;height:14px;background:var(--teal-ink);clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
@@ -138,7 +137,7 @@ section{position:relative;padding:130px 0}
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .fact{background:#243f46;border:1px solid #f3e9d214;border-radius:22px;padding:30px 26px 28px;position:relative;overflow:hidden;transition:transform .35s ease,border-color .35s ease}
 .fact:hover{transform:translateY(-6px);border-color:#f4a29b66}
-.fact .big{font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:700;font-size:3rem;color:var(--salmon);line-height:1}
+.fact .big{font-family:var(--display);font-weight:700;font-size:3rem;color:var(--salmon);line-height:1}
 .fact h3{font-size:1.05rem;margin:16px 0 6px;font-weight:600;letter-spacing:.02em}
 .fact p{font-size:.95rem;color:#f3e9d2b8;line-height:1.5}
 .fact .ring{position:absolute;right:-30px;top:-30px;width:110px;height:110px;border:1.5px solid #f4a29b33;border-radius:50%}
@@ -150,10 +149,10 @@ section{position:relative;padding:130px 0}
 .timeline{display:grid;gap:0;border-top:1px solid #f3e9d222}
 .row{display:grid;grid-template-columns:220px 1fr auto;gap:30px;align-items:center;padding:30px 6px;border-bottom:1px solid #f3e9d222;transition:background .3s ease,padding .3s ease}
 .row:hover{background:#31525b;padding-left:20px;padding-right:20px}
-.date{font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:700;line-height:.9;color:var(--salmon)}
+.date{font-family:var(--display);font-weight:700;line-height:.9;color:var(--salmon)}
 .date .m{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
 .date .d{font-size:3.2rem}
-.row h3{font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:600;font-size:1.8rem;line-height:1.1}
+.row h3{font-family:var(--display);font-weight:600;font-size:1.8rem;line-height:1.1}
 .row p{color:#f3e9d2b8;font-size:.98rem;margin-top:4px}
 .tag{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:.55em 1.1em;border-radius:999px;border:1px solid #f3e9d244;color:var(--cream);white-space:nowrap}
 .tag.hot{background:var(--salmon);color:var(--teal-ink);border-color:var(--salmon)}
@@ -161,7 +160,7 @@ section{position:relative;padding:130px 0}
 
 /* ASPIRE CASCADE */
 .cascade-sec{text-align:center;overflow:hidden}
-.cascade{display:inline-block;text-align:left;font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:700;
+.cascade{display:inline-block;text-align:left;font-family:var(--display);font-weight:700;
   font-size:clamp(2.6rem,7.5vw,6.2rem);line-height:.98;color:var(--cream);letter-spacing:.04em;margin-bottom:56px}
 .cascade .line{display:block;white-space:pre}
 .cascade .ch{display:inline-block;transform:translateY(40px);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .7s ease}
@@ -171,7 +170,7 @@ section{position:relative;padding:130px 0}
 .cascade-sec .lead{max-width:640px;margin:0 auto;font-size:1.15rem;color:#f3e9d2d9}
 .cascade-sec .help{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:880px;margin:44px auto 0;text-align:left}
 .help .card{border:1px solid #f3e9d222;border-radius:22px;padding:28px}
-.help .card h3{font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-size:1.5rem;color:var(--salmon);margin-bottom:8px;font-weight:600}
+.help .card h3{font-family:var(--display);font-size:1.5rem;color:var(--salmon);margin-bottom:8px;font-weight:600}
 .help .card p{color:#f3e9d2cc;font-size:.98rem}
 .help .card a{color:var(--cream);font-weight:600;text-decoration-color:#f4a29b;text-underline-offset:4px}
 @media (max-width:700px){.cascade-sec .help{grid-template-columns:1fr}}
@@ -180,9 +179,9 @@ section{position:relative;padding:130px 0}
 .programs{display:grid;grid-template-columns:1.25fr 1fr;gap:22px}
 .prog{border-radius:28px;padding:44px;position:relative;overflow:hidden;min-height:380px;display:flex;flex-direction:column;justify-content:flex-end}
 .prog.trad{background:var(--salmon);color:var(--teal-ink)}
-.prog.trad .eyebrow{color:var(--teal-ink);opacity:.75}
+.prog.trad .eyebrow{color:var(--teal-ink)}
 .prog.illum{background:var(--teal-ink);border:1px solid #f3e9d21f}
-.prog h3{font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:700;font-size:clamp(2.2rem,4vw,3.3rem);line-height:.95;margin:14px 0 16px}
+.prog h3{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,4vw,3.3rem);line-height:.95;margin:14px 0 16px}
 .prog p{font-size:1.02rem;max-width:460px}
 .prog.trad p{color:#1b3036d9}
 .prog.illum p{color:#f3e9d2cc}
@@ -205,7 +204,7 @@ section{position:relative;padding:130px 0}
 .director .name h3{font-family:var(--sans);font-weight:700;text-transform:uppercase;font-size:2rem;line-height:.95;letter-spacing:.02em}
 .crew{display:grid;gap:18px}
 .member{display:flex;gap:20px;align-items:center;padding:22px 0;border-bottom:1px solid #f3e9d222}
-.member .mono{width:64px;height:64px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:700;font-size:1.4rem;background:var(--teal-deep);color:var(--salmon);border:1.5px solid #f4a29b55}
+.member .mono{width:64px;height:64px;border-radius:50%;flex:none;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1.4rem;background:var(--teal-deep);color:var(--salmon);border:1.5px solid #f4a29b55}
 .member h4{font-size:1.35rem;font-weight:600}
 .member p{font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--salmon-sm);font-weight:500}
 @media (max-width:860px){.team{grid-template-columns:1fr}.director{margin:0 auto}.director svg.loops{right:-20px}}
@@ -218,7 +217,7 @@ section{position:relative;padding:130px 0}
 .links{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:80px;text-align:left}
 .links a{display:block;text-decoration:none;border:1px solid #f3e9d222;border-radius:18px;padding:22px;transition:all .3s ease}
 .links a:hover{border-color:var(--salmon);background:#31525b;transform:translateY(-4px)}
-.links b{display:block;font-family:var(--display);font-variation-settings:"SOFT" 100,"WONK" 1;font-weight:600;font-size:1.25rem;margin-bottom:4px}
+.links b{display:block;font-family:var(--display);font-weight:600;font-size:1.25rem;margin-bottom:4px}
 .links span{font-size:.85rem;color:var(--muted)}
 @media (max-width:860px){.links{grid-template-columns:1fr 1fr}}
 
@@ -243,6 +242,10 @@ footer b{color:var(--cream);font-weight:600}
   .wordmark{margin:0 0 6px;}
   .wordmark img{display:block;width:clamp(260px,38vw,470px);height:auto;}
   @media(max-width:700px){.wordmark img{width:min(78vw,340px);}}
+  img.badge{display:block;width:clamp(68px,7vw,104px);height:auto;margin-bottom:18px;}
+  img.badge-sm{display:block;width:92px;height:auto;}
+  .cascade-art{display:block;width:clamp(230px,32vw,400px);height:auto;margin:0 auto 56px;}
+  img.stamp{display:block;width:54px;height:auto;}
   /* ===== END PREVIEW BANNER ===== */
 </style>
 </head>
@@ -256,20 +259,12 @@ footer b{color:var(--cream);font-weight:600}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <path id="circ" d="M 60,60 m -44,0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0"/>
-    <symbol id="badge" viewBox="0 0 120 120">
-      <text font-family="Outfit, sans-serif" font-size="12.5" font-weight="600" fill="currentColor">
-        <textPath href="#circ" textLength="272" lengthAdjust="spacing">ASPIRE PERFORMING CO. &#8226; </textPath>
-      </text>
-      <g class="face" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-        <path d="M47 55 q4 -5 8 0"/><path d="M65 55 q4 -5 8 0"/><path d="M48 66 q12 12 24 0"/>
-      </g>
-    </symbol>
   </defs>
 </svg>
 
 <nav id="nav">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Aspire Performing Co., Encore Performing Arts home"><svg class="badge-sm" style="color:var(--salmon)"><use href="#badge"/></svg><span><b>Aspire</b><small>Performing Co.</small></span></a>
+    <a class="brand" href="/" aria-label="Aspire Performing Co., Encore Performing Arts home"><img class="badge-sm" src="/img/aspire/aspire-tee.svg" alt="" width="867" height="186"><span><b>Aspire</b><small>Performing Co.</small></span></a>
     <div class="navlinks">
       <a href="#about">About</a>
       <a href="#schedule">Spring 2027</a>
@@ -285,7 +280,7 @@ footer b{color:var(--cream);font-weight:600}
   <div class="frame"></div>
   <div class="wrap">
     <div class="hero-inner reveal">
-      <svg class="badge" style="color:var(--salmon)"><use href="#badge"/></svg>
+      <img class="badge" src="/img/aspire/aspire-sun.svg" alt="" width="335" height="335">
       <h1 class="display wordmark"><img src="/img/aspire/aspire-logo-pink.svg" alt="Aspire Performing Co." width="862" height="299"></h1>
       <div class="aud-block">
         <div class="aud-stack"><div class="season">Spring</div><div class="year">2027</div><div class="aud">auditions</div></div>
@@ -303,7 +298,7 @@ footer b{color:var(--cream);font-weight:600}
       <div class="countdown" id="countdown"></div>
     </div>
   </div>
-  <div class="hero-photo"><img src="/img/aspire/aspire-cutout-company-2027.webp"  alt="Aspire Young Artists on stage, arms raised, singing together"></div>
+  <div class="hero-photo"><img src="/img/aspire/aspire-company-cutout-v2.webp"  alt="Aspire Young Artists on stage, arms raised, singing together"></div>
 </header>
 
 <div class="marquee" aria-hidden="true">
@@ -371,8 +366,7 @@ footer b{color:var(--cream);font-weight:600}
 <section class="cascade-sec">
   <div class="specks"></div>
   <div class="wrap">
-    <div class="cascade" id="cascade" aria-label="Aspire"></div>
-    <p class="lead reveal">Can't be there in person, or need a hand getting started? We have you covered.</p>
+    <img class="cascade-art reveal" src="/img/aspire/aspire-levels.svg" alt="Aspire" width="988" height="1139"><p class="lead reveal">Can't be there in person, or need a hand getting started? We have you covered.</p>
     <div class="help">
       <div class="card reveal">
         <h3>Remote audition</h3>
@@ -394,7 +388,7 @@ footer b{color:var(--cream);font-weight:600}
     </div>
     <div class="programs">
       <article class="prog trad reveal">
-        <svg class="stamp" style="color:var(--teal-ink)"><use href="#badge"/></svg>
+        <img class="stamp" src="/img/aspire/aspire-starr-ink.svg" alt="" width="138" height="138">
         <div class="eyebrow">New program</div>
         <h3>Aspire:<br>Traditions</h3>
         <p>A travel performance program for Young Artists ages 12 to 18. Friday rehearsals through the year, ending on a Disney stage at the Disneyland Resort in March 2027. This year's group is cast and rehearsing.</p>
@@ -414,7 +408,7 @@ footer b{color:var(--cream);font-weight:600}
   <div class="specks"></div>
   <div class="wrap team">
     <div class="director reveal">
-      <div class="photo"><img src="/img/aspire/kelby-tyrrell-bw-2027.webp"  alt="Kelby Tyrrell, Director and Choreographer"></div>
+      <div class="photo"><img src="/img/aspire/kelby-tyrrell-v2.webp"  alt="Kelby Tyrrell, Director and Choreographer"></div>
       <div class="name"><div class="eyebrow">Director</div><h3>Kelby<br>Tyrrell</h3></div>
       <svg class="loops" viewBox="0 0 220 160" fill="none" stroke="#ef8478" stroke-width="1.6" stroke-linecap="round">
         <path d="M10 120 C 60 40, 200 20, 200 80 C 200 140, 60 150, 50 100 C 40 50, 170 30, 180 90 C 190 140, 90 140, 80 105 C 70 70, 150 55, 160 95"/>
@@ -471,18 +465,8 @@ addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passi
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// ASPIRE cascade, from the Canva layout: one letter missing per line
-const word='ASPIRE', box=document.getElementById('cascade');
-for(let i=0;i<word.length;i++){
-  const line=document.createElement('span');line.className='line';
-  [...word].forEach((c,j)=>{
-    const s=document.createElement('span');s.className='ch'+(i===j?' gap':'');
-    s.textContent=c;s.style.transitionDelay=(i*0.09+j*0.04)+'s';s.setAttribute('aria-hidden','true');
-    line.appendChild(s);
-  });
-  box.appendChild(line);
-}
-new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){box.classList.add('on');o.disconnect()}}),{threshold:.3}).observe(box);
+// The ASPIRE cascade is now the real Aspire Levels artwork, so the
+// script that type-set it has been removed.
 
 // countdown to vocal auditions, Dec 14 2026 4:00 PM Mountain
 (function(){
