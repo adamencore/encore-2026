@@ -39,6 +39,15 @@
 <meta name="author" content="Encore Performing Arts">
 <meta name="theme-color" content="#132e35">
 
+<!-- Mikado is the site's only typeface and it defines --font-display, which
+     this page's stylesheet uses 40 times. On the template this link sits below
+     the JSON-LD; slicing that block out took the fonts with it and the whole
+     page fell back to the browser's default serif. Do not drop it again.
+     The template's Fraunces and Familjen Grotesk links are deliberately not
+     carried: nothing in this stylesheet names them. -->
+<link rel="preload" href="/fonts/Mikado-Medium.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/mikado.css">
+
 <!-- Elfsight platform.js loads ONCE, here in the head, never per embed.
      Two script tags on one page is what stopped a second form rendering before. -->
 <script src="https://elfsightcdn.com/platform.js" async></script>
