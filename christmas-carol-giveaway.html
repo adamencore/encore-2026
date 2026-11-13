@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <!-- ============================================================
      A CHRISTMAS CAROL GIVEAWAY , /christmas-carol-giveaway
-     One generic page shared with every community partner, not a
-     page per group. The group comes from the URL (?group=sunriver)
-     and from a required dropdown on the entry form; both read the
-     same GROUPS array at the bottom of this file, which is the one
-     place to add a new group.
-     Entries go to Netlify Forms, form name "carol-giveaway".
-     Chrome, stylesheet and tail scripts are carried from
-     /a-christmas-carol-tickets so the nav, footer, Google tag and
-     ThunderTix conversion stay identical. No TheaterEvent schema:
-     the performance listing lives on the ticket page.
+     A single-purpose entry page. Its only job is the form, so it
+     carries no nav links, no second offer and no outbound CTA
+     above the form. The 30 percent partner discount deliberately
+     lives AFTER the entry, in the Elfsight confirmation and email,
+     so it does not compete with the giveaway.
+     One page serves every community partner: ?group=<value> greets
+     them by name from the GROUPS array at the bottom of this file,
+     with a clean URL per group in _redirects. Do not fork this
+     file per group.
+     Entries are collected by the Elfsight form
+     ca9f4999-1a74-4902-9a2b-b1abf64cb715; the group dropdown and
+     the confirmation copy are configured in Elfsight, not here.
      ============================================================ -->
 <html lang="en">
 <head>
@@ -30,13 +32,17 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <!-- ========== CORE META ========== -->
-<title>Win a Family Night at A Christmas Carol | Encore Performing Arts</title>
-<meta name="description" content="Enter to win four tickets to A Christmas Carol: A New Musical at the historic Electric Theater in St. George, Utah, plus a Bah Hum Mug. Community partners save 30 percent on every ticket.">
+<title>Win 4 Tickets to A Christmas Carol | Encore Performing Arts</title>
+<meta name="description" content="Enter to win four tickets to A Christmas Carol: A New Musical at the historic Electric Theater in St. George, Utah, plus a Bah Hum Mug. One entry per household.">
 <link rel="canonical" href="https://www.encorepa.org/christmas-carol-giveaway">
-<!-- Unlisted while the page is being proofed. Change to index, follow when it goes live. -->
+<!-- Unlisted while it is being proofed. Change to index, follow when it goes live. -->
 <meta name="robots" content="noindex, nofollow">
 <meta name="author" content="Encore Performing Arts">
 <meta name="theme-color" content="#132e35">
+
+<!-- Elfsight platform.js loads ONCE, here in the head, never per embed.
+     Two script tags on one page is what stopped a second form rendering before. -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
 
 <meta name="geo.region" content="US-UT">
 <meta name="geo.placename" content="St. George, Utah">
@@ -47,16 +53,16 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Encore Performing Arts">
 <meta property="og:url" content="https://www.encorepa.org/christmas-carol-giveaway">
-<meta property="og:title" content="Win a Family Night at A Christmas Carol | Encore Performing Arts">
-<meta property="og:description" content="Enter to win four tickets to A Christmas Carol: A New Musical at the historic Electric Theater in St. George, Utah, plus a Bah Hum Mug. Community partners save 30 percent on every ticket.">
+<meta property="og:title" content="Win 4 Tickets to A Christmas Carol | Encore Performing Arts">
+<meta property="og:description" content="Enter to win four tickets to A Christmas Carol: A New Musical at the historic Electric Theater in St. George, Utah, plus a Bah Hum Mug. One entry per household.">
 <meta property="og:image" content="https://www.encorepa.org/img/giveaway/carol-giveaway-2026.jpg">
 <meta property="og:image:alt" content="A Christmas Carol giveaway: a Bah Hum Mug and four tickets, November 30 through December 18 at the Electric Theater">
 <meta property="og:locale" content="en_US">
 
 <!-- ========== TWITTER ========== -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Win a Family Night at A Christmas Carol">
-<meta name="twitter:description" content="Enter to win four tickets to A Christmas Carol: A New Musical at the historic Electric Theater in St. George, Utah, plus a Bah Hum Mug. Community partners save 30 percent on every ticket.">
+<meta name="twitter:title" content="Win 4 Tickets to A Christmas Carol">
+<meta name="twitter:description" content="Enter to win four tickets to A Christmas Carol: A New Musical at the historic Electric Theater in St. George, Utah, plus a Bah Hum Mug. One entry per household.">
 <meta name="twitter:image" content="https://www.encorepa.org/img/giveaway/carol-giveaway-2026.jpg">
 
 <style>
@@ -630,282 +636,167 @@
     line-height:1.5;text-align:center;position:relative;z-index:200;}
   .prevbar strong{color:#f0dcc2;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
     font-size:12px;margin-right:8px;}
-  .prevbar a{color:#f3efe9;text-decoration:underline;text-underline-offset:2px;}
   /* ===== END PREVIEW BANNER ===== */
 
-  /* ===== GIVEAWAY PAGE (gv- namespace, nothing else on the site uses it) ===== */
-  /* Anchor targets have to clear the sticky nav. Measured nav bottom is about
-     117px; the site standardised on 140px. */
-  #enter,#promotion,#prize{scroll-margin-top:140px;}
+  /* ===== GIVEAWAY LANDING PAGE =====
+     One job: get the entry. No nav links, no second offer, no outbound CTA
+     above the form. Anything that could be clicked instead of the form was
+     taken out on purpose, so think twice before adding something back. */
+  nav.site .nav-inner{justify-content:center;height:66px;}
 
-  /* The ticket page hides its h1 (.sr-only) and lets the logo carry the title.
-     This page shows a real headline on the black banner, so it needs its own
-     colour: the inherited --charcoal is near-black sitting on near-black. */
-  .cc-banner-inner h1{font-weight:500;font-size:clamp(29px,4.3vw,54px);line-height:1.06;
-    letter-spacing:-.035em;color:#fdfcfa;margin:0 0 15px;}
-  .cc-banner-inner h1 em{font-style:italic;color:var(--show-tint);}
+  /* Compact hero. The ticket page's banner is ~500px of logo before you reach
+     a word; here the headline has to arrive fast and the form right after. */
+  .gv-hero{background:#000;padding:30px 0 34px;text-align:center;position:relative;overflow:hidden;}
+  /* .cc-stage is carried from the ticket page, where it is a 1920/900 banner
+     with its own aspect-ratio and min-height. Left alone it computed 600px
+     tall inside a 360px hero and spilled over the poster and the form card.
+     Neutralise its sizing so inset:0 actually governs. */
+  .gv-hero .cc-stage{position:absolute;inset:0;aspect-ratio:auto;height:100%;
+    min-height:0;max-height:none;}
+  .gv-hero .cc-stage .cc-bg img{height:100%;object-position:center 42%;}
+  .gv-hero-inner{position:relative;z-index:4;max-width:760px;margin:0 auto;padding:0 28px;}
+  .gv-showmark{width:clamp(190px,26vw,290px);height:auto;margin:0 auto 20px;opacity:.95;}
+  .gv-eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(240,220,194,.14);
+    border:1px solid rgba(240,220,194,.34);color:#f6efe4;padding:8px 16px;border-radius:100px;
+    font-size:12.5px;font-weight:700;letter-spacing:.05em;margin-bottom:16px;}
+  .gv-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--show-tint);}
+  .gv-hero h1{font-weight:500;font-size:clamp(30px,4.6vw,54px);line-height:1.05;
+    letter-spacing:-.035em;color:#fdfcfa;margin:0 0 13px;}
+  .gv-hero h1 em{font-style:italic;color:var(--show-tint);}
+  .gv-hero p{color:rgba(233,228,224,.9);font-size:clamp(15.5px,1.7vw,17.5px);line-height:1.6;
+    max-width:560px;margin:0 auto;}
 
-  .gv-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:56px;align-items:center;}
-  .gv-poster{border-radius:var(--radius);overflow:hidden;line-height:0;
-    box-shadow:0 26px 60px -34px rgba(11,28,33,.55);background:var(--paper);}
+  /* Prize and form, side by side, so the form is on the first screen. */
+  .gv-main{padding:clamp(34px,4.5vw,56px) 0 clamp(44px,5vw,72px);}
+  .gv-split{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);
+    gap:clamp(28px,4vw,54px);align-items:start;}
+  .gv-poster{border-radius:var(--radius);overflow:hidden;line-height:0;background:var(--paper);
+    box-shadow:0 26px 60px -34px rgba(11,28,33,.5);}
   .gv-poster img{width:100%;height:auto;}
-  .gv-list{list-style:none;margin:22px 0 0;display:grid;gap:14px;}
-  .gv-list li{display:flex;gap:13px;align-items:flex-start;font-size:16px;line-height:1.6;}
-  .gv-list .tick{flex:0 0 22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;
-    font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+  .gv-prize{list-style:none;margin:22px 0 0;display:grid;gap:12px;}
+  .gv-prize li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:1.55;}
+  .gv-prize .tick{flex:0 0 21px;height:21px;border-radius:50%;background:var(--accent);color:#fff;
+    font-size:11.5px;display:flex;align-items:center;justify-content:center;margin-top:2px;}
 
-  /* FORM */
-  .gv-form-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
-    padding:34px;max-width:640px;}
-  .gv-form-card h2{font-weight:500;font-size:clamp(25px,3vw,34px);line-height:1.1;
-    letter-spacing:-.03em;margin-bottom:10px;}
-  .gv-form-card .gv-intro{color:var(--muted);font-size:15.5px;line-height:1.6;margin-bottom:24px;}
-  .gv-field{margin-bottom:18px;}
-  .gv-field label{display:block;font-size:14px;font-weight:600;margin-bottom:7px;}
-  .gv-field .req{color:var(--accent);margin-left:3px;}
-  .gv-field input,.gv-field select{width:100%;font-family:inherit;font-size:15.5px;
-    padding:13px 15px;border:1.5px solid var(--line);border-radius:14px;background:#fff;
-    color:var(--charcoal);}
-  .gv-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23132e35' stroke-width='1.8'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:right 16px center;padding-right:42px;}
-  .gv-field input:focus,.gv-field select:focus{outline:2px solid var(--accent);outline-offset:1px;
-    border-color:transparent;}
-  .gv-field .hint{font-size:13.5px;color:var(--muted);margin-top:6px;line-height:1.5;}
-  .gv-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  /* Hidden until "Other" is chosen. hidden is set as an attribute so it still
-     works with JS off, where the field is simply never shown. */
-  .gv-other[hidden]{display:none;}
-  .gv-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
-  .gv-fine{font-size:13.5px;color:var(--muted);line-height:1.6;margin-top:16px;}
-  .gv-err{display:none;margin-top:16px;font-size:14.5px;color:#8a2b17;line-height:1.6;}
-  .gv-err a{text-decoration:underline;}
-  .gv-ok{display:none;background:var(--paper);border:1px solid var(--line);
-    border-radius:var(--radius);padding:34px;max-width:640px;}
-  .gv-ok.show{display:block;}
-  .gv-ok .chk{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;
-    border-radius:50%;background:var(--accent);color:#fff;font-size:18px;margin-bottom:14px;}
-  .gv-ok h2{font-weight:500;font-size:27px;letter-spacing:-.03em;margin-bottom:8px;}
-  .gv-ok p{color:var(--muted);font-size:15.5px;line-height:1.65;}
-  .gv-noscript{background:var(--cream);border:1px solid var(--line);border-radius:16px;
-    padding:16px 18px;font-size:14.5px;line-height:1.6;margin-bottom:20px;}
+  .gv-formcard{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:clamp(22px,3vw,34px);}
+  .gv-formcard h2{font-weight:500;font-size:clamp(24px,3vw,32px);line-height:1.1;
+    letter-spacing:-.03em;margin-bottom:9px;}
+  .gv-formcard h2 em{font-style:italic;}
+  .gv-formcard .gv-intro{color:var(--muted);font-size:15.5px;line-height:1.6;margin-bottom:22px;}
+  /* Elfsight renders into this div after the page paints. The min-height keeps
+     the rules below from jumping up the page while it loads. */
+  .gv-embed{min-height:520px;}
 
-  /* PROMOTION BAND */
-  .gv-promo{background:var(--charcoal);color:var(--cream);padding:72px 0;}
-  .gv-promo .pill{background:rgba(240,220,194,.14);border-color:rgba(240,220,194,.34);
-    color:#f6efe4;}
-  .gv-promo .pill .dot{background:var(--show-tint);}
-  .gv-promo h2{font-weight:500;font-size:clamp(28px,3.6vw,44px);line-height:1.08;
-    letter-spacing:-.035em;margin:16px 0 14px;color:#fdfcfa;}
-  .gv-promo p{color:rgba(240,236,232,.92);font-size:16.5px;line-height:1.65;max-width:56ch;}
-  .gv-code{display:inline-flex;align-items:baseline;gap:14px;flex-wrap:wrap;
-    background:rgba(253,252,250,.07);border:1.5px dashed rgba(240,220,194,.5);
-    border-radius:18px;padding:20px 26px;margin:26px 0 18px;}
-  .gv-code .lab{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--show-tint);}
-  .gv-code .val{font-size:clamp(26px,4vw,38px);font-weight:700;letter-spacing:.08em;color:#fdfcfa;}
-  .gv-code .msg{font-size:16px;line-height:1.55;color:rgba(240,236,232,.92);max-width:40ch;}
-  .gv-promo .seller-note{margin-top:22px;}
-
-  /* RULES */
-  .gv-rules{background:var(--cream);border:1px solid var(--line);border-radius:var(--radius);
-    padding:30px 32px;max-width:720px;}
-  .gv-rules h2{font-weight:500;font-size:24px;letter-spacing:-.03em;margin-bottom:14px;}
-  .gv-rules ul{list-style:none;display:grid;gap:11px;}
-  .gv-rules li{font-size:15.5px;line-height:1.6;padding-left:18px;position:relative;}
-  .gv-rules li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;
+  /* Rules: two lines in the open, the rest behind a toggle. */
+  .gv-rules{border-top:1px solid var(--line);margin-top:clamp(30px,4vw,44px);
+    padding-top:clamp(24px,3vw,32px);font-size:14.5px;line-height:1.65;color:var(--muted);}
+  .gv-rules p{max-width:68ch;}
+  .gv-rules strong{color:var(--charcoal);font-weight:600;}
+  .gv-rules details{margin-top:14px;}
+  .gv-rules summary{cursor:pointer;color:var(--charcoal);font-weight:600;font-size:14.5px;
+    display:inline-flex;align-items:center;gap:7px;list-style:none;}
+  .gv-rules summary::-webkit-details-marker{display:none}
+  .gv-rules summary::after{content:'+';font-weight:400;font-size:17px;line-height:1;}
+  .gv-rules details[open] summary::after{content:'\2212';}
+  .gv-rules summary:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px;}
+  .gv-rules ul{list-style:none;margin:13px 0 0;display:grid;gap:9px;max-width:68ch;}
+  .gv-rules li{padding-left:17px;position:relative;}
+  .gv-rules li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;
     border-radius:50%;background:var(--accent);}
+  .gv-rules a{color:var(--charcoal);text-decoration:underline;text-underline-offset:2px;}
+  .gv-rules .seller-note{color:var(--muted);margin-top:18px;font-size:13.5px;}
 
-  @media(max-width:860px){
-    .gv-grid{grid-template-columns:1fr;gap:30px;}
-    .gv-poster{max-width:420px;margin:0 auto;}
+  @media(max-width:900px){
+    .gv-split{grid-template-columns:1fr;gap:30px;}
+    /* Form first on phones. Stacked the other way the poster pushed it to
+       about 1000px, past the fold. The headline already names the prize, so
+       the poster reinforces it rather than introducing it. */
+    .gv-formcard{order:1;}
+    .gv-side{order:2;}
+    .gv-poster{max-width:330px;margin:0 auto;}
   }
   @media(max-width:560px){
-    .gv-form-card,.gv-ok{padding:24px 20px;}
-    .gv-row{grid-template-columns:1fr;gap:0;}
-    .gv-promo{padding:54px 0;}
-    .gv-code{padding:17px 20px;}
+    .gv-hero{padding:24px 0 28px;}
+    .gv-poster{max-width:262px;}
+    .gv-embed{min-height:600px;}
   }
 </style>
 </head>
 <body>
 <!-- ===== PREVIEW BANNER (delete this block when this goes live) ===== -->
 <div class="prevbar">
-  <strong>Preview</strong>Giveaway page for proofing before it goes out to community groups. Set to noindex until then.
+  <strong>Preview</strong>Giveaway entry page for proofing. Check that the Elfsight form renders before this goes out.
 </div>
 <!-- ===== END PREVIEW BANNER ===== -->
 <nav class="site" aria-label="Primary">
   <div class="wrap nav-inner">
     <a href="/" class="logo" aria-label="Encore Performing Arts: Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg></a>
-    <div class="nav-links">
-      <a href="/about">About</a>
-      <a href="/auditions">Auditions</a>
-      <a href="/contact">Contact</a>
-    </div>
-    <div class="nav-cta"><a href="/a-christmas-carol-tickets">&larr; Tickets and dates</a></div>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
-  <nav aria-label="Mobile">
-    <a href="/about">About<span class="ar" aria-hidden="true">→</span></a>
-    <a href="/auditions">Auditions<span class="ar" aria-hidden="true">→</span></a>
-    <a href="/contact">Contact<span class="ar" aria-hidden="true">→</span></a>
-    <div class="mm-cta"><a href="/tickets" class="btn btn-light">Get Tickets →</a><a href="/donate" class="btn btn-light" style="margin-top:11px;">Donate</a></div>
-    <div class="mm-foot">The Historic Electric Theater · St. George, UT<br><a href="tel:+14354140049">(435) 414-0049</a></div>
-    <figure class="mm-photo" style="margin-top:30px;border-radius:16px;overflow:hidden;line-height:0;box-shadow:0 18px 40px -24px rgba(0,0,0,.6);"><picture><source type="image/webp" srcset="/img/electric-theater/facade-dusk.webp"><img src="/img/electric-theater/facade-dusk.jpg" alt="The historic Electric Theater in St. George, Utah at dusk" loading="lazy" decoding="async" style="width:100%;height:auto;display:block;"></picture></figure>
-  </nav>
-</div>
 
-<!-- ========== BREADCRUMB
 <main>
 
   <!-- ===== HERO ===== -->
-  <header class="cc-banner">
-    <div class="cc-stage">
+  <header class="gv-hero">
+    <div class="cc-stage" aria-hidden="true">
       <picture class="cc-bg">
         <source type="image/webp" srcset="/img/shows/cc-bg.webp">
-        <img src="/img/shows/cc-bg.jpg" alt="" aria-hidden="true">
+        <img src="/img/shows/cc-bg.jpg" alt="">
       </picture>
-      <canvas class="snow" aria-hidden="true"></canvas>
-      <div class="cc-stage-inner">
-        <div class="cc-logo">
-          <img src="/img/shows/cc-logo.svg" alt="A Christmas Carol, A New Musical" fetchpriority="high">
-        </div>
-      </div>
+      <canvas class="snow"></canvas>
     </div>
-    <div class="cc-banner-body">
-      <div class="wrap">
-        <div class="cc-banner-inner reveal">
-          <span class="sh-badge"><span class="dot"></span>Community giveaway</span>
-          <h1>Win a Family Night at <em>A Christmas Carol</em></h1>
-          <p class="cc-lead">Four tickets to the performance of your choice, plus a Bah Hum Mug to take home. A Christmas Carol: A New Musical runs November 30 through December 18, 2026 at the historic Electric Theater in St. George.</p>
-          <div class="sh-actions">
-            <a href="#enter" class="btn btn-accent">Enter the giveaway &rarr;</a>
-            <a href="/a-christmas-carol-tickets" class="btn btn-light">See performance dates</a>
-          </div>
-          <p class="seller-note">Encore Performing Arts produces this show. Tickets are sold only through our box office, at face value.</p>
-        </div>
-      </div>
+    <div class="gv-hero-inner">
+      <img class="gv-showmark" src="/img/shows/cc-logo.svg" alt="A Christmas Carol, A New Musical" width="290" height="100" fetchpriority="high">
+      <!-- Swapped for the group's own name when the link carries ?group= -->
+      <span class="gv-eyebrow" id="gvEyebrow"><span class="dot" aria-hidden="true"></span>Community giveaway</span>
+      <h1>Win 4 tickets and a <em>Bah Hum Mug</em></h1>
+      <p>Four tickets to the performance of your choice at the historic Electric Theater, plus our holiday mug to take home.</p>
     </div>
   </header>
 
-  <!-- ===== PRIZE ===== -->
-  <section id="prize" aria-labelledby="prize-h">
-    <div class="wrap">
-      <div class="gv-grid">
-        <div class="reveal">
-          <span class="pill" style="margin-bottom:16px;"><span class="dot"></span>The prize</span>
-          <h2 id="prize-h" class="sec-head-solo" style="font-weight:500;font-size:clamp(28px,3.6vw,46px);line-height:1.05;letter-spacing:-.035em;">One family night, <em style="font-style:italic;">on us</em></h2>
-          <ul class="gv-list">
-            <li><span class="tick" aria-hidden="true">&#10003;</span><span><strong>Four tickets</strong> to any performance in the run, subject to availability.</span></li>
-            <li><span class="tick" aria-hidden="true">&#10003;</span><span><strong>One Bah Hum Mug</strong>, our holiday mug, waiting for you at the box office.</span></li>
-            <li><span class="tick" aria-hidden="true">&#10003;</span><span>Your pick of sixteen performances across three weeks at the Electric Theater, 68 E Tabernacle Street, St. George.</span></li>
-          </ul>
-        </div>
-        <figure class="gv-poster reveal">
+  <!-- ===== PRIZE AND ENTRY ===== -->
+  <section class="gv-main" aria-labelledby="enter-h">
+    <div class="wrap gv-split">
+
+      <div class="gv-side">
+        <figure class="gv-poster">
           <picture>
             <source type="image/webp" srcset="/img/giveaway/carol-giveaway-2026.webp">
-            <img src="/img/giveaway/carol-giveaway-2026.jpg" alt="A Christmas Carol: A New Musical giveaway. A red Bah Hum Mug and four tickets. November 30 through December 18 at the Electric Theater." width="951" height="1200" loading="lazy" decoding="async">
+            <img src="/img/giveaway/carol-giveaway-2026.jpg" alt="A Christmas Carol: A New Musical giveaway. A red Bah Hum Mug and four tickets. November 30 through December 18 at the Electric Theater." width="951" height="1200" fetchpriority="high" decoding="async">
           </picture>
         </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ENTRY FORM ===== -->
-  <section id="enter" style="padding-top:0;" aria-labelledby="enter-h">
-    <div class="wrap">
-      <!-- Netlify Forms: detected on deploy from data-netlify plus the hidden
-           form-name field, the same way the sensory and ASL lists work.
-           Submissions land in Netlify dashboard, Forms, "carol-giveaway".
-           The group <select> is empty in the markup and filled from the GROUPS
-           array at the bottom of this page. Netlify registers the field by its
-           name attribute, so the options do not need to be in the source. -->
-      <form name="carol-giveaway" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-            action="/christmas-carol-giveaway?entered=1" class="gv-form-card reveal" id="gvForm">
-        <input type="hidden" name="form-name" value="carol-giveaway">
-        <p class="gv-hp" aria-hidden="true"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-
-        <span class="pill" style="margin-bottom:16px;"><span class="dot"></span>Enter to win</span>
-        <h2 id="enter-h">Enter the <em style="font-style:italic;">giveaway</em></h2>
-        <p class="gv-intro">One entry per household. We will email the winner and leave the tickets and the mug at the box office.</p>
-
-        <noscript><p class="gv-noscript">This form needs JavaScript to list the group options. Please email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> with your name, address and the group you are with, and we will enter you.</p></noscript>
-
-        <div class="gv-row">
-          <div class="gv-field">
-            <label for="gv-name">Name<span class="req" aria-hidden="true">*</span></label>
-            <input id="gv-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
-          </div>
-          <div class="gv-field">
-            <label for="gv-email">Email<span class="req" aria-hidden="true">*</span></label>
-            <input id="gv-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-          </div>
-        </div>
-
-        <div class="gv-field">
-          <label for="gv-address">Street address<span class="req" aria-hidden="true">*</span></label>
-          <input id="gv-address" name="street-address" type="text" autocomplete="street-address" placeholder="123 Main Street, St. George, UT 84770" required>
-          <p class="hint">We use this to keep the giveaway to one entry per household.</p>
-        </div>
-
-        <div class="gv-field">
-          <label for="gv-group">Which group are you with?<span class="req" aria-hidden="true">*</span></label>
-          <select id="gv-group" name="group" required>
-            <option value="">Choose your group</option>
-          </select>
-        </div>
-
-        <div class="gv-field gv-other" id="gvOtherField" hidden>
-          <label for="gv-other">Tell us which group<span class="req" aria-hidden="true">*</span></label>
-          <input id="gv-other" name="group-other" type="text" placeholder="Name of your group, club, church or neighborhood">
-        </div>
-
-        <button type="submit" class="btn btn-accent" style="width:100%;justify-content:center;">Enter the giveaway</button>
-        <p class="gv-fine">We will only email you about this giveaway and about Encore shows. Unsubscribe anytime.</p>
-        <p class="gv-err" id="gvError" role="alert">Something went wrong. Please email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> and we will enter you by hand.</p>
-      </form>
-
-      <div class="gv-ok" id="gvSuccess" role="status">
-        <span class="chk" aria-hidden="true">&#10003;</span>
-        <h2>You are entered</h2>
-        <p>Thank you. We will email the winner, and the tickets and the mug will be waiting at the box office. In the meantime, your group's discount code is below, good for 30 percent off every ticket.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PROMOTION ===== -->
-  <section class="gv-promo" id="promotion" aria-labelledby="promo-h">
-    <div class="wrap">
-      <span class="pill"><span class="dot"></span>Community partners save 30%</span>
-      <h2 id="promo-h">Enter your group's code at checkout for 30% off every ticket</h2>
-      <!-- Filled from the group in the URL, for example ?group=sunriver. With no
-           group in the URL this falls back to the shared-code wording. -->
-      <div class="gv-code" id="gvCodeBox">
-        <p class="msg" id="gvCodeMsg">Use the code your group shared with you.</p>
-      </div>
-      <p>The discount applies to every ticket in your order, for any performance in the run. Enter it in the promo code box at checkout.</p>
-      <div class="sh-actions" style="margin-top:26px;">
-        <a href="https://encoreperformingarts.thundertix.com/events/272819/performances" class="btn btn-light" target="_blank" rel="noopener">Buy tickets &rarr;</a>
-        <a href="/a-christmas-carol-tickets" class="btn btn-ghost" style="border-color:rgba(240,236,232,.5);color:#f3efe9;">About the show</a>
-      </div>
-      <p class="seller-note">Encore Performing Arts produces this show. Tickets are sold only through our box office, at face value.</p>
-    </div>
-  </section>
-
-  <!-- ===== RULES ===== -->
-  <section aria-labelledby="rules-h">
-    <div class="wrap">
-      <div class="gv-rules reveal">
-        <h2 id="rules-h">Giveaway rules</h2>
-        <ul>
-          <li>One entry per household.</li>
-          <li>The prize is four tickets to a single performance of A Christmas Carol: A New Musical, plus one Bah Hum Mug.</li>
-          <li>Seats are subject to availability on the performance the winner chooses.</li>
-          <li>The prize has no cash value and cannot be exchanged for a refund.</li>
-          <li>We will contact the winner at the email address on the entry form.</li>
-          <li>Questions? Email <a href="mailto:hello@encorepa.org" style="text-decoration:underline;">hello@encorepa.org</a> or call <a href="tel:+14354140049" style="text-decoration:underline;">(435) 414-0049</a>.</li>
+        <ul class="gv-prize">
+          <li><span class="tick" aria-hidden="true">&#10003;</span><span><strong>Four tickets</strong> to any performance in the run</span></li>
+          <li><span class="tick" aria-hidden="true">&#10003;</span><span><strong>One Bah Hum Mug</strong>, waiting at the box office</span></li>
+          <li><span class="tick" aria-hidden="true">&#10003;</span><span>Sixteen performances, November 30 to December 18</span></li>
         </ul>
+      </div>
+
+      <div class="gv-formcard">
+        <h2 id="enter-h">Enter the <em>giveaway</em></h2>
+        <p class="gv-intro">One entry per household. It takes about thirty seconds.</p>
+        <!-- Elfsight Form Builder | Christmas Carol Giveaway Entry.
+             platform.js is loaded once in the head, not here. -->
+        <div class="gv-embed elfsight-app-ca9f4999-1a74-4902-9a2b-b1abf64cb715" data-elfsight-app-lazy></div>
+      </div>
+
+    </div>
+
+    <div class="wrap">
+      <div class="gv-rules">
+        <p><strong>One entry per household.</strong> We will email the winner, and the tickets and the mug will be waiting at the box office.</p>
+        <details>
+          <summary>Full rules</summary>
+          <ul>
+            <li>The prize is four tickets to a single performance of A Christmas Carol: A New Musical, plus one Bah Hum Mug.</li>
+            <li>Seats are subject to availability on the performance the winner chooses.</li>
+            <li>The prize has no cash value and cannot be exchanged for a refund.</li>
+            <li>We will contact the winner at the email address on the entry form.</li>
+            <li>Questions? Email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> or call <a href="tel:+14354140049">(435) 414-0049</a>.</li>
+          </ul>
+        </details>
+        <p class="seller-note">Encore Performing Arts produces this show. Tickets are sold only through our box office, at face value.</p>
       </div>
     </div>
   </section>
@@ -999,16 +890,6 @@
 </script>
 <script>
 (function(){
-  var t=document.getElementById('navToggle'),m=document.getElementById('mobileMenu');
-  if(!t||!m)return;
-  function s(o){document.body.classList.toggle('menu-open',o);t.setAttribute('aria-expanded',o);t.setAttribute('aria-label',o?'Close menu':'Open menu');}
-  t.addEventListener('click',function(){s(!document.body.classList.contains('menu-open'));});
-  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false);});});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false);});
-})();
-</script>
-<script>
-(function(){
   var c=document.querySelector('.cc-stage .snow');
   if(!c) return;
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -1084,88 +965,33 @@
 <script>
 /* ============================================================
    GROUPS , the one place to edit.
-   Add a community group by adding a line here. Nothing else on
-   the page needs to change: the dropdown options and the promo
-   code shown for ?group=<value> both read from this array.
-     value : what goes in the URL and in the form submission
-     label : what the visitor sees in the dropdown
-     code  : their ThunderTix promo code, or null for no code
+   Adding a community partner is one line. The only thing the
+   page does with it is greet them by name in the hero eyebrow,
+   which is what lets a single page serve every group.
+   Their discount code is NOT here any more: it belongs in the
+   Elfsight form's confirmation message and email, so it lands
+   after the entry instead of competing with it.
+     value : what goes in the URL, ?group=<value>
+     label : what the visitor sees
+   Pair each one with a clean URL in _redirects.
    ============================================================ */
 const GROUPS = [
-  { value:'sunriver', label:'SunRiver', code:'SRCAROL' },
-  { value:'other',    label:'Other',    code:null }
+  { value:'sunriver', label:'SunRiver' }
 ];
 
-/* The value whose choice reveals the free text box. */
-const OTHER_VALUE = 'other';
-
 (function(){
-  var sel = document.getElementById('gv-group');
-  var otherField = document.getElementById('gvOtherField');
-  var otherInput = document.getElementById('gv-other');
-
-  /* --- dropdown --- */
-  if(sel){
-    GROUPS.forEach(function(g){
-      var o = document.createElement('option');
-      o.value = g.value; o.textContent = g.label;
-      sel.appendChild(o);
-    });
-  }
-
-  function syncOther(){
-    if(!sel || !otherField || !otherInput) return;
-    var on = sel.value === OTHER_VALUE;
-    otherField.hidden = !on;
-    otherInput.required = on;
-    if(!on) otherInput.value = '';
-  }
-  if(sel) sel.addEventListener('change', syncOther);
-
-  /* --- the group in the URL --- */
+  var eyebrow = document.getElementById('gvEyebrow');
+  if(!eyebrow) return;
   var param = '';
   try { param = (new URLSearchParams(location.search).get('group') || '').toLowerCase().trim(); }
-  catch(e){ param = ''; }
+  catch(e){ return; }
   var match = GROUPS.filter(function(g){ return g.value === param; })[0];
-
-  /* Preselect their group so they do not have to pick it themselves. */
-  if(match && sel){ sel.value = match.value; }
-  syncOther();
-
-  /* --- the promo code --- */
-  var box = document.getElementById('gvCodeBox');
-  var msg = document.getElementById('gvCodeMsg');
-  if(box && msg && match && match.code){
-    box.innerHTML = '';
-    var lab = document.createElement('span');
-    lab.className = 'lab'; lab.textContent = match.label + ' code';
-    var val = document.createElement('span');
-    val.className = 'val'; val.textContent = match.code;
-    box.appendChild(lab); box.appendChild(val);
-  }
-
-  /* --- submit --- */
-  var f = document.getElementById('gvForm');
-  var ok = document.getElementById('gvSuccess');
-  var err = document.getElementById('gvError');
-  if(f) f.addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!f.checkValidity()){ f.reportValidity(); return; }
-    err.style.display = 'none';
-    var btn = f.querySelector('button[type=submit]');
-    btn.disabled = true; btn.textContent = 'Entering...';
-    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
-                body:new URLSearchParams(new FormData(f)).toString()})
-      .then(function(r){ if(!r.ok) throw new Error(); f.style.display='none'; ok.classList.add('show'); })
-      .catch(function(){ btn.disabled=false; btn.textContent='Enter the giveaway'; err.style.display='block'; });
-  });
-
-  /* Someone arriving back on ?entered=1 (JS off at submit time) sees the thanks. */
-  try {
-    if(new URLSearchParams(location.search).get('entered') === '1' && f && ok){
-      f.style.display='none'; ok.classList.add('show');
-    }
-  } catch(e){}
+  if(!match) return;
+  /* textContent, not innerHTML: the label is ours, but the dot stays a node. */
+  var dot = eyebrow.querySelector('.dot');
+  eyebrow.textContent = '';
+  if(dot) eyebrow.appendChild(dot);
+  eyebrow.appendChild(document.createTextNode('A giveaway for ' + match.label));
 })();
 </script>
 </body>

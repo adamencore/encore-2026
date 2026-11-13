@@ -57,3 +57,10 @@
 /halloween-junior-musical-theater-camp   /camps   301
 
 /hadestown-pro-shot    /page-to-stage/hadestown-pro-shot    301
+
+# --- Giveaway partner links -------------------------------------------------
+# A clean link per community partner, all serving ONE file. 200 is a rewrite,
+# so the URL stays /sunriver in the address bar. Add a line here and a matching
+# entry in the GROUPS array in christmas-carol-giveaway.html. Do not fork the
+# page per group.
+/sunriver    /christmas-carol-giveaway?group=sunriver    200
