@@ -205,7 +205,8 @@ h2 em{color:var(--teal)}
 </header>
 
 <div class="wrap">
-  <p id="regFor" style="font-family:var(--font-body);font-weight:600;font-size:1.02rem;color:#22353d;margin:0 0 20px;display:none;"></p>
+  <p id="regFor" style="font-family:var(--font-body);font-weight:600;font-size:1.02rem;color:#22353d;margin:0 0 6px;display:none;"></p>
+  <p id="regPick" style="font-family:var(--font-body);font-size:.95rem;color:#4f6b76;margin:0 0 20px;display:none;"></p>
   <!-- Shown instead of the form when the performance in the URL is closed. -->
   <div class="reg-closed" id="regClosed" hidden>
     <p class="k">Reservations closed</p>
@@ -235,9 +236,12 @@ const CLOSED = ['Peter Pan Jr.'];
    because the live form expects that exact string.
    ============================================================ */
 const LABELS = {
-  'a christmas carol': 'A Christmas Carol, Tuesday December 1 at 5:00 PM, Figgy Cast',
-  'a christmas carol december 4': 'A Christmas Carol, Friday December 4 at 5:00 PM, Plum Cast',
-  'peter pan jr': 'Peter Pan Jr., Thursday November 19 at 5:00 PM'
+  'a christmas carol':            { say:'A Christmas Carol, Tuesday December 1 at 5:00 PM, Figgy Cast',
+                                    pick:'Christmas Carol - Dec 1, 2026 @ 5:00' },
+  'a christmas carol december 4': { say:'A Christmas Carol, Friday December 4 at 5:00 PM, Plum Cast',
+                                    pick:'Christmas Carol - Dec 4, 2026 @ 5:00' },
+  'peter pan jr':                 { say:'Peter Pan Jr., Thursday November 19 at 5:00 PM',
+                                    pick:'Peter Pan Jr' }
 };
 
 (function(){
@@ -259,14 +263,24 @@ const LABELS = {
     var box = document.getElementById('regClosed');
     if(box){
       var name = document.getElementById('regClosedShow');
-      if(name) name.textContent = LABELS[norm(q)] || q;
+      var CL = LABELS[norm(q)];
+      if(name) name.textContent = CL ? CL.say : q;
       box.hidden = false;
     }
     return;
   }
 
+  var L = LABELS[norm(q)];
   var e = document.getElementById('regFor');
-  if(e){ e.textContent = 'Reserving for: ' + (LABELS[norm(q)] || q); e.style.display = ''; }
+  if(e){ e.textContent = 'Reserving for: ' + (L ? L.say : q); e.style.display = ''; }
+
+  /* The form's performance dropdown is required and lists every show, so say
+     plainly which option to choose. Dec 1 and Dec 4 are one line apart. */
+  var hint = document.getElementById('regPick');
+  if(hint && L && L.pick){
+    hint.textContent = 'In the form below, choose "' + L.pick + '" under Which Performance.';
+    hint.style.display = '';
+  }
 })();
   </script>
 </div>
