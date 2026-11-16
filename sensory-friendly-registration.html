@@ -172,6 +172,20 @@
   .nav-toggle{margin-left:auto;}
 h2 em{color:var(--teal)}
 </style>
+<style>
+  /* Closed-performance notice. Shown in place of the form when the link in
+     the address bar names a performance whose reservations have closed. */
+  .reg-closed{background:var(--paper);border:1px solid var(--cream);border-radius:18px;
+    padding:30px 32px;max-width:640px;margin:0 0 28px;}
+  .reg-closed .k{font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--charcoal-soft);margin:0 0 10px;}
+  .reg-closed h2{font-size:1.45rem;line-height:1.2;color:var(--charcoal);margin:0 0 12px;}
+  .reg-closed p{color:var(--muted);line-height:1.65;margin:0 0 12px;}
+  .reg-closed p:last-child{margin-bottom:0;}
+  .reg-closed a{color:var(--charcoal);font-weight:600;text-decoration:underline;
+    text-underline-offset:3px;}
+  @media(max-width:560px){.reg-closed{padding:22px 20px;}}
+</style>
 </head>
 <body>
 <nav class="site" aria-label="Primary">
@@ -186,16 +200,63 @@ h2 em{color:var(--teal)}
     <div class="crumbs"><a href="/">Home</a> › <a href="/sensory-friendly-performances">Sensory-Friendly</a> › Reserve</div>
     <div class="eyebrow">Sensory-Friendly Performances</div>
     <h1>Reserve your <em>sensory-friendly</em> seats</h1>
-    <p>Reserve free tickets to an upcoming sensory-friendly performance. After you submit, we'll confirm your reservation by email. Reservations are required in advance — walk-ins can't be accommodated at this time.</p>
+    <p>Reserve free tickets to an upcoming sensory-friendly performance. After you submit, we'll confirm your reservation by email. Reservations are required in advance. Walk-ins can't be accommodated at this time.</p>
   </div>
 </header>
 
 <div class="wrap">
   <p id="regFor" style="font-family:var(--font-body);font-weight:600;font-size:1.02rem;color:#22353d;margin:0 0 20px;display:none;"></p>
+  <!-- Shown instead of the form when the performance in the URL is closed. -->
+  <div class="reg-closed" id="regClosed" hidden>
+    <p class="k">Reservations closed</p>
+    <h2>This performance is full</h2>
+    <p>Reservations for our sensory-friendly performance of <span id="regClosedShow">this show</span> are now closed. Thank you to everyone who reserved.</p>
+    <p>Our next sensory-friendly performance is <strong>A Christmas Carol: A New Musical</strong> on Tuesday, December 1 at 5:00 PM at the Electric Theater. <a href="/sensory-friendly-registration?performance=A+Christmas+Carol">Reserve free seats for that performance</a>, or call us at <a href="tel:+14354140049">(435) 414-0049</a> with any questions.</p>
+  </div>
+
   <!-- Elfsight Form Builder | Sensory Friendly Performance Ticket Reservation -->
   <script src="https://elfsightcdn.com/platform.js" async></script>
-  <div class="elfsight-app-8650d3b7-bc8c-4b4d-bc47-253416d0361d" data-elfsight-app-lazy></div>
-  <script>(function(){try{var p=new URLSearchParams(location.search);var q=p.get('performance')||p.get('production');if(q){var e=document.getElementById('regFor');if(e){e.textContent='Reserving for: '+q;e.style.display='';}}}catch(e){}})();</script>
+  <div class="elfsight-app-8650d3b7-bc8c-4b4d-bc47-253416d0361d" data-elfsight-app-lazy id="regForm"></div>
+  <script>
+/* ============================================================
+   CLOSED , the one place to edit.
+   One Elfsight form serves every sensory-friendly performance,
+   so a performance is closed here rather than in Elfsight,
+   which would close all of them. Add the performance name as
+   it appears in the ?performance= link.
+   Close the matching row on /sensory-friendly-performances too.
+   ============================================================ */
+const CLOSED = ['Peter Pan Jr.'];
+
+(function(){
+  var q = '';
+  try {
+    var p = new URLSearchParams(location.search);
+    q = (p.get('performance') || p.get('production') || '').trim();
+  } catch(e){ return; }
+  if(!q) return;
+
+  var norm = function(s){ return s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); };
+  var shut = CLOSED.some(function(c){ return norm(c) === norm(q); });
+
+  if(shut){
+    /* Take the form out of the DOM rather than hiding it, so Elfsight does
+       not render a live form underneath the notice. */
+    var form = document.getElementById('regForm');
+    if(form && form.parentNode) form.parentNode.removeChild(form);
+    var box = document.getElementById('regClosed');
+    if(box){
+      var name = document.getElementById('regClosedShow');
+      if(name) name.textContent = q;
+      box.hidden = false;
+    }
+    return;
+  }
+
+  var e = document.getElementById('regFor');
+  if(e){ e.textContent = 'Reserving for: ' + q; e.style.display = ''; }
+})();
+  </script>
 </div>
 
 <footer>
