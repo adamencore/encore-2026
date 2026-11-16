@@ -228,6 +228,18 @@ h2 em{color:var(--teal)}
    ============================================================ */
 const CLOSED = ['Peter Pan Jr.'];
 
+/* ============================================================
+   LABELS , how a performance is named back to the visitor.
+   Dec 1 and Dec 4 are the same show, so the link has to carry
+   the date. Dec 1 keeps the bare title it has always used,
+   because the live form expects that exact string.
+   ============================================================ */
+const LABELS = {
+  'a christmas carol': 'A Christmas Carol, Tuesday December 1 at 5:00 PM, Figgy Cast',
+  'a christmas carol december 4': 'A Christmas Carol, Friday December 4 at 5:00 PM, Plum Cast',
+  'peter pan jr': 'Peter Pan Jr., Thursday November 19 at 5:00 PM'
+};
+
 (function(){
   var q = '';
   try {
@@ -247,14 +259,14 @@ const CLOSED = ['Peter Pan Jr.'];
     var box = document.getElementById('regClosed');
     if(box){
       var name = document.getElementById('regClosedShow');
-      if(name) name.textContent = q;
+      if(name) name.textContent = LABELS[norm(q)] || q;
       box.hidden = false;
     }
     return;
   }
 
   var e = document.getElementById('regFor');
-  if(e){ e.textContent = 'Reserving for: ' + q; e.style.display = ''; }
+  if(e){ e.textContent = 'Reserving for: ' + (LABELS[norm(q)] || q); e.style.display = ''; }
 })();
   </script>
 </div>
