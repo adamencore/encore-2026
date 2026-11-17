@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /_build/
+Disallow: /studio/
 
 Sitemap: https://www.encorepa.org/sitemap.xml

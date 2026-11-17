@@ -1,3 +1,13 @@
+# --- Block the parked build folder --------------------------------------------
+# _build/ and studio/ are working folders, not pages, but Netlify deploys the
+# whole repo and WAS serving every file in them: the internal handoff docs in
+# _build/handoffs/ were readable at their exact URL (verified live 2026-11-17).
+# Directory listing is off, so only exact-filename guesses reached them, but
+# nothing stopped a crawler that found one. The `!` is required: without it a
+# real file on disk wins over a redirect rule, which is exactly the case here.
+/_build/*   /404.html   404!
+/studio/*   /404.html   404!
+
 /little-women        /little-women-2026    301
 /littlewomen         /little-women-2026    301
 /a-christmas-carol   /a-christmas-carol-2026   301
