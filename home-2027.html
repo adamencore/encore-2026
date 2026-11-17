@@ -229,6 +229,9 @@
   .tn-toggle{top:16px;bottom:auto;right:16px}
 }
 </style>
+<!-- Elfsight platform.js loads ONCE here, never beside an embed. Two script
+     tags on one page is what stopped a second form rendering before. -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -317,14 +320,10 @@
       <h2 id="news-h">Never miss an audition or show</h2>
       <p>Sign up to get auditions, performance dates, and Encore news delivered straight to your inbox.</p>
     </div>
-    <form class="news-wrap" id="newsForm" novalidate>
-      <div class="news-form">
-        <label for="newsEmail" class="sr">Email address</label>
-        <input type="email" id="newsEmail" name="email" placeholder="Your email address" autocomplete="email" required>
-        <button type="submit">SIGN UP</button>
-      </div>
-      <p class="news-ok" id="newsMsg" role="status"></p>
-    </form>
+    <div class="news-wrap">
+      <!-- Elfsight Form Builder | Encore Newsletter Signup -->
+      <div class="elfsight-app-57131991-97e9-43dc-b7a9-a518c39ad848" data-elfsight-app-lazy></div>
+    </div>
   </div>
   <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
 </section>
@@ -428,15 +427,6 @@
 
 <script>
 (function(){
-  var f=document.getElementById('newsForm');
-  if(f){
-    var e=document.getElementById('newsEmail'), m=document.getElementById('newsMsg');
-    f.addEventListener('submit',function(ev){
-      ev.preventDefault();
-      if(!e.value || !e.checkValidity()){ m.textContent='Please enter a valid email address.'; e.focus(); return; }
-      m.textContent='Preview only: signup is not connected on this page yet.';
-    });
-  }
 
   // HERO: rotating photos + parallax
   var ph=document.getElementById('heroPh'), hin=document.getElementById('heroIn'), hero=document.querySelector('.hero');

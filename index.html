@@ -782,16 +782,17 @@ html,body{overflow-x:clip;}
       mask-image:linear-gradient(180deg,#000 84%,transparent 100%);}
     .sb-left .sb-copy,.sb-right .sb-copy{grid-column:1;grid-row:2;}
   }
-  /* Newsletter signup. .news-form is the flex container, so the <form> wears
-     that class rather than wrapping it. */
-  .news-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
-  .news-error{display:none;color:#ffd9d0;font-size:13px;line-height:1.5;text-align:center;}
-  .news-error a{color:#ffd9d0;text-decoration:underline;}
-  .news-ok{display:none;min-width:min(330px,100%);background:rgba(233,228,224,.12);
-    border:1px solid rgba(233,228,224,.3);border-radius:18px;padding:20px 24px;
-    color:var(--cream);font-size:15px;line-height:1.6;}
-  .news-ok.show{display:block;}
+  /* Newsletter signup is an Elfsight widget. It brings its own typography and
+     colours, which are set in Elfsight, not here. This only gives it a column
+     to sit in so it does not sprawl across the band.
+     The .news-form rules above are now unused. */
+  .news-embed{display:flex;flex-direction:column;gap:12px;
+    flex:1 1 360px;min-width:min(360px,100%);max-width:560px;}
+  .news-embed small{color:rgba(233,228,224,.6);font-size:12.5px;text-align:center;}
 </style>
+<!-- Elfsight platform.js loads ONCE here, never beside an embed. Two script
+     tags on one page is what stopped a second form rendering before. -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
 </head>
 <body>
 <!-- NAV , social + tickets + donate ubiquitous -->
@@ -1021,20 +1022,10 @@ html,body{overflow-x:clip;}
         <h2 id="news-h">Never miss an <em>audition or show</em></h2>
         <p>Sign up to get auditions, performance dates, and Encore news delivered straight to your inbox.</p>
       </div>
-      <form class="news-form" name="newsletter" method="POST" data-netlify="true"
-            netlify-honeypot="bot-field" action="/?subscribed=1" id="newsForm">
-        <input type="hidden" name="form-name" value="newsletter">
-        <p class="news-hp" aria-hidden="true"><label>Leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-        <div class="field">
-          <label for="news-email" class="sr-only">Email address</label>
-          <input id="news-email" name="email" type="email" placeholder="Your email address" autocomplete="email" required>
-          <button type="submit" class="btn btn-light">Sign Up</button>
-        </div>
+      <div class="news-embed">
+        <!-- Elfsight Form Builder | Encore Newsletter Signup -->
+        <div class="elfsight-app-57131991-97e9-43dc-b7a9-a518c39ad848" data-elfsight-app-lazy></div>
         <small>Serving Southern Utah's young performers since 2021.</small>
-        <p class="news-error" id="newsError" role="alert">Something went wrong. Please email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> and we will add you.</p>
-      </form>
-      <div class="news-ok" id="newsOk" role="status">
-        <strong>You are on the list.</strong><br>We will email you when auditions open and when tickets go on sale.
       </div>
     </div>
   </div>
@@ -1490,33 +1481,6 @@ html,body{overflow-x:clip;}
     });
     setTimeout(go, 1000);
   }, true);
-})();
-</script>
-<script>
-/* Newsletter signup. Posts to Netlify Forms, same mechanism as the sensory and
-   ASL email lists. Submissions appear in Netlify dashboard, Forms, under
-   "newsletter". Without a notification configured there, nobody is told. */
-(function(){
-  var f = document.getElementById('newsForm'),
-      ok = document.getElementById('newsOk'),
-      err = document.getElementById('newsError');
-  if(!f) return;
-  if(location.search.indexOf('subscribed=1') > -1 && ok){
-    f.style.display = 'none'; ok.classList.add('show');
-  }
-  f.addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!f.checkValidity()){ f.reportValidity(); return; }
-    if(err) err.style.display = 'none';
-    var btn = f.querySelector('button[type=submit]');
-    btn.disabled = true; btn.textContent = 'Signing up...';
-    fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'},
-                body:new URLSearchParams(new FormData(f)).toString()})
-      .then(function(r){ if(!r.ok) throw new Error();
-                         f.style.display='none'; if(ok) ok.classList.add('show'); })
-      .catch(function(){ btn.disabled=false; btn.textContent='Sign Up';
-                         if(err) err.style.display='block'; });
-  });
 })();
 </script>
 </body>
