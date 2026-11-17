@@ -21,7 +21,10 @@
   --teal-deep:#243f46;
   --teal-ink:#1b3036;
   --salmon:#f4a29b;      /* display sizes only, 4.21:1 on --teal */
-  --salmon-sm:#ffb3ad;   /* small text, a shade off the logo pink, 4.94:1 on --teal */
+  --salmon-sm:#ffc9c4;   /* small text. Measured on the PAINTED hero backdrop,
+                            rgb(61,92,100), not the --teal token: the specks and the
+                            frame lift it. The old value was 4.22:1 there, under AA.
+                            This is 4.94:1. */
   --coral:#ef8478;
   --cream:#f3e9d2;
   --ink:#22201d;
@@ -100,7 +103,14 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px
 .aud-stack .year{font-weight:600;font-size:3.6rem;line-height:.95}
 .aud-stack .aud{font-weight:500;font-size:1.55rem;line-height:1}
 .aud-info .show{font-family:var(--display);font-style:italic;color:var(--salmon);font-size:clamp(1.5rem,2.4vw,2rem);font-weight:600;line-height:1.05}
-.aud-info .when{font-weight:600;font-size:1.1rem;margin-top:10px}
+.aud-info .show-logo{display:block;width:min(100%,390px);height:auto;margin:0 0 16px}
+/* --salmon-sm, not --salmon: this is small text, 4.94:1 on the hero teal. */
+/* Measured against the painted hero backdrop, rgb(61,92,100), which the
+   specks and frame lift above the --teal token. --salmon-sm lands at
+   4.22:1 there, under AA for 13px. This tint measures 4.94:1. */
+.aud-info .aud-label{font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;color:var(--salmon-sm);margin-bottom:2px}
+.aud-info .aud-note{font-size:.92rem;line-height:1.55;color:#f3e9d2ed;margin-top:14px;max-width:38ch}
+.aud-info .when{font-weight:600;font-size:1.1rem;margin-top:0}
 .aud-info .where{font-size:.95rem;color:#f3e9d2ed}
 .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
 .countdown{margin-top:20px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
@@ -115,6 +125,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px
   .badge{margin:0 auto 22px}
   .aud-block{grid-template-columns:1fr;gap:18px;justify-items:center}
   .aud-stack{border-right:0;padding-right:0;border-bottom:2px solid #f4a29b88;padding-bottom:16px}
+  .aud-info .show-logo{margin-left:auto;margin-right:auto}
+  .aud-info .aud-note{margin-left:auto;margin-right:auto;text-align:center}
   .hero-ctas{justify-content:center}
   .hero-photo{position:relative;width:112%;margin:30px -6% 0;right:auto;mask-image:none;-webkit-mask-image:none}
 }
@@ -285,9 +297,11 @@ footer b{color:var(--cream);font-weight:600}
       <div class="aud-block">
         <div class="aud-stack"><div class="season">Spring</div><div class="year">2027</div><div class="aud">auditions</div></div>
         <div class="aud-info">
-          <div class="show">Bright Lights of Broadway</div>
+          <img class="show-logo" src="/img/aspire/bright-lights-logo.svg" alt="Bright Lights of Broadway" width="804" height="258">
+          <div class="aud-label">Auditions</div>
           <div class="when">December 14 &amp; 15, 2026</div>
           <div class="where">at the Electric Theater</div>
+          <p class="aud-note">For 12 and up, please bring tap shoes to the dance call if you have them.</p>
         </div>
       </div>
       <div class="hero-ctas">
@@ -341,7 +355,7 @@ footer b{color:var(--cream);font-weight:600}
       </div>
       <div class="row reveal">
         <div class="date"><span class="m">Tue &middot; Dec</span><span class="d">15</span></div>
-        <div><h3>Dance call</h3><p>4:00 to 7:00 PM</p></div>
+        <div><h3>Dance call</h3><p>4:00 to 7:00 PM. For 12 and up, please bring tap shoes to the dance call if you have them.</p></div>
         <span class="tag">Auditions</span>
       </div>
       <div class="row reveal">
