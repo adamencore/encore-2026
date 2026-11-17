@@ -21,11 +21,29 @@ committed to the repo.
 All page HTML lives at the repo root, one file per URL, no extension in the
 live URL (`tickets.html` serves `/tickets`). Subfolders: `img/`, `js/`,
 `fonts/`, `blog/`, `classes/`, `shows/`, `page-to-stage/`, `netlify/`.
-`sitemap.xml` and `_redirects` are at the root. `studio/` and `_build/` are
-parked and not live.
+`sitemap.xml` and `_redirects` are at the root.
+
+**`studio/` and `_build/` are parked, but Netlify deploys the whole repo, so
+until 2026-11-17 every file in them was served.** The internal handoff docs in
+`_build/handoffs/` were readable at their exact URL, as were `_build/*.py` and
+`_build/events.json`. Directory listing is off and nothing links to them, so
+reaching one took an exact filename, but `robots.txt` said `Allow: /`.
+`_redirects` now has `/_build/*` and `/studio/*` going to `404!` at the top of
+the file, and `robots.txt` disallows both. **The `!` is load-bearing:** a real
+file on disk beats an unforced redirect rule, which is the whole case here.
+Do not assume a folder is private because it is not linked. Put nothing in the
+repo that should not be public, and re-check with a live fetch after changing
+these rules.
 
 Images live under `img/` by kind: `img/shows/`, `img/team/`, `img/gallery/`,
 `img/hero/`, `img/blog/<post-slug>/`.
+
+**`img/email/` is hotlinked from outside the site and must not be renamed,
+moved or deleted.** Those four PNGs are the badge and social icons in Adam's
+mail signature, so they are referenced by absolute URL from every email he has
+ever sent with it. The usual rule here is the opposite one, give a replaced
+image a new filename to break caches; for these, replace the bytes in place and
+keep the name, or old mail goes to broken-image icons.
 
 **Team Hub gate.** `netlify/edge-functions/team-gate.js` (env var
 `PROTECTED_PAGE_PASSWORD`). It must live in `netlify/edge-functions/`: until
