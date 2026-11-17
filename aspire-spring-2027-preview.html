@@ -188,7 +188,14 @@ section{position:relative;padding:130px 0}
 @media (max-width:700px){.cascade-sec .help{grid-template-columns:1fr}}
 
 /* PROGRAMS */
-.programs{display:grid;grid-template-columns:1.25fr 1fr;gap:22px}
+/* auto-fit, not a fixed 1.25fr 1fr: with Illuminate removed a single card
+   sat in the left column and left a 478px hole. This fills the row with
+   one card and goes back to two columns if a programme is added. */
+.programs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:22px}
+/* Capped so the lone card does not stretch to 1104px with the copy stuck
+   in the left third. It stays left-aligned with the section heading. With
+   two cards the tracks are narrower than this and the cap does nothing. */
+.programs .prog{max-width:680px}
 .prog{border-radius:28px;padding:44px;position:relative;overflow:hidden;min-height:380px;display:flex;flex-direction:column;justify-content:flex-end}
 .prog.trad{background:var(--salmon);color:var(--teal-ink)}
 .prog.trad .eyebrow{color:var(--teal-ink)}
@@ -301,7 +308,6 @@ footer b{color:var(--cream);font-weight:600}
           <div class="aud-label">Auditions</div>
           <div class="when">December 14 &amp; 15, 2026</div>
           <div class="where">at the Electric Theater</div>
-          <p class="aud-note">For 12 and up, please bring tap shoes to the dance call if you have them.</p>
         </div>
       </div>
       <div class="hero-ctas">
@@ -332,7 +338,7 @@ footer b{color:var(--cream);font-weight:600}
     </div>
     <div class="facts">
       <div class="fact reveal"><div class="ring"></div><div class="big">6+</div><h3>Ages 6 through senior year</h3><p>Open to Young Artists from age 6 through high school seniors. High school graduates are not eligible.</p></div>
-      <div class="fact reveal" style="transition-delay:.08s"><div class="ring"></div><div class="big">Wkly</div><h3>Rehearsals every week</h3><p>Weekly rehearsals each semester, right on stage at the historic Electric Theater.</p></div>
+      <div class="fact reveal" style="transition-delay:.08s"><div class="ring"></div><div class="big">Wkly</div><h3>Rehearsals every week</h3><p>Weekly rehearsals each semester at the historic Electric Theater.</p></div>
       <div class="fact reveal" style="transition-delay:.16s"><div class="ring"></div><div class="big">2x</div><h3>Auditions twice a year</h3><p>Auditions open each semester, with a waitlist between rounds.</p></div>
       <div class="fact reveal" style="transition-delay:.24s"><div class="ring"></div><div class="big">$395</div><h3>About per semester</h3><p>Payment plans and limited scholarships are available, so cost is never the reason to sit out.</p></div>
     </div>
@@ -407,12 +413,6 @@ footer b{color:var(--cream);font-weight:600}
         <h3>Aspire:<br>Traditions</h3>
         <p>A travel performance program for Young Artists ages 12 to 18. Friday rehearsals through the year, ending on a Disney stage at the Disneyland Resort in March 2027. This year's group is cast and rehearsing.</p>
         <a class="more" href="https://encorepa.org/aspire-traditions">Learn more <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </article>
-      <article class="prog illum reveal" style="transition-delay:.12s">
-        <div class="glow"></div>
-        <div class="eyebrow">Advanced ensemble</div>
-        <h3>Illuminate</h3>
-        <p>Aspire's advanced touring ensemble, chosen by audition. Participation in the fall season, including Villains Night, is strongly preferred.</p>
       </article>
     </div>
   </div>
