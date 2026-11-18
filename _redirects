@@ -19,7 +19,7 @@
 /november-camp-2026                       /camps   301
 /november-junior-musical-theater-camp     /camps   301
 # --- Retired (performed) shows -> program page ---
-/matilda-jr-2026         /junior   301
+/matilda-jr-2026         /junior   301!
 /shows/matilda-jr-2026   /junior   301
 # ============================================================
 # Encore Performing Arts — 301 redirect map (Netlify)
@@ -29,6 +29,29 @@
 # Google Search Console "all known pages" export so NO old Squarespace
 # URL 404s. Every URL that changes during migration needs a 301 here.
 # ============================================================
+# --- Duplicate pages removed 2026-11-18 (SEO sweep) ---------------------------
+# These were identical copies of the pages in /classes/ and /page-to-stage/.
+# The files are gone; the `!` keeps the rules safe if a copy is ever re-added.
+/art-of-improv                  /classes/art-of-improv                  301!
+/audition-workshop              /classes/audition-workshop              301!
+/finding-your-voice-in-tap      /classes/finding-your-voice-in-tap      301!
+/freestyle-hip-hop              /classes/freestyle-hip-hop              301!
+/musical-theatre-foundations    /classes/musical-theatre-foundations    301!
+/musical-theatre-jazz           /classes/musical-theatre-jazz           301!
+/les-miserables                 /page-to-stage/les-miserables           301!
+/phantom-of-the-opera           /page-to-stage/phantom-of-the-opera     301!
+/shakespearience                /page-to-stage/shakespearience          301!
+/shows/lion-king-jr-cast-with-logo   /lion-king-jr-cast                 301!
+
+# --- Old Squarespace URLs from the URL inventory with no page here ---------
+/mentors                 /about                        301
+/page-to-stage-events    /page-to-stage                301
+/christmas-carol-2025    /a-christmas-carol-tickets    301
+/see-villains-night      /villains-night               301
+/encanto-camp            /camps                        301
+/gala                    /donate                       301
+/cart                    /                             301
+
 # --- Resolved duplicates / renames ---
 /showchoir-24                       /aspire-performing-co              301!
 # --- Fix known broken links found in the crawl ---

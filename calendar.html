@@ -28,9 +28,9 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <!-- ========== CORE META ========== -->
-<title>Season Calendar — Auditions, Rehearsals &amp; Performances | Encore Performing Arts</title>
-<meta name="description" content="Encore Performing Arts season calendar — audition dates, rehearsals, and performances for every program in St. George, Utah. Filter by event type and view by month or list.">
-<link rel="canonical" href="https://www.encorepa.org/contact">
+<title>Season Calendar: Auditions and Performances | Encore</title>
+<meta name="description" content="Encore Performing Arts season calendar: auditions, rehearsals and performances for every program in St. George, Utah, by month or as a list.">
+<link rel="canonical" href="https://www.encorepa.org/calendar">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="Encore Performing Arts">
 <meta name="theme-color" content="#22353d">
@@ -43,7 +43,7 @@
 <!-- ========== OPEN GRAPH ========== -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Encore Performing Arts">
-<meta property="og:url" content="https://www.encorepa.org/contact">
+<meta property="og:url" content="https://www.encorepa.org/calendar">
 <meta property="og:title" content="Contact Encore Performing Arts — St. George, Utah">
 <meta property="og:description" content="Call, email, or send us a note. Find Encore's address at the historic Electric Theater in downtown St. George, Utah, phone numbers, and a map.">
 <meta property="og:image" content="https://www.encorepa.org/img/og/calendar-og.jpg">
@@ -64,16 +64,23 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ContactPage",
-      "@id": "https://www.encorepa.org/contact#webpage",
-      "url": "https://www.encorepa.org/contact",
-      "name": "Season Calendar — Encore Performing Arts",
-      "about": { "@id": "https://www.encorepa.org/#organization" },
-      "isPartOf": { "@id": "https://www.encorepa.org/#website" },
+      "@type": "WebPage",
+      "@id": "https://www.encorepa.org/calendar#webpage",
+      "url": "https://www.encorepa.org/calendar",
+      "name": "Season Calendar: Auditions, Rehearsals and Performances",
+      "about": {
+        "@id": "https://www.encorepa.org/#organization"
+      },
+      "isPartOf": {
+        "@id": "https://www.encorepa.org/#website"
+      },
       "inLanguage": "en-US"
     },
     {
-      "@type": ["NGO", "PerformingGroup"],
+      "@type": [
+        "NGO",
+        "PerformingGroup"
+      ],
       "@id": "https://www.encorepa.org/#organization",
       "name": "Encore Performing Arts",
       "alternateName": "Encore",
@@ -104,7 +111,9 @@
         "https://www.facebook.com/encorestg",
         "https://www.youtube.com/channel/UCBqCS2LKe-5UHp7osQFA-fg"
       ],
-      "location": { "@id": "https://www.encorepa.org/#venue" }
+      "location": {
+        "@id": "https://www.encorepa.org/#venue"
+      }
     },
     {
       "@type": "PerformingArtsTheater",
@@ -118,20 +127,36 @@
         "postalCode": "84770",
         "addressCountry": "US"
       },
-      "geo": { "@type": "GeoCoordinates", "latitude": 37.107700, "longitude": -113.583240 }
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 37.1077,
+        "longitude": -113.58324
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://www.encorepa.org/#website",
       "url": "https://www.encorepa.org",
       "name": "Encore Performing Arts",
-      "publisher": { "@id": "https://www.encorepa.org/#organization" }
+      "publisher": {
+        "@id": "https://www.encorepa.org/#organization"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.encorepa.org/" },
-        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.encorepa.org/contact" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.encorepa.org/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://www.encorepa.org/contact"
+        }
       ]
     }
   ]
