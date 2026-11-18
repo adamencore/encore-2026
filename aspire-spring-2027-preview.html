@@ -267,6 +267,40 @@ footer b{color:var(--cream);font-weight:600}
   img.stamp{display:block;width:54px;height:auto;}
   /* ===== END PREVIEW BANNER ===== */
 .timeline ul.agegroups{list-style:none;margin:6px 0 8px;padding:0;display:grid;gap:4px;color:#f3e9d2b8;font-size:.98rem}.timeline ul.agegroups b{display:inline-block;min-width:9.5em;font-weight:700}
+
+/* ---- Light sections (2026-11-18): schedule on cream, team on warm grey.
+   Coral is darkened on light grounds: #b24a3f for display sizes (4.4:1),
+   #a03e34 for small text. Measured, not eyeballed. ---- */
+.schedule{background:#f3e9d2}
+#team{background:#ece8e1}
+.schedule .specks,#team .specks{display:none}
+.schedule .eyebrow,#team .eyebrow{color:#a03e34}
+.schedule .section-head h2,#team .section-head h2{color:#1b3036}
+.schedule .section-head h2 em,#team .section-head h2 em{color:#b24a3f}
+.schedule .section-head p{color:#3a4a4d}
+.schedule .timeline{border-top-color:#1b303626}
+.schedule .row{border-bottom-color:#1b303626}
+.schedule .row:hover{background:#ebdfc3}
+.schedule .date{color:#b24a3f}
+.schedule .date .m{color:#4f5f61}
+.schedule .row h3{color:#1b3036}
+.schedule .row p,.schedule .timeline ul.agegroups{color:#3a4a4d}
+.schedule .tag{border-color:#1b303659;color:#1b3036}
+.schedule .tag.hot{background:#31525b;border-color:#31525b;color:#f3e9d2}
+/* Kelby's cutout sits straight on the section colour: no box, no gradient.
+   The cutout ends in a rough diagonal at the waist, so only that edge is
+   faded out with a mask on the image itself. */
+.director .photo{background:transparent;border-radius:0;aspect-ratio:459/400}
+.director .photo::after{display:none}
+/* The frame stops at the cutout's waist line (row ~400 of 538), so the fade
+   finishes exactly where the photo ends and nothing floats below it. */
+.director .photo img{object-fit:cover;object-position:center top;
+  -webkit-mask-image:linear-gradient(180deg,#000 66%,transparent 99%);mask-image:linear-gradient(180deg,#000 66%,transparent 99%)}
+#team .director .name .eyebrow{color:var(--salmon-sm)}
+#team .member{border-bottom-color:#1b303626}
+#team .member h4{color:#1b3036}
+#team .member p{color:#a03e34}
+#team .member .mono{background:#31525b;border-color:#31525b;color:#ffc9c4}
 </style>
 </head>
 <body>
