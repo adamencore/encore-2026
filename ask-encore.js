@@ -29,8 +29,8 @@
       a: "Emerging Artists is for middle-grade Young Artists building toward larger roles. Peter Pan Jr. is the current Emerging Artists production." },
     { title: "Signature Series", url: "/senior", k: "signature series teen teens older licensed main mainstage",
       a: "The Signature Series is Encore's fully staged, licensed productions for teen Young Artists. Little Women performs September 5\u201312, 2026, and A Christmas Carol runs November 30\u2013December 19, 2026." },
-    { title: "Aspire Performing Co.", url: "/aspire-performing-co", k: "aspire company troupe show choir choir touring",
-      a: "Aspire is Encore's audition-based show choir. Its fall production is Villains Night (October 29\u201330), and it now includes Aspire: Traditions \u2014 a travel performance program that ends on a Disney stage." },
+    { title: "Aspire Performing Co.", url: "/aspire-performing-co", k: "aspire company troupe performing company song and dance touring",
+      a: "Aspire is Encore's audition-based song and dance performing company. Its fall production is Villains Night (October 29\u201330), and it now includes Aspire: Traditions \u2014 a travel performance program that ends on a Disney stage." },
     { title: "Page to Stage", url: "/page-to-stage", k: "page stage field trip workshop professional see watch register",
       a: "Page to Stage takes Young Artists to professional productions with field trips and workshops. It's register-only \u2014 no audition needed." },
 
