@@ -10,8 +10,8 @@
 
 /little-women        /little-women-2026    301
 /littlewomen         /little-women-2026    301
-/a-christmas-carol   /a-christmas-carol-2026   301
-/christmas-carol     /a-christmas-carol-2026   301
+/a-christmas-carol   /a-christmas-carol-tickets   302
+/christmas-carol     /a-christmas-carol-tickets   302
 /lion-king-kids-camp /lion-king-kids-camp-2026 301
 /little-mermaid-camp  /little-mermaid-camp-2026  301
 /littlemermaid-camp   /little-mermaid-camp-2026  301
@@ -29,6 +29,18 @@
 # Google Search Console "all known pages" export so NO old Squarespace
 # URL 404s. Every URL that changes during migration needs a 301 here.
 # ============================================================
+# --- Campaign short links: A Christmas Carol 2026 --------------------------
+# One link per channel so GA4 can tell which channel sells tickets. 302, not
+# 301, so a link can be repointed after the run. Retire after Dec 18, 2026.
+/carol-ig       /a-christmas-carol-tickets?utm_source=instagram&utm_medium=social&utm_campaign=christmas-carol-2026&utm_content=bio   302
+/carol-story    /a-christmas-carol-tickets?utm_source=instagram&utm_medium=social&utm_campaign=christmas-carol-2026&utm_content=story   302
+/carol-fb       /a-christmas-carol-tickets?utm_source=facebook&utm_medium=social&utm_campaign=christmas-carol-2026&utm_content=post   302
+/carol-email    /a-christmas-carol-tickets?utm_source=mailchimp&utm_medium=email&utm_campaign=christmas-carol-2026&utm_content=newsletter   302
+/carol-text     /a-christmas-carol-tickets?utm_source=sms&utm_medium=text&utm_campaign=christmas-carol-2026&utm_content=message   302
+/carol-cast     /a-christmas-carol-tickets?utm_source=cast-families&utm_medium=referral&utm_campaign=christmas-carol-2026&utm_content=share   302
+/carol-poster   /a-christmas-carol-tickets?utm_source=poster&utm_medium=print&utm_campaign=christmas-carol-2026&utm_content=qr   302
+/carol-yt       /a-christmas-carol-tickets?utm_source=youtube&utm_medium=video&utm_campaign=christmas-carol-2026&utm_content=description   302
+
 # --- Duplicate pages removed 2026-11-18 (SEO sweep) ---------------------------
 # These were identical copies of the pages in /classes/ and /page-to-stage/.
 # The files are gone; the `!` keeps the rules safe if a copy is ever re-added.

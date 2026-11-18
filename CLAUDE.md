@@ -206,6 +206,19 @@ awkwardly beside "sold only through our box office" for a certification
 reviewer. Left alone deliberately; see the 2026-11-02 seller statement
 handoff.
 
+## Campaign short links
+
+`_redirects` holds per-channel short links for a show's promotion, for example
+`/carol-ig`, `/carol-fb`, `/carol-poster`. Each one 302s to the show's ticket
+page with `utm_source`, `utm_medium`, `utm_campaign` and `utm_content` set, so
+GA4 can credit the channel that brought the visit and the ThunderTix click.
+Use 302, not 301, so a link can be repointed. For a new show, copy the block
+with a new prefix and campaign name. The A Christmas Carol 2026 set goes stale
+after December 18, 2026.
+
+`/a-christmas-carol` and `/christmas-carol` point at the ticket page during
+the run. Point them back at the audition page when auditions open again.
+
 ## Site-wide sweep rule
 
 A fact that appears on one page almost always appears on several, plus in
