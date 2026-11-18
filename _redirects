@@ -80,7 +80,7 @@
 /summer-of-lion-king-8-13-registration    /audition-registration         302
 /summer-of-lion-king-14-18-registration   /audition-registration         302
 /back-to-the-future-registration          /page-to-stage-registration    302
-/aspire-auditions-registration            /audition-registration         302
+/aspire-auditions-registration            /aspire-registration             302
 # --- INTERIM: not-yet-rebuilt pages routed so links don't 404 during migration ---
 # Point clean routes at the current live Squarespace pages (verify slugs; swap to
 # internal pages as each is built). Using 302 (temporary) on purpose.

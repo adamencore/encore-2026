@@ -192,10 +192,19 @@ h2 em{color:var(--teal)}
 
 <div class="wrap">
   <p id="regFor" style="font-family:var(--font-body);font-weight:600;font-size:1.02rem;color:#22353d;margin:0 0 20px;display:none;"></p>
-  <!-- Elfsight Form Builder | General Registration -->
+  <!-- Elfsight Form Builder. General Registration by default.
+       ?production=Bright Lights of Broadway gets the Aspire Registration form
+       instead. The class is swapped BEFORE platform.js is requested, so
+       Elfsight only ever sees one widget on the page. -->
+  <div id="regWidget" class="elfsight-app-bfcd0dd3-32f9-48a4-b0d2-199d729992c4" data-elfsight-app-lazy></div>
+  <script>(function(){try{
+    var q=new URLSearchParams(location.search).get('production')||'';
+    var FORMS={'bright lights of broadway':'elfsight-app-5f66fe3e-df90-45c0-b6a4-0725468fc908'};
+    var key=q.trim().toLowerCase().replace(/\s+/g,' ');
+    if(FORMS[key]) document.getElementById('regWidget').className=FORMS[key];
+    if(q){var e=document.getElementById('regFor');if(e){e.textContent='Registering for: '+q;e.style.display='';}}
+  }catch(e){}})();</script>
   <script src="https://elfsightcdn.com/platform.js" async></script>
-  <div class="elfsight-app-bfcd0dd3-32f9-48a4-b0d2-199d729992c4" data-elfsight-app-lazy></div>
-  <script>(function(){try{var q=new URLSearchParams(location.search).get('production');if(q){var e=document.getElementById('regFor');if(e){e.textContent='Registering for: '+q;e.style.display='';}}}catch(e){}})();</script>
 </div>
 
 <footer>
