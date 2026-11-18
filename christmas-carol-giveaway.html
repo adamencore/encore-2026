@@ -670,6 +670,9 @@
   .gv-hero .gv-deadline{color:var(--show-tint);font-size:clamp(14.5px,1.5vw,16px);
     margin-top:14px;letter-spacing:.01em;}
   .gv-hero .gv-deadline strong{font-weight:700;}
+  .gv-hero .gv-offer a{color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap;}
+  .gv-hero .gv-offer{margin-top:14px;}
+  .gv-hero .gv-offer[hidden]{display:none;}
 
   /* Prize and form, side by side, so the form is on the first screen. */
   .gv-main{padding:clamp(34px,4.5vw,56px) 0 clamp(44px,5vw,72px);}
@@ -769,7 +772,9 @@
       <span class="gv-eyebrow" id="gvEyebrow"><span class="dot" aria-hidden="true"></span>Community giveaway</span>
       <h1>Win 4 tickets and a <em>Bah Hum Mug</em></h1>
       <p>Four tickets to the performance of your choice at the historic Electric Theater, plus our holiday mug to take home.</p>
-      <p class="gv-deadline">Enter by <strong>Tuesday, November 24</strong></p>
+      <!-- SunRiver only: revealed by the GROUPS script when the visitor arrives via /sunriver-promo or ?group=sunriver. -->
+      <p class="gv-offer" data-group="sunriver" hidden>SunRiver residents also save 30% on every ticket to A Christmas Carol with code <strong>SRCAROL</strong> at checkout. <a href="/a-christmas-carol-tickets">Get tickets</a></p>
+      <p class="gv-deadline">Enter by <strong>Saturday, November 28</strong></p>
     </div>
   </header>
 
@@ -794,7 +799,7 @@
       <div class="gv-closed" id="gvClosed" hidden>
         <p class="gv-closed-k">Entries are closed</p>
         <h2>Thank you to everyone who entered</h2>
-        <p>The giveaway closed on Tuesday, November 24. We will be in touch with the winner by email. A Christmas Carol: A New Musical runs November 30 through December 18 at the Electric Theater.</p>
+        <p>The giveaway closed on Saturday, November 28. We will be in touch with the winner by phone or email. A Christmas Carol: A New Musical runs November 30 through December 18 at the Electric Theater.</p>
         <p class="gv-closed-cta"><a href="/a-christmas-carol-tickets">See performance dates and tickets</a></p>
       </div>
 
@@ -812,14 +817,14 @@
 
     <div class="wrap">
       <div class="gv-rules">
-        <p><strong>Entries close Tuesday, November 24, 2026 at 11:59pm Mountain Time. One entry per household.</strong> We will email the winner, and the tickets and the mug will be waiting at the box office.</p>
+        <p><strong>Entries close Saturday, November 28, 2026 at 11:59pm Mountain Time. One entry per household.</strong> We will contact the winner by phone or email using the information on this form, and the tickets and the mug will be waiting at the box office.</p>
         <details>
           <summary>Full rules</summary>
           <ul>
             <li>The prize is four tickets to a single performance of A Christmas Carol: A New Musical, plus one Bah Hum Mug.</li>
             <li>Seats are subject to availability on the performance the winner chooses.</li>
             <li>The prize has no cash value and cannot be exchanged for a refund.</li>
-            <li>We will contact the winner at the email address on the entry form.</li>
+            <li>We will contact the winner by phone or email using the information on the entry form.</li>
             <li>Questions? Email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> or call <a href="tel:+14354140049">(435) 414-0049</a>.</li>
           </ul>
         </details>
@@ -1006,11 +1011,11 @@ const GROUPS = [
   { value:'sunriver', label:'SunRiver', paths:['sunriver-promo','sunriver'] }
 ];
 
-/* The giveaway closes at 11:59:59pm Mountain on Tuesday 24 November 2026.
+/* The giveaway closes at 11:59:59pm Mountain on Saturday 28 November 2026.
    Pinned as a UTC instant so it closes at the same moment for everyone, not
    at local midnight in whatever timezone the visitor happens to be in.
    Mountain is UTC-7 on that date; DST ended 1 November. */
-const CLOSES_AT = Date.UTC(2026, 10, 25, 6, 59, 59);
+const CLOSES_AT = Date.UTC(2026, 10, 29, 6, 59, 59);
 
 (function(){
   if(Date.now() > CLOSES_AT){
@@ -1040,6 +1045,10 @@ const CLOSES_AT = Date.UTC(2026, 10, 25, 6, 59, 59);
     return g.value === param || (g.paths || []).indexOf(param) !== -1;
   })[0];
   if(!match) return;
+  /* Group-only lines, such as a partner's discount code, carry data-group. */
+  document.querySelectorAll('[data-group]').forEach(function(el){
+    if(el.getAttribute('data-group') === match.value) el.hidden = false;
+  });
   /* textContent, not innerHTML: the label is ours, but the dot stays a node. */
   var dot = eyebrow.querySelector('.dot');
   eyebrow.textContent = '';
