@@ -25,13 +25,13 @@ function loginPage(showError) {
   const html = `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow"><title>2027 Season · Encore Performing Arts</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Familjen+Grotesk:wght@400;600&display=swap">
+<link rel="stylesheet" href="/fonts/mikado.css">
 <style>
   *{margin:0;box-sizing:border-box}
-  body{min-height:100vh;display:grid;place-items:center;background:#000;font-family:'Familjen Grotesk',system-ui,sans-serif;color:#282420;padding:24px}
+  body{min-height:100vh;display:grid;place-items:center;background:#000;font-family:'Mikado',system-ui,sans-serif;color:#282420;padding:24px}
   .card{background:#fdfcfa;border-radius:20px;max-width:400px;width:100%;padding:38px 32px;text-align:center}
   .badge{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#a8452a}
-  h1{font-family:'Fraunces',serif;font-weight:500;font-size:28px;margin:8px 0 8px}
+  h1{font-weight:700;font-size:28px;margin:8px 0 8px}
   p{color:#5a534c;font-size:15px;line-height:1.5}
   form{margin-top:22px;display:flex;flex-direction:column;gap:12px}
   input{font:inherit;padding:13px 15px;border:1px solid #cfc8bf;border-radius:12px;background:#fff;color:#282420}
