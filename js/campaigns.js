@@ -90,7 +90,7 @@
         page.querySelector('[data-c-title]').textContent = c.title;
         page.querySelector('[data-c-summary]').textContent = c.summary;
         page.querySelector('[data-c-tag]').textContent = tagFor(c);
-        page.querySelector('[data-c-body]').innerHTML = (c.body || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+        page.querySelector('[data-c-body]').innerHTML = bodyHtml(c.body);
         var fl = page.querySelector('[data-c-funds]');
         if (c.funds && c.funds.length) fl.innerHTML = c.funds.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('');
         else fl.parentNode.hidden = true;
@@ -115,6 +115,21 @@
       var w = page.querySelector('[data-give-deferred]');
       if (window.EncoreGive && w) window.EncoreGive.mount(w);
     });
+  }
+
+  // body is either a list of paragraphs, or one string: blank lines split blocks,
+  // and a block whose lines all start with "- " becomes a bullet list.
+  function bodyHtml(body) {
+    var blocks = Array.isArray(body) ? body : String(body || '').split(/\n\s*\n/);
+    return blocks.map(function (b) {
+      b = String(b).trim();
+      if (!b) return '';
+      var lines = b.split('\n').map(function (l) { return l.trim(); }).filter(Boolean);
+      if (lines.every(function (l) { return /^- /.test(l); })) {
+        return '<ul>' + lines.map(function (l) { return '<li>' + esc(l.slice(2)) + '</li>'; }).join('') + '</ul>';
+      }
+      return '<p>' + esc(lines.join(' ')) + '</p>';
+    }).join('');
   }
 
   function init() { fillCards(); fillDetail(); }
