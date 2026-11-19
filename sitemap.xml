@@ -21,6 +21,21 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.encorepa.org/campaigns</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.encorepa.org/campaigns/general-support</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.encorepa.org/campaigns/build-2027</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.encorepa.org/page-to-stage/hadestown-pro-shot</loc>
     <lastmod>2026-11-18</lastmod>
     <priority>0.9</priority>

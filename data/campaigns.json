@@ -1,0 +1,40 @@
+{
+  "_readme": "Giving campaigns for /donate and /campaigns. Add an object to add a campaign; set active to false to close one. Fields: slug (url-safe, becomes /campaigns/<slug>), title, summary (one or two sentences for cards), body (list of paragraphs), funds (list of short lines: what the money pays for), image (site path, optional), goal (whole dollars, optional), raised (whole dollars, set by hand, optional), deadline (YYYY-MM-DD, optional), active (true/false), defaultFrequency (monthly or one-time), alwaysOpen (true shows the Always open tag). Copy marked [TBD] is placeholder for Encore to replace.",
+  "campaigns": [
+    {
+      "slug": "general-support",
+      "title": "General Support",
+      "summary": "Give where it helps most. Funds scholarships, production costs and our free sensory-friendly and ASL-interpreted performances across the whole season.",
+      "body": [
+        "General support is the most flexible gift you can make. It goes wherever the need is greatest that season, from a scholarship that lets a young artist say yes to an audition, to the lights, costumes and sets that turn a rehearsal into a show.",
+        "It also keeps our free sensory-friendly and ASL-interpreted performances free, so every family in southern Utah has a seat in the house."
+      ],
+      "funds": [
+        "Scholarships for young artists",
+        "Production costs: costumes, sets, lights and sound",
+        "Free sensory-friendly and ASL-interpreted performances"
+      ],
+      "image": "/img/gallery/hadestown-finale.jpg",
+      "active": true,
+      "alwaysOpen": true,
+      "defaultFrequency": "monthly"
+    },
+    {
+      "slug": "build-2027",
+      "title": "2027 Build Campaign",
+      "summary": "Help us build the 2027 season. Our goal is $20,000 by December 31, 2026.",
+      "body": [
+        "[TBD] A short story about the 2027 season and why this campaign matters now.",
+        "Every gift to the 2027 Build Campaign goes toward putting next season on stage for the young artists of southern Utah."
+      ],
+      "funds": [
+        "[TBD] What the $20,000 pays for, line by line"
+      ],
+      "image": "/img/gallery/ensemble-onstage-band.jpg",
+      "goal": 20000,
+      "deadline": "2026-12-31",
+      "active": true,
+      "defaultFrequency": "one-time"
+    }
+  ]
+}

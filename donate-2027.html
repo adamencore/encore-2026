@@ -37,7 +37,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/fonts/mikado.css">
 <link rel="stylesheet" href="/css/e27.css">
-<script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=r4LTMUN6MZ570QnU&p=other"></script>
 <style>
 /* Donate page, 2027 design. Shared styles live in /css/e27.css. */
 .sec{padding:clamp(110px,12.5vw,210px) 0}
@@ -56,9 +55,21 @@
 .give-card .kicker{margin-left:0}
 .give-card h2{font-size:clamp(40px,4vw,58px);line-height:.88;letter-spacing:-.03em;margin-bottom:16px}
 .give-card > p{font-size:19px;line-height:1.45;font-weight:400;margin:0 0 22px}
-.gb-slot{max-height:0;overflow:hidden;border-radius:20px;background:var(--sand)}
-.gb-slot.on{max-height:none;padding:8px;margin-bottom:20px}
-.gb-slot givebutter-widget{display:block;width:100%}
+.give-widget .freq{display:flex;background:#efedea;border-radius:70px;padding:5px;margin:22px 0 16px}
+.give-widget .freq button{flex:1;border:0;background:none;font:600 15px var(--sans);color:#4a4a4a;padding:11px;border-radius:70px;cursor:pointer}
+.give-widget .freq button[aria-pressed="true"]{background:var(--teal);color:#fbf6f2}
+.give-widget .amount-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.give-widget .amt{border:1.5px solid #ddd7d0;background:#fff;font:700 20px var(--sans);color:#111;padding:14px 0;border-radius:18px;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.give-widget .amt[aria-pressed="true"]{background:#22353d;border-color:#22353d;color:#fbf6f2}
+.give-widget .amt.core{display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 0}
+.give-widget .amt-tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7a4a12}
+.give-widget .amt[aria-pressed="true"] .amt-tag{color:#f2d7a6}
+.give-widget .amount-grid .amt.other{grid-column:1/-1;font-size:16px}
+.give-widget .give-go,.give-card > .give-go{display:flex;justify-content:center;margin-top:16px;width:100%;background:var(--teal);color:#fbf6f2;border-radius:70px;padding:16px;font:700 16px var(--sans);text-decoration:none;background:#2a6584}
+.give-widget .amt:focus-visible,.give-widget .freq button:focus-visible,.give-go:focus-visible{outline:3px solid #7dcbdd;outline-offset:2px}
+.give-sub,.give-fallback{font-size:14px;color:#555;margin:12px 0 0;text-align:center}
+.give-sub a,.give-fallback a{color:#111;font-weight:700}
+.give-widget.is-live + .give-fallback{display:none}
 .give-card .pill{width:100%;min-width:0}
 .give-note{font-size:14px!important;color:#555;margin:16px 0 0!important;text-align:center}
 .give-note a{color:var(--teal-d);font-weight:700}
@@ -313,9 +324,9 @@
       <p class="kicker">Make a gift</p>
       <h2 id="give-h">Every gift keeps the curtain rising</h2>
       <p>Give once or give often. Every dollar stays close to the stage, supporting the Young Artists we serve.</p>
-      <div class="gb-slot" id="gbSlot"><givebutter-widget id="d54afr"></givebutter-widget></div>
-      <a class="pill" href="https://givebutter.com/support-encore-performing-arts-d54afr" target="_blank" rel="noopener">Donate now</a>
-      <p class="give-note">Encore is a 501(c)(3) nonprofit; gifts are tax-deductible. <a href="#faq">Questions?</a></p>
+      <div class="give-widget" data-give data-ref="donate-page-2027" data-default="monthly"><a class="give-go" href="https://buy.stripe.com/aFa6oH3lc4xx5Rk2etds400?client_reference_id=donate-page-2027">Give any amount &rarr;</a></div>
+      <p class="give-fallback">Prefer a one-time gift of any amount? <a href="https://buy.stripe.com/aFa6oH3lc4xx5Rk2etds400?client_reference_id=donate-page-2027-fallback">Give once here</a>.</p>
+      <p class="give-note">Encore Performing Arts is a 501(c)(3) nonprofit, EIN 86-2806815. Gifts are tax-deductible to the extent allowed by law. Secure checkout by Stripe. <a href="#faq">Questions?</a></p>
     </div>
   </div>
 </section>
@@ -401,7 +412,7 @@
       </div>
       <div class="ft-col"><h5>Explore</h5><a href="/calendar">What&rsquo;s On</a><a href="/programs-2027">Programs by Age</a><a href="/auditions-2027">Auditions</a><a href="/classes-2027">Classes</a><a href="/past-shows-2027">Past Shows</a><a href="/blog-2027">Blog</a></div>
       <div class="ft-col"><h5>Visit</h5><a href="/tickets-2027">Tickets</a><a href="/sensory-friendly-performances-2027">Sensory Friendly</a><a href="/asl-interpreted-performances-2027">ASL Interpreted</a><a href="/electric-theater">The Electric Theater</a><a href="/about-2027">About</a></div>
-      <div class="ft-col"><h5>Support</h5><a href="/donate-2027">Donate</a><a href="/core-community-2027">Join The Core</a><a href="/encore-scholarship-application">Scholarships</a><a href="/contact-2027">Contact Us</a></div>
+      <div class="ft-col"><h5>Support</h5><a href="/donate-2027">Donate</a><a href="/campaigns">Campaigns</a><a href="/core-community-2027">Join The Core</a><a href="/encore-scholarship-application">Scholarships</a><a href="/contact-2027">Contact Us</a></div>
     </div>
     <div class="fb">
       <span>&copy; 2026 Encore Performing Arts &middot; A 501(c)(3) nonprofit</span>
@@ -416,16 +427,6 @@
 <script src="/js/e27.js" defer></script>
 <script src="/js/ask-encore-2027.js" defer></script>
 
-<script>
-(function(){
-  // Show the Givebutter box only once the widget has drawn something; otherwise the Donate button stands alone.
-  var slot=document.getElementById('gbSlot'); if(!slot) return;
-  var w=slot.querySelector('givebutter-widget');
-  function chk(){ if(w && w.offsetHeight>20) slot.classList.add('on'); }
-  if('ResizeObserver' in window && w) new ResizeObserver(chk).observe(w);
-  setTimeout(chk,3000); setTimeout(chk,8000);
-})();
-</script>
 <script>
 (function () {
   function isThunderTix(a) {
@@ -455,5 +456,6 @@
   }, true);
 })();
 </script>
+<script src="/js/give.js" defer></script>
 </body>
 </html>
