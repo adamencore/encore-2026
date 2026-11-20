@@ -373,6 +373,8 @@
   .camp-frame img{width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block;}
   @media(max-width:760px){.camp-frame{aspect-ratio:4/3;}}
   .nav-toggle{margin-left:auto;}
+  .off-more{margin-top:22px;font-size:15px;color:var(--muted);}
+  .off-more a{color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);}
 </style>
 </head>
 <body>
@@ -449,18 +451,16 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div>
-          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Signature Shows at Encore</span>
-          <h2 id="off-h">Upcoming <em>opportunities</em></h2>
+          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Now casting</span>
+          <h2 id="off-h">What you can <em>audition for</em></h2>
         </div>
-        <p class="lead">Flagship productions and weekly classes for ages 13–18. See what is currently open, or reach out to join the interest list.</p>
+        <p class="lead">Shows and companies casting ages 13–18 right now. Each card links to dates, times and how to register.</p>
       </div>
-
-      <!-- filters hidden: single category on Camps -->
-
       <div class="grid reveal" id="offgrid">
         <!-- Cards are rendered by JS from the OFFERINGS catalog below -->
-        <p class="empty" id="emptyMsg">Nothing open in that category right now, check back soon, or <a href="/#events" style="color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);">see everything that's on</a>.</p>
+        <p class="empty" id="emptyMsg">No auditions are open for this age group right now. New casting calls are posted on our <a href="/auditions" style="color:var(--charcoal);font-weight:600;border-bottom:1px solid var(--charcoal);">auditions page</a> as each show opens.</p>
       </div>
+      <p class="off-more reveal">Looking for weekly training instead? <a href="/classes">See our classes</a>.</p>
     </div>
   </section>
 
@@ -748,13 +748,6 @@
 
   const OFFERINGS = [
     {id:"bright-lights", title:"Bright Lights of Broadway", type:"Audition", ages:["Junior","Emerging Artists","Signature Shows","Aspire"], status:"Open", ends:"2026-12-15", when:"Auditions December 14 &amp; 15", meta:"Aspire Performing Co. · Ages 5 to 18", blurb:"Spring 2027 auditions for Aspire Performing Co.", link:"/aspire-performing-co", logo:"", bg:"/img/aspire/aspire-11.webp"},
-    {id:"a-christmas-carol", title:"A Christmas Carol", type:"Performances", ages:["Signature Shows"], status:"Open", when:"Performances November 30 - December 18", meta:"Signature Series · All ages", blurb:"A new musical featuring Corbin Allred as Scrooge.", link:"/a-christmas-carol-2026", logo:"", bg:"a-christmas-carol-card.webp"},
-    {id:"freestyle-hip-hop", title:"Freestyle Hip Hop", type:"Class", ages:["Junior","Emerging Artists","Signature Shows"], status:"Open", when:"Wednesdays, 4:00-5:30pm", meta:"Clayton Ashcraft &middot; Ages 7+", blurb:"Grooves, rhythm, and the freedom of the dance circle.", link:"/classes/freestyle-hip-hop", logo:"", bg:"/img/classes/freestyle-hip-hop-2026.webp"},
-    {id:"mt-foundations", title:"Musical Theatre Foundations", type:"Class", ages:["Junior","Emerging Artists","Signature Shows"], status:"Open", when:"Tuesdays, 4:00-5:00pm", meta:"Haven Record &middot; Ages 7+", blurb:"Foundational technique and iconic Broadway choreography.", link:"/classes/musical-theatre-foundations", logo:"", bg:"/img/classes/musical-theatre-foundations.webp"},
-    {id:"mt-jazz", title:"Musical Theatre Jazz", type:"Class", ages:["Junior","Emerging Artists","Signature Shows"], status:"Open", when:"Tuesdays, 5:00-6:00pm", meta:"Mattea Denney &middot; Ages 10+", blurb:"Jazz fundamentals applied to stage and musical theater.", link:"/classes/musical-theatre-jazz", logo:"", bg:"/img/classes/musical-theatre-jazz.webp"},
-    {id:"art-of-improv", title:"The Art of Improv", type:"Class", ages:["Junior","Emerging Artists","Signature Shows"], status:"Open", when:"Saturdays, 2:00-3:00pm", meta:"Jacob Merrill &middot; Ages 7+", blurb:"Build a story with no script, and trust the people beside you.", link:"/classes/art-of-improv", logo:"", bg:"/img/classes/art-of-improv.webp"},
-    {id:"audition-workshop", title:"Audition Workshop", type:"Class", ages:["Signature Shows"], status:"Open", when:"Second Mondays, 4:30-6:00pm", meta:"Randy Sly &middot; Ages 12-18", blurb:"Walk into your next audition with a monologue and a song you trust.", link:"/classes/audition-workshop", logo:"", bg:"/img/classes/audition-workshop.webp"},
-    {id:"finding-your-voice-in-tap", title:"Finding Your Voice in Tap", type:"Class", ages:["Emerging Artists","Signature Shows"], status:"Open", when:"Mondays, 4:00-5:00pm", meta:"Anthony Savino &middot; Ages 12-18", blurb:"Seven weeks of intensive tap with a Tuacahn actor. Rhythm as storytelling.", link:"/classes/finding-your-voice-in-tap", logo:"", bg:"/img/classes/finding-your-voice-in-tap.webp"}
   ];
 
   const CTA = {audition:"Register to audition", class:"Browse classes", event:"See the event", workshop:"Register"};
@@ -780,7 +773,7 @@
   const grid=document.getElementById("offgrid"), empty=document.getElementById("emptyMsg");
   function render(filter){
     [...grid.querySelectorAll(".scard")].forEach(n=>n.remove());
-    const items=OFFERINGS.filter(o=>o.ages.includes(TIER)&&o.status!=="Closed"&&(!o.ends||new Date(o.ends+"T23:59:59")>=new Date())&&(filter==="all"||o.type.toLowerCase()===filter));
+    const items=OFFERINGS.filter(o=>o.ages.includes(TIER)&&o.type==="Audition"&&o.status!=="Closed"&&(!o.ends||new Date(o.ends+"T23:59:59")>=new Date())&&(filter==="all"||o.type.toLowerCase()===filter));
     items.forEach((o,i)=>empty.insertAdjacentHTML("beforebegin", card(o,i)));
     empty.style.display=items.length?"none":"block";
     tintScards(grid);

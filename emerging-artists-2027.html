@@ -330,11 +330,11 @@ a.pw-in:hover .pw-go svg{transform:translateX(4px)}
 <section class="sec open" id="open" aria-labelledby="open-h">
   <div class="wrap">
     <div class="split-head">
-      <div><p class="kicker">Open now</p><h2 class="h2" id="open-h">Upcoming <em>opportunities</em></h2></div>
-      <p class="lede">Productions and weekly classes for ages 12&ndash;14. Cards disappear on their own once a run ends.</p>
+      <div><p class="kicker">Now casting</p><h2 class="h2" id="open-h">What you can <em>audition for</em></h2></div>
+      <p class="lede">Shows and companies casting ages 12&ndash;14 right now. Cards disappear on their own once auditions close.</p>
     </div>
     <div class="off-list" id="offList" data-contact="/contact-2027"></div>
-    <p class="off-foot">Looking for something else? See every <a href="/auditions-2027">audition</a>, <a href="/classes-2027">class</a> and <a href="/tickets-2027">show on sale</a>.</p>
+    <p class="off-foot">See every <a href="/auditions-2027">audition</a>, or look at our weekly <a href="/classes-2027">classes</a>.</p>
   </div>
 </section>
 
@@ -435,13 +435,7 @@ a.pw-in:hover .pw-go svg{transform:translateX(4px)}
 /* OFFERINGS: what is open for this program. Each card hides automatically the day after "ends".
    img is relative to /img/ (a .webp and a .jpg with the same name). */
 window.OFFERINGS = [
-  {"title": "Bright Lights of Broadway", "type": "Audition", "when": "Auditions December 14 &amp; 15", "meta": "Aspire Performing Co. &middot; Ages 5 to 18", "ends": "2026-12-15", "link": "/aspire-performing-co-2027", "img": "aspire/aspire-11"},
-  {"title": "Disney&rsquo;s Peter Pan Jr.", "type": "Performances", "when": "November 19&ndash;21", "meta": "Junior &amp; Emerging Artists &middot; Ages 7&ndash;14", "ends": "2026-11-21", "link": "/peter-pan-jr-tickets-2027", "img": "shows/peter-pan-jr/card"},
-  {"title": "Freestyle Hip Hop", "type": "Class", "when": "Wednesdays, 4:00&ndash;5:30pm", "meta": "Clayton Ashcraft &middot; Ages 7+", "ends": "2026-12-09", "link": "/classes/freestyle-hip-hop", "img": "classes/freestyle-hip-hop-2026"},
-  {"title": "Musical Theatre Foundations", "type": "Class", "when": "Tuesdays, 4:00&ndash;5:00pm", "meta": "Haven Record &middot; Ages 7+", "ends": "2026-12-09", "link": "/classes/musical-theatre-foundations", "img": "classes/musical-theatre-foundations"},
-  {"title": "Musical Theatre Jazz", "type": "Class", "when": "Tuesdays, 5:00&ndash;6:00pm", "meta": "Mattea Denney &middot; Ages 10+", "ends": "2026-12-09", "link": "/classes/musical-theatre-jazz", "img": "classes/musical-theatre-jazz"},
-  {"title": "The Art of Improv", "type": "Class", "when": "Saturdays, 2:00&ndash;3:00pm", "meta": "Jacob Merrill &middot; Ages 7+", "ends": "2026-12-09", "link": "/classes/art-of-improv", "img": "classes/art-of-improv"},
-  {"title": "Finding Your Voice in Tap", "type": "Class", "when": "Mondays, 4:00&ndash;5:00pm", "meta": "Anthony Savino &middot; Ages 12&ndash;18", "ends": "2026-10-19", "link": "/classes/finding-your-voice-in-tap", "img": "classes/finding-your-voice-in-tap"}
+  {"title": "Bright Lights of Broadway", "type": "Audition", "when": "Auditions December 14 &amp; 15", "meta": "Aspire Performing Co. &middot; Ages 5 to 18", "ends": "2026-12-15", "link": "/aspire-performing-co-2027", "img": "aspire/aspire-11"}
 ];
 </script>
 </main>
@@ -477,17 +471,17 @@ window.OFFERINGS = [
   document.querySelectorAll('[data-after]').forEach(function(el){ el.hidden=live(el.dataset.after); });
   var list=document.getElementById('offList');
   if(list && window.OFFERINGS){
-    var up=OFFERINGS.filter(function(o){ return live(o.ends); });
+    var up=OFFERINGS.filter(function(o){ return o.type==='Audition' && live(o.ends); });
     list.innerHTML=up.map(function(o){
       var perf=o.type==='Performances', ext=/^https?:/.test(o.link);
       return '<article class="off"><div class="off-ph"><picture><source type="image/webp" srcset="/img/'+o.img+'.webp"><img src="/img/'+o.img+'.jpg" alt="" loading="lazy" decoding="async"></picture>'+
         '<span class="off-type'+(perf?' perf':'')+'">'+o.type+'</span></div>'+
         '<div class="off-b"><h3>'+o.title+'</h3><p class="off-when">'+o.when+'</p><p class="off-meta">'+o.meta+'</p>'+
-        '<a class="pill" href="'+o.link+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+(perf?'Get tickets':'Learn more')+'</a></div></article>';
+        '<a class="pill" href="'+o.link+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'+(perf?'Get tickets':'Audition details')+'</a></div></article>';
     }).join('');
     if(!up.length){
       list.style.display='block';
-      list.innerHTML='<div class="off-empty"><h3>Nothing open right this minute</h3><p>New productions, camps and classes are added all season. Reach out and we will let you know when the next one opens.</p><a class="pill" href="'+list.dataset.contact+'">Contact us</a></div>';
+      list.innerHTML='<div class="off-empty"><h3>No auditions open right now</h3><p>New casting calls are posted as each show opens. See the auditions page for what is coming next.</p><a class="pill" href="/auditions-2027">All auditions</a></div>';
     }
   }
   document.querySelectorAll('.video').forEach(function(v){
