@@ -603,6 +603,8 @@ h2 em{color:var(--teal)}
 
   const OFFERINGS = [
     {id:"peter-pan-jr", title:"Peter Pan Jr.", type:"Performances", ages:["Junior","Emerging Artists"], status:"Open", when:"Performances November 19-21", meta:"Junior &amp; Junior &amp; Emerging Artists · Ages 7–14", blurb:"Fly away to Neverland.", link:"/peter-pan-jr-2026", logo:"", bg:"peter-pan-jr/card.webp"},
+    {id:"bright-lights", title:"Bright Lights of Broadway", type:"Audition", ages:["Junior","Emerging Artists","Signature Shows","Aspire"], status:"Open", ends:"2026-12-15", when:"Auditions December 14 &amp; 15", meta:"Aspire Performing Co. · Ages 5 to 18", blurb:"Spring 2027 auditions for Aspire Performing Co.", link:"/aspire-performing-co", logo:"", bg:"/img/aspire/aspire-11.webp"},
+    {id:"little-mermaid", title:"Disney&rsquo;s The Little Mermaid", type:"Audition", ages:["Junior"], status:"Open", ends:"2026-12-15", when:"Auditions December 14", meta:"Junior Series · Ages 7 to 13", blurb:"Performances February 3 to 6, 2027 at the Electric Theater.", link:"/little-mermaid", logo:"", bg:"/img/shows/little-mermaid/band.webp"},
     {id:"aspire", title:"Aspire Performing Co.", type:"Audition", ages:["Junior","Emerging Artists","Signature Shows","Aspire"], status:"Open", when:"Rolling auditions", meta:"Year-round · Ages 5–senior", blurb:"Our audition-based song and dance performing company for ages 5–senior.", link:"/aspire-performing-co", logo:"", bg:"aspire.webp"},
     {id:"freestyle-hip-hop", title:"Freestyle Hip Hop", type:"Class", ages:["Junior","Emerging Artists","Signature Shows"], status:"Open", when:"Wednesdays, 4:00-5:30pm", meta:"Clayton Ashcraft &middot; Ages 7+", blurb:"Grooves, rhythm, and the freedom of the dance circle.", link:"/classes/freestyle-hip-hop", logo:"", bg:"/img/classes/freestyle-hip-hop-2026.webp"},
     {id:"mt-foundations", title:"Musical Theatre Foundations", type:"Class", ages:["Junior","Emerging Artists","Signature Shows"], status:"Open", when:"Tuesdays, 4:00-5:00pm", meta:"Haven Record &middot; Ages 7+", blurb:"Foundational technique and iconic Broadway choreography.", link:"/classes/musical-theatre-foundations", logo:"", bg:"/img/classes/musical-theatre-foundations.webp"},
@@ -635,7 +637,7 @@ h2 em{color:var(--teal)}
   const grid=document.getElementById("offgrid"), empty=document.getElementById("emptyMsg");
   function render(filter){
     [...grid.querySelectorAll(".scard")].forEach(n=>n.remove());
-    const items=OFFERINGS.filter(o=>o.ages.includes(TIER)&&o.status!=="Closed"&&(filter==="all"||o.type.toLowerCase()===filter));
+    const items=OFFERINGS.filter(o=>o.ages.includes(TIER)&&o.status!=="Closed"&&(!o.ends||new Date(o.ends+"T23:59:59")>=new Date())&&(filter==="all"||o.type.toLowerCase()===filter));
     items.forEach((o,i)=>empty.insertAdjacentHTML("beforebegin", card(o,i)));
     empty.style.display=items.length?"none":"block";
     tintScards(grid);

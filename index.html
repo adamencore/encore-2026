@@ -794,25 +794,26 @@ html,body{overflow-x:clip;}
   .sb-asp-art img{position:relative !important;inset:auto !important;height:auto !important;object-fit:contain;-webkit-mask-image:none !important;mask-image:none !important;}
   .sb-asp .sb-photo.sb-asp-art{min-height:0;align-self:center;}
   /* The Little Mermaid (Feb 2027): Adam's underwater art and lite logo,
-     copy left and composed art right, matching the
-     Bright Lights banner. Dates kept to the month: the sheet (Dec 11-12) and the show
+     kicker and logo left; date, venue and button right. Dates kept to the month: the sheet (Dec 11-12) and the show
      page (Dec 14) disagree on audition days. */
   .sb-lm{background:#001325;}
   .sb-lm .sb-tex img{object-position:50% 30%;}
   .sb-lm .sb-scrim{background:rgba(0,19,37,.55);}
-  .sb-lm .sb-copy{padding-top:clamp(44px,5vw,72px);padding-bottom:clamp(44px,5vw,72px);}
+  .sb-lm .sb-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center;gap:0;max-width:1180px;margin:0 auto;}
+  .sb-lm .sb-copy{grid-column:auto;padding:clamp(48px,5.5vw,84px) clamp(22px,3.4vw,52px);}
+  .sb-lm .sb-lm-side{border-left:1px solid rgba(246,245,243,.28);}
   .sb-lm .sb-kick{font-size:clamp(17px,1.9vw,22px);font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:#f6f5f3;margin:0 0 22px;}
-  .sb-lm .sb-logo-lm{width:min(100%,420px);margin:0 auto 26px;}
-  .sb-lm .sb-date{font-size:clamp(22px,2.4vw,28px);font-weight:500;text-transform:none;letter-spacing:0;color:#f6f5f3;margin:0 0 2px;}
-  .sb-lm .sb-loc{font-size:clamp(15px,1.5vw,18px);color:#f6f5f3;margin:0 0 26px;}
-  .sb .sb-lm-btn{display:flex;justify-content:center;width:min(100%,420px);background:#5cc8c0;color:#001325;font-weight:800;font-size:clamp(17px,1.9vw,22px);text-transform:uppercase;letter-spacing:.01em;padding:18px 28px;border-radius:100px;border:0;}
+  .sb-lm .sb-logo-lm{width:min(100%,460px);margin:0 auto;}
+  .sb-lm .sb-date{font-size:clamp(24px,2.6vw,32px);font-weight:500;text-transform:none;letter-spacing:0;color:#f6f5f3;margin:0 0 4px;}
+  .sb-lm .sb-loc{font-size:clamp(16px,1.6vw,19px);color:#f6f5f3;margin:0 0 28px;}
+  .sb .sb-lm-btn{display:flex;justify-content:center;width:min(100%,380px);margin:0 auto;background:#5cc8c0;color:#001325;font-weight:800;font-size:clamp(17px,1.9vw,22px);text-transform:uppercase;letter-spacing:.01em;padding:18px 28px;border-radius:100px;border:0;}
   .sb .sb-lm-btn:hover{background:#84d8d1;}
-  .sb-lm .sb-more{margin:16px 0 0;font-size:15px;}
-  .sb-lm .sb-more a{color:#f6f5f3;font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#5cc8c0;}
-  .sb-lm-art{border-radius:0 !important;overflow:visible !important;padding:clamp(20px,3vw,48px) clamp(12px,3vw,48px) clamp(20px,3vw,48px) 0;}
-  .sb-lm-art picture{position:relative !important;inset:auto !important;}
-  .sb-lm-art img{position:relative !important;inset:auto !important;height:auto !important;object-fit:contain;-webkit-mask-image:none !important;mask-image:none !important;}
-  .sb-lm .sb-photo.sb-lm-art{min-height:0;align-self:center;}
+  @media(max-width:860px){
+    .sb-lm .sb-grid{grid-template-columns:1fr;}
+    .sb-lm .sb-copy,.sb-lm .sb-lm-side{grid-column:1;grid-row:auto;}
+    .sb-lm .sb-lm-main{padding-bottom:8px;}
+    .sb-lm .sb-lm-side{border-left:0;border-top:1px solid rgba(246,245,243,.28);margin:0 22px;padding:28px 0 52px;}
+  }
   @media(max-width:860px){
     .sb-grid{grid-template-columns:1fr;gap:0;}
     .sb-left .sb-photo,.sb-right .sb-photo{grid-column:1;grid-row:1;border-radius:0;
@@ -824,7 +825,6 @@ html,body{overflow-x:clip;}
       mask-image:linear-gradient(180deg,#000 84%,transparent 100%);}
     .sb-left .sb-copy,.sb-right .sb-copy{grid-column:1;grid-row:2;}
     .sb-asp .sb-photo.sb-asp-art{min-height:0;padding:28px 16px 0;}
-    .sb-lm .sb-photo.sb-lm-art{min-height:0;padding:28px 16px 0;}
   }
   /* Newsletter signup is an Elfsight widget. It brings its own typography and
      colours, which are set in Elfsight, not here. This only gives it a column
@@ -988,30 +988,25 @@ html,body{overflow-x:clip;}
 </section>
 
 <!-- ========== THE LITTLE MERMAID BANNER ========== -->
-<section class="sb sb-lm sb-right" aria-labelledby="lm-banner-h">
+<section class="sb sb-lm" aria-labelledby="lm-banner-h">
   <div class="sb-tex" aria-hidden="true"><picture>
     <source type="image/webp" srcset="/img/shows/little-mermaid/underwater-bg.webp">
     <img src="/img/shows/little-mermaid/underwater-bg.jpg" alt="" loading="lazy" decoding="async">
   </picture></div>
   <div class="sb-scrim" aria-hidden="true"></div>
   <div class="sb-grid">
-    <div class="sb-copy reveal">
+    <div class="sb-copy sb-lm-main reveal">
       <h2 id="lm-banner-h" class="sr-only">Disney&rsquo;s The Little Mermaid, Junior Series, ages 7 to 13</h2>
       <p class="sb-kick">Junior Series &middot; Ages 7 to 13</p>
       <picture class="sb-logo sb-logo-lm"><img src="/img/shows/little-mermaid/little-mermaid-logo-lite.svg" alt="Disney&rsquo;s The Little Mermaid" width="727" height="371" decoding="async"></picture>
+    </div>
+    <div class="sb-copy sb-lm-side reveal">
       <p class="sb-date">February 3 &ndash; 6, 2027</p>
       <p class="sb-loc">at the Electric Theater</p>
       <div class="sb-actions">
         <a href="/little-mermaid" class="btn sb-lm-btn">Audition details</a>
       </div>
-      <p class="sb-more"><a href="/auditions">All auditions &rarr;</a></p>
     </div>
-    <figure class="sb-photo sb-cutout sb-lm-art reveal">
-      <picture>
-        <source type="image/webp" srcset="/img/shows/little-mermaid/banner-art.webp">
-        <img src="/img/shows/little-mermaid/banner-art.png" alt="Young Artists in Little Mermaid shirts singing in front of an underwater set, in black and white over a sea green panel" width="1141" height="770" loading="lazy" decoding="async">
-      </picture>
-    </figure>
   </div>
 </section>
 

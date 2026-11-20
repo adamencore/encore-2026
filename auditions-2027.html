@@ -415,7 +415,12 @@
    automatically once "closes" has passed. Empty list shows the Coming soon card.
    { show:"Peter Pan Jr.", status:"Auditions open", when:"Sept 21 to 22", where:"Electric Theater",
      ages:"Ages 7 to 13", closes:"2026-09-22", href:"/peter-pan-jr-2026", img:"/img/shows/peter-pan-jr/card" } */
-const AUDITIONS = [];
+const AUDITIONS = [
+  { show:"Bright Lights of Broadway", status:"Auditions open", when:"December 14 and 15", where:"Electric Theater",
+    ages:"Aspire Performing Co. \u00b7 Ages 5 to 18", closes:"2026-12-15", href:"/aspire-performing-co-2027", img:"/img/aspire/aspire-11" },
+  { show:"Disney\u2019s The Little Mermaid", status:"Auditions open", when:"December 14 and 15", where:"Electric Theater",
+    ages:"Junior Series \u00b7 Ages 7 to 13", closes:"2026-12-15", href:"/little-mermaid", img:"/img/shows/little-mermaid/band" }
+];
 (function(){
   var list=document.getElementById('audList'), empty=document.getElementById('audEmpty');
   var today=new Date(); today.setHours(0,0,0,0);

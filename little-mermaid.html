@@ -282,9 +282,24 @@
   .rehearse .row:first-of-type{border-top:none;}
   .rehearse .row .k{flex:none;width:84px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-top:2px;}
   .rehearse .row .vv{font-size:14.5px;color:var(--charcoal);line-height:1.5;}
-  .perf{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px;}
-  .perf h3{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--charcoal);margin-bottom:6px;}
-  .perf .sub{color:var(--muted);font-size:14px;margin-bottom:20px;}
+  .perf{background:linear-gradient(150deg,var(--show-mid),var(--show-deep));color:var(--cream-lite);border-radius:var(--radius-lg);padding:36px;scroll-margin-top:140px;box-shadow:0 40px 80px -48px rgba(8,29,54,.6);}
+  .perf-kick{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--show-tint);margin-bottom:8px;}
+  .perf h3{font-family:var(--font-display);font-size:28px;font-weight:600;color:#fff;margin-bottom:6px;}
+  .perf .sub{color:rgba(246,245,243,.85);font-size:14.5px;margin-bottom:22px;}
+  .perf-days{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .pday{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:16px 10px 14px;text-align:center;display:flex;flex-direction:column;align-items:center;}
+  .pday .dw{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--show-tint);}
+  .pday .dd{font-family:var(--font-display);font-size:22px;font-weight:700;color:#fff;margin:2px 0 10px;line-height:1.1;}
+  .pday .tt{display:flex;flex-direction:column;gap:6px;width:100%;}
+  .pday .tt span{display:block;background:var(--cream-lite);color:var(--show-deep);font-size:13.5px;font-weight:700;border-radius:100px;padding:5px 8px;}
+  .perf-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:22px;border-top:1px solid rgba(255,255,255,.18);}
+  .pfact{padding:18px 16px 0 0;}
+  .pfact + .pfact{padding-left:16px;border-left:1px solid rgba(255,255,255,.18);}
+  .pfact .k{display:block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--show-tint);}
+  .pfact .v{display:block;font-family:var(--font-display);font-size:18px;font-weight:700;color:#fff;margin-top:4px;line-height:1.25;}
+  .pfact .s{display:block;font-size:13px;color:rgba(246,245,243,.85);margin-top:4px;line-height:1.45;}
+  .pfact a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--show-tint);}
+  .perf-note{margin-top:20px;font-size:13.5px;color:rgba(246,245,243,.85);line-height:1.6;}
   .perf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
   .pf{border:1px solid var(--line);background:var(--cream-lite);border-radius:16px;padding:14px 10px;text-align:center;}
   .pf .d{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--charcoal);}
@@ -368,6 +383,7 @@
     .team-grid{grid-template-columns:1fr 1fr;}
     .rp-grid{grid-template-columns:1fr;}
     .perf-grid{grid-template-columns:1fr 1fr;}
+    .perf-days{grid-template-columns:1fr 1fr;}
     .reg-grid{grid-template-columns:1fr;}
     .checklist ul{grid-template-columns:1fr;}
     .faq-grid{grid-template-columns:1fr;gap:28px;}
@@ -375,6 +391,10 @@
     .foot-top{grid-template-columns:1fr 1fr;}
   }
   @media(max-width:560px){
+    .perf{padding:26px 20px;}
+    .perf-facts{grid-template-columns:1fr;}
+    .pfact,.pfact + .pfact{padding:14px 0;border-left:0;border-bottom:1px solid rgba(255,255,255,.18);}
+    .pfact:last-child{border-bottom:0;padding-bottom:0;}
     .wrap{padding:0 18px;}
     .statbar{grid-template-columns:1fr;}
     .team-grid{grid-template-columns:1fr;}
@@ -646,12 +666,21 @@
           <div class="row"><div class="k">Location</div><div class="vv">The Electric Theater</div></div>
         </div>
         <div class="perf" id="performances">
+          <span class="perf-kick">The run</span>
           <h3>Performances</h3>
           <div class="sub">February 3 to 6, 2027 &middot; The Electric Theater, St. George</div>
-          <div class="row"><div class="k">Times</div><div class="vv">Wednesday to Saturday at 7:00pm, with an added Friday 5:30pm performance and a Saturday 2:00pm matinee</div></div>
-          <div class="row"><div class="k">In the theater</div><div class="vv">January 29 and 30, February 1 to 6, 2027</div></div>
-          <div class="row"><div class="k">Tickets</div><div class="vv">$15</div></div>
-          <p style="margin-top:14px;font-size:13.5px;color:var(--muted);line-height:1.6;">A <a href="/sensory-friendly-performances">sensory-friendly performance</a> runs Tuesday, February 2, during the final dress rehearsal. Tickets go on sale closer to the run, and this page will link to them.</p>
+          <ul class="perf-days" aria-label="Performance dates and times">
+            <li class="pday"><span class="dw">Wed</span><span class="dd">Feb 3</span><span class="tt"><span>7:00pm</span></span></li>
+            <li class="pday"><span class="dw">Thu</span><span class="dd">Feb 4</span><span class="tt"><span>7:00pm</span></span></li>
+            <li class="pday"><span class="dw">Fri</span><span class="dd">Feb 5</span><span class="tt"><span>5:30pm</span><span>7:00pm</span></span></li>
+            <li class="pday"><span class="dw">Sat</span><span class="dd">Feb 6</span><span class="tt"><span>2:00pm</span><span>7:00pm</span></span></li>
+          </ul>
+          <div class="perf-facts">
+            <div class="pfact"><span class="k">Tickets</span><span class="v">$15</span></div>
+            <div class="pfact"><span class="k">Sensory-friendly</span><span class="v">Tue, Feb 2</span><span class="s">During the final dress rehearsal. <a href="/sensory-friendly-performances">Learn more</a></span></div>
+            <div class="pfact"><span class="k">Cast in the theater</span><span class="v">Jan 29 &amp; 30, Feb 1 to 6</span></div>
+          </div>
+          <p class="perf-note">Tickets go on sale closer to the run, and this page will link to them.</p>
         </div>
       </div>
     </div>
