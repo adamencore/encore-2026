@@ -111,6 +111,21 @@
 .mosaic .m6{grid-column:span 2}
 /* Other ways */
 .ways{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.camp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.cc{background:#fff;border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.cc-img{aspect-ratio:16/10;overflow:hidden;background:var(--sand)}
+.cc-img img{width:100%;height:100%;object-fit:cover;display:block}
+.cc-b{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+.cc .tag{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--teal-d);margin-bottom:12px}
+.cc h3{font:400 clamp(28px,2.4vw,36px)/1 var(--serif);letter-spacing:-.02em;margin:0 0 12px}
+.cc h3 a{color:var(--ink);text-decoration:none}
+.cc p{font-size:17px;line-height:1.55;font-weight:400;margin:0 0 12px}
+.cc-raised{font-weight:700!important;color:var(--teal-d)}
+.cc-go{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:var(--teal);color:#fff;font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:14px 22px;border-radius:100px;text-decoration:none}
+.cc-go:hover{background:var(--teal-d)}
+.camp-all{margin:24px 0 0;font-size:16px}
+.camp-all a{color:var(--teal-d);font-weight:700}
+@media (max-width:980px){.camp-grid{grid-template-columns:1fr}}
 .way{display:flex;flex-direction:column;background:#fff;border-radius:var(--r);overflow:hidden;text-decoration:none;color:var(--ink);transition:transform .25s,box-shadow .25s}
 .way:hover{transform:translateY(-4px);box-shadow:0 24px 50px -34px rgba(34,53,61,.6)}
 .way-ph{aspect-ratio:16/11;overflow:hidden}
@@ -331,6 +346,24 @@
   </div>
 </section>
 
+<section class="sec camps" aria-labelledby="camp-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="split-head">
+      <div><p class="kicker">Give to a campaign</p><h2 class="h2" id="camp-h">Current <em>campaigns</em></h2></div>
+      <p class="lede">Give where it helps most, or put your gift behind a specific production.</p>
+    </div>
+    <div class="camp-grid" data-campaign-cards>
+        <article class="cc">
+          <div class="cc-b"><div class="tag">Always open</div>
+          <h3><a href="/campaigns/general-support">General Support</a></h3>
+          <p>Give where it helps most. Funds scholarships, production costs and our free sensory-friendly and ASL-interpreted performances across the whole season.</p>
+          <a class="btn cc-go" href="/campaigns/general-support" aria-label="Give to General Support">Give to this campaign &rarr;</a></div>
+        </article>
+    </div>
+    <p class="camp-all"><a href="/campaigns">See all campaigns &rarr;</a></p>
+  </div>
+</section>
+
 <section class="sec" aria-labelledby="goes-h" style="padding-top:0">
   <div class="wrap">
     <div class="goes-head">
@@ -457,5 +490,6 @@
 })();
 </script>
 <script src="/js/give.js" defer></script>
+<script src="/js/campaigns.js" defer></script>
 </body>
 </html>
