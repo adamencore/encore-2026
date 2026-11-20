@@ -263,7 +263,7 @@ HTML comment. Verify a flag before reporting it.
   page. Two script tags caused only one of two forms to render. Elfsight
   cannot be loaded from the sandbox, so embeds are the one thing that
   always needs a human to click and confirm.
-- **Givebutter** for donations, **Resend** for email, **Sanity** parked.
+- **Stripe Payment Links** for donations (since 2026-11-18, replacing Givebutter). Every Stripe URL lives in `js/give.js` (`LINKS`); campaigns live in `data/campaigns.json`. See README "Giving (Stripe)". **Resend** for email, **Sanity** parked.
 
 ## Source of truth
 

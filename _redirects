@@ -8,6 +8,12 @@
 /_build/*   /404.html   404!
 /studio/*   /404.html   404!
 
+# --- Giving campaigns ---------------------------------------------------------
+# One template page serves every campaign; js/campaigns.js reads the slug from
+# the URL and fills it from /data/campaigns.json. Status 200 = rewrite, so the
+# address bar keeps /campaigns/<slug>. Nothing lives on disk under /campaigns/.
+/campaigns/*   /campaign.html   200
+
 /little-women        /little-women-2026    301
 /littlewomen         /little-women-2026    301
 /a-christmas-carol   /a-christmas-carol-tickets   302

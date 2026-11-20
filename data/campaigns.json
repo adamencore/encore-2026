@@ -1,0 +1,35 @@
+{
+  "_readme": "Giving campaigns for /donate and /campaigns. Add an object to add a campaign; set active to false to close one. Fields: slug (url-safe, becomes /campaigns/<slug>), title, summary (one or two sentences for cards), body (list of paragraphs, or one string with blank lines between paragraphs and lines starting \"- \" for bullet lists), funds (list of short lines: what the money pays for), image (site path, optional), goal (whole dollars, optional), raised (whole dollars, set by hand, optional), deadline (YYYY-MM-DD, optional), active (true/false), defaultFrequency (monthly or one-time), alwaysOpen (true shows the Always open tag). Copy marked [TBD] is placeholder for Encore to replace.",
+  "campaigns": [
+    {
+      "slug": "general-support",
+      "title": "General Support",
+      "summary": "Give where it helps most. Funds scholarships, production costs and our free sensory-friendly and ASL-interpreted performances across the whole season.",
+      "body": [
+        "General support is the most flexible gift you can make. It goes wherever the need is greatest that season, from a scholarship that lets a young artist say yes to an audition, to the lights, costumes and sets that turn a rehearsal into a show.",
+        "It also keeps our free sensory-friendly and ASL-interpreted performances free, so every family in southern Utah has a seat in the house."
+      ],
+      "funds": [
+        "Scholarships for young artists",
+        "Production costs: costumes, sets, lights and sound",
+        "Free sensory-friendly and ASL-interpreted performances"
+      ],
+      "image": "/img/gallery/hadestown-finale.jpg",
+      "active": true,
+      "alwaysOpen": true,
+      "defaultFrequency": "monthly"
+    },
+    {
+      "slug": "build-2027",
+      "title": "Help Us Build the 2027 Season",
+      "summary": "Nine productions in 2027, from Disney's The Little Mermaid Jr. to A Christmas Carol, each with a sensory-friendly performance. Help us raise $20,000 by December 31.",
+      "body": "As the year comes to a close, Encore's young artists are bringing Peter Pan Jr. and A Christmas Carol to the stage. Each of those moments started with someone like you.\n\nNow we are building our 2027 season, and the rights to every show are already secured. Here is what's coming to the Electric Theater stage:\n\n- Disney's The Little Mermaid Jr.\n- Little Shop of Horrors\n- Aspire's Bright Lights of Broadway\n- Roald Dahl's Charlie and the Chocolate Factory Jr.\n- Disney's Finding Nemo Jr.\n- The Addams Family\n- Aspire's Villains Night\n- Annie Jr.\n- A Christmas Carol\n\nThe season brings together our Junior and Senior productions, two shows from Aspire, Encore's performing company, and the return of A Christmas Carol, our holiday tradition. Camps throughout the year give our youngest artists their first time in the spotlight.\n\nLive theater is for everyone. Every 2027 production will include a sensory-friendly performance, a show set aside for community members with autism, special needs or sensory needs. Little Shop of Horrors, The Addams Family and A Christmas Carol will also each offer an ASL-interpreted performance, free to the community.\n\nEvery script, rehearsal and costume begins months before opening night. Your gift to the 2027 Build Campaign helps cover what it takes to put nine productions on stage:\n\n- Great mentors: the directors, music directors, choreographers and stage managers who teach our young artists as they create\n- Our production team, who keep every show on track from first rehearsal to closing night\n- Performance rights, scripts and scores for all nine productions\n- Sets and scenic materials\n- Costumes\n- Props\n- Lighting, sound and microphones\n- Rehearsal space, and theater time at the Electric Theater for tech rehearsals and performances\n- Sensory-friendly and ASL-interpreted performances\n- Scholarships, so cost is never the reason a young artist misses a season\n\nOur goal is to raise $20,000 by December 31. Every gift beyond our goal goes straight into the 2027 season. Thank you for helping our young artists take the stage.\n\nEncore Performing Arts is a 501(c)(3) nonprofit (EIN 86-2806815). Gifts are tax-deductible to the extent allowed by law.",
+      "image": null,
+      "goal": 20000,
+      "raised": null,
+      "deadline": "2026-12-31",
+      "active": true,
+      "defaultFrequency": "one-time"
+    }
+  ]
+}

@@ -311,6 +311,11 @@
   }
   .nav-toggle{margin-left:auto;}
 h2 em{color:var(--teal)}
+.core-amts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:18px;}
+.core-close .core-amts{justify-content:center;}
+.core-amts-l{font-size:14px;font-weight:600;color:var(--muted);margin-right:2px;}
+.btn-sm{padding:9px 16px;font-size:14.5px;}
+.core-amts-c{font-size:14px;font-weight:600;color:var(--charcoal);text-decoration:underline;text-underline-offset:3px;margin-left:4px;}
 </style>
 <style>
 /* BLOG */
@@ -486,11 +491,12 @@ h2 em{color:var(--teal)}
   <section class="core-hero"><div class="wrap">
     <span class="pill"><span class="dot"></span>The Core</span>
     <h1>Become part of <em>The Core</em></h1>
-    <p class="sub">The Core is Encore’s community of supporters who give small, regular monthly donations , the steady support that keeps our programs strong and growing.</p>
+    <p class="sub">The Core is Encore’s community of supporters who give small, regular monthly donations: the steady support that keeps our programs strong and growing.</p>
     <div class="core-cta-row">
-      <a href="https://givebutter.com/support-encore-performing-arts-d54afr" target="_blank" rel="noopener" class="btn btn-dark">Join The Core →</a>
+      <a href="https://buy.stripe.com/14AdR9cVM2pp6Vo9GVds403?client_reference_id=core-page-hero" class="btn btn-dark" aria-label="Join The Core, give $25 monthly">Join The Core: $25 a month →</a>
       <a href="/donate" class="btn btn-ghost">Other ways to give</a>
     </div>
+    <div class="core-amts" role="group" aria-label="Other monthly amounts"><span class="core-amts-l">Or give monthly:</span><a class="btn btn-ghost btn-sm" href="https://buy.stripe.com/28EbJ10904xxa7A1apds401?client_reference_id=core-page-hero" aria-label="Give $5 monthly">$5</a><a class="btn btn-ghost btn-sm" href="https://buy.stripe.com/cNi14n2h8aVVdjM7yNds402?client_reference_id=core-page-hero" aria-label="Give $15 monthly">$15</a><a class="btn btn-ghost btn-sm" href="https://buy.stripe.com/eVq3cvaNEe87bbEaKZds404?client_reference_id=core-page-hero" aria-label="Give $50 monthly">$50</a><a class="btn btn-ghost btn-sm" href="https://buy.stripe.com/6oUfZhf3U1lla7Af1fds405?client_reference_id=core-page-hero" aria-label="Give $100 monthly">$100</a><a class="btn btn-ghost btn-sm" href="https://buy.stripe.com/6oUfZh2h83tt1B4aKZds406?client_reference_id=core-page-hero" aria-label="Give $250 monthly">$250</a><a class="core-amts-c" href="/contact">Another amount? Contact us</a></div>
   </div></section>
 
   <section style="padding:10px 0;"><div class="wrap">
@@ -498,7 +504,7 @@ h2 em{color:var(--teal)}
       <div class="price"><div class="amt">$25</div><div class="per">/ month</div><div class="note">for the price of a night at the movies</div></div>
       <div class="copy">
         <h2>Small gifts, a world of difference</h2>
-        <p>Monthly gifts of any size add up to real impact for hundreds of young performers , funding arts education, scholarships, and a place to shine on stage. To join, click Donate and simply choose the Monthly Payments option.</p>
+        <p>Monthly gifts of any size add up to real impact for hundreds of young performers, funding arts education, scholarships, and a place to shine on stage. Join at $25 a month in one click, or pick another monthly amount. Checkout is secure and handled by Stripe.</p>
       </div>
     </div>
   </div></section>
@@ -519,9 +525,10 @@ h2 em{color:var(--teal)}
   <section style="padding-top:6px;"><div class="wrap">
     <div class="core-close reveal">
       <h2>Ready to join?</h2>
-      <p>Click below, then select <strong>Monthly Payments</strong> in the dropdown to become part of The Core.</p>
-      <a href="https://www.encorepa.org/donate" class="btn btn-dark" rel="noopener">Join The Core →</a>
-      <p class="core-step">Encore is a registered 501(c)(3) nonprofit. Donations are tax-deductible as allowed by law.</p>
+      <p>Choose a monthly amount to become part of The Core. You will finish on a secure Stripe checkout page.</p>
+      <a href="https://buy.stripe.com/14AdR9cVM2pp6Vo9GVds403?client_reference_id=core-page" class="btn btn-dark" aria-label="Join The Core, give $25 monthly">Join The Core: $25 a month →</a>
+      <div class="core-amts" role="group" aria-label="Other monthly amounts"><span class="core-amts-l">Or give monthly:</span><a class="btn btn-ghost btn-sm" href="https://buy.stripe.com/28EbJ10904xxa7A1apds401?client_reference_id=core-page" aria-label="Give $5 monthly">$5</a><a class="btn btn-ghost btn-sm" href="https://buy.stripe.com/cNi14n2h8aVVdjM7yNds402?client_reference_id=core-page" aria-label="Give $15 monthly">$15</a><a class="btn btn-ghost btn-sm" href="https://buy.stripe.com/eVq3cvaNEe87bbEaKZds404?client_reference_id=core-page" aria-label="Give $50 monthly">$50</a><a class="btn btn-ghost btn-sm" href="https://buy.stripe.com/6oUfZhf3U1lla7Af1fds405?client_reference_id=core-page" aria-label="Give $100 monthly">$100</a><a class="btn btn-ghost btn-sm" href="https://buy.stripe.com/6oUfZh2h83tt1B4aKZds406?client_reference_id=core-page" aria-label="Give $250 monthly">$250</a><a class="core-amts-c" href="/contact">Another amount? Contact us</a></div>
+      <p class="core-step">Encore Performing Arts is a 501(c)(3) nonprofit, EIN 86-2806815. Gifts are tax-deductible to the extent allowed by law.</p>
     </div>
   </div></section>
 </main>
@@ -550,6 +557,7 @@ h2 em{color:var(--teal)}
       <div class="foot-col">
         <h5>Support</h5>
         <a href="/donate">Donate</a>
+        <a href="/campaigns">Campaigns</a>
         <a href="/core-community">Join The Core</a>
         <a href="/encore-scholarship-application">Apply for a Scholarship</a>
         <a href="/contact">Contact Us</a>
