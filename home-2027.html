@@ -247,6 +247,111 @@
   .tn-label{font-size:36px}
   .tn-toggle{top:16px;bottom:auto;right:16px}
 }
+
+.ev-grid > .ev:last-child:nth-child(odd){grid-column:1 / -1}
+/* ===== Show banners (ported from the live homepage 2026-11-20) ===== */
+    /* ===== Show banners: alternating photo / copy, photo bleeds off the outer edge ===== */
+  .sb{position:relative;overflow:hidden;padding:0;isolation:isolate;}
+  .sb-tex{position:absolute;inset:0;z-index:0;pointer-events:none;}
+  .sb-tex img{width:100%;height:100%;object-fit:cover;display:block;}
+  .sb-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;}
+  .sb-snow{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:.3;}
+  @media (prefers-reduced-motion:reduce){.sb-snow{display:none;}}
+  .sb-spark{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:.3;}
+  @media (prefers-reduced-motion:reduce){.sb-spark{display:none;}}
+  .sb-grad{position:absolute;inset:0;z-index:2;pointer-events:none;}
+  .sb-grid{position:relative;z-index:3;}
+  .sb-grid{display:grid;align-items:stretch;gap:clamp(26px,4vw,60px);
+    grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);}
+  .sb-photo{margin:0;position:relative;align-self:stretch;min-height:clamp(260px,34vw,440px);}
+  .sb-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .sb-photo picture{position:absolute;inset:0;display:block;}
+  /* cut-out artwork: fit the whole thing, never crop, let the band texture show through */
+  .sb-cutout{border-radius:0 !important;overflow:visible !important;}
+  .sb-cutout img{object-fit:contain;object-position:50% 100%;
+    -webkit-mask-image:linear-gradient(180deg,#000 90%,transparent 100%);
+    mask-image:linear-gradient(180deg,#000 90%,transparent 100%);}
+  .sb-copy{padding:clamp(52px,6.5vw,92px) clamp(22px,3.4vw,52px);text-align:center;align-self:center;}
+  .sb-logo{display:block;width:min(100%,360px);margin:0 auto 26px;}
+  .sb-logo img{width:100%;height:auto;display:block;}
+  .sb-logo-cc{width:min(100%,430px);margin-bottom:22px;}
+  .sb-title{font-family:var(--font-display);line-height:1.04;margin:0 auto 22px;font-weight:700;
+    font-size:clamp(30px,4vw,46px);max-width:14ch;}
+  .sb-title em{display:block;font-style:italic;font-weight:500;font-size:.54em;margin-top:10px;}
+  .sb-date{font-size:clamp(19px,2.3vw,26px);font-weight:700;letter-spacing:.01em;margin:0 0 4px;
+    text-transform:uppercase;}
+  .sb-loc{font-size:clamp(14px,1.5vw,16px);margin:0 0 20px;}
+  .sb-detail{font-size:clamp(14.5px,1.6vw,16.5px);line-height:1.65;margin:0 auto 26px;max-width:46ch;}
+  .sb-actions{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;}
+
+  /* photo left, copy right */
+  .sb-left .sb-photo{grid-column:1;border-radius:0 26px 26px 0;overflow:hidden;}
+  .sb-left .sb-copy{grid-column:2;}
+  /* copy left, photo right */
+  .sb-right .sb-photo{grid-column:2;border-radius:26px 0 0 26px;overflow:hidden;}
+  .sb-right .sb-copy{grid-column:1;}
+
+  .btn-ghost-light{background:transparent;color:#e9e4e0;border:1.5px solid rgba(233,228,224,.45);}
+  .btn-ghost-light:hover{background:rgba(233,228,224,.12);}
+
+
+  /* Aspire spring 2027: Adam's Bright Lights banner design (2026-11-20).
+     Dot artwork behind, 25% #244048 wash so small cream text passes (5.0:1),
+     copy left, cut-out art with gold panel and scribble on the right. */
+  .sb-asp{background:#2f7080;}
+  .sb-asp .sb-tex img{object-position:50% 50%;}
+  .sb-asp .sb-scrim{background:rgba(36,64,72,.25);}
+  .sb-asp .sb-copy{padding-top:clamp(44px,5vw,72px);padding-bottom:clamp(44px,5vw,72px);}
+  .sb-asp-mark{display:block;width:min(70%,250px);margin:0 auto 14px;}
+  .sb-asp-mark img{width:100%;height:auto;display:block;}
+  .sb-asp .sb-kick{font-size:clamp(17px,1.9vw,22px);font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:#f6f5f3;margin:0 0 22px;}
+  .sb-asp .sb-logo-asp{width:min(100%,420px);margin:0 auto 26px;}
+  .sb-asp .sb-date{font-size:clamp(22px,2.4vw,28px);font-weight:500;text-transform:none;letter-spacing:0;color:#f6f5f3;margin:0 0 2px;}
+  .sb-asp .sb-loc{font-size:clamp(15px,1.5vw,18px);color:#f6f5f3;margin:0 0 26px;}
+  .sb-asp-btn{display:flex;justify-content:center;width:min(100%,420px);background:#f5c06a;color:#22201d;font-weight:800;font-size:clamp(17px,1.9vw,22px);text-transform:uppercase;letter-spacing:.01em;padding:18px 28px;border-radius:100px;border:0;}
+  .sb-asp-btn:hover{background:#f8d08f;}
+  .sb-asp .sb-more{margin:16px 0 0;font-size:15px;}
+  .sb-asp .sb-more a{color:#f6f5f3;font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#f5c06a;}
+  .sb-asp-art{border-radius:0 !important;overflow:visible !important;padding:clamp(20px,3vw,48px) clamp(12px,3vw,48px) clamp(20px,3vw,48px) 0;}
+  .sb-asp-art picture{position:relative !important;inset:auto !important;}
+  .sb-asp-art img{position:relative !important;inset:auto !important;height:auto !important;object-fit:contain;-webkit-mask-image:none !important;mask-image:none !important;}
+  .sb-asp .sb-photo.sb-asp-art{min-height:0;align-self:center;}
+  /* The Little Mermaid (Feb 2027): Adam's underwater art and lite logo, single
+     centred column. Dates kept to the month: the sheet (Dec 11-12) and the show
+     page (Dec 14) disagree on audition days. */
+  .sb-lm{background:#001325;}
+  .sb-lm .sb-tex img{object-position:50% 30%;}
+  .sb-lm .sb-scrim{background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(0,19,37,.74) 0%,rgba(0,19,37,.6) 60%,rgba(0,19,37,.35) 100%);}
+  .sb-lm .sb-grid{grid-template-columns:1fr;}
+  .sb-lm .sb-copy{grid-column:1;max-width:680px;margin:0 auto;padding:clamp(70px,8vw,120px) 22px;}
+  .sb-lm .sb-logo-lm{width:min(100%,460px);margin:0 auto 28px;}
+  .sb-lm .sb-kick{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#eff9f7;margin:0 0 12px;}
+  .sb-lm .sb-date{color:#fff;}
+  .sb-lm .sb-loc{color:#eff9f7;}
+  .sb-lm .sb-detail{color:#eff9f7;}
+  @media(max-width:860px){
+    .sb-grid{grid-template-columns:1fr;gap:0;}
+    .sb-left .sb-photo,.sb-right .sb-photo{grid-column:1;grid-row:1;border-radius:0;
+      min-height:clamp(220px,52vw,320px);}
+    .sb-left .sb-photo.sb-cutout,.sb-right .sb-photo.sb-cutout{min-height:clamp(290px,84vw,440px);}
+    /* stacked layout: the copy sits under the artwork, so soften the cut-off
+       at its base instead of leaving a straight line across the costumes */
+    .sb-cutout img{-webkit-mask-image:linear-gradient(180deg,#000 84%,transparent 100%);
+      mask-image:linear-gradient(180deg,#000 84%,transparent 100%);}
+    .sb-left .sb-copy,.sb-right .sb-copy{grid-column:1;grid-row:2;}
+    .sb-asp .sb-photo.sb-asp-art{min-height:0;padding:28px 16px 0;}
+  }
+
+  /* buttons and helpers the banners need, scoped so e27.css is untouched */
+  .sb .btn{border:none;cursor:pointer;font-family:inherit;font-weight:700;border-radius:100px;padding:14px 26px;font-size:15px;transition:transform .2s,background .2s,color .2s,border-color .2s;display:inline-flex;align-items:center;gap:9px;text-decoration:none;}
+  .sb .btn:hover{transform:translateY(-2px);}
+  .sb .btn-light{background:#f6f5f3;color:#22353d;}
+  .sb .btn-ghost-light{background:transparent;color:#e9e4e0;border:1.5px solid rgba(233,228,224,.55);}
+  .sb .sb-asp-btn{font-weight:800;font-size:clamp(17px,1.9vw,22px);padding:18px 28px;text-transform:uppercase;justify-content:center;width:min(100%,420px);background:#f5c06a;color:#22201d;}
+  .sb .sb-copy,.sb .sb-copy p{text-align:center;}
+  .sb .sb-copy p{margin-left:auto;margin-right:auto;}
+  .sb .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+  .sb-grid{max-width:none;}
 </style>
 <!-- Elfsight platform.js loads ONCE here, never beside an embed. Two script
      tags on one page is what stopped a second form rendering before. -->
@@ -373,12 +478,62 @@
   <div class="wrap">
     <h2 class="h2" id="coming-h">What&rsquo;s coming up</h2>
     <div class="ev-panel">
-      <div class="ev-grid"><a class="ev" href="/classes-2027"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/blog/little-mermaid-camp-underway/dance-class.webp"><img src="/img/blog/little-mermaid-camp-underway/dance-class.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Now enrolling</span><span class="ev-name">Classes &amp; Workshops</span><span class="ev-when">Fall 2026 &middot; ages 7&ndash;18</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="ev" href="/peter-pan-jr-tickets-2027"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/shows/peter-pan-jr/card.webp"><img src="/img/shows/peter-pan-jr/card.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Tickets on sale</span><span class="ev-name">Peter Pan Jr.</span><span class="ev-when">Nov 19&ndash;21 &middot; The Electric Theater</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="ev" href="/a-christmas-carol-tickets-2027"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/shows/a-christmas-carol-card.webp"><img src="/img/shows/a-christmas-carol-card.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Tickets on sale</span><span class="ev-name">A Christmas Carol</span><span class="ev-when">Nov 30 &ndash; Dec 18 &middot; The Electric Theater</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a></div>
+      <div class="ev-grid"><a class="ev" href="/classes-2027"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/blog/little-mermaid-camp-underway/dance-class.webp"><img src="/img/blog/little-mermaid-camp-underway/dance-class.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Now enrolling</span><span class="ev-name">Classes &amp; Workshops</span><span class="ev-when">Fall 2026 &middot; ages 7&ndash;18</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="ev" href="/peter-pan-jr-tickets-2027"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/shows/peter-pan-jr/card.webp"><img src="/img/shows/peter-pan-jr/card.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Tickets on sale</span><span class="ev-name">Peter Pan Jr.</span><span class="ev-when">Nov 19&ndash;21 &middot; The Electric Theater</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="ev" href="/a-christmas-carol-tickets-2027"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/shows/a-christmas-carol-card.webp"><img src="/img/shows/a-christmas-carol-card.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Tickets on sale</span><span class="ev-name">A Christmas Carol</span><span class="ev-when">Nov 30 &ndash; Dec 18 &middot; The Electric Theater</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="ev" href="/aspire-performing-co-2027"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/aspire/aspire-01.webp"><img src="/img/aspire/aspire-01.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Auditions open</span><span class="ev-name">Aspire: Bright Lights of Broadway</span><span class="ev-when">Auditions Dec 14 &amp; 15 &middot; ages 5&ndash;18</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a><a class="ev" href="/little-mermaid"><span class="ev-bg"><picture><source type="image/webp" srcset="/img/shows/little-mermaid/band.webp"><img src="/img/shows/little-mermaid/band.jpg" alt="" loading="lazy" decoding="async"></picture></span><span class="ev-e" aria-hidden="true">e</span><span class="ev-txt"><span class="ev-st">Auditions in December</span><span class="ev-name">The Little Mermaid</span><span class="ev-when">Feb 3&ndash;6, 2027 &middot; The Electric Theater</span></span><span class="ev-go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a></div>
       <a class="pill" href="/calendar">SEE ALL UPCOMING EVENTS</a>
     </div>
   </div>
 </section>
 
+<!-- ========== ASPIRE SPRING 2027 BANNER ========== -->
+<section class="sb sb-asp sb-right" aria-labelledby="asp-banner-h">
+  <div class="sb-tex" aria-hidden="true"><picture>
+    <source type="image/webp" srcset="/img/aspire/bright-lights-bg.webp">
+    <img src="/img/aspire/bright-lights-bg.jpg" alt="" loading="lazy" decoding="async">
+  </picture></div>
+  <div class="sb-scrim" aria-hidden="true"></div>
+  <div class="sb-grid">
+    <div class="sb-copy">
+      <h2 id="asp-banner-h" class="sr-only">Aspire Performing Co. spring 2027 auditions: Bright Lights of Broadway</h2>
+      <picture class="sb-asp-mark"><img src="/img/aspire/aspire-logo-white.svg" alt="" width="862" height="299" decoding="async"></picture>
+      <p class="sb-kick">Spring 2027 Auditions</p>
+      <picture class="sb-logo sb-logo-asp"><img src="/img/aspire/bright-lights-logo-gold.svg" alt="Bright Lights of Broadway" width="804" height="258" decoding="async"></picture>
+      <p class="sb-date">December 14 &amp; 15, 2026</p>
+      <p class="sb-loc">at the Electric Theater</p>
+      <div class="sb-actions">
+        <a href="/aspire-registration" class="btn sb-asp-btn">Register today</a>
+      </div>
+      <p class="sb-more"><a href="/aspire-performing-co-2027">About Aspire &rarr;</a></p>
+    </div>
+    <figure class="sb-photo sb-cutout sb-asp-art">
+      <picture>
+        <source type="image/webp" srcset="/img/aspire/bright-lights-banner-art.webp">
+        <img src="/img/aspire/bright-lights-banner-art.png" alt="Aspire Performing Co. young artists reaching skyward on stage, in black and white over a gold panel" width="1141" height="770" loading="lazy" decoding="async">
+      </picture>
+    </figure>
+  </div>
+</section>
+<!-- ========== THE LITTLE MERMAID BANNER ========== -->
+<section class="sb sb-lm" aria-labelledby="lm-banner-h">
+  <div class="sb-tex" aria-hidden="true"><picture>
+    <source type="image/webp" srcset="/img/shows/little-mermaid/underwater-bg.webp">
+    <img src="/img/shows/little-mermaid/underwater-bg.jpg" alt="" loading="lazy" decoding="async">
+  </picture></div>
+  <div class="sb-scrim" aria-hidden="true"></div>
+  <div class="sb-grid">
+    <div class="sb-copy">
+      <h2 id="lm-banner-h" class="sr-only">Disney&rsquo;s The Little Mermaid</h2>
+      <p class="sb-kick">Junior Series &middot; Ages 7 to 13</p>
+      <picture class="sb-logo sb-logo-lm"><img src="/img/shows/little-mermaid/little-mermaid-logo-lite.svg" alt="Disney&rsquo;s The Little Mermaid" width="727" height="371" decoding="async"></picture>
+      <p class="sb-date">February 3 &ndash; 6, 2027</p>
+      <p class="sb-loc">The Historic Electric Theater &middot; St. George</p>
+      <p class="sb-detail">Auditions are in December. Dive in with audition details, the rehearsal schedule and how to register.</p>
+      <div class="sb-actions">
+        <a href="/little-mermaid" class="btn btn-light">Audition details &rarr;</a>
+        <a href="/auditions-2027" class="btn btn-ghost-light">All auditions</a>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="programs" aria-labelledby="prog-h">
   <div class="wrap">
     <div class="split-head">
