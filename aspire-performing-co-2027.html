@@ -192,6 +192,13 @@ a.pw-in:hover .pw-go svg{transform:translateX(4px)}
 .ev-rows small{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);padding-top:3px}
 .ev-btns{display:flex;flex-wrap:wrap;gap:12px}
 .ev-btns .pill{min-width:220px}
+.bl-event .event-b h2{margin:6px 0 0}
+.bl-logo{display:block;width:min(100%,400px);height:auto}
+.bl-event .event-ph img{object-position:50% 85%}
+.bl-event .ev-rows li{grid-template-columns:120px 1fr}
+.bl-event .ev-rows b{font-weight:700;color:#fff}
+.bl-remote{font-size:15px;line-height:1.5;font-weight:400;color:var(--mist);margin:20px 0 0}
+.bl-remote a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .promo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(30px,4vw,64px);align-items:center;background:#fff;border-radius:var(--r);padding:clamp(18px,2vw,26px)}
 .promo-ph{border-radius:24px;overflow:hidden;aspect-ratio:4/3}
 .promo-ph picture,.promo-ph img{width:100%;height:100%;object-fit:cover}
@@ -225,6 +232,7 @@ a.pw-in:hover .pw-go svg{transform:translateX(4px)}
   .team{max-width:420px}
 }
 @media (max-width:560px){
+  .bl-event .ev-rows li{grid-template-columns:1fr;gap:4px}
   .pws,.stats{grid-template-columns:1fr}
   .stack{margin-right:14px}
   .stack-inset{width:50%;border-width:6px;right:-14px}
@@ -436,17 +444,41 @@ a.pw-in:hover .pw-go svg{transform:translateX(4px)}
 <section class="pbanner" data-par-host>
   <div class="pb-ph" data-par="0.35" style="--pos:50% 40%"><picture><source type="image/webp" srcset="/img/programs/aspire.webp"><img src="/img/programs/aspire.jpg" alt="The Aspire Performing Co. ensemble in period costume mid-number" fetchpriority="high" decoding="async"></picture></div>
   <div class="wrap pb-in" data-par="0.14" data-par-fade>
-    <p class="kicker">Performing company &middot; Ages 5&ndash;18</p>
+    <p class="kicker">Spring 2027 auditions &middot; Ages 5&ndash;18</p>
     <h1>Aspire Performing Co.</h1>
     <p class="lede">Encore&rsquo;s audition-based, all-ages song and dance performing company: song, dance, and performance for ages 5 through high school senior. Auditions are held twice a year.</p>
-    <div class="pb-acts"><a class="pill" href="#waitlist">Join the waitlist</a><a class="pill pill-light" href="#about">About Aspire</a></div>
+    <div class="pb-acts"><a class="pill" href="/aspire-registration">Register for auditions</a><a class="pill pill-light" href="#schedule">See the schedule</a></div>
   </div>
   <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C 360 0 760 130 1080 60 C 1240 26 1360 40 1440 52 L1440 120 L0 120 Z"/></svg>
 </section>
 
 
 <section class="sec intro" aria-label="Aspire at a glance" style="padding-bottom:0">
-  <div class="wrap"><div class="stats"><div class="stat"><b>6&ndash;18</b><span>Ages 5 through high school senior, grouped by age and experience</span></div><div class="stat"><b>5</b><span>Aspire groups, each curated as a balanced team</span></div><div class="stat"><b>2&times;</b><span>Auditions twice a year. No experience required</span></div><div class="stat"><b>$395</b><span>Typical tuition per semester, with payment plans and scholarships</span></div></div></div>
+  <div class="wrap"><div class="stats"><div class="stat"><b>5&ndash;18</b><span>Ages 5 through high school senior, grouped by age and experience</span></div><div class="stat"><b>5</b><span>Aspire groups, each curated as a balanced team</span></div><div class="stat"><b>2&times;</b><span>Auditions twice a year. No experience required</span></div><div class="stat"><b>$395</b><span>Typical tuition per semester, with payment plans and scholarships</span></div></div></div>
+</section>
+
+<section class="sec" id="schedule" aria-labelledby="bl-h" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="event bl-event">
+      <div class="event-ph"><picture><source type="image/webp" srcset="/img/aspire/aspire-11.webp"><img src="/img/aspire/aspire-11.jpg" alt="Aspire Performing Co. Young Artists reaching skyward on the Electric Theater stage" loading="lazy" decoding="async"></picture></div>
+      <div class="event-b">
+        <p class="kicker">Spring 2027 season</p>
+        <h2 id="bl-h"><img class="bl-logo" src="/img/aspire/bright-lights-logo-gold.svg" alt="Bright Lights of Broadway" width="804" height="258"></h2>
+        <p>Every audition, rehearsal and curtain call for the spring season. All events are at the Electric Theater, 68 E Tabernacle St, St. George.</p>
+        <ul class="ev-rows">
+          <li><small>Mon, Dec 14</small><span><b>Vocal auditions,</b> 4:00 to 8:00pm by time slot. Register first and we will email you a link to choose your time. Please bring a printed headshot and resume.</span></li>
+          <li><small>Tue, Dec 15</small><span><b>Dance call</b> by age group: ages 5 to 8 at 4:00pm, ages 9 to 12 at 5:00pm, ages 13 to 18 at 6:00pm. Some 12-year-olds may be asked to stay and dance with the 13 to 18 group.</span></li>
+          <li><small>Thu, Jan 14</small><span><b>Season launch</b> at 6:00pm</span></li>
+          <li><small>Thursdays</small><span><b>Weekly rehearsals</b> through April 15, in a 2-hour window between 4:00 and 8:00pm depending on group</span></li>
+          <li><small>Apr 19 to 22</small><span><b>Tech rehearsals,</b> times to be announced</span></li>
+          <li><small>Thu, Apr 22</small><span><b>Sensory-friendly performance,</b> time to be announced</span></li>
+          <li><small>Apr 23 &amp; 24</small><span><b>Performances</b> at 5:00 and 7:30pm each day</span></li>
+        </ul>
+        <div class="ev-btns"><a class="pill pill-light" href="/aspire-registration">Register for auditions</a></div>
+        <p class="bl-remote">Can&rsquo;t be there in person? Send a vocal video and a dance video to <a href="mailto:randy@encorepa.org">randy@encorepa.org</a> before December 14 for a remote audition.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="sec" id="about" aria-labelledby="about-h">
@@ -533,9 +565,9 @@ a.pw-in:hover .pw-go svg{transform:translateX(4px)}
   <div class="wrap">
     <div class="formcard">
       <div>
-        <p class="kicker">Auditions are closed for now</p>
-        <h3 id="wl-h">Join the waitlist</h3>
-        <p>Aspire auditions come around twice a year and spots are limited. Add your Young Artist to the waitlist and you will hear from us first when the next round opens, before it is announced anywhere else. We will also be in touch if a place opens mid-season, which does happen.</p>
+        <p class="kicker">Questions and the waitlist</p>
+        <h3 id="wl-h">Get in touch</h3>
+        <p>Spring 2027 auditions are open now: <a href="/aspire-registration">register here</a>. Can&rsquo;t make December 14 or 15? Send us a note and we will help with a remote audition, or add your Young Artist to the waitlist for the next round. We will also be in touch if a place opens mid-season, which does happen.</p>
         <p>If the form does not load, email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> or call <a href="tel:+14354140049">(435) 414-0049</a> and we will add you.</p>
       </div>
       <div class="form-slot"><div class="elfsight-app-a43aa25d-52a3-4a11-914a-60ce99d4f6aa"></div></div>
@@ -547,8 +579,8 @@ a.pw-in:hover .pw-go svg{transform:translateX(4px)}
   <div class="cta-ph"><picture><source type="image/webp" srcset="/img/aspire/aspire-04.webp"><img src="/img/aspire/aspire-04.jpg" alt="" loading="lazy" decoding="async"></picture></div>
   <div class="wrap cta-in">
     <h2 id="cta-h">Ready to join Aspire?</h2>
-    <p>Auditions come around twice a year. Reach out and we&rsquo;ll let you know when the next round opens.</p>
-    <div class="cta-btns"><a class="pill" href="#waitlist">Join the waitlist</a><a class="pill pill-light" href="tel:+14354140049">Call (435) 414-0049</a></div>
+    <p>Spring 2027 auditions are December 14 and 15 at the Electric Theater. Register first and we will email your vocal audition time slot.</p>
+    <div class="cta-btns"><a class="pill" href="/aspire-registration">Register for auditions</a><a class="pill pill-light" href="#schedule">See the schedule</a></div>
   </div>
   <svg class="wave wave-bot" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 80 L0 48 C 300 24 640 70 980 46 C 1200 30 1340 28 1440 36 L1440 80 Z"/></svg>
 </section>
