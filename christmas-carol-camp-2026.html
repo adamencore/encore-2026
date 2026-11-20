@@ -172,6 +172,24 @@
   .tl-what{font-size:13.5px;color:rgba(233,228,224,.78);margin-top:6px;line-height:1.45;}
 
   /* AUDITION CARDS */
+  /* REGISTRATION */
+  .reg-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;align-items:start;}
+  .reg-side{background:linear-gradient(150deg,var(--show-mid),var(--show-deep));color:var(--cream);border-radius:var(--radius-lg);padding:40px;}
+  .reg-side .amt{font-family:var(--font-display);font-size:64px;font-weight:600;line-height:1;color:#fff;}
+  .reg-side .lab{color:var(--show-tint);font-size:15px;margin-top:8px;}
+  .reg-steps{margin:26px 0 28px;padding:0;list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:16px;}
+  .reg-steps li{counter-increment:s;position:relative;padding-left:44px;font-size:15px;line-height:1.55;color:var(--cream);}
+  .reg-steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:30px;height:30px;border-radius:50%;background:var(--show-tint);color:var(--show-deep);font-weight:700;font-size:14px;display:grid;place-items:center;}
+  .reg-steps b{color:#fff;}
+  .reg-form{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:32px;min-height:420px;}
+  .reg-note{background:var(--cream-lite);border-left:4px solid var(--show-mid);border-radius:14px;padding:16px 18px;font-size:15px;line-height:1.6;color:var(--charcoal);margin:0 0 22px;}
+  .reg-fallback{margin-top:18px;font-size:13.5px;color:var(--muted);}
+  .reg-fallback a,.aud-link a{color:var(--show-mid);font-weight:600;border-bottom:1px solid currentColor;}
+  .aud-link{margin-top:12px;}
+  .reg-side .btn-white{background:#fff;color:var(--show-deep);}
+  #register{scroll-margin-top:140px;}
+  @media(max-width:980px){.reg-grid{grid-template-columns:1fr;}}
+  @media(max-width:560px){.reg-side,.reg-form{padding:26px 20px;}.reg-side .amt{font-size:52px;}}
   .aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   .aud{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px;}
   .aud .ic{width:46px;height:46px;border-radius:50%;background:var(--cream);color:var(--charcoal);display:grid;place-items:center;font-size:20px;margin-bottom:16px;}
@@ -366,6 +384,7 @@
   .sh-badge{background:rgba(74,16,24,.6)!important}
   .sh-text .eyebrow{color:#f3dfc8}
 </style>
+<script src="https://elfsightcdn.com/platform.js" async></script>
 </head>
 <body>
 <!-- ========== NAV ========== -->
@@ -409,8 +428,8 @@
           <h1><em>A Christmas Carol Jr. Camp</em></h1>
           <p class="tagline">A two-week holiday musical theater camp where Young Artists learn the songs, choreography and scenes of A Christmas Carol, then perform it on the Electric Theater stage, right in the middle of our mainstage run.</p>
           <div class="sh-actions">
-            <a href="/contact" class="btn btn-accent">Join our waiting list &rarr;</a>
-            <a href="/camps" class="btn btn-light">Sign up</a>
+            <a href="#register" class="btn btn-accent">Register now &rarr;</a>
+            <a href="https://calendly.com/production-encorepa/christmas-carol-camp-auditions" class="btn btn-light" target="_blank" rel="noopener">Reserve an audition time</a>
           </div>
           <p class="seller-note">Encore Performing Arts produces this show. Tickets are sold only through our box office, at face value.</p>
         </div>
@@ -483,11 +502,12 @@
           <div class="ic" aria-hidden="true">&#9834;</div>
           <h3>Vocals and dance</h3>
           <p><strong>Friday, December 4, 2026 &middot; 3:00&ndash;5:30pm</strong><br>Singing and a short dance call, both at the Electric Theater.</p>
+          <p class="aud-link"><a href="https://calendly.com/production-encorepa/christmas-carol-camp-auditions" target="_blank" rel="noopener">Reserve your time &rarr;</a></p>
         </div>
         <div class="aud">
           <div class="ic" aria-hidden="true">&#10022;</div>
           <h3>Parent meeting</h3>
-          <p><strong>Saturday, December 5, 2026 &middot; 9:00am</strong><br>At the Electric Theater, to launch the camp.</p>
+          <p><strong>Saturday, December 5, 2026 &middot; 9:00am</strong><br>At the Electric Theater, followed by the first rehearsal.</p>
         </div>
         <div class="aud feature">
           <div class="ic" aria-hidden="true">&#9654;</div>
@@ -534,7 +554,7 @@
           <div class="row"><div class="k">Saturdays</div><div class="vv">10:00am–12:00pm</div></div>
           <div class="row"><div class="k">Mon–Fri</div><div class="vv">4:00–5:00pm</div></div>
           <div class="row"><div class="k">Tech</div><div class="vv">Thu Dec 17 &amp; Fri Dec 18, 4:00–5:00pm</div></div>
-          <div class="row"><div class="k">Location</div><div class="vv">The Electric Theater</div></div>
+          <div class="row"><div class="k">Location</div><div class="vv">Historic Electric Theater<br>68 E Tabernacle St, St. George</div></div>
         </div>
         <div class="perf">
           <h3>Performance</h3>
@@ -546,6 +566,37 @@
         </div>
       </div>
       <p class="reveal" style="margin-top:18px;font-size:13px;color:var(--muted);">*Dates subject to change.</p>
+    </div>
+  </section>
+
+  <!-- ===== REGISTRATION ===== -->
+  <section style="padding-top:0;" aria-labelledby="reg-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Registration</span>
+          <h2 id="reg-h">Save your <em>spot</em></h2>
+        </div>
+        <p class="lead">Register below, then reserve a placement audition time for Friday, December 4.</p>
+      </div>
+      <div class="reg-grid reveal">
+        <div class="reg-side">
+          <div class="amt">$175</div>
+          <div class="lab">Camp fee &middot; Ages 5 to 11</div>
+          <ol class="reg-steps">
+            <li><b>Register</b> with the form. Have a headshot and resume ready to upload.</li>
+            <li><b>Reserve your placement audition time</b> for Friday, December 4, 3:00&ndash;5:30pm.</li>
+            <li><b>Come to the parent meeting</b> on Saturday, December 5 at 9:00am, followed by the first rehearsal.</li>
+          </ol>
+          <a href="https://calendly.com/production-encorepa/christmas-carol-camp-auditions" class="btn btn-white" target="_blank" rel="noopener">Reserve an audition time &rarr;</a>
+        </div>
+        <div class="reg-form">
+          <p class="reg-note">Registration requires a headshot and resume upload. After you register, reserve your placement audition time. The placement audition is not a cut: every registered camper is in the show.</p>
+          <!-- Elfsight Form Builder | A Christmas Carol Jr. Camp 2026 Registration -->
+          <div id="register" class="elfsight-app-0a208829-3f31-47e8-9e9c-fd9b10623ec1" data-elfsight-app-lazy></div>
+          <p class="reg-fallback">If the form does not load, email <a href="mailto:hello@encorepa.org">hello@encorepa.org</a> or call <a href="tel:+14354140049">(435) 414-0049</a>.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -591,8 +642,8 @@
             <p>Two weeks of song, dance and story, finishing with a performance on Friday, December 18 at 5:00pm.</p>
           </div>
           <div style="display:flex;gap:11px;flex-wrap:wrap;">
-            <a href="/contact" class="btn btn-white">Join our waiting list &rarr;</a>
-            <a href="/camps" class="btn btn-white" style="background:transparent;border:1.5px solid rgba(255,255,255,.6);color:#fff;">Sign up</a>
+            <a href="#register" class="btn btn-white">Register now &rarr;</a>
+            <a href="https://calendly.com/production-encorepa/christmas-carol-camp-auditions" class="btn btn-white" target="_blank" rel="noopener" style="background:transparent;border:1.5px solid rgba(255,255,255,.6);color:#fff;">Reserve an audition time</a>
           </div>
         </div>
       </div>
