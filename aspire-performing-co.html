@@ -337,6 +337,12 @@ body.menu-open .mobile-menu{opacity:1;visibility:visible;transform:none}
 .mobile-menu .mm-foot{margin-top:26px;font-size:14px;color:#f6f5f3b3;line-height:1.6}
 @media (max-width:1000px){.navlinks{display:none}.nav-toggle{display:flex}}
 @media (max-width:560px){#nav .asp-tag,#nav .nav-sep{display:none}}
+
+/* Bright Lights background artwork (2026-11-20). Replaces the CSS olive dots in every
+   dark section. The art's own blue is #338093, which fails AA with cream text, so a
+   45% #244048 scrim sits over it: cream 6.1:1, pale gold 5.7:1, gold 4.0:1 (large). */
+section:not(.schedule):not(#team):has(> .specks),header:has(> .specks),footer:has(> .specks){background:linear-gradient(rgba(36,64,72,.45),rgba(36,64,72,.45)),url(/img/aspire/bright-lights-bg.webp) center/cover,#2c6371}
+.specks{display:none}
 </style>
 </head>
 <body>

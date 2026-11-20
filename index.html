@@ -773,9 +773,11 @@ html,body{overflow-x:clip;}
 
 
   /* Aspire spring 2027: Bright Lights palette (blue #497f91 deepened for text, gold, Encore whites) */
-  .sb-asp{background:#3a6674;}
+  .sb-asp{background:#2c6371;}
+  .sb-asp .sb-tex img{object-position:50% 50%;}
+  .sb-asp .sb-scrim{background:rgba(36,64,72,.45);}
   .sb-asp .sb-grad{background:linear-gradient(180deg,rgba(18,36,41,0) 50%,rgba(18,36,41,.45) 100%);}
-  .sb-asp .sb-logo-asp{width:min(100%,330px);margin-bottom:18px;}
+  .sb-asp .sb-logo-asp{width:min(100%,400px);margin:0 auto 24px;}
   .sb-asp .sb-kick{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fcecd2;margin:0 0 10px;}
   .sb-asp .sb-title{color:#f5c06a;}
   .sb-asp .sb-date{color:#fff;}
@@ -927,6 +929,11 @@ html,body{overflow-x:clip;}
 
 <!-- ========== ASPIRE SPRING 2027 BANNER ========== -->
 <section class="sb sb-asp sb-left" aria-labelledby="asp-banner-h">
+  <div class="sb-tex" aria-hidden="true"><picture>
+    <source type="image/webp" srcset="/img/aspire/bright-lights-bg.webp">
+    <img src="/img/aspire/bright-lights-bg.jpg" alt="" loading="lazy" decoding="async">
+  </picture></div>
+  <div class="sb-scrim" aria-hidden="true"></div>
   <div class="sb-grad" aria-hidden="true"></div>
   <div class="sb-grid">
     <figure class="sb-photo reveal">
@@ -936,11 +943,11 @@ html,body{overflow-x:clip;}
       </picture>
     </figure>
     <div class="sb-copy reveal">
+      <p class="sb-kick">Aspire Performing Co. &middot; Spring 2027 auditions</p>
+      <h2 id="asp-banner-h" class="sr-only">Bright Lights of Broadway</h2>
       <picture class="sb-logo sb-logo-asp">
-        <img src="/img/aspire/aspire-logo-white.svg" alt="Aspire Performing Co." width="862" height="299" decoding="async">
+        <img src="/img/aspire/bright-lights-logo-gold.svg" alt="Bright Lights of Broadway" width="804" height="258" decoding="async">
       </picture>
-      <p class="sb-kick">Spring 2027 auditions</p>
-      <h2 id="asp-banner-h" class="sb-title">Bright Lights of Broadway</h2>
       <p class="sb-date">December 14 &amp; 15, 2026</p>
       <p class="sb-loc">The Historic Electric Theater &middot; St. George</p>
       <p class="sb-detail">Encore&rsquo;s song and dance performing company for ages 5 to 18. Vocal auditions Monday, December 14, and a dance call by age group on Tuesday, December 15.</p>
