@@ -8,6 +8,9 @@
 /_build/*   /404.html   404!
 /studio/*   /404.html   404!
 
+# --- Aspire spring 2027 preview went live 2026-11-20 -------------------------
+/aspire-spring-2027-preview   /aspire-performing-co   301
+
 # --- Giving campaigns ---------------------------------------------------------
 # One template page serves every campaign; js/campaigns.js reads the slug from
 # the URL and fills it from /data/campaigns.json. Status 200 = rewrite, so the
