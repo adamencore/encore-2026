@@ -316,19 +316,26 @@
   .sb-asp-art picture{position:relative !important;inset:auto !important;}
   .sb-asp-art img{position:relative !important;inset:auto !important;height:auto !important;object-fit:contain;-webkit-mask-image:none !important;mask-image:none !important;}
   .sb-asp .sb-photo.sb-asp-art{min-height:0;align-self:center;}
-  /* The Little Mermaid (Feb 2027): Adam's underwater art and lite logo, single
-     centred column. Dates kept to the month: the sheet (Dec 11-12) and the show
+  /* The Little Mermaid (Feb 2027): Adam's underwater art and lite logo,
+     copy left and composed art right, matching the
+     Bright Lights banner. Dates kept to the month: the sheet (Dec 11-12) and the show
      page (Dec 14) disagree on audition days. */
   .sb-lm{background:#001325;}
   .sb-lm .sb-tex img{object-position:50% 30%;}
-  .sb-lm .sb-scrim{background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(0,19,37,.74) 0%,rgba(0,19,37,.6) 60%,rgba(0,19,37,.35) 100%);}
-  .sb-lm .sb-grid{grid-template-columns:1fr;}
-  .sb-lm .sb-copy{grid-column:1;max-width:680px;margin:0 auto;padding:clamp(70px,8vw,120px) 22px;}
-  .sb-lm .sb-logo-lm{width:min(100%,460px);margin:0 auto 28px;}
-  .sb-lm .sb-kick{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#eff9f7;margin:0 0 12px;}
-  .sb-lm .sb-date{color:#fff;}
-  .sb-lm .sb-loc{color:#eff9f7;}
-  .sb-lm .sb-detail{color:#eff9f7;}
+  .sb-lm .sb-scrim{background:rgba(0,19,37,.55);}
+  .sb-lm .sb-copy{padding-top:clamp(44px,5vw,72px);padding-bottom:clamp(44px,5vw,72px);}
+  .sb-lm .sb-kick{font-size:clamp(17px,1.9vw,22px);font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:#f6f5f3;margin:0 0 22px;}
+  .sb-lm .sb-logo-lm{width:min(100%,420px);margin:0 auto 26px;}
+  .sb-lm .sb-date{font-size:clamp(22px,2.4vw,28px);font-weight:500;text-transform:none;letter-spacing:0;color:#f6f5f3;margin:0 0 2px;}
+  .sb-lm .sb-loc{font-size:clamp(15px,1.5vw,18px);color:#f6f5f3;margin:0 0 26px;}
+  .sb .sb-lm-btn{display:flex;justify-content:center;width:min(100%,420px);background:#5cc8c0;color:#001325;font-weight:800;font-size:clamp(17px,1.9vw,22px);text-transform:uppercase;letter-spacing:.01em;padding:18px 28px;border-radius:100px;border:0;}
+  .sb .sb-lm-btn:hover{background:#84d8d1;}
+  .sb-lm .sb-more{margin:16px 0 0;font-size:15px;}
+  .sb-lm .sb-more a{color:#f6f5f3;font-weight:600;text-decoration:underline;text-underline-offset:4px;text-decoration-color:#5cc8c0;}
+  .sb-lm-art{border-radius:0 !important;overflow:visible !important;padding:clamp(20px,3vw,48px) clamp(12px,3vw,48px) clamp(20px,3vw,48px) 0;}
+  .sb-lm-art picture{position:relative !important;inset:auto !important;}
+  .sb-lm-art img{position:relative !important;inset:auto !important;height:auto !important;object-fit:contain;-webkit-mask-image:none !important;mask-image:none !important;}
+  .sb-lm .sb-photo.sb-lm-art{min-height:0;align-self:center;}
   @media(max-width:860px){
     .sb-grid{grid-template-columns:1fr;gap:0;}
     .sb-left .sb-photo,.sb-right .sb-photo{grid-column:1;grid-row:1;border-radius:0;
@@ -340,6 +347,7 @@
       mask-image:linear-gradient(180deg,#000 84%,transparent 100%);}
     .sb-left .sb-copy,.sb-right .sb-copy{grid-column:1;grid-row:2;}
     .sb-asp .sb-photo.sb-asp-art{min-height:0;padding:28px 16px 0;}
+    .sb-lm .sb-photo.sb-lm-art{min-height:0;padding:28px 16px 0;}
   }
 
   /* buttons and helpers the banners need, scoped so e27.css is untouched */
@@ -347,7 +355,9 @@
   .sb .btn:hover{transform:translateY(-2px);}
   .sb .btn-light{background:#f6f5f3;color:#22353d;}
   .sb .btn-ghost-light{background:transparent;color:#e9e4e0;border:1.5px solid rgba(233,228,224,.55);}
-  .sb .sb-asp-btn{font-weight:800;font-size:clamp(17px,1.9vw,22px);padding:18px 28px;text-transform:uppercase;justify-content:center;width:min(100%,420px);background:#f5c06a;color:#22201d;}
+  .sb .sb-asp-btn,.sb .sb-lm-btn{font-weight:800;font-size:clamp(17px,1.9vw,22px);padding:18px 28px;text-transform:uppercase;justify-content:center;width:min(100%,420px);}
+  .sb .sb-asp-btn{background:#f5c06a;color:#22201d;}
+  .sb .sb-lm-btn{background:#5cc8c0;color:#001325;}
   .sb .sb-copy,.sb .sb-copy p{text-align:center;}
   .sb .sb-copy p{margin-left:auto;margin-right:auto;}
   .sb .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
@@ -513,7 +523,7 @@
   </div>
 </section>
 <!-- ========== THE LITTLE MERMAID BANNER ========== -->
-<section class="sb sb-lm" aria-labelledby="lm-banner-h">
+<section class="sb sb-lm sb-right" aria-labelledby="lm-banner-h">
   <div class="sb-tex" aria-hidden="true"><picture>
     <source type="image/webp" srcset="/img/shows/little-mermaid/underwater-bg.webp">
     <img src="/img/shows/little-mermaid/underwater-bg.jpg" alt="" loading="lazy" decoding="async">
@@ -521,17 +531,22 @@
   <div class="sb-scrim" aria-hidden="true"></div>
   <div class="sb-grid">
     <div class="sb-copy">
-      <h2 id="lm-banner-h" class="sr-only">Disney&rsquo;s The Little Mermaid</h2>
+      <h2 id="lm-banner-h" class="sr-only">Disney&rsquo;s The Little Mermaid, Junior Series, ages 7 to 13</h2>
       <p class="sb-kick">Junior Series &middot; Ages 7 to 13</p>
       <picture class="sb-logo sb-logo-lm"><img src="/img/shows/little-mermaid/little-mermaid-logo-lite.svg" alt="Disney&rsquo;s The Little Mermaid" width="727" height="371" decoding="async"></picture>
       <p class="sb-date">February 3 &ndash; 6, 2027</p>
-      <p class="sb-loc">The Historic Electric Theater &middot; St. George</p>
-      <p class="sb-detail">Auditions are in December. Dive in with audition details, the rehearsal schedule and how to register.</p>
+      <p class="sb-loc">at the Electric Theater</p>
       <div class="sb-actions">
-        <a href="/little-mermaid" class="btn btn-light">Audition details &rarr;</a>
-        <a href="/auditions-2027" class="btn btn-ghost-light">All auditions</a>
+        <a href="/little-mermaid" class="btn sb-lm-btn">Audition details</a>
       </div>
+      <p class="sb-more"><a href="/auditions">All auditions &rarr;</a></p>
     </div>
+    <figure class="sb-photo sb-cutout sb-lm-art">
+      <picture>
+        <source type="image/webp" srcset="/img/shows/little-mermaid/banner-art.webp">
+        <img src="/img/shows/little-mermaid/banner-art.png" alt="Young Artists in Little Mermaid shirts singing in front of an underwater set, in black and white over a sea green panel" width="1141" height="770" loading="lazy" decoding="async">
+      </picture>
+    </figure>
   </div>
 </section>
 <section class="programs" aria-labelledby="prog-h">
