@@ -9,6 +9,8 @@
 /studio/*   /404.html   404!
 # Class registration closed 2026-11-23 until next season; remove this line to reopen
 /classes-registration  /classes  302!
+# General audition form retired 2026-11-23 (Adam: never use it). Every show gets its own /<slug>-registration page.
+/audition-registration  /auditions  302!
 
 # --- Aspire spring 2027 preview went live 2026-11-20 -------------------------
 /aspire-spring-2027-preview   /aspire-performing-co   301
@@ -88,8 +90,8 @@
 #
 # Interim: route per-show registration links to the generic forms so no
 # button dead-ends. Replace with real per-show forms when built.
-/summer-of-lion-king-8-13-registration    /audition-registration         302
-/summer-of-lion-king-14-18-registration   /audition-registration         302
+/summer-of-lion-king-8-13-registration    /auditions         302
+/summer-of-lion-king-14-18-registration   /auditions         302
 /back-to-the-future-registration          /page-to-stage-registration    302
 /aspire-auditions-registration            /aspire-registration             302
 # --- INTERIM: not-yet-rebuilt pages routed so links don't 404 during migration ---
@@ -101,7 +103,7 @@
 # /sensory-friendly-performances now served locally — redirect removed on rebuild
 # Internal interims -> closest built page
 /back-to-the-future              /page-to-stage/back-to-the-future   302
-/auditioning                     /audition-registration   302
+/auditioning                     /auditions   302
 /multi-performer-discount            /summer-of-lion-king-2026 302
 /encore-classes                  /classes                                  301
 # Legal short aliases

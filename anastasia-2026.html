@@ -8,7 +8,7 @@
      (with per-performance subEvents) for the Google events carousel.
      >>> Per-show items to swap when reusing this template:
        [POSTER]  show art at /img/shows/<slug>.jpg
-       [REGISTER] registration link (currently /audition-registration)
+       [REGISTER] registration link: a show-specific page (/<slug>-registration); never /audition-registration
        [DISCOUNTS] point to a real discounts page/policy when one exists
        Audition form / folder / song form / Calendly links are the real
        Anastasia links from the launch sheet.
@@ -652,7 +652,7 @@
           <h1><em>Anastasia</em></h1>
           <p class="tagline">A story of history, mystery, and unforgettable music. Audition to help tell a powerful story about identity, resilience, and hope , and begin your journey to the past, and beyond.</p>
           <div class="sh-actions">
-            <a href="/audition-registration" class="btn btn-accent">Register to audition →</a>
+            <span class="btn btn-accent" aria-disabled="true" style="opacity:.75;cursor:default;">Auditions for this production have closed</span>
             <a href="#auditions" class="btn btn-light">Audition details</a>
           </div>
         </div>
@@ -761,7 +761,7 @@
         </div>
       </div>
       <div class="aud-cta reveal">
-        <a href="/audition-registration" class="btn btn-dark">Register to audition →</a>
+        <span class="btn btn-dark" aria-disabled="true" style="opacity:.75;cursor:default;">Auditions for this production have closed</span>
         <span class="note"><strong>Prepare:</strong> 16 bars of a song that best shows off your voice. Bring a physical copy of your headshot and resume.</span>
       </div>
     </div>
@@ -855,7 +855,7 @@
             <li>Resume</li>
           </ul>
           <!-- [REGISTER] Point to the show's registration form/page. -->
-          <div class="reg-cta"><a href="/audition-registration" class="btn btn-accent">Register to audition →</a></div>
+          <div class="reg-cta"><span class="btn btn-accent" aria-disabled="true" style="opacity:.75;cursor:default;">Auditions for this production have closed</span></div>
         </div>
       </div>
     </div>
@@ -912,7 +912,7 @@
             <p>Register today and step into the world of Anastasia. We can't wait to see you at auditions.</p>
           </div>
           <div style="display:flex;gap:11px;flex-wrap:wrap;">
-            <a href="/audition-registration" class="btn btn-white">Register to audition →</a>
+            <span class="btn btn-white" aria-disabled="true" style="opacity:.75;cursor:default;">Auditions for this production have closed</span>
             <a href="/contact" class="btn btn-white" style="background:transparent;border:1.5px solid rgba(255,255,255,.6);color:#fff;">Ask a question</a>
           </div>
         </div>

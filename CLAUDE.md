@@ -306,3 +306,6 @@ still has about 26 em dashes in its body copy.
 
 Images get EXIF stripped, including GPS, before they go in. When replacing
 an image, give it a new filename so caches break.
+
+## Audition registration
+**Never use the general audition page or form (`/audition-registration`).** Adam, 2026-11-23. It now 302s to `/auditions`. Every show's Register buttons go to that show's own page, `/<slug>-registration`, with that show's own Elfsight form embedded (template: `peter-pan-jr-registration.html`, or `little-mermaid-registration.html`). If a show has no form yet, its buttons say "Registration opens soon" and do not link anywhere.
