@@ -133,7 +133,11 @@
   .sh-art .cap .dot{width:7px;height:7px;border-radius:50%;background:var(--show-tint);flex:none;}
 
   /* STAT BAR */
-  .statbar{margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .statbar{margin-top:22px;display:grid;grid-template-columns:.75fr 1.5fr 1fr 1fr .75fr;gap:14px;}
+  .stat.stat-reh{background:var(--show-mid);border-color:var(--show-mid);}
+  .stat.stat-reh .k{color:var(--show-tint);}
+  .stat.stat-reh .v{color:#fff;}
+  .stat.stat-reh .v small{color:var(--show-tint);}
   .stat{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:22px 24px;}
   .stat .k{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;}
   .stat .v{font-family:var(--font-display);font-size:25px;font-weight:600;color:var(--charcoal);line-height:1.05;margin-top:8px;}
@@ -297,6 +301,7 @@
     .sh-grid{grid-template-columns:1fr;}
     .sh-art{min-height:300px;}
     .statbar{grid-template-columns:1fr 1fr;}
+    .statbar .stat-reh{grid-column:1 / -1;order:-1;}
     .timeline{grid-template-columns:1fr;gap:22px;}
     .tl-step{padding:0 0 0 30px;}
     .tl-step::before{top:0;bottom:0;left:9px;right:auto;width:2px;height:auto;}
@@ -426,7 +431,7 @@
           <span class="sh-badge"><span class="dot"></span>December 2026 · Ages 5–11</span>
           <span class="eyebrow">Encore Performing Arts presents</span>
           <h1><em>A Christmas Carol Jr. Camp</em></h1>
-          <p class="tagline">A two-week holiday musical theater camp where Young Artists learn the songs, choreography and scenes of A Christmas Carol, then perform it on the Electric Theater stage, right in the middle of our mainstage run.</p>
+          <p class="tagline">A two-week holiday musical theater camp where Young Artists learn the songs, choreography and scenes of A Christmas Carol, then perform it on the Electric Theater stage, right in the middle of our mainstage run. Camp rehearsals run weekdays from 4:00 to 6:00pm.</p>
           <div class="sh-actions">
             <a href="#register" class="btn btn-accent">Register now &rarr;</a>
             <a href="https://calendly.com/production-encorepa/christmas-carol-camp-auditions" class="btn btn-light" target="_blank" rel="noopener">Reserve an audition time</a>
@@ -442,6 +447,7 @@
       <!-- STAT BAR -->
       <div class="statbar reveal">
         <div class="stat"><div class="k">Ages</div><div class="v">5–11</div></div>
+        <div class="stat stat-reh"><div class="k">Camp rehearsals</div><div class="v">4:00–6:00pm<small>Weekdays, Dec 7–15 · Saturdays 10am–12pm</small></div></div>
         <div class="stat"><div class="k">Placement audition</div><div class="v">Dec 4<small>2026 · 3:00–5:30pm</small></div></div>
         <div class="stat"><div class="k">Performance</div><div class="v">Dec 17<small>2026 · 5:30pm</small></div></div>
         <div class="stat"><div class="k">Camp fee</div><div class="v">$175</div></div>
