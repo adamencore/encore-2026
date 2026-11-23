@@ -176,6 +176,40 @@
   .tl-what{font-size:13.5px;color:rgba(233,228,224,.78);margin-top:6px;line-height:1.45;}
 
   /* AUDITION CARDS */
+  /* CAMP CALENDAR */
+  .cal{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(20px,2.6vw,34px);}
+  .cal-legend{display:flex;flex-wrap:wrap;gap:10px 20px;font-size:13.5px;color:var(--muted);margin-bottom:18px;}
+  .cal-legend span{display:inline-flex;align-items:center;gap:8px;}
+  .sw{display:inline-block;width:14px;height:14px;border-radius:4px;}
+  .sw.k-aud{background:var(--show-tint);border:1px solid var(--show-mid);}
+  .sw.k-reh{background:var(--show-mid);}
+  .sw.k-tech{background:var(--show-deep);}
+  .sw.k-perf{background:#c9962e;}
+  .sw.k-off{background:var(--cream-lite);border:1px dashed #b9b0a8;}
+  .cal-head,.cal-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;}
+  .cal-head span{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted);padding:0 4px 6px;}
+  .cal-grid{list-style:none;margin:0;padding:0;}
+  .cal-day{min-height:112px;border-radius:14px;padding:10px 11px;display:flex;flex-direction:column;gap:4px;font-size:13px;line-height:1.3;}
+  .cd-date{font-weight:700;font-size:14px;}
+  .cd-wd{display:none;}
+  .cd-what{font-weight:600;}
+  .cd-time{font-size:12.5px;}
+  .cal-day.k-out{background:transparent;color:#857d77;border:1px solid transparent;}
+  .cal-day.k-off{background:var(--cream-lite);border:1px dashed #b9b0a8;color:#5d5660;}
+  .cal-day.k-aud{background:var(--show-tint);color:var(--show-deep);border:1px solid var(--show-mid);}
+  .cal-day.k-reh{background:var(--show-mid);color:#fff;}
+  .cal-day.k-tech{background:var(--show-deep);color:#fff;}
+  .cal-day.k-perf{background:#c9962e;color:#2a1a05;}
+  .cal-loc{margin-top:18px;font-size:14.5px;line-height:1.6;color:var(--muted);}
+  .cal-loc b{color:var(--charcoal);}
+  @media(max-width:760px){
+    .cal-head{display:none;}
+    .cal-grid{grid-template-columns:1fr;gap:6px;}
+    .cal-day.k-out{display:none;}
+    .cal-day{min-height:0;display:grid;grid-template-columns:96px 1fr;column-gap:12px;row-gap:2px;padding:12px 14px;}
+    .cd-date{grid-row:1 / span 2;}
+    .cd-wd{display:inline;}
+  }
   /* REGISTRATION */
   .reg-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:22px;align-items:start;}
   .reg-side{background:linear-gradient(150deg,var(--show-mid),var(--show-deep));color:var(--cream);border-radius:var(--radius-lg);padding:40px;}
@@ -489,6 +523,49 @@
           <div class="tl-step"><div class="tl-dot"></div><div class="tl-when">Dec 16</div><div class="tl-what">Tech rehearsal, 4:00–6:00pm</div></div>
           <div class="tl-step key"><div class="tl-dot"></div><div class="tl-when">Dec 17</div><div class="tl-what">Performance at the Electric Theater, 5:30pm</div></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CAMP CALENDAR (from the source of truth sheet, 2026-11-23) ===== -->
+  <section style="padding-top:0;" id="calendar" aria-labelledby="cal-h">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Camp calendar</span>
+          <h2 id="cal-h">Which days you&rsquo;ll be <em>at the theater</em></h2>
+        </div>
+        <p class="lead">Every camp day is at the Historic Electric Theater, 68 E Tabernacle St, St. George. There is no camp on Sundays.</p>
+      </div>
+      <div class="cal reveal">
+        <div class="cal-legend" aria-hidden="true">
+          <span><i class="sw k-aud"></i>Placement audition</span><span><i class="sw k-reh"></i>Rehearsal</span><span><i class="sw k-tech"></i>Tech rehearsal</span><span><i class="sw k-perf"></i>Performance</span><span><i class="sw k-off"></i>No camp</span>
+        </div>
+        <div class="cal-head" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+        <ul class="cal-grid" aria-label="Camp days, December 2026">
+          <li class="cal-day k-out" aria-hidden="true"><span class="cd-date"><span class="cd-wd">Sun</span> Nov 29</span></li>
+          <li class="cal-day k-out" aria-hidden="true"><span class="cd-date"><span class="cd-wd">Mon</span> Nov 30</span></li>
+          <li class="cal-day k-out" aria-hidden="true"><span class="cd-date"><span class="cd-wd">Tue</span> Dec 1</span></li>
+          <li class="cal-day k-out" aria-hidden="true"><span class="cd-date"><span class="cd-wd">Wed</span> Dec 2</span></li>
+          <li class="cal-day k-out" aria-hidden="true"><span class="cd-date"><span class="cd-wd">Thu</span> Dec 3</span></li>
+          <li class="cal-day k-aud"><span class="cd-date"><span class="cd-wd">Fri</span> Dec 4</span><span class="cd-what">Placement audition</span><span class="cd-time">3:00&ndash;5:30pm</span></li>
+          <li class="cal-day k-reh"><span class="cd-date"><span class="cd-wd">Sat</span> Dec 5</span><span class="cd-what">Parent meeting, then rehearsal</span><span class="cd-time">10:00am&ndash;12:00pm</span></li>
+          <li class="cal-day k-off"><span class="cd-date"><span class="cd-wd">Sun</span> Dec 6</span><span class="cd-what">No camp</span></li>
+          <li class="cal-day k-reh"><span class="cd-date"><span class="cd-wd">Mon</span> Dec 7</span><span class="cd-what">Rehearsal</span><span class="cd-time">4:00&ndash;6:00pm</span></li>
+          <li class="cal-day k-reh"><span class="cd-date"><span class="cd-wd">Tue</span> Dec 8</span><span class="cd-what">Rehearsal</span><span class="cd-time">4:00&ndash;6:00pm</span></li>
+          <li class="cal-day k-reh"><span class="cd-date"><span class="cd-wd">Wed</span> Dec 9</span><span class="cd-what">Rehearsal</span><span class="cd-time">4:00&ndash;6:00pm</span></li>
+          <li class="cal-day k-reh"><span class="cd-date"><span class="cd-wd">Thu</span> Dec 10</span><span class="cd-what">Rehearsal</span><span class="cd-time">4:00&ndash;6:00pm</span></li>
+          <li class="cal-day k-reh"><span class="cd-date"><span class="cd-wd">Fri</span> Dec 11</span><span class="cd-what">Rehearsal</span><span class="cd-time">4:00&ndash;6:00pm</span></li>
+          <li class="cal-day k-reh"><span class="cd-date"><span class="cd-wd">Sat</span> Dec 12</span><span class="cd-what">Rehearsal</span><span class="cd-time">10:00am&ndash;12:00pm</span></li>
+          <li class="cal-day k-off"><span class="cd-date"><span class="cd-wd">Sun</span> Dec 13</span><span class="cd-what">No camp</span></li>
+          <li class="cal-day k-reh"><span class="cd-date"><span class="cd-wd">Mon</span> Dec 14</span><span class="cd-what">Rehearsal</span><span class="cd-time">4:00&ndash;6:00pm</span></li>
+          <li class="cal-day k-reh"><span class="cd-date"><span class="cd-wd">Tue</span> Dec 15</span><span class="cd-what">Rehearsal</span><span class="cd-time">4:00&ndash;6:00pm</span></li>
+          <li class="cal-day k-tech"><span class="cd-date"><span class="cd-wd">Wed</span> Dec 16</span><span class="cd-what">Tech rehearsal</span><span class="cd-time">4:00&ndash;6:00pm</span></li>
+          <li class="cal-day k-perf"><span class="cd-date"><span class="cd-wd">Thu</span> Dec 17</span><span class="cd-what">Performance</span><span class="cd-time">5:30pm</span></li>
+          <li class="cal-day k-out" aria-hidden="true"><span class="cd-date"><span class="cd-wd">Fri</span> Dec 18</span></li>
+          <li class="cal-day k-out" aria-hidden="true"><span class="cd-date"><span class="cd-wd">Sat</span> Dec 19</span></li>
+        </ul>
+        <p class="cal-loc"><b>Where:</b> Historic Electric Theater, 68 E Tabernacle St, St. George, Utah. <b>Weekday rehearsals</b> run 4:00 to 6:00pm; <b>Saturday rehearsals</b> run 10:00am to 12:00pm.</p>
       </div>
     </div>
   </section>
