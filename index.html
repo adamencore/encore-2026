@@ -1411,6 +1411,9 @@ html,body{overflow-x:clip;}
 </div>
 <script>
 (function(){
+  /* Turned off 2026-11-23 at Adam's request. Set to true to show it again. */
+  var ENABLED=false;
+  if(!ENABLED) return;
   var KEY='encoreClassesPop2026';
   try{ if(localStorage.getItem(KEY)) return; }catch(e){}
   var pop=document.getElementById('cpop'); if(!pop) return;
