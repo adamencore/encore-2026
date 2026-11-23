@@ -7,6 +7,8 @@
 # real file on disk wins over a redirect rule, which is exactly the case here.
 /_build/*   /404.html   404!
 /studio/*   /404.html   404!
+# Class registration closed 2026-11-23 until next season; remove this line to reopen
+/classes-registration  /classes  302!
 
 # --- Aspire spring 2027 preview went live 2026-11-20 -------------------------
 /aspire-spring-2027-preview   /aspire-performing-co   301
