@@ -470,14 +470,14 @@
             <span class="pill" style="margin-bottom:18px;"><span class="dot"></span>Camps at Encore</span>
             <h2 id="off-h">Upcoming <em>camps</em></h2>
           </div>
-          <p class="lead">Week-long camp intensives for ages 6 to 11, each finishing with a performance on the Electric Theater stage.</p>
+          <p class="lead">Camps for our youngest Young Artists, each finishing with a performance on the Electric Theater stage.</p>
         </div>
         <div class="grid reveal" id="offgrid"><p class="empty" id="emptyMsg" hidden>Nothing open right now.</p></div>
         <div class="camps-form reveal">
           <div class="camps-form-head">
             <span class="camps-form-eyebrow">Join the interest list</span>
-            <h3>Not the right week? <em>Tell us</em></h3>
-            <p>Send us a note and we will be in touch as soon as dates are set. Meanwhile, <a href="/classes">weekly classes</a> run September through December, and <a href="/auditions">auditions</a> are open for our fall productions.</p>
+            <h3>Not the right fit? <em>Tell us</em></h3>
+            <p>Send us a note and we will be in touch as soon as the next camp dates are set. Meanwhile, <a href="/auditions">auditions</a> are open for upcoming productions.</p>
           </div>
           <!-- Elfsight Form Builder | Encore Contact Form -->
           <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -744,6 +744,7 @@
   const TIER = "Camps";
 
   const OFFERINGS = [
+    {id:"christmas-carol-camp", title:"A Christmas Carol Jr. Camp", type:"Camp", ages:["Camps"], status:"Open", ends:"2026-12-17", when:"December 4 to 17, 2026", meta:"Ages 5 to 11 · $175 · Performance Thursday, December 17", link:"/christmas-carol-camp-2026", bg:"/img/shows/cc-camp-hero.webp"},
   ];
 
   const CTA = {audition:"Register to audition", class:"Browse classes", event:"See the event", workshop:"Register", camp:"Camp info"};
@@ -769,7 +770,7 @@
   const grid=document.getElementById("offgrid"), empty=document.getElementById("emptyMsg");
   function render(filter){
     [...grid.querySelectorAll(".scard")].forEach(n=>n.remove());
-    const items=OFFERINGS.filter(o=>o.ages.includes(TIER)&&o.status!=="Closed"&&(filter==="all"||o.type.toLowerCase()===filter));
+    const items=OFFERINGS.filter(o=>o.ages.includes(TIER)&&o.status!=="Closed"&&(!o.ends||new Date(o.ends+"T23:59:59")>=new Date())&&(filter==="all"||o.type.toLowerCase()===filter));
     items.forEach((o,i)=>empty.insertAdjacentHTML("beforebegin", card(o,i)));
     empty.style.display=items.length?"none":"block"; grid.hidden=!items.length;
     tintScards(grid);

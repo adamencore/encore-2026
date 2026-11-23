@@ -6,7 +6,7 @@ import json, re, datetime
 from playwright.sync_api import sync_playwright
 REPO = '/home/claude/encore-2026/'
 PAGES = ['', 'about', 'programs', 'camps', 'junior', 'emerging-artists', 'senior', 'aspire-performing-co', 'aspire-traditions',
-         'auditions', 'tickets', 'a-christmas-carol-tickets', 'classes',
+         'auditions', 'tickets', 'a-christmas-carol-tickets', 'christmas-carol-camp-2026', 'little-mermaid', 'classes',
          'classes/musical-theatre-foundations', 'classes/musical-theatre-jazz', 'classes/freestyle-hip-hop', 'classes/art-of-improv',
          'classes/audition-workshop', 'classes/finding-your-voice-in-tap', 'page-to-stage', 'sensory-friendly-performances',
          'asl-interpreted-performances', 'donate', 'core-community', 'contact', 'electric-theater', 'fees', 'multi-child-discount',
