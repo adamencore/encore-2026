@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>Volunteer Training | Encore Performing Arts</title>
-<meta name="description" content="Encore Performing Arts volunteer training: Usher Team and Concessions Team.">
+<meta name="description" content="Encore Performing Arts volunteer training: Greeter, Usher and Concessions teams.">
 <meta name="theme-color" content="#0f2a33">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/fonts/mikado.css">
 <!-- Volunteer training, one link for every volunteer role. Unlinked and noindex on purpose; reached by
      direct URL only. Untracked, like the rest of /team. Each role's content is from its one-sheet, unchanged.
-     Roles: #usher (default), #concessions. To add a role: a button in .roles, a <ol data-role> in the jump nav,
+     Roles: #greeter (default), #usher, #concessions. To add a role: a button in .roles, a <ol data-role> in the jump nav,
      a <div class="steps" data-role> block, and an entry in ROLES below. -->
 <style>
 :root{
@@ -34,12 +34,12 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{font-family:'Mikado',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'Mikado',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 button{font-family:inherit;cursor:pointer}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
 [hidden]{display:none!important}
-.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
 svg.ic{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;display:block}
 
 /* ---------- hero ---------- */
@@ -49,7 +49,7 @@ svg.ic{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.9;str
     radial-gradient(40% 40% at 12% 0%,rgba(16,120,156,.55),rgba(16,120,156,0) 70%),
     radial-gradient(40% 40% at 88% 0%,rgba(16,120,156,.55),rgba(16,120,156,0) 70%),
     linear-gradient(180deg,var(--night-2),var(--night) 75%);
-  padding:30px 0 92px}
+  padding:40px 0 104px}
 .hero::before,.hero::after{content:"";position:absolute;top:0;bottom:0;width:15%;max-width:120px;
   background:repeating-linear-gradient(90deg,rgba(16,120,156,.55) 0 9px,rgba(11,90,117,.85) 9px 18px);
   -webkit-mask:linear-gradient(180deg,#000 55%,transparent);mask:linear-gradient(180deg,#000 55%,transparent);opacity:.75}
@@ -61,35 +61,35 @@ svg.ic{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.9;str
 .brand-sub{display:block;margin-top:6px;white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#cfe6ee}
 
 /* role switcher */
-.roles-wrap{margin:24px auto 0;max-width:420px}
+.roles-wrap{margin:30px auto 0;max-width:460px}
 .roles-label{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
 .roles{margin-top:10px;display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;padding:4px;border-radius:100px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
-.roles button{min-height:44px;border:0;border-radius:100px;background:transparent;color:#e7f2f5;font-weight:700;font-size:15px;padding:0 12px;transition:background .2s,color .2s}
+.roles button{min-height:46px;border:0;border-radius:100px;background:transparent;color:#e7f2f5;font-weight:700;font-size:clamp(13.5px,4vw,15.5px);padding:0 6px;white-space:nowrap;transition:background .2s,color .2s}
 .roles button:hover{background:rgba(255,255,255,.1)}
 .roles button[aria-pressed="true"]{background:var(--gold);color:var(--night)}
 
-h1{margin:22px 0 0;font-weight:900;font-size:clamp(46px,14vw,84px);line-height:.92;letter-spacing:-.035em;text-transform:uppercase}
+h1{margin:30px 0 0;font-weight:900;font-size:clamp(46px,14vw,84px);line-height:.92;letter-spacing:-.035em;text-transform:uppercase}
 h1 span{display:block;color:var(--tint)}
 h1.long{font-size:clamp(36px,10.8vw,78px)}
-.tags{margin:22px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:500px;list-style:none}
+.tags{margin:26px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:500px;list-style:none}
 .tags li{background:var(--cream);color:var(--night);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:100px}
 .tags li:nth-child(2n){background:var(--gold)}
 
 /* ---------- purpose ---------- */
-.purpose{position:relative;z-index:2;margin-top:-62px}
-.purpose .card{background:var(--paper);border-radius:var(--r);padding:24px 22px;box-shadow:0 24px 48px -28px rgba(15,42,51,.55);display:grid;grid-template-columns:auto 1fr;gap:16px 18px;align-items:center}
+.purpose{position:relative;z-index:2;margin-top:-66px}
+.purpose .card{background:var(--paper);border-radius:var(--r);padding:30px 26px;box-shadow:0 24px 48px -28px rgba(15,42,51,.55);display:grid;grid-template-columns:auto 1fr;gap:16px 18px;align-items:center}
 .badge{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--teal);color:#fff;flex:none}
 .badge svg.ic{width:28px;height:28px}
-.purpose h2{font-weight:900;font-size:24px;line-height:1.1;letter-spacing:-.02em;color:var(--night)}
+.purpose h2{font-weight:900;font-size:26px;line-height:1.1;letter-spacing:-.02em;color:var(--night)}
 .purpose h2 em{font-style:italic;color:var(--teal-deep)}
-.purpose p{grid-column:1/-1;font-size:17px;line-height:1.55;color:var(--ink);border-top:2px dashed var(--line);padding-top:16px}
+.purpose p{grid-column:1/-1;font-size:18.5px;line-height:1.65;color:var(--ink);border-top:2px dashed var(--line);padding-top:20px}
 
 /* ---------- jump nav ---------- */
-.jump{position:sticky;top:0;z-index:30;background:rgba(250,247,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:26px}
-.jump ol{list-style:none;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 18px;max-width:720px;margin:0 auto;scroll-snap-type:x proximity}
+.jump{position:sticky;top:0;z-index:30;background:rgba(250,247,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:36px}
+.jump ol{list-style:none;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 20px;max-width:720px;margin:0 auto;scroll-snap-type:x proximity}
 .jump ol::-webkit-scrollbar{display:none}
 .jump li{flex:none;scroll-snap-align:start}
-.jump a{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:100px;background:var(--paper);border:1.5px solid var(--line);font-weight:700;font-size:14px;text-decoration:none;color:var(--night);white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.jump a{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 15px;border-radius:100px;background:var(--paper);border:1.5px solid var(--line);font-weight:700;font-size:15px;text-decoration:none;color:var(--night);white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
 .jump a b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--tint);color:var(--teal-deep);font-size:11px}
 .jump a.on{background:var(--night);border-color:var(--night);color:#fff}
 .jump a.on b{background:var(--gold);color:var(--night)}
@@ -97,47 +97,47 @@ h1.long{font-size:clamp(36px,10.8vw,78px)}
 .jump a.role-pill svg.ic{width:16px;height:16px;stroke-width:2.4}
 
 /* ---------- sections ---------- */
-section[id]{scroll-margin-top:calc(var(--nav-h) + 14px)}
-.sec-head{text-align:center;margin:40px 0 18px}
-.kicker{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-deep)}
-.sec-head h2{margin-top:6px;font-weight:900;font-size:clamp(30px,8vw,40px);line-height:1.05;letter-spacing:-.03em;color:var(--night)}
+section[id]{scroll-margin-top:calc(var(--nav-h) + 20px)}
+.sec-head{text-align:center;margin:60px 0 28px}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-deep)}
+.sec-head h2{margin-top:8px;font-weight:900;font-size:clamp(30px,8vw,40px);line-height:1.05;letter-spacing:-.03em;color:var(--night)}
 .sec-head h2 em{font-style:italic;color:var(--teal-deep)}
 
-.steps{display:grid;gap:16px}
+.steps{display:grid;gap:24px}
 .step{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 14px 30px -26px rgba(15,42,51,.6)}
-.step-top{display:flex;align-items:center;gap:14px;padding:18px 20px;background:linear-gradient(120deg,var(--tint),#f2f8fa 70%)}
-.step-top .badge{width:52px;height:52px}
-.step-n{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-deep)}
-.step h3{font-weight:900;font-size:22px;line-height:1.1;letter-spacing:-.015em;color:var(--night);text-transform:uppercase}
+.step-top{display:flex;align-items:center;gap:16px;padding:24px 24px;background:linear-gradient(120deg,var(--tint),#f2f8fa 70%)}
+.step-top .badge{width:56px;height:56px}
+.step-n{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-deep)}
+.step h3{font-weight:900;font-size:23px;line-height:1.12;margin-top:2px;letter-spacing:-.015em;color:var(--night);text-transform:uppercase}
 .step.gold .step-top{background:linear-gradient(120deg,var(--gold-tint),#fffaf0 70%)}
 .step.gold .step-top .badge{background:var(--gold);color:var(--night)}
 .step.gold .step-n{color:var(--gold-ink)}
-.list{list-style:none;padding:8px 20px 18px}
-.list li{position:relative;padding:12px 0 12px 36px;font-size:16.5px;line-height:1.45;border-top:1px solid var(--line)}
+.list{list-style:none;padding:10px 24px 22px}
+.list li{position:relative;padding:16px 0 16px 40px;font-size:18px;line-height:1.6;border-top:1px solid var(--line)}
 .list li:first-child{border-top:0}
-.list li::before{content:"";position:absolute;left:0;top:13px;width:22px;height:22px;border-radius:50%;
+.list li::before{content:"";position:absolute;left:0;top:18px;width:24px;height:24px;border-radius:50%;
   background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat}
-.list li.hl{background:linear-gradient(90deg,var(--gold-tint),rgba(255,241,214,0));margin:0 -20px;padding-left:56px;padding-right:20px;border-top-color:transparent}
-.list li.hl::before{left:20px;background-color:var(--gold);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f2a33' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E")}
+.list li.hl{background:linear-gradient(90deg,var(--gold-tint),rgba(255,241,214,0));margin:0 -24px;padding-left:64px;padding-right:24px;border-top-color:transparent}
+.list li.hl::before{left:24px;background-color:var(--gold);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f2a33' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E")}
 .list li.hl strong{color:var(--night)}
 
 /* accessibility */
-.access{margin-top:16px;background:var(--night);color:#fff;border-radius:var(--r);padding:22px 20px 10px;position:relative;overflow:hidden}
+.access{margin-top:24px;background:var(--night);color:#fff;border-radius:var(--r);padding:28px 24px 14px;position:relative;overflow:hidden}
 .access::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(16,120,156,.55),rgba(16,120,156,0) 70%)}
-.access-top{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
-.access .badge{background:var(--gold);color:var(--night);width:52px;height:52px}
+.access-top{display:flex;align-items:center;gap:16px;position:relative;z-index:1}
+.access .badge{background:var(--gold);color:var(--night);width:56px;height:56px}
 .access h3{font-weight:900;font-size:23px;line-height:1.1;letter-spacing:-.015em}
-.access .list{padding:8px 0 10px;position:relative;z-index:1}
+.access .list{padding:12px 0 10px;position:relative;z-index:1}
 .access .list li{border-top-color:rgba(255,255,255,.14);color:#eef6f8}
 .access .list li::before{background-color:var(--teal)}
 
 /* culture */
-.culture{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.val{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 12px;text-align:center;min-width:0}
-.val .badge{margin:0 auto 10px;width:48px;height:48px;background:var(--tint);color:var(--teal-deep)}
+.culture{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.val{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px 12px 22px;text-align:center;min-width:0}
+.val .badge{margin:0 auto 12px;width:52px;height:52px;background:var(--tint);color:var(--teal-deep)}
 .val .badge svg.ic{width:24px;height:24px}
-.val h3{font-weight:900;font-size:17px;letter-spacing:-.01em;color:var(--night)}
-.val p{margin-top:4px;font-size:14px;line-height:1.4;color:var(--muted)}
+.val h3{font-weight:900;font-size:18px;letter-spacing:-.01em;color:var(--night)}
+.val p{margin-top:6px;font-size:15.5px;line-height:1.45;color:var(--muted)}
 .val:nth-child(odd) .badge{background:var(--gold-tint);color:var(--gold-ink)}
 .val:last-child{grid-column:1/-1}
 @media (min-width:640px){
@@ -145,10 +145,11 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 14px)}
   .val{grid-column:span 2}
   .val:nth-child(n+4){grid-column:span 3}
   .steps{grid-template-columns:1fr 1fr}
+  .steps .step:nth-child(5){grid-column:1/-1}
 }
 
 /* closer */
-.closer{margin-top:44px;background:var(--night);color:#fff;text-align:center;padding:40px 0 calc(34px + env(safe-area-inset-bottom))}
+.closer{margin-top:64px;background:var(--night);color:#fff;text-align:center;padding:52px 0 calc(44px + env(safe-area-inset-bottom))}
 .closer .line{display:flex;align-items:center;gap:16px;justify-content:center;font-weight:900;font-size:clamp(22px,6.4vw,30px);letter-spacing:.2em;text-transform:uppercase}
 .closer .line::before,.closer .line::after{content:"";height:2px;flex:1;max-width:80px;background:linear-gradient(90deg,transparent,var(--gold))}
 .closer .line::after{transform:scaleX(-1)}
@@ -164,13 +165,18 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 14px)}
     <div class="roles-wrap" id="roles">
       <p class="roles-label" id="roles-label">Choose your team</p>
       <div class="roles" role="group" aria-labelledby="roles-label">
-        <button type="button" data-role="usher" aria-pressed="true">Usher</button>
+        <button type="button" data-role="greeter" aria-pressed="true">Greeter</button>
+        <button type="button" data-role="usher" aria-pressed="false">Usher</button>
         <button type="button" data-role="concessions" aria-pressed="false">Concessions</button>
       </div>
     </div>
-    <h1 data-role="usher">Usher <span>Team</span></h1>
+    <h1 data-role="greeter">Greeter <span>Team</span></h1>
+    <h1 data-role="usher" hidden>Usher <span>Team</span></h1>
     <h1 data-role="concessions" class="long" hidden>Concessions <span>Team</span></h1>
-    <ul class="tags" data-role="usher" aria-label="Usher roles">
+    <ul class="tags" data-role="greeter" aria-label="Greeter roles">
+      <li>Welcome</li><li>Guide</li><li>Inform</li><li>Assist</li>
+    </ul>
+    <ul class="tags" data-role="usher" aria-label="Usher roles" hidden>
       <li>Welcome</li><li>Seating</li><li>Tickets</li><li>Playbill</li>
     </ul>
     <ul class="tags" data-role="concessions" aria-label="Concessions roles" hidden>
@@ -189,7 +195,17 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 14px)}
   </div>
 
   <nav class="jump" aria-label="Sections">
-    <ol data-role="usher">
+    <ol data-role="greeter">
+      <li><a class="role-pill" href="#roles"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M3.5 16.5 7 20l3.5-3.5M17 20V4M13.5 7.5 17 4l3.5 3.5"/></svg>Greeter</a></li>
+      <li><a href="#g-start"><b>1</b>Get started</a></li>
+      <li><a href="#g-welcome"><b>2</b>Welcome guests</a></li>
+      <li><a href="#g-guide"><b>3</b>Guide &amp; inform</a></li>
+      <li><a href="#g-support"><b>4</b>Offer support</a></li>
+      <li><a href="#g-wrap"><b>5</b>Wrap it up</a></li>
+      <li><a href="#access"><b>6</b>Accessibility</a></li>
+      <li><a href="#culture"><b>7</b>Culture</a></li>
+    </ol>
+    <ol data-role="usher" hidden>
       <li><a class="role-pill" href="#roles"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v16M3.5 16.5 7 20l3.5-3.5M17 20V4M13.5 7.5 17 4l3.5 3.5"/></svg>Usher</a></li>
       <li><a href="#u-before"><b>1</b>Before doors</a></li>
       <li><a href="#u-tickets"><b>2</b>Tickets &amp; playbill</a></li>
@@ -211,13 +227,65 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 14px)}
 
   <div class="wrap">
     <div class="sec-head">
-      <p class="kicker" data-role="usher">Usher training</p>
+      <p class="kicker" data-role="greeter">Greeter training</p>
+      <p class="kicker" data-role="usher" hidden>Usher training</p>
       <p class="kicker" data-role="concessions" hidden>Concessions training</p>
       <h2>Your <em>Responsibilities</em></h2>
     </div>
 
+    <!-- ===== Greeter Team ===== -->
+    <div class="steps" data-role="greeter">
+      <section class="step" id="g-start" aria-labelledby="h-g-start">
+        <div class="step-top">
+          <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="13" r="7.5"/><path d="M12 9v4.2l2.8 1.8M9.5 3h5M12 3v2.5"/></svg></span>
+          <div><p class="step-n">Step 1</p><h3 id="h-g-start">Get Started</h3></div>
+        </div>
+        <ul class="list">
+          <li>Arrive early and check in with the box office manager.</li>
+        </ul>
+      </section>
+      <section class="step" id="g-welcome" aria-labelledby="h-g-welcome">
+        <div class="step-top">
+          <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="2.6"/><circle cx="5.5" cy="9.5" r="2"/><circle cx="18.5" cy="9.5" r="2"/><path d="M7.5 19v-1.5a4.5 4.5 0 0 1 9 0V19M2.5 18v-1a3 3 0 0 1 4.2-2.75M21.5 18v-1a3 3 0 0 0-4.2-2.75"/></svg></span>
+          <div><p class="step-n">Step 2</p><h3 id="h-g-welcome">Welcome Guests</h3></div>
+        </div>
+        <ul class="list">
+          <li>Welcome every guest warmly at the entrance.</li>
+        </ul>
+      </section>
+      <section class="step" id="g-guide" aria-labelledby="h-g-guide">
+        <div class="step-top">
+          <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3v18M9 21h6"/><path d="M12 5h6.5l2 2-2 2H12zM12 11H5.5l-2 2 2 2H12z"/></svg></span>
+          <div><p class="step-n">Step 3</p><h3 id="h-g-guide">Guide &amp; Inform</h3></div>
+        </div>
+        <ul class="list">
+          <li>Point guests to the box office, restrooms, concessions, and seating.</li>
+          <li>Answer basic questions about show length and intermission.</li>
+        </ul>
+      </section>
+      <section class="step" id="g-support" aria-labelledby="h-g-support">
+        <div class="step-top">
+          <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="6" r="2.2"/><path d="M8.8 12a3.2 3.2 0 0 1 6.4 0"/><path d="M3 12.5v3.2c0 1 .5 1.9 1.3 2.5L8 21M21 12.5v3.2c0 1-.5 1.9-1.3 2.5L16 21"/><path d="M3 12.5l2.7 3.3M21 12.5l-2.7 3.3"/></svg></span>
+          <div><p class="step-n">Step 4</p><h3 id="h-g-support">Offer Support</h3></div>
+        </div>
+        <ul class="list">
+          <li>Help families and guests who need extra assistance.</li>
+          <li>Direct accessibility requests to the ushers or the box office manager.</li>
+        </ul>
+      </section>
+      <section class="step" id="g-wrap" aria-labelledby="h-g-wrap">
+        <div class="step-top">
+          <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M2.5 11.5 6 8l3 1 3-2 3.5 1 3 .2L21.5 11"/><path d="M6 8l-3.5 3.5L7 16l1.2-1.2M21.5 11 17 15.5l-1.3-1.3"/><path d="M9 14.5l1.5 1.5M11 12.5l2.5 2.5M13 11l2.7 2.7"/></svg></span>
+          <div><p class="step-n">Step 5</p><h3 id="h-g-wrap">Wrap It Up</h3></div>
+        </div>
+        <ul class="list">
+          <li>Thank guests as they leave (you do not need to stay after the performance).</li>
+        </ul>
+      </section>
+    </div>
+
     <!-- ===== Usher Team ===== -->
-    <div class="steps" data-role="usher">
+    <div class="steps" data-role="usher" hidden>
       <section class="step" id="u-before" aria-labelledby="h-u-before">
         <div class="step-top">
           <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M3 8.5V7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v1.5a2.5 2.5 0 0 0 0 5V17a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3.5a2.5 2.5 0 0 0 0-5z"/><path d="M12 9.2l.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2-1.45-1.4 2-.3z"/></svg></span>
@@ -351,8 +419,8 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 14px)}
 
 <script>
 (function(){
-  var ROLES={usher:{title:'Usher Team',prefix:'u-'},concessions:{title:'Concessions Team',prefix:'c-'}};
-  var DEFAULT='usher';
+  var ROLES={greeter:{title:'Greeter Team',prefix:'g-'},usher:{title:'Usher Team',prefix:'u-'},concessions:{title:'Concessions Team',prefix:'c-'}};
+  var DEFAULT='greeter';
   var buttons=[].slice.call(document.querySelectorAll('.roles button'));
   var current=null, io=null, activeId=null;
 
