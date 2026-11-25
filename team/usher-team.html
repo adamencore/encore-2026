@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Usher Team | Encore Performing Arts</title>
+<meta name="description" content="Encore Performing Arts Usher Team training: welcome, seating, tickets and playbill.">
+<meta name="theme-color" content="#0f2a33">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/fonts/mikado.css">
+<!-- Usher Team training page. Unlinked and noindex on purpose; reached by direct URL only.
+     Untracked, like the rest of /team. Content is from the "Encore Usher Team" one-sheet, unchanged. -->
+<style>
+:root{
+  --teal:#10789c;
+  --teal-deep:#0b5a75;
+  --night:#0f2a33;
+  --night-2:#16404d;
+  --coral:#e46038;
+  --coral-deep:#b8431f;
+  --ink:#282420;
+  --muted:#5b554f;
+  --cream:#faf7f2;
+  --paper:#ffffff;
+  --tint:#e3f1f5;
+  --line:#e7e1d7;
+  --r:22px;
+  --nav-h:58px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:'Mikado',system-ui,-apple-system,sans-serif;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px;border-radius:8px}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+svg.ic{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;display:block}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;color:#fff;text-align:center;
+  background:
+    radial-gradient(60% 55% at 50% -6%,rgba(255,255,255,.20),rgba(255,255,255,0) 70%),
+    radial-gradient(40% 40% at 12% 0%,rgba(16,120,156,.55),rgba(16,120,156,0) 70%),
+    radial-gradient(40% 40% at 88% 0%,rgba(16,120,156,.55),rgba(16,120,156,0) 70%),
+    linear-gradient(180deg,var(--night-2),var(--night) 75%);
+  padding:30px 0 92px}
+/* curtain folds at either side */
+.hero::before,.hero::after{content:"";position:absolute;top:0;bottom:0;width:15%;max-width:120px;
+  background:repeating-linear-gradient(90deg,rgba(16,120,156,.55) 0 9px,rgba(11,90,117,.85) 9px 18px);
+  -webkit-mask:linear-gradient(180deg,#000 55%,transparent);mask:linear-gradient(180deg,#000 55%,transparent);opacity:.75}
+.hero::before{left:0;border-bottom-right-radius:100% 30%}
+.hero::after{right:0;border-bottom-left-radius:100% 30%}
+.hero .wrap{position:relative;z-index:1}
+.brand{display:inline-block;color:#fff}
+.brand svg{width:150px;height:auto;display:block;margin:0 auto}
+.brand-sub{display:block;margin-top:6px;white-space:nowrap;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#cfe6ee}
+h1{margin:26px 0 0;font-weight:900;font-size:clamp(46px,14vw,84px);line-height:.92;letter-spacing:-.035em;text-transform:uppercase}
+h1 span{display:block;color:var(--tint)}
+.tags{margin:22px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:460px;list-style:none}
+.tags li{background:var(--cream);color:var(--night);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;border-radius:100px}
+.tags li:nth-child(2n){background:var(--coral-deep);color:#fff}
+
+/* ---------- purpose ---------- */
+.purpose{position:relative;z-index:2;margin-top:-62px}
+.purpose .card{background:var(--paper);border-radius:var(--r);padding:24px 22px 24px;box-shadow:0 24px 48px -28px rgba(15,42,51,.55);display:grid;grid-template-columns:auto 1fr;gap:16px 18px;align-items:center}
+.badge{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--teal);color:#fff;flex:none}
+.badge svg.ic{width:28px;height:28px}
+.purpose h2{font-weight:900;font-size:24px;line-height:1.1;letter-spacing:-.02em;color:var(--night)}
+.purpose h2 em{font-style:italic;color:var(--teal-deep)}
+.purpose p{grid-column:1/-1;font-size:17px;line-height:1.55;color:var(--ink);border-top:2px dashed var(--line);padding-top:16px}
+
+/* ---------- jump nav ---------- */
+.jump{position:sticky;top:0;z-index:30;background:rgba(250,247,242,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:26px}
+.jump ol{list-style:none;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:10px 18px;max-width:720px;margin:0 auto;scroll-snap-type:x proximity}
+.jump ol::-webkit-scrollbar{display:none}
+.jump li{flex:none;scroll-snap-align:start}
+.jump a{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:0 14px;border-radius:100px;background:var(--paper);border:1.5px solid var(--line);font-weight:700;font-size:14px;text-decoration:none;color:var(--night);white-space:nowrap;transition:background .2s,color .2s,border-color .2s}
+.jump a b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--tint);color:var(--teal-deep);font-size:11px}
+.jump a.on{background:var(--night);border-color:var(--night);color:#fff}
+.jump a.on b{background:var(--coral);color:#fff}
+
+/* ---------- sections ---------- */
+section[id]{scroll-margin-top:calc(var(--nav-h) + 14px)}
+.sec-head{text-align:center;margin:40px 0 18px}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-deep)}
+.sec-head h2{margin-top:6px;font-weight:900;font-size:clamp(30px,8vw,40px);line-height:1.05;letter-spacing:-.03em;color:var(--night)}
+.sec-head h2 em{font-style:italic;color:var(--teal-deep)}
+
+.steps{display:grid;gap:16px}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 14px 30px -26px rgba(15,42,51,.6)}
+.step-top{display:flex;align-items:center;gap:14px;padding:18px 20px;background:linear-gradient(120deg,var(--tint),#f2f8fa 70%)}
+.step-top .badge{width:52px;height:52px}
+.step-n{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-deep)}
+.step h3{font-weight:900;font-size:22px;line-height:1.1;letter-spacing:-.015em;color:var(--night);text-transform:uppercase}
+.list{list-style:none;padding:8px 20px 18px}
+.list li{position:relative;padding:12px 0 12px 36px;font-size:16.5px;line-height:1.45;border-top:1px solid var(--line)}
+.list li:first-child{border-top:0}
+.list li::before{content:"";position:absolute;left:0;top:13px;width:22px;height:22px;border-radius:50%;
+  background:var(--teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/14px no-repeat}
+.list li.hl{background:linear-gradient(90deg,#fdeee8,rgba(253,238,232,0));margin:0 -20px;padding-left:56px;padding-right:20px;border-top-color:transparent}
+.list li.hl::before{left:20px;background-color:var(--coral)}
+.list li.hl strong{color:var(--coral-deep)}
+
+/* accessibility */
+.access{margin-top:16px;background:var(--night);color:#fff;border-radius:var(--r);padding:22px 20px 10px;position:relative;overflow:hidden}
+.access::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(16,120,156,.55),rgba(16,120,156,0) 70%)}
+.access-top{display:flex;align-items:center;gap:14px;position:relative;z-index:1}
+.access .badge{background:var(--coral);width:52px;height:52px}
+.access h3{font-weight:900;font-size:23px;line-height:1.1;letter-spacing:-.015em}
+.access .list{padding:8px 0 10px;position:relative;z-index:1}
+.access .list li{border-top-color:rgba(255,255,255,.14);color:#eef6f8}
+.access .list li::before{background-color:var(--teal)}
+
+/* culture */
+.culture{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.val{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px 12px;text-align:center;min-width:0}
+.val .badge{margin:0 auto 10px;width:48px;height:48px;background:var(--tint);color:var(--teal-deep)}
+.val .badge svg.ic{width:24px;height:24px}
+.val h3{font-weight:900;font-size:17px;letter-spacing:-.01em;color:var(--night)}
+.val p{margin-top:4px;font-size:14px;line-height:1.4;color:var(--muted)}
+.val:nth-child(odd) .badge{background:#fdeee8;color:var(--coral-deep)}
+.val:last-child{grid-column:1/-1}
+@media (min-width:640px){
+  .culture{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .val{grid-column:span 2}
+  .val:nth-child(n+4){grid-column:span 3}
+  .steps{grid-template-columns:1fr 1fr}
+}
+
+/* closer */
+.closer{margin-top:44px;background:var(--night);color:#fff;text-align:center;padding:40px 0 calc(34px + env(safe-area-inset-bottom))}
+.closer .line{display:flex;align-items:center;gap:16px;justify-content:center;font-weight:900;font-size:clamp(22px,6.4vw,30px);letter-spacing:.2em;text-transform:uppercase}
+.closer .line::before,.closer .line::after{content:"";height:2px;flex:1;max-width:80px;background:linear-gradient(90deg,transparent,var(--coral))}
+.closer .line::after{transform:scaleX(-1)}
+.top{display:inline-flex;align-items:center;gap:8px;margin-top:22px;min-height:44px;padding:0 20px;border-radius:100px;border:1.5px solid rgba(255,255,255,.35);font-weight:700;font-size:14px;text-decoration:none;color:#fff}
+.top:hover{background:rgba(255,255,255,.1)}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="brand" aria-label="Encore Performing Arts"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 389.14 75.29" fill="currentColor" class="brandmark" aria-hidden="true" focusable="false"><g id="Layer_1" data-name="Layer 1"> <g> <path d="M374.84,68.26c-1.14,5.51-4.46,7.69-9.97,6.55-5.85-1.21-8.2-4.57-7.06-10.08s4.63-7.66,10.48-6.45c5.51,1.14,7.69,4.46,6.55,9.97Z"/> <path d="M380.36.43c-6.84-1.41-10.82.64-11.97,6.15-.33,1.59-.54,3.16-.63,4.72-.09,1.56-.17,3.91-.23,7.04-.07,3.14-.21,7.52-.44,13.15-.21,5.08-.57,11.85-1.09,20.27,1.13.04,2.31.18,3.54.44.85.18,1.65.41,2.41.67,3.14-7.82,5.72-14.09,7.74-18.77,2.24-5.21,3.99-9.26,5.23-12.16,1.24-2.89,2.13-5.07,2.67-6.54.54-1.46.97-2.99,1.3-4.58,1.14-5.52-1.7-8.98-8.54-10.4Z"/> <polygon points="365.84 54.52 365.84 54.52 365.84 54.52 365.84 54.52"/> <path d="M23.02,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66-16.89,0-30.81-12.61-30.81-28.18s13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4,0,0-35.41,11.29-35.41,11.29ZM38.37,42.75c.88-.33,1.42-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> <path d="M130.72,73.78c-8.11,2.85-27.41,3.84-27.41-17.43v-18.86c0-3.4-1.42-9.76-8.44-10.41-5.59-.44-10.63,5.37-10.63,10.31v25.87c0,.66-.33,6.91,6.47,7.56.55.11,1.21.66,1.21,1.42s-.55,1.42-1.32,1.42h-33.77c-.77,0-1.42-.66-1.42-1.42s.55-1.32,1.31-1.42c3.84-.44,6.36-3.18,6.47-7.35v-31.58s.11-5.81-6.03-5.59c-.99,0-1.75-.66-1.75-1.65,0-.77.55-1.42,1.31-1.53l27.52-4.28v6.91s5.04-7.02,17.21-6.91c11.29.22,22.91,7.24,22.91,18.86l-.11,22.69c0,11.95,6.47,13.38,6.47,13.38h0Z"/> <path d="M187.82,54.38c-3.51,6.69-13.8,19.95-30.14,19.95s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c7.68-.11,14.8,2.63,20.17,6.91,8.11,6.69,3.95,13.16-4.17,14.69h-.33c-3.84.55-7.56-1.76-8.88-5.37-2.3-6.47-5.92-11.62-10.74-10.85-.11,0-.33,0-.44.11-9.32,2.85-6.47,22.26-3.62,29.05,4.27,10.31,19.39,15.58,35.84.34,1.1-.99,2.74.33,2.08,1.53h0Z"/> <path d="M246.93,46.26c0,16.01-13.92,28.94-30.81,28.94s-30.81-12.94-30.81-28.94,13.7-28.94,30.7-28.94h.33c16.88,0,30.59,12.94,30.59,28.94ZM225.88,46.26c0-7.13-1.32-23.68-9.54-23.68h-.44c-8.22,0-9.54,16.55-9.54,23.68s1.32,23.68,9.54,23.68h.44c8.22,0,9.54-16.56,9.54-23.68Z"/> <path d="M290.23,38.25c-.33.11-.77.11-1.21.11-4.38,0-7.89-3.51-7.89-7.89,0-1.97.66-3.73,1.87-5.15-5.15-.22-12.83,7.68-12.83,14.36v23.57c0,.66-.33,6.91,6.47,7.67.77,0,1.21.66,1.21,1.32v.11c0,.77-.55,1.32-1.31,1.32h-33.77c-.77,0-1.42-.55-1.42-1.42,0-.66.55-1.32,1.31-1.32,6.58-.77,6.47-6.91,6.47-7.34v-31.69s.11-5.59-6.03-5.59c-.88,0-1.65-.55-1.75-1.42-.11-.88.55-1.65,1.31-1.75l27.52-4.28v7.02s6.14-8.33,17.21-6.91c12.39,1.53,12.06,18.64,2.85,19.3h0Z"/> <path d="M318.45,52.51c3.07,9.1,15.24,19.95,33.55,3.62,1.1-.99,2.74.33,2.08,1.53-3.51,6.69-11.51,16.66-27.85,16.66s-30.81-12.61-30.81-28.18,13.7-28.29,30.7-28.18h.33c13.7-.11,25.33,8.33,29.16,19.84.44,1.42-.33,2.96-1.75,3.4l-35.41,11.29h0ZM333.8,42.75c.88-.33,1.43-1.31,1.21-2.19-1.86-8.77-6.14-18.31-12.5-17.21-.11,0-.33.11-.44.11-7.78,1.97-7.13,17.21-5.15,24.56l16.88-5.26h0Z"/> </g> </g></svg><span class="brand-sub">Performing Arts</span></span>
+    <h1>Usher <span>Team</span></h1>
+    <ul class="tags" aria-label="Usher roles">
+      <li>Welcome</li><li>Seating</li><li>Tickets</li><li>Playbill</li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="wrap purpose">
+    <div class="card">
+      <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg></span>
+      <h2>Our Purpose <em>at Encore</em></h2>
+      <p>You are the face of Encore. Your kindness, professionalism, and helpfulness reflect our mission to inspire, empower, and build community.</p>
+    </div>
+  </div>
+
+  <nav class="jump" aria-label="Sections">
+    <ol>
+      <li><a href="#before"><b>1</b>Before doors</a></li>
+      <li><a href="#tickets"><b>2</b>Tickets &amp; playbill</a></li>
+      <li><a href="#during"><b>3</b>During the show</a></li>
+      <li><a href="#after"><b>4</b>After the show</a></li>
+      <li><a href="#access"><b>5</b>Accessibility</a></li>
+      <li><a href="#culture"><b>6</b>Culture</a></li>
+    </ol>
+  </nav>
+
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Usher training</p>
+      <h2>Your <em>Responsibilities</em></h2>
+    </div>
+
+    <div class="steps">
+      <section class="step" id="before" aria-labelledby="h-before">
+        <div class="step-top">
+          <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M3 8.5V7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v1.5a2.5 2.5 0 0 0 0 5V17a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3.5a2.5 2.5 0 0 0 0-5z"/><path d="M12 9.2l.9 1.8 2 .3-1.45 1.4.35 2-1.8-.95-1.8.95.35-2-1.45-1.4 2-.3z"/></svg></span>
+          <div><p class="step-n">Step 1</p><h3 id="h-before">Before Doors Open</h3></div>
+        </div>
+        <ul class="list">
+          <li>Arrive on time and check in with the box office manager.</li>
+          <li>Learn the house layout and seating before doors open.</li>
+        </ul>
+      </section>
+
+      <section class="step" id="tickets" aria-labelledby="h-tickets">
+        <div class="step-top">
+          <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1"/><path d="M14 14h2.5v2.5H14zM18 18h2.5v2.5H18zM18 14h2.5M14 18v2.5"/></svg></span>
+          <div><p class="step-n">Step 2</p><h3 id="h-tickets">Tickets &amp; Playbill</h3></div>
+        </div>
+        <ul class="list">
+          <li>Scan or check tickets at the door.</li>
+          <li>Direct patrons to the digital playbill options (QR code or website) and share how to access it.</li>
+          <li class="hl"><strong>Limit printed programs to 1&ndash;2 per group.</strong></li>
+        </ul>
+      </section>
+
+      <section class="step" id="during" aria-labelledby="h-during">
+        <div class="step-top">
+          <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M5 11V7.5A1.5 1.5 0 0 1 6.5 6h3A1.5 1.5 0 0 1 11 7.5V11M13 11V7.5A1.5 1.5 0 0 1 14.5 6h3A1.5 1.5 0 0 1 19 7.5V11"/><path d="M3 11h18v4H3zM5 15v3M19 15v3M12 11v4"/></svg></span>
+          <div><p class="step-n">Step 3</p><h3 id="h-during">During the Show</h3></div>
+        </div>
+        <ul class="list">
+          <li>Guide guests to their seats and keep aisles and exits clear.</li>
+          <li>Help latecomers find their seats at an appropriate moment.</li>
+          <li>Remind guests to silence phones. No flash photography or recording.</li>
+          <li>Watch for issues and report them to the box office manager.</li>
+        </ul>
+      </section>
+
+      <section class="step" id="after" aria-labelledby="h-after">
+        <div class="step-top">
+          <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M14.5 3.5L10 12"/><path d="M8.2 11.2l4.6 2.4-1.6 6.4c-2.6-.4-5.4-1.8-7-4z"/><path d="M17.5 13.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6zM19 5.5l.4 1 1 .4-1 .4-.4 1-.4-1-1-.4 1-.4z"/></svg></span>
+          <div><p class="step-n">Step 4</p><h3 id="h-after">After the Show</h3></div>
+        </div>
+        <ul class="list">
+          <li>Help tidy the house after the performance.</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="access" id="access" aria-labelledby="h-access">
+      <div class="access-top">
+        <span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="10" cy="4.5" r="1.8"/><path d="M10 7.5v6h5l2.5 5.5"/><path d="M10 10.5h5"/><path d="M7.2 11.3A5.5 5.5 0 1 0 15 18"/></svg></span>
+        <h3 id="h-access">Accessibility &amp; Accommodations</h3>
+      </div>
+      <ul class="list">
+        <li>Be attentive to all guests, including those with special needs.</li>
+        <li>Help with wheelchair seating and any accommodation requests.</li>
+        <li>When in doubt, ask the box office manager.</li>
+      </ul>
+    </section>
+
+    <section id="culture" aria-labelledby="h-culture">
+      <div class="sec-head">
+        <p class="kicker">What we stand for</p>
+        <h2 id="h-culture">Our Volunteer <em>Culture</em></h2>
+      </div>
+      <div class="culture">
+        <div class="val"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg></span><h3>Kindness</h3><p>Respect &amp; empathy</p></div>
+        <div class="val"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="2.6"/><circle cx="5.5" cy="9.5" r="2"/><circle cx="18.5" cy="9.5" r="2"/><path d="M7.5 19v-1.5a4.5 4.5 0 0 1 9 0V19M2.5 18v-1a3 3 0 0 1 4.2-2.75M21.5 18v-1a3 3 0 0 0-4.2-2.75"/></svg></span><h3>Support</h3><p>Encourage confidence</p></div>
+        <div class="val"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.2-7.5 9.5-4.3-1.3-7.5-4.9-7.5-9.5V6z"/><path d="M8.7 12.2l2.3 2.3 4.4-4.6"/></svg></span><h3>Safety</h3><p>Safe, positive environment</p></div>
+        <div class="val"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9l-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z"/></svg></span><h3>Professionalism</h3><p>Follow instructions and communicate clearly.</p></div>
+        <div class="val"><span class="badge" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 21v-9"/><path d="M12 12c0-3.6-2.6-6-6.5-6 0 3.8 2.5 6 6.5 6zM12 10.5c0-3.4 2.4-5.8 6.5-5.8 0 3.6-2.4 5.8-6.5 5.8z"/></svg></span><h3>Community</h3><p>Leadership, teamwork &amp; care</p></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="closer">
+  <div class="wrap">
+    <p class="line">That&rsquo;s Encore!</p>
+    <a class="top" href="#top">Back to top &uarr;</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.jump a'));
+  var nav=document.querySelector('.jump ol');
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  function setOn(id){
+    links.forEach(function(a){a.classList.toggle('on',a===map[id]);if(a===map[id]){a.setAttribute('aria-current','true');}else{a.removeAttribute('aria-current');}});
+    var a=map[id];
+    if(a&&nav){var l=a.parentNode.offsetLeft-18;nav.scrollTo?nav.scrollTo({left:l,behavior:'smooth'}):(nav.scrollLeft=l);}
+  }
+  if(!('IntersectionObserver' in window))return;
+  var current=null;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting&&e.target.id!==current){current=e.target.id;setOn(current);}});
+  },{rootMargin:'-30% 0px -60% 0px'});
+  Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el);});
+})();
+</script>
+</body>
+</html>
