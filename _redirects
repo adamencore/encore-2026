@@ -7,6 +7,8 @@
 # real file on disk wins over a redirect rule, which is exactly the case here.
 /_build/*   /404.html   404!
 /studio/*   /404.html   404!
+# Usher training moved into the combined volunteer page 2026-11-25; old link opens the Usher view
+/team/usher-team  /team/volunteer#usher  301!
 # Class registration closed 2026-11-23 until next season; remove this line to reopen
 /classes-registration  /classes  302!
 # General audition form retired 2026-11-23 (Adam: never use it). Every show gets its own /<slug>-registration page.
